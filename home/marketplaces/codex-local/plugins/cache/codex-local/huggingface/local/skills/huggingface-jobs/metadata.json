@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "This skill should be used when users want to run any workload on Hugging Face Jobs infrastructure. Covers UV scripts, Docker-based jobs, hardware selection, cost estimation, authentication with tokens, secrets management, timeout configuration, and result persistence. Designed for general-purpose compute workloads including data processing, inference, experiments, batch jobs, and any Python-based tasks. Should be invoked for tasks involving cloud compute, GPU workloads, or when users mention running jobs on Hugging Face infrastructure without local setup.",
+  "references": [
+    "https://hf.co/pro",
+    "https://hf.co/enterprise",
+    "https://huggingface.co/settings/tokens",
+    "https://huggingface.co/datasets/uv-scripts/.../raw/main/foo.py",
+    "https://raw.githubusercontent.com/huggingface/trl/main/trl/scripts/sft.py",
+    "https://huggingface.co/docs/hub/en/spaces-config-reference",
+    "https://your-api.com/results",
+    "https://huggingface.co/jobs/username/job-id",
+    "https://huggingface.co/docs/huggingface_hub/guides/webhooks",
+    "https://huggingface.co/docs/huggingface_hub/guides/jobs",
+    "https://huggingface.co/docs/huggingface_hub/guides/cli#hf-jobs",
+    "https://huggingface.co/docs/huggingface_hub/package_reference/hf_api",
+    "https://docs.astral.sh/uv/guides/scripts/",
+    "https://huggingface.co/uv-scripts",
+    "https://huggingface.co/docs/huggingface_hub/quick-start#authentication"
+  ]
+}

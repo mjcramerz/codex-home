@@ -1,0 +1,89 @@
+# 90-forbidden.rules
+# Comprehensive hard-deny coverage for high-risk commands.
+# Keep this file last so forbids stay explicit and easy to audit.
+
+# Privilege escalation.
+prefix_rule(pattern = ["sudo"], decision = "forbidden", match = [["sudo","-n","true"]])
+prefix_rule(pattern = ["su"], decision = "forbidden", match = [["su","root"]])
+prefix_rule(pattern = ["doas"], decision = "forbidden", match = [["doas","id"]])
+prefix_rule(pattern = ["pkexec"], decision = "forbidden", match = [["pkexec","id"]])
+
+# Destructive filesystem and block-device operations.
+prefix_rule(pattern = ["rm","-rf","/"], decision = "forbidden", match = [["rm","-rf","/"]])
+prefix_rule(pattern = ["rm","-fr","/"], decision = "forbidden", match = [["rm","-fr","/"]])
+prefix_rule(pattern = ["rm","-rf","--no-preserve-root","/"], decision = "forbidden", match = [["rm","-rf","--no-preserve-root","/"]])
+prefix_rule(pattern = ["rm","-rf","/*"], decision = "forbidden", match = [["rm","-rf","/*"]])
+prefix_rule(pattern = ["dd"], decision = "forbidden", match = [["dd","if=/dev/zero","of=/dev/sda"]])
+prefix_rule(pattern = ["shred"], decision = "forbidden", match = [["shred","-n","3","/dev/sda"]])
+prefix_rule(pattern = ["mkfs"], decision = "forbidden", match = [["mkfs","/dev/sda1"]])
+prefix_rule(pattern = ["mkfs.ext4"], decision = "forbidden", match = [["mkfs.ext4","/dev/sda1"]])
+prefix_rule(pattern = ["mkfs.xfs"], decision = "forbidden", match = [["mkfs.xfs","/dev/sda1"]])
+prefix_rule(pattern = ["mkfs.btrfs"], decision = "forbidden", match = [["mkfs.btrfs","/dev/sda1"]])
+prefix_rule(pattern = ["mkfs.vfat"], decision = "forbidden", match = [["mkfs.vfat","/dev/sda1"]])
+prefix_rule(pattern = ["mkswap"], decision = "forbidden", match = [["mkswap","/dev/sda2"]])
+prefix_rule(pattern = ["parted"], decision = "forbidden", match = [["parted","/dev/sda","mklabel","gpt"]])
+prefix_rule(pattern = ["fdisk"], decision = "forbidden", match = [["fdisk","/dev/sda"]])
+prefix_rule(pattern = ["sfdisk"], decision = "forbidden", match = [["sfdisk","/dev/sda"]])
+prefix_rule(pattern = ["cfdisk"], decision = "forbidden", match = [["cfdisk","/dev/sda"]])
+prefix_rule(pattern = ["sgdisk"], decision = "forbidden", match = [["sgdisk","-Z","/dev/sda"]])
+prefix_rule(pattern = ["gdisk"], decision = "forbidden", match = [["gdisk","/dev/sda"]])
+prefix_rule(pattern = ["wipefs"], decision = "forbidden", match = [["wipefs","-a","/dev/sda"]])
+prefix_rule(pattern = ["blkdiscard"], decision = "forbidden", match = [["blkdiscard","/dev/sda"]])
+prefix_rule(pattern = ["pvremove"], decision = "forbidden", match = [["pvremove","/dev/sda2"]])
+prefix_rule(pattern = ["vgremove"], decision = "forbidden", match = [["vgremove","vg0"]])
+prefix_rule(pattern = ["lvremove"], decision = "forbidden", match = [["lvremove","vg0/root"]])
+prefix_rule(pattern = ["mdadm"], decision = "forbidden", match = [["mdadm","--stop","/dev/md0"]])
+prefix_rule(pattern = ["cryptsetup","luksFormat"], decision = "forbidden", match = [["cryptsetup","luksFormat","/dev/sda2"]])
+
+# Host-outage and boot-impact commands.
+prefix_rule(pattern = ["shutdown"], decision = "forbidden", match = [["shutdown","-h","now"]])
+prefix_rule(pattern = ["reboot"], decision = "forbidden", match = [["reboot"]])
+prefix_rule(pattern = ["poweroff"], decision = "forbidden", match = [["poweroff"]])
+prefix_rule(pattern = ["halt"], decision = "forbidden", match = [["halt"]])
+prefix_rule(pattern = ["init"], decision = "forbidden", match = [["init","0"]])
+prefix_rule(pattern = ["telinit"], decision = "forbidden", match = [["telinit","6"]])
+prefix_rule(pattern = ["systemctl","reboot"], decision = "forbidden", match = [["systemctl","reboot"]])
+prefix_rule(pattern = ["systemctl","poweroff"], decision = "forbidden", match = [["systemctl","poweroff"]])
+prefix_rule(pattern = ["systemctl","halt"], decision = "forbidden", match = [["systemctl","halt"]])
+prefix_rule(pattern = ["systemctl","kexec"], decision = "forbidden", match = [["systemctl","kexec"]])
+prefix_rule(pattern = ["systemctl","isolate"], decision = "forbidden", match = [["systemctl","isolate","rescue.target"]])
+prefix_rule(pattern = ["systemctl","rescue"], decision = "forbidden", match = [["systemctl","rescue"]])
+prefix_rule(pattern = ["systemctl","emergency"], decision = "forbidden", match = [["systemctl","emergency"]])
+
+# Process-kill blast radius.
+prefix_rule(pattern = ["kill","-9","-1"], decision = "forbidden", match = [["kill","-9","-1"]])
+prefix_rule(pattern = ["kill","-KILL","-1"], decision = "forbidden", match = [["kill","-KILL","-1"]])
+prefix_rule(pattern = ["pkill","-9","-f","."], decision = "forbidden", match = [["pkill","-9","-f","."]])
+prefix_rule(pattern = ["killall","-9"], decision = "forbidden", match = [["killall","-9","bash"]])
+
+# Firewall flush/disable operations.
+prefix_rule(pattern = ["iptables","-F"], decision = "forbidden", match = [["iptables","-F"]])
+prefix_rule(pattern = ["iptables","--flush"], decision = "forbidden", match = [["iptables","--flush"]])
+prefix_rule(pattern = ["iptables","-X"], decision = "forbidden", match = [["iptables","-X"]])
+prefix_rule(pattern = ["nft","flush","ruleset"], decision = "forbidden", match = [["nft","flush","ruleset"]])
+prefix_rule(pattern = ["ufw","reset"], decision = "forbidden", match = [["ufw","reset"]])
+prefix_rule(pattern = ["ufw","disable"], decision = "forbidden", match = [["ufw","disable"]])
+
+# Destructive VCS patterns.
+prefix_rule(pattern = ["git","reset","--hard"], decision = "forbidden", match = [["git","reset","--hard","HEAD~1"]])
+prefix_rule(pattern = ["git","clean","-fdx"], decision = "forbidden", match = [["git","clean","-fdx"]])
+prefix_rule(pattern = ["git","clean","-xdf"], decision = "forbidden", match = [["git","clean","-xdf"]])
+prefix_rule(pattern = ["git","push","--force"], decision = "forbidden", match = [["git","push","--force"]])
+prefix_rule(pattern = ["git","push","-f"], decision = "forbidden", match = [["git","push","-f"]])
+prefix_rule(pattern = ["git","push","--force-with-lease"], decision = "forbidden", match = [["git","push","--force-with-lease"]])
+prefix_rule(pattern = ["git","push","--mirror"], decision = "forbidden", match = [["git","push","--mirror"]])
+prefix_rule(pattern = ["git","filter-branch"], decision = "forbidden", match = [["git","filter-branch","--tree-filter","rm -rf secret"]])
+
+# Broad package-removal operations (keep install/update broad, block bulk removal by default).
+prefix_rule(pattern = ["apt","remove"], decision = "forbidden", match = [["apt","remove","pkg"]])
+prefix_rule(pattern = ["apt","purge"], decision = "forbidden", match = [["apt","purge","pkg"]])
+prefix_rule(pattern = ["apt-get","remove"], decision = "forbidden", match = [["apt-get","remove","pkg"]])
+prefix_rule(pattern = ["apt-get","purge"], decision = "forbidden", match = [["apt-get","purge","pkg"]])
+prefix_rule(pattern = ["dnf","remove"], decision = "forbidden", match = [["dnf","remove","pkg"]])
+prefix_rule(pattern = ["yum","remove"], decision = "forbidden", match = [["yum","remove","pkg"]])
+prefix_rule(pattern = ["pacman","-R"], decision = "forbidden", match = [["pacman","-R","pkg"]])
+prefix_rule(pattern = ["zypper","remove"], decision = "forbidden", match = [["zypper","remove","pkg"]])
+
+# Catastrophic ownership/permission rewrites at filesystem root.
+prefix_rule(pattern = ["chmod","-R","777","/"], decision = "forbidden", match = [["chmod","-R","777","/"]])
+prefix_rule(pattern = ["chown","-R","root:root","/"], decision = "forbidden", match = [["chown","-R","root:root","/"]])

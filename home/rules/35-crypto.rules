@@ -1,0 +1,13 @@
+# 35-crypto.rules
+# Key, certificate, and signing tools.
+
+prefix_rule(pattern = ["ssh-keygen"], decision = "allow", match = [["ssh-keygen","-t","ed25519","-f","./id_ed25519"]])
+prefix_rule(pattern = ["gpg"], decision = "allow", match = [["gpg","--version"]])
+prefix_rule(pattern = ["gpg2"], decision = "allow", match = [["gpg2","--version"]])
+prefix_rule(pattern = ["openssl"], decision = "allow", match = [["openssl","version"]])
+prefix_rule(pattern = ["age"], decision = "allow", match = [["age","--version"]])
+prefix_rule(pattern = ["age-keygen"], decision = "allow", match = [["age-keygen","-o","key.txt"]])
+prefix_rule(pattern = ["minisign"], decision = "allow", match = [["minisign","-V"]])
+prefix_rule(pattern = ["cosign"], decision = "allow", match = [["cosign","version"]])
+prefix_rule(pattern = ["sops"], decision = "allow", match = [["sops","--version"]])
+prefix_rule(pattern = ["step"], decision = "allow", match = [["step","version"]])

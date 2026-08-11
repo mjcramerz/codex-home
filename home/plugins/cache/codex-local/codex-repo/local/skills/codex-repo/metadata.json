@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Focus on the active Codex source tree and upstream runtime behavior.",
+  "references": [
+    "SKILL.md"
+  ]
+}

@@ -1,0 +1,56 @@
+# 30-system.rules
+# Host, filesystem, service, and process tooling.
+
+# Filesystem and path operations.
+prefix_rule(pattern = ["chmod"], decision = "allow", match = [["chmod","-R","u+rwX,go-rwx","./dir"]])
+prefix_rule(pattern = ["chown"], decision = "allow", match = [["chown","-R","user:group","./dir"]])
+prefix_rule(pattern = ["chgrp"], decision = "allow", match = [["chgrp","-R","group","./dir"]])
+prefix_rule(pattern = ["cp"], decision = "allow", match = [["cp","-a","src/","dest/"]])
+prefix_rule(pattern = ["mv"], decision = "allow", match = [["mv","old","new"]])
+prefix_rule(pattern = ["ln"], decision = "allow", match = [["ln","target","link"]])
+prefix_rule(pattern = ["mkdir"], decision = "allow", match = [["mkdir","-p","./path"]])
+prefix_rule(pattern = ["rmdir"], decision = "allow", match = [["rmdir","./path"]])
+prefix_rule(pattern = ["touch"], decision = "allow", match = [["touch","./file"]])
+prefix_rule(pattern = ["install"], decision = "allow", match = [["install","-m","0644","file","/tmp/file"]])
+prefix_rule(pattern = ["truncate"], decision = "allow", match = [["truncate","-s","0","./file"]])
+prefix_rule(pattern = ["tee"], decision = "allow", match = [["tee","/tmp/file"]])
+prefix_rule(pattern = ["rm"], decision = "allow", match = [["rm","-f","./file"]])
+
+# Process and runtime diagnostics.
+prefix_rule(pattern = ["ps"], decision = "allow", match = [["ps","aux"]])
+prefix_rule(pattern = ["pgrep"], decision = "allow", match = [["pgrep","-f","codex"]])
+prefix_rule(pattern = ["kill"], decision = "allow", match = [["kill","-TERM","1234"]])
+prefix_rule(pattern = ["killall"], decision = "allow", match = [["killall","-TERM","ssh"]])
+prefix_rule(pattern = ["pkill"], decision = "allow", match = [["pkill","-f","pattern"]])
+prefix_rule(pattern = ["lsof"], decision = "allow", match = [["lsof","-i",":22"]])
+prefix_rule(pattern = ["ss"], decision = "allow", match = [["ss","-tulpn"]])
+prefix_rule(pattern = ["netstat"], decision = "allow", match = [["netstat","-tulpn"]])
+
+# System administration and observability helpers.
+prefix_rule(pattern = ["mount"], decision = "allow", match = [["mount","/dev/sda1","/mnt"]])
+prefix_rule(pattern = ["umount"], decision = "allow", match = [["umount","/mnt"]])
+prefix_rule(pattern = ["sysctl"], decision = "allow", match = [["sysctl","-w","net.ipv4.ip_forward=0"]])
+prefix_rule(pattern = ["journalctl"], decision = "allow", match = [["journalctl","-u","ssh","-n","50"]])
+prefix_rule(pattern = ["dmesg"], decision = "allow", match = [["dmesg","-T"]])
+prefix_rule(pattern = ["free"], decision = "allow", match = [["free","-h"]])
+prefix_rule(pattern = ["top"], decision = "allow", match = [["top","-b","-n","1"]])
+prefix_rule(pattern = ["vmstat"], decision = "allow", match = [["vmstat","1","5"]])
+prefix_rule(pattern = ["iostat"], decision = "allow", match = [["iostat","-x","1","3"]])
+
+prefix_rule(pattern = ["auditctl"], decision = "allow", match = [["auditctl","-l"]])
+prefix_rule(pattern = ["augenrules"], decision = "allow", match = [["augenrules","--check"]])
+prefix_rule(pattern = ["logrotate"], decision = "allow", match = [["logrotate","-d","/etc/logrotate.d/app"]])
+prefix_rule(pattern = ["aide"], decision = "allow", match = [["aide","--check"]])
+prefix_rule(pattern = ["usbguard"], decision = "allow", match = [["usbguard","generate-policy"]])
+prefix_rule(pattern = ["cscli"], decision = "allow", match = [["cscli","collections","list"]])
+prefix_rule(pattern = ["grub-mkconfig"], decision = "allow", match = [["grub-mkconfig","-o","/boot/grub/grub.cfg"]])
+prefix_rule(pattern = ["update-grub"], decision = "allow", match = [["update-grub"]])
+
+# Service and firewall tooling.
+prefix_rule(pattern = ["systemctl"], decision = "allow", match = [["systemctl","status","ssh"]])
+prefix_rule(pattern = ["service"], decision = "allow", match = [["service","ssh","status"]])
+prefix_rule(pattern = ["launchctl"], decision = "allow", match = [["launchctl","list"]])
+
+prefix_rule(pattern = ["iptables"], decision = "allow", match = [["iptables","-L"]])
+prefix_rule(pattern = ["nft"], decision = "allow", match = [["nft","list","ruleset"]])
+prefix_rule(pattern = ["ufw"], decision = "allow", match = [["ufw","status"]])

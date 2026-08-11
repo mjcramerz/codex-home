@@ -1,0 +1,16 @@
+# 12-scripting.rules
+# Language runtimes and script execution tooling.
+# Keep runtime access broad; destructive behavior is constrained in 90-forbidden.rules.
+
+prefix_rule(pattern = ["python"], decision = "allow", match = [["python","-V"]])
+prefix_rule(pattern = ["python3"], decision = "allow", match = [["python3","-V"], ["python3","-m","py_compile","installer/codex_install.py"], ["python3","-m","unittest","discover","-s","tests"]])
+prefix_rule(pattern = ["node"], decision = "allow", match = [["node","-v"], ["node","scripts/check.js"]])
+prefix_rule(pattern = ["deno"], decision = "allow", match = [["deno","--version"], ["deno","run","script.ts"]])
+prefix_rule(pattern = ["ruby"], decision = "allow", match = [["ruby","-v"], ["ruby","script.rb"]])
+prefix_rule(pattern = ["perl"], decision = "allow", match = [["perl","-v"], ["perl","script.pl"]])
+prefix_rule(pattern = ["lua"], decision = "allow", match = [["lua","-v"], ["lua","script.lua"]])
+prefix_rule(pattern = ["php"], decision = "allow", match = [["php","-v"], ["php","script.php"]])
+prefix_rule(pattern = ["pwsh"], decision = "allow", match = [["pwsh","-Version"], ["pwsh","./script.ps1"]])
+prefix_rule(pattern = ["poetry"], decision = "allow", match = [["poetry","--version"], ["poetry","run","pytest"]])
+prefix_rule(pattern = ["tox"], decision = "allow", match = [["tox","-q"]])
+prefix_rule(pattern = ["nox"], decision = "allow", match = [["nox","-l"]])

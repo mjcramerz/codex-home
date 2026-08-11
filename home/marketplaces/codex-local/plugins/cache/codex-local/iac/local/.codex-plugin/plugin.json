@@ -1,0 +1,36 @@
+{
+  "name": "iac",
+  "version": "1.0.0",
+  "description": "Infrastructure-as-code workflows for Ansible and Terraform automation.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "IaC",
+    "shortDescription": "Ansible and Terraform workflows",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the IaC plugin for Ansible and Terraform infrastructure-as-code workflows."
+    ],
+    "longDescription": "Use this plugin for infrastructure-as-code planning, authoring, refactors, and drift remediation with Ansible and Terraform.",
+    "developerName": "Codex Setup",
+    "brandColor": "#0F766E",
+    "websiteURL": "https://gitlab.com/computes/apps/codex-manager",
+    "composerIcon": "./skills/iac-ansible/assets/icon-32.png",
+    "logo": "./skills/iac-ansible/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://gitlab.com/computes/apps/codex-manager",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "iac",
+    "infrastructure",
+    "ansible",
+    "terraform"
+  ]
+}

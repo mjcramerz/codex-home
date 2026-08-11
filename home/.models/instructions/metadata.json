@@ -1,0 +1,410 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "name": "agents",
+      "enabled": true,
+      "short_description": "Agent instruction assets.",
+      "entries": [
+        {
+          "name": "hierarchical_instructions",
+          "config_key": "instruction_overrides.agents.hierarchical_instructions_file",
+          "file": "hierarchical.md",
+          "source_group": "default/agents",
+          "short_description": "Hierarchical agent handoff and coordination guidance.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/agents/hierarchical.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/agents/hierarchical.md"
+        }
+      ]
+    },
+    {
+      "name": "models",
+      "enabled": true,
+      "short_description": "Model instruction assets.",
+      "entries": [
+        {
+          "name": "model_catalog",
+          "config_key": "model_catalog_json",
+          "file": "default_catalog.json",
+          "source_group": "models",
+          "short_description": "Runtime model catalog for model selection and capability metadata.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/models/default_catalog.json",
+          "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
+        },
+        {
+          "name": "model_instructions",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "default/models",
+          "short_description": "Primary model behavior instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "experimental_compact_prompt",
+          "config_key": "experimental_compact_prompt_file",
+          "file": "prompt.md",
+          "source_group": "default/compact",
+          "short_description": "Compact prompt used for history reduction.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/compact/prompt.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/compact/prompt.md"
+        },
+        {
+          "name": "base_instructions",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "default/models",
+          "short_description": "Base model instruction body.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "review_catalog_asset",
+          "config_key": null,
+          "enabled": false,
+          "file": "review_catalog.json",
+          "source_group": "models",
+          "short_description": "Review-only model catalog materialized into CODEX_HOME.",
+          "default_disable_path": "$CODEX_HOME/.models/review_catalog.json"
+        },
+        {
+          "name": "cyber_catalog_asset",
+          "config_key": null,
+          "enabled": false,
+          "file": "cyber_catalog.json",
+          "source_group": "models",
+          "short_description": "Cyber-only model catalog materialized into CODEX_HOME.",
+          "default_disable_path": "$CODEX_HOME/.models/cyber_catalog.json"
+        }
+      ]
+    },
+    {
+      "name": "modes",
+      "enabled": true,
+      "short_description": "Mode instruction assets.",
+      "entries": [
+        {
+          "name": "default_mode_instructions",
+          "config_key": "instruction_overrides.modes.default_instructions_file",
+          "file": "default.md",
+          "source_group": "default/modes",
+          "short_description": "Default collaboration mode instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/modes/default.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/modes/default.md"
+        },
+        {
+          "name": "plan_mode_instructions",
+          "config_key": "instruction_overrides.modes.plan_instructions_file",
+          "file": "plan.md",
+          "source_group": "default/modes",
+          "short_description": "Plan collaboration mode instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/modes/plan.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/modes/plan.md"
+        }
+      ]
+    },
+    {
+      "name": "permissions",
+      "enabled": true,
+      "short_description": "Permission instruction assets.",
+      "entries": [
+        {
+          "name": "approval_policy_never",
+          "config_key": "instruction_overrides.permissions.approval_policy_never_instructions_file",
+          "file": "never.md",
+          "source_group": "default/permissions/approval_policy",
+          "short_description": "Approval policy guidance for never mode.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/approval_policy/never.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/approval_policy/never.md"
+        },
+        {
+          "name": "approval_policy_on_failure",
+          "config_key": "instruction_overrides.permissions.approval_policy_on_failure_instructions_file",
+          "file": "on_failure.md",
+          "source_group": "default/permissions/approval_policy",
+          "short_description": "Approval policy guidance for on-failure mode.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/approval_policy/on_failure.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/approval_policy/on_failure.md"
+        },
+        {
+          "name": "approval_policy_on_request",
+          "config_key": "instruction_overrides.permissions.approval_policy_on_request_instructions_file",
+          "file": "on_request.md",
+          "source_group": "default/permissions/approval_policy",
+          "short_description": "Approval policy guidance for on-request mode.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/approval_policy/on_request.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/approval_policy/on_request.md"
+        },
+        {
+          "name": "approval_policy_on_request_rule_request_permission",
+          "config_key": "instruction_overrides.permissions.approval_policy_on_request_rule_request_permission_instructions_file",
+          "file": "on_request_rule_request_permission.md",
+          "source_group": "default/permissions/approval_policy",
+          "short_description": "Approval policy guidance for request-permissions preference.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/approval_policy/on_request_rule_request_permission.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/approval_policy/on_request_rule_request_permission.md"
+        },
+        {
+          "name": "approval_policy_unless_trusted",
+          "config_key": "instruction_overrides.permissions.approval_policy_unless_trusted_instructions_file",
+          "file": "unless_trusted.md",
+          "source_group": "default/permissions/approval_policy",
+          "short_description": "Approval policy guidance for unless-trusted mode.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/approval_policy/unless_trusted.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/approval_policy/unless_trusted.md"
+        },
+        {
+          "name": "auto_review_approval_suffix",
+          "config_key": "instruction_overrides.permissions.auto_review_approval_suffix_instructions_file",
+          "file": "auto_review_suffix.md",
+          "source_group": "default/permissions",
+          "short_description": "Auto-review approval suffix guidance.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/auto_review_suffix.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/auto_review_suffix.md"
+        },
+        {
+          "name": "granular_intro",
+          "config_key": "instruction_overrides.permissions.granular_intro_instructions_file",
+          "file": "granular_intro.md",
+          "source_group": "default/permissions",
+          "short_description": "Granular approval preamble guidance.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/granular_intro.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/granular_intro.md"
+        },
+        {
+          "name": "request_permissions_tool",
+          "config_key": "instruction_overrides.permissions.request_permissions_tool_instructions_file",
+          "file": "request_permissions_tool.md",
+          "source_group": "default/permissions",
+          "short_description": "Permission-request tool instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/request_permissions_tool.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/request_permissions_tool.md"
+        },
+        {
+          "name": "sandbox_mode_danger_full_access",
+          "config_key": "instruction_overrides.permissions.sandbox_mode_danger_full_access_instructions_file",
+          "file": "danger_full_access.md",
+          "source_group": "default/permissions/sandbox_mode",
+          "short_description": "Danger-full-access sandbox guidance.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/sandbox_mode/danger_full_access.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/sandbox_mode/danger_full_access.md"
+        },
+        {
+          "name": "sandbox_mode_read_only",
+          "config_key": "instruction_overrides.permissions.sandbox_mode_read_only_instructions_file",
+          "file": "read_only.md",
+          "source_group": "default/permissions/sandbox_mode",
+          "short_description": "Read-only sandbox guidance.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/sandbox_mode/read_only.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/sandbox_mode/read_only.md"
+        },
+        {
+          "name": "sandbox_mode_workspace_write",
+          "config_key": "instruction_overrides.permissions.sandbox_mode_workspace_write_instructions_file",
+          "file": "workspace_write.md",
+          "source_group": "default/permissions/sandbox_mode",
+          "short_description": "Workspace-write sandbox guidance.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/permissions/sandbox_mode/workspace_write.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/permissions/sandbox_mode/workspace_write.md"
+        }
+      ]
+    },
+    {
+      "name": "personality",
+      "enabled": true,
+      "short_description": "Personality instruction assets.",
+      "entries": [
+        {
+          "name": "custom_personality",
+          "config_key": "instruction_overrides.personality.custom_instructions_file",
+          "file": "custom.md",
+          "source_group": "default/personality",
+          "short_description": "Custom personality override instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/personality/custom.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/personality/custom.md"
+        }
+      ]
+    },
+    {
+      "name": "review",
+      "enabled": true,
+      "short_description": "Review instruction assets.",
+      "entries": [
+        {
+          "name": "review_base_branch",
+          "config_key": "instruction_overrides.review.base_branch_instructions_file",
+          "file": "base_branch.md",
+          "source_group": "default/review",
+          "short_description": "Review prompt for base-branch comparisons.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/base_branch.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/base_branch.md"
+        },
+        {
+          "name": "review_base_branch_backup",
+          "config_key": "instruction_overrides.review.base_branch_backup_instructions_file",
+          "file": "base_branch_backup.md",
+          "source_group": "default/review",
+          "short_description": "Fallback review prompt for base-branch comparisons.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/base_branch_backup.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/base_branch_backup.md"
+        },
+        {
+          "name": "review_commit",
+          "config_key": "instruction_overrides.review.commit_instructions_file",
+          "file": "commit.md",
+          "source_group": "default/review",
+          "short_description": "Review prompt for a specific commit.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/commit.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/commit.md"
+        },
+        {
+          "name": "review_commit_with_title",
+          "config_key": "instruction_overrides.review.commit_with_title_instructions_file",
+          "file": "commit_with_title.md",
+          "source_group": "default/review",
+          "short_description": "Review prompt for a titled commit.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/commit_with_title.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/commit_with_title.md"
+        },
+        {
+          "name": "review_exit_interrupted",
+          "config_key": "instruction_overrides.review.exit_interrupted_instructions_file",
+          "file": "exit_interrupted.xml",
+          "source_group": "default/review",
+          "short_description": "Interrupted review exit payload.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/exit_interrupted.xml",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/exit_interrupted.xml"
+        },
+        {
+          "name": "review_exit_success",
+          "config_key": "instruction_overrides.review.exit_success_instructions_file",
+          "file": "exit_success.xml",
+          "source_group": "default/review",
+          "short_description": "Successful review exit payload.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/exit_success.xml",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/exit_success.xml"
+        },
+        {
+          "name": "review_rubric",
+          "config_key": "instruction_overrides.review.rubric_instructions_file",
+          "file": "rubric.md",
+          "source_group": "default/review",
+          "short_description": "Review rubric instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/rubric.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/rubric.md"
+        },
+        {
+          "name": "review_uncommitted",
+          "config_key": "instruction_overrides.review.uncommitted_instructions_file",
+          "file": "uncommitted.md",
+          "source_group": "default/review",
+          "short_description": "Review prompt for uncommitted changes.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/review/uncommitted.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/review/uncommitted.md"
+        }
+      ]
+    },
+    {
+      "name": "tools",
+      "enabled": true,
+      "short_description": "Tool instruction assets.",
+      "entries": [
+        {
+          "name": "apply_patch",
+          "config_key": "instruction_overrides.tools.apply_patch_instructions_file",
+          "file": "apply_patch.md",
+          "source_group": "default/tools",
+          "short_description": "Apply-patch tool instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/tools/apply_patch.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/tools/apply_patch.md"
+        },
+        {
+          "name": "request_user_input",
+          "config_key": "instruction_overrides.tools.request_user_input_instructions_file",
+          "file": "request_user_input.md",
+          "source_group": "default/tools",
+          "short_description": "Request-user-input tool instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/tools/request_user_input.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/tools/request_user_input.md"
+        },
+        {
+          "name": "search",
+          "config_key": "instruction_overrides.tools.search_instructions_file",
+          "file": "search.md",
+          "source_group": "default/tools",
+          "short_description": "Tool-search discovery instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/tools/search.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/tools/search.md"
+        }
+      ]
+    },
+    {
+      "name": "tui",
+      "enabled": true,
+      "short_description": "TUI instruction assets.",
+      "entries": [
+        {
+          "name": "tui_init",
+          "config_key": "instruction_overrides.tui.init_instructions_file",
+          "file": "init.md",
+          "source_group": "default/tui",
+          "short_description": "TUI init instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/tui/init.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/tui/init.md"
+        }
+      ]
+    },
+    {
+      "name": "memories",
+      "enabled": true,
+      "short_description": "Memory instruction assets.",
+      "entries": [
+        {
+          "name": "memory_consolidation",
+          "config_key": "memories.consolidation_instructions_file",
+          "file": "consolidation.md",
+          "source_group": "default/memories",
+          "short_description": "Memory consolidation instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/memories/consolidation.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/memories/consolidation.md"
+        },
+        {
+          "name": "memory_extraction",
+          "config_key": "memories.extraction_instructions_file",
+          "file": "extraction.md",
+          "source_group": "default/memories",
+          "short_description": "Memory extraction instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/memories/extraction.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/memories/extraction.md"
+        },
+        {
+          "name": "memory_phase4",
+          "config_key": "memories.phase4_instructions_file",
+          "file": "phase4_selection_ledger.md",
+          "source_group": "default/memories",
+          "short_description": "Memory phase-4 ledger template.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/memories/phase4_selection_ledger.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/memories/phase4_selection_ledger.md"
+        },
+        {
+          "name": "memory_phase5",
+          "config_key": "memories.phase5_instructions_file",
+          "file": "phase5_phase1_rollups.md",
+          "source_group": "default/memories",
+          "short_description": "Memory phase-5 rollup template.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/memories/phase5_phase1_rollups.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/memories/phase5_phase1_rollups.md"
+        },
+        {
+          "name": "memory_read_path",
+          "config_key": "memories.read_path_instructions_file",
+          "file": "read_path.md",
+          "source_group": "default/memories",
+          "short_description": "Memory read-path instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/memories/read_path.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/memories/read_path.md"
+        }
+      ]
+    }
+  ]
+}

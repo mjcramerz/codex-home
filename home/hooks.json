@@ -1,0 +1,1076 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/session_start.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting detected repository context"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/user_prompt_submit.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting detected prompt context"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_compact.pl",
+            "timeout": 20,
+            "statusMessage": "Preserving context before compaction"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_compact.pl",
+            "timeout": 20,
+            "statusMessage": "Re-establishing context after compaction"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/stop.pl",
+            "timeout": 25,
+            "statusMessage": "Checking detected repository constraints"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^(apply_patch|Edit|edit|Write|write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_edit.pl",
+            "timeout": 20,
+            "statusMessage": "Checking edit guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__openaiDeveloperDocs__(?:fetch_openai_doc|get_openapi_spec|list_api_endpoints|list_openai_docs|search_openai_docs)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_openai_developer_docs.pl",
+            "timeout": 20,
+            "statusMessage": "Checking OpenAI docs MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__context7__(?:resolve-library-id|query-docs)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_context7.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Context7 MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__filesystem__(?:create_directory|directory_tree|edit_file|get_file_info|list_allowed_directories|list_directory|list_directory_with_sizes|move_file|read_file|read_media_file|read_multiple_files|read_text_file|search_files|write_file)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_filesystem.pl",
+            "timeout": 20,
+            "statusMessage": "Checking filesystem MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__fetch__fetch$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_fetch.pl",
+            "timeout": 20,
+            "statusMessage": "Checking fetch MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__sequential_thinking__sequentialthinking$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_sequential_thinking.pl",
+            "timeout": 20,
+            "statusMessage": "Checking sequential thinking MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__time__(?:get_current_time|convert_time)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_time.pl",
+            "timeout": 20,
+            "statusMessage": "Checking time MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__git__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking git MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__memory__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking memory MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__markdown__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking markdown MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__playwright__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Playwright MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__(?:chrome-devtools|chrome_devtools)__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Chrome DevTools MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__postgres__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Postgres MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__sqlite__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking SQLite MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__semgrep__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Semgrep MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-observability__(?:accounts_list|migrate_pages_to_workers_guide|observability_keys|observability_values|query_worker_observability|search_cloudflare_documentation|set_active_account|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_observability.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare observability MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-builds__(?:accounts_list|set_active_account|workers_builds_get_build|workers_builds_get_build_logs|workers_builds_list_builds|workers_builds_set_active_worker|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_builds.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare builds MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-bindings__(?:accounts_list|d1_database_create|d1_database_delete|d1_database_get|d1_database_query|d1_databases_list|hyperdrive_config_delete|hyperdrive_config_edit|hyperdrive_config_get|hyperdrive_configs_list|kv_namespace_create|kv_namespace_delete|kv_namespace_get|kv_namespace_update|kv_namespaces_list|migrate_pages_to_workers_guide|r2_bucket_create|r2_bucket_delete|r2_bucket_get|r2_buckets_list|search_cloudflare_documentation|set_active_account|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_bindings.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare bindings MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-docs__(?:migrate_pages_to_workers_guide|search_cloudflare_documentation)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_docs.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare docs MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-api__(?:execute|search)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_api.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare API MCP guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking MCP tool guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^memories(?:list|read|search)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use.pl",
+            "timeout": 20,
+            "statusMessage": "Checking memory tool guardrails"
+          }
+        ]
+      },
+      {
+        "matcher": "^(?:[^BEWabemsw].*|B(?:|[^a].*|a(?:|[^s].*|s(?:|[^h].*|h.+)))|E(?:|[^d].*|d(?:|[^i].*|i(?:|[^t].*|t.+)))|W(?:|[^r].*|r(?:|[^i].*|i(?:|[^t].*|t(?:|[^e].*|e.+))))|a(?:|[^p].*|p(?:|[^p].*|p(?:|[^l].*|l(?:|[^y].*|y(?:|[^_].*|_(?:|[^p].*|p(?:|[^a].*|a(?:|[^t].*|t(?:|[^c].*|c(?:|[^h].*|h.+))))))))))|b(?:|[^a].*|a(?:|[^s].*|s(?:|[^h].*|h.+)))|e(?:|[^dx].*|d(?:|[^i].*|i(?:|[^t].*|t.+))|x(?:|[^e].*|e(?:|[^c].*|c(?:|[^_].*|_(?:|[^c].*|c(?:|[^o].*|o(?:|[^m].*|m(?:|[^m].*|m(?:|[^a].*|a(?:|[^n].*|n(?:|[^d].*|d.+)))))))))))|m(?:|[^c].*|c(?:|[^p].*|p(?:|[^_].*|_(?:|[^_].*))))|s(?:|[^h].*|h(?:|[^e].*|e(?:|[^l].*|l(?:|[^l].*|l.+))))|w(?:|[^r].*|r(?:|[^i].*|i(?:|[^t].*|t(?:|[^e].*|e.+)))))$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use.pl",
+            "timeout": 20,
+            "statusMessage": "Checking generic tool guardrails"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "^(apply_patch|Edit|edit|Write|write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_edit.pl",
+            "timeout": 15,
+            "statusMessage": "Checking edit approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__openaiDeveloperDocs__(?:fetch_openai_doc|get_openapi_spec|list_api_endpoints|list_openai_docs|search_openai_docs)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_openai_developer_docs.pl",
+            "timeout": 20,
+            "statusMessage": "Checking OpenAI docs MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__context7__(?:resolve-library-id|query-docs)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_context7.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Context7 MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__filesystem__(?:create_directory|directory_tree|edit_file|get_file_info|list_allowed_directories|list_directory|list_directory_with_sizes|move_file|read_file|read_media_file|read_multiple_files|read_text_file|search_files|write_file)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_filesystem.pl",
+            "timeout": 20,
+            "statusMessage": "Checking filesystem MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__fetch__fetch$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_fetch.pl",
+            "timeout": 20,
+            "statusMessage": "Checking fetch MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__sequential_thinking__sequentialthinking$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_sequential_thinking.pl",
+            "timeout": 20,
+            "statusMessage": "Checking sequential thinking MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__time__(?:get_current_time|convert_time)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_time.pl",
+            "timeout": 20,
+            "statusMessage": "Checking time MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__git__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking git MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__memory__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking memory MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__markdown__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking markdown MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__playwright__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Playwright MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__(?:chrome-devtools|chrome_devtools)__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Chrome DevTools MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__postgres__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Postgres MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__sqlite__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking SQLite MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__semgrep__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Semgrep MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-observability__(?:accounts_list|migrate_pages_to_workers_guide|observability_keys|observability_values|query_worker_observability|search_cloudflare_documentation|set_active_account|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_observability.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare observability MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-builds__(?:accounts_list|set_active_account|workers_builds_get_build|workers_builds_get_build_logs|workers_builds_list_builds|workers_builds_set_active_worker|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_builds.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare builds MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-bindings__(?:accounts_list|d1_database_create|d1_database_delete|d1_database_get|d1_database_query|d1_databases_list|hyperdrive_config_delete|hyperdrive_config_edit|hyperdrive_config_get|hyperdrive_configs_list|kv_namespace_create|kv_namespace_delete|kv_namespace_get|kv_namespace_update|kv_namespaces_list|migrate_pages_to_workers_guide|r2_bucket_create|r2_bucket_delete|r2_bucket_get|r2_buckets_list|search_cloudflare_documentation|set_active_account|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_bindings.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare bindings MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-docs__(?:migrate_pages_to_workers_guide|search_cloudflare_documentation)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_docs.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare docs MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-api__(?:execute|search)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_api.pl",
+            "timeout": 20,
+            "statusMessage": "Checking Cloudflare API MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Checking MCP approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^memories(?:list|read|search)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request.pl",
+            "timeout": 20,
+            "statusMessage": "Checking memory tool approval scope"
+          }
+        ]
+      },
+      {
+        "matcher": "^(?:[^BEWabemsw].*|B(?:|[^a].*|a(?:|[^s].*|s(?:|[^h].*|h.+)))|E(?:|[^d].*|d(?:|[^i].*|i(?:|[^t].*|t.+)))|W(?:|[^r].*|r(?:|[^i].*|i(?:|[^t].*|t(?:|[^e].*|e.+))))|a(?:|[^p].*|p(?:|[^p].*|p(?:|[^l].*|l(?:|[^y].*|y(?:|[^_].*|_(?:|[^p].*|p(?:|[^a].*|a(?:|[^t].*|t(?:|[^c].*|c(?:|[^h].*|h.+))))))))))|b(?:|[^a].*|a(?:|[^s].*|s(?:|[^h].*|h.+)))|e(?:|[^dx].*|d(?:|[^i].*|i(?:|[^t].*|t.+))|x(?:|[^e].*|e(?:|[^c].*|c(?:|[^_].*|_(?:|[^c].*|c(?:|[^o].*|o(?:|[^m].*|m(?:|[^m].*|m(?:|[^a].*|a(?:|[^n].*|n(?:|[^d].*|d.+)))))))))))|m(?:|[^c].*|c(?:|[^p].*|p(?:|[^_].*|_(?:|[^_].*))))|s(?:|[^h].*|h(?:|[^e].*|e(?:|[^l].*|l(?:|[^l].*|l.+))))|w(?:|[^r].*|r(?:|[^i].*|i(?:|[^t].*|t(?:|[^e].*|e.+)))))$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request.pl",
+            "timeout": 20,
+            "statusMessage": "Checking generic tool approval scope"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "^(apply_patch|Edit|edit|Write|write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_edit.pl",
+            "timeout": 15,
+            "statusMessage": "Reviewing edit follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__openaiDeveloperDocs__(?:fetch_openai_doc|get_openapi_spec|list_api_endpoints|list_openai_docs|search_openai_docs)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_openai_developer_docs.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing OpenAI docs MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__context7__(?:resolve-library-id|query-docs)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_context7.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Context7 MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__filesystem__(?:create_directory|directory_tree|edit_file|get_file_info|list_allowed_directories|list_directory|list_directory_with_sizes|move_file|read_file|read_media_file|read_multiple_files|read_text_file|search_files|write_file)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_filesystem.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing filesystem MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__fetch__fetch$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_fetch.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing fetch MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__sequential_thinking__sequentialthinking$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_sequential_thinking.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing sequential thinking MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__time__(?:get_current_time|convert_time)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_time.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing time MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__git__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing git MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__memory__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing memory MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__markdown__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing markdown MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__playwright__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Playwright MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__(?:chrome-devtools|chrome_devtools)__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Chrome DevTools MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__postgres__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Postgres MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__sqlite__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing SQLite MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__semgrep__.+$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Semgrep MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-observability__(?:accounts_list|migrate_pages_to_workers_guide|observability_keys|observability_values|query_worker_observability|search_cloudflare_documentation|set_active_account|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_observability.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Cloudflare observability MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-builds__(?:accounts_list|set_active_account|workers_builds_get_build|workers_builds_get_build_logs|workers_builds_list_builds|workers_builds_set_active_worker|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_builds.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Cloudflare builds MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-bindings__(?:accounts_list|d1_database_create|d1_database_delete|d1_database_get|d1_database_query|d1_databases_list|hyperdrive_config_delete|hyperdrive_config_edit|hyperdrive_config_get|hyperdrive_configs_list|kv_namespace_create|kv_namespace_delete|kv_namespace_get|kv_namespace_update|kv_namespaces_list|migrate_pages_to_workers_guide|r2_bucket_create|r2_bucket_delete|r2_bucket_get|r2_buckets_list|search_cloudflare_documentation|set_active_account|workers_get_worker|workers_get_worker_code|workers_list)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_bindings.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Cloudflare bindings MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-docs__(?:migrate_pages_to_workers_guide|search_cloudflare_documentation)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_docs.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Cloudflare docs MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__cloudflare-api__(?:execute|search)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_api.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing Cloudflare API MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^mcp__",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing MCP follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^memories(?:list|read|search)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing memory tool follow-up"
+          }
+        ]
+      },
+      {
+        "matcher": "^(?:[^BEWabemsw].*|B(?:|[^a].*|a(?:|[^s].*|s(?:|[^h].*|h.+)))|E(?:|[^d].*|d(?:|[^i].*|i(?:|[^t].*|t.+)))|W(?:|[^r].*|r(?:|[^i].*|i(?:|[^t].*|t(?:|[^e].*|e.+))))|a(?:|[^p].*|p(?:|[^p].*|p(?:|[^l].*|l(?:|[^y].*|y(?:|[^_].*|_(?:|[^p].*|p(?:|[^a].*|a(?:|[^t].*|t(?:|[^c].*|c(?:|[^h].*|h.+))))))))))|b(?:|[^a].*|a(?:|[^s].*|s(?:|[^h].*|h.+)))|e(?:|[^dx].*|d(?:|[^i].*|i(?:|[^t].*|t.+))|x(?:|[^e].*|e(?:|[^c].*|c(?:|[^_].*|_(?:|[^c].*|c(?:|[^o].*|o(?:|[^m].*|m(?:|[^m].*|m(?:|[^a].*|a(?:|[^n].*|n(?:|[^d].*|d.+)))))))))))|m(?:|[^c].*|c(?:|[^p].*|p(?:|[^_].*|_(?:|[^_].*))))|s(?:|[^h].*|h(?:|[^e].*|e(?:|[^l].*|l(?:|[^l].*|l.+))))|w(?:|[^r].*|r(?:|[^i].*|i(?:|[^t].*|t(?:|[^e].*|e.+)))))$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use.pl",
+            "timeout": 20,
+            "statusMessage": "Reviewing generic tool follow-up"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "^(default|manager)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_coordination.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting coordination subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^orchestrator$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_orchestration.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting orchestration subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^planner$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_planning.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting planning subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^delegator$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_delegation.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting delegation subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^(worker|coder)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_delivery.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting delivery subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^analyst$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_analysis.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting analysis subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^synthesizer$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_synthesis.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting synthesis subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^integrator$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_integrator.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting integrator subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^(explorer|hunter)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_research.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting research subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^(reviewer|tester)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_validation.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting validation subagent guidance"
+          }
+        ]
+      },
+      {
+        "matcher": "^(?:[^acdehimoprstw].*|a(?:|[^n].*|n(?:|[^a].*|a(?:|[^l].*|l(?:|[^y].*|y(?:|[^s].*|s(?:|[^t].*|t.+))))))|c(?:|[^o].*|o(?:|[^d].*|d(?:|[^e].*|e(?:|[^r].*|r.+))))|d(?:|[^e].*|e(?:|[^fl].*|f(?:|[^a].*|a(?:|[^u].*|u(?:|[^l].*|l(?:|[^t].*|t.+))))|l(?:|[^e].*|e(?:|[^g].*|g(?:|[^a].*|a(?:|[^t].*|t(?:|[^o].*|o(?:|[^r].*|r.+))))))))|e(?:|[^x].*|x(?:|[^p].*|p(?:|[^l].*|l(?:|[^o].*|o(?:|[^r].*|r(?:|[^e].*|e(?:|[^r].*|r.+)))))))|h(?:|[^u].*|u(?:|[^n].*|n(?:|[^t].*|t(?:|[^e].*|e(?:|[^r].*|r.+)))))|i(?:|[^n].*|n(?:|[^t].*|t(?:|[^e].*|e(?:|[^g].*|g(?:|[^r].*|r(?:|[^a].*|a(?:|[^t].*|t(?:|[^o].*|o(?:|[^r].*|r.+)))))))))|m(?:|[^a].*|a(?:|[^n].*|n(?:|[^a].*|a(?:|[^g].*|g(?:|[^e].*|e(?:|[^r].*|r.+))))))|o(?:|[^r].*|r(?:|[^c].*|c(?:|[^h].*|h(?:|[^e].*|e(?:|[^s].*|s(?:|[^t].*|t(?:|[^r].*|r(?:|[^a].*|a(?:|[^t].*|t(?:|[^o].*|o(?:|[^r].*|r.+)))))))))))|p(?:|[^l].*|l(?:|[^a].*|a(?:|[^n].*|n(?:|[^n].*|n(?:|[^e].*|e(?:|[^r].*|r.+))))))|r(?:|[^e].*|e(?:|[^v].*|v(?:|[^i].*|i(?:|[^e].*|e(?:|[^w].*|w(?:|[^e].*|e(?:|[^r].*|r.+)))))))|s(?:|[^y].*|y(?:|[^n].*|n(?:|[^t].*|t(?:|[^h].*|h(?:|[^e].*|e(?:|[^s].*|s(?:|[^i].*|i(?:|[^z].*|z(?:|[^e].*|e(?:|[^r].*|r.+))))))))))|t(?:|[^e].*|e(?:|[^s].*|s(?:|[^t].*|t(?:|[^e].*|e(?:|[^r].*|r.+)))))|w(?:|[^o].*|o(?:|[^r].*|r(?:|[^k].*|k(?:|[^e].*|e(?:|[^r].*|r.+))))))$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start.pl",
+            "timeout": 20,
+            "statusMessage": "Injecting generic subagent guidance"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "^(default|manager)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_coordination.pl",
+            "timeout": 25,
+            "statusMessage": "Checking coordination subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^orchestrator$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_orchestration.pl",
+            "timeout": 25,
+            "statusMessage": "Checking orchestration subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^planner$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_planning.pl",
+            "timeout": 25,
+            "statusMessage": "Checking planning subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^delegator$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_delegation.pl",
+            "timeout": 25,
+            "statusMessage": "Checking delegation subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^(worker|coder)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_delivery.pl",
+            "timeout": 25,
+            "statusMessage": "Checking delivery subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^analyst$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_analysis.pl",
+            "timeout": 25,
+            "statusMessage": "Checking analysis subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^synthesizer$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_synthesis.pl",
+            "timeout": 25,
+            "statusMessage": "Checking synthesis subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^integrator$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_integrator.pl",
+            "timeout": 25,
+            "statusMessage": "Checking integrator subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^(explorer|hunter)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_research.pl",
+            "timeout": 25,
+            "statusMessage": "Checking research subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^(reviewer|tester)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_validation.pl",
+            "timeout": 25,
+            "statusMessage": "Checking validation subagent completion gates"
+          }
+        ]
+      },
+      {
+        "matcher": "^(?:[^acdehimoprstw].*|a(?:|[^n].*|n(?:|[^a].*|a(?:|[^l].*|l(?:|[^y].*|y(?:|[^s].*|s(?:|[^t].*|t.+))))))|c(?:|[^o].*|o(?:|[^d].*|d(?:|[^e].*|e(?:|[^r].*|r.+))))|d(?:|[^e].*|e(?:|[^fl].*|f(?:|[^a].*|a(?:|[^u].*|u(?:|[^l].*|l(?:|[^t].*|t.+))))|l(?:|[^e].*|e(?:|[^g].*|g(?:|[^a].*|a(?:|[^t].*|t(?:|[^o].*|o(?:|[^r].*|r.+))))))))|e(?:|[^x].*|x(?:|[^p].*|p(?:|[^l].*|l(?:|[^o].*|o(?:|[^r].*|r(?:|[^e].*|e(?:|[^r].*|r.+)))))))|h(?:|[^u].*|u(?:|[^n].*|n(?:|[^t].*|t(?:|[^e].*|e(?:|[^r].*|r.+)))))|i(?:|[^n].*|n(?:|[^t].*|t(?:|[^e].*|e(?:|[^g].*|g(?:|[^r].*|r(?:|[^a].*|a(?:|[^t].*|t(?:|[^o].*|o(?:|[^r].*|r.+)))))))))|m(?:|[^a].*|a(?:|[^n].*|n(?:|[^a].*|a(?:|[^g].*|g(?:|[^e].*|e(?:|[^r].*|r.+))))))|o(?:|[^r].*|r(?:|[^c].*|c(?:|[^h].*|h(?:|[^e].*|e(?:|[^s].*|s(?:|[^t].*|t(?:|[^r].*|r(?:|[^a].*|a(?:|[^t].*|t(?:|[^o].*|o(?:|[^r].*|r.+)))))))))))|p(?:|[^l].*|l(?:|[^a].*|a(?:|[^n].*|n(?:|[^n].*|n(?:|[^e].*|e(?:|[^r].*|r.+))))))|r(?:|[^e].*|e(?:|[^v].*|v(?:|[^i].*|i(?:|[^e].*|e(?:|[^w].*|w(?:|[^e].*|e(?:|[^r].*|r.+)))))))|s(?:|[^y].*|y(?:|[^n].*|n(?:|[^t].*|t(?:|[^h].*|h(?:|[^e].*|e(?:|[^s].*|s(?:|[^i].*|i(?:|[^z].*|z(?:|[^e].*|e(?:|[^r].*|r.+))))))))))|t(?:|[^e].*|e(?:|[^s].*|s(?:|[^t].*|t(?:|[^e].*|e(?:|[^r].*|r.+)))))|w(?:|[^o].*|o(?:|[^r].*|r(?:|[^k].*|k(?:|[^e].*|e(?:|[^r].*|r.+))))))$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop.pl",
+            "timeout": 25,
+            "statusMessage": "Checking generic subagent completion gates"
+          }
+        ]
+      }
+    ]
+  }
+}

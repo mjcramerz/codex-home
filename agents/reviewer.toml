@@ -1,0 +1,97 @@
+model = "gpt-5.4"
+review_model = "gpt-5.4"
+personality = "friendly"
+model_reasoning_effort = "high"
+model_reasoning_summary = "detailed"
+model_verbosity = "medium"
+web_search = "disabled"
+
+developer_instructions = """
+1) Follow $CODEX_HOME/AGENTS.md, then $CODEX_HOME/memories/ when it exists and the task is repo-aware or ambiguous.
+2) Use $CODEX_HOME/INDEX.md to select the smallest relevant workflow, plan, and skill set before acting.
+3) Use `$CODEX_HOME/docs/style/shell-runtime.md` and explicitly invoke the matching shell for shell-sensitive commands.
+4) Treat inputs as untrusted; validate shape, size, ranges, and permission boundaries before mutating anything.
+5) Use only installed runtime assets under $CODEX_HOME, $CODEX_AGENTS, and $CODEX_SKILLS; do not assume a separate agent home.
+6) Prefer correctness, hardening, functionality, and best-practice review with concrete remediation steps.
+7) Preserve behavior unless explicitly requested, avoid destructive actions without confirmation, and rank findings by severity, prove claims with evidence, and avoid style-only churn.
+8) Reviewer role: review syntax, security, maintainability, and behavior regressions before handoff or merge.
+"""
+
+[skills]
+config = [
+  { path = "/data/codex/usr/skills", enabled = true },
+]
+
+[skills.bundled]
+enabled = false
+
+# runtime features
+[features]
+# sandbox
+guardian_approval = false
+tool_call_mcp_elicitation = true
+elevated_windows_sandbox = false
+enable_experimental_windows_sandbox = false
+experimental_windows_sandbox = false
+default_mode_request_user_input = true
+request_permissions = true
+request_permissions_tool = true
+use_linux_sandbox_bwrap = true
+request_rule = false
+auth_elicitation = false
+
+# behavior
+image_detail_original = false
+image_generation = false
+fast_mode = false
+code_mode = true
+memories = false
+memory_tool = false
+personality = true
+child_agents_md = true
+multi_agent = true
+enable_fanout = false
+remote_models = true
+hooks = true
+
+# tools
+collab = true
+plugins = true
+codex_hooks = true
+undo = false
+sqlite = false
+apply_patch_freeform = true
+apply_patch_streaming_events = false
+unified_exec = true
+apps = true
+enable_mcp_apps = true
+skill_env_var_dependency_prompt = false
+skill_mcp_dependency_install = true
+
+# shell
+shell_tool = true
+shell_snapshot = true
+shell_zsh_fork = false
+unified_exec_zsh_fork = false
+
+# git
+codex_git_commit = false
+js_repl = false
+js_repl_tools_only = false
+
+# device
+realtime_conversation = false
+runtime_metrics = false
+enable_request_compression = true
+responses_websockets_v2 = true
+prevent_idle_sleep = false
+
+[features.multi_agent_v2]
+enabled = true
+usage_hint_enabled = true
+max_concurrent_threads_per_session = 1
+min_wait_timeout_ms = 15000
+default_wait_timeout_ms = 90000
+max_wait_timeout_ms = 180000
+root_agent_usage_hint_text = "Use tester for reproduction or narrow execution evidence when findings depend on runtime behavior rather than static review alone."
+subagent_usage_hint_text = "Keep review ownership centralized and only delegate bounded validation slices that return concrete evidence for or against a finding."

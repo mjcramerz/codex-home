@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Configure CrowdSec collections, parser sources, and bouncer integration with safe enforcement defaults. Use when the user asks for CrowdSec detection or remediation setup.",
+  "references": [
+    "https://docs.crowdsec.net/docs/next/getting_started/intro/",
+    "https://docs.crowdsec.net/docs/next/parsers/format/"
+  ]
+}

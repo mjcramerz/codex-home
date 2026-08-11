@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Design safe filesystem provisioning including partitioning, mkfs, mounts, and fstab entries with rollback notes. Use when the user asks for disk layout or mount configuration changes.",
+  "references": [
+    "https://man7.org/linux/man-pages/man5/fstab.5.html",
+    "https://man7.org/linux/man-pages/man8/mount.8.html"
+  ]
+}

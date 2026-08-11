@@ -1,0 +1,22 @@
+# 10-vcs.rules
+# Broad VCS allowlist for day-to-day repository workflows.
+
+prefix_rule(
+  pattern = ["git"],
+  decision = "allow",
+  match = [
+    ["git","status","--porcelain=v1"],
+    ["git","add","-A"],
+    ["git","commit","-m","msg"],
+    ["git","mcr-sync"],
+    ["git","mcr-push-current"],
+    ["git","fa"],
+  ],
+)
+
+prefix_rule(pattern = ["git-lfs"], decision = "allow", match = [["git-lfs","version"]])
+prefix_rule(pattern = ["gh"], decision = "allow", match = [["gh","--version"], ["gh","pr","status"]])
+prefix_rule(pattern = ["glab"], decision = "allow", match = [["glab","--version"], ["glab","mr","list"]])
+prefix_rule(pattern = ["hg"], decision = "allow", match = [["hg","status"]])
+prefix_rule(pattern = ["svn"], decision = "allow", match = [["svn","status"]])
+prefix_rule(pattern = ["jj"], decision = "allow", match = [["jj","status"]])

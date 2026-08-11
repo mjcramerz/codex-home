@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Create or update execpolicy rules and guidance under $CODEX_HOME/rules/. Use when adding new rule files, adjusting ordering, or updating execpolicy documentation and index links.",
+  "references": [
+    "https://yaml.org/spec/1.2.2/",
+    "https://www.openpolicyagent.org/docs/latest/policy-language/"
+  ]
+}

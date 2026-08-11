@@ -1,0 +1,52 @@
+interface:
+  display_name: Hugging Face Jobs
+  short_description: This skill should be used when users want to run any workload
+    on Hugging Face Jobs infrastructure. Covers UV scripts, Do
+  default_prompt: 'Use the Hugging Face Jobs skill when the task matches this scope:
+    This skill should be used when users want to run any workload on Hugging Face
+    Jobs infrastructure. Covers UV scripts, Docker-based jobs, hardware selection,
+    cost estimation, authentication with tokens, secrets management, timeout configuration,
+    and result persistence. Designed for general-purpose compute workloads including
+    data processing, inference, experiments, batch jobs, and any Python-based tasks.
+    Should be invoked for tasks involving cloud compute, GPU workloads, or when users
+    mention running jobs on Hugging Face infrastructure without local setup.'
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+  - type: mcp
+    value: huggingface
+    description: huggingface MCP server
+    transport: streamable_http
+    url: https://huggingface.co/mcp?login
+
+policy:
+  allow_implicit_invocation: true

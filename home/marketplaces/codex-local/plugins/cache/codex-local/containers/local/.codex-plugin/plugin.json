@@ -1,0 +1,35 @@
+{
+  "name": "containers",
+  "version": "1.0.0",
+  "description": "Container build, runtime, and compose workflows for Docker and Podman.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Containers",
+    "shortDescription": "Docker and Podman workflows",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Containers plugin for Docker, Podman, compose, and container runtime workflows."
+    ],
+    "longDescription": "Use this plugin for container images, compose stacks, rootless runtimes, and containerized development environments.",
+    "developerName": "Codex Setup",
+    "brandColor": "#2563EB",
+    "websiteURL": "https://gitlab.com/computes/apps/codex-manager",
+    "composerIcon": "./skills/infra-containers/assets/icon-32.png",
+    "logo": "./skills/infra-containers/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://gitlab.com/computes/apps/codex-manager",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "containers",
+    "infrastructure",
+    "infra"
+  ]
+}

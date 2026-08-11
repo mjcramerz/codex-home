@@ -1,0 +1,9 @@
+model = "gpt-5.5-cyber"
+model_catalog_json = "/data/codex/usr/home/.models/cyber_catalog.json"
+model_instructions_file = "/data/codex/usr/instructions/profiles/cyber/models/base.md"
+model_reasoning_effort = "high"
+model_reasoning_summary = "detailed"
+model_verbosity = "medium"
+
+[instruction_overrides.models]
+base_instructions_file = "/data/codex/usr/instructions/profiles/cyber/models/base.md"

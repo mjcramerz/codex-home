@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Author or refactor idempotent Ansible playbooks, roles, inventories, and handlers with safe defaults. Use when the user asks for Ansible-based provisioning or configuration automation.",
+  "references": [
+    "https://docs.ansible.com/",
+    "https://docs.ansible.com/ansible/latest/playbook_guide/index.html"
+  ]
+}

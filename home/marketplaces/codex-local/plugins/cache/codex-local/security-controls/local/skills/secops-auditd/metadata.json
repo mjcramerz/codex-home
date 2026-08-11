@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Configure auditd rules and log capture policies with safe performance tradeoffs and compliance alignment. Use when the user asks for Linux auditing policy design or audit event tuning.",
+  "references": [
+    "https://man7.org/linux/man-pages/man8/auditd.8.html"
+  ]
+}

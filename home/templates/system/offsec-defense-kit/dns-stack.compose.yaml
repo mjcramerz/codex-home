@@ -1,0 +1,29 @@
+services:
+  pihole:
+    image: pihole/pihole:2026.01.0
+    container_name: security-pihole
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8080:80/tcp"
+    environment:
+      TZ: UTC
+      WEBPASSWORD: "change-me"
+      PIHOLE_DNS_: "unbound#5335"
+      DNSSEC: "true"
+    volumes:
+      - ./state/pihole:/etc/pihole
+      - ./state/dnsmasq:/etc/dnsmasq.d
+    depends_on:
+      - unbound
+
+  unbound:
+    image: mvance/unbound:1.19.3
+    container_name: security-unbound
+    restart: unless-stopped
+    ports:
+      - "5335:53/tcp"
+      - "5335:53/udp"
+    volumes:
+      - ./state/unbound:/opt/unbound/etc/unbound

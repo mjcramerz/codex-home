@@ -1,0 +1,8 @@
+default_session = "labwc"
+
+[terminal]
+vt = 1
+
+[initial_session]
+command = "labwc"
+user = "user"

@@ -1,0 +1,12 @@
+{
+  "version": "1.1",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Harden software supply-chain controls through dependency pinning, lockfile discipline, SBOM generation, and CI enforcement. Use when the user asks about dependency risk, provenance, or package security posture.",
+  "references": [
+    "https://slsa.dev/spec/v1.0/levels",
+    "https://docs.sigstore.dev/",
+    "https://securityscorecards.dev/",
+    "https://csrc.nist.gov/pubs/sp/800/218/final"
+  ]
+}

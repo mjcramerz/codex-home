@@ -1,0 +1,13 @@
+{
+  "name": "devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": []
+    }
+  }
+}

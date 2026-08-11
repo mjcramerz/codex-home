@@ -1,0 +1,55 @@
+stages:
+  - verify
+  - test
+
+variables:
+  PYTHON_IMAGE: 'python:3.12-slim-bookworm@sha256:CHANGE_ME'
+  PIP_DISABLE_PIP_VERSION_CHECK: '1'
+  PIP_CACHE_DIR: '${CI_PROJECT_DIR}/.cache/pip'
+  GIT_STRATEGY: fetch
+  GIT_DEPTH: '50'
+
+cache:
+  key: "pip-${CI_COMMIT_REF_SLUG}"
+  paths:
+    - .cache/pip
+
+.rules: &rules
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_COMMIT_BRANCH == "mcr/staging"'
+    - if: '$CI_COMMIT_BRANCH == "mcr/release"'
+    - if: '$CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_TAG'
+    - when: never
+
+default:
+  image: '${PYTHON_IMAGE}'
+  interruptible: true
+  before_script:
+    - set -eu
+    - (set -o pipefail 2>/dev/null) || true
+    - python -m pip install --upgrade pip
+    - |
+      if [ -f requirements.txt ]; then
+        python -m pip install -r requirements.txt
+      fi
+      if [ -f requirements-dev.txt ]; then
+        python -m pip install -r requirements-dev.txt
+      fi
+      if [ ! -f requirements.txt ] && [ -f pyproject.toml ]; then
+        python -m pip install -e ".[dev]" || python -m pip install -e .
+      fi
+
+lint:
+  <<: *rules
+  stage: verify
+  script:
+    - python -m ruff check .
+    - python -m ruff format --check .
+
+test:
+  <<: *rules
+  stage: test
+  script:
+    - pytest -q

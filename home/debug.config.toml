@@ -1,0 +1,9 @@
+model = "gpt-5.6-terra"
+model_catalog_json = "/data/codex/usr/home/.models/default_catalog.json"
+model_instructions_file = "/data/codex/usr/instructions/profiles/debug/models/base.md"
+model_reasoning_effort = "xhigh"
+model_reasoning_summary = "detailed"
+model_verbosity = "high"
+
+[instruction_overrides.models]
+base_instructions_file = "/data/codex/usr/instructions/profiles/debug/models/base.md"

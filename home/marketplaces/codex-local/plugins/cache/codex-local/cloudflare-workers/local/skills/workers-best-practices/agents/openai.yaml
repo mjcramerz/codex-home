@@ -1,0 +1,65 @@
+interface:
+  display_name: Workers Best Practices
+  short_description: 'Reviews and authors Cloudflare Workers code against production
+    best practices. Load when writing new Workers, reviewing '
+  default_prompt: 'Use the Workers Best Practices skill when the task matches this
+    scope: Reviews and authors Cloudflare Workers code against production best practices.
+    Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc,
+    or checking for common Workers anti-patterns (streaming, floating promises, global
+    state, secrets, bindings, observability). Biases towards retrieval from Cloudflare
+    docs over pre-trained knowledge.'
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-bindings
+    description: cloudflare-bindings MCP server
+    transport: streamable_http
+    url: https://bindings.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-observability
+    description: cloudflare-observability MCP server
+    transport: streamable_http
+    url: https://observability.mcp.cloudflare.com/mcp
+
+policy:
+  allow_implicit_invocation: true

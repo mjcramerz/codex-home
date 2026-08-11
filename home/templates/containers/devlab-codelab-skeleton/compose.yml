@@ -1,0 +1,35 @@
+name: devlab
+
+services:
+  devlab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: "${BASE_IMAGE:-debian:bookworm-slim}"
+        DEV_USER: "${DEV_USER:-codex}"
+        DEV_UID: "${DEV_UID:?set DEV_UID in .env (use ./rootless_env.sh --dotenv > .env)}"
+        DEV_GID: "${DEV_GID:?set DEV_GID in .env (use ./rootless_env.sh --dotenv > .env)}"
+        INSTALL_LANGUAGES: "${INSTALL_LANGUAGES:-1}"
+    image: devlab:local
+    working_dir: /workspace
+    command: sleep infinity
+    # Rootless: set DEV_UID/DEV_GID to the engine user (id -u / id -g).
+    user: "${DEV_UID:?set DEV_UID in .env (use ./rootless_env.sh --dotenv > .env)}:${DEV_GID:?set DEV_GID in .env (use ./rootless_env.sh --dotenv > .env)}"
+    ports:
+      - "${DEV_PORT:-8080}:8080"
+    environment:
+      DEV_USER: "${DEV_USER:-codex}"
+      DEV_UID: "${DEV_UID:?set DEV_UID in .env (use ./rootless_env.sh --dotenv > .env)}"
+      DEV_GID: "${DEV_GID:?set DEV_GID in .env (use ./rootless_env.sh --dotenv > .env)}"
+      HTTP_PROXY: "${HTTP_PROXY:-}"
+      HTTPS_PROXY: "${HTTPS_PROXY:-}"
+      NO_PROXY: "${NO_PROXY:-}"
+    volumes:
+      - .:/workspace
+    tty: true
+    stdin_open: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

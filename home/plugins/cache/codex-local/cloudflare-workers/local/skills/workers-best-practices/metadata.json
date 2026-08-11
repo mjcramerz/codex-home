@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-patterns (streaming, floating promises, global state, secrets, bindings, observability). Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+  "references": [
+    "https://developers.cloudflare.com/workers/best-practices/workers-best-practices/",
+    "https://developers.cloudflare.com/workers/",
+    "https://developers.cloudflare.com/workflows/build/rules-of-workflows/"
+  ]
+}

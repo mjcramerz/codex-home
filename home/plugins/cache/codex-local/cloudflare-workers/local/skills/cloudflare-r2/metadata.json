@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Operate Cloudflare R2-backed publication and artifact delivery paths with explicit bucket, prefix, credential, and immutability rules. Use when the user asks about R2 storage behavior, signed access, or artifact publication through Cloudflare.",
+  "references": [
+    "https://developers.cloudflare.com/r2/",
+    "https://github.com/cloudflare/cloudflare-docs/tree/production/products/r2"
+  ]
+}

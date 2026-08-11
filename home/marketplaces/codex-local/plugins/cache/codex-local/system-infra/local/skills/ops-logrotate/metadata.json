@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Design logrotate policies for predictable retention, rotation cadence, and service- safe log handling. Use when the user asks to configure or troubleshoot Linux log rotation.",
+  "references": [
+    "https://man7.org/linux/man-pages/man8/logrotate.8.html",
+    "https://github.com/logrotate/logrotate/tree/main/examples"
+  ]
+}

@@ -1,0 +1,65 @@
+interface:
+  display_name: Building Ai Agent On Cloudflare
+  short_description: 'Builds AI agents on Cloudflare using the Agents SDK with state
+    management,
+
+    real-time WebSockets, scheduled tasks, tool i'
+  default_prompt: 'Use the Building Ai Agent On Cloudflare skill when the task matches
+    this scope: Builds AI agents on Cloudflare using the Agents SDK with state management,
+
+    real-time WebSockets, scheduled tasks, tool integration, and chat capabilities.
+
+    Generates production-ready agent code deployed to Workers.
+
+    Use when: user wants to "build an agent", "AI agent", "chat agent", "stateful
+
+    agent", mentions "Agents SDK", needs "real-time AI", "WebSocket AI", or asks
+
+    about agent "state management", "scheduled tasks", or "tool calling".
+
+    Biases towards retrieval from Cloudflare docs over pre-trained knowledge.'
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+
+policy:
+  allow_implicit_invocation: true

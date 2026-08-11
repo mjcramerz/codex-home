@@ -1,0 +1,26 @@
+[project]
+name = "fastapi_app_template"
+version = "0.1.0"
+description = "FastAPI app template"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.110,<1",
+  "uvicorn[standard]>=0.27,<1",
+  "pydantic-settings>=2,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9.0.3,<10",
+  "httpx>=0.27,<1",
+  "ruff>=0.6,<1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-select = ["I"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

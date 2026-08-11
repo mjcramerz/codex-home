@@ -1,0 +1,26 @@
+# 40-infra.rules
+# Containers, orchestration, and infrastructure tooling.
+
+prefix_rule(pattern = ["docker"], decision = "allow", match = [["docker","ps"], ["docker","compose","ps"]])
+prefix_rule(pattern = ["docker-compose"], decision = "allow", match = [["docker-compose","ps"]])
+prefix_rule(pattern = ["podman"], decision = "allow", match = [["podman","ps"]])
+prefix_rule(pattern = ["buildah"], decision = "allow", match = [["buildah","version"]])
+prefix_rule(pattern = ["nerdctl"], decision = "allow", match = [["nerdctl","ps"]])
+
+prefix_rule(pattern = ["kubectl"], decision = "allow", match = [["kubectl","get","pods","-A"]])
+prefix_rule(pattern = ["helm"], decision = "allow", match = [["helm","version"]])
+prefix_rule(pattern = ["kustomize"], decision = "allow", match = [["kustomize","version"]])
+prefix_rule(pattern = ["kind"], decision = "allow", match = [["kind","get","clusters"]])
+prefix_rule(pattern = ["minikube"], decision = "allow", match = [["minikube","status"]])
+
+prefix_rule(pattern = ["terraform"], decision = "allow", match = [["terraform","plan"]])
+prefix_rule(pattern = ["packer"], decision = "allow", match = [["packer","version"]])
+prefix_rule(pattern = ["ansible"], decision = "allow", match = [["ansible","--version"]])
+prefix_rule(pattern = ["ansible-playbook"], decision = "allow", match = [["ansible-playbook","site.yml"]])
+prefix_rule(pattern = ["ansible-galaxy"], decision = "allow", match = [["ansible-galaxy","collection","list"]])
+prefix_rule(pattern = ["vagrant"], decision = "allow", match = [["vagrant","status"]])
+prefix_rule(pattern = ["virsh"], decision = "allow", match = [["virsh","list","--all"]])
+prefix_rule(pattern = ["virt-install"], decision = "allow", match = [["virt-install","--version"]])
+prefix_rule(pattern = ["virt-clone"], decision = "allow", match = [["virt-clone","--help"]])
+prefix_rule(pattern = ["qm"], decision = "allow", match = [["qm","list"]])
+prefix_rule(pattern = ["pvesh"], decision = "allow", match = [["pvesh","get","/nodes"]])

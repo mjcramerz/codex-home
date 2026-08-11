@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them.",
+  "references": [
+    "https://developers.notion.com/reference/intro",
+    "https://developers.notion.com/reference/block",
+    "https://mcp.notion.com/mcp"
+  ]
+}

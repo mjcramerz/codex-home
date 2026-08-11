@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Design and refactor parsers, tokenizers, grammars, AST transforms, and syntax-error handling with explicit contracts and bounded input handling. Use when the user asks about parsing, grammar changes, query languages, or text-to-structure conversion.",
+  "references": [
+    "https://lark-parser.readthedocs.io/",
+    "https://tree-sitter.github.io/tree-sitter/",
+    "https://docs.python.org/3/library/re.html"
+  ]
+}

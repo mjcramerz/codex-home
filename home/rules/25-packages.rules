@@ -1,0 +1,33 @@
+# 25-packages.rules
+# Package managers and toolchain installers.
+
+prefix_rule(pattern = ["apt"], decision = "allow", match = [["apt","update"]])
+prefix_rule(pattern = ["apt-get"], decision = "allow", match = [["apt-get","install","-y","curl"]])
+prefix_rule(pattern = ["apk"], decision = "allow", match = [["apk","add","--no-cache","git"]])
+prefix_rule(pattern = ["dnf"], decision = "allow", match = [["dnf","install","-y","git"]])
+prefix_rule(pattern = ["yum"], decision = "allow", match = [["yum","install","-y","git"]])
+prefix_rule(pattern = ["pacman"], decision = "allow", match = [["pacman","-S","git"]])
+prefix_rule(pattern = ["zypper"], decision = "allow", match = [["zypper","install","git"]])
+prefix_rule(pattern = ["brew"], decision = "allow", match = [["brew","install","rg"]])
+prefix_rule(pattern = ["port"], decision = "allow", match = [["port","install","rg"]])
+prefix_rule(pattern = ["choco"], decision = "allow", match = [["choco","install","rg"]])
+
+prefix_rule(pattern = ["npm"], decision = "allow", match = [["npm","ci"]])
+prefix_rule(pattern = ["npx"], decision = "allow", match = [["npx","--yes","eslint","--version"]])
+prefix_rule(pattern = ["pnpm"], decision = "allow", match = [["pnpm","install","--frozen-lockfile"]])
+prefix_rule(pattern = ["yarn"], decision = "allow", match = [["yarn","install","--frozen-lockfile"]])
+prefix_rule(pattern = ["bun"], decision = "allow", match = [["bun","install"]])
+
+prefix_rule(pattern = ["pip"], decision = "allow", match = [["pip","install","-r","requirements.txt"]])
+prefix_rule(pattern = ["pip3"], decision = "allow", match = [["pip3","install","-r","requirements.txt"]])
+prefix_rule(pattern = ["pipx"], decision = "allow", match = [["pipx","install","pre-commit"]])
+prefix_rule(pattern = ["uv"], decision = "allow", match = [["uv","pip","install","-r","requirements.txt"]])
+prefix_rule(pattern = ["uvx"], decision = "allow", match = [["uvx","pip","install","-r","requirements.txt"]])
+prefix_rule(pattern = ["poetry"], decision = "allow", match = [["poetry","install"]])
+
+prefix_rule(pattern = ["cargo"], decision = "allow", match = [["cargo","test","--all-features"]])
+prefix_rule(pattern = ["rustup"], decision = "allow", match = [["rustup","toolchain","install","stable"]])
+prefix_rule(pattern = ["go"], decision = "allow", match = [["go","install","example.com/tool@latest"]])
+prefix_rule(pattern = ["gem"], decision = "allow", match = [["gem","install","bundler"]])
+prefix_rule(pattern = ["composer"], decision = "allow", match = [["composer","install","--no-interaction"]])
+prefix_rule(pattern = ["mise"], decision = "allow", match = [["mise","install"]])

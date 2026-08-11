@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 25, 2026",
+  "abstract": "Build React component systems, hooks, and client-side UI architecture with performance-aware rendering. Use when the user asks for React logic without requiring Next.js routing, server rendering, or framework-specific runtime features.",
+  "references": [
+    "https://react.dev/",
+    "https://react.dev/reference/react",
+    "https://react.dev/reference/react/useMemo",
+    "https://github.com/facebook/react/releases/tag/v19.2.4",
+    "https://web.dev/rendering-performance/"
+  ]
+}

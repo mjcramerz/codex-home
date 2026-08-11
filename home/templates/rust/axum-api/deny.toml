@@ -1,0 +1,7 @@
+# cargo-deny configuration (optional)
+# Install: cargo install cargo-deny
+[licenses]
+allow = ["Apache-2.0", "MIT", "BSD-3-Clause", "ISC"]
+
+[bans]
+multiple-versions = "warn"

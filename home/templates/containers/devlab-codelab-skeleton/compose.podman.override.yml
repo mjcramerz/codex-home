@@ -1,0 +1,4 @@
+services:
+  devlab:
+    # Podman-specific user namespace mapping (keeps engine UID/GID for bind mounts).
+    userns_mode: "keep-id"

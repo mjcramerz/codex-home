@@ -1,0 +1,29 @@
+# 20-network.rules
+# Network, cloud, and remote-access tooling.
+
+prefix_rule(pattern = ["curl"], decision = "allow", match = [["curl","-fsSL","https://example.com"]])
+prefix_rule(pattern = ["wget"], decision = "allow", match = [["wget","https://example.com/file"]])
+prefix_rule(pattern = ["rsync"], decision = "allow", match = [["rsync","-av","src/","dest/"]])
+
+prefix_rule(pattern = ["ssh"], decision = "allow", match = [["ssh","user@example.com"]])
+prefix_rule(pattern = ["scp"], decision = "allow", match = [["scp","file","user@example.com:/tmp/"]])
+prefix_rule(pattern = ["sftp"], decision = "allow", match = [["sftp","user@example.com"]])
+prefix_rule(pattern = ["mosh"], decision = "allow", match = [["mosh","user@example.com"]])
+
+prefix_rule(pattern = ["aws"], decision = "allow", match = [["aws","--version"]])
+prefix_rule(pattern = ["gcloud"], decision = "allow", match = [["gcloud","--version"]])
+prefix_rule(pattern = ["az"], decision = "allow", match = [["az","--version"]])
+
+prefix_rule(pattern = ["nc"], decision = "allow", match = [["nc","example.com","80"]])
+prefix_rule(pattern = ["ncat"], decision = "allow", match = [["ncat","example.com","80"]])
+prefix_rule(pattern = ["netcat"], decision = "allow", match = [["netcat","example.com","80"]])
+prefix_rule(pattern = ["socat"], decision = "allow", match = [["socat","-","TCP:example.com:80"]])
+prefix_rule(pattern = ["telnet"], decision = "allow", match = [["telnet","example.com","80"]])
+prefix_rule(pattern = ["ftp"], decision = "allow", match = [["ftp","example.com"]])
+prefix_rule(pattern = ["ping"], decision = "allow", match = [["ping","-c","1","example.com"]])
+prefix_rule(pattern = ["traceroute"], decision = "allow", match = [["traceroute","example.com"]])
+prefix_rule(pattern = ["dig"], decision = "allow", match = [["dig","example.com"]])
+prefix_rule(pattern = ["nslookup"], decision = "allow", match = [["nslookup","example.com"]])
+prefix_rule(pattern = ["host"], decision = "allow", match = [["host","example.com"]])
+
+prefix_rule(pattern = ["bws"], decision = "allow", match = [["bws","--version"]])

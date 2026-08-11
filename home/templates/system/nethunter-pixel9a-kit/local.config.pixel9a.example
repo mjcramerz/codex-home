@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# NetHunter kernel-builder local overrides for Pixel 9a lab porting.
+# Copy to kali-nethunter-kernel-builder/local.config and adjust values.
+
+# Architecture defaults
+export ARCH=arm64
+export SUBARCH=arm64
+
+# Example toolchain roots (replace with documented host paths)
+TD=~/android/toolchains
+export CLANG_ROOT="${TD}/clang-10.0"
+CCD64="${TD}/aarch64-4.9"
+export CROSS_COMPILE="${CCD64}/bin/aarch64-linux-android-"
+CCD32="${TD}/armhf-4.9"
+export CROSS_COMPILE_ARM32="${CCD32}/bin/arm-linux-androideabi-"
+
+# Kernel identity
+export LOCALVERSION=-NetHunter-pixel9a
+CONFIG=nethunter_defconfig
+IMAGE_NAME=Image.gz-dtb
+
+# Build hygiene
+CCACHE=true
+MAKE_ARGS=""

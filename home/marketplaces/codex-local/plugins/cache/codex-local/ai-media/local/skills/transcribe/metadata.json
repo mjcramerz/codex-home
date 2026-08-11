@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Transcribe audio files to text with optional diarization and known-speaker hints. Use when a user asks to transcribe speech from audio/video, extract text from recordings, or label speakers in interviews or meetings.",
+  "references": [
+    "SKILL.md"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Debug failing GitHub Actions checks by inspecting PR statuses and logs with gh, then propose and implement fixes after approval. Use when the user asks why GitHub PR CI failed or wants failing Actions checks fixed.",
+  "references": [
+    "https://git-scm.com/doc",
+    "https://docs.github.com/actions",
+    "https://docs.gitlab.com/ci/",
+    "https://cli.github.com/manual/"
+  ]
+}

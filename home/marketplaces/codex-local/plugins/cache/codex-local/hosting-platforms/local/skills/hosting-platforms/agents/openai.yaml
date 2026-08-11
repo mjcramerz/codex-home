@@ -1,0 +1,52 @@
+---
+interface:
+  display_name: "Hosting Platforms"
+  short_description: "Route deployments across Vercel, Render, and Netlify"
+  default_prompt: >-
+    Use the Hosting Platforms skill to choose and coordinate Vercel, Render,
+    or Netlify deployment workflows.
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+  - type: mcp
+    value: vercel
+    description: vercel MCP server
+    transport: streamable_http
+    url: https://mcp.vercel.com
+  - type: mcp
+    value: render
+    description: render MCP server
+    transport: streamable_http
+    url: https://mcp.render.com/mcp
+
+policy:
+  allow_implicit_invocation: true

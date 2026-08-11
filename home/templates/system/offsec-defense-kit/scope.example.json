@@ -1,0 +1,20 @@
+{
+  "scope_id": "SEC-SCOPE-0001",
+  "workflow": "offsec-defense",
+  "owner": "security-team@example.com",
+  "lab_only": true,
+  "environment_class": "lab",
+  "allowed_networks": [
+    "10.10.20.0/24"
+  ],
+  "allowed_operations": [
+    "port-scan",
+    "credential-detection-test",
+    "dns-defense-validation",
+    "metasploit-lab-validation",
+    "wifi-security-assessment",
+    "purple-team-replay",
+    "reverse-engineering-triage"
+  ],
+  "expires_utc": "2026-12-31T23:59:59Z"
+}

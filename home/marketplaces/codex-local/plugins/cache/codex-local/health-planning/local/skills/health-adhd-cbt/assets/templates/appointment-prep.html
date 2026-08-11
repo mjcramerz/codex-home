@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADHD + CBT Appointment Prep</title>
+</head>
+<body>
+  <main class="worksheet" role="main">
+  <div class="page">
+    <h1>ADHD + CBT Appointment Prep</h1>
+
+    <div class="header">
+      <div><span class="label">Appointment type:</span> <span class="line">${appointment_type}</span></div>
+      <div><span class="label">Provider:</span> <span class="line">${provider_name}</span></div>
+    </div>
+    <div class="header">
+      <div><span class="label">Date:</span> <span class="line">${appointment_date}</span></div>
+      <div><span class="label">Time:</span> <span class="line">${appointment_time}</span></div>
+      <div><span class="label">Location / link:</span> <span class="line">${appointment_location}</span></div>
+    </div>
+
+    <p class="intro">Use short notes, leave blanks if needed, and focus on one next helpful step.</p>
+
+    <div class="section">
+      <h2>Goals (Top 3)</h2>
+      <ol class="plain">
+        <li>1) <span class="line full">${goal_1}</span></li>
+        <li>2) <span class="line full">${goal_2}</span></li>
+        <li>3) <span class="line full">${goal_3}</span></li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <h2>Questions (ask these)</h2>
+      <ol class="plain">
+        <li>1) <span class="line full">${question_1}</span></li>
+        <li>2) <span class="line full">${question_2}</span></li>
+        <li>3) <span class="line full">${question_3}</span></li>
+        <li>4) <span class="line full">${question_4}</span></li>
+        <li>5) <span class="line full">${question_5}</span></li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <h2>Updates / Notes</h2>
+      <div><span class="label">Symptoms / patterns:</span> <span class="line full">${symptoms}</span></div>
+      <div><span class="label">Meds + dosage changes:</span> <span class="line full">${meds_updates}</span></div>
+      <div><span class="label">Side effects / concerns:</span> <span class="line full">${side_effects}</span></div>
+      <div><span class="label">Life changes / stressors:</span> <span class="line full">${life_changes}</span></div>
+      <div><span class="label">What’s working:</span> <span class="line full">${whats_working}</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Accommodations + Supports</h2>
+      <div><span class="label">Accommodations to request:</span> <span class="line full">${accommodations}</span></div>
+      <div><span class="label">Support person / notes:</span> <span class="line full">${support_person}</span></div>
+    </div>
+
+    <div class="section">
+      <h2>After Appointment</h2>
+      <div><span class="label">Next steps / follow-ups:</span> <span class="line full">${follow_up}</span></div>
+      <div><span class="label">Tasks I must do:</span> <span class="line full">${after_tasks}</span></div>
+      <div><span class="label">Reminder / due date:</span> <span class="line">${follow_up_date}</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Logistics Checklist</h2>
+      <div class="grid-3 small">
+        <div><span class="checkbox" aria-hidden="true"></span> ID / insurance</div>
+        <div><span class="checkbox" aria-hidden="true"></span> Payment method</div>
+        <div><span class="checkbox" aria-hidden="true"></span> Notes printed</div>
+      </div>
+      <div class="grid-3 small">
+        <div><span class="checkbox" aria-hidden="true"></span> Med list</div>
+        <div><span class="checkbox" aria-hidden="true"></span> Questions list</div>
+        <div><span class="checkbox" aria-hidden="true"></span> Ride / parking</div>
+      </div>
+    </div>
+
+    <div class="footer">CBT-informed template for ADHD skills practice. Planning support only - not medical advice.</div>
+  </div>
+  </main>
+</body>
+</html>

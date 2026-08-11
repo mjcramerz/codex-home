@@ -1,0 +1,1549 @@
+---
+manifest_version: 1
+core:
+  agent-orchestration:
+    kind: entrypoint
+    description: stable link to multi-agent orchestration workflow guidance.
+    entrypoint: $CODEX_HOME/index/core/agent-orchestration.md
+    canonical: $CODEX_HOME/docs/workflows/agent-orchestration.md
+    related:
+      - $CODEX_HOME/AGENTS.md
+      - $CODEX_HOME/docs/workflows/planning.md
+      - $CODEX_HOME/docs/workflows/repo-ops.md
+      - $CODEX_HOME/docs/workflows/code-review.md
+      - $CODEX_HOME/index/pack/workflows.md
+      - skill:workflow-plans
+      - skill:repo-ops
+    metadata:
+      version: '1.0'
+      short-description: multi-agent orchestration workflow guidance
+      tags:
+        - core
+        - agent-orchestration
+  ci-cd:
+    kind: entrypoint
+    description: stable link to CI/CD guidance and templates.
+    entrypoint: $CODEX_HOME/index/core/ci-cd.md
+    canonical: $CODEX_HOME/docs/workflows/ci-cd.md
+    related:
+      - $CODEX_HOME/docs/workflows/github-actions.md
+      - $CODEX_HOME/docs/workflows/gitlab-ci.md
+      - $CODEX_HOME/docs/workflows/release.md
+      - $CODEX_HOME/templates/ci/github-actions/
+      - $CODEX_HOME/templates/ci/gitlab-ci/
+      - $CODEX_HOME/snippets/ci/gitlab_delivery_vars.env
+      - skill:ci-github-actions
+      - skill:ci-github-actions-fix
+      - skill:ci-gitlab-cicd
+      - skill:gitlab-cicd
+      - skill:gitlab-runner
+      - skill:aptly
+      - skill:bazel
+      - skill:buildbuddy
+      - skill:gitops
+      - skill:repo-ops
+    metadata:
+      version: '1.0'
+      short-description: CI/CD guidance and templates
+      tags:
+        - core
+        - ci-cd
+  codex-repo:
+    kind: entrypoint
+    description: >-
+      stable link to Codex repository implementation workflow guidance.
+    entrypoint: $CODEX_HOME/index/core/codex-repo.md
+    canonical: $CODEX_HOME/docs/workflows/codex-repo.md
+    related:
+      - $CODEX_HOME/docs/workflows/testing.md
+      - $CODEX_HOME/docs/workflows/ci-cd.md
+      - $CODEX_HOME/docs/workflows/release.md
+      - $CODEX_HOME/docs/workflows/repo-ops.md
+      - $CODEX_HOME/docs/workflows/web-frontend.md
+      - $CODEX_HOME/docs/security/supply-chain-controls.md
+      - skill:ci-github-actions
+      - skill:lang-typescript
+      - skill:repo-ops
+    metadata:
+      version: '1.0'
+      short-description: Codex repository workflow guidance
+      tags:
+        - core
+        - codex-repo
+  execpolicy:
+    kind: entrypoint
+    description: stable link to execpolicy rules and guardrails.
+    entrypoint: $CODEX_HOME/index/core/execpolicy.md
+    canonical: $CODEX_HOME/docs/workflows/execpolicy.md
+    related:
+      - $CODEX_HOME/docs/workflows/execpolicy.md
+      - $CODEX_HOME/rules/OVERVIEW.md
+      - $CODEX_HOME/index/pack/rules.md
+    metadata:
+      version: '1.0'
+      short-description: execpolicy rules and guardrails
+      tags:
+        - core
+        - execpolicy
+  perf:
+    kind: entrypoint
+    description: stable link to performance guidance.
+    entrypoint: $CODEX_HOME/index/core/perf.md
+    canonical: $CODEX_HOME/docs/perf/overview.md
+    related:
+      - $CODEX_HOME/docs/perf/profiling.md
+      - skill:perf-profiling
+    metadata:
+      version: '1.0'
+      short-description: performance guidance
+      tags:
+        - core
+        - perf
+  plan:
+    kind: entrypoint
+    description: stable link to the pack’s planning workflow.
+    entrypoint: $CODEX_HOME/index/core/plan.md
+    canonical: $CODEX_HOME/docs/workflows/planning.md
+    related:
+      - $CODEX_HOME/docs/workflows/build-an-app.md
+      - $CODEX_HOME/docs/workflows/planning.md
+      - $CODEX_HOME/index/pack/workflows.md
+      - $CODEX_HOME/index/pack/plans.md
+      - $CODEX_HOME/plans/OVERVIEW.md
+    metadata:
+      version: '1.0'
+      short-description: pack’s planning workflow
+      tags:
+        - core
+        - plan
+  repo-ops:
+    kind: entrypoint
+    description: stable link to repo automation guidance.
+    entrypoint: $CODEX_HOME/index/core/repo-ops.md
+    canonical: $CODEX_HOME/docs/workflows/repo-ops.md
+    related:
+      - $CODEX_HOME/docs/workflows/release.md
+      - $CODEX_HOME/docs/workflows/dependency-updates.md
+      - skill:repo-ops
+    metadata:
+      version: '1.0'
+      short-description: repo automation guidance
+      tags:
+        - core
+        - repo-ops
+  review-hardening:
+    kind: entrypoint
+    description: stable link to the security review checklist.
+    entrypoint: $CODEX_HOME/index/core/review-hardening.md
+    canonical: $CODEX_HOME/docs/security/review-hardening.md
+    related:
+      - $CODEX_HOME/docs/workflows/code-review.md
+      - $CODEX_HOME/docs/security/threat-model.md
+      - $CODEX_HOME/docs/security/overview.md
+      - skill:quality-code-review
+    metadata:
+      version: '1.0'
+      short-description: security review checklist
+      tags:
+        - core
+        - review-hardening
+  security:
+    kind: entrypoint
+    description: stable link to the security overview and checklists.
+    entrypoint: $CODEX_HOME/index/core/security.md
+    canonical: $CODEX_HOME/docs/security/overview.md
+    related:
+      - $CODEX_HOME/docs/security/review-hardening.md
+      - $CODEX_HOME/docs/security/threat-model.md
+      - $CODEX_HOME/docs/security/supply-chain.md
+      - $CODEX_HOME/index/domains/system/hardening.md
+      - skill:appsec-hardening
+    metadata:
+      version: '1.0'
+      short-description: security overview and checklists
+      tags:
+        - core
+        - security
+  supply-chain:
+    kind: entrypoint
+    description: stable link to supply-chain guidance and audit controls.
+    entrypoint: $CODEX_HOME/index/core/supply-chain.md
+    canonical: $CODEX_HOME/docs/security/supply-chain.md
+    related:
+      - $CODEX_HOME/docs/workflows/dependency-updates.md
+      - $CODEX_HOME/docs/security/supply-chain-controls.md
+      - $CODEX_HOME/docs/security/supply-chain.md
+      - skill:secops-supply-chain
+    metadata:
+      version: '1.0'
+      short-description: supply-chain guidance and audit controls
+      tags:
+        - core
+        - supply-chain
+  testing:
+    kind: entrypoint
+    description: stable link to the testing workflow and strategy guidance.
+    entrypoint: $CODEX_HOME/index/core/testing.md
+    canonical: $CODEX_HOME/docs/workflows/testing.md
+    related:
+      - $CODEX_HOME/docs/workflows/testing.md
+      - $CODEX_HOME/docs/workflows/code-review.md
+      - $CODEX_HOME/docs/workflows/ci-cd.md
+    metadata:
+      version: '1.0'
+      short-description: testing workflow and strategy guidance
+      tags:
+        - core
+        - testing
+pack:
+  config:
+    kind: entrypoint
+    description: stable link to the pack’s configuration and runtime settings.
+    entrypoint: $CODEX_HOME/index/pack/config.md
+    canonical: $CODEX_HOME/config.toml
+    related:
+      - $CODEX_HOME/.models/default_catalog.json
+      - $CODEX_HOME/.models/instructions/models/base.md
+      - $CODEX_HOME/.models/instructions/compact/prompt.md
+      - $CODEX_HOME/index/pack/docs.md
+    metadata:
+      version: '1.0'
+      short-description: pack’s configuration and runtime settings
+      tags:
+        - pack
+        - config
+  docs:
+    kind: entrypoint
+    description: stable index to the pack’s documentation.
+    entrypoint: $CODEX_HOME/index/pack/docs.md
+    canonical: $CODEX_HOME/docs/OVERVIEW.md
+    related:
+      - $CODEX_HOME/memories/
+      - $CODEX_HOME/index/pack/config.md
+      - $CODEX_HOME/index/pack/plans.md
+      - $CODEX_HOME/index/pack/workflows.md
+      - $CODEX_HOME/index/pack/templates.md
+      - $CODEX_HOME/index/pack/snippets.md
+      - $CODEX_HOME/index/pack/skills.md
+      - $CODEX_HOME/index/pack/prompts.md
+      - $CODEX_HOME/index/pack/style.md
+    metadata:
+      version: '1.0'
+      short-description: pack’s documentation
+      tags:
+        - pack
+        - docs
+  prompts:
+    kind: entrypoint
+    description: >-
+      stable index to prompt-maintenance workflow guidance and assets.
+    entrypoint: $CODEX_HOME/index/pack/prompts.md
+    canonical: $CODEX_HOME/docs/prompts-maintenance.md
+    related:
+      - $CODEX_HOME/docs/create-prompts.md
+      - $CODEX_HOME/docs/prompts-maintenance.md
+      - $CODEX_HOME/docs/workflows/prompts-library.md
+      - $CODEX_HOME/plans/prompts-library.md
+      - $CODEX_HOME/plans/workflows/workflow-prompts-library.md
+      - $CODEX_HOME/templates/prompts/slash-command-maintenance/
+      - $CODEX_HOME/snippets/docs/prompt_contract.md
+      - skill:pack-prompts
+    metadata:
+      version: '1.0'
+      short-description: prompt-maintenance workflow guidance and assets
+      tags:
+        - pack
+        - prompts
+  plans:
+    kind: entrypoint
+    description: stable index to pack plan templates.
+    entrypoint: $CODEX_HOME/index/pack/plans.md
+    canonical: $CODEX_HOME/plans/OVERVIEW.md
+    related:
+      - $CODEX_HOME/docs/workflows/planning.md
+      - $CODEX_HOME/index/core/plan.md
+      - $CODEX_HOME/plans/OVERVIEW.md
+      - $CODEX_HOME/plans/frameworks/
+      - $CODEX_HOME/plans/workflows/
+      - $CODEX_HOME/plans/skills/
+      - $CODEX_HOME/plans/prompts-library.md
+      - skill:workflow-plans
+    metadata:
+      version: '1.0'
+      short-description: Pack plan templates
+      tags:
+        - pack
+        - plans
+  rules:
+    kind: entrypoint
+    description: stable link to execpolicy rule files and structure.
+    entrypoint: $CODEX_HOME/index/pack/rules.md
+    canonical: $CODEX_HOME/rules/OVERVIEW.md
+    related:
+      - $CODEX_HOME/docs/workflows/execpolicy.md
+      - $CODEX_HOME/rules/00-core.rules
+      - $CODEX_HOME/rules/10-vcs.rules
+      - $CODEX_HOME/rules/12-scripting.rules
+      - $CODEX_HOME/rules/20-network.rules
+      - $CODEX_HOME/rules/25-packages.rules
+      - $CODEX_HOME/rules/30-system.rules
+      - $CODEX_HOME/rules/35-crypto.rules
+      - $CODEX_HOME/rules/40-infra.rules
+      - $CODEX_HOME/rules/90-forbidden.rules
+      - $CODEX_HOME/index/core/execpolicy.md
+    metadata:
+      version: '1.0'
+      short-description: execpolicy rule files and structure
+      tags:
+        - pack
+        - rules
+  skills:
+    kind: entrypoint
+    description: stable index to skills and deep playbooks.
+    entrypoint: $CODEX_HOME/index/pack/skills.md
+    canonical: $CODEX_HOME/.agents/skills
+    related:
+      - $CODEX_HOME/docs/OVERVIEW.md
+      - $CODEX_HOME/index/pack/plans.md
+      - $CODEX_HOME/snippets/OVERVIEW.md
+      - $CODEX_HOME/.agents/skills
+      - the managed admin skill root
+      - skill:workflow-plans
+      - skill:pack-skills
+      - skill:pack-prompts
+      - skill:pack-index
+      - skill:pack-docs
+      - skill:pack-templates
+      - skill:pack-snippets
+      - skill:pack-rules
+      - skill:obsidian-docs
+      - skill:obsidian-toc
+      - skill:obsidian-meeting-intelligence
+      - skill:obsidian-knowledge-capture
+      - skill:obsidian-research-documentation
+      - skill:obsidian-spec-to-implementation
+      - skill:github-pr-comments
+      - skill:ci-github-actions-fix
+      - skill:pm-linear-issues
+      - skill:notion-knowledge-capture
+      - skill:notion-meeting-intelligence
+      - skill:notion-research-documentation
+      - skill:notion-spec-to-implementation
+      - skill:appsec-hardening
+      - skill:repo-ops
+      - skill:shell-bash
+    metadata:
+      version: '1.0'
+      short-description: skills and deep playbooks
+      tags:
+        - pack
+        - skills
+  snippets:
+    kind: entrypoint
+    description: stable index to hardened snippets and patterns.
+    entrypoint: $CODEX_HOME/index/pack/snippets.md
+    canonical: $CODEX_HOME/snippets/OVERVIEW.md
+    related:
+      - $CODEX_HOME/snippets/OVERVIEW.md
+      - $CODEX_HOME/templates/OVERVIEW.md
+      - $CODEX_HOME/.agents/skills
+    metadata:
+      version: '1.0'
+      short-description: hardened snippets and patterns
+      tags:
+        - pack
+        - snippets
+  style:
+    kind: entrypoint
+    description: stable link to language and scripting style entrypoints.
+    entrypoint: $CODEX_HOME/index/pack/style.md
+    canonical: $CODEX_HOME/docs/style/overview.md
+    related:
+      - $CODEX_HOME/index/style/style-guides.md
+      - $CODEX_HOME/index/style/bash.md
+      - $CODEX_HOME/index/style/sh.md
+      - $CODEX_HOME/index/style/python.md
+      - $CODEX_HOME/index/style/rust.md
+    metadata:
+      version: '1.0'
+      short-description: language and scripting style entrypoints
+      tags:
+        - pack
+        - style
+  templates:
+    kind: entrypoint
+    description: stable index to the pack’s templates.
+    entrypoint: $CODEX_HOME/index/pack/templates.md
+    canonical: $CODEX_HOME/templates/OVERVIEW.md
+    related:
+      - $CODEX_HOME/templates/OVERVIEW.md
+      - $CODEX_HOME/templates/common/
+      - $CODEX_HOME/templates/prompts/slash-command-maintenance/
+      - $CODEX_HOME/snippets/OVERVIEW.md
+      - $CODEX_HOME/.agents/skills
+    metadata:
+      version: '1.0'
+      short-description: pack’s templates
+      tags:
+        - pack
+        - templates
+  plugins:
+    kind: entrypoint
+    description: >-
+      stable runtime index for installed plugin bundles and marketplace
+      metadata.
+    entrypoint: $CODEX_HOME/index/pack/plugins.md
+    canonical: $CODEX_HOME/docs/plugins.md
+    related:
+      - $CODEX_HOME/docs/plugins.md
+      - $CODEX_HOME/config.toml
+      - $CODEX_HOME/.agents/plugins/marketplace.json
+      - $CODEX_HOME/plugins/cache/
+    metadata:
+      version: '1.0'
+      short-description: runtime plugin bundle guidance
+      tags:
+        - pack
+        - plugins
+  workflows:
+    kind: entrypoint
+    description: stable index to the pack’s workflow playbooks.
+    entrypoint: $CODEX_HOME/index/pack/workflows.md
+    canonical: $CODEX_HOME/docs/workflows/overview.md
+    related:
+      - $CODEX_HOME/memories/
+      - $CODEX_HOME/docs/workflows/overview.md
+      - $CODEX_HOME/docs/workflows/
+      - $CODEX_HOME/docs/workflows/memory-runtime.md
+      - $CODEX_HOME/docs/workflows/runtime-pack-maintenance.md
+      - $CODEX_HOME/docs/workflows/codex-manager.md
+      - $CODEX_HOME/docs/workflows/codex-mcp.md
+      - $CODEX_HOME/docs/workflows/cloudflare-delivery.md
+      - $CODEX_HOME/docs/workflows/prompts-library.md
+      - $CODEX_HOME/index/pack/templates.md
+      - $CODEX_HOME/index/pack/plans.md
+      - $CODEX_HOME/index/pack/skills.md
+    metadata:
+      version: '1.0'
+      short-description: pack’s workflow playbooks
+      tags:
+        - pack
+        - workflows
+style:
+  style-guides:
+    kind: entrypoint
+    description: stable link to the pack’s style guide index.
+    entrypoint: $CODEX_HOME/index/style/style-guides.md
+    canonical: $CODEX_HOME/docs/style/overview.md
+    related:
+      - $CODEX_HOME/docs/style/shell-runtime.md
+      - $CODEX_HOME/docs/style/bash.md
+      - $CODEX_HOME/docs/style/sh.md
+      - $CODEX_HOME/docs/style/perl.md
+      - $CODEX_HOME/docs/style/python.md
+      - $CODEX_HOME/docs/style/rust.md
+      - $CODEX_HOME/docs/style/go.md
+      - $CODEX_HOME/docs/style/typescript.md
+      - $CODEX_HOME/snippets/
+    metadata:
+      version: '1.0'
+      short-description: pack’s style guide index
+      tags:
+        - style
+        - overview
+  bash:
+    kind: entrypoint
+    description: stable link to the canonical Bash style guide.
+    entrypoint: $CODEX_HOME/index/style/bash.md
+    canonical: $CODEX_HOME/docs/style/bash.md
+    related:
+      - $CODEX_HOME/snippets/bash/
+      - $CODEX_HOME/docs/style/overview.md
+      - skill:shell-bash
+    metadata:
+      version: '1.0'
+      short-description: canonical Bash style guide
+      tags:
+        - style
+        - bash
+  go:
+    kind: entrypoint
+    description: stable link to the canonical Go style guide.
+    entrypoint: $CODEX_HOME/index/style/go.md
+    canonical: $CODEX_HOME/docs/style/go.md
+    related:
+      - $CODEX_HOME/snippets/go/
+      - $CODEX_HOME/templates/go/cli-app/
+      - $CODEX_HOME/docs/style/overview.md
+      - skill:lang-go
+    metadata:
+      version: '1.0'
+      short-description: canonical Go style guide
+      tags:
+        - style
+        - go
+  perl:
+    kind: entrypoint
+    description: stable link to the canonical Perl style guide.
+    entrypoint: $CODEX_HOME/index/style/perl.md
+    canonical: $CODEX_HOME/docs/style/perl.md
+    related:
+      - $CODEX_HOME/docs/lang/perl.md
+      - $CODEX_HOME/templates/perl/codex-hook-module/
+      - $CODEX_HOME/docs/style/overview.md
+      - skill:lang-perl
+    metadata:
+      version: '1.0'
+      short-description: canonical Perl style guide
+      tags:
+        - style
+        - perl
+  python:
+    kind: entrypoint
+    description: stable link to the canonical Python style guide.
+    entrypoint: $CODEX_HOME/index/style/python.md
+    canonical: $CODEX_HOME/docs/style/python.md
+    related:
+      - $CODEX_HOME/snippets/python/
+      - $CODEX_HOME/docs/style/overview.md
+      - skill:backend-fastapi
+    metadata:
+      version: '1.0'
+      short-description: canonical Python style guide
+      tags:
+        - style
+        - python
+  rust:
+    kind: entrypoint
+    description: stable link to the canonical Rust style guide.
+    entrypoint: $CODEX_HOME/index/style/rust.md
+    canonical: $CODEX_HOME/docs/style/rust.md
+    related:
+      - $CODEX_HOME/snippets/rust/
+      - $CODEX_HOME/docs/style/overview.md
+      - skill:backend-axum
+    metadata:
+      version: '1.0'
+      short-description: canonical Rust style guide
+      tags:
+        - style
+        - rust
+  sh:
+    kind: entrypoint
+    description: stable link to the canonical POSIX sh style guide.
+    entrypoint: $CODEX_HOME/index/style/sh.md
+    canonical: $CODEX_HOME/docs/style/sh.md
+    related:
+      - $CODEX_HOME/snippets/sh/
+      - $CODEX_HOME/docs/style/overview.md
+      - skill:shell-sh
+    metadata:
+      version: '1.0'
+      short-description: canonical POSIX sh style guide
+      tags:
+        - style
+        - sh
+  typescript:
+    kind: entrypoint
+    description: stable link to the canonical TypeScript style guide.
+    entrypoint: $CODEX_HOME/index/style/typescript.md
+    canonical: $CODEX_HOME/docs/style/typescript.md
+    related:
+      - $CODEX_HOME/snippets/typescript/
+      - $CODEX_HOME/templates/typescript/ts-lib/
+      - $CODEX_HOME/docs/style/overview.md
+      - skill:lang-typescript
+    metadata:
+      version: '1.0'
+      short-description: canonical TypeScript style guide
+      tags:
+        - style
+        - typescript
+domains:
+  desktop:
+    desktop-stack:
+      kind: entrypoint
+      description: stable link to desktop stack guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/stack.md
+      canonical: $CODEX_HOME/docs/desktop/overview.md
+      related:
+        - $CODEX_HOME/docs/desktop/wayland.md
+        - $CODEX_HOME/docs/desktop/desktop-entries.md
+        - $CODEX_HOME/docs/desktop/browsers.md
+        - $CODEX_HOME/docs/workflows/desktop-wayland.md
+        - $CODEX_HOME/snippets/desktop/
+      metadata:
+        version: '1.0'
+        short-description: desktop stack guidance
+        tags:
+          - desktop
+          - overview
+    browsers:
+      kind: entrypoint
+      description: stable link to browser hardening guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/browsers.md
+      canonical: $CODEX_HOME/docs/desktop/browsers.md
+      related:
+        - $CODEX_HOME/docs/workflows/browsers.md
+        - $CODEX_HOME/docs/desktop/librewolf.md
+        - $CODEX_HOME/docs/desktop/mullvad-browser.md
+        - $CODEX_HOME/docs/desktop/thorium.md
+        - $CODEX_HOME/snippets/desktop/
+        - skill:desktop-browser-hardening
+      metadata:
+        version: '1.0'
+        short-description: browser hardening guidance
+        tags:
+          - desktop
+          - browsers
+    desktop-entries:
+      kind: entrypoint
+      description: stable link to desktop entry (.desktop) guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/desktop-entries.md
+      canonical: $CODEX_HOME/docs/desktop/desktop-entries.md
+      related:
+        - $CODEX_HOME/docs/workflows/desktop-entries.md
+        - $CODEX_HOME/snippets/desktop/desktop-entry.desktop
+        - skill:desktop-entries
+      metadata:
+        version: '1.0'
+        short-description: desktop entry (.desktop) guidance
+        tags:
+          - desktop
+          - desktop-entries
+    librewolf:
+      kind: entrypoint
+      description: stable link to LibreWolf setup guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/librewolf.md
+      canonical: $CODEX_HOME/docs/desktop/librewolf.md
+      related:
+        - $CODEX_HOME/docs/workflows/browsers.md
+        - $CODEX_HOME/docs/desktop/browsers.md
+        - skill:desktop-librewolf
+      metadata:
+        version: '1.0'
+        short-description: LibreWolf setup guidance
+        tags:
+          - desktop
+          - librewolf
+    mullvad-browser:
+      kind: entrypoint
+      description: stable link to Mullvad Browser guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/mullvad-browser.md
+      canonical: $CODEX_HOME/docs/desktop/mullvad-browser.md
+      related:
+        - $CODEX_HOME/docs/workflows/browsers.md
+        - $CODEX_HOME/docs/desktop/browsers.md
+        - skill:desktop-mullvad-browser
+      metadata:
+        version: '1.0'
+        short-description: Mullvad Browser guidance
+        tags:
+          - desktop
+          - mullvad-browser
+    thorium:
+      kind: entrypoint
+      description: stable link to Thorium Browser guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/thorium.md
+      canonical: $CODEX_HOME/docs/desktop/thorium.md
+      related:
+        - $CODEX_HOME/docs/workflows/browsers.md
+        - $CODEX_HOME/docs/desktop/browsers.md
+        - skill:desktop-thorium
+      metadata:
+        version: '1.0'
+        short-description: Thorium Browser guidance
+        tags:
+          - desktop
+          - thorium
+    wayland:
+      kind: entrypoint
+      description: stable link to Wayland/Labwc guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/wayland.md
+      canonical: $CODEX_HOME/docs/desktop/wayland.md
+      related:
+        - $CODEX_HOME/docs/workflows/desktop-wayland.md
+        - $CODEX_HOME/docs/desktop/overview.md
+        - skill:desktop-wayland
+      metadata:
+        version: '1.0'
+        short-description: Wayland/Labwc guidance
+        tags:
+          - desktop
+          - wayland
+    crystal-dock:
+      kind: entrypoint
+      description: stable link to Crystal Dock guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/crystal-dock.md
+      canonical: $CODEX_HOME/docs/desktop/crystal-dock.md
+      related:
+        - $CODEX_HOME/docs/workflows/crystal-dock.md
+        - $CODEX_HOME/docs/desktop/labwc.md
+        - skill:crystal-dock
+      metadata:
+        version: '1.0'
+        short-description: Crystal Dock guidance
+        tags:
+          - desktop
+          - crystal-dock
+    labwc:
+      kind: entrypoint
+      description: stable link to Labwc compositor guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/labwc.md
+      canonical: $CODEX_HOME/docs/desktop/labwc.md
+      related:
+        - $CODEX_HOME/docs/workflows/desktop-wayland.md
+        - $CODEX_HOME/docs/desktop/wayland.md
+        - skill:labwc
+      metadata:
+        version: '1.0'
+        short-description: Labwc compositor guidance
+        tags:
+          - desktop
+          - labwc
+    waybar:
+      kind: entrypoint
+      description: stable link to Waybar guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/waybar.md
+      canonical: $CODEX_HOME/docs/desktop/waybar.md
+      related:
+        - $CODEX_HOME/docs/workflows/desktop-wayland.md
+        - $CODEX_HOME/docs/desktop/wayland.md
+        - skill:waybar
+      metadata:
+        version: '1.0'
+        short-description: Waybar guidance
+        tags:
+          - desktop
+          - waybar
+    wofi:
+      kind: entrypoint
+      description: stable link to Wofi guidance.
+      entrypoint: $CODEX_HOME/index/domains/desktop/wofi.md
+      canonical: $CODEX_HOME/docs/desktop/wofi.md
+      related:
+        - $CODEX_HOME/docs/workflows/desktop-wayland.md
+        - $CODEX_HOME/docs/desktop/wayland.md
+        - skill:wofi
+      metadata:
+        version: '1.0'
+        short-description: Wofi guidance
+        tags:
+          - desktop
+          - wofi
+  infra:
+    infra-tooling:
+      kind: entrypoint
+      description: >-
+        stable link to infrastructure tooling guidance (IaC, orchestration,
+        virtualization).
+      entrypoint: $CODEX_HOME/index/domains/infra/tooling.md
+      canonical: $CODEX_HOME/docs/infra/overview.md
+      related:
+        - $CODEX_HOME/docs/infra/terraform.md
+        - $CODEX_HOME/docs/infra/ansible.md
+        - $CODEX_HOME/docs/infra/kubernetes.md
+        - $CODEX_HOME/docs/virtualization/overview.md
+        - $CODEX_HOME/docs/workflows/terraform.md
+        - $CODEX_HOME/docs/workflows/ansible.md
+        - $CODEX_HOME/docs/workflows/kubernetes.md
+      metadata:
+        version: '1.0'
+        short-description: infrastructure tooling guidance (IaC, orchestration,
+          virtualization)
+        tags:
+          - infra
+          - overview
+    ansible:
+      kind: entrypoint
+      description: stable link to Ansible guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/ansible.md
+      canonical: $CODEX_HOME/docs/infra/ansible.md
+      related:
+        - $CODEX_HOME/docs/workflows/ansible.md
+        - $CODEX_HOME/templates/infra/ansible-role-skeleton/
+        - $CODEX_HOME/snippets/ansible/
+        - skill:iac-ansible
+      metadata:
+        version: '1.0'
+        short-description: Ansible guidance
+        tags:
+          - infra
+          - ansible
+    aptly:
+      kind: entrypoint
+      description: stable link to Aptly publication guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/aptly.md
+      canonical: $CODEX_HOME/docs/infra/aptly.md
+      related:
+        - $CODEX_HOME/docs/workflows/aptly.md
+        - $CODEX_HOME/docs/workflows/cloudflare-r2.md
+        - skill:aptly
+      metadata:
+        version: '1.0'
+        short-description: Aptly publication guidance
+        tags:
+          - infra
+          - aptly
+    bazel:
+      kind: entrypoint
+      description: stable link to Bazel guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/bazel.md
+      canonical: $CODEX_HOME/docs/infra/bazel.md
+      related:
+        - $CODEX_HOME/docs/workflows/bazel-buildbuddy.md
+        - $CODEX_HOME/docs/infra/buildbuddy.md
+        - skill:bazel
+      metadata:
+        version: '1.0'
+        short-description: Bazel guidance
+        tags:
+          - infra
+          - bazel
+    buildbuddy:
+      kind: entrypoint
+      description: stable link to BuildBuddy guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/buildbuddy.md
+      canonical: $CODEX_HOME/docs/infra/buildbuddy.md
+      related:
+        - $CODEX_HOME/docs/workflows/bazel-buildbuddy.md
+        - $CODEX_HOME/docs/infra/bazel.md
+        - skill:buildbuddy
+      metadata:
+        version: '1.0'
+        short-description: BuildBuddy guidance
+        tags:
+          - infra
+          - buildbuddy
+    cloudflare-r2:
+      kind: entrypoint
+      description: stable link to Cloudflare R2 guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/cloudflare-r2.md
+      canonical: $CODEX_HOME/docs/infra/cloudflare-r2.md
+      related:
+        - $CODEX_HOME/docs/workflows/cloudflare-r2.md
+        - $CODEX_HOME/docs/workflows/cloudflare-delivery.md
+        - skill:cloudflare-r2
+      metadata:
+        version: '1.0'
+        short-description: Cloudflare R2 guidance
+        tags:
+          - infra
+          - cloudflare-r2
+    containers:
+      kind: entrypoint
+      description: stable link to container guidance and templates.
+      entrypoint: $CODEX_HOME/index/domains/infra/containers.md
+      canonical: $CODEX_HOME/docs/containers/overview.md
+      related:
+        - $CODEX_HOME/docs/containers/dev-containers.md
+        - $CODEX_HOME/docs/containers/docker-compose.md
+        - $CODEX_HOME/docs/containers/dockerfile.md
+        - $CODEX_HOME/docs/containers/podman.md
+        - $CODEX_HOME/docs/containers/rootless-docker.md
+        - $CODEX_HOME/docs/workflows/containers.md
+        - $CODEX_HOME/templates/containers/docker-compose-skeleton/
+        - $CODEX_HOME/templates/containers/dockerfile-skeleton/
+        - $CODEX_HOME/templates/containers/devlab-codelab-skeleton/
+        - $CODEX_HOME/snippets/containers/
+        - skill:infra-containers
+      metadata:
+        version: '1.0'
+        short-description: container guidance and templates
+        tags:
+          - infra
+          - containers
+    gitops:
+      kind: entrypoint
+      description: stable link to GitOps guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/gitops.md
+      canonical: $CODEX_HOME/docs/infra/gitops.md
+      related:
+        - $CODEX_HOME/docs/workflows/gitops.md
+        - $CODEX_HOME/docs/workflows/gitlab-ci.md
+        - skill:gitops
+      metadata:
+        version: '1.0'
+        short-description: GitOps guidance
+        tags:
+          - infra
+          - gitops
+    kubernetes:
+      kind: entrypoint
+      description: stable link to Kubernetes guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/kubernetes.md
+      canonical: $CODEX_HOME/docs/infra/kubernetes.md
+      related:
+        - $CODEX_HOME/docs/workflows/kubernetes.md
+        - $CODEX_HOME/templates/infra/kubernetes-app-skeleton/
+        - $CODEX_HOME/snippets/kubernetes/
+        - skill:infra-kubernetes
+      metadata:
+        version: '1.0'
+        short-description: Kubernetes guidance
+        tags:
+          - infra
+          - kubernetes
+    proxmox:
+      kind: entrypoint
+      description: stable link to Proxmox guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/proxmox.md
+      canonical: $CODEX_HOME/docs/virtualization/proxmox.md
+      related:
+        - $CODEX_HOME/docs/workflows/proxmox.md
+        - $CODEX_HOME/templates/virtualization/proxmox-vm-skeleton/
+        - $CODEX_HOME/snippets/proxmox/
+        - skill:infra-proxmox
+      metadata:
+        version: '1.0'
+        short-description: Proxmox guidance
+        tags:
+          - infra
+          - proxmox
+    terraform:
+      kind: entrypoint
+      description: stable link to Terraform guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/terraform.md
+      canonical: $CODEX_HOME/docs/infra/terraform.md
+      related:
+        - $CODEX_HOME/docs/workflows/terraform.md
+        - $CODEX_HOME/templates/infra/terraform-module-skeleton/
+        - $CODEX_HOME/snippets/terraform/
+        - skill:iac-terraform
+      metadata:
+        version: '1.0'
+        short-description: Terraform guidance
+        tags:
+          - infra
+          - terraform
+    virsh:
+      kind: entrypoint
+      description: stable link to libvirt/virsh guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/virsh.md
+      canonical: $CODEX_HOME/docs/virtualization/virsh.md
+      related:
+        - $CODEX_HOME/docs/workflows/virsh.md
+        - $CODEX_HOME/templates/virtualization/virsh-vm-skeleton/
+        - $CODEX_HOME/snippets/virsh/
+        - skill:infra-virsh
+      metadata:
+        version: '1.0'
+        short-description: libvirt/virsh guidance
+        tags:
+          - infra
+          - virsh
+    virtualization:
+      kind: entrypoint
+      description: stable link to virtualization guidance.
+      entrypoint: $CODEX_HOME/index/domains/infra/virtualization.md
+      canonical: $CODEX_HOME/docs/virtualization/overview.md
+      related:
+        - $CODEX_HOME/docs/workflows/virsh.md
+        - $CODEX_HOME/docs/workflows/proxmox.md
+        - $CODEX_HOME/templates/virtualization/
+        - skill:infra-virtualization
+      metadata:
+        version: '1.0'
+        short-description: virtualization guidance
+        tags:
+          - infra
+          - virtualization
+  lang:
+    languages:
+      kind: entrypoint
+      description: stable link to language guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/languages.md
+      canonical: $CODEX_HOME/docs/lang/overview.md
+      related:
+        - $CODEX_HOME/docs/lang/go.md
+        - $CODEX_HOME/docs/lang/perl.md
+        - $CODEX_HOME/docs/lang/rust.md
+        - $CODEX_HOME/docs/lang/typescript.md
+        - $CODEX_HOME/docs/lang/html.md
+        - $CODEX_HOME/docs/style/overview.md
+      metadata:
+        version: '1.0'
+        short-description: language guidance
+        tags:
+          - lang
+          - overview
+    go:
+      kind: entrypoint
+      description: stable link to Go guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/go.md
+      canonical: $CODEX_HOME/docs/lang/go.md
+      related:
+        - $CODEX_HOME/docs/lang/go.md
+        - $CODEX_HOME/templates/go/
+        - skill:lang-go
+      metadata:
+        version: '1.0'
+        short-description: Go guidance
+        tags:
+          - lang
+          - go
+    html:
+      kind: entrypoint
+      description: stable link to HTML guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/html.md
+      canonical: $CODEX_HOME/docs/lang/html.md
+      related:
+        - $CODEX_HOME/docs/lang/html.md
+        - $CODEX_HOME/snippets/web/html/
+        - skill:web-html
+    metadata:
+      version: '1.0'
+      short-description: HTML guidance
+      tags:
+        - lang
+        - html
+    perl:
+      kind: entrypoint
+      description: stable link to Perl guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/perl.md
+      canonical: $CODEX_HOME/docs/lang/perl.md
+      related:
+        - $CODEX_HOME/docs/lang/perl.md
+        - $CODEX_HOME/docs/style/perl.md
+        - $CODEX_HOME/templates/perl/codex-hook-module/
+        - skill:lang-perl
+        - skill:perl
+      metadata:
+        version: '1.0'
+        short-description: Perl guidance
+        tags:
+          - lang
+          - perl
+    cargo:
+      kind: entrypoint
+      description: stable link to Cargo guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/cargo.md
+      canonical: $CODEX_HOME/docs/lang/cargo.md
+      related:
+        - $CODEX_HOME/docs/lang/cargo.md
+        - $CODEX_HOME/docs/lang/rust.md
+        - $CODEX_HOME/docs/workflows/rust-toolchain.md
+        - skill:cargo
+      metadata:
+        version: '1.0'
+        short-description: Cargo guidance
+        tags:
+          - lang
+          - cargo
+    rust:
+      kind: entrypoint
+      description: stable link to Rust guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/rust.md
+      canonical: $CODEX_HOME/docs/lang/rust.md
+      related:
+        - $CODEX_HOME/docs/lang/rust.md
+        - $CODEX_HOME/docs/style/rust.md
+        - skill:lang-rust
+        - $CODEX_HOME/docs/lang/cargo.md
+        - $CODEX_HOME/docs/lang/rustc.md
+        - $CODEX_HOME/docs/lang/rustup.md
+      metadata:
+        version: '1.0'
+        short-description: Rust guidance
+        tags:
+          - lang
+          - rust
+    rustc:
+      kind: entrypoint
+      description: stable link to rustc guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/rustc.md
+      canonical: $CODEX_HOME/docs/lang/rustc.md
+      related:
+        - $CODEX_HOME/docs/lang/rustc.md
+        - $CODEX_HOME/docs/lang/rust.md
+        - $CODEX_HOME/docs/workflows/rust-toolchain.md
+        - skill:rustc
+      metadata:
+        version: '1.0'
+        short-description: rustc guidance
+        tags:
+          - lang
+          - rustc
+    rustup:
+      kind: entrypoint
+      description: stable link to rustup guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/rustup.md
+      canonical: $CODEX_HOME/docs/lang/rustup.md
+      related:
+        - $CODEX_HOME/docs/lang/rustup.md
+        - $CODEX_HOME/docs/lang/rust.md
+        - $CODEX_HOME/docs/workflows/rust-toolchain.md
+        - skill:rustup
+      metadata:
+        version: '1.0'
+        short-description: rustup guidance
+        tags:
+          - lang
+          - rustup
+    typescript:
+      kind: entrypoint
+      description: stable link to TypeScript guidance.
+      entrypoint: $CODEX_HOME/index/domains/lang/typescript.md
+      canonical: $CODEX_HOME/docs/lang/typescript.md
+      related:
+        - $CODEX_HOME/docs/lang/typescript.md
+        - $CODEX_HOME/templates/typescript/
+        - skill:lang-typescript
+      metadata:
+        version: '1.0'
+        short-description: TypeScript guidance
+        tags:
+          - lang
+          - typescript
+  observability:
+    observability-stack:
+      kind: entrypoint
+      description: stable link to observability guidance and stack docs.
+      entrypoint: $CODEX_HOME/index/domains/observability/stack.md
+      canonical: $CODEX_HOME/docs/observability/overview.md
+      related:
+        - $CODEX_HOME/docs/observability/elasticsearch.md
+        - $CODEX_HOME/docs/observability/kibana.md
+        - $CODEX_HOME/docs/observability/logstash.md
+        - $CODEX_HOME/docs/observability/logrotate.md
+        - $CODEX_HOME/docs/observability/crowdsec.md
+      metadata:
+        version: '1.0'
+        short-description: observability guidance and stack docs
+        tags:
+          - observability
+          - overview
+    aide:
+      kind: entrypoint
+      description: stable link to AIDE guidance.
+      entrypoint: $CODEX_HOME/index/domains/observability/aide.md
+      canonical: $CODEX_HOME/docs/observability/aide.md
+      related:
+        - $CODEX_HOME/docs/workflows/aide.md
+        - $CODEX_HOME/snippets/aide/
+        - skill:secops-aide
+      metadata:
+        version: '1.0'
+        short-description: AIDE guidance
+        tags:
+          - observability
+          - aide
+    auditd:
+      kind: entrypoint
+      description: stable link to auditd guidance.
+      entrypoint: $CODEX_HOME/index/domains/observability/auditd.md
+      canonical: $CODEX_HOME/docs/observability/auditd.md
+      related:
+        - $CODEX_HOME/docs/workflows/auditd.md
+        - $CODEX_HOME/snippets/auditd/
+        - skill:secops-auditd
+      metadata:
+        version: '1.0'
+        short-description: auditd guidance
+        tags:
+          - observability
+          - auditd
+    crowdsec:
+      kind: entrypoint
+      description: stable link to CrowdSec guidance.
+      entrypoint: $CODEX_HOME/index/domains/observability/crowdsec.md
+      canonical: $CODEX_HOME/docs/observability/crowdsec.md
+      related:
+        - $CODEX_HOME/docs/workflows/crowdsec.md
+        - $CODEX_HOME/snippets/crowdsec/
+        - skill:secops-crowdsec
+      metadata:
+        version: '1.0'
+        short-description: CrowdSec guidance
+        tags:
+          - observability
+          - crowdsec
+    elasticsearch:
+      kind: entrypoint
+      description: stable link to Elasticsearch guidance.
+      entrypoint: $CODEX_HOME/index/domains/observability/elasticsearch.md
+      canonical: $CODEX_HOME/docs/observability/elasticsearch.md
+      related:
+        - $CODEX_HOME/docs/workflows/elastic-stack.md
+        - $CODEX_HOME/templates/observability/elastic-stack-compose/
+        - $CODEX_HOME/snippets/elastic/elasticsearch.yml
+        - skill:obs-elasticsearch
+      metadata:
+        version: '1.0'
+        short-description: Elasticsearch guidance
+        tags:
+          - observability
+          - elasticsearch
+    kibana:
+      kind: entrypoint
+      description: stable link to Kibana guidance.
+      entrypoint: $CODEX_HOME/index/domains/observability/kibana.md
+      canonical: $CODEX_HOME/docs/observability/kibana.md
+      related:
+        - $CODEX_HOME/docs/workflows/elastic-stack.md
+        - $CODEX_HOME/templates/observability/elastic-stack-compose/
+        - $CODEX_HOME/snippets/elastic/kibana.yml
+        - skill:obs-kibana
+      metadata:
+        version: '1.0'
+        short-description: Kibana guidance
+        tags:
+          - observability
+          - kibana
+    logrotate:
+      kind: entrypoint
+      description: stable link to logrotate guidance.
+      entrypoint: $CODEX_HOME/index/domains/observability/logrotate.md
+      canonical: $CODEX_HOME/docs/observability/logrotate.md
+      related:
+        - $CODEX_HOME/docs/workflows/logrotate.md
+        - $CODEX_HOME/snippets/logrotate/
+        - skill:ops-logrotate
+      metadata:
+        version: '1.0'
+        short-description: logrotate guidance
+        tags:
+          - observability
+          - logrotate
+    logstash:
+      kind: entrypoint
+      description: stable link to Logstash guidance.
+      entrypoint: $CODEX_HOME/index/domains/observability/logstash.md
+      canonical: $CODEX_HOME/docs/observability/logstash.md
+      related:
+        - $CODEX_HOME/docs/workflows/elastic-stack.md
+        - $CODEX_HOME/templates/observability/elastic-stack-compose/
+        - $CODEX_HOME/snippets/elastic/logstash.conf
+        - skill:obs-logstash
+      metadata:
+        version: '1.0'
+        short-description: Logstash guidance
+        tags:
+          - observability
+          - logstash
+  system:
+    system-hardening:
+      kind: entrypoint
+      description: >-
+        stable link to OS-level hardening guidance (kernel, boot, sysctl, USB
+        control).
+      entrypoint: $CODEX_HOME/index/domains/system/hardening.md
+      canonical: $CODEX_HOME/docs/system/overview.md
+      related:
+        - $CODEX_HOME/docs/system/kernel.md
+        - $CODEX_HOME/docs/system/grub.md
+        - $CODEX_HOME/docs/system/sysctl.md
+        - $CODEX_HOME/docs/system/usbguard.md
+        - $CODEX_HOME/docs/system/optimizations.md
+        - $CODEX_HOME/docs/workflows/kernel-build.md
+        - $CODEX_HOME/docs/workflows/sysctl.md
+      metadata:
+        version: '1.0'
+        short-description: >-
+          OS-level hardening guidance (kernel, boot, sysctl, USB control)
+        tags:
+          - system
+          - overview
+    bws-local:
+      kind: entrypoint
+      description: >-
+        stable link to local Bitwarden Secrets Manager (BWS) guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/bws-local.md
+      canonical: $CODEX_HOME/docs/security/bitwarden-secrets-local.md
+      related:
+        - $CODEX_HOME/docs/prompt-writing.md
+        - $CODEX_HOME/docs/security/bitwarden-secrets-local.md
+        - $CODEX_HOME/docs/workflows/bws-local.md
+        - skill:bws-local
+      metadata:
+        version: '1.0'
+        short-description: local Bitwarden Secrets Manager (BWS) guidance
+        tags:
+          - system
+          - bws-local
+    debian-preseed:
+      kind: entrypoint
+      description: stable link to Debian preseed guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/debian-preseed.md
+      canonical: $CODEX_HOME/docs/workflows/debian-preseed.md
+      related:
+        - $CODEX_HOME/docs/workflows/debian-preseed.md
+        - $CODEX_HOME/docs/virtualization/debian-preseed.md
+        - $CODEX_HOME/templates/virtualization/debian-preseed/
+        - $CODEX_HOME/snippets/preseed/include.preseed.cfg
+        - skill:os-debian-preseed
+        - skill:debian-preseed
+      metadata:
+        version: '1.0'
+        short-description: Debian preseed guidance
+        tags:
+          - system
+          - debian-preseed
+    gitlab-runner:
+      kind: entrypoint
+      description: stable link to GitLab Runner guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/gitlab-runner.md
+      canonical: $CODEX_HOME/docs/system/gitlab-runner.md
+      related:
+        - $CODEX_HOME/docs/workflows/gitlab-runner.md
+        - $CODEX_HOME/docs/workflows/gitlab-ci.md
+        - skill:gitlab-runner
+      metadata:
+        version: '1.0'
+        short-description: GitLab Runner guidance
+        tags:
+          - system
+          - gitlab-runner
+    filesystems:
+      kind: entrypoint
+      description: stable link to filesystem guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/filesystems.md
+      canonical: $CODEX_HOME/docs/filesystems/overview.md
+      related:
+        - $CODEX_HOME/docs/workflows/filesystems.md
+        - $CODEX_HOME/templates/filesystems/
+        - skill:storage-filesystems
+      metadata:
+        version: '1.0'
+        short-description: filesystem guidance
+        tags:
+          - system
+          - filesystems
+    grub:
+      kind: entrypoint
+      description: stable link to GRUB guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/grub.md
+      canonical: $CODEX_HOME/docs/system/grub.md
+      related:
+        - $CODEX_HOME/docs/workflows/grub.md
+        - $CODEX_HOME/snippets/system/grub-default
+        - skill:infra-grub
+      metadata:
+        version: '1.0'
+        short-description: GRUB guidance
+        tags:
+          - system
+          - grub
+    kernel:
+      kind: entrypoint
+      description: stable link to kernel build and config guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/kernel.md
+      canonical: $CODEX_HOME/docs/system/kernel.md
+      related:
+        - $CODEX_HOME/docs/workflows/kernel-build.md
+        - $CODEX_HOME/templates/system/kernel-build-skeleton/
+        - $CODEX_HOME/snippets/system/kernel-config.fragment
+        - skill:infra-kernel
+      metadata:
+        version: '1.0'
+        short-description: kernel build and config guidance
+        tags:
+          - system
+          - kernel
+    optimizations:
+      kind: entrypoint
+      description: stable link to host optimization guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/optimizations.md
+      canonical: $CODEX_HOME/docs/system/optimizations.md
+      related:
+        - $CODEX_HOME/docs/workflows/optimizations.md
+        - $CODEX_HOME/docs/system/optimizations.md
+        - $CODEX_HOME/index/domains/system/kernel.md
+        - skill:infra-optimizations
+      metadata:
+        version: '1.0'
+        short-description: host optimization guidance
+        tags:
+          - system
+          - optimizations
+    sysctl:
+      kind: entrypoint
+      description: stable link to sysctl guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/sysctl.md
+      canonical: $CODEX_HOME/docs/system/sysctl.md
+      related:
+        - $CODEX_HOME/docs/workflows/sysctl.md
+        - $CODEX_HOME/snippets/system/sysctl.conf
+        - skill:infra-sysctl
+      metadata:
+        version: '1.0'
+        short-description: sysctl guidance
+        tags:
+          - system
+          - sysctl
+    systemd:
+      kind: entrypoint
+      description: stable link to systemd guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/systemd.md
+      canonical: $CODEX_HOME/docs/systemd/overview.md
+      related:
+        - $CODEX_HOME/docs/workflows/systemd.md
+        - $CODEX_HOME/templates/systemd/
+        - skill:infra-systemd
+      metadata:
+        version: '1.0'
+        short-description: systemd guidance
+        tags:
+          - system
+          - systemd
+    usbguard:
+      kind: entrypoint
+      description: stable link to USBGuard guidance.
+      entrypoint: $CODEX_HOME/index/domains/system/usbguard.md
+      canonical: $CODEX_HOME/docs/system/usbguard.md
+      related:
+        - $CODEX_HOME/docs/workflows/usbguard.md
+        - $CODEX_HOME/snippets/system/usbguard.rules
+        - skill:secops-usbguard
+      metadata:
+        version: '1.0'
+        short-description: USBGuard guidance
+        tags:
+          - system
+          - usbguard
+  vscode:
+    vscode-guidance:
+      kind: entrypoint
+      description: stable link to VS Code guidance.
+      entrypoint: $CODEX_HOME/index/domains/vscode/guidance.md
+      canonical: $CODEX_HOME/docs/vscode/overview.md
+      related:
+        - $CODEX_HOME/docs/workflows/vscode-extensions.md
+        - $CODEX_HOME/docs/vscode/devcontainer.md
+        - $CODEX_HOME/docs/vscode/settings.md
+        - $CODEX_HOME/snippets/vscode/devcontainer.json
+        - $CODEX_HOME/templates/containers/devlab-codelab-skeleton/
+      metadata:
+        version: '1.0'
+        short-description: VS Code guidance
+        tags:
+          - vscode
+          - overview
+    vscode-extension:
+      kind: entrypoint
+      description: stable link to VS Code extension workflow.
+      entrypoint: $CODEX_HOME/index/domains/vscode/vscode-extension.md
+      canonical: $CODEX_HOME/docs/workflows/vscode-extensions.md
+      related:
+        - $CODEX_HOME/docs/workflows/vscode-extensions.md
+        - skill:devtools-vscode-extension
+      metadata:
+        version: '1.0'
+        short-description: VS Code extension workflow
+        tags:
+          - vscode
+          - vscode-extension
+  web:
+    web-frameworks:
+      kind: entrypoint
+      description: stable link to web framework guidance.
+      entrypoint: $CODEX_HOME/index/domains/web/frameworks.md
+      canonical: $CODEX_HOME/docs/web/overview.md
+      related:
+        - $CODEX_HOME/docs/web/react.md
+        - $CODEX_HOME/docs/web/nextjs.md
+        - $CODEX_HOME/docs/web/htmx.md
+        - $CODEX_HOME/docs/web/sveltekit.md
+        - $CODEX_HOME/docs/web/vue.md
+        - $CODEX_HOME/docs/web/nuxt.md
+        - $CODEX_HOME/docs/workflows/web-frontend.md
+        - $CODEX_HOME/templates/web/
+        - skill:web-react
+        - skill:web-nextjs
+        - skill:web-htmx
+      metadata:
+        version: '1.0'
+        short-description: web framework guidance
+        tags:
+          - web
+          - overview
+    htmx:
+      kind: entrypoint
+      description: stable link to HTMX guidance.
+      entrypoint: $CODEX_HOME/index/domains/web/htmx.md
+      canonical: $CODEX_HOME/docs/web/htmx.md
+      related:
+        - $CODEX_HOME/docs/workflows/web-frontend.md
+        - $CODEX_HOME/snippets/web/htmx/
+        - skill:web-htmx
+      metadata:
+        version: '1.0'
+        short-description: HTMX guidance
+        tags:
+          - web
+          - htmx
+    nextjs:
+      kind: entrypoint
+      description: stable link to Next.js guidance.
+      entrypoint: $CODEX_HOME/index/domains/web/nextjs.md
+      canonical: $CODEX_HOME/docs/web/nextjs.md
+      related:
+        - $CODEX_HOME/docs/workflows/web-frontend.md
+        - $CODEX_HOME/templates/web/nextjs-app/
+        - skill:web-nextjs
+      metadata:
+        version: '1.0'
+        short-description: Next.js guidance
+        tags:
+          - web
+          - nextjs
+    nuxt:
+      kind: entrypoint
+      description: stable link to Nuxt guidance.
+      entrypoint: $CODEX_HOME/index/domains/web/nuxt.md
+      canonical: $CODEX_HOME/docs/web/nuxt.md
+      related:
+        - $CODEX_HOME/docs/workflows/web-frontend.md
+        - $CODEX_HOME/templates/web/nuxt-app/
+        - skill:web-nuxt
+      metadata:
+        version: '1.0'
+        short-description: Nuxt guidance
+        tags:
+          - web
+          - nuxt
+    react:
+      kind: entrypoint
+      description: stable link to React guidance.
+      entrypoint: $CODEX_HOME/index/domains/web/react.md
+      canonical: $CODEX_HOME/docs/web/react.md
+      related:
+        - $CODEX_HOME/docs/workflows/web-frontend.md
+        - $CODEX_HOME/templates/web/react-vite-app/
+        - skill:web-react
+      metadata:
+        version: '1.0'
+        short-description: React guidance
+        tags:
+          - web
+          - react
+    sveltekit:
+      kind: entrypoint
+      description: stable link to SvelteKit guidance.
+      entrypoint: $CODEX_HOME/index/domains/web/sveltekit.md
+      canonical: $CODEX_HOME/docs/web/sveltekit.md
+      related:
+        - $CODEX_HOME/docs/workflows/web-frontend.md
+        - $CODEX_HOME/templates/web/sveltekit-app/
+        - skill:web-sveltekit
+      metadata:
+        version: '1.0'
+        short-description: SvelteKit guidance
+        tags:
+          - web
+          - sveltekit
+    vue:
+      kind: entrypoint
+      description: stable link to Vue guidance.
+      entrypoint: $CODEX_HOME/index/domains/web/vue.md
+      canonical: $CODEX_HOME/docs/web/vue.md
+      related:
+        - $CODEX_HOME/docs/workflows/web-frontend.md
+        - $CODEX_HOME/templates/web/vue-app/
+        - skill:web-vue
+      metadata:
+        version: '1.0'
+        short-description: Vue guidance
+        tags:
+          - web
+          - vue

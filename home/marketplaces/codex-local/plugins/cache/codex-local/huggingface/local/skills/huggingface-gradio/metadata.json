@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Build Gradio web UIs and demos in Python. Use when creating or editing Gradio apps, components, event listeners, layouts, or chatbots.",
+  "references": [
+    "https://www.gradio.app/guides/quickstart",
+    "https://www.gradio.app/guides/the-interface-class",
+    "https://www.gradio.app/guides/blocks-and-event-listeners",
+    "https://www.gradio.app/guides/controlling-layout",
+    "https://www.gradio.app/guides/more-blocks-features",
+    "https://www.gradio.app/guides/custom-CSS-and-JS",
+    "https://www.gradio.app/guides/streaming-outputs",
+    "https://www.gradio.app/guides/streaming-inputs",
+    "https://www.gradio.app/guides/sharing-your-app",
+    "https://www.gradio.app/guides/custom-HTML-components",
+    "https://www.gradio.app/guides/getting-started-with-the-python-client",
+    "https://www.gradio.app/guides/getting-started-with-the-js-client",
+    "https://upload.wikimedia.org/wikipedia/commons/d/df/Award-star-gold-3d.svg"
+  ]
+}

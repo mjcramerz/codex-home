@@ -1,0 +1,282 @@
+# Codex requirements policy template.
+# Installed to /etc/codex/requirements.toml by make install/runtime.
+
+# Global allowed runtime policies.
+# Global allowed runtime policies.
+allowed_approval_policies = [
+  {granular = {sandbox_approval = false, rules = false, skill_approval = false, request_permissions = false, mcp_elicitations = false}},
+  "untrusted",
+  "on-failure",
+  "on-request",
+  "never"
+]
+allowed_sandbox_modes = ["read-only", "workspace-write", "danger-full-access", "external-sandbox"]
+allowed_web_search_modes = ["disabled", "cached", "live"]
+enforce_residency = "us"
+
+# Feature requirements that must stay enabled in managed installs.
+allow_managed_hooks_only = false
+allowed_approvals_reviewers = ["user", "auto_review"]
+
+[features]
+apps = true
+hooks = true
+plugins = true
+memories = true
+multi_agent = true
+browser_use = true
+browser_use_external = true
+computer_use = true
+in_app_browser = true
+plugin_sharing = true
+tool_suggest = true
+tool_search = true
+search_tool = true
+enable_mcp_apps = true
+skill_mcp_dependency_install = true
+
+# Identity pins for managed MCP servers.
+# Each managed MCP requirement supports exactly one identity table:
+# - [mcp_servers.<name>.identity].command = "..."
+# - [mcp_servers.<name>.identity].url = "..."
+[mcp_servers.cloudflare-api.identity]
+url = "https://mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-bindings.identity]
+url = "https://bindings.mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-builds.identity]
+url = "https://builds.mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-docs.identity]
+url = "https://docs.mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-observability.identity]
+url = "https://observability.mcp.cloudflare.com/mcp"
+
+[mcp_servers.atlassian.identity]
+url = "https://mcp.atlassian.com/v1/mcp"
+
+[mcp_servers.context7.identity]
+command = "/data/codex/mcp/wrappers/mcp-context7-wrapper.sh"
+
+[mcp_servers.fetch.identity]
+command = "/data/codex/mcp/wrappers/mcp-fetch-wrapper.sh"
+
+[mcp_servers.figma.identity]
+url = "https://mcp.figma.com/mcp"
+
+[mcp_servers.filesystem.identity]
+command = "/data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh"
+
+[mcp_servers.git.identity]
+command = "/data/codex/mcp/wrappers/mcp-git-wrapper.sh"
+
+[mcp_servers.huggingface.identity]
+url = "https://huggingface.co/mcp?login"
+
+[mcp_servers.jina-ai.identity]
+url = "https://mcp.jina.ai/v1"
+
+[mcp_servers.linear.identity]
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.memory.identity]
+command = "/data/codex/mcp/wrappers/mcp-memory-wrapper.sh"
+
+[mcp_servers.markdown.identity]
+command = "/data/codex/mcp/wrappers/mcp-markdown-wrapper.sh"
+
+[mcp_servers.microsoft-learn.identity]
+url = "https://learn.microsoft.com/api/mcp"
+
+[mcp_servers.openaiDeveloperDocs.identity]
+url = "https://developers.openai.com/mcp"
+
+[mcp_servers.playwright.identity]
+command = "/data/codex/mcp/wrappers/mcp-playwright-wrapper.sh"
+
+[mcp_servers.chrome-devtools.identity]
+command = "/data/codex/mcp/wrappers/mcp-chrome-devtools-wrapper.sh"
+
+[mcp_servers.postgres.identity]
+command = "/data/codex/mcp/wrappers/mcp-postgres-wrapper.sh"
+
+[mcp_servers.render.identity]
+url = "https://mcp.render.com/mcp"
+
+[mcp_servers.sequential_thinking.identity]
+command = "/data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh"
+
+[mcp_servers.sqlite.identity]
+command = "/data/codex/mcp/wrappers/mcp-sqlite-wrapper.sh"
+
+[mcp_servers.stripe.identity]
+url = "https://mcp.stripe.com"
+
+[mcp_servers.semgrep.identity]
+command = "/data/codex/mcp/wrappers/mcp-semgrep-wrapper.sh"
+
+[mcp_servers.time.identity]
+command = "/data/codex/mcp/wrappers/mcp-time-wrapper.sh"
+
+[mcp_servers.vercel.identity]
+url = "https://mcp.vercel.com"
+
+# Managed app allowlist.
+
+[apps."asdk_app_691f1f8f72408191afdbbdf8242bdf86"]
+enabled = true
+
+[apps."connector_68df038e0ba48191908c8434991bbac2"]
+enabled = true
+
+[apps."connector_690a90ec05c881918afb6a55dc9bbaa1"]
+enabled = true
+
+[apps."connector_690ab09fa43c8191bca40280e4563238"]
+enabled = true
+
+[apps."connector_69312da8e4dc81919370cb86fd172b6c"]
+enabled = true
+
+[apps."connector_6938a61c70f88191bbdca2dedb90d08b"]
+enabled = true
+
+[apps."connector_6938a7d323f48191aeabaf579802bf45"]
+enabled = true
+
+[apps."connector_947e0d954944416db111db556030eea6"]
+enabled = true
+
+[apps."github"]
+enabled = true
+
+[apps."linear"]
+enabled = true
+
+[apps."notion"]
+enabled = true
+
+# Plugin-bundled MCP allowlists.
+
+[plugins."atlassian".mcp_servers."atlassian".identity]
+url = "https://mcp.atlassian.com/v1/mcp"
+
+[plugins."backend".mcp_servers."microsoft-learn".identity]
+url = "https://learn.microsoft.com/api/mcp"
+
+[plugins."cloudflare-agents".mcp_servers."cloudflare-api".identity]
+url = "https://mcp.cloudflare.com/mcp"
+
+[plugins."cloudflare-agents".mcp_servers."cloudflare-docs".identity]
+url = "https://docs.mcp.cloudflare.com/mcp"
+
+[plugins."cloudflare-workers".mcp_servers."cloudflare-api".identity]
+url = "https://mcp.cloudflare.com/mcp"
+
+[plugins."cloudflare-workers".mcp_servers."cloudflare-bindings".identity]
+url = "https://bindings.mcp.cloudflare.com/mcp"
+
+[plugins."cloudflare-workers".mcp_servers."cloudflare-docs".identity]
+url = "https://docs.mcp.cloudflare.com/mcp"
+
+[plugins."cloudflare-workers".mcp_servers."cloudflare-observability".identity]
+url = "https://observability.mcp.cloudflare.com/mcp"
+
+[plugins."codex-repo".mcp_servers."openaiDeveloperDocs".identity]
+url = "https://developers.openai.com/mcp"
+
+[plugins."codex-runtime".mcp_servers."openaiDeveloperDocs".identity]
+url = "https://developers.openai.com/mcp"
+
+[plugins."docs-research".mcp_servers."jina-ai".identity]
+url = "https://mcp.jina.ai/v1"
+
+[plugins."docs-research".mcp_servers."microsoft-learn".identity]
+url = "https://learn.microsoft.com/api/mcp"
+
+[plugins."docs-research".mcp_servers."openaiDeveloperDocs".identity]
+url = "https://developers.openai.com/mcp"
+
+[plugins."figma".mcp_servers."figma".identity]
+url = "https://mcp.figma.com/mcp"
+
+[plugins."frontend".mcp_servers."jina-ai".identity]
+url = "https://mcp.jina.ai/v1"
+
+[plugins."hosting-platforms".mcp_servers."render".identity]
+url = "https://mcp.render.com/mcp"
+
+[plugins."hosting-platforms".mcp_servers."vercel".identity]
+url = "https://mcp.vercel.com"
+
+[plugins."huggingface".mcp_servers."huggingface".identity]
+url = "https://huggingface.co/mcp?login"
+
+[plugins."jina-ai".mcp_servers."jina-ai".identity]
+url = "https://mcp.jina.ai/v1"
+
+[plugins."microsoft-learn".mcp_servers."microsoft-learn".identity]
+url = "https://learn.microsoft.com/api/mcp"
+
+[plugins."openai-apps".mcp_servers."openaiDeveloperDocs".identity]
+url = "https://developers.openai.com/mcp"
+
+[plugins."render".mcp_servers."render".identity]
+url = "https://mcp.render.com/mcp"
+
+[plugins."stripe".mcp_servers."stripe".identity]
+url = "https://mcp.stripe.com"
+
+[plugins."vercel".mcp_servers."vercel".identity]
+url = "https://mcp.vercel.com"
+
+[plugins."winui".mcp_servers."microsoft-learn".identity]
+url = "https://learn.microsoft.com/api/mcp"
+
+[plugins."wrangler".mcp_servers."cloudflare-api".identity]
+url = "https://mcp.cloudflare.com/mcp"
+
+[plugins."wrangler".mcp_servers."cloudflare-builds".identity]
+url = "https://builds.mcp.cloudflare.com/mcp"
+
+[plugins."wrangler".mcp_servers."cloudflare-docs".identity]
+url = "https://docs.mcp.cloudflare.com/mcp"
+
+
+# Command policy rules applied by the runtime guard.
+# Supported keys:
+# - [rules]
+# - prefix_rules = [
+#     {
+#       pattern = [{ token = "..." }, { any_of = ["...", "..."] }],
+#       decision = "prompt" | "forbidden",
+#       justification = "...",
+#     }
+#   ]
+# Note: `decision = "allow"` is parsed by Codex but rejected in requirements.toml.
+#[rules]
+#prefix_rules = [
+#  { pattern = [{ token = "rm" }], decision = "forbidden", justification = "block destructive remove" },
+#  { pattern = [{ token = "git" }, { any_of = ["push", "commit"] }], decision = "prompt", justification = "require review for SCM mutations" },
+#]
+
+# Optional network policy template for managed installs.
+# Supported keys under [experimental_network]:
+# enabled, http_port, socks_port, allow_upstream_proxy,
+# dangerously_allow_non_loopback_proxy, dangerously_allow_all_unix_sockets,
+# allowed_domains, managed_allowed_domains_only, denied_domains,
+# allow_unix_sockets, allow_local_binding.
+#[experimental_network]
+#enabled = false
+#http_port = 8080
+#socks_port = 1080
+#allow_upstream_proxy = false
+#dangerously_allow_non_loopback_proxy = false
+#dangerously_allow_all_unix_sockets = false
+#allowed_domains = ["api.openai.com", "developers.openai.com"]
+#managed_allowed_domains_only = false
+#denied_domains = ["metadata.google.internal"]
+#allow_unix_sockets = ["/tmp/example.sock"]
+#allow_local_binding = false

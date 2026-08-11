@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 20, 2026",
+  "abstract": "Build Rust workspaces with cargo fmt, clippy, locked builds, and targeted test guidance.",
+  "references": [
+    "https://doc.rust-lang.org/book/",
+    "https://doc.rust-lang.org/cargo/",
+    "https://doc.rust-lang.org/clippy/"
+  ]
+}

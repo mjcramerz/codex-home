@@ -1,0 +1,9 @@
+model = "gpt-5.4-mini"
+model_catalog_json = "/data/codex/usr/home/.models/default_catalog.json"
+model_instructions_file = "/data/codex/usr/instructions/profiles/fast/models/base.md"
+model_reasoning_effort = "low"
+model_reasoning_summary = "auto"
+model_verbosity = "low"
+
+[instruction_overrides.models]
+base_instructions_file = "/data/codex/usr/instructions/profiles/fast/models/base.md"

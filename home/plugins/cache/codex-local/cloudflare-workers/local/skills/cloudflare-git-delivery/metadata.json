@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 20, 2026",
+  "abstract": "Coordinate cf-git-cicd-worker and delivery shared CI templates so runtime behavior, secrets, routes, D1, and WAF contracts stay aligned.",
+  "references": [
+    "references/latest-sources.md",
+    "https://developers.cloudflare.com/workers/"
+  ]
+}

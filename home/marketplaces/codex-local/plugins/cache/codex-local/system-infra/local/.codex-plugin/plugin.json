@@ -1,0 +1,41 @@
+{
+  "name": "system-infra",
+  "version": "1.0.0",
+  "description": "Host infrastructure workflows for boot, installer, storage, package publication, tuning, logging, and base system automation.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "System Infra",
+    "shortDescription": "Host tuning, installer, and package-service automation",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the System Infra plugin for unattended install, storage, boot, package-service, and host tuning workflows."
+    ],
+    "longDescription": "Use this plugin for GRUB, kernel settings, sysctl, systemd, filesystems, Debian preseed, Aptly-backed package services, and host performance workflows.",
+    "developerName": "Codex Setup",
+    "brandColor": "#14B8A6",
+    "websiteURL": "https://gitlab.com/computes/apps/codex-manager",
+    "composerIcon": "./skills/infra-grub/assets/icon-32.png",
+    "logo": "./skills/infra-grub/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://gitlab.com/computes/apps/codex-manager",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "system",
+    "infra",
+    "infrastructure",
+    "grub",
+    "kernel",
+    "optimizations",
+    "preseed",
+    "aptly",
+    "runner"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "task_name": "Write project update",
+  "date": "2026-01-15",
+  "task_done": "Update sent to stakeholders",
+  "task_why": "Keep alignment and trust",
+  "time_estimate": "45m",
+  "start_trigger": "Open notes file",
+  "step_1": "Open the last update",
+  "step_2": "List 3 wins",
+  "step_3": "List 2 risks",
+  "step_4": "Draft next steps",
+  "step_5": "Check tone",
+  "step_6": "Send",
+  "blockers": "Need latest metrics",
+  "support_tools": "Template + timer",
+  "reward_task": "Short break",
+  "next_action": "Open the notes document"
+}

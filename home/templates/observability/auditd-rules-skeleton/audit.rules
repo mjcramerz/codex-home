@@ -1,0 +1,16 @@
+# Minimal auditd rules (example)
+-D
+-b 8192
+-f 1
+
+# Identity changes
+-w /etc/passwd -p wa -k identity
+-w /etc/group -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/sudoers -p wa -k identity
+
+# Time changes
+-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -k time-change
+
+# Audit config
+-w /etc/audit/ -p wa -k audit-config

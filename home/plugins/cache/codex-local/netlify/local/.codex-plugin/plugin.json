@@ -1,0 +1,42 @@
+{
+  "name": "netlify",
+  "version": "1.0.0",
+  "description": "Netlify deployment and site-linking workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Netlify",
+    "shortDescription": "Netlify deployment workflows",
+    "category": "Development",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Netlify plugin for Netlify deployment and site-linking workflows."
+    ],
+    "longDescription": "Use this plugin for Netlify deployment, site linking, and preview or production publish workflows.",
+    "developerName": "Netlify",
+    "brandColor": "#00AD9F",
+    "websiteURL": "https://www.netlify.com",
+    "privacyPolicyURL": "https://www.netlify.com/privacy/",
+    "termsOfServiceURL": "https://www.netlify.com/legal/terms-of-use/",
+    "composerIcon": "./skills/netlify-deploy/assets/netlify-small.svg",
+    "logo": "./skills/netlify-deploy/assets/netlify.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Netlify",
+    "url": "https://www.netlify.com"
+  },
+  "homepage": "https://www.netlify.com",
+  "repository": "https://github.com/openai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "netlify",
+    "deploy",
+    "hosting",
+    "site"
+  ],
+  "apps": "./.app.json"
+}

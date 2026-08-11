@@ -1,0 +1,55 @@
+interface:
+  display_name: Agents Sdk
+  short_description: Build AI agents on Cloudflare Workers using the Agents SDK. Load
+    when creating stateful agents, durable workflows, real-
+  default_prompt: 'Use the Agents Sdk skill when the task matches this scope: Build
+    AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful
+    agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers,
+    or chat applications. Covers Agent class, state management, callable RPC, Workflows
+    integration, and React hooks. Biases towards retrieval from Cloudflare docs over
+    pre-trained knowledge.'
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+
+policy:
+  allow_implicit_invocation: true

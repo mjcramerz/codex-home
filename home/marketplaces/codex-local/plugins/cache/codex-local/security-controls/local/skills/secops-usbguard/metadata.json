@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Configure USBGuard device authorization policies and rule sets for USB attack surface reduction. Use when the user asks for USB allowlist/denylist policy setup.",
+  "references": [
+    "https://usbguard.github.io/"
+  ]
+}

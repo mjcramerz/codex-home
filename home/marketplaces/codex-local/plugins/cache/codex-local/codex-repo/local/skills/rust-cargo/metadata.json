@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 20, 2026",
+  "abstract": "Edit Rust/Cargo projects with explicit fmt, clippy, test, locked-build, and release packaging guidance.",
+  "references": [
+    "references/latest-sources.md",
+    "https://doc.rust-lang.org/cargo/"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Manage Google Calendar events, schedules, and availability.",
+  "references": [
+    "SKILL.md"
+  ]
+}

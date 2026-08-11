@@ -1,0 +1,62 @@
+# 00-core.rules
+# Baseline broad allow policy for non-privileged, day-to-day automation.
+# Safety hardening is enforced in 90-forbidden.rules.
+
+# Shell/script entrypoints.
+prefix_rule(
+  pattern = ["bash"],
+  decision = "allow",
+  match = [
+    ["bash","-n","lib/codex_env.sh"],
+  ],
+)
+
+prefix_rule(
+  pattern = ["sh"],
+  decision = "allow",
+  match = [
+    ["sh","-n","resources/home/user/templates/common/posix-sh-script/script.sh"],
+  ],
+)
+
+# Read-only inspection and deterministic text-processing helpers.
+prefix_rule(pattern = ["rg"], decision = "allow", match = [["rg","--version"], ["rg","-n","TODO","README.md"]])
+prefix_rule(pattern = ["ls"], decision = "allow", match = [["ls","-la"]])
+prefix_rule(pattern = ["cat"], decision = "allow", match = [["cat","README.md"], ["cat","OVERVIEW.md"]])
+prefix_rule(pattern = ["pwd"], decision = "allow", match = [["pwd"]])
+prefix_rule(pattern = ["whoami"], decision = "allow", match = [["whoami"]])
+prefix_rule(pattern = ["uname"], decision = "allow", match = [["uname","-a"]])
+prefix_rule(pattern = ["id"], decision = "allow", match = [["id","-u"]])
+prefix_rule(pattern = ["date"], decision = "allow", match = [["date","-u"]])
+prefix_rule(pattern = ["stat"], decision = "allow", match = [["stat","README.md"]])
+prefix_rule(pattern = ["wc"], decision = "allow", match = [["wc","-l","README.md"]])
+prefix_rule(pattern = ["head"], decision = "allow", match = [["head","-n","5","README.md"]])
+prefix_rule(pattern = ["tail"], decision = "allow", match = [["tail","-n","5","README.md"]])
+prefix_rule(pattern = ["grep"], decision = "allow", match = [["grep","-n","TODO","README.md"]])
+prefix_rule(pattern = ["file"], decision = "allow", match = [["file","README.md"]])
+prefix_rule(pattern = ["which"], decision = "allow", match = [["which","rg"]])
+prefix_rule(pattern = ["find"], decision = "allow", match = [["find",".","-maxdepth","2","-type","f"]])
+prefix_rule(pattern = ["sed"], decision = "allow", match = [["sed","-n","1,40p","README.md"]])
+prefix_rule(pattern = ["awk"], decision = "allow", match = [["awk","{print $1}","README.md"]])
+prefix_rule(pattern = ["cut"], decision = "allow", match = [["cut","-d:","-f1","/etc/passwd"]])
+prefix_rule(pattern = ["sort"], decision = "allow", match = [["sort","README.md"]])
+prefix_rule(pattern = ["uniq"], decision = "allow", match = [["uniq","README.md"]])
+prefix_rule(pattern = ["xargs"], decision = "allow", match = [["xargs","-0","echo"]])
+prefix_rule(pattern = ["tr"], decision = "allow", match = [["tr","a-z","A-Z"]])
+prefix_rule(pattern = ["diff"], decision = "allow", match = [["diff","-u","a","b"]])
+prefix_rule(pattern = ["cmp"], decision = "allow", match = [["cmp","a","b"]])
+prefix_rule(pattern = ["dirname"], decision = "allow", match = [["dirname","/tmp/file"]])
+prefix_rule(pattern = ["basename"], decision = "allow", match = [["basename","/tmp/file"]])
+prefix_rule(pattern = ["realpath"], decision = "allow", match = [["realpath","README.md"]])
+prefix_rule(pattern = ["mktemp"], decision = "allow", match = [["mktemp"]])
+prefix_rule(pattern = ["tee"], decision = "allow", match = [["tee","/tmp/file"]])
+prefix_rule(pattern = ["env"], decision = "allow", match = [["env"]])
+prefix_rule(pattern = ["printenv"], decision = "allow", match = [["printenv","PATH"]])
+prefix_rule(pattern = ["jq"], decision = "allow", match = [["jq","-r",".name","package.json"]])
+prefix_rule(pattern = ["yq"], decision = "allow", match = [["yq",".version","config.yml"]])
+prefix_rule(pattern = ["tar"], decision = "allow", match = [["tar","-tf","archive.tar"]])
+prefix_rule(pattern = ["du"], decision = "allow", match = [["du","-sh","."]])
+prefix_rule(pattern = ["df"], decision = "allow", match = [["df","-h"]])
+prefix_rule(pattern = ["make"], decision = "allow", match = [["make","preflight"], ["make","verify"]])
+prefix_rule(pattern = ["just"], decision = "allow", match = [["just","--list"]])
+prefix_rule(pattern = ["task"], decision = "allow", match = [["task","--list"]])

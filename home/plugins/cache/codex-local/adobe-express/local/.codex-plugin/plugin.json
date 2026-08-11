@@ -1,0 +1,43 @@
+{
+  "name": "adobe-express",
+  "version": "1.0.0",
+  "description": "Adobe Express workflows for quick visual design, social assets, and campaign-ready exports.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Adobe Express",
+    "shortDescription": "Design posts, flyers, and quick campaign assets",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Adobe Express plugin to create and iterate social and marketing graphics with explicit size and format targets."
+    ],
+    "longDescription": "Use this plugin for Adobe Express social creative, posters, invitations, and quick multi-format design workflows.",
+    "developerName": "Adobe",
+    "brandColor": "#5D3BFF",
+    "websiteURL": "https://www.adobe.com/express/",
+    "privacyPolicyURL": "https://www.adobe.com/privacy/policy.html",
+    "termsOfServiceURL": "https://www.adobe.com/legal/terms.html",
+    "composerIcon": "./skills/adobe-express/assets/app-icon.png",
+    "logo": "./skills/adobe-express/assets/app-icon.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Adobe",
+    "url": "https://www.adobe.com/express/"
+  },
+  "homepage": "https://www.adobe.com/express/",
+  "repository": "https://github.com/openai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "adobe",
+    "express",
+    "design",
+    "social",
+    "marketing"
+  ],
+  "apps": "./.app.json"
+}

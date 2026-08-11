@@ -1,0 +1,4 @@
+# Example kernel config fragment (edit per policy)
+# CONFIG_DEBUG_INFO is not set
+# CONFIG_MODULES is not set
+# CONFIG_MODULE_SIG is not set

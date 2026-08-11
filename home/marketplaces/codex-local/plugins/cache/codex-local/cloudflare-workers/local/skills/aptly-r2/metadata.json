@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 20, 2026",
+  "abstract": "Work in cf-aptly-r2 and its shared delivery contract across R2 bucket layout, Worker routing, signing assets, and GitLab CI templates.",
+  "references": [
+    "references/latest-sources.md",
+    "https://developers.cloudflare.com/r2/"
+  ]
+}

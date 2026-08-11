@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "name": "roles",
+      "enabled": true,
+      "short_description": "Role-specific inline developer instructions for CODEX_AGENTS/*.toml.",
+      "entries": [
+        {
+          "name": "analyst_developer_instructions",
+          "config_file": "analyst.toml",
+          "config_key": "developer_instructions",
+          "file": "analyst.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Analyst role developer instructions."
+        },
+        {
+          "name": "coder_developer_instructions",
+          "config_file": "coder.toml",
+          "config_key": "developer_instructions",
+          "file": "coder.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Coder role developer instructions."
+        },
+        {
+          "name": "default_developer_instructions",
+          "config_file": "default.toml",
+          "config_key": "developer_instructions",
+          "file": "default.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Default role developer instructions."
+        },
+        {
+          "name": "delegator_developer_instructions",
+          "config_file": "delegator.toml",
+          "config_key": "developer_instructions",
+          "file": "delegator.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Delegator role developer instructions."
+        },
+        {
+          "name": "explorer_developer_instructions",
+          "config_file": "explorer.toml",
+          "config_key": "developer_instructions",
+          "file": "explorer.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Explorer role developer instructions."
+        },
+        {
+          "name": "hunter_developer_instructions",
+          "config_file": "hunter.toml",
+          "config_key": "developer_instructions",
+          "file": "hunter.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Hunter role developer instructions."
+        },
+        {
+          "name": "integrator_developer_instructions",
+          "config_file": "integrator.toml",
+          "config_key": "developer_instructions",
+          "file": "integrator.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Integrator role developer instructions."
+        },
+        {
+          "name": "manager_developer_instructions",
+          "config_file": "manager.toml",
+          "config_key": "developer_instructions",
+          "file": "manager.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Manager role developer instructions."
+        },
+        {
+          "name": "orchestrator_developer_instructions",
+          "config_file": "orchestrator.toml",
+          "config_key": "developer_instructions",
+          "file": "orchestrator.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Orchestrator role developer instructions."
+        },
+        {
+          "name": "planner_developer_instructions",
+          "config_file": "planner.toml",
+          "config_key": "developer_instructions",
+          "file": "planner.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Planner role developer instructions."
+        },
+        {
+          "name": "reviewer_developer_instructions",
+          "config_file": "reviewer.toml",
+          "config_key": "developer_instructions",
+          "file": "reviewer.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Reviewer role developer instructions."
+        },
+        {
+          "name": "synthesizer_developer_instructions",
+          "config_file": "synthesizer.toml",
+          "config_key": "developer_instructions",
+          "file": "synthesizer.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Synthesizer role developer instructions."
+        },
+        {
+          "name": "tester_developer_instructions",
+          "config_file": "tester.toml",
+          "config_key": "developer_instructions",
+          "file": "tester.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Tester role developer instructions."
+        },
+        {
+          "name": "worker_developer_instructions",
+          "config_file": "worker.toml",
+          "config_key": "developer_instructions",
+          "file": "worker.md",
+          "source_group": "agents/roles",
+          "value_mode": "inline_text",
+          "short_description": "Worker role developer instructions."
+        }
+      ]
+    }
+  ]
+}

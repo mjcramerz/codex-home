@@ -1,0 +1,1049 @@
+forced_login_method = "chatgpt"
+#forced_chatgpt_workspace_id = ""
+chatgpt_base_url = 'https://chatgpt.com/backend-api/codex'
+cli_auth_credentials_store = "file"
+mcp_oauth_credentials_store = "file"
+mcp_oauth_callback_port = 8088
+suppress_unstable_features_warning = false
+#sandbox_mode = "workspace-write"
+
+default_permissions = "full"
+
+# experimental_realtime_ws_mode = ""
+# experimental_compact_prompt_file = "/abs/path/to/compact-prompt.md"
+# experimental_realtime_start_instructions = "Realtime startup instructions."
+# experimental_realtime_ws_backend_prompt = "Realtime websocket backend prompt."
+# experimental_realtime_ws_base_url = "wss://api.openai.com/v1/realtime"
+# experimental_realtime_ws_model = "gpt-realtime"
+# experimental_realtime_ws_startup_context = "Realtime startup context."
+# experimental_use_freeform_apply_patch = true
+# experimental_use_unified_exec_tool = true
+
+[model_providers.openai-custom]
+# Managed ChatGPT/Codex-compatible provider profile.
+name = "OpenAI (Custom)"
+#model = "gpt-5.4"
+#model_reasoning_summary = "xhigh"
+requires_openai_auth = true
+#forced_login_method = "api"
+base_url = "https://chatgpt.com/backend-api/codex"
+#base_url = "https://api.openai.com/v1"
+wire_api = "responses"
+query_params = { api_version = "2026-03-11" }
+http_headers = { "X-Provider" = "example" }
+#env_key = "OPENAI_API_KEY"
+env_http_headers = { "OpenAI-Organization" = "OPENAI_ORGANIZATION", "OpenAI-Project" = "OPENAI_PROJECT" }
+request_max_retries = 4
+stream_max_retries = 3
+stream_idle_timeout_ms = 40000
+supports_websockets = true
+websocket_connect_timeout_ms = 120000
+
+#[model_providers.openai-reranker]
+#name = "OpenAI Reranker"
+#3base_url = "https://chatgpt.com/backend-api/codex"
+#wire_api = "responses"
+#stream_max_retries = 3
+#3request_max_retries = 2
+#stream_idle_timeout_ms = 40000
+#requires_openai_auth = true
+#supports_websockets = false
+
+#[model_providers.openai-summary]
+#name = "OpenAI Summary"
+#base_url = "https://chatgpt.com/backend-api/codex"
+#wire_api = "responses"
+#stream_max_retries = 3
+#request_max_retries = 2
+#stream_idle_timeout_ms = 40000
+#requires_openai_auth = true 
+#supports_websockets = false
+
+[model_providers.cloudflare-ai-embedding]
+name = "Cloudflare Workers AI embedding"
+base_url = "https://api.cloudflare.com/client/v4/accounts/45f7447eb2692c6351ecbb3757e1192c/ai/v1"
+env_key = "CLOUDFLARE_API_TOKEN"
+#wire_api = "responses"
+request_max_retries = 2
+#stream_idle_timeout_ms = 30000
+requires_openai_auth = false
+supports_websockets = false
+
+#[windows]
+
+[ghost_snapshot]
+disable_warnings = false
+ignore_large_untracked_files = 10485760
+ignore_large_untracked_dirs = 200
+
+[notice]
+hide_full_access_warning = true
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+hide_gpt5_1_migration_prompt = true
+hide_rate_limit_model_nudge = true
+hide_world_writable_warning = true
+
+#version = 1
+
+# Global MCP server definitions only. Bundle-scoped endpoints belong in `resources/plugins/manifest.json`.
+# Image-backed stdio servers carry explicit safe enablement and timeout defaults here; user-layer
+# overrides belong in `config/usr/apps.toml`. Installer rendering writes `/data/codex/usr/home` `mcp_servers`
+# as inline entries sorted with `url` transports first, then `command` transports.
+
+#[mcp_servers.shell-tool]
+#command = "/data/devops/nodejs/current/bin/npx"
+#args = ["-y", "@openai/codex"]
+#enabled = true
+
+#[mcp_servers.shell-tool.env]
+#PATH = "/data/devops/nodejs/current/bin:/usr/local/bin:/usr/bin:/bin"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+required = false
+enabled_tools = [
+  "fetch_openai_doc",
+  "get_openapi_spec",
+  "list_api_endpoints",
+  "list_openai_docs",
+  "search_openai_docs",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+required = false
+# Official Linear docs describe capabilities, but do not publish a canonical
+# machine-readable tool ID list. Leave `enabled_tools` unset so the server
+# continues to expose its full toolset instead of risking a broken allow-list.
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# OAuth login is supported in compatible clients.
+# Optional bearer-token/API-key fallback:
+bearer_token_env_var = "LINEAR_API_KEY"
+
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+required = false
+bearer_token_env_var = "FIGMA_OAUTH_TOKEN"
+enabled_tools = [
+  "generate_figma_design",
+  "get_design_context",
+  "get_variable_defs",
+  "get_code_connect_map",
+  "add_code_connect_map",
+  "get_screenshot",
+  "create_design_system_rules",
+  "get_metadata",
+  "get_figjam",
+  "generate_diagram",
+  "whoami",
+  "get_code_connect_suggestions",
+  "send_code_connect_mappings",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.render]
+url = "https://mcp.render.com/mcp"
+required = false
+enabled_tools = [
+  "list_workspaces",
+  "select_workspace",
+  "get_selected_workspace",
+  "list_services",
+  "get_service",
+  "create_web_service",
+  "create_static_site",
+  "create_cron_job",
+  "update_environment_variables",
+  "list_deploys",
+  "get_deploy",
+  "list_logs",
+  "list_log_label_values",
+  "get_metrics",
+  "query_render_postgres",
+  "list_postgres_instances",
+  "get_postgres",
+  "create_postgres",
+  "list_key_value",
+  "get_key_value",
+  "create_key_value",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+bearer_token_env_var = "RENDER_API_KEY"
+
+[mcp_servers.vercel]
+url = "https://mcp.vercel.com"
+required = false
+enabled_tools = [
+  "search_documentation",
+  "list_teams",
+  "list_projects",
+  "get_project",
+  "list_deployments",
+  "get_deployment",
+  "get_deployment_build_logs",
+  "get_runtime_logs",
+  "check_domain_availability_and_price",
+  "buy_domain",
+  "get_access_to_vercel_url",
+  "web_fetch_vercel_url",
+  "use_vercel_cli",
+  "deploy_to_vercel",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# Optional bearer token for private or team-scoped resources:
+bearer_token_env_var = "VERCEL_API_TOKEN"
+
+[mcp_servers.microsoft-learn]
+url = "https://learn.microsoft.com/api/mcp"
+required = false
+enabled_tools = [
+  "microsoft_code_sample_search",
+  "microsoft_docs_fetch",
+  "microsoft_docs_search",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# Public Microsoft Learn docs work without extra auth; compatible clients can
+# still prompt for login when tenant-scoped content is needed.
+
+[mcp_servers.jina-ai]
+url = "https://mcp.jina.ai/v1"
+required = false
+enabled_tools = [
+  "primer",
+  "show_api_key",
+  "read_url",
+  "capture_screenshot_url",
+  "guess_datetime_url",
+  "search_web",
+  "search_arxiv",
+  "search_ssrn",
+  "search_images",
+  "search_jina_blog",
+  "search_bibtex",
+  "expand_query",
+  "parallel_search_web",
+  "parallel_search_arxiv",
+  "parallel_search_ssrn",
+  "parallel_read_url",
+  "sort_by_relevance",
+  "classify_text",
+  "deduplicate_strings",
+  "deduplicate_images",
+  "extract_pdf",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# Optional bearer token for higher limits or private resources:
+bearer_token_env_var = "JINA_API_KEY"
+
+[mcp_servers.atlassian]
+url = "https://mcp.atlassian.com/v1/mcp"
+required = false
+enabled_tools = [
+  "createCompassComponent",
+  "createCompassComponentRelationship",
+  "createCompassCustomFieldDefinition",
+  "deleteCompassComponent",
+  "deleteCompassComponentRelationship",
+  "deleteCompassCustomFieldDefinition",
+  "getCompassComponent",
+  "getCompassComponentActivityEvents",
+  "getCompassComponentLabels",
+  "getCompassComponentTypes",
+  "getCompassComponents",
+  "getCompassComponentsOwnedByMyTeams",
+  "getCompassCustomFieldDefinitions",
+  "createConfluenceFooterComment",
+  "createConfluenceInlineComment",
+  "createConfluencePage",
+  "getConfluencePage",
+  "getConfluencePageDescendants",
+  "getConfluencePageFooterComments",
+  "getConfluencePageInlineComments",
+  "getConfluenceSpaces",
+  "getPagesInConfluenceSpace",
+  "searchConfluenceUsingCql",
+  "updateConfluencePage",
+  "addCommentToJiraIssue",
+  "addWorklogToJiraIssue",
+  "createJiraIssue",
+  "editJiraIssue",
+  "getJiraIssue",
+  "getJiraIssueRemoteIssueLinks",
+  "getJiraIssueTypeMetaWithFields",
+  "getJiraProjectIssueTypesMetadata",
+  "getTransitionsForJiraIssue",
+  "getVisibleJiraProjects",
+  "lookupJiraAccountId",
+  "searchJiraIssuesUsingJql",
+  "transitionJiraIssue",
+  "getJsmOpsAlerts",
+  "getJsmOpsScheduleInfo",
+  "getJsmOpsTeamInfo",
+  "updateJsmOpsAlert",
+  "atlassianUserInfo",
+  "getAccessibleAtlassianResources",
+  "fetch",
+  "search",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# OAuth login is supported in compatible clients.
+# Optional bearer-token fallback:
+bearer_token_env_var = "ATLASSIAN_MCP_TOKEN"
+
+[mcp_servers.stripe]
+url = "https://mcp.stripe.com"
+required = false
+enabled_tools = [
+  "get_stripe_account_info",
+  "retrieve_balance",
+  "create_coupon",
+  "list_coupons",
+  "create_customer",
+  "list_customers",
+  "list_disputes",
+  "update_dispute",
+  "create_invoice",
+  "create_invoice_item",
+  "finalize_invoice",
+  "list_invoices",
+  "create_payment_link",
+  "list_payment_intents",
+  "create_price",
+  "list_prices",
+  "create_product",
+  "list_products",
+  "create_refund",
+  "cancel_subscription",
+  "list_subscriptions",
+  "update_subscription",
+  "search_stripe_resources",
+  "fetch_stripe_resources",
+  "search_stripe_documentation",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# OAuth login is supported in compatible clients.
+# Optional bearer-token fallback:
+bearer_token_env_var = "STRIPE_API_KEY"
+
+[mcp_servers.cloudflare-api]
+url = "https://mcp.cloudflare.com/mcp"
+required = false
+enabled_tools = [
+  "execute",
+  "search",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# Optional bearer token for CI/CD or headless API access:
+bearer_token_env_var = "CLOUDFLARE_API_TOKEN"
+
+[mcp_servers.cloudflare-docs]
+url = "https://docs.mcp.cloudflare.com/mcp"
+required = false
+enabled_tools = [
+  "migrate_pages_to_workers_guide",
+  "search_cloudflare_documentation",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.cloudflare-bindings]
+url = "https://bindings.mcp.cloudflare.com/mcp"
+required = false
+enabled_tools = [
+  "accounts_list",
+  "d1_database_create",
+  "d1_database_delete",
+  "d1_database_get",
+  "d1_database_query",
+  "d1_databases_list",
+  "hyperdrive_config_delete",
+  "hyperdrive_config_edit",
+  "hyperdrive_config_get",
+  "hyperdrive_configs_list",
+  "kv_namespace_create",
+  "kv_namespace_delete",
+  "kv_namespace_get",
+  "kv_namespace_update",
+  "kv_namespaces_list",
+  "migrate_pages_to_workers_guide",
+  "r2_bucket_create",
+  "r2_bucket_delete",
+  "r2_bucket_get",
+  "r2_buckets_list",
+  "search_cloudflare_documentation",
+  "set_active_account",
+  "workers_get_worker",
+  "workers_get_worker_code",
+  "workers_list",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.cloudflare-builds]
+url = "https://builds.mcp.cloudflare.com/mcp"
+required = false
+enabled_tools = [
+  "accounts_list",
+  "set_active_account",
+  "workers_builds_get_build",
+  "workers_builds_get_build_logs",
+  "workers_builds_list_builds",
+  "workers_builds_set_active_worker",
+  "workers_get_worker",
+  "workers_get_worker_code",
+  "workers_list",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.cloudflare-observability]
+url = "https://observability.mcp.cloudflare.com/mcp"
+required = false
+enabled_tools = [
+  "accounts_list",
+  "migrate_pages_to_workers_guide",
+  "observability_keys",
+  "observability_values",
+  "query_worker_observability",
+  "search_cloudflare_documentation",
+  "set_active_account",
+  "workers_get_worker",
+  "workers_get_worker_code",
+  "workers_list",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.huggingface]
+url = "https://huggingface.co/mcp?login"
+required = false
+enabled_tools = [
+  "space_search",
+  "model_search",
+  "hub_repo_search",
+  "model_details",
+  "paper_search",
+  "dataset_search",
+  "dataset_details",
+  "hub_repo_details",
+  "duplicate_space",
+  "space_info",
+  "space_files",
+  "hf_doc_search",
+  "hf_doc_fetch",
+  "use_space",
+  "hf_jobs",
+  "dynamic_space",
+]
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+# Optional bearer token for private repos or higher limits:
+bearer_token_env_var = "HUGGINGFACE_TOKEN"
+
+[mcp_servers.context7]
+command = "/data/codex/mcp/wrappers/mcp-context7-wrapper.sh"
+args = []
+# Stdio transports must use env vars passed through the wrapper command.
+env_vars = [
+  "CONTEXT7_API_KEY",
+]
+enabled_tools = [
+  "resolve-library-id",
+  "query-docs",
+]
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.filesystem]
+command = "/data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh"
+args = []
+env_vars = []
+enabled_tools = [
+  "create_directory",
+  "directory_tree",
+  "edit_file",
+  "get_file_info",
+  "list_allowed_directories",
+  "list_directory",
+  "list_directory_with_sizes",
+  "move_file",
+  "read_file",
+  "read_media_file",
+  "read_multiple_files",
+  "read_text_file",
+  "search_files",
+  "write_file",
+]
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.memory]
+command = "/data/codex/mcp/wrappers/mcp-memory-wrapper.sh"
+args = []
+enabled_tools = [
+  "add_observations",
+  "create_entities",
+  "create_relations",
+  "delete_entities",
+  "delete_observations",
+  "delete_relations",
+  "open_nodes",
+  "read_graph",
+  "search_nodes",
+]
+env_vars = []
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.sequential_thinking]
+command = "/data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh"
+args = []
+enabled_tools = [
+  "sequentialthinking",
+]
+env_vars = []
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.fetch]
+command = "/data/codex/mcp/wrappers/mcp-fetch-wrapper.sh"
+args = []
+enabled_tools = [
+  "fetch",
+]
+env_vars = [
+  "FETCH_USER_AGENT",
+  "FETCH_PROXY_URL",
+  "FETCH_IGNORE_ROBOTS_TXT",
+]
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.git]
+command = "/data/codex/mcp/wrappers/mcp-git-wrapper.sh"
+args = []
+enabled_tools = [
+  "git_status",
+  "git_diff_unstaged",
+  "git_diff_staged",
+  "git_diff",
+  "git_commit",
+  "git_add",
+  "git_reset",
+  "git_log",
+  "git_create_branch",
+  "git_checkout",
+  "git_show",
+  "git_branch",
+]
+env_vars = []
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.time]
+command = "/data/codex/mcp/wrappers/mcp-time-wrapper.sh"
+args = []
+enabled_tools = [
+  "get_current_time",
+  "convert_time",
+]
+env_vars = [
+  "LOCAL_TIMEZONE",
+]
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.markdown]
+command = "/data/codex/mcp/wrappers/mcp-markdown-wrapper.sh"
+args = []
+env_vars = []
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.sqlite]
+command = "/data/codex/mcp/wrappers/mcp-sqlite-wrapper.sh"
+args = []
+# DBHub registers source-suffixed and user-defined tools from DBHUB_CONFIG.
+# Leave enabled_tools unset so Codex receives the complete runtime tool list.
+env_vars = [
+  "SQLITE_DSN",
+  "DSN",
+  "DBHUB_CONFIG",
+]
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.playwright]
+command = "/data/codex/mcp/wrappers/mcp-playwright-wrapper.sh"
+args = []
+enabled_tools = [
+  "browser_click",
+  "browser_close",
+  "browser_console_messages",
+  "browser_drag",
+  "browser_evaluate",
+  "browser_file_upload",
+  "browser_handle_dialog",
+  "browser_hover",
+  "browser_navigate",
+  "browser_navigate_back",
+  "browser_navigate_forward",
+  "browser_network_requests",
+  "browser_press_key",
+  "browser_resize",
+  "browser_select_option",
+  "browser_snapshot",
+  "browser_tab_close",
+  "browser_tab_list",
+  "browser_tab_new",
+  "browser_tab_select",
+  "browser_take_screenshot",
+  "browser_type",
+  "browser_wait_for",
+]
+env_vars = []
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 45
+tool_timeout_sec = 180
+
+[mcp_servers.chrome-devtools]
+command = "/data/codex/mcp/wrappers/mcp-chrome-devtools-wrapper.sh"
+args = []
+env_vars = []
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 45
+tool_timeout_sec = 180
+
+[mcp_servers.postgres]
+command = "/data/codex/mcp/wrappers/mcp-postgres-wrapper.sh"
+args = []
+# DBHub registers source-suffixed and user-defined tools from DBHUB_CONFIG.
+# Leave enabled_tools unset so Codex receives the complete runtime tool list.
+env_vars = [
+  "POSTGRES_DSN",
+  "DATABASE_URL",
+  "DSN",
+  "DBHUB_CONFIG",
+]
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.semgrep]
+command = "/data/codex/mcp/wrappers/mcp-semgrep-wrapper.sh"
+args = []
+env_vars = []
+enabled = true
+#scopes = [
+#  "*",
+#]
+startup_timeout_sec = 30
+tool_timeout_sec = 180
+
+[shell_environment_policy]
+inherit = "all"
+ignore_default_excludes = false
+exclude = [
+  ".*TOKEN.*",
+  ".*KEY.*",
+  ".*SECRET.*",
+  ".*PASSWORD.*",
+  ".*PASS.*",
+  "^AWS_.*",
+  "^AZURE_.*",
+  "^GCP_.*",
+  "^OPENAI_.*",
+  "^ANTHROPIC_.*",
+  "^GITHUB_.*",
+  "^GITLAB_.*",
+  "^SSH_.*",
+  "^KUBECONFIG$",
+  "^DOCKER_.*",
+  "^NPM_TOKEN$",
+  "^NODE_AUTH_TOKEN$",
+  "^PIP_INDEX_URL$",
+  "^PIP_EXTRA_INDEX_URL$",
+]
+include_only = []
+set = { LANG = "C.UTF-8", LC_CTYPE = "C.UTF-8" }
+
+# full access filesystem
+[permissions.full.filesystem]
+":root" = "write"
+":tmpdir" = "write"
+
+# full access network
+[permissions.full.network]
+enabled = false
+mode = "full"
+admin_url = "http://127.0.0.1:2019"
+proxy_url = "http://127.0.0.1:8080"
+socks_url = "socks5://127.0.0.1:1080"
+enable_socks5 = true
+enable_socks5_udp = true
+allow_upstream_proxy = true
+dangerously_allow_non_loopback_admin = false
+dangerously_allow_non_loopback_proxy = false
+dangerously_allow_all_unix_sockets = false
+allow_local_binding = true
+allow_unix_sockets = [
+  "/data/codex/mcp/sockets/openai-developer-docs.sock",
+  "/data/codex/mcp/sockets/context7.sock",
+]
+allowed_domains = [
+  "api.openai.com",
+  "chatgpt.com",
+  "developers.openai.com",
+  "platform.openai.com",
+  "github.com",
+  "api.github.com",
+  "docs.github.com",
+  "raw.githubusercontent.com",
+  "gitlab.com",
+  "docs.gitlab.com",
+  "context7.com",
+  "mcp.context7.com",
+  "modelcontextprotocol.io",
+  "docs.python.org",
+  "packaging.python.org",
+  "pypi.org",
+  "docs.ansible.com",
+  "www.gnu.org",
+  "developer.mozilla.org",
+  "developer.chrome.com",
+  "nodejs.org",
+  "docs.npmjs.com",
+  "go.dev",
+  "pkg.go.dev",
+  "doc.rust-lang.org",
+  "docs.rs",
+  "crates.io",
+  "kubernetes.io",
+  "helm.sh",
+  "docs.docker.com",
+  "podman.io",
+  "playwright.dev",
+  "www.postgresql.org",
+  "redis.io",
+  "mcp.linear.app",
+  "linear.app",
+  "mcp.figma.com",
+  "figma.com",
+  "mcp.render.com",
+  "render.com",
+  "mcp.cloudflare.com",
+  "docs.mcp.cloudflare.com",
+  "bindings.mcp.cloudflare.com",
+  "builds.mcp.cloudflare.com",
+  "observability.mcp.cloudflare.com",
+  "developers.cloudflare.com",
+  "cloudflare.com",
+  "huggingface.co",
+]
+denied_domains = [
+  "metadata.google.internal",
+  "metadata.azure.internal",
+  "metadata.oraclecloud.com",
+  "metadata.packet.net",
+  "instance-data.ec2.internal",
+  "kubernetes.default.svc",
+  "169.254.169.254",
+  "169.254.169.253",
+  "169.254.170.2",
+  "169.254.170.23",
+  "100.100.100.200",
+]
+
+# workspace filesystem
+[permissions.workspace.filesystem]
+":minimal" = "read"
+":project_roots" = { "." = "write", ".mcr" = "write", "docs" = "read", "patches" = "read" }
+":tmpdir" = "write"
+"/data/codex/share/bin" = "read"
+"/data/codex/share/helpers" = "read"
+"/data/bin" = "read"
+"/data/codex/mcp" = "read"
+"/data/codex/usr/agents" = "read"
+"/data/codex/usr/skills" = "read"
+"/data/codex/usr/instructions" = "read"
+"/data/codex/usr/home/memories" = "write"
+"/data/codex/usr/home/sessions" = "write"
+"/data/codex/usr/home/shell_snapshots" = "write"
+
+# workspace network
+[permissions.workspace.network]
+enabled = false
+mode = "limited"
+admin_url = "http://127.0.0.1:2019"
+proxy_url = "http://127.0.0.1:8080"
+socks_url = "socks5://127.0.0.1:1080"
+enable_socks5 = true
+enable_socks5_udp = false
+allow_upstream_proxy = true
+dangerously_allow_non_loopback_admin = false
+dangerously_allow_non_loopback_proxy = false
+dangerously_allow_all_unix_sockets = false
+allow_local_binding = true
+allow_unix_sockets = [
+  "/data/codex/mcp/sockets/openai-developer-docs.sock",
+  "/data/codex/mcp/sockets/context7.sock",
+]
+allowed_domains = [
+  "api.openai.com",
+  "chatgpt.com",
+  "developers.openai.com",
+  "platform.openai.com",
+  "github.com",
+  "api.github.com",
+  "docs.github.com",
+  "raw.githubusercontent.com",
+  "gitlab.com",
+  "docs.gitlab.com",
+  "context7.com",
+  "mcp.context7.com",
+  "modelcontextprotocol.io",
+  "docs.python.org",
+  "packaging.python.org",
+  "pypi.org",
+  "docs.ansible.com",
+  "www.gnu.org",
+  "developer.mozilla.org",
+  "developer.chrome.com",
+  "nodejs.org",
+  "docs.npmjs.com",
+  "go.dev",
+  "pkg.go.dev",
+  "doc.rust-lang.org",
+  "docs.rs",
+  "crates.io",
+  "kubernetes.io",
+  "helm.sh",
+  "docs.docker.com",
+  "podman.io",
+  "playwright.dev",
+  "www.postgresql.org",
+  "redis.io",
+  "mcp.linear.app",
+  "linear.app",
+  "mcp.figma.com",
+  "figma.com",
+  "mcp.render.com",
+  "render.com",
+  "mcp.cloudflare.com",
+  "docs.mcp.cloudflare.com",
+  "bindings.mcp.cloudflare.com",
+  "builds.mcp.cloudflare.com",
+  "observability.mcp.cloudflare.com",
+  "developers.cloudflare.com",
+  "cloudflare.com",
+  "huggingface.co",
+]
+denied_domains = [
+  "metadata.google.internal",
+  "metadata.azure.internal",
+  "metadata.oraclecloud.com",
+  "metadata.packet.net",
+  "instance-data.ec2.internal",
+  "kubernetes.default.svc",
+  "169.254.169.254",
+  "169.254.169.253",
+  "169.254.170.2",
+  "169.254.170.23",
+  "100.100.100.200",
+]
+
+# readonly filesystem
+[permissions.readonly.filesystem]
+":minimal" = "read"
+":project_roots" = { "." = "read", ".mcr" = "read", "docs" = "read", "patches" = "read" }
+":tmpdir" = "read"
+"/data/codex/share/bin" = "read"
+"/data/codex/share/helpers" = "read"
+"/data/bin" = "read"
+"/data/codex/mcp" = "read"
+"/data/codex/usr/agents" = "read"
+"/data/codex/usr/skills" = "read"
+"/data/codex/usr/instructions" = "read"
+"/data/codex/usr/home/memories" = "read"
+"/data/codex/usr/home/sessions" = "read"
+"/data/codex/usr/home/shell_snapshots" = "read"
+
+# readonly network
+[permissions.readonly.network]
+enabled = false
+mode = "limited"
+admin_url = "http://127.0.0.1:2019"
+proxy_url = "http://127.0.0.1:8080"
+socks_url = "socks5://127.0.0.1:1080"
+enable_socks5 = false
+enable_socks5_udp = false
+allow_upstream_proxy = false
+dangerously_allow_non_loopback_admin = false
+dangerously_allow_non_loopback_proxy = false
+dangerously_allow_all_unix_sockets = false
+allow_local_binding = false
+allow_unix_sockets = []
+allowed_domains = [
+  "api.openai.com",
+  "chatgpt.com",
+  "developers.openai.com",
+  "platform.openai.com",
+  "github.com",
+  "api.github.com",
+  "docs.github.com",
+  "raw.githubusercontent.com",
+  "gitlab.com",
+  "docs.gitlab.com",
+  "context7.com",
+  "mcp.context7.com",
+  "modelcontextprotocol.io",
+  "docs.python.org",
+  "packaging.python.org",
+  "pypi.org",
+  "docs.ansible.com",
+  "www.gnu.org",
+  "developer.mozilla.org",
+  "developer.chrome.com",
+  "nodejs.org",
+  "docs.npmjs.com",
+  "go.dev",
+  "pkg.go.dev",
+  "doc.rust-lang.org",
+  "docs.rs",
+  "crates.io",
+  "kubernetes.io",
+  "helm.sh",
+  "docs.docker.com",
+  "podman.io",
+  "playwright.dev",
+  "www.postgresql.org",
+  "redis.io",
+  "mcp.linear.app",
+  "linear.app",
+  "mcp.figma.com",
+  "figma.com",
+  "mcp.render.com",
+  "render.com",
+  "mcp.cloudflare.com",
+  "docs.mcp.cloudflare.com",
+  "bindings.mcp.cloudflare.com",
+  "builds.mcp.cloudflare.com",
+  "observability.mcp.cloudflare.com",
+  "developers.cloudflare.com",
+  "cloudflare.com",
+  "huggingface.co",
+]
+denied_domains = [
+  "metadata.google.internal",
+  "metadata.azure.internal",
+  "metadata.oraclecloud.com",
+  "metadata.packet.net",
+  "instance-data.ec2.internal",
+  "kubernetes.default.svc",
+  "169.254.169.254",
+  "169.254.169.253",
+  "169.254.170.2",
+  "169.254.170.23",
+  "100.100.100.200",
+]

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Plan GitOps delivery flows with protected refs, environment promotion order, and declarative desired-state review boundaries. Use when the user asks about Git-driven promotion, environment repos, or reconciliation-safe delivery contracts.",
+  "references": [
+    "https://opengitops.dev/",
+    "https://github.com/open-gitops/documents"
+  ]
+}

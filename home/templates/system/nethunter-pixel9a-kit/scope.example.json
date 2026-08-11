@@ -1,0 +1,21 @@
+{
+  "scope_id": "MOB-SCOPE-0099",
+  "workflow": "nethunter-pixel9a",
+  "owner": "mobile-security@example.com",
+  "lab_only": true,
+  "environment_class": "lab",
+  "allowed_devices": [
+    "pixel9a-lab-01"
+  ],
+  "allowed_operations": [
+    "rooting-preflight",
+    "bootloader-unlock-verification",
+    "kernel-source-alignment",
+    "nethunter-kernel-build",
+    "nethunter-installer-build",
+    "boot-image-patch",
+    "flash-validation",
+    "rollback-validation"
+  ],
+  "expires_utc": "2026-12-31T23:59:59Z"
+}

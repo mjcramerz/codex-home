@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Harden desktop browser configurations, profile policies, and privacy/security defaults across managed endpoints. Use when the user asks to lock down browser settings or deploy browser hardening baselines.",
+  "references": [
+    "https://specifications.freedesktop.org/desktop-entry-spec/latest/",
+    "https://wayland.freedesktop.org/",
+    "https://mozilla.github.io/policy-templates/",
+    "https://support.mozilla.org/en-US/kb/customizing-firefox-using-policiesjson"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": "1.1",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Implement production-ready Rust Axum APIs with routing, extractors, typed errors, tracing, and timeout-aware handlers. Use when the user asks for backend API work in Rust/Axum.",
+  "references": [
+    "https://docs.rs/axum/latest/axum/",
+    "https://docs.rs/tokio/latest/tokio/"
+  ]
+}

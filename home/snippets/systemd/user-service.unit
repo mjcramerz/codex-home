@@ -1,0 +1,11 @@
+[Unit]
+Description=My User Service
+
+[Service]
+Type=simple
+ExecStart=%h/bin/my-user-service --serve
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,4 @@
+# Kernel config fragment (example)
+# CONFIG_DEBUG_INFO is not set
+# CONFIG_KEXEC is not set
+# CONFIG_MODULE_SIG is not set

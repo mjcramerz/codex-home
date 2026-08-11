@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Plan, review, and modify Terraform configurations with safe state handling, module hygiene, and deterministic workflows. Use when the user asks for Terraform changes, plan analysis, or IaC drift fixes.",
+  "references": [
+    "https://developer.hashicorp.com/terraform/docs",
+    "https://developer.hashicorp.com/terraform/language/style"
+  ]
+}

@@ -1,0 +1,22 @@
+---
+title: Rollback checklist (storage-filesystems)
+status: active
+owner: Matthew Cramer
+tags:
+- skills
+- all
+- storage-filesystems
+- assets
+- rollback-checklist-md
+- rollback-checklist
+- user
+- infra
+updated: '2026-02-20'
+---
+# Rollback checklist (storage-filesystems)
+
+- Confirm rollback trigger and decision owner.
+- Capture diagnostics before reverting.
+- Execute documented rollback command sequence.
+- Re-validate service health and critical workflows.
+- Record incident notes and follow-up remediation tasks.

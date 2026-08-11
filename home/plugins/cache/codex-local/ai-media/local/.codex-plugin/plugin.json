@@ -1,0 +1,38 @@
+{
+  "name": "ai-media",
+  "version": "1.0.0",
+  "description": "Image, video, speech, and transcription workflows for generated media.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "AI Media",
+    "shortDescription": "Image, video, speech, and transcription",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the AI Media plugin for image, video, speech, and transcription workflows."
+    ],
+    "longDescription": "Use this plugin for generated image, video, speech, and transcription workflows.",
+    "developerName": "OpenAI",
+    "brandColor": "#10A37F",
+    "websiteURL": "https://platform.openai.com/docs/guides",
+    "composerIcon": "./skills/imagegen/assets/imagegen-small.svg",
+    "logo": "./skills/imagegen/assets/imagegen.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "OpenAI"
+  },
+  "homepage": "https://platform.openai.com/docs/guides",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "ai",
+    "media",
+    "development",
+    "imagegen",
+    "sora",
+    "speech"
+  ]
+}

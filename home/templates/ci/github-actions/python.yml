@@ -1,0 +1,63 @@
+name: ci-python
+
+on:
+  push:
+    branches:
+      - mcr/main
+      - mcr/staging
+      - mcr/release
+  pull_request:
+    branches:
+      - mcr/main
+      - mcr/staging
+      - mcr/release
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+      - name: Install
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+
+          # Prefer requirements files when present (simple + works without packaging metadata).
+          if [[ -f requirements.txt ]]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [[ -f requirements-dev.txt ]]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+
+          # Fallback to pyproject-only projects.
+          if [[ ! -f requirements.txt && -f pyproject.toml ]]; then
+            python -m pip install -e ".[dev]" || python -m pip install -e .
+          fi
+      - name: Lint
+        run: |
+          set -euo pipefail
+          python -m ruff check .
+          python -m ruff format --check .
+      - name: Test
+        run: |
+          set -euo pipefail
+          pytest -q

@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Persistent browser and Electron interaction through `js_repl` for fast iterative UI debugging.",
+  "references": [
+    "SKILL.md"
+  ]
+}

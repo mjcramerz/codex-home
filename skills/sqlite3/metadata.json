@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 11, 2026",
+  "abstract": "Inspect, query, and maintain SQLite databases safely with the sqlite3 CLI.",
+  "references": [
+    "https://sqlite.org/cli.html",
+    "https://sqlite.org/pragma.html",
+    "https://sqlite.org/eqp.html"
+  ]
+}

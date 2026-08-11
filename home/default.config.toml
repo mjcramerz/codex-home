@@ -1,0 +1,12 @@
+model = "gpt-5.6-terra"
+model_catalog_json = "/data/codex/usr/home/.models/default_catalog.json"
+model_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
+model_reasoning_effort = "xhigh"
+model_reasoning_summary = "detailed"
+model_verbosity = "high"
+model_context_window = 390000
+model_auto_compact_token_limit = 320000
+tool_output_token_limit = 12000
+
+[instruction_overrides.models]
+base_instructions_file = "/data/codex/usr/instructions/default/models/base.md"

@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Create and validate safe .desktop launchers with correct Exec fields, metadata, and desktop integration. Use when the user asks to add or repair Linux desktop entries.",
+  "references": [
+    "https://specifications.freedesktop.org/desktop-entry-spec/latest/",
+    "https://wayland.freedesktop.org/",
+    "https://mozilla.github.io/policy-templates/",
+    "https://specifications.freedesktop.org/desktop-entry-spec/latest-single/"
+  ]
+}

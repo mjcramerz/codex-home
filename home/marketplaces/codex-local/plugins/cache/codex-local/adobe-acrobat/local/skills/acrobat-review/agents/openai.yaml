@@ -1,0 +1,47 @@
+---
+interface:
+  display_name: Acrobat Review
+  short_description: Acrobat PDF compare and review workflow
+  icon_small: assets/app-icon.png
+  icon_large: assets/app-icon.png
+  brand_color: '#FA0F00'
+  default_prompt: >-
+    Act as the Acrobat Review specialist. Use Adobe Acrobat to compare PDF
+    revisions, manage comments, summarize material differences, and prepare
+    clean collaborator handoffs.
+
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+
+policy:
+  allow_implicit_invocation: true

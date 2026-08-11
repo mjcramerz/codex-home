@@ -1,0 +1,10 @@
+{
+  "version": "2.1",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Write production-grade Bash scripts using Bash-specific features (arrays, [[ tests ]], pipefail) with robust error handling. Use when the runtime is Bash and the user needs Bash-focused automation or hardening.",
+  "references": [
+    "https://man7.org/linux/man-pages/man1/bash.1.html",
+    "https://www.shellcheck.net/wiki/"
+  ]
+}

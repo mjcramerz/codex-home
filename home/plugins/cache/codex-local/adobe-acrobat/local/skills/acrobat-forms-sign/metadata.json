@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Use when the task depends on Adobe Acrobat workflows for fillable forms, field preparation, fill and sign steps, signature-ready packets, or archival copies of signed documents.",
+  "references": [
+    "https://www.adobe.com/acrobat/features/fill-and-sign-pdfs.html",
+    "https://www.adobe.com/acrobat/business/hub/how-to/create-fillable-pdf.html"
+  ]
+}

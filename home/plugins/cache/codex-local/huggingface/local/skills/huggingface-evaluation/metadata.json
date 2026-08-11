@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Add and manage evaluation results in Hugging Face model cards. Supports extracting eval tables from README content, importing scores from Artificial Analysis API, and running custom model evaluations with vLLM/lighteval. Works with the model-index metadata format.",
+  "references": [
+    "https://github.com/huggingface/lighteval/blob/main/examples/tasks/all_tasks.txt",
+    "https://source-url.com"
+  ]
+}

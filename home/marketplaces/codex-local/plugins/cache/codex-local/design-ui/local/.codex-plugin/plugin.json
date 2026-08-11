@@ -1,0 +1,35 @@
+{
+  "name": "design-ui",
+  "version": "1.0.0",
+  "description": "Generic UI review, accessibility, and design-quality workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Design UI",
+    "shortDescription": "Generic UI review and design-quality workflows",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Design UI plugin for generic UI review, accessibility, and design-quality workflows."
+    ],
+    "longDescription": "Use this plugin for UI review, web design guidelines, accessibility checks, and vendor-neutral design quality work.",
+    "developerName": "Codex Setup",
+    "brandColor": "#8B5CF6",
+    "websiteURL": "https://gitlab.com/computes/apps/codex-manager",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://gitlab.com/computes/apps/codex-manager",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "design",
+    "ui",
+    "review",
+    "accessibility",
+    "guidelines"
+  ]
+}

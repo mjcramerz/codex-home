@@ -1,0 +1,8 @@
+services:
+  app:
+    # Run as root inside the container (UID/GID 0:0).
+    user: "0:0"
+    # Allow writes to the container filesystem when root is required.
+    read_only: false
+    cap_drop: []
+    security_opt: []

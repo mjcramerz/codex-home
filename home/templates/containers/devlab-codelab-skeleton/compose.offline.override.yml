@@ -1,0 +1,6 @@
+services:
+  devlab:
+    # Offline mode: no network access.
+    # Note: port publishing is not available when network is disabled.
+    network_mode: "none"
+    ports: []

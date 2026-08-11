@@ -1,0 +1,33 @@
+name: fastapi-app
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    # Match engine UID/GID when bind-mounting source code.
+    user: "${APP_UID:?set APP_UID in .env (use ./rootless_env.sh --dotenv > .env)}:${APP_GID:?set APP_GID in .env (use ./rootless_env.sh --dotenv > .env)}"
+    environment:
+      APP_ENVIRONMENT: "${APP_ENVIRONMENT:-dev}"
+      APP_ENABLE_HSTS: "${APP_ENABLE_HSTS:-false}"
+      LOG_FORMAT: "${LOG_FORMAT:-json}"
+      HTTP_PROXY: "${HTTP_PROXY:-}"
+      HTTPS_PROXY: "${HTTPS_PROXY:-}"
+      NO_PROXY: "${NO_PROXY:-}"
+    read_only: true
+    tmpfs:
+      - /tmp
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
+    internal: false

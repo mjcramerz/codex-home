@@ -1,0 +1,24 @@
+[Unit]
+Description=Example App Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=appuser
+Group=appgroup
+WorkingDirectory=/opt/example-app
+EnvironmentFile=/etc/example-app/example-app.env
+ExecStart=/opt/example-app/bin/example-app --serve
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+
+# Hardening defaults (tune as needed)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

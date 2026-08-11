@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Convert specs into implementation plans and task notes in Obsidian. Use when turning PRDs or feature specs into plans, checklists, and linked tasks in an Obsidian vault.",
+  "references": [
+    "https://help.obsidian.md/",
+    "https://help.obsidian.md/plugins/canvas"
+  ]
+}

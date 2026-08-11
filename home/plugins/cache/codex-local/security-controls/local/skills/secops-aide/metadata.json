@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Configure AIDE file-integrity monitoring rules, baselines, and scheduled verification runs. Use when the user asks for host file integrity monitoring or tamper-detection setup.",
+  "references": [
+    "https://manpages.debian.org/stable/aide/aide.1.en.html"
+  ]
+}

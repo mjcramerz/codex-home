@@ -1,0 +1,12 @@
+[Unit]
+Description=Example User Service
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/example-user/example-user.env
+ExecStart=%h/bin/example-user --serve
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

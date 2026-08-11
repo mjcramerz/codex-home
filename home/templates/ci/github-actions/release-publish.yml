@@ -1,0 +1,59 @@
+name: release-publish-from-build
+
+on:
+  workflow_run:
+    workflows: ['release-build-rust']
+    types: [completed]
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  RELEASE_TAG_PREFIX: 'CHANGE_ME-v'
+
+jobs:
+  resolve_tag:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    outputs:
+      tag: ${{ steps.resolve.outputs.tag }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - id: resolve
+        run: |
+          set -euo pipefail
+
+          git fetch --force --tags origin
+          tag="$(
+            git tag --points-at "${{ github.event.workflow_run.head_sha }}" \
+              | LC_ALL=C sort \
+              | awk -v prefix="${RELEASE_TAG_PREFIX}" 'index($0, prefix) == 1 { print; exit }' \
+              || true
+          )"
+          if [[ -z "${tag}" ]]; then
+            echo "No release tag with prefix ${RELEASE_TAG_PREFIX} found for workflow run SHA ${{ github.event.workflow_run.head_sha }}" >&2
+            exit 1
+          fi
+
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+
+  publish:
+    needs: resolve_tag
+    if: |
+      github.event.workflow_run.conclusion == 'success' &&
+      needs.resolve_tag.outputs.tag != ''
+    uses: mattycramer/gh-actions/.github/workflows/release-from-workflow-run.yml@4ad5d3f542f960875f7bc3b17fec77e25b62d3f6
+    with:
+      tag: ${{ needs.resolve_tag.outputs.tag }}
+      tag_prefix: CHANGE_ME-v
+      allow_revision_suffix: true
+      run_id: ${{ github.event.workflow_run.id }}
+      artifact_prefix: CHANGE_ME-x86_64-unknown-linux-gnu-
+      tarball_prefix: CHANGE_ME-x86_64-unknown-linux-gnu-
+      checksum_prefix: CHANGE_ME-sha256-checksums-
+      release_name: CHANGE_ME v{version}
+    secrets: inherit

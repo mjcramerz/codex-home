@@ -1,0 +1,38 @@
+{
+  "name": "browser-automation",
+  "version": "1.0.0",
+  "description": "Browser automation, screenshots, and interactive Playwright workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Browser Automation",
+    "shortDescription": "Playwright and screenshot workflows",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Browser Automation plugin for Playwright, interactive browser loops, and screenshot work."
+    ],
+    "longDescription": "Use this plugin for browser automation, interactive Playwright loops, and screenshot capture workflows.",
+    "developerName": "Codex Setup",
+    "brandColor": "#0EA5E9",
+    "websiteURL": "https://gitlab.com/computes/apps/codex-manager",
+    "composerIcon": "./skills/playwright/assets/playwright-small.svg",
+    "logo": "./skills/playwright/assets/playwright.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://gitlab.com/computes/apps/codex-manager",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "browser",
+    "automation",
+    "development",
+    "playwright",
+    "interactive",
+    "screenshot"
+  ]
+}

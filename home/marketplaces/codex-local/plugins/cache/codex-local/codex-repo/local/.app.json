@@ -1,0 +1,10 @@
+{
+  "apps": {
+    "github": {
+      "id": "github"
+    },
+    "linear": {
+      "id": "linear"
+    }
+  }
+}

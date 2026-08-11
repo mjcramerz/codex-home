@@ -1,0 +1,12 @@
+<labwc_config>
+  <theme>
+    <name>Default</name>
+  </theme>
+  <keyboard>
+    <keybind key="W-Return">
+      <action name="Execute">
+        <command>foot</command>
+      </action>
+    </keybind>
+  </keyboard>
+</labwc_config>

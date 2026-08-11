@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Turn API reference material into auth, error-handling, pagination, and integration checklists for implementation work.",
+  "references": [
+    "https://platform.openai.com/docs/api-reference",
+    "https://learn.microsoft.com/",
+    "https://github.com/jina-ai/reader/blob/main/docs/readme.md"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Write and review Perl for deterministic runtime helpers, CLI tools, and data transforms with strict validation and minimal shell exposure. Use when the user asks about Perl code beyond hook-specific modules.",
+  "references": [
+    "https://perldoc.perl.org/",
+    "https://github.com/Perl/perl5"
+  ]
+}

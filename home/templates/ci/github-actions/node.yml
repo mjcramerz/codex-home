@@ -1,0 +1,46 @@
+name: ci-node
+
+on:
+  push:
+    branches:
+      - mcr/main
+      - mcr/staging
+      - mcr/release
+  pull_request:
+    branches:
+      - mcr/main
+      - mcr/staging
+      - mcr/release
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - name: Install
+        run: |
+          set -euo pipefail
+          if [[ -f package-lock.json ]]; then
+            npm ci
+          else
+            npm install
+          fi
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Test
+        run: npm test --if-present
+      - name: Build
+        run: npm run build --if-present

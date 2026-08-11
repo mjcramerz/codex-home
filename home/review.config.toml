@@ -1,0 +1,9 @@
+model = "gpt-5.4"
+model_catalog_json = "/data/codex/usr/home/.models/review_catalog.json"
+model_instructions_file = "/data/codex/usr/instructions/profiles/review/models/base.md"
+model_reasoning_effort = "high"
+model_reasoning_summary = "detailed"
+model_verbosity = "low"
+
+[instruction_overrides.models]
+base_instructions_file = "/data/codex/usr/instructions/profiles/review/models/base.md"

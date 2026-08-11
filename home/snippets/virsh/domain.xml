@@ -1,0 +1,8 @@
+<domain type="kvm">
+  <name>vm-example</name>
+  <memory unit="MiB">2048</memory>
+  <vcpu>2</vcpu>
+  <os>
+    <type arch="x86_64">hvm</type>
+  </os>
+</domain>

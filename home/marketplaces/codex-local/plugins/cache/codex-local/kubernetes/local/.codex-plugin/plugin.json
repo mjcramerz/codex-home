@@ -1,0 +1,35 @@
+{
+  "name": "kubernetes",
+  "version": "1.0.0",
+  "description": "Kubernetes workload, manifest, and cluster-operation workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Kubernetes",
+    "shortDescription": "Kubernetes manifests and operations",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Kubernetes plugin for k8s manifests, workloads, and cluster operations."
+    ],
+    "longDescription": "Use this plugin for Kubernetes manifests, workload design, deployment troubleshooting, and cluster operation patterns.",
+    "developerName": "Codex Setup",
+    "brandColor": "#1D4ED8",
+    "websiteURL": "https://kubernetes.io/docs/",
+    "composerIcon": "./skills/infra-kubernetes/assets/icon-32.png",
+    "logo": "./skills/infra-kubernetes/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://kubernetes.io/docs/",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "kubernetes",
+    "infrastructure",
+    "infra"
+  ]
+}

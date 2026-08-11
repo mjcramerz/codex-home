@@ -1,0 +1,7 @@
+services:
+  elasticsearch:
+    userns_mode: "keep-id"
+  kibana:
+    userns_mode: "keep-id"
+  logstash:
+    userns_mode: "keep-id"

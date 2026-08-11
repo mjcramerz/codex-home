@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Configure LibreWolf with hardened privacy and security defaults for day-to-day desktop usage. Use when the user explicitly asks for LibreWolf setup or policy tuning.",
+  "references": [
+    "https://specifications.freedesktop.org/desktop-entry-spec/latest/",
+    "https://wayland.freedesktop.org/",
+    "https://mozilla.github.io/policy-templates/",
+    "https://librewolf.net/docs/settings"
+  ]
+}

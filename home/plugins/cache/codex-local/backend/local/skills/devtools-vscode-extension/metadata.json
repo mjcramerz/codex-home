@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Develop and package VS Code extensions with secure defaults, activation events, commands, testing, and publishing setup. Use when the user asks to build, extend, debug, or release a VS Code extension.",
+  "references": [
+    "https://fastapi.tiangolo.com/",
+    "https://docs.rs/axum/latest/axum/",
+    "https://react.dev/",
+    "https://code.visualstudio.com/api",
+    "https://code.visualstudio.com/api/working-with-extensions/publishing-extension",
+    "https://github.com/microsoft/vscode-vsce"
+  ]
+}

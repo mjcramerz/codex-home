@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Maintain and update the pack routing index, including $CODEX_HOME/index/manifest.yml, $CODEX_HOME/index/ entrypoints, and generated $CODEX_HOME/INDEX.md. Use when adding/removing entrypoints, updating related links, or regenerating index artifacts.",
+  "references": [
+    "https://yaml.org/spec/1.2.2/",
+    "https://json-schema.org/draft/2020-12"
+  ]
+}

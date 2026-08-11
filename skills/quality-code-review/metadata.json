@@ -1,0 +1,12 @@
+{
+  "version": "1.1",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Perform high-rigor code review focused on correctness, regressions, security, performance, and test coverage. Use when the user asks for a review, audit, risk assessment, or PR quality gate.",
+  "references": [
+    "https://cheatsheetseries.owasp.org/",
+    "https://owasp.org/www-project-application-security-verification-standard/",
+    "https://csrc.nist.gov/pubs/sp/800/218/final",
+    "https://google.github.io/eng-practices/review/"
+  ]
+}

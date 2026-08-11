@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 25, 2026",
+  "abstract": "Build Vue applications with Composition API patterns, state flow discipline, and reusable component boundaries. Use when the user asks for Vue component logic outside Nuxt-specific SSR/runtime concerns.",
+  "references": [
+    "https://vuejs.org/guide/introduction.html",
+    "https://vuejs.org/api/",
+    "https://vuejs.org/guide/essentials/watchers.html",
+    "https://github.com/vuejs/core/releases/tag/v3.5.29",
+    "https://vuejs.org/style-guide/"
+  ]
+}

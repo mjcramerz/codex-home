@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=My App
+Exec=/usr/local/bin/my-app
+Icon=utilities-terminal
+Terminal=false
+Categories=Utility;

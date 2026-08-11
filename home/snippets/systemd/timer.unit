@@ -1,0 +1,10 @@
+[Unit]
+Description=Run my job daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=myjob.service
+
+[Install]
+WantedBy=timers.target

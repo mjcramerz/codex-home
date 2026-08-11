@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADHD + CBT Habit Tracker</title>
+</head>
+<body>
+  <main class="worksheet" role="main">
+  <div class="page">
+    <h1>ADHD + CBT Habit Tracker (2 Weeks)</h1>
+
+    <div class="header">
+      <div><span class="label">Week of:</span> <span class="line">${week_of}</span></div>
+      <div><span class="label">Focus habit:</span> <span class="line">${focus_habit}</span></div>
+    </div>
+
+    <p class="intro">Use short notes, leave blanks if needed, and focus on one next helpful step.</p>
+
+    <div class="section">
+      <h2>Habits</h2>
+      <div class="grid-2 small">
+        <div><span class="label">1:</span> <span class="line">${habit_1}</span></div>
+        <div><span class="label">2:</span> <span class="line">${habit_2}</span></div>
+        <div><span class="label">3:</span> <span class="line">${habit_3}</span></div>
+        <div><span class="label">4:</span> <span class="line">${habit_4}</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tracker (Week 1)</h2>
+      <table class="tracker">
+        <caption class="sr-only">Week 1 habit completion tracker with daily check boxes.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Habit</th>
+            <th scope="col">Mon</th>
+            <th scope="col">Tue</th>
+            <th scope="col">Wed</th>
+            <th scope="col">Thu</th>
+            <th scope="col">Fri</th>
+            <th scope="col">Sat</th>
+            <th scope="col">Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">${habit_1}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row">${habit_2}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row">${habit_3}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row">${habit_4}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Tracker (Week 2)</h2>
+      <table class="tracker">
+        <caption class="sr-only">Week 2 habit completion tracker with daily check boxes.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Habit</th>
+            <th scope="col">Mon</th>
+            <th scope="col">Tue</th>
+            <th scope="col">Wed</th>
+            <th scope="col">Thu</th>
+            <th scope="col">Fri</th>
+            <th scope="col">Sat</th>
+            <th scope="col">Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">${habit_1}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row">${habit_2}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row">${habit_3}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row">${habit_4}</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Notes</h2>
+      <div><span class="label">What helped most:</span> <span class="line full">${habit_notes}</span></div>
+    </div>
+
+    <div class="footer">CBT-informed template for ADHD skills practice. Planning support only - not medical advice.</div>
+  </div>
+  </main>
+</body>
+</html>

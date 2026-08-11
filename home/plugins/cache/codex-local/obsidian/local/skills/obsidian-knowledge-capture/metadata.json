@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Capture conversations and decisions into structured Obsidian notes. Use when converting chats, specs, or notes into reusable knowledge artifacts inside an Obsidian vault.",
+  "references": [
+    "https://help.obsidian.md/",
+    "https://help.obsidian.md/plugins/templates"
+  ]
+}

@@ -1,0 +1,10 @@
+# Minimal default permissions baseline for GitHub Actions (workflow-level).
+# Prefer per-job permissions when possible; do not grant write scopes unless required.
+# References: docs/workflows/ci-cd.md, Use skill ci-github-actions.
+permissions:
+  contents: read
+
+  # Uncomment only when needed:
+  # pull-requests: read     # dependency review, PR metadata
+  # security-events: write  # code scanning uploads (CodeQL)
+  # id-token: write         # OIDC to cloud providers

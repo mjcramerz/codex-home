@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 25, 2026",
+  "abstract": "Build semantic, accessible HTML documents and templates with standards-compliant structure and ARIA-aware markup. Use when the user asks for plain HTML pages, static templates, or accessibility-focused markup.",
+  "references": [
+    "https://developer.mozilla.org/en-US/docs/Web",
+    "https://html.spec.whatwg.org/multipage/",
+    "https://www.w3.org/TR/WCAG22/",
+    "https://www.w3.org/WAI/WCAG22/quickref/",
+    "https://www.w3.org/WAI/ARIA/apg/"
+  ]
+}

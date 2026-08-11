@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Design and refactor CLI commands, flags, subcommands, help text, and exit-code semantics with deterministic contracts. Use when the user asks for command-line UX, parser refactors, or safer automation interfaces.",
+  "references": [
+    "https://docs.python.org/3/library/argparse.html",
+    "https://click.palletsprojects.com/",
+    "https://docs.rs/clap/latest/clap/"
+  ]
+}

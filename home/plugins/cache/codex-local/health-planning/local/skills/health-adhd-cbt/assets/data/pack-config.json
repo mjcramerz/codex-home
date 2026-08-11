@@ -1,0 +1,45 @@
+{
+  "page_size": "A4",
+  "css": "styles/pdf.css",
+  "pages": [
+    {
+      "template": "daily-flow.html",
+      "repeat": 3,
+      "start_date": "2026-01-15",
+      "force_date": true
+    },
+    {
+      "template": "daily-focus.html"
+    },
+    {
+      "template": "decisions-impulses.html"
+    },
+    {
+      "template": "emotions-self-management.html"
+    },
+    {
+      "template": "weekly-plan.html"
+    },
+    {
+      "template": "task-breakdown.html"
+    },
+    {
+      "template": "habit-tracker.html",
+      "data": {
+        "habit_1": "Water",
+        "habit_2": "Meds",
+        "habit_3": "Move 5m",
+        "habit_4": "Tidy 2m"
+      }
+    },
+    {
+      "template": "monthly-review.html"
+    },
+    {
+      "template": "appointment-prep.html"
+    },
+    {
+      "template": "sensory-reset.html"
+    }
+  ]
+}

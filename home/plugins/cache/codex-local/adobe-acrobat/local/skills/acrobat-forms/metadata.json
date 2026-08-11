@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Run Adobe Acrobat form, fill-and-sign, and field QA workflows with explicit intake, validation, and handoff steps.",
+  "references": [
+    "https://www.adobe.com/acrobat.html",
+    "https://www.adobe.com/privacy/policy.html",
+    "https://www.adobe.com/legal/terms.html"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.enabled": true,
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.verifySignature": true,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.unicodeHighlight.nonBasicASCII": true,
+  "editor.unicodeHighlight.includeComments": true,
+  "editor.unicodeHighlight.includeStrings": false
+}

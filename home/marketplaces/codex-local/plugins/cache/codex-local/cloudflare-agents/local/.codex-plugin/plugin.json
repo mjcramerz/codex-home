@@ -1,0 +1,35 @@
+{
+  "name": "cloudflare-agents",
+  "version": "1.0.0",
+  "description": "Cloudflare Agents SDK, agent-building, and MCP-on-Workers workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Cloudflare Agents",
+    "shortDescription": "Agents SDK and MCP-on-Workers workflows",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Cloudflare Agents plugin for Agents SDK, agent design, and MCP-on-Workers workflows."
+    ],
+    "longDescription": "Use this plugin for Cloudflare Agents SDK, agent design, and Model Context Protocol services deployed on Workers.",
+    "developerName": "Cloudflare",
+    "brandColor": "#F97316",
+    "websiteURL": "https://developers.cloudflare.com/agents/",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Cloudflare"
+  },
+  "homepage": "https://developers.cloudflare.com/agents/",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "cloudflare",
+    "agents",
+    "sdk",
+    "mcp",
+    "workers"
+  ]
+}

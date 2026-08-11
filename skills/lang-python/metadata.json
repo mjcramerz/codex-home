@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Build and refactor Python modules, CLIs, automation, and packaging with typing, testing, and safe I/O defaults. Use when the user asks for Python implementation, refactoring, packaging, or runtime-automation changes.",
+  "references": [
+    "https://docs.python.org/3/",
+    "https://packaging.python.org/en/latest/tutorials/packaging-projects/",
+    "https://docs.pytest.org/"
+  ]
+}

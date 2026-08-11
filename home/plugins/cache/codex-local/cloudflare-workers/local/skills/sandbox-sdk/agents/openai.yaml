@@ -1,0 +1,64 @@
+interface:
+  display_name: Sandbox Sdk
+  short_description: Build sandboxed applications for secure code execution. Load
+    when building AI code execution, code interpreters, CI/CD s
+  default_prompt: 'Use the Sandbox Sdk skill when the task matches this scope: Build
+    sandboxed applications for secure code execution. Load when building AI code execution,
+    code interpreters, CI/CD systems, interactive dev environments, or executing untrusted
+    code. Covers Sandbox SDK lifecycle, commands, files, code interpreter, and preview
+    URLs. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.'
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-bindings
+    description: cloudflare-bindings MCP server
+    transport: streamable_http
+    url: https://bindings.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-observability
+    description: cloudflare-observability MCP server
+    transport: streamable_http
+    url: https://observability.mcp.cloudflare.com/mcp
+
+policy:
+  allow_implicit_invocation: true

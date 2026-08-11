@@ -1,0 +1,19 @@
+stages:
+  - security
+
+variables:
+  SECURITY_IMAGE: 'docker.io/library/alpine@sha256:eafc1edb577d2e9b458664a15f23ea1c370214193226069eb22921169fc7e43f'
+  GIT_STRATEGY: fetch
+  GIT_DEPTH: '50'
+
+security_audit:
+  stage: security
+  image: '${SECURITY_IMAGE}'
+  rules:
+    - exists:
+        - scripts/security-audit.sh
+    - when: never
+  script:
+    - set -eu
+    - (set -o pipefail 2>/dev/null) || true
+    - sh ./scripts/security-audit.sh

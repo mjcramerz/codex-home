@@ -1,0 +1,41 @@
+{
+  "name": "stripe",
+  "version": "1.0.0",
+  "description": "Stripe payment, billing, and webhook implementation workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Stripe",
+    "shortDescription": "Stripe payments and billing workflows",
+    "category": "Development",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Stripe plugin for Stripe payments, billing, invoices, subscriptions, and webhook workflows."
+    ],
+    "longDescription": "Use this plugin for Stripe payment flows, billing operations, invoicing, subscriptions, and webhook implementation work.",
+    "developerName": "Stripe",
+    "brandColor": "#635BFF",
+    "websiteURL": "https://stripe.com",
+    "privacyPolicyURL": "https://stripe.com/privacy",
+    "termsOfServiceURL": "https://stripe.com/legal/ssa",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Stripe",
+    "url": "https://stripe.com"
+  },
+  "homepage": "https://stripe.com",
+  "repository": "https://github.com/openai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "stripe",
+    "payments",
+    "billing",
+    "webhooks",
+    "subscriptions"
+  ],
+  "apps": "./.app.json"
+}

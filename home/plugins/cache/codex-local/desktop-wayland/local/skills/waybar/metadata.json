@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Configure Waybar modules, styles, and helper scripts with restart-safe behavior and minimal shell exposure. Use when the user asks about Waybar JSON/CSS, custom modules, or bar startup sequencing.",
+  "references": [
+    "https://github.com/Alexays/Waybar",
+    "https://github.com/Alexays/Waybar/wiki"
+  ]
+}

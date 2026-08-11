@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Design and implement Stripe payment flows, checkout, subscriptions, idempotency, and secure webhook handling.",
+  "references": [
+    "https://docs.stripe.com/",
+    "https://docs.stripe.com/api"
+  ]
+}

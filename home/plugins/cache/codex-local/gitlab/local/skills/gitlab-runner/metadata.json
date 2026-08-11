@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Operate GitLab Runner host configurations with explicit service-account, runner-tag, Podman, Aptly, and cache-root contracts. Use when the user asks about runner provisioning, executor policy, or managed environment file layout.",
+  "references": [
+    "https://docs.gitlab.com/runner/",
+    "https://gitlab.com/gitlab-org/gitlab-runner",
+    "https://docs.gitlab.com/runner/executors/docker/"
+  ]
+}

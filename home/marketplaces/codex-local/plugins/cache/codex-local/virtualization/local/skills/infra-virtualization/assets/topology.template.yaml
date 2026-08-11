@@ -1,0 +1,16 @@
+environment: virtualization-lab
+provider: libvirt
+base_image:
+  name: generic/debian12
+  version: "4.3.0"
+hosts:
+  - name: control
+    cpus: 2
+    memory_mb: 4096
+    network: nat
+  - name: worker
+    cpus: 2
+    memory_mb: 4096
+    network: nat
+teardown:
+  command: vagrant destroy -f

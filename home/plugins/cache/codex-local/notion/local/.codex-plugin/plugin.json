@@ -1,0 +1,41 @@
+{
+  "name": "notion",
+  "version": "1.0.0",
+  "description": "Notion capture, meeting, research, and implementation-planning workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Notion",
+    "shortDescription": "Notion capture and planning workflows",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Notion plugin for Notion capture, research, and planning workflows."
+    ],
+    "longDescription": "Use this plugin for Notion knowledge capture, meeting prep, research documentation, and spec-to-implementation planning.",
+    "developerName": "Codex Setup",
+    "brandColor": "#111827",
+    "websiteURL": "https://developers.notion.com/",
+    "composerIcon": "./skills/notion-knowledge-capture/assets/icon-32.png",
+    "logo": "./skills/notion-knowledge-capture/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://developers.notion.com/",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "notion",
+    "productivity",
+    "knowledge",
+    "capture",
+    "meeting",
+    "intelligence",
+    "research",
+    "documentation"
+  ],
+  "apps": "./.app.json"
+}

@@ -1,0 +1,4 @@
+# Ordered release patch list (one relative patch path per line).
+# Keep deterministic ordering and use comments for context.
+# Example:
+# 0001-fix-release-packaging.patch

@@ -1,0 +1,4 @@
+# Prefer lockfiles or constraints for reproducibility.
+fastapi>=0.110,<1
+uvicorn[standard]>=0.27,<1
+pydantic-settings>=2,<3

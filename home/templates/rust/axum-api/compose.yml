@@ -1,0 +1,33 @@
+name: axum-api
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    # Match engine UID/GID when bind-mounting source code.
+    user: "${APP_UID:?set APP_UID in .env (use ./rootless_env.sh --dotenv > .env)}:${APP_GID:?set APP_GID in .env (use ./rootless_env.sh --dotenv > .env)}"
+    environment:
+      BIND_ADDR: "0.0.0.0:3000"
+      LOG_FORMAT: "${LOG_FORMAT:-json}"
+      RUST_LOG: "${RUST_LOG:-info,axum_api_template=debug}"
+      HTTP_PROXY: "${HTTP_PROXY:-}"
+      HTTPS_PROXY: "${HTTPS_PROXY:-}"
+      NO_PROXY: "${NO_PROXY:-}"
+    read_only: true
+    tmpfs:
+      - /tmp
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
+    internal: false

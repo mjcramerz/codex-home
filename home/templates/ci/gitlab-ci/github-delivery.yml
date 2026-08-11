@@ -1,0 +1,62 @@
+# GitLab delivery scaffold for publishing release refs/tags to GitHub.
+# Requires shared includes exposed by GL_CICD_SHARED_PROJ.
+
+stages:
+  - verify
+  - test
+  - github-sync
+  # - gitlab-release  # optional: enable when publishing release assets to GitLab packages
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_TAG =~ /(^|.*[^0-9])[0-9]{1,10}$/'
+    - if: '$CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_BRANCH == "mcr/release" && $GH_RELEASE_PUSH =~ /^(true|TRUE|1|yes|YES|y|Y|on|ON)$/'
+    - when: never
+
+include:
+  - project: '${GL_CICD_SHARED_PROJ}'
+    ref: main
+    file: '/github/validate.yml'
+  - project: '${GL_CICD_SHARED_PROJ}'
+    ref: main
+    file: '/github/push.yml'
+  # Shared includes above pull /github/version.yml, /patches/patches.yml, and /github/visibility.yml.
+  # Optional GitLab package-release includes:
+  # - project: '${GL_CICD_SHARED_PROJ}'
+  #   ref: main
+  #   file: '/gitlab/validate.yml'
+  # - project: '${GL_CICD_SHARED_PROJ}'
+  #   ref: main
+  #   file: '/gitlab/release.yml'
+  # - project: '${GL_CICD_SHARED_PROJ}'
+  #   ref: main
+  #   file: '/rustc/release-build.yml'
+
+variables:
+  GH_RELEASE_PUSH: 'true'
+  APPEND_VERSION: 'true'
+  RELEASE_VERSION: '0.0.0'
+  VERSION_BUMP_SCRIPT: 'scripts/release/bump_version.py'
+  VERSION_BUMP_ARGS: '--version'
+  GH_FORCE_PUSH: 'true'
+  GH_PUBLIC_REPO: ''  # optional: true=public, false=private, empty=skip visibility enforcement
+  # Release overlays are applied from patches/release in patches/release/series order.
+  APPLY_PATCHES: 'true'
+  APPLY_PATCHES_EXCLUDE: ''
+  # Shared patch helpers currently enforce these defaults; keep vars declared for visibility.
+  PATCH_RELEASE_DIR: 'patches/release'
+  PATCH_SERIES_FILE: 'patches/release/series'
+  GL_RELEASE_ASSET: 'false'  # set true to publish release assets to GitLab Generic Package Registry
+  # GL_GROUP_TOP_RELEASE: 'group/releases'
+  # GL_CICD_RUNNER_BUILD: '${GL_CICD_RUNNER_RUST}'
+  # GL_CICD_RUNNER_RELEASE: '${GL_CICD_RUNNER_GLAB}'
+  # Shared delivery jobs mutate in this order: checkout -> true sync -> version bump -> patch apply -> push.
+
+# Required protected vars/secrets:
+# - GH_ORG_RELEASE
+# - GH_ORG_RELEASE_APP_ID
+# - GH_ORG_RELEASE_APP_PEM
+# - GH_ORG_RELEASE_APP_INSTALL_ID
+# Optional protected vars/secrets for GitLab package publishing:
+# - GL_GROUP_TOP_RELEASE
+# - GL_PAT_RELEASE_TOKEN

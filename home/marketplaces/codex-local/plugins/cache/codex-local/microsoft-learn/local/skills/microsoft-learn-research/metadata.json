@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Research Microsoft Learn guidance, Azure docs, and implementation constraints using primary-source vendor material.",
+  "references": [
+    "https://learn.microsoft.com/",
+    "https://learn.microsoft.com/en-us/azure/developer/ai/azure-ai-foundry-mcp-server"
+  ]
+}

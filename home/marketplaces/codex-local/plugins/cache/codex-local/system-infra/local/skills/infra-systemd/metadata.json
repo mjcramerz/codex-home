@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Design, harden, and validate systemd services and timers including unit files, restart behavior, and sandbox directives. Use when the user asks to create or troubleshoot Linux service/timer units.",
+  "references": [
+    "https://man7.org/linux/man-pages/man1/systemctl.1.html",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd.timer.html",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd-analyze.html"
+  ]
+}

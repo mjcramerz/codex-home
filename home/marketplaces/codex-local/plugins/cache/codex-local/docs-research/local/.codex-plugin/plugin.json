@@ -1,0 +1,35 @@
+{
+  "name": "docs-research",
+  "version": "1.0.0",
+  "description": "Official-docs comparison and implementation research workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Docs Research",
+    "shortDescription": "Official docs comparison and implementation research",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Docs Research plugin for official-docs comparison, API reference extraction, and implementation research."
+    ],
+    "longDescription": "Use this plugin for primary-source documentation research, API reference extraction, and turning vendor guidance into implementation plans.",
+    "developerName": "Codex Setup",
+    "brandColor": "#0EA5E9",
+    "websiteURL": "https://gitlab.com/computes/apps/codex-manager",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://gitlab.com/computes/apps/codex-manager",
+  "repository": "https://gitlab.com/computes/apps/codex-manager",
+  "keywords": [
+    "research",
+    "docs",
+    "api",
+    "reference",
+    "implementation"
+  ]
+}

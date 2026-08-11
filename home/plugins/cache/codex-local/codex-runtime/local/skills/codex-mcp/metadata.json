@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 20, 2026",
+  "abstract": "Work in the codex-mcp repository across config rendering, runtime state, SSH material, Podman launch behavior, and verification flows.",
+  "references": [
+    "references/latest-sources.md",
+    "https://podman.io/docs"
+  ]
+}

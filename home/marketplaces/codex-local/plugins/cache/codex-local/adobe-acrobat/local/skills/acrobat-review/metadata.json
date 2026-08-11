@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Use Adobe Acrobat to compare PDF revisions, manage comments, and package document review outputs for collaborators.",
+  "references": [
+    "https://www.adobe.com/acrobat.html",
+    "https://www.adobe.com/privacy/policy.html",
+    "https://www.adobe.com/legal/terms.html"
+  ]
+}

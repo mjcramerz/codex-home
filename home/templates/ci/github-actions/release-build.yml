@@ -1,0 +1,161 @@
+name: release-build-rust
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  RUST_TOOLCHAIN: '1.75.0'
+  RELEASE_BIN: 'CHANGE_ME'
+  RELEASE_ASSET_PREFIX: 'CHANGE_ME'
+  RELEASE_TARGET: 'x86_64-unknown-linux-gnu'
+  RELEASE_TAG_PREFIX: 'CHANGE_ME-v'
+  CARGO_BUILD_FLAGS: ''
+
+jobs:
+  setup:
+    runs-on: ubuntu-24.04
+    outputs:
+      package_version: ${{ steps.version.outputs.package_version }}
+      release_tag: ${{ steps.release_tag.outputs.value }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate release tag and tip commit
+        if: startsWith(github.ref, 'refs/tags/')
+        id: release_tag
+        run: |
+          set -euo pipefail
+
+          tag="${GITHUB_REF_NAME}"
+          if [[ -z "${tag}" ]]; then
+            echo "Missing release tag name" >&2
+            exit 1
+          fi
+
+          git fetch --no-tags origin mcr/release
+          release_tip="$(git rev-parse origin/mcr/release)"
+          tag_sha="$(git rev-list -n1 "${tag}")"
+
+          if [[ "${tag_sha}" != "${release_tip}" ]]; then
+            echo "Tag ${tag} must point at origin/mcr/release tip" >&2
+            echo "tag=${tag_sha} release_tip=${release_tip}" >&2
+            exit 1
+          fi
+
+          echo "value=${tag}" >> "${GITHUB_OUTPUT}"
+
+      - name: Read package version
+        id: version
+        run: |
+          set -euo pipefail
+
+          if [[ -f scripts/release/get_version.py ]]; then
+            version="$(python3 scripts/release/get_version.py --file Cargo.toml --format toml --key package.version)"
+          else
+            version="$(awk -F'"' '/^version = / {print $2; exit}' Cargo.toml)"
+          fi
+
+          if [[ -z "${version}" ]]; then
+            echo "Failed to resolve package version" >&2
+            exit 1
+          fi
+          echo "package_version=${version}" >> "${GITHUB_OUTPUT}"
+
+      - name: Validate tag version contract
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          set -euo pipefail
+
+          tag="${GITHUB_REF_NAME}"
+          if [[ "${tag}" != "${RELEASE_TAG_PREFIX}"* ]]; then
+            echo "Tag ${tag} must start with ${RELEASE_TAG_PREFIX}" >&2
+            exit 1
+          fi
+
+          tag_version="${tag#${RELEASE_TAG_PREFIX}}"
+          expected="${{ steps.version.outputs.package_version }}"
+
+          if [[ "${tag_version}" != "${expected}" ]]; then
+            echo "Tag version (${tag_version}) does not match package version (${expected})" >&2
+            exit 1
+          fi
+
+  build-linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    needs: setup
+    env:
+      PACKAGE_VERSION: ${{ needs.setup.outputs.package_version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Install system dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends build-essential pkg-config
+
+      - name: Install Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@1780873c7b576612439a134613cc4cc74ce5538c # v1
+        with:
+          target: ${{ env.RELEASE_TARGET }}
+          cache: false
+
+      - name: Restore Cargo cache
+        uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5 # v2.8.2
+        with:
+          key: ${{ env.RELEASE_TARGET }}-cargo-release
+
+      - name: Build release binary
+        run: |
+          set -euo pipefail
+          cargo build --locked --release --target "${RELEASE_TARGET}" ${CARGO_BUILD_FLAGS}
+
+      - name: Package tarball and checksum
+        run: |
+          set -euo pipefail
+
+          bin_dir="target/${RELEASE_TARGET}/release"
+          test -f "${bin_dir}/${RELEASE_BIN}"
+
+          pkg_root="${RELEASE_ASSET_PREFIX}-${PACKAGE_VERSION}-${RELEASE_TARGET}"
+          mkdir -p "dist/${pkg_root}"
+          install -m 0755 "${bin_dir}/${RELEASE_BIN}" "dist/${pkg_root}/${RELEASE_BIN}"
+
+          tarball="${RELEASE_ASSET_PREFIX}-${RELEASE_TARGET}-${PACKAGE_VERSION}.tar.gz"
+          checksum="${RELEASE_ASSET_PREFIX}-sha256-checksums-${PACKAGE_VERSION}.txt"
+
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner \
+            -C dist -czf "${tarball}" "${pkg_root}"
+          sha256sum "${tarball}" > "${checksum}"
+
+      - name: Upload release build artifacts
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: ${{ env.RELEASE_ASSET_PREFIX }}-${{ env.RELEASE_TARGET }}-${{ env.PACKAGE_VERSION }}
+          if-no-files-found: error
+          path: |
+            ${{ env.RELEASE_ASSET_PREFIX }}-${{ env.RELEASE_TARGET }}-${{ env.PACKAGE_VERSION }}.tar.gz
+            ${{ env.RELEASE_ASSET_PREFIX }}-sha256-checksums-${{ env.PACKAGE_VERSION }}.txt

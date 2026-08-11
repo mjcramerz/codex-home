@@ -1,0 +1,43 @@
+{
+  "name": "adobe-photoshop",
+  "version": "1.0.0",
+  "description": "Adobe Photoshop workflows for image retouching, compositing, and export handoffs.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Adobe Photoshop",
+    "shortDescription": "Edit, stylize, and refine images",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Adobe Photoshop plugin to retouch, stylize, and export images with explicit output requirements."
+    ],
+    "longDescription": "Use this plugin for Adobe Photoshop image retouching, layer edits, compositing, and production export workflows.",
+    "developerName": "Adobe",
+    "brandColor": "#001E36",
+    "websiteURL": "https://www.adobe.com/products/photoshop/online.html",
+    "privacyPolicyURL": "https://www.adobe.com/privacy/policy.html",
+    "termsOfServiceURL": "https://www.adobe.com/legal/terms.html",
+    "composerIcon": "./skills/adobe-photoshop/assets/app-icon.png",
+    "logo": "./skills/adobe-photoshop/assets/app-icon.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Adobe",
+    "url": "https://www.adobe.com/products/photoshop/online.html"
+  },
+  "homepage": "https://www.adobe.com/products/photoshop/online.html",
+  "repository": "https://github.com/openai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "adobe",
+    "photoshop",
+    "image",
+    "editing",
+    "retouch"
+  ],
+  "apps": "./.app.json"
+}

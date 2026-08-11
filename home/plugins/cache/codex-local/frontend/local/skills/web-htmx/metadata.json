@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 25, 2026",
+  "abstract": "Build server-driven HTMX interfaces with progressive enhancement and minimal custom JavaScript. Use when the user asks for HTMX flows, partial swaps, or hypermedia-style frontend behavior.",
+  "references": [
+    "https://htmx.org/docs/",
+    "https://htmx.org/reference/",
+    "https://github.com/bigskysoftware/htmx/releases/tag/v2.0.7",
+    "https://htmx.org/attributes/hx-boost/",
+    "https://htmx.org/attributes/hx-headers/"
+  ]
+}
