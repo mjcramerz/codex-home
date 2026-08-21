@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "GitHub",
-    "shortDescription": "GitHub review and Actions workflows",
+    "shortDescription": "GitHub review and Actions",
     "category": "Development",
     "capabilities": [
       "Interactive",

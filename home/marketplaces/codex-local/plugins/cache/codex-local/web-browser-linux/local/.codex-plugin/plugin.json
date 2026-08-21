@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Web Browser Linux",
-    "shortDescription": "Linux browser hardening and browser-specific workflows",
+    "shortDescription": "Linux browser hardening",
     "category": "Desktop",
     "capabilities": [
       "Read",

@@ -10,6 +10,7 @@ use Codex::Hook::Environment qw(
   environment_report
   stringify_payload_text
 );
+use Codex::Hook::Event;
 use Codex::Hook::Learning qw(
   prompt_keyword_context_lines
   tool_response_summary_lines
@@ -836,60 +837,72 @@ sub _subagent_stop_context {
 
 sub run_event {
     my ($event_arg) = @_;
-    my $payload = normalize_input($event_arg, _load_input());
-    my $manifest = _load_runtime_config();
-    validate_event_input($event_arg, $payload, cwd => $payload->{cwd});
-    local $Codex::Hook::Output::CURRENT_EVENT_ARG = $event_arg;
+    my $event = Codex::Hook::Event->new(
+        event_arg => $event_arg,
+        payload   => normalize_input($event_arg, _load_input()),
+    );
+    my $payload = $event->payload;
 
-    if ($event_arg eq 'session-start') {
+    if ($event->is_event('session-end')) {
+        validate_event_input($event->event_arg, $payload, cwd => $event->cwd);
+        return 0;
+    }
+
+    my $manifest = _load_runtime_config();
+    validate_event_input($event->event_arg, $payload, cwd => $event->cwd);
+    local $Codex::Hook::Output::CURRENT_EVENT_ARG = $event->event_arg;
+
+    if ($event->is_event('session-start')) {
         emit_context('SessionStart', _session_start_context($manifest, $payload), undef);
         return 0;
     }
-    if ($event_arg eq 'user-prompt-submit') {
+    if ($event->is_event('user-prompt-submit')) {
         emit_context('UserPromptSubmit', _user_prompt_context($manifest, $payload), undef);
         return 0;
     }
-    if ($event_arg eq 'stop') {
+    if ($event->is_event('stop')) {
         _stop_common($manifest, $payload, 'Stop');
         return 0;
     }
-    if ($event_arg eq 'pre-tool-use') {
-        return 0 if !tool_hooks_enabled($payload->{tool_name});
-        return 0 if !active_tool_profile_is_primary($payload->{tool_name});
+    if ($event->is_event('pre-tool-use')) {
+        my $tool_name = $event->payload_value('tool_name');
+        return 0 if !tool_hooks_enabled($tool_name);
+        return 0 if !active_tool_profile_is_primary($tool_name);
         my $context = _pre_tool_use_context($manifest, $payload);
         emit_context('PreToolUse', $context, undef) if defined $context && length $context;
         return 0;
     }
-    if ($event_arg eq 'permission-request') {
+    if ($event->is_event('permission-request')) {
         my $context = _permission_request_context($payload);
         emit_system_message($context) if defined $context && length $context;
         return 0;
     }
-    if ($event_arg eq 'post-tool-use') {
-        return 0 if !tool_hooks_enabled($payload->{tool_name});
-        return 0 if !active_tool_profile_is_primary($payload->{tool_name});
+    if ($event->is_event('post-tool-use')) {
+        my $tool_name = $event->payload_value('tool_name');
+        return 0 if !tool_hooks_enabled($tool_name);
+        return 0 if !active_tool_profile_is_primary($tool_name);
         my $context = _post_tool_use_context($payload);
         emit_context('PostToolUse', $context, undef) if defined $context && length $context;
         return 0;
     }
-    if ($event_arg eq 'pre-compact') {
+    if ($event->is_event('pre-compact')) {
         emit_system_message(_compact_context('Pre'));
         return 0;
     }
-    if ($event_arg eq 'post-compact') {
+    if ($event->is_event('post-compact')) {
         emit_system_message(_compact_context('Post'));
         return 0;
     }
-    if ($event_arg eq 'subagent-start') {
+    if ($event->is_event('subagent-start')) {
         emit_context('SubagentStart', _subagent_start_context($manifest, $payload), undef);
         return 0;
     }
-    if ($event_arg eq 'subagent-stop') {
+    if ($event->is_event('subagent-stop')) {
         emit_system_message(_subagent_stop_context($manifest, $payload));
         _stop_common($manifest, $payload, 'SubagentStop');
         return 0;
     }
-    die "unsupported hook event: $event_arg\n";
+    die "unsupported hook event: " . $event->event_arg . "\n";
 }
 
 1;

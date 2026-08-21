@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Jina AI",
-    "shortDescription": "Jina AI search and grounding workflows",
+    "shortDescription": "Jina search and grounding",
     "category": "Development",
     "capabilities": [
       "Read",

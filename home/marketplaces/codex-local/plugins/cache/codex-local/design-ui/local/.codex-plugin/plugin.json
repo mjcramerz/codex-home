@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Design UI",
-    "shortDescription": "Generic UI review and design-quality workflows",
+    "shortDescription": "UI review and design quality",
     "category": "Development",
     "capabilities": [
       "Read",

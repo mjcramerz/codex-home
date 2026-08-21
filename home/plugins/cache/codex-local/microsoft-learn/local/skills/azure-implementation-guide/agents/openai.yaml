@@ -2,9 +2,7 @@
 interface:
   display_name: Azure Implementation Guide
   short_description: >-
-    Translate Azure platform docs, reference architectures, and
-    service constraints into concrete implementation plans and
-    verification steps.
+    Turn Azure docs and architectures into implementation plans and verification steps.
   brand_color: '#2563EB'
   default_prompt: >-
     Act as the Azure Implementation Guide specialist. Use current

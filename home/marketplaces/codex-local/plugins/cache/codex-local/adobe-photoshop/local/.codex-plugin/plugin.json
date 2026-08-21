@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Adobe Photoshop",
-    "shortDescription": "Edit, stylize, and refine images",
+    "shortDescription": "Image editing and retouching",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Observability",
-    "shortDescription": "Elastic stack and Sentry workflows",
+    "shortDescription": "Elastic and Sentry workflows",
     "category": "Observability",
     "capabilities": [
       "Read",

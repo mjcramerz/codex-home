@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Hugging Face",
-    "shortDescription": "Hugging Face Hub and ML workflows",
+    "shortDescription": "Hugging Face ML workflows",
     "category": "Development",
     "capabilities": [
       "Read",

@@ -27,6 +27,7 @@ seed_runtime_schema_env(script_dir => $Bin);
 
 my %allowed = map { $_ => 1 } qw(
   session-start
+  session-end
   user-prompt-submit
   stop
   pre-tool-use
@@ -39,7 +40,7 @@ my %allowed = map { $_ => 1 } qw(
 );
 
 sub _usage {
-    die "usage: hook_driver.pl {session-start|user-prompt-submit|stop|pre-tool-use|permission-request|post-tool-use|pre-compact|post-compact|subagent-start|subagent-stop}\n";
+    die "usage: hook_driver.pl {session-start|session-end|user-prompt-submit|stop|pre-tool-use|permission-request|post-tool-use|pre-compact|post-compact|subagent-start|subagent-stop}\n";
 }
 
 my $event = $ARGV[0];

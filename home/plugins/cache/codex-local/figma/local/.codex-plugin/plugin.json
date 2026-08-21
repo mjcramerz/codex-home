@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Figma",
-    "shortDescription": "Figma design handoff and implementation",
+    "shortDescription": "Figma design implementation",
     "category": "Development",
     "capabilities": [
       "Interactive",

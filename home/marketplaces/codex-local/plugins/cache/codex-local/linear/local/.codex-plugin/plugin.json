@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Linear",
-    "shortDescription": "Linear issue and workflow management",
+    "shortDescription": "Linear issue management",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

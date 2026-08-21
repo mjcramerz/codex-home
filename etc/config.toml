@@ -8,24 +8,32 @@ suppress_unstable_features_warning = false
 #sandbox_mode = "workspace-write"
 
 default_permissions = "full"
+# Host-owned Apps requests may set a product SKU when deployment policy
+# requires one. Leave unset for the standard ChatGPT/Codex product identity.
+#apps_mcp_product_sku = "codex"
+# Product-owned request metadata is intentionally bounded to string values.
+#responses_api_metadata = { deployment = "debian-managed" }
 
-# experimental_realtime_ws_mode = ""
+# Legacy sandbox-mode alternative. Do not combine this table with
+# default_permissions; copy it into a legacy-only configuration layer.
+#[sandbox_workspace_write]
+#writable_roots = ["/absolute/additional/write/root"]
+#network_access = false
+#exclude_tmpdir_env_var = false
+#exclude_slash_tmp = false
+
 # experimental_compact_prompt_file = "/abs/path/to/compact-prompt.md"
 # experimental_realtime_start_instructions = "Realtime startup instructions."
 # experimental_realtime_ws_backend_prompt = "Realtime websocket backend prompt."
 # experimental_realtime_ws_base_url = "wss://api.openai.com/v1/realtime"
 # experimental_realtime_ws_model = "gpt-realtime"
 # experimental_realtime_ws_startup_context = "Realtime startup context."
-# experimental_use_freeform_apply_patch = true
 # experimental_use_unified_exec_tool = true
 
 [model_providers.openai-custom]
 # Managed ChatGPT/Codex-compatible provider profile.
 name = "OpenAI (Custom)"
-#model = "gpt-5.4"
-#model_reasoning_summary = "xhigh"
 requires_openai_auth = true
-#forced_login_method = "api"
 base_url = "https://chatgpt.com/backend-api/codex"
 #base_url = "https://api.openai.com/v1"
 wire_api = "responses"
@@ -41,10 +49,10 @@ websocket_connect_timeout_ms = 120000
 
 #[model_providers.openai-reranker]
 #name = "OpenAI Reranker"
-#3base_url = "https://chatgpt.com/backend-api/codex"
+#base_url = "https://chatgpt.com/backend-api/codex"
 #wire_api = "responses"
 #stream_max_retries = 3
-#3request_max_retries = 2
+#request_max_retries = 2
 #stream_idle_timeout_ms = 40000
 #requires_openai_auth = true
 #supports_websockets = false
@@ -82,8 +90,6 @@ hide_full_access_warning = true
 hide_gpt5_1_migration_prompt = true
 hide_rate_limit_model_nudge = true
 hide_world_writable_warning = true
-
-#version = 1
 
 # Global MCP server definitions only. Bundle-scoped endpoints belong in `resources/plugins/manifest.json`.
 # Image-backed stdio servers carry explicit safe enablement and timeout defaults here; user-layer
@@ -765,7 +771,6 @@ exclude = [
   "^PIP_INDEX_URL$",
   "^PIP_EXTRA_INDEX_URL$",
 ]
-include_only = []
 set = { LANG = "C.UTF-8", LC_CTYPE = "C.UTF-8" }
 
 # full access filesystem

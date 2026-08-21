@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Browser Automation",
-    "shortDescription": "Playwright and screenshot workflows",
+    "shortDescription": "Browser automation workflows",
     "category": "Development",
     "capabilities": [
       "Read",

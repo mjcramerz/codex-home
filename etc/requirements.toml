@@ -2,21 +2,29 @@
 # Installed to /etc/codex/requirements.toml by make install/runtime.
 
 # Global allowed runtime policies.
-# Global allowed runtime policies.
 allowed_approval_policies = [
-  {granular = {sandbox_approval = false, rules = false, skill_approval = false, request_permissions = false, mcp_elicitations = false}},
+  "granular",
   "untrusted",
-  "on-failure",
   "on-request",
   "never"
 ]
-allowed_sandbox_modes = ["read-only", "workspace-write", "danger-full-access", "external-sandbox"]
-allowed_web_search_modes = ["disabled", "cached", "live"]
+allowed_web_search_modes = ["disabled", "cached", "indexed", "live"]
+default_permissions = "full"
 enforce_residency = "us"
 
 # Feature requirements that must stay enabled in managed installs.
 allow_managed_hooks_only = false
 allowed_approvals_reviewers = ["user", "auto_review"]
+
+# Codex 0.138.0 and later use permission-profile requirements. The custom
+# profiles below are defined by the companion /etc/codex/config.toml.
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true
+":danger-full-access" = true
+readonly = true
+workspace = true
+full = true
 
 [features]
 apps = true
@@ -266,8 +274,7 @@ url = "https://docs.mcp.cloudflare.com/mcp"
 # Supported keys under [experimental_network]:
 # enabled, http_port, socks_port, allow_upstream_proxy,
 # dangerously_allow_non_loopback_proxy, dangerously_allow_all_unix_sockets,
-# allowed_domains, managed_allowed_domains_only, denied_domains,
-# allow_unix_sockets, allow_local_binding.
+# domains, managed_allowed_domains_only, unix_sockets, allow_local_binding.
 #[experimental_network]
 #enabled = false
 #http_port = 8080
@@ -275,8 +282,7 @@ url = "https://docs.mcp.cloudflare.com/mcp"
 #allow_upstream_proxy = false
 #dangerously_allow_non_loopback_proxy = false
 #dangerously_allow_all_unix_sockets = false
-#allowed_domains = ["api.openai.com", "developers.openai.com"]
+#domains = { "api.openai.com" = "allow", "developers.openai.com" = "allow", "metadata.google.internal" = "deny" }
 #managed_allowed_domains_only = false
-#denied_domains = ["metadata.google.internal"]
-#allow_unix_sockets = ["/tmp/example.sock"]
+#unix_sockets = { "/tmp/example.sock" = "allow" }
 #allow_local_binding = false

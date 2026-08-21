@@ -6,6 +6,12 @@ script = "session_start.pl"
 timeout = 20
 statusMessage = "Injecting detected repository context"
 
+[singleton_events.SessionEnd]
+matcher = "^other$"
+script = "session_end.pl"
+timeout = 3
+statusMessage = "Validating session end"
+
 [singleton_events.UserPromptSubmit]
 script = "user_prompt_submit.pl"
 timeout = 20

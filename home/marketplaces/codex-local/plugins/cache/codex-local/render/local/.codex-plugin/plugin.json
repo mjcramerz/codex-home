@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Render",
-    "shortDescription": "Render deployment and blueprint workflows",
+    "shortDescription": "Render deployment workflows",
     "category": "Development",
     "capabilities": [
       "Read",

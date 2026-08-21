@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "GitLab",
-    "shortDescription": "GitLab delivery, runner, and build workflows",
+    "shortDescription": "GitLab CI and runner workflows",
     "category": "Development",
     "capabilities": [
       "Read",

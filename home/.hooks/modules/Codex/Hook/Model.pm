@@ -27,6 +27,17 @@ my %EVENTS = (
             transcript_path => undef,
         },
     },
+    'session-end' => {
+        canonical   => 'SessionEnd',
+        script_name => 'session_end.pl',
+        defaults    => {
+            cwd             => '.',
+            hook_event_name => 'SessionEnd',
+            reason          => 'other',
+            session_id      => 'unknown-session',
+            transcript_path => undef,
+        },
+    },
     'user-prompt-submit' => {
         canonical   => 'UserPromptSubmit',
         script_name => 'user_prompt_submit.pl',

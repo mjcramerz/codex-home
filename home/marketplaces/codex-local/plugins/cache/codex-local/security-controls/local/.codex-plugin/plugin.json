@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Security Controls",
-    "shortDescription": "Application, host, and supply-chain controls",
+    "shortDescription": "Security control hardening",
     "category": "Security",
     "capabilities": [
       "Read",

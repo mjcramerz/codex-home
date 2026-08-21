@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "OpenAI Apps",
-    "shortDescription": "OpenAI docs and ChatGPT app workflows",
+    "shortDescription": "OpenAI docs and ChatGPT apps",
     "category": "Development",
     "capabilities": [
       "Read",

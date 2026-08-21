@@ -1,9 +1,6 @@
 interface:
   display_name: Building Mcp Server On Cloudflare
-  short_description: 'Builds remote MCP (Model Context Protocol) servers on Cloudflare
-    Workers
-
-    with tools, OAuth authentication, and productio'
+  short_description: 'Build remote MCP servers on Cloudflare Workers with tools, OAuth, and production deployment.'
   default_prompt: 'Use the Building Mcp Server On Cloudflare skill when the task matches
     this scope: Builds remote MCP (Model Context Protocol) servers on Cloudflare Workers
 

@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Document Artifacts",
-    "shortDescription": "Docs, spreadsheets, slides, and notebooks",
+    "shortDescription": "Document artifact workflows",
     "category": "Development",
     "capabilities": [
       "Read",

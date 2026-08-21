@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Frontend",
-    "shortDescription": "Frontend frameworks and interactive web UIs",
+    "shortDescription": "Frontend web app workflows",
     "category": "Development",
     "capabilities": [
       "Read",

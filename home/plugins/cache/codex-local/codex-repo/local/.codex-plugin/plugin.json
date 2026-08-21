@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Codex Repo",
-    "shortDescription": "Codex source tree and Rust toolchain contracts",
+    "shortDescription": "Codex source and Rust tools",
     "category": "Development",
     "capabilities": [
       "Interactive",

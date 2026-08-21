@@ -5,8 +5,7 @@ description: Design and operate container workflows across Docker/Podman/Compose
   builds, compose stacks, rootless runtime setup, or containerized dev environments.
 metadata:
   version: '1.0'
-  short-description: 'Container and virtualization workflows: rootless Docker/Podman, Docker
-    Compose, Buildx/Buildah, and VM scaffolds with explicit network controls'
+  short-description: 'Secure Docker, Podman, Compose, Buildx, Buildah, and VM workflow guidance'
   tags:
   - containers
   - docker
@@ -19,8 +18,7 @@ metadata:
   - vagrant
 interface:
   display-name: INFRA-Containers
-  short-description: 'Container and virtualization workflows: rootless Docker/Podman, Docker
-    Compose, Buildx/Buildah, and VM scaffolds with explicit network controls'
+  short-description: 'Secure Docker, Podman, Compose, Buildx, Buildah, and VM workflow guidance'
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#7232CC'

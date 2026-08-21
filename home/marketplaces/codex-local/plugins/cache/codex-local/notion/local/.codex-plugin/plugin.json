@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Notion",
-    "shortDescription": "Notion capture and planning workflows",
+    "shortDescription": "Notion planning and capture",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

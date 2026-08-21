@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "System Infra",
-    "shortDescription": "Host tuning, installer, and package-service automation",
+    "shortDescription": "Debian system infrastructure",
     "category": "Infrastructure",
     "capabilities": [
       "Read",

@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "AI Media",
-    "shortDescription": "Image, video, speech, and transcription",
+    "shortDescription": "Image, video, speech, audio",
     "category": "Development",
     "capabilities": [
       "Read",

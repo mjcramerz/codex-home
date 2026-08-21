@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Cybersecurity Labs",
-    "shortDescription": "Purple-team, mobile, and security research workflows",
+    "shortDescription": "Security defense lab workflows",
     "category": "Security",
     "capabilities": [
       "Read",

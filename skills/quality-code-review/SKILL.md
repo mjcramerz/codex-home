@@ -5,8 +5,8 @@ description: Perform high-rigor code review focused on correctness, regressions,
   or PR quality gate.
 metadata:
   version: '1.1'
-  short-description: 'High-rigor code review skill: intent alignment, correctness, security,
-    performance, and reproducibility checks with actionable output'
+  short-description: 'Rigorous code review for correctness, security, performance, regressions,
+    and test coverage'
   tags:
   - code-review
   - security
@@ -14,8 +14,8 @@ metadata:
   - performance
 interface:
   display-name: QUALITY-Code Review
-  short-description: 'High-rigor code review skill: intent alignment, correctness, security,
-    performance, and reproducibility checks with actionable output'
+  short-description: 'Rigorous code review for correctness, security, performance, regressions,
+    and test coverage'
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#32CC4C'

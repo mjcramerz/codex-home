@@ -2,11 +2,24 @@ default_permissions = "full"
 approvals_reviewer = "user"
 allow_login_shell = true
 web_search = "live"
+# Host-owned Apps requests may set a product SKU when deployment policy
+# requires one. Leave unset for the standard ChatGPT/Codex product identity.
+#apps_mcp_product_sku = "codex"
+# Product-owned request metadata is intentionally bounded to string values.
+#responses_api_metadata = { deployment = "debian" }
+# Direct inline system instructions are supported, but the file-backed
+# model_instructions_file below remains the authoritative managed source.
+#instructions = "Additional system instructions."
+# Named profiles are optional user-selected overlays. Enable profile only when
+# the matching profiles entry is also enabled.
+#profile = "debian"
+#[profiles.debian]
+#model = "gpt-5.6-sol"
+#model_provider = "openai-custom"
 
 # runtime
 log_dir = "/data/codex/log"
 sqlite_home = "/data/codex/sqlite"
-#zsh_path = ""
 cli_auth_credentials_store = "file"
 mcp_oauth_credentials_store = "file"
 mcp_oauth_callback_port = 8088
@@ -101,7 +114,6 @@ When user text is routed from realtime, treat it as a transcript. It may be unpu
 #version = "v2"
 #type = "transcription"
 
-#experimental_thread_config_endpoint = "https://your-config-service.example.com/thread-config"
 #[experimental_thread_store]
 #type = "local"
 #experimental_use_unified_exec_tool = true
@@ -128,11 +140,12 @@ model_reasoning_effort = "xhigh"
 model_reasoning_summary = "detailed"
 model_verbosity = "medium"
 plan_mode_reasoning_effort = "high"
-model_supports_reasoning_summaries = true
 
 # projects
-#js_repl_node_module_dirs = []
-#js_repl_node_path = ""
+# Per-project trust is path-specific user state, so the portable template keeps
+# this example disabled.
+#[projects."/absolute/path/to/project"]
+#trust_level = "trusted"
 project_doc_max_bytes = 192768
 project_doc_fallback_filenames = []
 project_root_markers = [
@@ -208,13 +221,18 @@ suppress_unstable_features_warning = false
 
 notify = []
 
-#[notice]
-#text = ""
-
 # models catalog and base instructions
 model_catalog_json = "/data/codex/usr/instructions/models/default_catalog.json"
 model_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
 experimental_compact_prompt_file = "/data/codex/usr/instructions/default/compact/prompt.md"
+
+# Legacy sandbox-mode alternative. Do not combine this table with
+# default_permissions; copy it into a legacy-only configuration layer.
+#[sandbox_workspace_write]
+#writable_roots = ["/absolute/additional/write/root"]
+#network_access = false
+#exclude_tmpdir_env_var = false
+#exclude_slash_tmp = false
 
 [auto_review]
 policy = """## Environment Profile
@@ -304,19 +322,11 @@ rubric_instructions_file = "/data/codex/usr/instructions/default/review/rubric.m
 uncommitted_instructions_file = "/data/codex/usr/instructions/default/review/uncommitted.md"
 
 [instruction_overrides.tools]
-apply_patch_instructions_file = "/data/codex/usr/instructions/default/tools/apply_patch.md"
 request_user_input_instructions_file = "/data/codex/usr/instructions/default/tools/request_user_input.md"
 search_instructions_file = "/data/codex/usr/instructions/default/tools/search.md"
 
 [instruction_overrides.tui]
 init_instructions_file = "/data/codex/usr/instructions/default/tui/init.md"
-
-[debug]
-#[debug.config_lockfile]
-#export_dir = "/abs/path/to/export"
-#load_path = "/abs/path/to/config.lock.toml"
-#allow_codex_version_mismatch = false
-#save_fields_resolved_from_model_catalog = true
 
 [realtime]
 #version = "v2"
@@ -354,7 +364,6 @@ context_size = "high"
 #allowed_domains = ["*"]
 
 [tools.web_search.location]
-#type = "approximate"
 country = "US"
 region = "CA"
 city = "San Francisco"
@@ -404,7 +413,6 @@ code_mode = true
 code_mode_only = false
 memories = true
 personality = true
-child_agents_md = true
 multi_agent = true
 remote_models = true
 goals = true
@@ -463,7 +471,6 @@ tui_app_server = true
 realtime_conversation = false
 runtime_metrics = false
 enable_request_compression = true
-responses_websocket_response_processed = false
 responses_websockets = false
 responses_websockets_v2 = true
 prevent_idle_sleep = true
@@ -482,28 +489,14 @@ disable_on_external_context = false
 generate_memories = true
 use_memories = true
 dedicated_tools = true
-workspace_isolation = true
 max_raw_memories_for_consolidation = 15
 max_unused_days = 15
 max_rollout_age_days = 2
 max_rollouts_per_startup = 20
 min_rollout_idle_hours = 5
 min_rate_limit_remaining_percent = 25
-max_allowed_taint_level = 1
-decay_lambda = 0.25
-min_decay_score_to_retain = 0.25
 extract_model = "gpt-5.6-terra"
 consolidation_model = "gpt-5.6-terra"
-phase4_enabled = true
-phase4_workspace_entry_limit = 128
-phase5_enabled = true
-phase5_workspace_rollup_limit = 128
-
-consolidation_instructions_file = "/data/codex/usr/instructions/default/memories/consolidation.md"
-extraction_instructions_file = "/data/codex/usr/instructions/default/memories/extraction.md"
-phase4_instructions_file = "/data/codex/usr/instructions/default/memories/phase4_selection_ledger.md"
-phase5_instructions_file = "/data/codex/usr/instructions/default/memories/phase5_phase1_rollups.md"
-read_path_instructions_file = "/data/codex/usr/instructions/default/memories/read_path.md"
 
 [apps._default]
 enabled = true
@@ -656,7 +649,6 @@ enabled = true
 
 [agents]
 max_depth = 4
-job_max_runtime_seconds = 5000
 interrupt_message = true
 
 [agents.default]

@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "WinUI",
-    "shortDescription": "Microsoft WinUI desktop app workflows",
+    "shortDescription": "WinUI desktop applications",
     "category": "Development",
     "capabilities": [
       "Read",

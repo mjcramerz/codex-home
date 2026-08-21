@@ -1,9 +1,6 @@
 interface:
   display_name: Building Ai Agent On Cloudflare
-  short_description: 'Builds AI agents on Cloudflare using the Agents SDK with state
-    management,
-
-    real-time WebSockets, scheduled tasks, tool i'
+  short_description: 'Build Cloudflare Agents SDK apps with state, WebSockets, scheduled tasks, and tools.'
   default_prompt: 'Use the Building Ai Agent On Cloudflare skill when the task matches
     this scope: Builds AI agents on Cloudflare using the Agents SDK with state management,
 

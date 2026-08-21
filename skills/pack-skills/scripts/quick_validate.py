@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Quick validation script for pack skills."""
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -8,6 +9,45 @@ from pathlib import Path
 import yaml
 
 MAX_SKILL_NAME_LENGTH = 64
+MAX_SHORT_DESCRIPTION_LENGTH = 128
+MAX_PLUGIN_DEFAULT_PROMPTS = 3
+MAX_PLUGIN_DEFAULT_PROMPT_LENGTH = 128
+MAX_PLUGIN_SHORT_DESCRIPTION_LENGTH = 30
+
+
+def validate_short_description(value, label):
+    """Validate a skill or plugin short description."""
+    if not isinstance(value, str):
+        return f"{label} must be a string"
+    if not value.strip():
+        return f"{label} must be non-empty"
+    if "\n" in value or "\r" in value:
+        return f"{label} must fit on one line"
+    if len(value) > MAX_SHORT_DESCRIPTION_LENGTH:
+        return (
+            f"{label} is too long ({len(value)} characters). "
+            f"Maximum is {MAX_SHORT_DESCRIPTION_LENGTH} characters."
+        )
+    return None
+
+
+def load_skill_frontmatter(skill_md):
+    """Load a SKILL.md YAML frontmatter mapping."""
+    content = skill_md.read_text()
+    if not content.startswith("---"):
+        raise ValueError("No YAML frontmatter found")
+
+    match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+    if not match:
+        raise ValueError("Invalid frontmatter format")
+
+    try:
+        frontmatter = yaml.safe_load(match.group(1))
+    except yaml.YAMLError as exc:
+        raise ValueError(f"Invalid YAML in frontmatter: {exc}") from exc
+    if not isinstance(frontmatter, dict):
+        raise ValueError("Frontmatter must be a YAML dictionary")
+    return content, frontmatter
 
 
 def validate_skill(skill_path):
@@ -18,22 +58,10 @@ def validate_skill(skill_path):
     if not skill_md.exists():
         return False, "SKILL.md not found"
 
-    content = skill_md.read_text()
-    if not content.startswith("---"):
-        return False, "No YAML frontmatter found"
-
-    match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-    if not match:
-        return False, "Invalid frontmatter format"
-
-    frontmatter_text = match.group(1)
-
     try:
-        frontmatter = yaml.safe_load(frontmatter_text)
-        if not isinstance(frontmatter, dict):
-            return False, "Frontmatter must be a YAML dictionary"
-    except yaml.YAMLError as e:
-        return False, f"Invalid YAML in frontmatter: {e}"
+        content, frontmatter = load_skill_frontmatter(skill_md)
+    except ValueError as exc:
+        return False, str(exc)
 
     allowed_properties = {"name", "description", "license", "allowed-tools", "metadata", "interface"}
 
@@ -93,8 +121,12 @@ def validate_skill(skill_path):
         return False, "metadata must be a YAML object"
     if not isinstance(metadata.get("version"), str):
         return False, "metadata.version must be a string"
-    if not isinstance(metadata.get("short-description"), str):
-        return False, "metadata.short-description must be a string"
+    error = validate_short_description(
+        metadata.get("short-description"),
+        "metadata.short-description",
+    )
+    if error:
+        return False, error
     if not isinstance(metadata.get("tags"), list):
         return False, "metadata.tags must be a list"
 
@@ -102,9 +134,14 @@ def validate_skill(skill_path):
     if interface is not None:
         if not isinstance(interface, dict):
             return False, "interface must be a YAML object when present"
-        for field in ("display-name", "short-description"):
-            if not isinstance(interface.get(field), str):
-                return False, f"interface.{field} must be a string"
+        if not isinstance(interface.get("display-name"), str):
+            return False, "interface.display-name must be a string"
+        error = validate_short_description(
+            interface.get("short-description"),
+            "interface.short-description",
+        )
+        if error:
+            return False, error
 
     required_heading_patterns = (
         r"^## Workflow\b",
@@ -132,11 +169,158 @@ def validate_skill(skill_path):
     return True, "Skill is valid!"
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python quick_validate.py <skill_directory>")
-        sys.exit(1)
+def validate_plugin_manifest(path):
+    """Validate runtime-sensitive plugin interface metadata."""
+    errors = []
+    try:
+        payload = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        return [f"{path}: invalid plugin JSON: {exc}"]
 
-    valid, message = validate_skill(sys.argv[1])
+    interface = payload.get("interface")
+    if not isinstance(interface, dict):
+        return [f"{path}: interface must be a JSON object"]
+
+    short_description = interface.get("shortDescription")
+    if short_description is None:
+        errors.append(f"{path}: interface.shortDescription is required")
+    else:
+        error = validate_short_description(
+            short_description,
+            "interface.shortDescription",
+        )
+        if error:
+            errors.append(f"{path}: {error}")
+        elif len(short_description) > MAX_PLUGIN_SHORT_DESCRIPTION_LENGTH:
+            errors.append(
+                f"{path}: interface.shortDescription is too long "
+                f"({len(short_description)} characters). "
+                f"Maximum is {MAX_PLUGIN_SHORT_DESCRIPTION_LENGTH} characters."
+            )
+
+    default_prompt = interface.get("defaultPrompt")
+    if default_prompt is None:
+        return errors
+    if isinstance(default_prompt, str):
+        prompts = [default_prompt]
+    elif isinstance(default_prompt, list):
+        prompts = default_prompt
+    else:
+        errors.append(f"{path}: interface.defaultPrompt must be a string or list of strings")
+        return errors
+
+    if len(prompts) > MAX_PLUGIN_DEFAULT_PROMPTS:
+        errors.append(
+            f"{path}: interface.defaultPrompt contains {len(prompts)} prompts; "
+            f"maximum is {MAX_PLUGIN_DEFAULT_PROMPTS}"
+        )
+    for index, prompt in enumerate(prompts):
+        label = f"interface.defaultPrompt[{index}]"
+        if not isinstance(prompt, str):
+            errors.append(f"{path}: {label} must be a string")
+            continue
+        if not prompt.strip():
+            errors.append(f"{path}: {label} must be non-empty")
+        if "\n" in prompt or "\r" in prompt:
+            errors.append(f"{path}: {label} must fit on one line")
+        if len(prompt) > MAX_PLUGIN_DEFAULT_PROMPT_LENGTH:
+            errors.append(
+                f"{path}: {label} is too long ({len(prompt)} characters). "
+                f"Maximum is {MAX_PLUGIN_DEFAULT_PROMPT_LENGTH} characters."
+            )
+    return errors
+
+
+def validate_repository_metadata(repository_path):
+    """Validate skill and plugin metadata throughout one repository."""
+    repository_path = Path(repository_path)
+    errors = []
+    skill_files = sorted(repository_path.rglob("SKILL.md"))
+    agent_files = sorted(repository_path.rglob("agents/openai.yaml"))
+    plugin_files = sorted(
+        path
+        for path in repository_path.rglob("plugin.json")
+        if path.parent.name == ".codex-plugin"
+    )
+
+    for skill_md in skill_files:
+        try:
+            _, frontmatter = load_skill_frontmatter(skill_md)
+        except ValueError as exc:
+            errors.append(f"{skill_md}: {exc}")
+            continue
+        metadata = frontmatter.get("metadata")
+        interface = frontmatter.get("interface")
+        fields = (
+            (
+                "metadata.short-description",
+                metadata.get("short-description") if isinstance(metadata, dict) else None,
+            ),
+            (
+                "interface.short-description",
+                interface.get("short-description") if isinstance(interface, dict) else None,
+            ),
+        )
+        for field_path, value in fields:
+            if value is None:
+                continue
+            error = validate_short_description(value, field_path)
+            if error:
+                errors.append(f"{skill_md}: {error}")
+
+    for agent_file in agent_files:
+        try:
+            payload = yaml.safe_load(agent_file.read_text())
+        except (OSError, yaml.YAMLError) as exc:
+            errors.append(f"{agent_file}: invalid YAML: {exc}")
+            continue
+        interface = payload.get("interface") if isinstance(payload, dict) else None
+        if not isinstance(interface, dict) or "short_description" not in interface:
+            continue
+        error = validate_short_description(
+            interface.get("short_description"),
+            "interface.short_description",
+        )
+        if error:
+            errors.append(f"{agent_file}: {error}")
+
+    for plugin_file in plugin_files:
+        errors.extend(validate_plugin_manifest(plugin_file))
+
+    return {
+        "errors": errors,
+        "skill_files": len(skill_files),
+        "agent_files": len(agent_files),
+        "plugin_files": len(plugin_files),
+    }
+
+
+def main(argv):
+    if len(argv) == 3 and argv[1] == "--repository":
+        result = validate_repository_metadata(argv[2])
+        for error in result["errors"]:
+            print(f"ERROR: {error}")
+        if result["errors"]:
+            return 1
+        print(
+            "Repository metadata is valid: "
+            f"{result['skill_files']} skills, "
+            f"{result['agent_files']} agent metadata files, and "
+            f"{result['plugin_files']} plugin manifests checked."
+        )
+        return 0
+
+    if len(argv) != 2:
+        print(
+            "Usage: python quick_validate.py <skill_directory>\n"
+            "   or: python quick_validate.py --repository <repository_root>"
+        )
+        return 1
+
+    valid, message = validate_skill(argv[1])
     print(message)
-    sys.exit(0 if valid else 1)
+    return 0 if valid else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Codex Runtime",
-    "shortDescription": "Runtime config, schema diff, and setup audit",
+    "shortDescription": "Codex runtime configuration",
     "category": "Operations",
     "capabilities": [
       "Read",

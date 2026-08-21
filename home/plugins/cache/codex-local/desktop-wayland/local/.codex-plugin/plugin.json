@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Desktop Wayland",
-    "shortDescription": "Debian Wayland desktop, dock, and launcher workflows",
+    "shortDescription": "Debian Wayland desktop setup",
     "category": "Desktop",
     "capabilities": [
       "Read",

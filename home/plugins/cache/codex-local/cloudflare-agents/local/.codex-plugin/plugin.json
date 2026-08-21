@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Cloudflare Agents",
-    "shortDescription": "Agents SDK and MCP-on-Workers workflows",
+    "shortDescription": "Cloudflare Agents and MCP",
     "category": "Infrastructure",
     "capabilities": [
       "Read",

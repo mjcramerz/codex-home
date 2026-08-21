@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Hosting Platforms",
-    "shortDescription": "Route deployments across Vercel, Render, and Netlify",
+    "shortDescription": "Multi-platform deployments",
     "category": "Development",
     "capabilities": [
       "Read",

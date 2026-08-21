@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Cloudflare Workers",
-    "shortDescription": "Workers, R2, Durable Objects, and edge-runtime workflows",
+    "shortDescription": "Workers, storage, and edge",
     "category": "Infrastructure",
     "capabilities": [
       "Read",

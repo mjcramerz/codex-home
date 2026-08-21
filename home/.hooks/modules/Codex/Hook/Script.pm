@@ -80,7 +80,7 @@ sub resolve_wrapper_dispatch {
     die "wrapper_name must end with .pl\n" if $wrapper_name !~ /\.pl\z/;
     (my $root = $wrapper_name) =~ s/\.pl\z//;
 
-    if ($root =~ /\A(session_start|user_prompt_submit|pre_compact|post_compact|stop|subagent_start|subagent_stop)\z/) {
+    if ($root =~ /\A(session_start|session_end|user_prompt_submit|pre_compact|post_compact|stop|subagent_start|subagent_stop)\z/) {
         return {
             event_arg => _event_arg_from_root($1),
         };

@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Adobe Acrobat",
-    "shortDescription": "PDF reading, forms, signing, and review workflows",
+    "shortDescription": "PDF forms, signing, and review",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

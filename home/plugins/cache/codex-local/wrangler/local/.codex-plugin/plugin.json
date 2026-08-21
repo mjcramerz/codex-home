@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Wrangler",
-    "shortDescription": "Wrangler CLI and Cloudflare deployment workflows",
+    "shortDescription": "Wrangler deployment workflows",
     "category": "Infrastructure",
     "capabilities": [
       "Read",

@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Kubernetes",
-    "shortDescription": "Kubernetes manifests and operations",
+    "shortDescription": "Kubernetes operations",
     "category": "Infrastructure",
     "capabilities": [
       "Read",

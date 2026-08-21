@@ -6,9 +6,22 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/session_start.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/session_start.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting detected repository context"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "^other$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/session_end.pl\"",
+            "timeout": 3,
+            "statusMessage": "Validating session end"
           }
         ]
       }
@@ -18,7 +31,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/user_prompt_submit.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/user_prompt_submit.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting detected prompt context"
           }
@@ -30,7 +43,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_compact.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_compact.pl\"",
             "timeout": 20,
             "statusMessage": "Preserving context before compaction"
           }
@@ -42,7 +55,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_compact.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_compact.pl\"",
             "timeout": 20,
             "statusMessage": "Re-establishing context after compaction"
           }
@@ -54,7 +67,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/stop.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/stop.pl\"",
             "timeout": 25,
             "statusMessage": "Checking detected repository constraints"
           }
@@ -67,7 +80,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_edit.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_edit.pl\"",
             "timeout": 20,
             "statusMessage": "Checking edit guardrails"
           }
@@ -78,7 +91,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_openai_developer_docs.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_openai_developer_docs.pl\"",
             "timeout": 20,
             "statusMessage": "Checking OpenAI docs MCP guardrails"
           }
@@ -89,7 +102,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_context7.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_context7.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Context7 MCP guardrails"
           }
@@ -100,7 +113,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_filesystem.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_filesystem.pl\"",
             "timeout": 20,
             "statusMessage": "Checking filesystem MCP guardrails"
           }
@@ -111,7 +124,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_fetch.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_fetch.pl\"",
             "timeout": 20,
             "statusMessage": "Checking fetch MCP guardrails"
           }
@@ -122,7 +135,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_sequential_thinking.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_sequential_thinking.pl\"",
             "timeout": 20,
             "statusMessage": "Checking sequential thinking MCP guardrails"
           }
@@ -133,7 +146,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_time.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_time.pl\"",
             "timeout": 20,
             "statusMessage": "Checking time MCP guardrails"
           }
@@ -144,7 +157,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking git MCP guardrails"
           }
@@ -155,7 +168,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking memory MCP guardrails"
           }
@@ -166,7 +179,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking markdown MCP guardrails"
           }
@@ -177,7 +190,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Playwright MCP guardrails"
           }
@@ -188,7 +201,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Chrome DevTools MCP guardrails"
           }
@@ -199,7 +212,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Postgres MCP guardrails"
           }
@@ -210,7 +223,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking SQLite MCP guardrails"
           }
@@ -221,7 +234,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Semgrep MCP guardrails"
           }
@@ -232,7 +245,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_observability.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_cloudflare_observability.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare observability MCP guardrails"
           }
@@ -243,7 +256,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_builds.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_cloudflare_builds.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare builds MCP guardrails"
           }
@@ -254,7 +267,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_bindings.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_cloudflare_bindings.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare bindings MCP guardrails"
           }
@@ -265,7 +278,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_docs.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_cloudflare_docs.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare docs MCP guardrails"
           }
@@ -276,7 +289,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp_cloudflare_api.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp_cloudflare_api.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare API MCP guardrails"
           }
@@ -287,7 +300,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking MCP tool guardrails"
           }
@@ -298,7 +311,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use.pl\"",
             "timeout": 20,
             "statusMessage": "Checking memory tool guardrails"
           }
@@ -309,7 +322,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/pre_tool_use.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/pre_tool_use.pl\"",
             "timeout": 20,
             "statusMessage": "Checking generic tool guardrails"
           }
@@ -322,7 +335,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_edit.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_edit.pl\"",
             "timeout": 15,
             "statusMessage": "Checking edit approval scope"
           }
@@ -333,7 +346,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_openai_developer_docs.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_openai_developer_docs.pl\"",
             "timeout": 20,
             "statusMessage": "Checking OpenAI docs MCP approval scope"
           }
@@ -344,7 +357,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_context7.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_context7.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Context7 MCP approval scope"
           }
@@ -355,7 +368,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_filesystem.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_filesystem.pl\"",
             "timeout": 20,
             "statusMessage": "Checking filesystem MCP approval scope"
           }
@@ -366,7 +379,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_fetch.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_fetch.pl\"",
             "timeout": 20,
             "statusMessage": "Checking fetch MCP approval scope"
           }
@@ -377,7 +390,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_sequential_thinking.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_sequential_thinking.pl\"",
             "timeout": 20,
             "statusMessage": "Checking sequential thinking MCP approval scope"
           }
@@ -388,7 +401,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_time.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_time.pl\"",
             "timeout": 20,
             "statusMessage": "Checking time MCP approval scope"
           }
@@ -399,7 +412,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking git MCP approval scope"
           }
@@ -410,7 +423,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking memory MCP approval scope"
           }
@@ -421,7 +434,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking markdown MCP approval scope"
           }
@@ -432,7 +445,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Playwright MCP approval scope"
           }
@@ -443,7 +456,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Chrome DevTools MCP approval scope"
           }
@@ -454,7 +467,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Postgres MCP approval scope"
           }
@@ -465,7 +478,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking SQLite MCP approval scope"
           }
@@ -476,7 +489,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Semgrep MCP approval scope"
           }
@@ -487,7 +500,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_observability.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_cloudflare_observability.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare observability MCP approval scope"
           }
@@ -498,7 +511,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_builds.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_cloudflare_builds.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare builds MCP approval scope"
           }
@@ -509,7 +522,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_bindings.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_cloudflare_bindings.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare bindings MCP approval scope"
           }
@@ -520,7 +533,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_docs.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_cloudflare_docs.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare docs MCP approval scope"
           }
@@ -531,7 +544,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp_cloudflare_api.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp_cloudflare_api.pl\"",
             "timeout": 20,
             "statusMessage": "Checking Cloudflare API MCP approval scope"
           }
@@ -542,7 +555,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Checking MCP approval scope"
           }
@@ -553,7 +566,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request.pl\"",
             "timeout": 20,
             "statusMessage": "Checking memory tool approval scope"
           }
@@ -564,7 +577,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/permission_request.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/permission_request.pl\"",
             "timeout": 20,
             "statusMessage": "Checking generic tool approval scope"
           }
@@ -577,7 +590,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_edit.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_edit.pl\"",
             "timeout": 15,
             "statusMessage": "Reviewing edit follow-up"
           }
@@ -588,7 +601,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_openai_developer_docs.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_openai_developer_docs.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing OpenAI docs MCP follow-up"
           }
@@ -599,7 +612,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_context7.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_context7.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Context7 MCP follow-up"
           }
@@ -610,7 +623,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_filesystem.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_filesystem.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing filesystem MCP follow-up"
           }
@@ -621,7 +634,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_fetch.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_fetch.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing fetch MCP follow-up"
           }
@@ -632,7 +645,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_sequential_thinking.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_sequential_thinking.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing sequential thinking MCP follow-up"
           }
@@ -643,7 +656,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_time.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_time.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing time MCP follow-up"
           }
@@ -654,7 +667,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing git MCP follow-up"
           }
@@ -665,7 +678,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing memory MCP follow-up"
           }
@@ -676,7 +689,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing markdown MCP follow-up"
           }
@@ -687,7 +700,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Playwright MCP follow-up"
           }
@@ -698,7 +711,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Chrome DevTools MCP follow-up"
           }
@@ -709,7 +722,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Postgres MCP follow-up"
           }
@@ -720,7 +733,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing SQLite MCP follow-up"
           }
@@ -731,7 +744,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Semgrep MCP follow-up"
           }
@@ -742,7 +755,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_observability.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_cloudflare_observability.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Cloudflare observability MCP follow-up"
           }
@@ -753,7 +766,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_builds.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_cloudflare_builds.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Cloudflare builds MCP follow-up"
           }
@@ -764,7 +777,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_bindings.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_cloudflare_bindings.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Cloudflare bindings MCP follow-up"
           }
@@ -775,7 +788,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_docs.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_cloudflare_docs.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Cloudflare docs MCP follow-up"
           }
@@ -786,7 +799,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp_cloudflare_api.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp_cloudflare_api.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing Cloudflare API MCP follow-up"
           }
@@ -797,7 +810,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use_mcp.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use_mcp.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing MCP follow-up"
           }
@@ -808,7 +821,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing memory tool follow-up"
           }
@@ -819,7 +832,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/post_tool_use.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/post_tool_use.pl\"",
             "timeout": 20,
             "statusMessage": "Reviewing generic tool follow-up"
           }
@@ -832,7 +845,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_coordination.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_coordination.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting coordination subagent guidance"
           }
@@ -843,7 +856,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_orchestration.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_orchestration.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting orchestration subagent guidance"
           }
@@ -854,7 +867,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_planning.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_planning.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting planning subagent guidance"
           }
@@ -865,7 +878,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_delegation.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_delegation.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting delegation subagent guidance"
           }
@@ -876,7 +889,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_delivery.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_delivery.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting delivery subagent guidance"
           }
@@ -887,7 +900,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_analysis.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_analysis.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting analysis subagent guidance"
           }
@@ -898,7 +911,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_synthesis.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_synthesis.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting synthesis subagent guidance"
           }
@@ -909,7 +922,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_integrator.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_integrator.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting integrator subagent guidance"
           }
@@ -920,7 +933,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_research.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_research.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting research subagent guidance"
           }
@@ -931,7 +944,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start_validation.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start_validation.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting validation subagent guidance"
           }
@@ -942,7 +955,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_start.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_start.pl\"",
             "timeout": 20,
             "statusMessage": "Injecting generic subagent guidance"
           }
@@ -955,7 +968,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_coordination.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_coordination.pl\"",
             "timeout": 25,
             "statusMessage": "Checking coordination subagent completion gates"
           }
@@ -966,7 +979,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_orchestration.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_orchestration.pl\"",
             "timeout": 25,
             "statusMessage": "Checking orchestration subagent completion gates"
           }
@@ -977,7 +990,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_planning.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_planning.pl\"",
             "timeout": 25,
             "statusMessage": "Checking planning subagent completion gates"
           }
@@ -988,7 +1001,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_delegation.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_delegation.pl\"",
             "timeout": 25,
             "statusMessage": "Checking delegation subagent completion gates"
           }
@@ -999,7 +1012,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_delivery.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_delivery.pl\"",
             "timeout": 25,
             "statusMessage": "Checking delivery subagent completion gates"
           }
@@ -1010,7 +1023,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_analysis.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_analysis.pl\"",
             "timeout": 25,
             "statusMessage": "Checking analysis subagent completion gates"
           }
@@ -1021,7 +1034,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_synthesis.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_synthesis.pl\"",
             "timeout": 25,
             "statusMessage": "Checking synthesis subagent completion gates"
           }
@@ -1032,7 +1045,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_integrator.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_integrator.pl\"",
             "timeout": 25,
             "statusMessage": "Checking integrator subagent completion gates"
           }
@@ -1043,7 +1056,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_research.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_research.pl\"",
             "timeout": 25,
             "statusMessage": "Checking research subagent completion gates"
           }
@@ -1054,7 +1067,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop_validation.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop_validation.pl\"",
             "timeout": 25,
             "statusMessage": "Checking validation subagent completion gates"
           }
@@ -1065,7 +1078,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "perl /data/codex/usr/home/.hooks/scripts/subagent_stop.pl",
+            "command": "perl \"$CODEX_HOME/.hooks/scripts/subagent_stop.pl\"",
             "timeout": 25,
             "statusMessage": "Checking generic subagent completion gates"
           }

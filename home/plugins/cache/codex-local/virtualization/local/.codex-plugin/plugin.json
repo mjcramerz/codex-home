@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Virtualization",
-    "shortDescription": "Proxmox and libvirt VM workflows",
+    "shortDescription": "Proxmox and libvirt VMs",
     "category": "Infrastructure",
     "capabilities": [
       "Read",

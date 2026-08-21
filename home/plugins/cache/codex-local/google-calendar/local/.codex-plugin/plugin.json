@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Google Calendar",
-    "shortDescription": "Google Calendar schedules and events",
+    "shortDescription": "Google Calendar management",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

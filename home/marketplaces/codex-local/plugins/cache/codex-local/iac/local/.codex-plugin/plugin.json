@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "IaC",
-    "shortDescription": "Ansible and Terraform workflows",
+    "shortDescription": "Ansible and Terraform",
     "category": "Infrastructure",
     "capabilities": [
       "Read",

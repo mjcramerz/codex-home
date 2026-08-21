@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Adobe Express",
-    "shortDescription": "Design posts, flyers, and quick campaign assets",
+    "shortDescription": "Quick campaign design assets",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

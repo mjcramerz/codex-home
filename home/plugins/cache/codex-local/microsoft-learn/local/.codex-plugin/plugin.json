@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Microsoft Learn",
-    "shortDescription": "Microsoft Learn and Azure implementation workflows",
+    "shortDescription": "Azure implementation guidance",
     "category": "Development",
     "capabilities": [
       "Read",

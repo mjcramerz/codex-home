@@ -5,7 +5,7 @@
   "skills": "./skills",
   "interface": {
     "displayName": "Atlassian",
-    "shortDescription": "Atlassian cloud workflow and implementation guidance",
+    "shortDescription": "Atlassian workflow guidance",
     "category": "Productivity",
     "capabilities": [
       "Read",
