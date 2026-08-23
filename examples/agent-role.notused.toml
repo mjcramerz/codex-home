@@ -1,0 +1,7 @@
+# Generated companion for config.home.notused.toml agents.<role>.config_file.
+# Copy this file and tailor it for each named agent role.
+
+description = "example"
+nickname_candidates = ["example"]
+
+# schema-definition: AgentRoleToml

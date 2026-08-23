@@ -452,7 +452,6 @@ skill_env_var_dependency_prompt = false
 skill_mcp_dependency_install = true
 image_detail_original = true
 image_generation = true
-imagegenext = true
 search_tool = true
 
 # shell

@@ -1,0 +1,894 @@
+# Generated from schemas/config.schema.json; do not edit manually.
+#
+# This TOML overlay contains every schema-backed setting that is not
+# assigned by home/config.toml. It intentionally reopens existing tables
+# only when an unset child setting belongs in that table. Apply it as a
+# config layer; its deep merge with home/config.toml is schema-validated.
+#
+# A generated agent role's config_file setting points to agent-role.notused.toml.
+
+# Optional product SKU forwarded on host-owned Codex Apps MCP requests.
+apps_mcp_product_sku = "example"
+# Compact prompt used for history compaction.
+compact_prompt = "example"
+# Experimental / do not use. Overrides only the WebRTC realtime call creation base URL. This is separate from `experimental_realtime_ws_base_url` because WebRTC call creation is HTTP, while sideband control is websocket.
+experimental_realtime_webrtc_call_base_url = "example"
+# Experimental / do not use. Overrides only the realtime conversation websocket transport base URL (the `Op::RealtimeConversation` `/v1/realtime` connection) without changing normal provider HTTP requests.
+experimental_realtime_ws_base_url = "example"
+# Experimental / do not use. Selects the realtime websocket model/snapshot used for the `Op::RealtimeConversation` connection.
+experimental_realtime_ws_model = "example"
+# alternatives: true | false
+experimental_use_unified_exec_tool = true
+# When set, restricts ChatGPT login to one or more workspace identifiers.
+# alternatives: "example" | ["example"]
+forced_chatgpt_workspace_id = "example"
+# System instructions.
+instructions = "example"
+# Preferred OSS provider for local models, e.g. "lmstudio" or "ollama".
+oss_provider = "example"
+# Profile to use from the `profiles` map.
+profile = "example"
+# Sandbox mode to use.
+# alternatives: "read-only" | "workspace-write" | "danger-full-access"
+sandbox_mode = "read-only"
+# Optional explicit service tier request id for new turns (for example `default`, `priority`, or `flex`; legacy `fast` also works).
+service_tier = "example"
+
+# Agent-related settings (thread limits, etc.).
+[agents]
+default_subagent_model = "example"
+default_subagent_reasoning_effort = "example"
+enabled = true
+max_concurrent_threads_per_session = 1
+
+[agents.example]
+config_file = "agent-role.notused.toml"
+description = "example"
+nickname_candidates = ["example"]
+
+# Settings for app-specific controls.
+[apps]
+
+[apps._default]
+approvals_reviewer = "user"
+default_tools_approval_mode = "auto"
+
+[apps.example]
+approvals_reviewer = "user"
+default_tools_approval_mode = "auto"
+default_tools_enabled = true
+destructive_enabled = true
+enabled = true
+open_world_enabled = true
+
+[apps.example.tools]
+
+[apps.example.tools.example]
+approval_mode = "auto"
+enabled = true
+
+# Opaque desktop settings stored alongside the rest of config.toml.
+[desktop]
+example = "example"
+
+# Experimental / do not use. Selects the thread store implementation.
+[experimental_thread_store]
+type = "local"
+
+# Centralized feature flags (new). Prefer this over individual toggles.
+[features]
+apply_patch_preserve_line_endings = true
+background_paginated_rollout_migration = true
+browser_use_full_cdp_access = true
+code_mode_buffered_exec = true
+code_mode_host = true
+code_mode_interrupt = true
+codex_hooks = true
+collab = true
+concurrent_reasoning_summaries = true
+connectors = true
+current_time_reminder = true
+deferred_executor = true
+deferred_tool_world_state = true
+enable_experimental_windows_sandbox = true
+executed_tool_call_metadata = true
+executor_capability_discovery = true
+experimental_use_unified_exec_tool = true
+external_agent_memory_import = true
+guardian_enhanced_node_repl_transcripts = true
+guardian_node_repl_transcript_images = true
+guardian_reuse_parent_compaction = true
+guardianv2 = true
+image_resize_notice = true
+in_app_chat = true
+in_app_dictation = true
+in_app_updates = true
+item_ids = true
+mcp_2026_07_28 = true
+memory_tool = true
+multi_agent_mode = true
+plugin_hooks = true
+psp = true
+recommended_plugins = true
+request_permissions = true
+resize_all_images = true
+respect_system_proxy = true
+retain_client_developer_messages = true
+rollout_budget = true
+secret_auth_storage = true
+skill_search = true
+telepathy = true
+terminal_visualization_instructions = true
+token_budget = true
+unavailable_dummy_tools = true
+unbounded_connection_retries = true
+unified_image_budget = true
+use_agent_identity = true
+use_legacy_landlock = true
+view_image = true
+web_search = true
+web_search_cached = true
+web_search_request = true
+
+[features.tool_registry]
+error_on_tool_collisions = true
+turn_metadata_includes_tool_info = true
+
+# Compatibility-only settings retained so legacy `ghost_snapshot` config still loads.
+[ghost_snapshot]
+disable_warnings = true
+ignore_large_untracked_dirs = 0
+ignore_large_untracked_files = 0
+
+# Goal-related settings.
+[goals]
+max_goal_token_budget = 1
+
+# Settings that govern if and what will be written to `~/.codex/history.jsonl`.
+[history]
+max_bytes = 0
+
+# Lifecycle hooks configured inline in TOML plus user-level overrides.
+[hooks]
+
+[[hooks.PermissionRequest]]
+matcher = "example"
+
+[[hooks.PermissionRequest.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.PostCompact]]
+matcher = "example"
+
+[[hooks.PostCompact.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.PostToolUse]]
+matcher = "example"
+
+[[hooks.PostToolUse.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.PreCompact]]
+matcher = "example"
+
+[[hooks.PreCompact.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.PreToolUse]]
+matcher = "example"
+
+[[hooks.PreToolUse.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.SessionEnd]]
+matcher = "example"
+
+[[hooks.SessionEnd.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.SessionStart]]
+matcher = "example"
+
+[[hooks.SessionStart.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.Stop]]
+matcher = "example"
+
+[[hooks.Stop.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.SubagentStart]]
+matcher = "example"
+
+[[hooks.SubagentStart.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.SubagentStop]]
+matcher = "example"
+
+[[hooks.SubagentStop.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[[hooks.UserPromptSubmit]]
+matcher = "example"
+
+[[hooks.UserPromptSubmit.hooks]]
+additionalContextLimit = 0
+async = false
+command = "example"
+commandWindows = "example"
+statusMessage = "example"
+timeout = 0
+type = "command"
+
+[hooks.state]
+
+[hooks.state.example]
+enabled = true
+trusted_hash = "example"
+
+# User-level marketplace entries keyed by marketplace name.
+[marketplaces]
+
+[marketplaces.example]
+last_revision = "example"
+last_updated = "example"
+ref = "example"
+source = "example"
+source_type = "git"
+sparse_paths = ["example"]
+
+# Definition for MCP servers that Codex can reach out to for tool calls.
+[mcp_servers]
+
+[mcp_servers.example]
+args = ["example"]
+auth = "oauth"
+bearer_token_env_var = "example"
+command = "example"
+cwd = "example"
+default_tools_approval_mode = "auto"
+disabled_tools = ["example"]
+enabled = true
+enabled_tools = ["example"]
+env_vars = ["example"]
+environment_id = "example"
+http_headers_helper = "example"
+name = "example"
+oauth_resource = "example"
+omit_tools_from = ["code_mode"]
+required = true
+scopes = ["example"]
+startup_timeout_ms = 0
+startup_timeout_sec = 1.0
+supports_parallel_tool_calls = true
+tool_timeout_sec = 1.0
+url = "example"
+
+[mcp_servers.example.env]
+example = "example"
+
+[mcp_servers.example.env_http_headers]
+example = "example"
+
+[mcp_servers.example.http_headers]
+example = "example"
+
+[mcp_servers.example.oauth]
+callback_port = 0
+client_id = "example"
+
+[mcp_servers.example.tools]
+
+[mcp_servers.example.tools.example]
+approval_mode = "auto"
+
+# User-defined provider entries that extend the built-in list. Built-in IDs cannot be overridden.
+[model_providers]
+
+[model_providers.example]
+base_url = "example"
+env_key = "example"
+env_key_instructions = "example"
+experimental_bearer_token = "example"
+name = ""
+request_max_retries = 0
+requires_openai_auth = false
+stream_idle_timeout_ms = 0
+stream_max_retries = 0
+supports_standalone_web_search = false
+supports_websockets = false
+websocket_connect_timeout_ms = 0
+wire_api = "responses"
+
+[model_providers.example.auth]
+args = ["example"]
+command = "example"
+cwd = "example"
+refresh_interval_ms = 300000
+timeout_ms = 5000
+
+[model_providers.example.aws]
+profile = "example"
+region = "example"
+
+[model_providers.example.env_http_headers]
+example = "example"
+
+[model_providers.example.http_headers]
+example = "example"
+
+[model_providers.example.query_params]
+example = "example"
+
+# Collection of in-product notices (different from notifications) See [`crate::types::Notice`] for more details
+[notice]
+fast_default_opt_out = true
+hide_full_access_warning = true
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+hide_gpt5_1_migration_prompt = true
+hide_rate_limit_model_nudge = true
+hide_world_writable_warning = true
+
+[notice.external_config_migration_prompts]
+home = true
+home_last_prompted_at = 0
+
+[notice.external_config_migration_prompts.project_last_prompted_at]
+example = 0
+
+[notice.external_config_migration_prompts.projects]
+example = true
+
+[notice.model_migrations]
+example = "example"
+
+# OTEL configuration.
+[otel]
+exporter = "none"
+metrics_exporter = "none"
+trace_exporter = "none"
+
+[otel.span_attributes]
+example = "example"
+
+[otel.tracestate]
+
+[otel.tracestate.example]
+example = "example"
+
+# Named permissions profiles.
+[permissions]
+
+[permissions.example-profile]
+description = "example"
+extends = "example"
+
+[permissions.example-profile.filesystem]
+glob_scan_max_depth = 1
+
+[permissions.example-profile.network]
+allow_local_binding = true
+allow_upstream_proxy = true
+dangerously_allow_all_unix_sockets = true
+dangerously_allow_non_loopback_proxy = true
+enable_socks5 = true
+enable_socks5_udp = true
+enabled = true
+mode = "limited"
+proxy_url = "example"
+socks_url = "example"
+
+[permissions.example-profile.network.domains]
+
+[permissions.example-profile.network.mitm]
+
+[permissions.example-profile.network.mitm.actions]
+
+[permissions.example-profile.network.mitm.actions.example]
+strip_request_headers = ["example"]
+
+[[permissions.example-profile.network.mitm.actions.example.inject_request_headers]]
+name = ""
+prefix = "example"
+secret_env_var = "example"
+secret_file = "example"
+
+[permissions.example-profile.network.mitm.hooks]
+
+[permissions.example-profile.network.mitm.hooks.example]
+action = ["example"]
+body = "example"
+host = "example"
+methods = ["example"]
+path_prefixes = ["example"]
+
+[permissions.example-profile.network.mitm.hooks.example.headers]
+example = ["example"]
+
+[permissions.example-profile.network.mitm.hooks.example.query]
+example = ["example"]
+
+[permissions.example-profile.network.unix_sockets]
+
+[permissions.example-profile.workspace_roots]
+
+# User-level plugin config entries keyed by plugin name.
+[plugins]
+
+[plugins.example]
+enabled = true
+
+[plugins.example.mcp_servers]
+
+[plugins.example.mcp_servers.example]
+default_tools_approval_mode = "auto"
+disabled_tools = ["example"]
+enabled = true
+enabled_tools = ["example"]
+
+[plugins.example.mcp_servers.example.tools]
+
+[plugins.example.mcp_servers.example.tools.example]
+approval_mode = "auto"
+
+# Named profiles to facilitate switching between different configurations.
+[profiles]
+
+[profiles.example]
+approval_policy = "untrusted"
+approvals_reviewer = "user"
+chatgpt_base_url = "example"
+experimental_compact_prompt_file = "example"
+experimental_use_unified_exec_tool = true
+include_apps_instructions = true
+include_collaboration_mode_instructions = true
+include_environment_context = true
+include_permissions_instructions = true
+model = "example"
+model_catalog_json = "example"
+model_instructions_file = "example"
+model_provider = "example"
+model_reasoning_effort = "example"
+model_reasoning_summary = "auto"
+model_verbosity = "low"
+oss_provider = "example"
+personality = "none"
+plan_mode_reasoning_effort = "example"
+sandbox_mode = "read-only"
+service_tier = "example"
+web_search = "disabled"
+
+[profiles.example.analytics]
+enabled = true
+
+[profiles.example.features]
+apply_patch_freeform = true
+apply_patch_preserve_line_endings = true
+apply_patch_streaming_events = true
+apps = true
+apps_mcp_path_override = true
+auth_elicitation = true
+background_paginated_rollout_migration = true
+browser_use = true
+browser_use_external = true
+browser_use_full_cdp_access = true
+chronicle = true
+code_mode = true
+code_mode_buffered_exec = true
+code_mode_host = true
+code_mode_interrupt = true
+code_mode_only = true
+codex_git_commit = true
+codex_hooks = true
+collab = true
+collaboration_modes = true
+computer_use = true
+concurrent_reasoning_summaries = true
+connectors = true
+current_time_reminder = true
+default_mode_request_user_input = true
+deferred_executor = true
+deferred_tool_world_state = true
+elevated_windows_sandbox = true
+enable_experimental_windows_sandbox = true
+enable_fanout = true
+enable_mcp_apps = true
+enable_request_compression = true
+exec_permission_approvals = true
+executed_tool_call_metadata = true
+executor_capability_discovery = true
+experimental_use_unified_exec_tool = true
+experimental_windows_sandbox = true
+external_agent_memory_import = true
+external_migration = true
+fast_mode = true
+goals = true
+guardian_approval = true
+guardian_enhanced_node_repl_transcripts = true
+guardian_node_repl_transcript_images = true
+guardian_reuse_parent_compaction = true
+guardianv2 = true
+hooks = true
+image_detail_original = true
+image_generation = true
+image_resize_notice = true
+imagegenext = true
+in_app_browser = true
+in_app_chat = true
+in_app_dictation = true
+in_app_updates = true
+item_ids = true
+js_repl = true
+js_repl_tools_only = true
+local_thread_store_compression = true
+mcp_2026_07_28 = true
+memories = true
+memory_tool = true
+mentions_v2 = true
+multi_agent = true
+multi_agent_mode = true
+multi_agent_v2 = true
+network_proxy = true
+non_prefixed_mcp_tool_names = true
+personality = true
+plugin_hooks = true
+plugin_sharing = true
+plugins = true
+prevent_idle_sleep = true
+psp = true
+realtime_conversation = true
+recommended_plugins = true
+remote_compaction_v2 = true
+remote_control = true
+remote_models = true
+remote_plugin = true
+request_permissions = true
+request_permissions_tool = true
+request_rule = true
+resize_all_images = true
+respect_system_proxy = true
+responses_websockets = true
+responses_websockets_v2 = true
+retain_client_developer_messages = true
+rollout_budget = true
+runtime_metrics = true
+search_tool = true
+secret_auth_storage = true
+shell_snapshot = true
+shell_tool = true
+shell_zsh_fork = true
+skill_env_var_dependency_prompt = true
+skill_mcp_dependency_install = true
+skill_search = true
+sqlite = true
+standalone_web_search = true
+steer = true
+telepathy = true
+terminal_resize_reflow = true
+terminal_visualization_instructions = true
+token_budget = true
+tool_call_mcp_elicitation = true
+tool_search = true
+tool_search_always_defer_mcp_tools = true
+tool_suggest = true
+tui_app_server = true
+unavailable_dummy_tools = true
+unbounded_connection_retries = true
+undo = true
+unified_exec = true
+unified_exec_zsh_fork = true
+unified_image_budget = true
+use_agent_identity = true
+use_legacy_landlock = true
+use_linux_sandbox_bwrap = true
+view_image = true
+web_search = true
+web_search_cached = true
+web_search_request = true
+workspace_dependencies = true
+workspace_owner_usage_nudge = true
+
+[profiles.example.features.tool_registry]
+error_on_tool_collisions = true
+turn_metadata_includes_tool_info = true
+
+[profiles.example.tools]
+
+[profiles.example.tools.experimental_request_user_input]
+enabled = true
+
+[profiles.example.tools.update_plan]
+enabled = true
+
+[profiles.example.tools.web_search]
+allowed_domains = ["example"]
+context_size = "low"
+
+[profiles.example.tools.web_search.location]
+city = "example"
+country = "example"
+region = "example"
+timezone = "example"
+
+[profiles.example.tui]
+session_picker_view = "comfortable"
+
+[profiles.example.windows]
+sandbox = "elevated"
+sandbox_private_desktop = true
+
+[projects]
+
+[projects.example]
+trust_level = "trusted"
+
+# Experimental / do not use. Realtime websocket session selection. `version` controls v1/v2 and `type` controls conversational/transcription.
+[realtime]
+transport = "webrtc"
+type = "conversational"
+version = "v1"
+voice = "alloy"
+
+# Bounded, product-owned metadata attached to every Responses API request.
+[responses_api_metadata]
+example = "example"
+
+# Sandbox configuration to apply if `sandbox` is `WorkspaceWrite`.
+[sandbox_workspace_write]
+exclude_slash_tmp = false
+exclude_tmpdir_env_var = false
+network_access = false
+writable_roots = ["example"]
+
+[shell_environment_policy]
+exclude = ["example"]
+include_only = ["example"]
+
+[shell_environment_policy.set]
+example = "example"
+
+# User-level skill config entries keyed by SKILL.md path.
+[skills]
+max_context_tokens = 1
+
+# Additional discoverable tools that can be suggested for installation.
+[tool_suggest]
+
+[[tool_suggest.disabled_tools]]
+id = "example"
+type = "connector"
+
+[[tool_suggest.discoverables]]
+id = "example"
+type = "connector"
+
+# Nested tools section for feature toggles
+[tools]
+
+[tools.experimental_request_user_input]
+enabled = true
+
+[tools.update_plan]
+enabled = true
+
+[tools.web_search]
+allowed_domains = ["example"]
+
+# Collection of settings that are specific to the TUI.
+[tui]
+notification_condition = "unfocused"
+pet = "example"
+pet_anchor = "composer"
+raw_output_mode = false
+resume_cwd = "current"
+session_picker_view = "comfortable"
+status_line_use_colors = true
+terminal_resize_reflow_max_rows = 0
+terminal_title = ["example"]
+vim_mode_default = false
+
+[tui.keymap]
+
+[tui.keymap.approval]
+approve = "example"
+approve_for_prefix = "example"
+approve_for_session = "example"
+cancel = "example"
+decline = "example"
+deny = "example"
+open_fullscreen = "example"
+open_thread = "example"
+
+[tui.keymap.chat]
+decrease_reasoning_effort = "example"
+edit_queued_message = "example"
+increase_reasoning_effort = "example"
+interrupt_turn = "example"
+
+[tui.keymap.composer]
+history_search_next = "example"
+history_search_previous = "example"
+queue = "example"
+submit = "example"
+toggle_shortcuts = "example"
+
+[tui.keymap.editor]
+delete_backward = "example"
+delete_backward_word = "example"
+delete_forward = "example"
+delete_forward_word = "example"
+insert_newline = "example"
+kill_line_end = "example"
+kill_line_start = "example"
+kill_whole_line = "example"
+move_down = "example"
+move_left = "example"
+move_line_end = "example"
+move_line_start = "example"
+move_right = "example"
+move_up = "example"
+move_word_left = "example"
+move_word_right = "example"
+yank = "example"
+
+[tui.keymap.global]
+clear_terminal = "example"
+copy = "example"
+open_external_editor = "example"
+open_transcript = "example"
+queue = "example"
+submit = "example"
+toggle_fast_mode = "example"
+toggle_raw_output = "example"
+toggle_shortcuts = "example"
+toggle_side_conversation = "example"
+toggle_vim_mode = "example"
+
+[tui.keymap.list]
+accept = "example"
+cancel = "example"
+jump_bottom = "example"
+jump_top = "example"
+move_down = "example"
+move_left = "example"
+move_right = "example"
+move_up = "example"
+page_down = "example"
+page_up = "example"
+
+[tui.keymap.pager]
+close = "example"
+close_transcript = "example"
+half_page_down = "example"
+half_page_up = "example"
+jump_bottom = "example"
+jump_top = "example"
+page_down = "example"
+page_up = "example"
+scroll_down = "example"
+scroll_up = "example"
+
+[tui.keymap.vim_normal]
+append_after_cursor = "example"
+append_line_end = "example"
+cancel_operator = "example"
+change_to_line_end = "example"
+delete_char = "example"
+delete_to_line_end = "example"
+enter_insert = "example"
+insert_line_start = "example"
+move_down = "example"
+move_left = "example"
+move_line_end = "example"
+move_line_start = "example"
+move_right = "example"
+move_up = "example"
+move_word_backward = "example"
+move_word_end = "example"
+move_word_forward = "example"
+open_line_above = "example"
+open_line_below = "example"
+paste_after = "example"
+start_change_operator = "example"
+start_delete_operator = "example"
+start_yank_operator = "example"
+substitute_char = "example"
+yank_line = "example"
+
+[tui.keymap.vim_operator]
+cancel = "example"
+delete_line = "example"
+motion_down = "example"
+motion_left = "example"
+motion_line_end = "example"
+motion_line_start = "example"
+motion_right = "example"
+motion_up = "example"
+motion_word_backward = "example"
+motion_word_end = "example"
+motion_word_forward = "example"
+select_around_text_object = "example"
+select_inner_text_object = "example"
+yank_line = "example"
+
+[tui.keymap.vim_text_object]
+backtick = "example"
+big_word = "example"
+braces = "example"
+brackets = "example"
+cancel = "example"
+double_quote = "example"
+parentheses = "example"
+single_quote = "example"
+word = "example"
+
+[tui.model_availability_nux]
+example = 0
+
+# Windows-specific configuration.
+[windows]
+sandbox = "elevated"
+sandbox_private_desktop = true

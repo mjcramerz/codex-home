@@ -18,21 +18,57 @@ import json
 import math
 import re
 import sys
+import tomllib
 from pathlib import Path
 from typing import Any, Iterable
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = REPOSITORY_ROOT / "schemas" / "config.schema.json"
+HOME_CONFIG_PATH = REPOSITORY_ROOT / "home" / "config.toml"
 EXAMPLES_DIRECTORY = REPOSITORY_ROOT / "examples"
 HOME_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "config.home.toml"
 AGENT_ROLE_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "agent-role.toml"
+NOTUSED_HOME_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "config.home.notused.toml"
+NOTUSED_AGENT_ROLE_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "agent-role.notused.toml"
 
 DEFINITION_MARKER = "# schema-definition: "
 ENTRY_MARKER = "# schema-entry: "
 VARIANT_MARKER = "# schema-variant: "
 OPTION_MARKER = "# schema-options: "
+FINITE_OPTION_MARKER = "# schema-finite-option: "
 EXAMPLE_MARKER = "# schema-example: "
+_OMIT = object()
+
+SUPPORTED_SCHEMA_KEYWORDS = frozenset(
+    {
+        "$ref",
+        "$schema",
+        "additionalProperties",
+        "allOf",
+        "anyOf",
+        "const",
+        "default",
+        "definitions",
+        "description",
+        "enum",
+        "format",
+        "items",
+        "maxItems",
+        "maxLength",
+        "maximum",
+        "minItems",
+        "minLength",
+        "minimum",
+        "not",
+        "oneOf",
+        "pattern",
+        "properties",
+        "required",
+        "title",
+        "type",
+    }
+)
 
 INTEGER_FORMAT_RANGES = {
     "int32": (-(2**31), (2**31) - 1),
@@ -49,7 +85,11 @@ class GenerationError(ValueError):
 
 
 def load_schema() -> dict[str, Any]:
-    return json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    errors = unsupported_schema_keywords(schema)
+    if errors:
+        raise GenerationError("\n".join(errors))
+    return schema
 
 
 def definitions(schema: dict[str, Any]) -> dict[str, Any]:
@@ -76,6 +116,50 @@ def resolve_ref(schema: dict[str, Any], ref: str) -> Any:
         except KeyError as exc:
             raise GenerationError(f"unresolvable schema reference: {ref}") from exc
     return node
+
+
+def unsupported_schema_keywords(schema: Any) -> list[str]:
+    """Reject JSON-Schema features this generator cannot render and validate."""
+    errors: list[str] = []
+
+    def visit(node: Any, pointer: str) -> None:
+        if node is True or node is False:
+            return
+        if not isinstance(node, dict):
+            errors.append(f"{pointer}: schema node is not an object")
+            return
+        unknown = sorted(set(node) - SUPPORTED_SCHEMA_KEYWORDS)
+        if unknown:
+            errors.append(
+                f"{pointer}: unsupported JSON Schema keywords: {', '.join(unknown)}"
+            )
+        definitions_map = node.get("definitions")
+        if isinstance(definitions_map, dict):
+            for name, child in definitions_map.items():
+                visit(child, f"{pointer}/definitions/{escape_pointer(name)}")
+        properties = node.get("properties")
+        if isinstance(properties, dict):
+            for name, child in properties.items():
+                visit(child, f"{pointer}/properties/{escape_pointer(name)}")
+        additional = node.get("additionalProperties")
+        if isinstance(additional, dict):
+            visit(additional, f"{pointer}/additionalProperties")
+        items = node.get("items")
+        if isinstance(items, dict) or isinstance(items, bool):
+            visit(items, f"{pointer}/items")
+        for union_name in ("allOf", "anyOf", "oneOf"):
+            branches = node.get(union_name)
+            if isinstance(branches, list):
+                for index, child in enumerate(branches):
+                    visit(child, f"{pointer}/{union_name}/{index}")
+        not_schema = node.get("not")
+        if isinstance(not_schema, dict) or isinstance(not_schema, bool):
+            visit(not_schema, f"{pointer}/not")
+
+    if not isinstance(schema, dict):
+        return ["#: config schema root is not an object"]
+    visit(schema, "#")
+    return errors
 
 
 def flattened_nodes(
@@ -249,8 +333,15 @@ def numeric_sample(schema: dict[str, Any], node: Any, integer: bool) -> int | fl
     return candidate
 
 
-def sample_key() -> str:
-    return "example"
+def sample_key(existing: Any = None, *, base: str = "example") -> str:
+    """Return a deterministic example map key absent from an existing mapping."""
+    reserved = set(existing) if isinstance(existing, dict) else set()
+    if base not in reserved:
+        return base
+    suffix = 2
+    while f"{base}-{suffix}" in reserved:
+        suffix += 1
+    return f"{base}-{suffix}"
 
 
 def sample_value(
@@ -259,6 +350,8 @@ def sample_value(
     *,
     ref_stack: frozenset[str] = frozenset(),
     property_name: str | None = None,
+    existing: Any = None,
+    role_config_file: str = AGENT_ROLE_EXAMPLE_PATH.name,
 ) -> Any:
     """Create one TOML-serializable value accepted by ``node``."""
     if node is True:
@@ -280,6 +373,8 @@ def sample_value(
             resolved,
             ref_stack=ref_stack | {ref},
             property_name=property_name,
+            existing=existing,
+            role_config_file=role_config_file,
         )
 
     union_kind, branches = union_branches(schema, node)
@@ -291,6 +386,8 @@ def sample_value(
                     branch,
                     ref_stack=ref_stack,
                     property_name=property_name,
+                    existing=existing,
+                    role_config_file=role_config_file,
                 )
             except GenerationError:
                 continue
@@ -307,18 +404,33 @@ def sample_value(
                     return copy.deepcopy(value)
 
     if property_name == "config_file":
-        return AGENT_ROLE_EXAMPLE_PATH.name
+        return role_config_file
 
     types = declared_types(schema, node)
     if is_object_schema(schema, node):
-        return sample_object(schema, node, ref_stack=ref_stack)
+        return sample_object(
+            schema,
+            node,
+            ref_stack=ref_stack,
+            existing=existing,
+            role_config_file=role_config_file,
+        )
     if "array" in types:
         items: Any = True
         for fragment in fragments:
             if "items" in fragment:
                 items = fragment["items"]
                 break
-        return [sample_value(schema, items, ref_stack=ref_stack)]
+        item_existing = existing[0] if isinstance(existing, list) and existing else None
+        return [
+            sample_value(
+                schema,
+                items,
+                ref_stack=ref_stack,
+                existing=item_existing,
+                role_config_file=role_config_file,
+            )
+        ]
     if "boolean" in types:
         for fragment in fragments:
             if isinstance(fragment.get("default"), bool):
@@ -344,6 +456,8 @@ def sample_object(
     node: Any,
     *,
     ref_stack: frozenset[str],
+    existing: Any = None,
+    role_config_file: str = AGENT_ROLE_EXAMPLE_PATH.name,
 ) -> dict[str, Any]:
     result: dict[str, Any] = {}
     forbidden = forbidden_required_groups(schema, node)
@@ -353,11 +467,14 @@ def sample_object(
         prospective = set(result) | {name}
         if any(group <= prospective for group in forbidden):
             continue
+        child_existing = existing.get(name) if isinstance(existing, dict) else None
         result[name] = sample_value(
             schema,
             combined_schema(properties[name]),
             ref_stack=ref_stack,
             property_name=name,
+            existing=child_existing,
+            role_config_file=role_config_file,
         )
 
     missing = required_properties(schema, node) - set(result)
@@ -369,12 +486,17 @@ def sample_object(
 
     additional = explicit_additional_schema(schema, node)
     if isinstance(additional, dict):
-        key = sample_key()
+        key = sample_key(existing)
         while key in result:
-            key = f"{key}_value"
-        result[key] = sample_value(schema, additional, ref_stack=ref_stack)
+            key = sample_key(existing, base=f"{key}-value")
+        result[key] = sample_value(
+            schema,
+            additional,
+            ref_stack=ref_stack,
+            role_config_file=role_config_file,
+        )
     elif additional is True and not result:
-        result[sample_key()] = "example"
+        result[sample_key(existing)] = "example"
     return result
 
 
@@ -434,6 +556,48 @@ def schema_options(schema: dict[str, Any], node: Any) -> list[str]:
     return []
 
 
+def finite_options(
+    schema: dict[str, Any],
+    node: Any,
+    *,
+    ref_stack: frozenset[str] = frozenset(),
+) -> list[Any]:
+    """Return every TOML-expressible enum or constant accepted by ``node``."""
+    if node is True or node is False or not isinstance(node, dict):
+        return []
+    if "$ref" in node:
+        ref = node["$ref"]
+        if ref in ref_stack:
+            return []
+        resolved = resolve_ref(schema, ref)
+        siblings = {key: value for key, value in node.items() if key != "$ref"}
+        resolved_node = {"allOf": [resolved, siblings]} if siblings else resolved
+        return finite_options(schema, resolved_node, ref_stack=ref_stack | {ref})
+
+    candidates: list[Any] = []
+    union_kind, branches = union_branches(schema, node)
+    if union_kind is not None:
+        for branch in branches:
+            candidates.extend(finite_options(schema, branch, ref_stack=ref_stack))
+    else:
+        for fragment in flattened_nodes(schema, node, ref_stack):
+            if "const" in fragment:
+                candidates.append(copy.deepcopy(fragment["const"]))
+            enum = fragment.get("enum")
+            if isinstance(enum, list):
+                candidates.extend(copy.deepcopy(value) for value in enum)
+
+    options: list[Any] = []
+    for candidate in candidates:
+        try:
+            toml_literal(candidate)
+        except GenerationError:
+            continue
+        if candidate not in options and not validate_value(schema, candidate, node):
+            options.append(candidate)
+    return options
+
+
 def describe(node: Any) -> str | None:
     if isinstance(node, dict):
         value = node.get("description")
@@ -444,12 +608,20 @@ def describe(node: Any) -> str | None:
 
 def root_property_values(
     schema: dict[str, Any],
+    *,
+    existing: dict[str, Any] | None = None,
+    role_config_file: str = AGENT_ROLE_EXAMPLE_PATH.name,
 ) -> tuple[dict[str, Any], dict[tuple[str, ...], list[str]]]:
     values: dict[str, Any] = {}
     comments: dict[tuple[str, ...], list[str]] = {}
+    existing = existing or {}
     root_properties = schema.get("properties")
     if not isinstance(root_properties, dict):
         raise GenerationError("config schema root must define properties")
+    permission_profile_name = sample_key(
+        existing.get("permissions"),
+        base="example-profile",
+    )
     for name in sorted(root_properties):
         node = root_properties[name]
         property_comments: list[str] = []
@@ -460,16 +632,24 @@ def root_property_values(
         if len(options) > 1:
             property_comments.append(f"# alternatives: {' | '.join(options)}")
         if name == "default_permissions":
-            values[name] = "example-profile"
+            values[name] = permission_profile_name
         elif name == "permissions":
             values[name] = {
-                "example-profile": sample_value(
+                permission_profile_name: sample_value(
                     schema,
                     definitions(schema)["PermissionProfileToml"],
+                    existing=existing.get(name),
+                    role_config_file=role_config_file,
                 )
             }
         else:
-            values[name] = sample_value(schema, node, property_name=name)
+            values[name] = sample_value(
+                schema,
+                node,
+                property_name=name,
+                existing=existing.get(name),
+                role_config_file=role_config_file,
+            )
         if property_comments:
             comments[(name,)] = property_comments
     return values, comments
@@ -620,10 +800,29 @@ def option_matrix_lines(schema: dict[str, Any]) -> list[str]:
     lines = [
         "",
         "# Option matrix: each schema entry is listed below. Finite alternatives",
-        "# are exhaustive; object and array entries link to their child paths.",
+        "# are summarized; object and array entries link to their child paths.",
     ]
     for pointer, node in sorted(schema_entry_nodes(schema).items()):
         lines.append(f"{OPTION_MARKER}{pointer} = {schema_option_summary(schema, node)}")
+    return lines
+
+
+def finite_option_entries(schema: dict[str, Any]) -> list[str]:
+    """Return an exhaustive ledger of every finite TOML option in the schema."""
+    entries: list[str] = []
+    for pointer, node in sorted(schema_entry_nodes(schema).items()):
+        for option in finite_options(schema, node):
+            entries.append(f"{pointer} = {toml_literal(option)}")
+    return entries
+
+
+def finite_option_lines(schema: dict[str, Any]) -> list[str]:
+    lines = [
+        "",
+        "# Finite option matrix: every TOML-expressible enum and constant is",
+        "# listed independently so changing a schema option makes verification fail.",
+    ]
+    lines.extend(f"{FINITE_OPTION_MARKER}{entry}" for entry in finite_option_entries(schema))
     return lines
 
 
@@ -666,13 +865,58 @@ def render_home_example(schema: dict[str, Any]) -> str:
     root_values, root_comments = root_property_values(schema)
     render_mapping(lines, root_values, comments=root_comments)
     lines.extend(option_matrix_lines(schema))
+    lines.extend(finite_option_lines(schema))
     lines.extend(definition_example_lines(schema))
     lines.append("")
     lines.extend(coverage_ledger_lines(schema))
     return "\n".join(lines).rstrip() + "\n"
 
 
-def render_agent_role_example(schema: dict[str, Any]) -> str:
+def remove_configured_values(candidate: Any, configured: Any) -> Any:
+    """Return the generated settings not assigned by an existing TOML mapping."""
+    if configured is _OMIT:
+        return candidate
+    if not isinstance(candidate, dict) or not isinstance(configured, dict):
+        return _OMIT
+
+    remaining: dict[str, Any] = {}
+    for name, child in candidate.items():
+        value = remove_configured_values(child, configured.get(name, _OMIT))
+        if value is not _OMIT:
+            remaining[name] = value
+    return remaining or _OMIT
+
+
+def render_notused_home_example(
+    schema: dict[str, Any],
+    configured_home: dict[str, Any],
+) -> str:
+    """Render a config overlay containing only settings absent from home/config.toml."""
+    lines = [
+        "# Generated from schemas/config.schema.json; do not edit manually.",
+        "#",
+        "# This TOML overlay contains every schema-backed setting that is not",
+        "# assigned by home/config.toml. It intentionally reopens existing tables",
+        "# only when an unset child setting belongs in that table. Apply it as a",
+        "# config layer; its deep merge with home/config.toml is schema-validated.",
+        "#",
+        "# A generated agent role's config_file setting points to "
+        f"{NOTUSED_AGENT_ROLE_EXAMPLE_PATH.name}.",
+        "",
+    ]
+    root_values, root_comments = root_property_values(
+        schema,
+        existing=configured_home,
+        role_config_file=NOTUSED_AGENT_ROLE_EXAMPLE_PATH.name,
+    )
+    unused_values = remove_configured_values(root_values, configured_home)
+    if not isinstance(unused_values, dict):
+        raise GenerationError("home/config.toml already assigns every generated setting")
+    render_mapping(lines, unused_values, comments=root_comments)
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def render_agent_role_example(schema: dict[str, Any], *, home_example_path: Path) -> str:
     role_schema = definitions(schema).get("AgentRoleToml")
     if not isinstance(role_schema, dict):
         raise GenerationError("config schema does not define AgentRoleToml")
@@ -681,7 +925,7 @@ def render_agent_role_example(schema: dict[str, Any]) -> str:
         raise GenerationError("AgentRoleToml must generate an object")
     value.pop("config_file", None)
     lines = [
-        "# Generated companion for config.home.toml agents.<role>.config_file.",
+        f"# Generated companion for {home_example_path.name} agents.<role>.config_file.",
         "# Copy this file and tailor it for each named agent role.",
         "",
     ]
@@ -808,25 +1052,106 @@ def marker_values(content: str, prefix: str) -> set[str]:
     }
 
 
-def validate_rendered_examples(schema: dict[str, Any], home_text: str, role_text: str) -> list[str]:
+def merge_toml_mappings(base: Any, overlay: Any) -> Any:
+    """Deep-merge TOML tables while replacing scalar and array assignments."""
+    if not isinstance(base, dict) or not isinstance(overlay, dict):
+        return copy.deepcopy(overlay)
+    merged = copy.deepcopy(base)
+    for name, child in overlay.items():
+        if name in merged:
+            merged[name] = merge_toml_mappings(merged[name], child)
+        else:
+            merged[name] = copy.deepcopy(child)
+    return merged
+
+
+def overlapping_assignments(
+    configured: Any,
+    overlay: Any,
+    path: tuple[str, ...] = (),
+) -> list[str]:
+    """Return paths whose concrete values would be duplicated by an overlay."""
+    if not isinstance(configured, dict) or not isinstance(overlay, dict):
+        return [toml_path(path) or "$"]
+    overlaps: list[str] = []
+    for name, child in overlay.items():
+        if name in configured:
+            overlaps.extend(
+                overlapping_assignments(
+                    configured[name],
+                    child,
+                    path + (name,),
+                )
+            )
+    return overlaps
+
+
+def config_file_values(value: Any) -> set[str]:
+    """Collect role-layer file names from generated config mappings."""
+    if not isinstance(value, dict):
+        return set()
+    values: set[str] = set()
+    for name, child in value.items():
+        if name == "config_file" and isinstance(child, str):
+            values.add(child)
+        values.update(config_file_values(child))
+    return values
+
+
+def validate_rendered_examples(
+    schema: dict[str, Any],
+    home_text: str,
+    role_text: str,
+    notused_text: str,
+    notused_role_text: str,
+    configured_home: dict[str, Any],
+) -> list[str]:
     errors: list[str] = []
     try:
-        import tomllib
-
         home = tomllib.loads(home_text)
         role = tomllib.loads(role_text)
+        notused = tomllib.loads(notused_text)
+        notused_role = tomllib.loads(notused_role_text)
     except tomllib.TOMLDecodeError as exc:
         return [f"generated TOML is invalid: {exc}"]
 
     errors.extend(validate_value(schema, home, schema))
     role_schema = definitions(schema)["AgentRoleToml"]
     errors.extend(validate_value(schema, role, role_schema, "agent-role.toml"))
+    errors.extend(
+        validate_value(
+            schema,
+            notused_role,
+            role_schema,
+            "agent-role.notused.toml",
+        )
+    )
+    merged = merge_toml_mappings(configured_home, notused)
+    errors.extend(validate_value(schema, merged, schema, "home + notused"))
+    overlaps = overlapping_assignments(configured_home, notused)
+    if overlaps:
+        errors.append(
+            "notused example repeats settings from home/config.toml: "
+            + ", ".join(overlaps[:10])
+        )
+    role_file_values = config_file_values(home)
+    if AGENT_ROLE_EXAMPLE_PATH.name not in role_file_values:
+        errors.append(
+            "config.home.toml does not reference its generated agent-role companion"
+        )
+    notused_role_file_values = config_file_values(notused)
+    if NOTUSED_AGENT_ROLE_EXAMPLE_PATH.name not in notused_role_file_values:
+        errors.append(
+            "config.home.notused.toml does not reference its generated "
+            "agent-role.notused companion"
+        )
 
     expected_definitions, expected_entries, expected_variants = pointer_ledger(schema)
     actual_definitions = marker_values(home_text, DEFINITION_MARKER)
     actual_entries = marker_values(home_text, ENTRY_MARKER)
     actual_variants = marker_values(home_text, VARIANT_MARKER)
     actual_options = marker_values(home_text, OPTION_MARKER)
+    actual_finite_options = marker_values(home_text, FINITE_OPTION_MARKER)
     actual_examples = marker_values(home_text, EXAMPLE_MARKER)
     for label, expected, actual in (
         ("definition", set(expected_definitions), actual_definitions),
@@ -841,16 +1166,64 @@ def validate_rendered_examples(schema: dict[str, Any], home_text: str, role_text
             errors.append(f"coverage ledger is missing {label} markers: {', '.join(missing[:10])}")
         if extra:
             errors.append(f"coverage ledger has unknown {label} markers: {', '.join(extra[:10])}")
+    expected_finite_options = set(finite_option_entries(schema))
+    missing_finite_options = sorted(expected_finite_options - actual_finite_options)
+    extra_finite_options = sorted(actual_finite_options - expected_finite_options)
+    if missing_finite_options:
+        errors.append(
+            "coverage ledger is missing finite option markers: "
+            + ", ".join(missing_finite_options[:10])
+        )
+    if extra_finite_options:
+        errors.append(
+            "coverage ledger has unknown finite option markers: "
+            + ", ".join(extra_finite_options[:10])
+        )
     return errors
+
+
+def load_home_config() -> dict[str, Any]:
+    """Read the installed config as a validation-only input for the overlay."""
+    try:
+        text = HOME_CONFIG_PATH.read_text(encoding="utf-8")
+    except FileNotFoundError as exc:
+        raise GenerationError(
+            "cannot generate config.home.notused.toml without home/config.toml"
+        ) from exc
+    try:
+        value = tomllib.loads(text)
+    except tomllib.TOMLDecodeError as exc:
+        raise GenerationError(f"home/config.toml is invalid TOML: {exc}") from exc
+    if not isinstance(value, dict):
+        raise GenerationError("home/config.toml must contain a TOML mapping")
+    return value
 
 
 def rendered_examples(schema: dict[str, Any]) -> dict[Path, str]:
     home = render_home_example(schema)
-    role = render_agent_role_example(schema)
-    errors = validate_rendered_examples(schema, home, role)
+    role = render_agent_role_example(schema, home_example_path=HOME_EXAMPLE_PATH)
+    configured_home = load_home_config()
+    notused = render_notused_home_example(schema, configured_home)
+    notused_role = render_agent_role_example(
+        schema,
+        home_example_path=NOTUSED_HOME_EXAMPLE_PATH,
+    )
+    errors = validate_rendered_examples(
+        schema,
+        home,
+        role,
+        notused,
+        notused_role,
+        configured_home,
+    )
     if errors:
         raise GenerationError("\n".join(errors))
-    return {HOME_EXAMPLE_PATH: home, AGENT_ROLE_EXAMPLE_PATH: role}
+    return {
+        HOME_EXAMPLE_PATH: home,
+        AGENT_ROLE_EXAMPLE_PATH: role,
+        NOTUSED_HOME_EXAMPLE_PATH: notused,
+        NOTUSED_AGENT_ROLE_EXAMPLE_PATH: notused_role,
+    }
 
 
 def ensure_example_path(path: Path) -> None:
@@ -911,10 +1284,16 @@ def run(write: bool) -> int:
 
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
         "--write",
         action="store_true",
         help="write only the generated files under examples/",
+    )
+    mode.add_argument(
+        "--check",
+        action="store_true",
+        help="verify generated examples without writing them (the default)",
     )
     args = parser.parse_args(argv)
     return run(write=args.write)
