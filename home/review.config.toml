@@ -7,3 +7,11 @@ model_verbosity = "low"
 
 [instruction_overrides.models]
 base_instructions_file = "/data/codex/usr/instructions/profiles/review/models/base.md"
+
+# GPT-5.4 does not advertise Code Mode in the bundled model metadata.
+[features]
+code_mode = false
+code_mode_only = false
+code_mode_buffered_exec = false
+code_mode_host = false
+code_mode_interrupt = false

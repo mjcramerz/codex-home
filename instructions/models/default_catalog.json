@@ -81,7 +81,8 @@
         "pro",
         "team"
       ],
-      "supports_reasoning_summaries": true
+      "supports_reasoning_summaries": true,
+      "tool_mode": "code_mode_only"
     },
     {
       "prefer_websockets": true,
@@ -164,7 +165,8 @@
         "pro",
         "team"
       ],
-      "supports_reasoning_summaries": true
+      "supports_reasoning_summaries": true,
+      "tool_mode": "code_mode_only"
     },
     {
       "prefer_websockets": true,
@@ -247,7 +249,8 @@
         "pro",
         "team"
       ],
-      "supports_reasoning_summaries": true
+      "supports_reasoning_summaries": true,
+      "tool_mode": "code_mode_only"
     },
     {
       "prefer_websockets": true,

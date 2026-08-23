@@ -2,6 +2,30 @@ default_permissions = "full"
 approvals_reviewer = "user"
 allow_login_shell = true
 web_search = "live"
+# Schema-backed optional settings are classified here rather than populated with
+# invalid placeholders. The intentionally unset root keys are
+# apps_mcp_product_sku, compact_prompt,
+# experimental_realtime_webrtc_call_base_url,
+# experimental_realtime_ws_base_url, experimental_realtime_ws_model,
+# experimental_thread_store, experimental_use_unified_exec_tool,
+# forced_chatgpt_workspace_id, ghost_snapshot, instructions, oss_provider,
+# profile, responses_api_metadata, sandbox_mode, and sandbox_workspace_write.
+# Keep tenant-, host-, or provider-owned values unset until an authoritative
+# value is available:
+# - apps_mcp_product_sku and responses_api_metadata are product-owned request
+#   metadata; do not fabricate an identity.
+# - forced_chatgpt_workspace_id requires the exact permitted tenant workspace.
+# - the experimental realtime endpoint/model, thread-store, and unified-exec
+#   overrides stay disabled; the supported feature flags below are authoritative.
+# - instructions and compact_prompt remain file-backed so this config has one
+#   managed instruction and compaction source.
+# - oss_provider and profile require a local provider or named profile selected
+#   by the user. sandbox_mode and sandbox_workspace_write are intentionally
+#   omitted because default_permissions is the active sandbox policy.
+# - ghost_snapshot is legacy compatibility state and must not be introduced into
+#   a fresh configuration.
+# See examples/config.home.notused.toml for schema-valid layer examples only;
+# never copy its example strings into this active configuration.
 # Host-owned Apps requests may set a product SKU when deployment policy
 # requires one. Leave unset for the standard ChatGPT/Codex product identity.
 #apps_mcp_product_sku = "codex"
@@ -13,9 +37,6 @@ web_search = "live"
 # Named profiles are optional user-selected overlays. Enable profile only when
 # the matching profiles entry is also enabled.
 #profile = "debian"
-#[profiles.debian]
-#model = "gpt-5.6-sol"
-#model_provider = "openai-custom"
 
 # runtime
 log_dir = "/data/codex/log"
@@ -28,6 +49,11 @@ mcp_oauth_callback_url = "http://127.0.0.1:8088/callback"
 #experimental_realtime_webrtc_call_base_url = "https://your-realtime-backend.example.com/v1/realtime/calls"
 #experimental_realtime_ws_base_url = "https://your-realtime-backend.example.com/v1/realtime"
 #experimental_realtime_ws_model = "your-transcription-session-model"
+#experimental_use_unified_exec_tool = false
+# experimental_thread_store is intentionally unset; the runtime default remains
+# authoritative until that experimental storage contract is selected.
+# forced_chatgpt_workspace_id is intentionally unset; do not restrict login
+# without an exact tenant workspace identifier.
 experimental_realtime_ws_backend_prompt = """## Identity, tone, and role
 
 You are Codex, an OpenAI general-purpose agentic assistant that helps the user complete tasks across coding, browsing, apps, documents, research, and other digital workflows.
@@ -125,7 +151,9 @@ model = "gpt-5.6-sol"
 review_model = "gpt-5.6-terra"
 model_provider = "openai-custom"
 personality = "pragmatic"
-#service_tier = "flex"
+# Use the normal product tier by default. Do not request priority/flex capacity
+# without explicit deployment, cost, and entitlement approval.
+service_tier = "default"
 #oss_provider = ""
 
 # model context and session
@@ -211,7 +239,8 @@ not merely the first visible subtask.
     line numbers for material edits.
 """
 
-#compact_prompt = "Summarize aggressively."
+# compact_prompt stays unset: experimental_compact_prompt_file below is the
+# single managed compaction prompt source.
 include_apps_instructions = true
 include_collaboration_mode_instructions = true
 include_environment_context = true
@@ -233,6 +262,31 @@ experimental_compact_prompt_file = "/data/codex/usr/instructions/default/compact
 #network_access = false
 #exclude_tmpdir_env_var = false
 #exclude_slash_tmp = false
+
+# Goal limits use the runtime default until a workload has an approved budget.
+[goals]
+
+# Inline lifecycle hooks remain empty. The managed hook runtime remains the
+# source of truth at $CODEX_HOME/hooks.json and $CODEX_HOME/.hooks/**.
+[hooks]
+
+# No custom provider is defined in this portable configuration; openai-custom
+# is supplied by the installed runtime/host configuration.
+[model_providers]
+
+# Notices record per-user acknowledgement state. Keep source-controlled policy
+# neutral and do not suppress safety or migration prompts here.
+[notice]
+
+# Keep named profile and per-project maps available without selecting a profile
+# or assigning trust to a machine-specific filesystem path.
+[profiles]
+
+[projects]
+
+# Additional tool-suggestion policy is empty; installed skills and plugins
+# remain the controlled discovery surface.
+[tool_suggest]
 
 [auto_review]
 policy = """## Environment Profile
@@ -281,10 +335,6 @@ policy = """## Environment Profile
 [history]
 persistence = "save-all"
 
-#[tool_suggest]
-#discoverables = []
-#disabled_tools = []
-
 [instruction_overrides.agents]
 hierarchical_instructions_file = "/data/codex/usr/instructions/default/agents/hierarchical.md"
 
@@ -332,8 +382,9 @@ init_instructions_file = "/data/codex/usr/instructions/default/tui/init.md"
 #version = "v2"
 #type = "transcription"
 
-#[windows]
-#sandbox_private_desktop = true
+# Windows-specific defaults remain empty on Debian. Set sandbox settings only
+# in a Windows-owned configuration layer.
+[windows]
 
 # tui chatcomposer
 [tui]

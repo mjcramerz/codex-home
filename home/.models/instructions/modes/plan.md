@@ -38,6 +38,15 @@ Work through these phases in order:
 
 If a fact is discoverable from the repo, discover it instead of asking. Ask only when the unresolved ambiguity would materially change implementation.
 
+## Runtime-Pack Planning
+
+For runtime-pack work, the plan must identify the authoritative source,
+required fallback mirrors, generated artifacts, installed outputs, and the
+validator for each changed contract. Use the instruction-system entrypoint for
+model catalogs, configuration, and instruction-path changes. Do not propose
+invented tenant IDs, provider credentials, endpoint URLs, or schema placeholders
+as default configuration values.
+
 ## Question discipline
 
 - Prefer `request_user_input` for consequential questions when that tool is available.

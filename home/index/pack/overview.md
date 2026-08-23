@@ -1,7 +1,8 @@
 # Pack maintenance router
 Purpose: choose one pack-maintenance hub for runtime-pack source work for the Codex coding agent.
 You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
-Use this router when maintaining the runtime pack itself: docs, plans, skills, templates, snippets, rules, config, or plugin metadata.
+Use this router when maintaining the runtime pack itself: docs, plans, skills,
+templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 
 ## Navigation
 <!-- BEGIN:nav -->
@@ -14,8 +15,12 @@ Use this router when maintaining the runtime pack itself: docs, plans, skills, t
 - `$CODEX_HOME/index/manifest.yml` for routing metadata
 - `$CODEX_HOME/memories/` when runtime memory already exists for the active workspace
 - `$CODEX_HOME/docs/**` for runtime docs and workflows
+- `$CODEX_HOME/docs/instruction-system.md` for instruction, catalog, source,
+  mirror, and rendered-runtime boundaries
 - `$CODEX_HOME/plans/**` for plan templates
 - `$CODEX_HOME/templates/**` for reusable scaffolds
+- `$CODEX_HOME/.models/**` plus the managed `instructions/**` source tree for
+  model catalogs and instruction assets
 - `$CODEX_HOME/.agents/skills/**` for the runtime skill catalog and skill assets
 - `$CODEX_HOME/plugins/cache/**` plus `$CODEX_HOME/.agents/plugins/marketplace.json` for plugin bundles and marketplace wiring
 
@@ -28,6 +33,7 @@ Use this router when maintaining the runtime pack itself: docs, plans, skills, t
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/index/pack/config.md` — Pack configuration (entrypoint)
 - `$CODEX_HOME/index/pack/docs.md` — Docs index (entrypoint)
+- `$CODEX_HOME/index/pack/instructions.md` — Runtime instructions and model catalogs (entrypoint)
 - `$CODEX_HOME/index/pack/plans.md` — Plans (entrypoint)
 - `$CODEX_HOME/index/pack/prompts.md` — Prompts maintenance (entrypoint)
 - `$CODEX_HOME/index/pack/rules.md` — Execpolicy rules (entrypoint)
@@ -39,7 +45,9 @@ Use this router when maintaining the runtime pack itself: docs, plans, skills, t
 <!-- END:contents -->
 
 ## Recommended progression
-1. Plans and workflows for execution shape
-2. Skills for domain-specific playbooks
-3. Shell/runtime guidance for execution safety
-4. The specific pack hub you are maintaining
+1. Classify the work as configuration, instructions/catalogs, docs, plans, or
+   another pack surface.
+2. Open the matching hub and one workflow/plan when the work is non-trivial.
+3. Load only the needed skill and shell guidance.
+4. Identify the source, required mirror, generated artifact, and focused
+   validator before editing.

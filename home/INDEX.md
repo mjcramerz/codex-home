@@ -14,6 +14,8 @@ Purpose: tell the Codex coding agent which router to open first, which entrypoin
 4. You must open `$CODEX_HOME/index/pack/plans.md` and `$CODEX_HOME/index/pack/workflows.md` before large or cross-cutting work.
 5. You must open `$CODEX_HOME/index/pack/skills.md` only after the workflow and plan surfaces are clear.
 6. You must follow `$CODEX_HOME/docs/style/shell-runtime.md` before shell-sensitive execution.
+7. For instruction, catalog, or configuration-path work, open
+   `$CODEX_HOME/index/pack/instructions.md` before editing.
 
 ## Fast catalogs
 - Runtime memory directory: `$CODEX_HOME/memories/` when it already exists
@@ -24,6 +26,7 @@ Purpose: tell the Codex coding agent which router to open first, which entrypoin
 - Template hub: `$CODEX_HOME/templates/OVERVIEW.md`
 - Prompt catalog: `$CODEX_HOME/docs/create-prompts.md`
 - Plugin runtime guide: `$CODEX_HOME/docs/plugins.md`
+- Instruction and catalog contract: `$CODEX_HOME/docs/instruction-system.md`
 
 ## You must choose one router
 - For workflow-level, cross-cutting, or unclear work, open `$CODEX_HOME/index/core/overview.md`.
@@ -45,6 +48,8 @@ Purpose: tell the Codex coding agent which router to open first, which entrypoin
 - You must keep top-level routers short and deterministic.
 - You must keep multi-agent rules in `$CODEX_HOME/AGENTS.md` and workflow procedure in `$CODEX_HOME/docs/workflows/agent-orchestration.md`.
 - You must keep model catalog references aligned with `$CODEX_HOME/.models/default_catalog.json`.
+- You must keep instruction source, fallback mirrors, and installed-path
+  references aligned through `$CODEX_HOME/docs/instruction-system.md`.
 
 ## Stop conditions
 - You must open one router.

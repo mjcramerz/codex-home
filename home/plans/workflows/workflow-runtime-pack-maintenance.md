@@ -12,6 +12,7 @@ You must use this plan when following `$CODEX_HOME/docs/workflows/runtime-pack-m
 
 ## Inputs
 - `$CODEX_HOME/docs/workflows/runtime-pack-maintenance.md`
+- `$CODEX_HOME/docs/instruction-system.md` for model/catalog/configuration work
 - Current repo scope, constraints, and validation commands
 
 ## Scope
@@ -20,10 +21,20 @@ You must use this plan when following `$CODEX_HOME/docs/workflows/runtime-pack-m
 
 ## Action items
 [ ] Route to the workflow and confirm the smallest concrete entrypoint.
-[ ] Inventory the affected files, repos, and runtime contracts.
-[ ] Remove hardcoded workstation paths from touched docs, plans, skills, and instruction assets.
-[ ] Apply focused updates and keep cross-links in sync.
-[ ] Run the narrowest relevant validation and record evidence.
+[ ] Inventory the affected sources, required mirrors, generated artifacts, and
+    installed runtime outputs.
+[ ] Confirm the active configuration path and model/catalog capability contract
+    before changing Code Mode or instruction behavior.
+[ ] Update source-managed assets first; never edit installed outputs or copy
+    schema placeholder values into active configuration.
+[ ] Synchronize only required mirrors and keep routing, architecture, workflow,
+    plan, and manifest links in sync.
+[ ] Reparse changed structured files and run the matching validator:
+    `scripts/validate_model_catalogs.py`,
+    `scripts/validate_runtime_pack_assets.py`, and/or
+    `schemas/config_toml_coverage.py --check`.
+[ ] Record evidence, known runtime limitations, rollout order, and rollback
+    conditions in the handoff.
 
 ## Security checkpoints
 - You must confirm trust boundaries, credentials, and least-privilege assumptions before execution.

@@ -7,3 +7,11 @@ model_verbosity = "medium"
 
 [instruction_overrides.models]
 base_instructions_file = "/data/codex/usr/instructions/profiles/cyber/models/base.md"
+
+# This organization-specific model has no authoritative Code Mode metadata.
+[features]
+code_mode = false
+code_mode_only = false
+code_mode_buffered_exec = false
+code_mode_host = false
+code_mode_interrupt = false

@@ -31,8 +31,6 @@ profile = "example"
 # Sandbox mode to use.
 # alternatives: "read-only" | "workspace-write" | "danger-full-access"
 sandbox_mode = "read-only"
-# Optional explicit service tier request id for new turns (for example `default`, `priority`, or `flex`; legacy `fast` also works).
-service_tier = "example"
 
 # Agent-related settings (thread limits, etc.).
 [agents]
@@ -100,6 +98,7 @@ guardian_node_repl_transcript_images = true
 guardian_reuse_parent_compaction = true
 guardianv2 = true
 image_resize_notice = true
+imagegenext = true
 in_app_chat = true
 in_app_dictation = true
 in_app_updates = true

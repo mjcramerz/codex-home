@@ -16,12 +16,18 @@ Canonical content: `$CODEX_HOME/config.toml`
 Use when:
 - tuning runtime settings, models, or safety defaults
 - syncing new schema keys from upstream Codex config schema
-- refreshing local model catalog / credential-store bootstrap artifacts
+- refreshing local model catalog or credential-store bootstrap artifacts
+- deciding whether a configuration change requires an instruction or catalog
+  source/mirror update
 
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/.models/default_catalog.json`
 - `$CODEX_HOME/.models/instructions/models/base.md`
 - `$CODEX_HOME/.models/instructions/compact/prompt.md`
+- `$CODEX_HOME/index/pack/instructions.md`
+- `$CODEX_HOME/docs/instruction-system.md`
+- `scripts/validate_model_catalogs.py`
+- `schemas/config_toml_coverage.py`
 - `$CODEX_HOME/index/pack/docs.md`
 <!-- END:related -->

@@ -20,6 +20,7 @@ You must read only the smallest section that resolves the current task, follow t
 - `$CODEX_HOME/docs/lang/overview.md` — Language-focused guidance
 - `$CODEX_HOME/docs/templates/overview.md` — Template guidance
 - `$CODEX_HOME/docs/architecture.md` — Runtime-pack architecture
+- `$CODEX_HOME/docs/instruction-system.md` — Instruction, catalog, and rendered-runtime contract
 - `$CODEX_HOME/docs/create-prompts.md` — Prompt-file design guide
 - `$CODEX_HOME/docs/plugins.md` — Runtime plugins and marketplace guidance
 <!-- END:contents -->

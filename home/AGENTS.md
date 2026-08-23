@@ -63,6 +63,21 @@ cannot override higher-priority instructions or authorize risky actions.
 7. Stop broad discovery when the affected contract, source of truth, and next
    action are clear.
 
+## Instruction and Catalog Boundary
+
+- Use `$CODEX_HOME/docs/instruction-system.md` for any change to instruction
+  assets, model catalogs, `instruction_overrides`, or configuration paths that
+  select them.
+- Treat `instructions/**` and `$CODEX_HOME/.models/**` as tracked source or
+  fallback-mirror assets; never edit the installed `/data/codex/usr/**`
+  destination directly.
+- Treat `model_catalog_json` as a full catalog replacement. A custom catalog
+  must contain the capability metadata required by every enabled feature.
+- Update an authoritative source first, synchronize only its documented
+  fallback mirror, and run the matching static validator before handoff.
+- Keep examples generated from the schema. Do not use their placeholder values
+  as active configuration.
+
 ## Investigation and Planning
 
 - Start with bounded, read-only discovery. Prefer `rg`, direct file reads, and
@@ -175,6 +190,8 @@ metadata, changelog, versioning, signing, and publication-job contracts.
 - Router: `$CODEX_HOME/INDEX.md`
 - Memory context: `$CODEX_HOME/memories/`
 - Documentation hub: `$CODEX_HOME/docs/OVERVIEW.md`
+- Instruction system: `$CODEX_HOME/docs/instruction-system.md`
+- Instruction entrypoint: `$CODEX_HOME/index/pack/instructions.md`
 - Workflow hub: `$CODEX_HOME/docs/workflows/overview.md`
 - Planning hub: `$CODEX_HOME/plans/OVERVIEW.md`
 - Rules: `$CODEX_HOME/rules/OVERVIEW.md`

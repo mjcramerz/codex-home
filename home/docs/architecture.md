@@ -28,7 +28,24 @@ You must read only the smallest section that resolves the current task, follow t
   - `$CODEX_HOME/snippets/**`
   - `$CODEX_HOME/plugins/cache/**`
   - `$CODEX_HOME/.agents/plugins/marketplace.json`
-  - `$CODEX_HOME/.agents/skills/**`
+    - `$CODEX_HOME/.agents/skills/**`
+
+## Instruction and Model Catalog Flow
+
+- `instructions/**` is the tracked authoring tree for managed default, agent,
+  and profile instruction assets. Its rendered destinations live under
+  `/data/codex/usr/instructions/**`.
+- `$CODEX_HOME/.models/**` is the tracked fallback/compatibility catalog tree.
+  Named runtime role overlays may select its rendered destination under
+  `/data/codex/usr/home/.models/**`.
+- `$CODEX_HOME/config.toml` identifies the active rendered catalog and
+  instruction files. A `model_catalog_json` setting replaces, rather than
+  extends, the bundled model catalog.
+- Schema-generated `examples/config.home*.toml` files are reference artifacts;
+  `home/config.toml` remains the source of operational defaults.
+- The default instruction source/fallback pairs, catalog capability validation,
+  and change sequence are documented in
+  `$CODEX_HOME/docs/instruction-system.md`.
 
 ## Why the boundary matters
 - Installed runtime paths stay coherent after the pack is rendered into `$CODEX_HOME`.

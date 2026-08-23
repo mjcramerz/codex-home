@@ -19,6 +19,15 @@ Use local evidence before asking the user for input.
 - Ask only when the missing detail is true product intent, a consequential tradeoff, a destructive boundary, or something that cannot be discovered safely.
 - If a safe default exists and the downside is limited, pick it and continue.
 
+## Runtime-Pack Changes
+
+For changes to a Codex runtime pack, configuration, instruction asset, or model
+catalog, use the pack's instruction-system entrypoint after the governing
+`AGENTS.md` and before editing. Classify each target as source, required mirror,
+generated reference, or installed output; edit only the source and documented
+mirror. Run the focused catalog, configuration, or routing validator that
+matches the changed contract.
+
 ## `request_user_input`
 
 When the `request_user_input` tool is available, use it only for decisions that materially change implementation, validation, rollout, permissions, or ownership.

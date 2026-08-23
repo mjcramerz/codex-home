@@ -7,3 +7,11 @@ model_verbosity = "low"
 
 [instruction_overrides.models]
 base_instructions_file = "/data/codex/usr/instructions/profiles/fast/models/base.md"
+
+# This legacy profile model has no authoritative Code Mode metadata.
+[features]
+code_mode = false
+code_mode_only = false
+code_mode_buffered_exec = false
+code_mode_host = false
+code_mode_interrupt = false

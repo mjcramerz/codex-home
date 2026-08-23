@@ -212,6 +212,26 @@ pack:
       tags:
         - pack
         - config
+  instructions:
+    kind: entrypoint
+    description: stable link to instruction, model-catalog, and rendered-runtime guidance.
+    entrypoint: $CODEX_HOME/index/pack/instructions.md
+    canonical: $CODEX_HOME/docs/instruction-system.md
+    related:
+      - $CODEX_HOME/config.toml
+      - $CODEX_HOME/.models/default_catalog.json
+      - $CODEX_HOME/docs/architecture.md
+      - $CODEX_HOME/docs/workflows/runtime-pack-maintenance.md
+      - $CODEX_HOME/plans/workflows/workflow-runtime-pack-maintenance.md
+      - scripts/validate_model_catalogs.py
+      - scripts/validate_runtime_pack_assets.py
+    metadata:
+      version: '1.0'
+      short-description: instruction and model-catalog runtime guidance
+      tags:
+        - pack
+        - instructions
+        - model-catalogs
   docs:
     kind: entrypoint
     description: stable index to the pack’s documentation.
@@ -220,6 +240,8 @@ pack:
     related:
       - $CODEX_HOME/memories/
       - $CODEX_HOME/index/pack/config.md
+      - $CODEX_HOME/index/pack/instructions.md
+      - $CODEX_HOME/docs/instruction-system.md
       - $CODEX_HOME/index/pack/plans.md
       - $CODEX_HOME/index/pack/workflows.md
       - $CODEX_HOME/index/pack/templates.md
