@@ -1,129 +1,38 @@
 #!/usr/bin/env python3
-"""Validate exhaustive config-schema coverage without bloating installable TOML."""
+"""Generate and verify exhaustive TOML examples from ``config.schema.json``.
+
+The generated reference is intentionally isolated from installable configuration:
+it may only write under ``examples/``.  Each setting receives one schema-valid
+representative value, while comment-only annotations document every finite
+alternative that cannot coexist in one TOML document (for example, ``oneOf``
+branches).  A machine-readable coverage ledger at the end of the reference
+makes schema drift a check failure instead of a documentation omission.
+"""
 
 from __future__ import annotations
 
 import argparse
-import itertools
+import copy
+import hashlib
 import json
 import math
 import re
 import sys
-import tomllib
-from collections import defaultdict
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = REPOSITORY_ROOT / "schemas" / "config.schema.json"
-HOME_CONFIG_PATH = REPOSITORY_ROOT / "home" / "config.toml"
-SYSTEM_CONFIG_PATH = REPOSITORY_ROOT / "etc" / "config.toml"
-REQUIREMENTS_PATH = REPOSITORY_ROOT / "etc" / "requirements.toml"
+EXAMPLES_DIRECTORY = REPOSITORY_ROOT / "examples"
+HOME_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "config.home.toml"
+AGENT_ROLE_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "agent-role.toml"
 
-HOME_BEGIN = "# BEGIN:generated-config-schema-user-reference"
-HOME_END = "# END:generated-config-schema-user-reference"
-SYSTEM_BEGIN = "# BEGIN:generated-config-schema-system-reference"
-SYSTEM_END = "# END:generated-config-schema-system-reference"
-REQUIREMENTS_BEGIN = "# BEGIN:generated-config-schema-requirements-reference"
-REQUIREMENTS_END = "# END:generated-config-schema-requirements-reference"
-GENERATED_MARKERS = {
-    HOME_CONFIG_PATH: (HOME_BEGIN, HOME_END),
-    SYSTEM_CONFIG_PATH: (SYSTEM_BEGIN, SYSTEM_END),
-    REQUIREMENTS_PATH: (REQUIREMENTS_BEGIN, REQUIREMENTS_END),
-}
-
-# These settings are host-, organization-, authentication-, permission-, or
-# telemetry-oriented. Everything else is documented in the user-layer config.
-SYSTEM_ROOTS = {
-    "allow_login_shell",
-    "analytics",
-    "approval_policy",
-    "approvals_reviewer",
-    "apps_mcp_product_sku",
-    "chatgpt_base_url",
-    "cli_auth_credentials_store",
-    "default_permissions",
-    "feedback",
-    "forced_chatgpt_workspace_id",
-    "forced_login_method",
-    "ghost_snapshot",
-    "log_dir",
-    "mcp_oauth_callback_port",
-    "mcp_oauth_callback_url",
-    "mcp_oauth_credentials_store",
-    "mcp_servers",
-    "model_providers",
-    "notice",
-    "openai_base_url",
-    "otel",
-    "permissions",
-    "responses_api_metadata",
-    "sandbox_mode",
-    "sandbox_workspace_write",
-    "shell_environment_policy",
-    "sqlite_home",
-    "suppress_unstable_features_warning",
-    "windows",
-}
-
-# requirements.toml has a different grammar from config.toml. This list
-# documents every config-schema surface that its managed-policy controls can
-# constrain without pretending arbitrary config keys are valid requirements.
-REQUIREMENTS_ROOTS = {
-    "agents",
-    "approval_policy",
-    "approvals_reviewer",
-    "apps",
-    "default_permissions",
-    "features",
-    "forced_chatgpt_workspace_id",
-    "forced_login_method",
-    "hooks",
-    "mcp_servers",
-    "memories",
-    "model_providers",
-    "permissions",
-    "plugins",
-    "sandbox_mode",
-    "sandbox_workspace_write",
-    "skills",
-    "tools",
-    "web_search",
-}
-
-REQUIREMENTS_ALLOWED_ROOTS = {
-    "allow_appshots",
-    "allow_login_shell",
-    "allow_managed_hooks_only",
-    "allow_remote_control",
-    "allowed_approval_policies",
-    "allowed_approvals_reviewers",
-    "allowed_permission_profiles",
-    "allowed_sandbox_modes",
-    "allowed_web_search_modes",
-    "apps",
-    "check_for_update_on_startup",
-    "computer_use",
-    "default_permissions",
-    "enforce_residency",
-    "experimental_network",
-    "features",
-    "feedback",
-    "guardian_policy_config",
-    "hooks",
-    "log_dir",
-    "marketplaces",
-    "mcp_servers",
-    "model_catalog_json",
-    "models",
-    "permissions",
-    "plugins",
-    "remote_sandbox_config",
-    "rules",
-    "sqlite_home",
-    "windows",
-}
+DEFINITION_MARKER = "# schema-definition: "
+ENTRY_MARKER = "# schema-entry: "
+VARIANT_MARKER = "# schema-variant: "
+OPTION_MARKER = "# schema-options: "
+EXAMPLE_MARKER = "# schema-example: "
 
 INTEGER_FORMAT_RANGES = {
     "int32": (-(2**31), (2**31) - 1),
@@ -135,366 +44,652 @@ INTEGER_FORMAT_RANGES = {
 }
 
 
+class GenerationError(ValueError):
+    """Raised when the schema cannot be expressed as a safe TOML reference."""
+
+
 def load_schema() -> dict[str, Any]:
-    return json.loads(SCHEMA_PATH.read_text())
+    return json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
 
 
-def resolve_ref(schema_root: dict[str, Any], ref: str) -> Any:
+def definitions(schema: dict[str, Any]) -> dict[str, Any]:
+    for key in ("$defs", "definitions"):
+        value = schema.get(key)
+        if isinstance(value, dict):
+            return value
+    raise GenerationError("config schema has neither $defs nor definitions")
+
+
+def escape_pointer(segment: str) -> str:
+    return segment.replace("~", "~0").replace("/", "~1")
+
+
+def resolve_ref(schema: dict[str, Any], ref: str) -> Any:
     if not ref.startswith("#/"):
-        raise ValueError(f"external schema reference is unsupported: {ref}")
-    node: Any = schema_root
+        raise GenerationError(f"external schema reference is unsupported: {ref}")
+    node: Any = schema
     for part in ref[2:].split("/"):
-        node = node[part.replace("~1", "/").replace("~0", "~")]
+        if not isinstance(node, dict):
+            raise GenerationError(f"invalid schema reference: {ref}")
+        try:
+            node = node[part.replace("~1", "/").replace("~0", "~")]
+        except KeyError as exc:
+            raise GenerationError(f"unresolvable schema reference: {ref}") from exc
     return node
 
 
-def expand_variants(
-    schema_root: dict[str, Any],
+def flattened_nodes(
+    schema: dict[str, Any],
     node: Any,
     seen_refs: frozenset[str] = frozenset(),
-) -> list[Any]:
-    if isinstance(node, bool):
-        return [node]
-    if not isinstance(node, dict):
+) -> list[dict[str, Any]]:
+    """Return the non-union fragments that constrain a schema value."""
+    if node is True:
         return []
+    if node is False:
+        raise GenerationError("schema rejects a generated configuration value")
+    if not isinstance(node, dict):
+        raise GenerationError(f"schema node is not an object: {node!r}")
     if "$ref" in node:
         ref = node["$ref"]
         if ref in seen_refs:
             return []
-        return expand_variants(schema_root, resolve_ref(schema_root, ref), seen_refs | {ref})
-    for key in ("anyOf", "oneOf"):
+        resolved = resolve_ref(schema, ref)
+        siblings = {key: value for key, value in node.items() if key != "$ref"}
+        return flattened_nodes(schema, resolved, seen_refs | {ref}) + (
+            [siblings] if siblings else []
+        )
+    fragments = [{key: value for key, value in node.items() if key != "allOf"}]
+    for branch in node.get("allOf", []):
+        fragments.extend(flattened_nodes(schema, branch, seen_refs))
+    return fragments
+
+
+def union_branches(schema: dict[str, Any], node: Any) -> tuple[str | None, list[Any]]:
+    """Return the first union present after references/allOf are considered."""
+    if not isinstance(node, dict):
+        return None, []
+    if "$ref" in node:
+        return union_branches(schema, resolve_ref(schema, node["$ref"]))
+    for key in ("oneOf", "anyOf"):
         if key in node:
-            variants: list[Any] = []
-            for branch in node[key]:
-                variants.extend(expand_variants(schema_root, branch, seen_refs))
-            return variants
-    if "allOf" in node:
-        variants = []
-        for branch in node["allOf"]:
-            variants.extend(expand_variants(schema_root, branch, seen_refs))
-        siblings = {key: value for key, value in node.items() if key != "allOf"}
-        if siblings:
-            variants.append(siblings)
-        return variants
-    return [node]
+            branches = node[key]
+            if not isinstance(branches, list) or not branches:
+                raise GenerationError(f"{key} must contain at least one branch")
+            return key, branches
+    for branch in node.get("allOf", []):
+        kind, branches = union_branches(schema, branch)
+        if kind is not None:
+            return kind, branches
+    return None, []
 
 
-def collect_entries(schema_root: dict[str, Any]) -> dict[str, list[Any]]:
-    entries: dict[str, list[Any]] = defaultdict(list)
-
-    def visit(node: Any, path: str = "", ref_stack: tuple[str, ...] = ()) -> None:
-        if not isinstance(node, dict):
-            return
-        if "$ref" in node:
-            ref = node["$ref"]
-            if ref in ref_stack:
-                return
-            visit(resolve_ref(schema_root, ref), path, ref_stack + (ref,))
-            return
-        for key in ("allOf", "anyOf", "oneOf"):
-            for branch in node.get(key, []):
-                visit(branch, path, ref_stack)
-        properties = node.get("properties")
-        if isinstance(properties, dict):
-            for name, child in properties.items():
-                child_path = f"{path}.{name}" if path else name
-                entries[child_path].append(child)
-                visit(child, child_path, ref_stack)
-        additional = node.get("additionalProperties")
-        if isinstance(additional, dict):
-            dynamic_path = f"{path}.<name>" if path else "<name>"
-            entries[dynamic_path].append(additional)
-            visit(additional, dynamic_path, ref_stack)
-        items = node.get("items")
-        if isinstance(items, dict):
-            visit(items, f"{path}[]", ref_stack)
-
-    visit(schema_root)
-    return dict(entries)
+def declared_types(schema: dict[str, Any], node: Any) -> set[str]:
+    types: set[str] = set()
+    for fragment in flattened_nodes(schema, node):
+        value = fragment.get("type")
+        if isinstance(value, str):
+            types.add(value)
+        elif isinstance(value, list):
+            types.update(item for item in value if isinstance(item, str))
+    return types
 
 
-def target_for(path: str) -> str:
-    root = path.split(".", 1)[0].removesuffix("[]")
-    if path.startswith("features.network_proxy"):
-        return "system"
-    return "system" if root in SYSTEM_ROOTS else "home"
+def property_schemas(schema: dict[str, Any], node: Any) -> dict[str, list[Any]]:
+    properties: dict[str, list[Any]] = {}
+    for fragment in flattened_nodes(schema, node):
+        for name, child in fragment.get("properties", {}).items():
+            properties.setdefault(name, []).append(child)
+    return properties
 
 
-def remove_generated_block(text: str, begin: str, end: str) -> str:
-    pattern = re.compile(
-        rf"(?ms)\n?^{re.escape(begin)}\n.*?^{re.escape(end)}(?:\n|$)"
-    )
-    return pattern.sub("\n", text).rstrip() + "\n"
+def required_properties(schema: dict[str, Any], node: Any) -> set[str]:
+    required: set[str] = set()
+    for fragment in flattened_nodes(schema, node):
+        value = fragment.get("required", [])
+        if isinstance(value, list):
+            required.update(item for item in value if isinstance(item, str))
+    return required
 
 
-def parse_toml(path: Path) -> dict[str, Any]:
-    with path.open("rb") as handle:
-        return tomllib.load(handle)
+def forbidden_required_groups(schema: dict[str, Any], node: Any) -> list[set[str]]:
+    groups: list[set[str]] = []
+    for fragment in flattened_nodes(schema, node):
+        not_schema = fragment.get("not")
+        if isinstance(not_schema, dict):
+            required = not_schema.get("required")
+            if isinstance(required, list) and all(isinstance(item, str) for item in required):
+                groups.append(set(required))
+    return groups
 
 
-def combine_schema_constraints(nodes: list[Any]) -> Any:
-    constrained = [node for node in nodes if node is not True]
-    if not constrained:
+def combined_schema(nodes: Iterable[Any]) -> Any:
+    materialized = list(nodes)
+    if not materialized:
         return True
-    if len(constrained) == 1:
-        return constrained[0]
-    return {"allOf": constrained}
+    if len(materialized) == 1:
+        return materialized[0]
+    return {"allOf": materialized}
 
 
-def direct_child_schemas(
-    schema_root: dict[str, Any],
-    node: dict[str, Any],
-    segment: str,
-) -> list[Any]:
-    declared = node.get("type")
-    declared_types = (
-        set(declared)
-        if isinstance(declared, list)
-        else {declared}
-        if isinstance(declared, str)
-        else set()
-    )
-    object_shaped = any(
-        key in node for key in ("properties", "patternProperties", "additionalProperties")
-    )
-    array_shaped = "items" in node
-    unconstrained_shape = not declared_types and not object_shaped and not array_shaped
-    descendants: list[Any] = []
-
-    if unconstrained_shape or "object" in declared_types or object_shaped:
-        properties = node.get("properties", {})
-        child_constraints: list[Any] = []
-        if segment in properties:
-            child_constraints.append(properties[segment])
-        for pattern, child_schema in node.get("patternProperties", {}).items():
-            if re.search(pattern, segment):
-                child_constraints.append(child_schema)
-        if child_constraints:
-            descendants.append(combine_schema_constraints(child_constraints))
-        else:
-            additional = node.get("additionalProperties", True)
-            if additional is True:
-                descendants.append(True)
-            elif isinstance(additional, dict):
-                descendants.append(additional)
-
-    if "array" in declared_types or array_shaped:
-        descendants.extend(
-            child_schema_alternatives(
-                schema_root,
-                node.get("items", True),
-                segment,
-            )
-        )
-
-    if unconstrained_shape and not descendants:
-        descendants.append(True)
-    return descendants
-
-
-def child_schema_alternatives(
-    schema_root: dict[str, Any],
-    raw: Any,
-    segment: str,
-    seen_refs: frozenset[str] = frozenset(),
-) -> list[Any]:
-    if raw is True:
-        return [True]
-    if raw is False or not isinstance(raw, dict):
-        return []
-    if "$ref" in raw:
-        ref = raw["$ref"]
-        if ref in seen_refs:
-            return []
-        return child_schema_alternatives(
-            schema_root,
-            resolve_ref(schema_root, ref),
-            segment,
-            seen_refs | {ref},
-        )
-
-    sibling_schema = {
-        key: value
-        for key, value in raw.items()
-        if key not in {"allOf", "anyOf", "oneOf", "not"}
-    }
-    mandatory_groups: list[list[Any]] = [
-        direct_child_schemas(schema_root, sibling_schema, segment)
-    ]
-
-    for branch in raw.get("allOf", []):
-        branch_children = child_schema_alternatives(
-            schema_root,
-            branch,
-            segment,
-            seen_refs,
-        )
-        if not branch_children:
-            return []
-        mandatory_groups.append(branch_children)
-
-    for key in ("anyOf", "oneOf"):
-        if key not in raw:
-            continue
-        branch_children: list[Any] = []
-        for branch in raw[key]:
-            branch_children.extend(
-                child_schema_alternatives(
-                    schema_root,
-                    branch,
-                    segment,
-                    seen_refs,
-                )
-            )
-        if not branch_children:
-            return []
-        mandatory_groups.append(branch_children)
-
-    if any(not group for group in mandatory_groups):
-        return []
-    return [
-        combine_schema_constraints(list(combination))
-        for combination in itertools.product(*mandatory_groups)
-    ]
-
-
-def descend_schema_nodes(
-    schema_root: dict[str, Any],
-    nodes: list[Any],
-    segment: str,
-) -> list[Any]:
-    descendants: list[Any] = []
-    for node in nodes:
-        descendants.extend(child_schema_alternatives(schema_root, node, segment))
-    return descendants
-
-
-def schema_path_allowed(schema_root: dict[str, Any], parts: list[str]) -> bool:
-    nodes: list[Any] = [schema_root]
-    for part in parts:
-        nodes = descend_schema_nodes(schema_root, nodes, part)
-        if not nodes:
-            return False
+def explicit_additional_schema(schema: dict[str, Any], node: Any) -> Any | None:
+    additional: list[Any] = []
+    for fragment in flattened_nodes(schema, node):
+        if "additionalProperties" in fragment:
+            additional.append(fragment["additionalProperties"])
+    if not additional:
+        return None
+    if any(value is False for value in additional):
+        return False
+    materialized = [value for value in additional if isinstance(value, dict)]
+    if materialized:
+        return combined_schema(materialized)
     return True
 
 
-def table_path_parts(content: str, array_table: bool) -> list[str]:
-    header = f"[[{content}]]\n" if array_table else f"[{content}]\n"
-    payload = tomllib.loads(header + "__coverage_probe__ = 1\n")
-    parts: list[str] = []
-    node: Any = payload
-    while isinstance(node, dict) and "__coverage_probe__" not in node:
-        if len(node) != 1:
-            raise ValueError(f"ambiguous TOML table path: {content}")
-        key = next(iter(node))
-        parts.append(key)
-        node = node[key]
-        if isinstance(node, list):
-            node = node[0]
-    return parts
-
-
-def assignment_path_parts(lhs: str) -> list[str]:
-    payload = tomllib.loads(lhs + " = 1\n")
-    parts: list[str] = []
-    node: Any = payload
-    while isinstance(node, dict):
-        if len(node) != 1:
-            raise ValueError(f"ambiguous TOML key path: {lhs}")
-        key = next(iter(node))
-        parts.append(key)
-        node = node[key]
-    return parts
-
-
-def validate_config_examples(
-    schema_root: dict[str, Any],
-    path: Path,
-) -> list[str]:
-    """Reject active or commented config-like entries absent from the schema."""
-    errors: list[str] = []
-    active_table: list[str] = []
-    comment_table: list[str] = []
-    in_multiline = False
-    multiline_quote = ""
-    key_pattern = re.compile(
-        r"((?:\"(?:\\.|[^\"\\])*\"|'(?:[^']|'')*'|[A-Za-z0-9_-]+)"
-        r"(?:\s*\.\s*(?:\"(?:\\.|[^\"\\])*\"|'(?:[^']|'')*'|[A-Za-z0-9_-]+))*)"
-        r"\s*="
+def is_object_schema(schema: dict[str, Any], node: Any) -> bool:
+    types = declared_types(schema, node)
+    return (
+        "object" in types
+        or bool(property_schemas(schema, node))
+        or explicit_additional_schema(schema, node) is not None
     )
 
-    for line_number, line in enumerate(path.read_text().splitlines(), 1):
-        if in_multiline:
-            if line.count(multiline_quote) % 2 == 1:
-                in_multiline = False
-            continue
 
-        stripped = line.strip()
-        if not stripped:
-            comment_table = active_table.copy()
-            continue
-
-        commented = stripped.startswith("#")
-        if commented:
-            stripped = stripped[1:].lstrip()
-            if not stripped or stripped.startswith("#") or stripped.startswith("schema-entry:"):
-                continue
-        else:
-            for quote in ('"""', "'''"):
-                if stripped.count(quote) % 2 == 1:
-                    in_multiline = True
-                    multiline_quote = quote
-                    break
-
-        array_match = re.fullmatch(r"\[\[(.+)\]\](?:\s*#.*)?", stripped)
-        if array_match:
-            try:
-                parts = table_path_parts(array_match.group(1), array_table=True)
-            except (ValueError, tomllib.TOMLDecodeError):
-                continue
-            if not schema_path_allowed(schema_root, parts):
-                errors.append(
-                    f"{path}:{line_number}: schema-absent table {'.'.join(parts)}"
-                )
-            if commented:
-                comment_table = parts
-            else:
-                active_table = parts
-                comment_table = parts
-            continue
-
-        table_match = re.fullmatch(r"\[(.+)\](?:\s*#.*)?", stripped)
-        if table_match:
-            try:
-                parts = table_path_parts(table_match.group(1), array_table=False)
-            except (ValueError, tomllib.TOMLDecodeError):
-                continue
-            if not schema_path_allowed(schema_root, parts):
-                errors.append(
-                    f"{path}:{line_number}: schema-absent table {'.'.join(parts)}"
-                )
-            if commented:
-                comment_table = parts
-            else:
-                active_table = parts
-                comment_table = parts
-            continue
-
-        key_match = key_pattern.match(stripped)
-        if not key_match:
-            continue
-        try:
-            key_parts = assignment_path_parts(key_match.group(1))
-        except (ValueError, tomllib.TOMLDecodeError):
-            continue
-        parts = (comment_table if commented else active_table) + key_parts
-        if not schema_path_allowed(schema_root, parts):
-            errors.append(
-                f"{path}:{line_number}: schema-absent entry {'.'.join(parts)}"
+def sample_string(node: Any) -> str:
+    if isinstance(node, dict):
+        default = node.get("default")
+        if isinstance(default, str):
+            return default
+        pattern = node.get("pattern")
+        if isinstance(pattern, str):
+            candidates = (
+                "example",
+                "example-role",
+                "example_role",
+                "EXAMPLE",
+                "https://example.invalid",
+                "/absolute/path",
             )
-        if not commented:
-            comment_table = active_table.copy()
-    return errors
+            for candidate in candidates:
+                if re.search(pattern, candidate):
+                    return candidate
+            raise GenerationError(
+                f"cannot construct a deterministic sample for string pattern {pattern!r}"
+            )
+    return "example"
+
+
+def numeric_sample(schema: dict[str, Any], node: Any, integer: bool) -> int | float:
+    minimum: float | int | None = None
+    maximum: float | int | None = None
+    default: Any = None
+    numeric_format: str | None = None
+    for fragment in flattened_nodes(schema, node):
+        if minimum is None and isinstance(fragment.get("minimum"), (int, float)):
+            minimum = fragment["minimum"]
+        if maximum is None and isinstance(fragment.get("maximum"), (int, float)):
+            maximum = fragment["maximum"]
+        if default is None and isinstance(fragment.get("default"), (int, float)):
+            default = fragment["default"]
+        if numeric_format is None and isinstance(fragment.get("format"), str):
+            numeric_format = fragment["format"]
+    if default is not None:
+        candidate: int | float = int(default) if integer else float(default)
+    elif minimum is not None:
+        candidate = int(math.ceil(minimum)) if integer else float(minimum)
+    elif numeric_format in INTEGER_FORMAT_RANGES:
+        # A zero value is a practical reference default for signed and unsigned
+        # integer formats when the schema has no stricter lower bound.
+        candidate = 0
+    else:
+        candidate = 1 if integer else 1.0
+    if maximum is not None and candidate > maximum:
+        candidate = int(math.floor(maximum)) if integer else float(maximum)
+    return candidate
+
+
+def sample_key() -> str:
+    return "example"
+
+
+def sample_value(
+    schema: dict[str, Any],
+    node: Any,
+    *,
+    ref_stack: frozenset[str] = frozenset(),
+    property_name: str | None = None,
+) -> Any:
+    """Create one TOML-serializable value accepted by ``node``."""
+    if node is True:
+        return "example"
+    if node is False:
+        raise GenerationError("schema rejects a generated configuration value")
+    if not isinstance(node, dict):
+        raise GenerationError(f"schema node is not an object: {node!r}")
+    if "$ref" in node:
+        ref = node["$ref"]
+        if ref in ref_stack:
+            return "example"
+        resolved = resolve_ref(schema, ref)
+        siblings = {key: value for key, value in node.items() if key != "$ref"}
+        if siblings:
+            resolved = {"allOf": [resolved, siblings]}
+        return sample_value(
+            schema,
+            resolved,
+            ref_stack=ref_stack | {ref},
+            property_name=property_name,
+        )
+
+    union_kind, branches = union_branches(schema, node)
+    if union_kind is not None:
+        for branch in branches:
+            try:
+                return sample_value(
+                    schema,
+                    branch,
+                    ref_stack=ref_stack,
+                    property_name=property_name,
+                )
+            except GenerationError:
+                continue
+        raise GenerationError(f"no {union_kind} branch can produce a TOML value")
+
+    fragments = flattened_nodes(schema, node, ref_stack)
+    for fragment in fragments:
+        if "const" in fragment:
+            return copy.deepcopy(fragment["const"])
+        enum = fragment.get("enum")
+        if isinstance(enum, list) and enum:
+            for value in enum:
+                if value is not None:
+                    return copy.deepcopy(value)
+
+    if property_name == "config_file":
+        return AGENT_ROLE_EXAMPLE_PATH.name
+
+    types = declared_types(schema, node)
+    if is_object_schema(schema, node):
+        return sample_object(schema, node, ref_stack=ref_stack)
+    if "array" in types:
+        items: Any = True
+        for fragment in fragments:
+            if "items" in fragment:
+                items = fragment["items"]
+                break
+        return [sample_value(schema, items, ref_stack=ref_stack)]
+    if "boolean" in types:
+        for fragment in fragments:
+            if isinstance(fragment.get("default"), bool):
+                return fragment["default"]
+        return True
+    if "integer" in types:
+        return numeric_sample(schema, node, integer=True)
+    if "number" in types:
+        return numeric_sample(schema, node, integer=False)
+    if "string" in types or not types or types == {"null"}:
+        for fragment in fragments:
+            default = fragment.get("default")
+            if isinstance(default, str):
+                return default
+            if isinstance(fragment.get("pattern"), str):
+                return sample_string(fragment)
+        return "example"
+    raise GenerationError(f"unsupported TOML value types: {sorted(types)}")
+
+
+def sample_object(
+    schema: dict[str, Any],
+    node: Any,
+    *,
+    ref_stack: frozenset[str],
+) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    forbidden = forbidden_required_groups(schema, node)
+    properties = property_schemas(schema, node)
+
+    for name in sorted(properties):
+        prospective = set(result) | {name}
+        if any(group <= prospective for group in forbidden):
+            continue
+        result[name] = sample_value(
+            schema,
+            combined_schema(properties[name]),
+            ref_stack=ref_stack,
+            property_name=name,
+        )
+
+    missing = required_properties(schema, node) - set(result)
+    if missing:
+        skipped = ", ".join(sorted(missing))
+        raise GenerationError(
+            f"schema alternatives conflict with required object properties: {skipped}"
+        )
+
+    additional = explicit_additional_schema(schema, node)
+    if isinstance(additional, dict):
+        key = sample_key()
+        while key in result:
+            key = f"{key}_value"
+        result[key] = sample_value(schema, additional, ref_stack=ref_stack)
+    elif additional is True and not result:
+        result[sample_key()] = "example"
+    return result
+
+
+def toml_key(key: str) -> str:
+    if re.fullmatch(r"[A-Za-z0-9_-]+", key):
+        return key
+    return json.dumps(key, ensure_ascii=False)
+
+
+def toml_literal(value: Any) -> str:
+    if isinstance(value, str):
+        return json.dumps(value, ensure_ascii=False)
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, int) and not isinstance(value, bool):
+        return str(value)
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise GenerationError("TOML reference cannot contain non-finite numbers")
+        return repr(value)
+    if isinstance(value, list):
+        return "[" + ", ".join(toml_literal(item) for item in value) + "]"
+    if isinstance(value, dict):
+        pairs = (f"{toml_key(key)} = {toml_literal(child)}" for key, child in value.items())
+        return "{ " + ", ".join(pairs) + " }"
+    raise GenerationError(f"TOML reference cannot express {type(value).__name__} values")
+
+
+def schema_options(schema: dict[str, Any], node: Any) -> list[str]:
+    """Return every finite literal option represented by a schema node."""
+    if node is True:
+        return ["any TOML value"]
+    if node is False or not isinstance(node, dict):
+        return []
+    if "$ref" in node:
+        return schema_options(schema, resolve_ref(schema, node["$ref"]))
+    kind, branches = union_branches(schema, node)
+    if kind is not None:
+        options: list[str] = []
+        for branch in branches:
+            try:
+                option = toml_literal(sample_value(schema, branch))
+            except GenerationError:
+                option = "complex table"
+            if option not in options:
+                options.append(option)
+        return options
+    for fragment in flattened_nodes(schema, node):
+        if "const" in fragment:
+            return [toml_literal(fragment["const"])]
+        enum = fragment.get("enum")
+        if isinstance(enum, list) and enum:
+            return [toml_literal(value) for value in enum]
+    types = declared_types(schema, node)
+    if types == {"boolean"}:
+        return ["true", "false"]
+    return []
+
+
+def describe(node: Any) -> str | None:
+    if isinstance(node, dict):
+        value = node.get("description")
+        if isinstance(value, str) and value:
+            return " ".join(value.split())
+    return None
+
+
+def root_property_values(
+    schema: dict[str, Any],
+) -> tuple[dict[str, Any], dict[tuple[str, ...], list[str]]]:
+    values: dict[str, Any] = {}
+    comments: dict[tuple[str, ...], list[str]] = {}
+    root_properties = schema.get("properties")
+    if not isinstance(root_properties, dict):
+        raise GenerationError("config schema root must define properties")
+    for name in sorted(root_properties):
+        node = root_properties[name]
+        property_comments: list[str] = []
+        description = describe(node)
+        if description:
+            property_comments.append(f"# {description}")
+        options = schema_options(schema, node)
+        if len(options) > 1:
+            property_comments.append(f"# alternatives: {' | '.join(options)}")
+        if name == "default_permissions":
+            values[name] = "example-profile"
+        elif name == "permissions":
+            values[name] = {
+                "example-profile": sample_value(
+                    schema,
+                    definitions(schema)["PermissionProfileToml"],
+                )
+            }
+        else:
+            values[name] = sample_value(schema, node, property_name=name)
+        if property_comments:
+            comments[(name,)] = property_comments
+    return values, comments
+
+
+def toml_path(path: tuple[str, ...]) -> str:
+    return ".".join(toml_key(segment) for segment in path)
+
+
+def render_mapping(
+    lines: list[str],
+    value: dict[str, Any],
+    *,
+    path: tuple[str, ...] = (),
+    comments: dict[tuple[str, ...], list[str]] | None = None,
+) -> None:
+    """Render a mapping with TOML tables instead of opaque nested inline tables."""
+    comments = comments or {}
+    table_values: list[tuple[str, Any]] = []
+    for name, child in value.items():
+        child_path = path + (name,)
+        child_comments = comments.get(child_path, [])
+        if isinstance(child, dict) or (
+            isinstance(child, list) and child and all(isinstance(item, dict) for item in child)
+        ):
+            table_values.append((name, child))
+            continue
+        lines.extend(child_comments)
+        lines.append(f"{toml_key(name)} = {toml_literal(child)}")
+
+    if path and (value or not lines or lines[-1] != ""):
+        lines.append("")
+    if table_values and lines and lines[-1] != "":
+        lines.append("")
+    for name, child in table_values:
+        child_path = path + (name,)
+        lines.extend(comments.get(child_path, []))
+        if isinstance(child, dict):
+            lines.append(f"[{toml_path(child_path)}]")
+            render_mapping(lines, child, path=child_path, comments=comments)
+            continue
+        for item in child:
+            lines.append(f"[[{toml_path(child_path)}]]")
+            render_mapping(lines, item, path=child_path, comments=comments)
+
+
+def schema_entry_nodes(schema: dict[str, Any]) -> dict[str, Any]:
+    """Return every value-bearing schema location keyed by its JSON pointer."""
+    entries: dict[str, Any] = {}
+
+    def visit(node: Any, pointer: str) -> None:
+        if isinstance(node, dict):
+            properties = node.get("properties")
+            if isinstance(properties, dict):
+                for name, child in properties.items():
+                    child_pointer = f"{pointer}/properties/{escape_pointer(name)}"
+                    entries[child_pointer] = child
+                    visit(child, child_pointer)
+            if "additionalProperties" in node:
+                child = node["additionalProperties"]
+                child_pointer = f"{pointer}/additionalProperties"
+                entries[child_pointer] = child
+                visit(child, child_pointer)
+            if "items" in node:
+                child = node["items"]
+                child_pointer = f"{pointer}/items"
+                entries[child_pointer] = child
+                visit(child, child_pointer)
+            for union_name in ("oneOf", "anyOf"):
+                branches = node.get(union_name)
+                if isinstance(branches, list):
+                    for index, child in enumerate(branches):
+                        visit(child, f"{pointer}/{union_name}/{index}")
+            for index, child in enumerate(node.get("allOf", [])):
+                visit(child, f"{pointer}/allOf/{index}")
+        elif isinstance(node, list):
+            for index, child in enumerate(node):
+                visit(child, f"{pointer}/{index}")
+
+    root_properties = schema.get("properties", {})
+    if isinstance(root_properties, dict):
+        for name, child in root_properties.items():
+            pointer = f"#/properties/{escape_pointer(name)}"
+            entries[pointer] = child
+            visit(child, pointer)
+    definition_key = "$defs" if "$defs" in schema else "definitions"
+    for name, child in definitions(schema).items():
+        visit(child, f"#/{definition_key}/{escape_pointer(name)}")
+    return entries
+
+
+def pointer_ledger(schema: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
+    entries: set[str] = set(schema_entry_nodes(schema))
+    variants: set[str] = set()
+
+    def visit(node: Any, pointer: str) -> None:
+        if isinstance(node, dict):
+            for union_name in ("oneOf", "anyOf"):
+                branches = node.get(union_name)
+                if isinstance(branches, list):
+                    for index, child in enumerate(branches):
+                        child_pointer = f"{pointer}/{union_name}/{index}"
+                        variants.add(child_pointer)
+                        visit(child, child_pointer)
+            properties = node.get("properties")
+            if isinstance(properties, dict):
+                for name, child in properties.items():
+                    visit(child, f"{pointer}/properties/{escape_pointer(name)}")
+            if "additionalProperties" in node:
+                visit(node["additionalProperties"], f"{pointer}/additionalProperties")
+            if "items" in node:
+                visit(node["items"], f"{pointer}/items")
+            for index, child in enumerate(node.get("allOf", [])):
+                visit(child, f"{pointer}/allOf/{index}")
+        elif isinstance(node, list):
+            for index, child in enumerate(node):
+                visit(child, f"{pointer}/{index}")
+
+    definition_key = "$defs" if "$defs" in schema else "definitions"
+    root_properties = schema.get("properties", {})
+    if isinstance(root_properties, dict):
+        for name, child in root_properties.items():
+            visit(child, f"#/properties/{escape_pointer(name)}")
+    for name, child in definitions(schema).items():
+        visit(child, f"#/{definition_key}/{escape_pointer(name)}")
+    return sorted(definitions(schema)), sorted(entries), sorted(variants)
+
+
+def schema_option_summary(schema: dict[str, Any], node: Any) -> str:
+    if node is False:
+        return "not permitted"
+    if node is True:
+        return "any TOML value"
+    options = schema_options(schema, node)
+    if options:
+        return " | ".join(options)
+    types = declared_types(schema, node)
+    if is_object_schema(schema, node):
+        return "inline table; see child schema paths below"
+    if "array" in types:
+        return "array; see item schema path below"
+    if types:
+        return " or ".join(sorted(types))
+    return "any TOML value"
+
+
+def option_matrix_lines(schema: dict[str, Any]) -> list[str]:
+    lines = [
+        "",
+        "# Option matrix: each schema entry is listed below. Finite alternatives",
+        "# are exhaustive; object and array entries link to their child paths.",
+    ]
+    for pointer, node in sorted(schema_entry_nodes(schema).items()):
+        lines.append(f"{OPTION_MARKER}{pointer} = {schema_option_summary(schema, node)}")
+    return lines
+
+
+def definition_example_lines(schema: dict[str, Any]) -> list[str]:
+    lines = [
+        "",
+        "# Definition examples: one schema-valid TOML value for every reusable",
+        "# definition, including definitions reached only through untyped maps.",
+    ]
+    for name, node in sorted(definitions(schema).items()):
+        value = sample_value(schema, node)
+        errors = validate_value(schema, value, node, f"definition {name}")
+        if errors:
+            raise GenerationError("\n".join(errors))
+        lines.append(f"{EXAMPLE_MARKER}{name} = {toml_literal(value)}")
+    return lines
+
+
+def coverage_ledger_lines(schema: dict[str, Any]) -> list[str]:
+    definition_names, entries, variants = pointer_ledger(schema)
+    lines = ["# Coverage ledger: every marker below is checked against config.schema.json."]
+    lines.extend(f"{DEFINITION_MARKER}{name}" for name in definition_names)
+    lines.extend(f"{ENTRY_MARKER}{pointer}" for pointer in entries)
+    lines.extend(f"{VARIANT_MARKER}{pointer}" for pointer in variants)
+    return lines
+
+
+def render_home_example(schema: dict[str, Any]) -> str:
+    lines = [
+        "# Generated from schemas/config.schema.json; do not edit manually.",
+        "#",
+        "# This is an exhaustive user configuration reference, not an installable",
+        "# default. Active settings use one schema-valid representative value. For",
+        "# mutually exclusive choices, the adjacent alternatives comment lists every",
+        "# finite schema branch. Replace placeholders before using this as config.toml.",
+        "#",
+        f"# The agents.example.config_file setting points to {AGENT_ROLE_EXAMPLE_PATH.name}.",
+        "",
+    ]
+    root_values, root_comments = root_property_values(schema)
+    render_mapping(lines, root_values, comments=root_comments)
+    lines.extend(option_matrix_lines(schema))
+    lines.extend(definition_example_lines(schema))
+    lines.append("")
+    lines.extend(coverage_ledger_lines(schema))
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def render_agent_role_example(schema: dict[str, Any]) -> str:
+    role_schema = definitions(schema).get("AgentRoleToml")
+    if not isinstance(role_schema, dict):
+        raise GenerationError("config schema does not define AgentRoleToml")
+    value = sample_value(schema, role_schema)
+    if not isinstance(value, dict):
+        raise GenerationError("AgentRoleToml must generate an object")
+    value.pop("config_file", None)
+    lines = [
+        "# Generated companion for config.home.toml agents.<role>.config_file.",
+        "# Copy this file and tailor it for each named agent role.",
+        "",
+    ]
+    for name, child in value.items():
+        lines.append(f"{toml_key(name)} = {toml_literal(child)}")
+    lines.append("")
+    lines.append(f"{DEFINITION_MARKER}AgentRoleToml")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def matches_type(value: Any, expected: str) -> bool:
@@ -509,441 +704,217 @@ def matches_type(value: Any, expected: str) -> bool:
     if expected == "integer":
         return isinstance(value, int) and not isinstance(value, bool)
     if expected == "number":
-        return (
-            isinstance(value, (int, float))
-            and not isinstance(value, bool)
-            and math.isfinite(value)
-        )
+        return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
     if expected == "null":
         return value is None
     return True
 
 
-def validate_value(
-    schema_root: dict[str, Any],
-    value: Any,
-    node: Any,
-    path: str = "$",
-) -> list[str]:
-    errors: list[str] = []
-    if isinstance(node, bool):
-        return errors if node else [f"{path}: schema rejects this value"]
+def validate_value(schema: dict[str, Any], value: Any, node: Any, path: str = "$") -> list[str]:
+    """Small, dependency-free JSON Schema subset validator for generated output."""
+    if node is True:
+        return []
+    if node is False:
+        return [f"{path}: schema rejects this value"]
     if not isinstance(node, dict):
-        return errors
+        return [f"{path}: malformed schema node"]
     if "$ref" in node:
-        return validate_value(schema_root, value, resolve_ref(schema_root, node["$ref"]), path)
+        errors = validate_value(schema, value, resolve_ref(schema, node["$ref"]), path)
+        siblings = {key: child for key, child in node.items() if key != "$ref"}
+        return errors + (validate_value(schema, value, siblings, path) if siblings else [])
+
+    errors: list[str] = []
     for branch in node.get("allOf", []):
-        errors.extend(validate_value(schema_root, value, branch, path))
-    if "not" in node and not validate_value(schema_root, value, node["not"], path):
+        errors.extend(validate_value(schema, value, branch, path))
+    if "not" in node and not validate_value(schema, value, node["not"], path):
         errors.append(f"{path}: value matches a forbidden schema")
-    if "anyOf" in node:
-        branches = [validate_value(schema_root, value, branch, path) for branch in node["anyOf"]]
-        if not any(not branch for branch in branches):
-            errors.append(f"{path}: value does not match any allowed schema")
-            return errors
-    if "oneOf" in node:
-        branches = [validate_value(schema_root, value, branch, path) for branch in node["oneOf"]]
-        if sum(not branch for branch in branches) != 1:
-            errors.append(f"{path}: value does not match exactly one allowed schema")
+    for union_name, exact in (("anyOf", False), ("oneOf", True)):
+        if union_name not in node:
+            continue
+        branches = [validate_value(schema, value, branch, path) for branch in node[union_name]]
+        matches = sum(not branch for branch in branches)
+        if matches == 0 or (exact and matches != 1):
+            qualifier = "exactly one" if exact else "at least one"
+            errors.append(f"{path}: value does not match {qualifier} {union_name} branch")
             return errors
     if "const" in node and value != node["const"]:
         errors.append(f"{path}: expected constant {node['const']!r}")
     if "enum" in node and value not in node["enum"]:
-        errors.append(f"{path}: {value!r} is not an allowed value")
+        errors.append(f"{path}: value is not an allowed enum member")
     declared = node.get("type")
     if declared is not None:
         types = declared if isinstance(declared, list) else [declared]
         if not any(matches_type(value, expected) for expected in types):
-            errors.append(f"{path}: expected type {declared!r}")
-            return errors
+            return errors + [f"{path}: expected type {declared!r}"]
     if isinstance(value, dict):
-        for required in node.get("required", []):
-            if required not in value:
-                errors.append(f"{path}: missing required property {required!r}")
+        required = node.get("required", [])
+        for name in required if isinstance(required, list) else []:
+            if name not in value:
+                errors.append(f"{path}: missing required property {name!r}")
         properties = node.get("properties", {})
-        patterns = [
-            (re.compile(pattern), child)
-            for pattern, child in node.get("patternProperties", {}).items()
-        ]
+        pattern_properties = node.get("patternProperties", {})
         additional = node.get("additionalProperties", True)
-        for key, child_value in value.items():
-            child_path = f"{path}.{key}"
-            if key in properties:
-                errors.extend(
-                    validate_value(schema_root, child_value, properties[key], child_path)
-                )
+        for name, child in value.items():
+            child_path = f"{path}.{name}"
+            if name in properties:
+                errors.extend(validate_value(schema, child, properties[name], child_path))
                 continue
-            matched = False
-            for pattern, child_schema in patterns:
-                if pattern.search(key):
-                    matched = True
-                    errors.extend(
-                        validate_value(schema_root, child_value, child_schema, child_path)
-                    )
-            if matched:
-                continue
-            if additional is False:
+            matches = [
+                child_schema
+                for pattern, child_schema in pattern_properties.items()
+                if re.search(pattern, name)
+            ]
+            if matches:
+                for child_schema in matches:
+                    errors.extend(validate_value(schema, child, child_schema, child_path))
+            elif additional is False:
                 errors.append(f"{child_path}: additional property is not allowed")
             elif isinstance(additional, dict):
-                errors.extend(
-                    validate_value(schema_root, child_value, additional, child_path)
-                )
+                errors.extend(validate_value(schema, child, additional, child_path))
     if isinstance(value, list):
         items = node.get("items")
         if items is not None:
-            for index, child_value in enumerate(value):
-                errors.extend(
-                    validate_value(schema_root, child_value, items, f"{path}[{index}]")
-                )
-        if "minItems" in node and len(value) < node["minItems"]:
+            for index, child in enumerate(value):
+                errors.extend(validate_value(schema, child, items, f"{path}[{index}]"))
+        if isinstance(node.get("minItems"), int) and len(value) < node["minItems"]:
             errors.append(f"{path}: fewer than {node['minItems']} items")
-        if "maxItems" in node and len(value) > node["maxItems"]:
+        if isinstance(node.get("maxItems"), int) and len(value) > node["maxItems"]:
             errors.append(f"{path}: more than {node['maxItems']} items")
     if isinstance(value, str):
-        if "minLength" in node and len(value) < node["minLength"]:
+        if isinstance(node.get("minLength"), int) and len(value) < node["minLength"]:
             errors.append(f"{path}: string is too short")
-        if "maxLength" in node and len(value) > node["maxLength"]:
+        if isinstance(node.get("maxLength"), int) and len(value) > node["maxLength"]:
             errors.append(f"{path}: string is too long")
-        if "pattern" in node and re.search(node["pattern"], value) is None:
-            errors.append(f"{path}: string does not match required pattern")
+        if isinstance(node.get("pattern"), str) and re.search(node["pattern"], value) is None:
+            errors.append(f"{path}: string does not match the required pattern")
     if isinstance(value, (int, float)) and not isinstance(value, bool):
-        if "minimum" in node and value < node["minimum"]:
-            errors.append(f"{path}: value is below minimum {node['minimum']}")
-        if "maximum" in node and value > node["maximum"]:
-            errors.append(f"{path}: value is above maximum {node['maximum']}")
+        if isinstance(node.get("minimum"), (int, float)) and value < node["minimum"]:
+            errors.append(f"{path}: value is below its minimum")
+        if isinstance(node.get("maximum"), (int, float)) and value > node["maximum"]:
+            errors.append(f"{path}: value is above its maximum")
         numeric_format = node.get("format")
         if numeric_format in INTEGER_FORMAT_RANGES and isinstance(value, int):
             minimum, maximum = INTEGER_FORMAT_RANGES[numeric_format]
             if value < minimum or (maximum is not None and value > maximum):
-                errors.append(
-                    f"{path}: value is outside the {numeric_format} range"
-                )
+                errors.append(f"{path}: value is outside the {numeric_format} range")
     return errors
 
 
-def validate_requirements(
-    schema_root: dict[str, Any],
-    requirements: dict[str, Any],
-    system_config: dict[str, Any],
-) -> list[str]:
+def marker_values(content: str, prefix: str) -> set[str]:
+    return {
+        line.removeprefix(prefix)
+        for line in content.splitlines()
+        if line.startswith(prefix)
+    }
+
+
+def validate_rendered_examples(schema: dict[str, Any], home_text: str, role_text: str) -> list[str]:
     errors: list[str] = []
-    unknown_roots = sorted(set(requirements) - REQUIREMENTS_ALLOWED_ROOTS)
-    if unknown_roots:
-        errors.append(
-            "requirements contains unsupported top-level keys: "
-            + ", ".join(unknown_roots)
-        )
+    try:
+        import tomllib
 
-    policies = requirements.get("allowed_approval_policies")
-    if not isinstance(policies, list) or not all(isinstance(item, str) for item in policies):
-        errors.append("allowed_approval_policies must be a list of policy-name strings")
-    allowed_policy_names = {"granular", "untrusted", "on-request", "never"}
-    if isinstance(policies, list):
-        unknown = sorted(set(policies) - allowed_policy_names)
-        if unknown:
-            errors.append(f"unsupported approval policies: {', '.join(unknown)}")
+        home = tomllib.loads(home_text)
+        role = tomllib.loads(role_text)
+    except tomllib.TOMLDecodeError as exc:
+        return [f"generated TOML is invalid: {exc}"]
 
-    reviewers = requirements.get("allowed_approvals_reviewers")
-    allowed_reviewers = {"user", "auto_review"}
-    if not isinstance(reviewers, list) or not all(
-        isinstance(item, str) for item in reviewers
+    errors.extend(validate_value(schema, home, schema))
+    role_schema = definitions(schema)["AgentRoleToml"]
+    errors.extend(validate_value(schema, role, role_schema, "agent-role.toml"))
+
+    expected_definitions, expected_entries, expected_variants = pointer_ledger(schema)
+    actual_definitions = marker_values(home_text, DEFINITION_MARKER)
+    actual_entries = marker_values(home_text, ENTRY_MARKER)
+    actual_variants = marker_values(home_text, VARIANT_MARKER)
+    actual_options = marker_values(home_text, OPTION_MARKER)
+    actual_examples = marker_values(home_text, EXAMPLE_MARKER)
+    for label, expected, actual in (
+        ("definition", set(expected_definitions), actual_definitions),
+        ("entry", set(expected_entries), actual_entries),
+        ("variant", set(expected_variants), actual_variants),
+        ("option", set(expected_entries), {value.split(" = ", 1)[0] for value in actual_options}),
+        ("definition example", set(expected_definitions), {value.split(" = ", 1)[0] for value in actual_examples}),
     ):
-        errors.append(
-            "allowed_approvals_reviewers must be a list of reviewer-name strings"
-        )
-    elif unknown := sorted(set(reviewers) - allowed_reviewers):
-        errors.append(f"unsupported approval reviewers: {', '.join(unknown)}")
-
-    web_modes = requirements.get("allowed_web_search_modes")
-    expected_web_modes = set(resolve_ref(schema_root, "#/definitions/WebSearchMode")["enum"])
-    if not isinstance(web_modes, list) or set(web_modes) != expected_web_modes:
-        errors.append(
-            "allowed_web_search_modes must contain every WebSearchMode schema value"
-        )
-
-    feature_schema = schema_root["properties"]["features"]["properties"]
-    feature_requirements = requirements.get("features", {})
-    if not isinstance(feature_requirements, dict):
-        errors.append("requirements features must be a table")
-    else:
-        unknown_features = sorted(set(feature_requirements) - set(feature_schema))
-        if unknown_features:
-            errors.append(
-                "requirements contains unknown feature keys: "
-                + ", ".join(unknown_features)
-            )
-        non_boolean_features = sorted(
-            name
-            for name, value in feature_requirements.items()
-            if not isinstance(value, bool)
-        )
-        if non_boolean_features:
-            errors.append(
-                "requirements feature pins must be booleans: "
-                + ", ".join(non_boolean_features)
-            )
-
-    allowed_profiles = requirements.get("allowed_permission_profiles", {})
-    if not isinstance(allowed_profiles, dict):
-        errors.append("allowed_permission_profiles must be a table of booleans")
-        allowed_profiles = {}
-    non_boolean_profiles = sorted(
-        name for name, value in allowed_profiles.items() if not isinstance(value, bool)
-    )
-    if non_boolean_profiles:
-        errors.append(
-            "permission-profile allowlist values must be booleans: "
-            + ", ".join(non_boolean_profiles)
-        )
-    custom_profiles = {
-        name
-        for name, enabled in allowed_profiles.items()
-        if enabled and isinstance(name, str) and not name.startswith(":")
-    }
-    defined_profiles = set(system_config.get("permissions", {}))
-    missing_profiles = sorted(custom_profiles - defined_profiles)
-    if missing_profiles:
-        errors.append(
-            "requirements references undefined permission profiles: "
-            + ", ".join(missing_profiles)
-        )
-
-    default_permissions = requirements.get("default_permissions")
-    if not isinstance(default_permissions, str):
-        errors.append("default_permissions must be a profile-name string")
-    elif allowed_profiles.get(default_permissions) is not True:
-        errors.append(
-            "default_permissions must name a profile explicitly allowed with true"
-        )
-
-    if not isinstance(requirements.get("allow_managed_hooks_only"), bool):
-        errors.append("allow_managed_hooks_only must be a boolean")
-    if requirements.get("enforce_residency") != "us":
-        errors.append('enforce_residency must currently be "us"')
-
-    def validate_identity(label: str, identity: Any) -> None:
-        if not isinstance(identity, dict):
-            errors.append(f"{label}.identity must be a table")
-            return
-        identity_keys = set(identity)
-        if identity_keys not in ({"command"}, {"url"}):
-            errors.append(
-                f"{label}.identity must define exactly one of command or url"
-            )
-            return
-        value = identity[next(iter(identity_keys))]
-        if not isinstance(value, (str, dict)):
-            errors.append(
-                f"{label}.identity.{next(iter(identity_keys))} "
-                "must be a string or matcher table"
-            )
-
-    mcp_requirements = requirements.get("mcp_servers", {})
-    if not isinstance(mcp_requirements, dict):
-        errors.append("mcp_servers requirements must be a table")
-    else:
-        for name, server in mcp_requirements.items():
-            label = f"mcp_servers.{name}"
-            if not isinstance(server, dict):
-                errors.append(f"{label} must be a table")
-                continue
-            unknown = sorted(set(server) - {"identity"})
-            if unknown:
-                errors.append(f"{label} has unsupported keys: {', '.join(unknown)}")
-            validate_identity(label, server.get("identity"))
-
-    plugin_requirements = requirements.get("plugins", {})
-    if not isinstance(plugin_requirements, dict):
-        errors.append("plugins requirements must be a table")
-    else:
-        for plugin_name, plugin in plugin_requirements.items():
-            plugin_label = f"plugins.{plugin_name}"
-            if not isinstance(plugin, dict):
-                errors.append(f"{plugin_label} must be a table")
-                continue
-            unknown = sorted(set(plugin) - {"mcp_servers"})
-            if unknown:
-                errors.append(
-                    f"{plugin_label} has unsupported keys: {', '.join(unknown)}"
-                )
-            servers = plugin.get("mcp_servers", {})
-            if not isinstance(servers, dict):
-                errors.append(f"{plugin_label}.mcp_servers must be a table")
-                continue
-            for server_name, server in servers.items():
-                label = f"{plugin_label}.mcp_servers.{server_name}"
-                if not isinstance(server, dict):
-                    errors.append(f"{label} must be a table")
-                    continue
-                unknown = sorted(set(server) - {"identity"})
-                if unknown:
-                    errors.append(
-                        f"{label} has unsupported keys: {', '.join(unknown)}"
-                    )
-                validate_identity(label, server.get("identity"))
-
-    app_requirements = requirements.get("apps", {})
-    if not isinstance(app_requirements, dict):
-        errors.append("apps requirements must be a table")
-    else:
-        for app_name, app in app_requirements.items():
-            label = f"apps.{app_name}"
-            if not isinstance(app, dict):
-                errors.append(f"{label} must be a table")
-                continue
-            unknown = sorted(set(app) - {"enabled", "tools"})
-            if unknown:
-                errors.append(f"{label} has unsupported keys: {', '.join(unknown)}")
-            if "enabled" in app and not isinstance(app["enabled"], bool):
-                errors.append(f"{label}.enabled must be a boolean")
+        missing = sorted(expected - actual)
+        extra = sorted(actual - expected)
+        if missing:
+            errors.append(f"coverage ledger is missing {label} markers: {', '.join(missing[:10])}")
+        if extra:
+            errors.append(f"coverage ledger has unknown {label} markers: {', '.join(extra[:10])}")
     return errors
 
 
-def build_coverage_sets(
-    entries: dict[str, list[Any]],
-) -> tuple[set[str], set[str], set[str]]:
-    home_paths = {path for path in entries if target_for(path) == "home"}
-    system_paths = {path for path in entries if target_for(path) == "system"}
-    requirements_paths = {
-        path
-        for path in entries
-        if path.split(".", 1)[0].removesuffix("[]") in REQUIREMENTS_ROOTS
-    }
-    return home_paths, system_paths, requirements_paths
+def rendered_examples(schema: dict[str, Any]) -> dict[Path, str]:
+    home = render_home_example(schema)
+    role = render_agent_role_example(schema)
+    errors = validate_rendered_examples(schema, home, role)
+    if errors:
+        raise GenerationError("\n".join(errors))
+    return {HOME_EXAMPLE_PATH: home, AGENT_ROLE_EXAMPLE_PATH: role}
 
 
-def validate_coverage_partition(
-    entries: dict[str, list[Any]],
-) -> list[str]:
-    errors: list[str] = []
-    home_paths, system_paths, requirements_paths = build_coverage_sets(entries)
-    expected = set(entries)
-    primary_paths = home_paths | system_paths
-    missing = sorted(expected - primary_paths)
-    extra = sorted(primary_paths - expected)
-    duplicates = sorted(home_paths & system_paths)
-    if missing:
-        errors.append(f"unmapped config schema paths: {', '.join(missing[:20])}")
-    if extra:
-        errors.append(f"unknown mapped config schema paths: {', '.join(extra[:20])}")
-    if duplicates:
-        errors.append(
-            "config schema paths mapped to both user and system layers: "
-            + ", ".join(duplicates[:20])
-        )
+def ensure_example_path(path: Path) -> None:
+    try:
+        path.relative_to(EXAMPLES_DIRECTORY)
+    except ValueError as exc:
+        raise GenerationError(f"refusing to write outside examples/: {path}") from exc
 
-    expected_requirements = {
-        path
-        for path in expected
-        if path.split(".", 1)[0].removesuffix("[]") in REQUIREMENTS_ROOTS
-    }
-    if requirements_paths != expected_requirements:
-        missing_requirements = sorted(expected_requirements - requirements_paths)
-        extra_requirements = sorted(requirements_paths - expected_requirements)
-        if missing_requirements:
-            errors.append(
-                "requirements coverage mapping is missing: "
-                + ", ".join(missing_requirements[:20])
-            )
-        if extra_requirements:
-            errors.append(
-                "requirements coverage mapping has unknown paths: "
-                + ", ".join(extra_requirements[:20])
-            )
-    return errors
+
+def write_if_changed(path: Path, content: str) -> bool:
+    ensure_example_path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() and path.read_text(encoding="utf-8") == content:
+        return False
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(content, encoding="utf-8")
+    temporary.replace(path)
+    return True
 
 
 def run(write: bool) -> int:
-    schema_root = load_schema()
-    entries = collect_entries(schema_root)
-    changed: list[Path] = []
-    marker_errors: list[str] = []
-    for path, (begin, end) in GENERATED_MARKERS.items():
-        original = path.read_text()
-        begin_count = original.count(begin)
-        end_count = original.count(end)
-        if begin_count != end_count:
-            marker_errors.append(
-                f"{path}: mismatched generated schema marker count "
-                f"({begin_count} begin, {end_count} end)"
-            )
-            continue
-        cleaned = remove_generated_block(original, begin, end)
-        residual_entries = [
-            line_number
-            for line_number, line in enumerate(cleaned.splitlines(), start=1)
-            if line.startswith("# schema-entry:")
-        ]
-        if residual_entries:
-            marker_errors.append(
-                f"{path}: obsolete schema-entry comments remain outside the "
-                f"generated block at lines {', '.join(map(str, residual_entries[:20]))}"
-            )
-        if cleaned == original:
-            continue
-        if write:
-            path.write_text(cleaned)
-            changed.append(path)
-        else:
-            marker_errors.append(
-                f"{path}: installable TOML contains a generated schema-entry block; "
-                "run with --write to remove it"
-            )
-
-    errors: list[str] = marker_errors
-    parsed: dict[Path, dict[str, Any]] = {}
-    for path in (HOME_CONFIG_PATH, SYSTEM_CONFIG_PATH, REQUIREMENTS_PATH):
-        try:
-            parsed[path] = parse_toml(path)
-        except tomllib.TOMLDecodeError as exc:
-            errors.append(f"{path}: invalid TOML: {exc}")
-
-    for path in (HOME_CONFIG_PATH, SYSTEM_CONFIG_PATH):
-        payload = parsed.get(path)
-        if payload is None:
-            continue
-        errors.extend(
-            f"{path}: {error}"
-            for error in validate_value(schema_root, payload, schema_root)
-        )
-        errors.extend(validate_config_examples(schema_root, path))
-
-    errors.extend(validate_coverage_partition(entries))
-    if REQUIREMENTS_PATH in parsed and SYSTEM_CONFIG_PATH in parsed:
-        errors.extend(
-            validate_requirements(
-                schema_root,
-                parsed[REQUIREMENTS_PATH],
-                parsed[SYSTEM_CONFIG_PATH],
-            )
-        )
-
-    if errors:
-        for error in errors:
-            print(f"ERROR: {error}", file=sys.stderr)
+    try:
+        schema = load_schema()
+        outputs = rendered_examples(schema)
+    except (GenerationError, json.JSONDecodeError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
-    home_paths, system_paths, requirements_paths = build_coverage_sets(entries)
+    drift: list[Path] = []
+    for path, content in outputs.items():
+        ensure_example_path(path)
+        if not path.exists() or path.read_text(encoding="utf-8") != content:
+            drift.append(path)
+    if drift and not write:
+        print(
+            "ERROR: generated examples are missing or stale; run "
+            "python3 schemas/config_toml_coverage.py --write",
+            file=sys.stderr,
+        )
+        for path in drift:
+            print(f"  {path.relative_to(REPOSITORY_ROOT)}", file=sys.stderr)
+        return 1
+
+    changed = [path for path, content in outputs.items() if write_if_changed(path, content)] if write else []
+    definition_names, entries, variants = pointer_ledger(schema)
     if changed:
-        print("Removed generated schema-entry blocks from installable TOML:")
+        print("Generated config schema examples:")
         for path in changed:
-            print(f"  {path.relative_to(REPOSITORY_ROOT)}")
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+            print(f"  {path.relative_to(REPOSITORY_ROOT)} ({digest})")
     print(
-        "Config schema coverage is valid: "
-        f"{len(entries)} entries "
-        f"({len(home_paths)} user-layer mappings, "
-        f"{len(system_paths)} system-layer mappings, "
-        f"{len(requirements_paths)} requirements-policy mappings)."
+        "Config schema example coverage is valid: "
+        f"{len(definition_names)} definitions, {len(entries)} entries, "
+        f"and {len(variants)} explicit union variants."
     )
     return 0
 
 
 def main(argv: list[str]) -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--write",
         action="store_true",
-        help="remove obsolete generated schema-entry blocks before validating",
+        help="write only the generated files under examples/",
     )
     args = parser.parse_args(argv)
     return run(write=args.write)
