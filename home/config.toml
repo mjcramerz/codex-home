@@ -1,17 +1,37 @@
+# Use the current permissions-profile system. This resolves to
+# [permissions.full] below.
 default_permissions = "full"
-sandbox_mode = "danger-full-access"
+# Do not combine sandbox_mode with default_permissions. Uncomment this only
+# when switching back to the older sandbox-policy configuration path.
+# sandbox_mode = "danger-full-access"
+
+# Keep eligible approval prompts with the user rather than auto-review.
 approvals_reviewer = "user"
+
+# Login-shell requests are intentionally allowed for tools that require them.
 allow_login_shell = true
+
+# Use unrestricted live retrieval rather than the cached or indexed modes.
 web_search = "live"
-apps_mcp_product_sku = "codex"
-desktop = {}
-experimental_thread_store = { type = "local" }
-hooks = {}
-oss_provider = "ollama"
-profiles = {}
-projects = {}
-responses_api_metadata = {}
-tool_suggest = {}
+
+# Optional settings remain inactive until they have real configuration:
+# - apps_mcp_product_sku defaults to "codex" for host-owned Apps MCP requests.
+# - desktop is only needed for actual desktop settings such as custom handlers.
+# - experimental_thread_store is an internal experimental selector; do not use.
+# - hooks are loaded from hooks.json; do not add an empty inline hooks table.
+# - oss_provider only preselects a local provider when Codex runs with --oss.
+# - profiles and projects require real named or path-specific entries.
+# - responses_api_metadata is product-owned request metadata.
+# - tool_suggest requires configured discoverable or disabled tool entries.
+# apps_mcp_product_sku = "codex"
+# desktop = {}
+# experimental_thread_store = { type = "local" }
+# hooks = {}
+# oss_provider = "ollama"
+# profiles = {}
+# projects = {}
+# responses_api_metadata = {}
+# tool_suggest = {}
 # compact_prompt = ""
 # experimental_realtime_webrtc_call_base_url = ""
 # experimental_realtime_ws_base_url = ""
@@ -122,7 +142,6 @@ personality = "pragmatic"
 # Use the normal product tier by default. Do not request priority/flex capacity
 # without explicit deployment, cost, and entitlement approval.
 service_tier = "default"
-#oss_provider = ""
 
 # model context and session
 model_context_window = 1050000
@@ -969,6 +988,27 @@ enabled = true
 [plugins."netlify@codex-home"]
 enabled = true
 
+[plugins."debian-preseed-di-new@repo-local"]
+enabled = true
+
+[plugins."codex@repo-local"]
+enabled = true
+
+[plugins."disk-manager@repo-local"]
+enabled = true
+
+[plugins."gitops@repo-local"]
+enabled = true
+
+[plugins."key-manager@repo-local"]
+enabled = true
+
+[plugins."debian-usb-new@repo-local"]
+enabled = true
+
+[plugins."delivery@repo-local"]
+enabled = true
+
 [agents]
 default_subagent_model = "gpt-5.6-sol"
 default_subagent_reasoning_effort = "high"
@@ -1346,6 +1386,10 @@ tool_timeout_sec = 180
 [marketplaces.codex-home]
 source_type = "local"
 source = "/data/codex/usr/home/marketplaces/codex-home"
+
+[marketplaces.repo-local]
+source_type = "local"
+source = "/data/codex/usr/home/marketplaces/repo-local"
 
 [marketplaces.openai-curated]
 source_type = "git"
