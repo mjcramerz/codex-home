@@ -1,0 +1,33 @@
+{
+  "name": "key-manager",
+  "version": "1.0.0",
+  "description": "Repository-specific workflow for key-manager Go code and SSH, GPG, PQC, TLS, filesystem, and subprocess security boundaries.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Key Manager Repository",
+    "shortDescription": "Key manager repository security workflow",
+    "longDescription": "Use this plugin for key-manager changes that preserve strict input validation, atomic file handling, symlink refusal, subprocess safety, test isolation, and secret-free repository evidence.",
+    "developerName": "Codex Setup",
+    "category": "Security",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Key Manager Repository plugin for a security-focused source change."
+    ],
+    "brandColor": "#7C3AED"
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "security",
+    "keys",
+    "ssh",
+    "gpg",
+    "pqc",
+    "tls",
+    "go"
+  ]
+}

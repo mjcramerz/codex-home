@@ -1,0 +1,33 @@
+{
+  "name": "delivery",
+  "version": "1.0.0",
+  "description": "Repository-specific workflow for shared GitLab CI verification, testing, build, stage, publish, registry, policy, and Cloudflare delivery templates.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Delivery Repository",
+    "shortDescription": "Shared delivery repository workflow",
+    "longDescription": "Use this plugin for shared GitLab delivery changes while preserving namespace ownership, stage semantics, publish-mode isolation, pinned images, YAML validity, and non-publishing local validation.",
+    "developerName": "Codex Setup",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Delivery Repository plugin for a focused shared CI template change."
+    ],
+    "brandColor": "#FC6D26"
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "gitlab",
+    "ci",
+    "delivery",
+    "publish",
+    "registry",
+    "cloudflare",
+    "yaml"
+  ]
+}

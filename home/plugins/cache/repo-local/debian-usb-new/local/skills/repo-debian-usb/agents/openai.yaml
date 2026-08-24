@@ -1,0 +1,4 @@
+interface:
+  display_name: "Debian USB Repository"
+  short_description: "Debian USB repository workflow and safety"
+  default_prompt: "Use $repo-debian-usb to update Debian USB tooling without touching real media or host installation state."

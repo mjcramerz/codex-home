@@ -1,0 +1,4 @@
+interface:
+  display_name: "Disk Manager Repository"
+  short_description: "Disk manager repository workflow"
+  default_prompt: "Use $repo-disk-manager to change disk-manager safely without running destructive device operations."

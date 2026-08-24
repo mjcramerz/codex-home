@@ -1,0 +1,204 @@
+{
+  "name": "repo-local",
+  "interface": {
+    "displayName": "Repository Local"
+  },
+  "plugins": [
+    {
+      "name": "debian-preseed-di-new",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cache/repo-local/debian-preseed-di-new/local"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Infrastructure",
+      "description": "Repository-specific workflow for the Debian Installer preseed tree, class and profile policy, tracked target mirrors, and focused smoke tests.",
+      "interface": {
+        "displayName": "Debian Preseed DI",
+        "shortDescription": "Debian installer source workflow",
+        "longDescription": "Use this plugin for source-first changes in the Debian Installer preseed repository, including class and profile policy, installer-stage scripts, tracked target mirrors, and focused repository tests.",
+        "developerName": "Codex Setup",
+        "category": "Infrastructure",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Debian Preseed DI plugin for a focused installer repository change."
+        ],
+        "brandColor": "#A81D33"
+      }
+    },
+    {
+      "name": "codex",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cache/repo-local/codex/local"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Development",
+      "description": "Repository-specific workflow for the Codex Rust workspace, CLI, SDKs, generated configuration schema, and project validation commands.",
+      "interface": {
+        "displayName": "Codex Repository",
+        "shortDescription": "Codex source repository workflow",
+        "longDescription": "Use this plugin for focused work in the Codex source repository with nested instruction discovery, source-versus-generated boundaries, just-based formatting and testing, and configuration-schema synchronization.",
+        "developerName": "Codex Setup",
+        "category": "Development",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Codex Repository plugin for a focused source change and validation."
+        ],
+        "brandColor": "#2563EB"
+      }
+    },
+    {
+      "name": "disk-manager",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cache/repo-local/disk-manager/local"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Infrastructure",
+      "description": "Repository-specific workflow for disk-manager Go code, configuration, scripts, and non-destructive validation.",
+      "interface": {
+        "displayName": "Disk Manager Repository",
+        "shortDescription": "Disk manager repository workflow",
+        "longDescription": "Use this plugin for disk-manager source changes while keeping block-device, filesystem, LUKS, NVMe, installation, and host-mutation operations outside routine validation.",
+        "developerName": "Codex Setup",
+        "category": "Infrastructure",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Disk Manager Repository plugin without touching real block devices."
+        ],
+        "brandColor": "#0F766E"
+      }
+    },
+    {
+      "name": "gitops",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cache/repo-local/gitops/local"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Development",
+      "description": "Repository-specific workflow for the GitOps command suite, installer scripts, Git aliases, and protected branch operations.",
+      "interface": {
+        "displayName": "GitOps Repository",
+        "shortDescription": "GitOps repository workflow and safety",
+        "longDescription": "Use this plugin for GitOps source changes with shell syntax validation and explicit safeguards around global Git configuration, branch promotion, mirrors, tags, repositories, and destructive cleanup.",
+        "developerName": "Codex Setup",
+        "category": "Development",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the GitOps Repository plugin for a non-destructive source change."
+        ],
+        "brandColor": "#F97316"
+      }
+    },
+    {
+      "name": "key-manager",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cache/repo-local/key-manager/local"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Security",
+      "description": "Repository-specific workflow for key-manager Go code and SSH, GPG, PQC, TLS, filesystem, and subprocess security boundaries.",
+      "interface": {
+        "displayName": "Key Manager Repository",
+        "shortDescription": "Key manager repository security workflow",
+        "longDescription": "Use this plugin for key-manager changes that preserve strict input validation, atomic file handling, symlink refusal, subprocess safety, test isolation, and secret-free repository evidence.",
+        "developerName": "Codex Setup",
+        "category": "Security",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Key Manager Repository plugin for a security-focused source change."
+        ],
+        "brandColor": "#7C3AED"
+      }
+    },
+    {
+      "name": "debian-usb-new",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cache/repo-local/debian-usb-new/local"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Infrastructure",
+      "description": "Repository-specific workflow for Debian USB Go, Python, shell, configuration, ISO, and removable-media tooling.",
+      "interface": {
+        "displayName": "Debian USB Repository",
+        "shortDescription": "Debian USB repository workflow",
+        "longDescription": "Use this plugin for Debian USB source changes with mixed-language validation and strict separation from real USB media, host installation, ISO writes, sudo, and destructive cleanup.",
+        "developerName": "Codex Setup",
+        "category": "Infrastructure",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Debian USB Repository plugin without writing to real media."
+        ],
+        "brandColor": "#D70A53"
+      }
+    },
+    {
+      "name": "delivery",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cache/repo-local/delivery/local"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Development",
+      "description": "Repository-specific workflow for shared GitLab CI verification, testing, build, stage, publish, registry, policy, and Cloudflare delivery templates.",
+      "interface": {
+        "displayName": "Delivery Repository",
+        "shortDescription": "Shared delivery repository workflow",
+        "longDescription": "Use this plugin for shared GitLab delivery changes while preserving namespace ownership, stage semantics, publish-mode isolation, pinned images, YAML validity, and non-publishing local validation.",
+        "developerName": "Codex Setup",
+        "category": "Development",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Delivery Repository plugin for a focused shared CI template change."
+        ],
+        "brandColor": "#FC6D26"
+      }
+    }
+  ]
+}

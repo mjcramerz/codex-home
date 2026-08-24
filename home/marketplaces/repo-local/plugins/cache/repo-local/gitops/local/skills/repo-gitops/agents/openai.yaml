@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitOps Repository"
+  short_description: "GitOps repository workflow and safety"
+  default_prompt: "Use $repo-gitops to update the GitOps repository with non-destructive validation and explicit branch safeguards."

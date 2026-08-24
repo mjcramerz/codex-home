@@ -1,0 +1,31 @@
+{
+  "name": "debian-preseed-di-new",
+  "version": "1.0.0",
+  "description": "Repository-specific workflow for the Debian Installer preseed tree, class and profile policy, tracked target mirrors, and focused smoke tests.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Debian Preseed DI",
+    "shortDescription": "Debian installer source workflow",
+    "longDescription": "Use this plugin for source-first changes in the Debian Installer preseed repository, including class and profile policy, installer-stage scripts, tracked target mirrors, and focused repository tests.",
+    "developerName": "Codex Setup",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Debian Preseed DI plugin for a focused installer repository change."
+    ],
+    "brandColor": "#A81D33"
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "debian",
+    "installer",
+    "preseed",
+    "fresh-install",
+    "infrastructure"
+  ]
+}

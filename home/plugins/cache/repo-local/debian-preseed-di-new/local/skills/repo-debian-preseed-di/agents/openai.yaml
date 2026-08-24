@@ -1,0 +1,4 @@
+interface:
+  display_name: "Debian Preseed DI Repository"
+  short_description: "Debian installer preseed repository workflow"
+  default_prompt: "Use $repo-debian-preseed-di to make a safe, source-first change in the Debian installer repository."

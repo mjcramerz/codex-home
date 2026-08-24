@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Repository"
+  short_description: "Codex source repository workflow"
+  default_prompt: "Use $repo-codex to implement and validate a focused change in the Codex source repository."

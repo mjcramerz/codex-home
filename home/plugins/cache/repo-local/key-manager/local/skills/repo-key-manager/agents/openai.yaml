@@ -1,0 +1,4 @@
+interface:
+  display_name: "Key Manager Repository"
+  short_description: "Key manager repository security workflow"
+  default_prompt: "Use $repo-key-manager to make a security-focused change in the key-manager repository."

@@ -1,5 +1,5 @@
 # Workflow plan catalog
-Purpose: choose one workflow-specific plan template that mirrors an execution playbook for the Codex coding agent.
+Choose the plan template that matches the selected workflow.
 You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
 
 ## Navigation

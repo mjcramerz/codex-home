@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery Repository"
+  short_description: "Shared delivery repository workflow"
+  default_prompt: "Use $repo-delivery to update shared GitLab delivery templates while preserving stage and publish ownership."

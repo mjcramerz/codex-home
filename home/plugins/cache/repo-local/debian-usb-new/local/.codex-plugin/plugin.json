@@ -1,0 +1,33 @@
+{
+  "name": "debian-usb-new",
+  "version": "1.0.0",
+  "description": "Repository-specific workflow for Debian USB Go, Python, shell, configuration, ISO, and removable-media tooling.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Debian USB Repository",
+    "shortDescription": "Debian USB repository workflow",
+    "longDescription": "Use this plugin for Debian USB source changes with mixed-language validation and strict separation from real USB media, host installation, ISO writes, sudo, and destructive cleanup.",
+    "developerName": "Codex Setup",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Debian USB Repository plugin without writing to real media."
+    ],
+    "brandColor": "#D70A53"
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "debian",
+    "usb",
+    "iso",
+    "removable-media",
+    "go",
+    "python",
+    "shell"
+  ]
+}

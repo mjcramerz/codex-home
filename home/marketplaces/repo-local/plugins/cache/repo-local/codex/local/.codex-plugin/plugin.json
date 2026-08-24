@@ -1,0 +1,31 @@
+{
+  "name": "codex",
+  "version": "1.0.0",
+  "description": "Repository-specific workflow for the Codex Rust workspace, CLI, SDKs, generated configuration schema, and project validation commands.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Codex Repository",
+    "shortDescription": "Codex source repository workflow",
+    "longDescription": "Use this plugin for focused work in the Codex source repository with nested instruction discovery, source-versus-generated boundaries, just-based formatting and testing, and configuration-schema synchronization.",
+    "developerName": "Codex Setup",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Codex Repository plugin for a focused source change and validation."
+    ],
+    "brandColor": "#2563EB"
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "codex",
+    "rust",
+    "cli",
+    "sdk",
+    "config-schema"
+  ]
+}
