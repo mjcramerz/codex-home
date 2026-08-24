@@ -9,14 +9,10 @@ You must read only the smallest section that resolves the current task, follow t
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
 
-## Catalog additions for current repo family
+## Skill plans
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/plans/skills/skill-lang-perl.md` — Plan
 - `$CODEX_HOME/plans/skills/skill-lang-rust.md` — Plan
-- `$CODEX_HOME/plans/skills/skill-codex-manager.md` — Plan
-- `$CODEX_HOME/plans/skills/skill-codex-mcp.md` — Plan
-- `$CODEX_HOME/plans/skills/skill-cloudflare-git-delivery.md` — Plan
-- `$CODEX_HOME/plans/skills/skill-aptly-r2.md` — Plan
 - `$CODEX_HOME/plans/skills/skill-aptly.md` — Plan
 - `$CODEX_HOME/plans/skills/skill-bazel.md` — Plan
 - `$CODEX_HOME/plans/skills/skill-buildbuddy.md` — Plan

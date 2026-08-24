@@ -1,0 +1,35 @@
+{
+  "name": "render",
+  "version": "1.0.0",
+  "description": "Render deployment and blueprint workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Render",
+    "shortDescription": "Render deployment workflows",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Render plugin for Render deployment and blueprint workflows."
+    ],
+    "longDescription": "Use this plugin for Render deployment, blueprint generation, and hosted service setup workflows.",
+    "developerName": "Render",
+    "brandColor": "#46E3B7",
+    "websiteURL": "https://render.com/docs",
+    "composerIcon": "./skills/render-deploy/assets/render-small.svg",
+    "logo": "./skills/render-deploy/assets/render.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Render"
+  },
+  "homepage": "https://render.com/docs",
+  "keywords": [
+    "render",
+    "deploy",
+    "hosting",
+    "blueprint"
+  ]
+}

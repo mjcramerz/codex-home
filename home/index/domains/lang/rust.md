@@ -20,5 +20,3 @@ Use when:
 - `$CODEX_HOME/docs/lang/cargo.md`
 - `$CODEX_HOME/docs/lang/rustc.md`
 - `$CODEX_HOME/docs/lang/rustup.md`
-- `$CODEX_HOME/docs/workflows/codex-repo.md`
-- `$CODEX_HOME/docs/workflows/codex-mcp.md`

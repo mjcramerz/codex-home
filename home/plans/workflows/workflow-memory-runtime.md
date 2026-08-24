@@ -14,7 +14,6 @@ You must use this plan when removing or replacing legacy references to `$CODEX_H
 
 ## Inputs
 - `$CODEX_HOME/docs/workflows/memory-runtime.md`
-- `$CODEX_HOME/docs/workflows/codex-repo.md`
 - `$CODEX_HOME/docs/workflows/repo-ops.md`
 
 ## Scope
@@ -24,7 +23,7 @@ You must use this plan when removing or replacing legacy references to `$CODEX_H
 ## Action items
 [ ] Confirm the affected files only contain legacy memory-runtime references.
 [ ] Remove or rewrite each `codex-db-fetch` and `$CODEX_ROOT/mem/*` reference.
-[ ] Route replacement guidance to `codex-repo.md` or `repo-ops.md` as appropriate.
+[ ] Route replacement guidance to `repo-ops.md` as appropriate.
 [ ] Run targeted searches to confirm the retired commands/paths are gone from touched docs.
 [ ] Run the narrowest relevant validation before handoff.
 

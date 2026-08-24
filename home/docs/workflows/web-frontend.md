@@ -59,7 +59,6 @@ You must read only the smallest section that resolves the current task, follow t
 - Receiver owns deploy approval, monitoring dashboard checks, and incident response handoff.
 See also:
 - `overview.md`
-- `codex-repo.md`
 - `../web/overview.md`
 - `$CODEX_HOME/templates/web/`
 - `$CODEX_HOME/index/pack/workflows.md`

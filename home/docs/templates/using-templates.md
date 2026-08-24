@@ -31,8 +31,11 @@ Templates are scaffolds you can copy into a repository.
 - GitHub Actions baseline: `$CODEX_HOME/templates/ci/github-actions/`.
 - GitLab CI baseline: `$CODEX_HOME/templates/ci/gitlab-ci/`.
 - Perl runtime/hook baseline: `$CODEX_HOME/templates/perl/codex-hook-module/`.
-- For Cloudflare Worker plus shared GitLab delivery repos, route through `$CODEX_HOME/docs/workflows/cloudflare-delivery.md` before editing the copied pipeline or worker scaffold.
-- For GitLab delivery repos, keep shared include ownership in the central delivery project; do not duplicate internal shared include graphs unless intentionally forking behavior.
+- For Cloudflare R2 publication, route through
+  `$CODEX_HOME/docs/workflows/cloudflare-r2.md` before editing storage or
+  publication scaffolds.
+- Keep shared include ownership explicit; do not duplicate internal include
+  graphs unless intentionally forking behavior.
 - You must keep protected release refs, patch ordering, and publish mutation order explicit in repo-local docs when a template adopts those flows.
 
 ## Next steps

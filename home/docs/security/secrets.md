@@ -56,7 +56,8 @@ CODEX_ACCESS_TOKEN = true
   2. the matching MCP server is enabled in `$CODEX_HOME/config.toml`
 - URL MCP servers use `bearer_token_env_var`; stdio / `command` servers use `env_vars`.
 - During installer-driven setup, the managed runtime can prompt securely for any enabled MCP token that is still missing from the local keyring.
-- You must use `codex-mcp-token <SECRET_NAME> <TOKEN>` for explicit rotation or first-write of enabled managed MCP tokens.
+- For explicit rotation or first-write, use the installed managed-secret
+  workflow and enter the token through a non-echoing prompt or standard input.
 
 Example enablement for Context7:
 
@@ -65,18 +66,10 @@ Example enablement for Context7:
 CONTEXT7_API_KEY = true
 ```
 
-Example secure keyring store for Context7:
-
-```sh
-read -r -s CONTEXT7_API_KEY
-printf '%s\n' "$CONTEXT7_API_KEY" | secret-tool store \
-  --label='Codex managed secret: mcp_servers.context7 (CONTEXT7_API_KEY)' \
-  service codex-mcp name mcp_servers.context7
-unset CONTEXT7_API_KEY
-```
-
 ### Rotation and disablement
-- Rotate a managed MCP token with `codex-mcp-token`, for example `codex-mcp-token CONTEXT7_API_KEY new-token-value`.
+- Rotate a managed MCP token through the installed managed-secret workflow;
+  never place the value in configuration files, documentation, or shell
+  history.
 - The wrapper only accepts keys that exist in `/data/codex/lookup/secrets.toml` and are currently set to `true`.
 - If a key exists but is disabled, the wrapper exits with `Please enable secret first and try again later`.
 - Writing a new value for the same `service` + `name` pair is enough; the next wrapper launch picks it up automatically.

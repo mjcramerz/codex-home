@@ -1,0 +1,38 @@
+{
+  "name": "desktop-wayland",
+  "version": "1.0.0",
+  "description": "Debian Wayland desktop workflows for Labwc, Waybar, Wofi, Crystal Dock, and desktop launcher integration.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Desktop Wayland",
+    "shortDescription": "Debian Wayland desktop setup",
+    "category": "Desktop",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Desktop Wayland plugin for Debian Wayland desktop, Labwc, Waybar, Wofi, Crystal Dock, and launcher workflow tasks."
+    ],
+    "longDescription": "Use this plugin for Debian Wayland desktop sessions, Labwc compositor work, Waybar and Wofi behavior, Crystal Dock startup, and desktop launcher integration.",
+    "developerName": "Codex Setup",
+    "brandColor": "#32CCA8",
+    "composerIcon": "./skills/desktop-wayland/assets/icon-32.png",
+    "logo": "./skills/desktop-wayland/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "desktop",
+    "wayland",
+    "debian",
+    "labwc",
+    "waybar",
+    "wofi",
+    "crystal-dock",
+    "dock",
+    "launcher"
+  ]
+}

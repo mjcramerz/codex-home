@@ -20,5 +20,4 @@ Purpose: guide Cloudflare R2-backed artifact publication and readback contracts 
 
 ## After that, you must check related files
 - `$CODEX_HOME/docs/workflows/cloudflare-r2.md`
-- `$CODEX_HOME/docs/workflows/cloudflare-delivery.md`
 - `$CODEX_HOME/index/domains/infra/cloudflare-r2.md`

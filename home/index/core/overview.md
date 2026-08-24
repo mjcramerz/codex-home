@@ -19,7 +19,6 @@ Use this router for workflow-level work that is not primarily domain specific.
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/index/core/agent-orchestration.md` — Agent orchestration workflow (entrypoint)
 - `$CODEX_HOME/index/core/ci-cd.md` — CI/CD workflow (entrypoint)
-- `$CODEX_HOME/index/core/codex-repo.md` — Codex repository workflow (entrypoint)
 - `$CODEX_HOME/index/core/execpolicy.md` — Execpolicy workflow (entrypoint)
 - `$CODEX_HOME/index/core/perf.md` — Performance playbook (entrypoint)
 - `$CODEX_HOME/index/core/plan.md` — Planning workflow (entrypoint)

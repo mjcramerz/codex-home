@@ -1,0 +1,38 @@
+{
+  "name": "codex-runtime",
+  "version": "1.0.0",
+  "description": "Runtime configuration, sandbox policy, schema comparison, Perl support, and setup audits for managed Codex environments.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Codex Runtime",
+    "shortDescription": "Runtime config, sandbox, and schema audit",
+    "category": "Operations",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Codex Runtime plugin for managed runtime configuration, schema diff, and setup audit work."
+    ],
+    "longDescription": "Use this plugin for runtime configuration, sandbox policy, schema comparison, Perl helper work, and setup audits.",
+    "developerName": "Codex Setup",
+    "brandColor": "#2563EB",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "codex",
+    "runtime",
+    "sandbox",
+    "bubblewrap",
+    "operations",
+    "config",
+    "schema",
+    "diff",
+    "setup",
+    "audit",
+    "perl"
+  ]
+}

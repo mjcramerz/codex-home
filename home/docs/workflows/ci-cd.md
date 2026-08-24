@@ -15,17 +15,10 @@ You must read only the smallest section that resolves the current task, follow t
 - If you are defining cross-platform CI policy, start here.
 - If you are editing GitHub workflows or wrappers, route to `github-actions.md`.
 - If you are editing `.gitlab-ci.yml`, shared include contracts, or runner selection, route to `gitlab-ci.md`.
-- If you are editing Cloudflare Worker plus delivery-template repos, route to `cloudflare-delivery.md` or `cloudflare-r2.md`.
+- If you are editing Cloudflare R2 publication flows, route to `cloudflare-r2.md`.
 - If you are editing runner-host automation, route to `gitlab-runner.md`.
 - If you are working on Bazel or BuildBuddy-backed CI, route to `bazel-buildbuddy.md`.
 - If you are preparing release tagging or publish steps, route to `release.md`.
-
-## Adjacent repo map
-- `delivery` owns the shared GitLab CI/CD include graph and policy layers.
-- `cf-git-cicd-worker` and `cf-aptly-r2` are worker-oriented examples that consume shared delivery contracts.
-- `ci-images` is a representative image-build consumer that expects `GL_CICD_SHARED_PROJ` to exist before includes are resolved.
-- `debian-preseed-di` is a representative host-installer repo where GitLab CI, runner provisioning, Aptly publication, and desktop/service smoke tests intersect.
-- `codex-manager` owns the runtime-pack and plugin-skill guidance that should mirror CI and release behavior.
 
 ## CI gates (recommended)
 1) Format
@@ -53,6 +46,5 @@ You must read only the smallest section that resolves the current task, follow t
 - `gitlab-ci.md`
 - `gitlab-runner.md`
 - `bazel-buildbuddy.md`
-- `cloudflare-delivery.md`
 - `cloudflare-r2.md`
 - `release.md`

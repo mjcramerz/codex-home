@@ -1,5 +1,6 @@
 # Rust
-Purpose: guide Rust, Cargo, rustc, and rustup work in Codex source repos, release flows, and validation-heavy runtime integrations for the Codex coding agent.
+Purpose: guide Rust, Cargo, rustc, and rustup work across release flows and
+validation-heavy runtime integrations for the Codex coding agent.
 You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
 
 ## Use this guide when
@@ -29,6 +30,4 @@ You must read only the smallest section that resolves the current task, follow t
 - `$CODEX_HOME/docs/lang/rustc.md`
 - `$CODEX_HOME/docs/lang/rustup.md`
 - `$CODEX_HOME/docs/workflows/rust-toolchain.md`
-- `$CODEX_HOME/docs/workflows/codex-repo.md`
-- `$CODEX_HOME/docs/workflows/codex-mcp.md`
 - `$CODEX_HOME/index/domains/lang/rust.md`

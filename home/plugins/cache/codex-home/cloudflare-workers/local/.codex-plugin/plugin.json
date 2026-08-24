@@ -1,0 +1,38 @@
+{
+  "name": "cloudflare-workers",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers platform, R2 publication, Durable Objects, sandboxing, and Workers best-practice workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Cloudflare Workers",
+    "shortDescription": "Workers, storage, and edge",
+    "category": "Infrastructure",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Cloudflare Workers plugin for Workers platform, Durable Objects, bindings, and edge-runtime workflows."
+    ],
+    "longDescription": "Use this plugin for Cloudflare Workers development, R2 storage workflows, Durable Objects, bindings, sandboxing, and performance analysis.",
+    "developerName": "Cloudflare",
+    "brandColor": "#F97316",
+    "websiteURL": "https://developers.cloudflare.com/workers/",
+    "composerIcon": "./skills/cloudflare-r2/assets/icon-32.png",
+    "logo": "./skills/cloudflare-r2/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Cloudflare"
+  },
+  "homepage": "https://developers.cloudflare.com/workers/",
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "durable-objects",
+    "edge",
+    "performance",
+    "r2",
+    "storage"
+  ]
+}

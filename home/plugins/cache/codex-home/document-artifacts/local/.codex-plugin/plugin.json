@@ -1,0 +1,35 @@
+{
+  "name": "document-artifacts",
+  "version": "1.0.0",
+  "description": "Document, spreadsheet, slide, notebook, and other artifact-generation workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Document Artifacts",
+    "shortDescription": "Document artifact workflows",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Document Artifacts plugin for docs, PDFs, slides, spreadsheets, and notebook workflows."
+    ],
+    "longDescription": "Use this plugin for document editing, PDFs, slides, spreadsheets, and notebook-style artifact workflows.",
+    "developerName": "Codex Setup",
+    "brandColor": "#A855F7",
+    "composerIcon": "./skills/doc/assets/doc-small.svg",
+    "logo": "./skills/doc/assets/doc.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "document",
+    "artifacts",
+    "development",
+    "doc",
+    "pdf",
+    "slides"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "health-planning",
+  "version": "1.0.0",
+  "description": "ADHD and CBT planning packs with printable workflow support.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Health Planning",
+    "shortDescription": "ADHD and CBT planning packs",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Health Planning plugin for ADHD and CBT planning packs and printable workflow generation."
+    ],
+    "longDescription": "Use this plugin for ADHD and CBT planning packs, printable workflows, and structured self-management templates.",
+    "developerName": "Codex Setup",
+    "brandColor": "#16A34A",
+    "composerIcon": "./skills/health-adhd-cbt/assets/icon-32.png",
+    "logo": "./skills/health-adhd-cbt/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "health",
+    "planning",
+    "productivity",
+    "adhd",
+    "cbt"
+  ]
+}

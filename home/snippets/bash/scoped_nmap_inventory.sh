@@ -44,7 +44,7 @@ done
 [[ -n "$scope_file" ]] || { echo "ERROR: --scope-file is required" >&2; exit 2; }
 [[ -n "$target" ]] || { echo "ERROR: --target is required" >&2; exit 2; }
 
-python3 "$CODEX_HOME/plugins/cache/codex-local/security-labs/local/skills/offsec-defense/scripts/scope_guard.py" \
+python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/local/skills/offsec-defense/scripts/scope_guard.py" \
   --scope-file "$scope_file" \
   --target "$target" \
   --operation "port-scan" >/dev/null

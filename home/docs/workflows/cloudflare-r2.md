@@ -45,5 +45,4 @@ You must read only the smallest section that resolves the current task, follow t
 
 ## After that, you must check related files
 - $CODEX_HOME/docs/infra/cloudflare-r2.md
-- $CODEX_HOME/docs/workflows/cloudflare-delivery.md
 - $CODEX_HOME/index/domains/infra/cloudflare-r2.md

@@ -1,42 +1,25 @@
 default_permissions = "full"
+sandbox_mode = "danger-full-access"
 approvals_reviewer = "user"
 allow_login_shell = true
 web_search = "live"
-# Schema-backed optional settings are classified here rather than populated with
-# invalid placeholders. The intentionally unset root keys are
-# apps_mcp_product_sku, compact_prompt,
-# experimental_realtime_webrtc_call_base_url,
-# experimental_realtime_ws_base_url, experimental_realtime_ws_model,
-# experimental_thread_store, experimental_use_unified_exec_tool,
-# forced_chatgpt_workspace_id, ghost_snapshot, instructions, oss_provider,
-# profile, responses_api_metadata, sandbox_mode, and sandbox_workspace_write.
-# Keep tenant-, host-, or provider-owned values unset until an authoritative
-# value is available:
-# - apps_mcp_product_sku and responses_api_metadata are product-owned request
-#   metadata; do not fabricate an identity.
-# - forced_chatgpt_workspace_id requires the exact permitted tenant workspace.
-# - the experimental realtime endpoint/model, thread-store, and unified-exec
-#   overrides stay disabled; the supported feature flags below are authoritative.
-# - instructions and compact_prompt remain file-backed so this config has one
-#   managed instruction and compaction source.
-# - oss_provider and profile require a local provider or named profile selected
-#   by the user. sandbox_mode and sandbox_workspace_write are intentionally
-#   omitted because default_permissions is the active sandbox policy.
-# - ghost_snapshot is legacy compatibility state and must not be introduced into
-#   a fresh configuration.
-# See examples/config.home.notused.toml for schema-valid layer examples only;
-# never copy its example strings into this active configuration.
-# Host-owned Apps requests may set a product SKU when deployment policy
-# requires one. Leave unset for the standard ChatGPT/Codex product identity.
-#apps_mcp_product_sku = "codex"
-# Product-owned request metadata is intentionally bounded to string values.
-#responses_api_metadata = { deployment = "debian" }
-# Direct inline system instructions are supported, but the file-backed
-# model_instructions_file below remains the authoritative managed source.
-#instructions = "Additional system instructions."
-# Named profiles are optional user-selected overlays. Enable profile only when
-# the matching profiles entry is also enabled.
-#profile = "debian"
+apps_mcp_product_sku = "codex"
+desktop = {}
+experimental_thread_store = { type = "local" }
+hooks = {}
+oss_provider = "ollama"
+profiles = {}
+projects = {}
+responses_api_metadata = {}
+tool_suggest = {}
+# compact_prompt = ""
+# experimental_realtime_webrtc_call_base_url = ""
+# experimental_realtime_ws_base_url = ""
+# experimental_realtime_ws_model = ""
+# forced_chatgpt_workspace_id = []
+# ghost_snapshot = {}
+# instructions = ""
+# profile = ""
 
 # runtime
 log_dir = "/data/codex/log"
@@ -46,14 +29,6 @@ mcp_oauth_credentials_store = "file"
 mcp_oauth_callback_port = 8088
 mcp_oauth_callback_url = "http://127.0.0.1:8088/callback"
 
-#experimental_realtime_webrtc_call_base_url = "https://your-realtime-backend.example.com/v1/realtime/calls"
-#experimental_realtime_ws_base_url = "https://your-realtime-backend.example.com/v1/realtime"
-#experimental_realtime_ws_model = "your-transcription-session-model"
-#experimental_use_unified_exec_tool = false
-# experimental_thread_store is intentionally unset; the runtime default remains
-# authoritative until that experimental storage contract is selected.
-# forced_chatgpt_workspace_id is intentionally unset; do not restrict login
-# without an exact tenant workspace identifier.
 experimental_realtime_ws_backend_prompt = """## Identity, tone, and role
 
 You are Codex, an OpenAI general-purpose agentic assistant that helps the user complete tasks across coding, browsing, apps, documents, research, and other digital workflows.
@@ -135,14 +110,7 @@ When invoked, you receive the latest conversation transcript and any relevant mo
 When user text is routed from realtime, treat it as a transcript. It may be unpunctuated or contain recognition errors.
 
 - Keep responses concise and action-oriented. Your updates should help the intermediary respond to the user."""
-
-#[realtime]
-#version = "v2"
-#type = "transcription"
-
-#[experimental_thread_store]
-#type = "local"
-#experimental_use_unified_exec_tool = true
+experimental_use_unified_exec_tool = true
 
 # model
 chatgpt_base_url = 'https://chatgpt.com/backend-api'
@@ -255,38 +223,57 @@ model_catalog_json = "/data/codex/usr/instructions/models/default_catalog.json"
 model_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
 experimental_compact_prompt_file = "/data/codex/usr/instructions/default/compact/prompt.md"
 
-# Legacy sandbox-mode alternative. Do not combine this table with
-# default_permissions; copy it into a legacy-only configuration layer.
-#[sandbox_workspace_write]
-#writable_roots = ["/absolute/additional/write/root"]
-#network_access = false
-#exclude_tmpdir_env_var = false
-#exclude_slash_tmp = false
-
-# Goal limits use the runtime default until a workload has an approved budget.
 [goals]
+max_goal_token_budget = 1_000_000
 
-# Inline lifecycle hooks remain empty. The managed hook runtime remains the
-# source of truth at $CODEX_HOME/hooks.json and $CODEX_HOME/.hooks/**.
-[hooks]
+[model_providers.openai-custom]
+name = "OpenAI (Custom)"
+base_url = "https://chatgpt.com/backend-api/codex"
+env_key = "OPENAI_API_KEY"
+env_key_instructions = "Use ChatGPT login or set OPENAI_API_KEY for API-key authentication."
+requires_openai_auth = true
+wire_api = "responses"
+http_headers = {}
+env_http_headers = { "OpenAI-Organization" = "OPENAI_ORGANIZATION", "OpenAI-Project" = "OPENAI_PROJECT" }
+query_params = {}
+request_max_retries = 4
+stream_max_retries = 3
+stream_idle_timeout_ms = 40_000
+supports_standalone_web_search = true
+supports_websockets = true
+websocket_connect_timeout_ms = 120_000
 
-# No custom provider is defined in this portable configuration; openai-custom
-# is supplied by the installed runtime/host configuration.
-[model_providers]
+[model_providers.cloudflare-ai-embedding]
+name = "Cloudflare Workers AI embedding"
+base_url = "https://api.cloudflare.com/client/v4/accounts/45f7447eb2692c6351ecbb3757e1192c/ai/v1"
+env_key = "CLOUDFLARE_API_TOKEN"
+env_key_instructions = "Set CLOUDFLARE_API_TOKEN to a token allowed to invoke Workers AI."
+requires_openai_auth = false
+wire_api = "responses"
+http_headers = {}
+env_http_headers = {}
+query_params = {}
+request_max_retries = 2
+stream_max_retries = 0
+stream_idle_timeout_ms = 30_000
+supports_standalone_web_search = false
+supports_websockets = false
+websocket_connect_timeout_ms = 120_000
 
-# Notices record per-user acknowledgement state. Keep source-controlled policy
-# neutral and do not suppress safety or migration prompts here.
 [notice]
+fast_default_opt_out = false
+hide_full_access_warning = true
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+hide_gpt5_1_migration_prompt = true
+hide_rate_limit_model_nudge = true
+hide_world_writable_warning = true
+model_migrations = {}
 
-# Keep named profile and per-project maps available without selecting a profile
-# or assigning trust to a machine-specific filesystem path.
-[profiles]
-
-[projects]
-
-# Additional tool-suggestion policy is empty; installed skills and plugins
-# remain the controlled discovery surface.
-[tool_suggest]
+[notice.external_config_migration_prompts]
+home = false
+home_last_prompted_at = 0
+project_last_prompted_at = {}
+projects = {}
 
 [auto_review]
 policy = """## Environment Profile
@@ -334,6 +321,7 @@ policy = """## Environment Profile
 
 [history]
 persistence = "save-all"
+max_bytes = 100_000_000
 
 [instruction_overrides.agents]
 hierarchical_instructions_file = "/data/codex/usr/instructions/default/agents/hierarchical.md"
@@ -379,40 +367,201 @@ search_instructions_file = "/data/codex/usr/instructions/default/tools/search.md
 init_instructions_file = "/data/codex/usr/instructions/default/tui/init.md"
 
 [realtime]
-#version = "v2"
-#type = "transcription"
+version = "v3"
+type = "conversational"
+transport = "websocket"
+voice = "sol"
 
-# Windows-specific defaults remain empty on Debian. Set sandbox settings only
-# in a Windows-owned configuration layer.
 [windows]
+sandbox = "unelevated"
+sandbox_private_desktop = true
 
-# tui chatcomposer
 [tui]
 alternate_screen = "auto"
+animations = true
+model_availability_nux = {}
+notification_condition = "unfocused"
 notification_method = "auto"
 notifications = true
+pet = "codex"
+pet_anchor = "composer"
+raw_output_mode = false
+resume_cwd = "current"
+session_picker_view = "comfortable"
 show_tooltips = true
-animations = true
-theme = "1337"
 status_line = [
-  "context-remaining", 
+  "context-remaining",
   "current-dir",
   "git-branch",
   "fast-mode",
   "project-root",
 ]
+status_line_use_colors = true
+terminal_resize_reflow_max_rows = 20_000
+terminal_title = [
+  "activity",
+  "project",
+]
+theme = "1337"
+vim_mode_default = false
 
-# audio device
+[tui.keymap.global]
+clear_terminal = "ctrl-l"
+copy = "ctrl-o"
+open_external_editor = "ctrl-g"
+open_transcript = "ctrl-t"
+queue = "tab"
+submit = "enter"
+toggle_fast_mode = "f9"
+toggle_raw_output = "alt-r"
+toggle_shortcuts = ["?", "shift-?"]
+toggle_side_conversation = ["ctrl-/", "ctrl-7"]
+toggle_vim_mode = "f8"
+
+[tui.keymap.chat]
+decrease_reasoning_effort = ["alt-,", "shift-down"]
+edit_queued_message = ["alt-up", "shift-left"]
+increase_reasoning_effort = ["alt-.", "shift-up"]
+interrupt_turn = "esc"
+
+[tui.keymap.composer]
+history_search_next = "ctrl-s"
+history_search_previous = "ctrl-r"
+queue = "tab"
+submit = "enter"
+toggle_shortcuts = ["?", "shift-?"]
+
+[tui.keymap.editor]
+delete_backward = ["backspace", "shift-backspace", "ctrl-h"]
+delete_backward_word = [
+  "alt-backspace",
+  "ctrl-backspace",
+  "ctrl-shift-backspace",
+  "ctrl-w",
+  "ctrl-alt-h",
+]
+delete_forward = ["delete", "shift-delete", "ctrl-d"]
+delete_forward_word = [
+  "alt-delete",
+  "ctrl-delete",
+  "ctrl-shift-delete",
+  "alt-d",
+]
+insert_newline = ["ctrl-j", "ctrl-m", "shift-enter", "alt-enter"]
+kill_line_end = "ctrl-k"
+kill_line_start = "ctrl-u"
+kill_whole_line = "ctrl-shift-u"
+move_down = ["down", "ctrl-n"]
+move_left = ["left", "ctrl-b"]
+move_line_end = ["end", "ctrl-e"]
+move_line_start = ["home", "ctrl-a"]
+move_right = ["right", "ctrl-f"]
+move_up = ["up", "ctrl-p"]
+move_word_left = ["alt-b", "alt-left", "ctrl-left"]
+move_word_right = ["alt-f", "alt-right", "ctrl-right"]
+yank = "ctrl-y"
+
+[tui.keymap.list]
+accept = "enter"
+cancel = "esc"
+jump_bottom = "end"
+jump_top = "home"
+move_down = ["down", "ctrl-n", "ctrl-j", "j"]
+move_left = ["left", "ctrl-h"]
+move_right = ["right", "ctrl-l"]
+move_up = ["up", "ctrl-p", "ctrl-k", "k"]
+page_down = ["page-down", "ctrl-f"]
+page_up = ["page-up", "ctrl-b"]
+
+[tui.keymap.pager]
+close = ["q", "ctrl-c"]
+close_transcript = "ctrl-t"
+half_page_down = "ctrl-d"
+half_page_up = "ctrl-u"
+jump_bottom = "end"
+jump_top = "home"
+page_down = ["page-down", "space", "ctrl-f"]
+page_up = ["page-up", "shift-space", "ctrl-b"]
+scroll_down = ["down", "j"]
+scroll_up = ["up", "k"]
+
+[tui.keymap.approval]
+approve = "y"
+approve_for_prefix = "p"
+approve_for_session = "a"
+cancel = "c"
+decline = ["esc", "n"]
+deny = "d"
+open_fullscreen = ["ctrl-a", "ctrl-shift-a"]
+open_thread = "o"
+
+[tui.keymap.vim_normal]
+append_after_cursor = "a"
+append_line_end = ["shift-a", "A"]
+cancel_operator = "esc"
+change_to_line_end = ["shift-c", "C"]
+delete_char = "x"
+delete_to_line_end = ["shift-d", "D"]
+enter_insert = "i"
+insert_line_start = ["shift-i", "I"]
+move_down = ["j", "down"]
+move_left = ["h", "left"]
+move_line_end = ["$", "shift-$"]
+move_line_start = "0"
+move_right = ["l", "right"]
+move_up = ["k", "up"]
+move_word_backward = "b"
+move_word_end = "e"
+move_word_forward = "w"
+open_line_above = ["shift-o", "O"]
+open_line_below = "o"
+paste_after = "p"
+start_change_operator = "c"
+start_delete_operator = "d"
+start_yank_operator = "y"
+substitute_char = "s"
+yank_line = ["shift-y", "Y"]
+
+[tui.keymap.vim_operator]
+cancel = "esc"
+delete_line = "d"
+motion_down = "j"
+motion_left = "h"
+motion_line_end = ["$", "shift-$"]
+motion_line_start = "0"
+motion_right = "l"
+motion_up = "k"
+motion_word_backward = "b"
+motion_word_end = "e"
+motion_word_forward = "w"
+select_around_text_object = "a"
+select_inner_text_object = "i"
+yank_line = "y"
+
+[tui.keymap.vim_text_object]
+backtick = "`"
+big_word = ["shift-w", "W"]
+braces = ["{", "shift-{", "}", "shift-}", "shift-b", "B"]
+brackets = ["[", "]"]
+cancel = "esc"
+double_quote = ['"', 'shift-"']
+parentheses = ["(", "shift-(", ")", "shift-)", "b"]
+single_quote = "'"
+word = "w"
+
 [audio]
 microphone = "default"
 speaker = "default"
 
-# tools and web search
-[tools]
+[tools.update_plan]
+enabled = true
+
+[tools.experimental_request_user_input]
+enabled = true
 
 [tools.web_search]
 context_size = "high"
-#allowed_domains = ["*"]
+allowed_domains = []
 
 [tools.web_search.location]
 country = "US"
@@ -420,16 +569,14 @@ region = "CA"
 city = "San Francisco"
 timezone = "America/Los_Angeles"
 
-# otel logging
 [otel]
 environment = "dev"
-# exporter selection is now nested under [otel.exporter.<transport>]
-#exporter = "none"
+exporter = "none"
 log_user_prompt = false
-# metrics exporter selection is now nested under [otel.metrics_exporter.<transport>]
-#metrics_exporter = "none"
-# trace exporter selection is now nested under [otel.trace_exporter.<transport>]
-#trace_exporter = "none"
+metrics_exporter = "none"
+span_attributes = {}
+trace_exporter = "none"
+tracestate = {}
 
 [analytics]
 enabled = false
@@ -437,102 +584,226 @@ enabled = false
 [feedback]
 enabled = false
 
-[desktop]
-# Desktop app settings are an opaque Codex-owned table in 0.142.0.
-# Keep the table present in the merged user config so machine-local desktop keys
-# can live under `[desktop]` without requiring installer changes.
-
 # runtime features
 [features]
-# sandbox
-guardian_approval = false
-tool_call_mcp_elicitation = true
-elevated_windows_sandbox = false
-experimental_windows_sandbox = false
-default_mode_request_user_input = true
-request_permissions_tool = true
-request_rule = true
-exec_permission_approvals = false
-use_linux_sandbox_bwrap = true
+apply_patch_freeform = true
+apply_patch_preserve_line_endings = false
+apply_patch_streaming_events = true
+apps = true
 auth_elicitation = false
-
-# behavior
-collaboration_modes = true
-enable_fanout = false
-fast_mode = false
-code_mode = true
-code_mode_only = false
-memories = true
-personality = true
-multi_agent = true
-remote_models = true
-goals = true
+background_paginated_rollout_migration = false
 browser_use = true
 browser_use_external = true
-computer_use = true
-in_app_browser = true
-plugin_sharing = true
-remote_plugin = true
-external_migration = false
-local_thread_store_compression = false
+browser_use_full_cdp_access = true
 chronicle = true
+code_mode_buffered_exec = false
+code_mode_interrupt = true
+code_mode_only = true
+codex_git_commit = false
+codex_hooks = true
+collab = true
+collaboration_modes = true
+computer_use = true
+concurrent_reasoning_summaries = false
+connectors = true
+default_mode_request_user_input = true
+deferred_executor = false
+deferred_tool_world_state = false
+elevated_windows_sandbox = false
+enable_experimental_windows_sandbox = false
+enable_fanout = false
+enable_mcp_apps = true
+enable_request_compression = true
+exec_permission_approvals = false
+executed_tool_call_metadata = true
+executor_capability_discovery = true
+experimental_use_unified_exec_tool = true
+experimental_windows_sandbox = false
+external_agent_memory_import = false
+external_migration = false
+fast_mode = false
+goals = true
+guardian_approval = false
+guardian_enhanced_node_repl_transcripts = false
+guardian_node_repl_transcript_images = false
+guardian_reuse_parent_compaction = false
+hooks = true
+image_detail_original = true
+image_generation = true
+image_resize_notice = true
+imagegenext = false
+in_app_browser = true
+in_app_chat = true
+in_app_dictation = true
+in_app_updates = true
+item_ids = true
+js_repl = false
+js_repl_tools_only = false
+local_thread_store_compression = false
+mcp_2026_07_28 = false
+memories = true
+memory_tool = true
 mentions_v2 = true
-non_prefixed_mcp_tool_names = false
+multi_agent = true
+multi_agent_mode = false
+personality = true
+plugin_hooks = false
+plugin_sharing = true
+plugins = true
+prevent_idle_sleep = true
+psp = false
+realtime_conversation = true
+recommended_plugins = true
 remote_compaction_v2 = true
 remote_control = true
+remote_models = true
+remote_plugin = true
+request_permissions = true
+request_permissions_tool = true
+request_rule = true
+resize_all_images = true
+respect_system_proxy = false
+responses_websockets = false
+responses_websockets_v2 = true
+retain_client_developer_messages = false
+runtime_metrics = false
+search_tool = true
+secret_auth_storage = true
+shell_snapshot = true
+shell_tool = true
+shell_zsh_fork = false
+skill_env_var_dependency_prompt = false
+skill_mcp_dependency_install = true
+skill_search = true
+sqlite = true
 standalone_web_search = true
 steer = true
+telepathy = true
 terminal_resize_reflow = true
+terminal_visualization_instructions = true
+tool_call_mcp_elicitation = true
 tool_search = true
 tool_search_always_defer_mcp_tools = false
+tool_suggest = true
+tui_app_server = true
+unavailable_dummy_tools = false
+unbounded_connection_retries = true
+undo = true
+unified_exec = true
+unified_exec_zsh_fork = true
+unified_image_budget = true
+use_agent_identity = true
+use_legacy_landlock = false
+use_linux_sandbox_bwrap = true
+view_image = true
+web_search = true
+web_search_cached = true
+web_search_request = true
 workspace_dependencies = false
 workspace_owner_usage_nudge = false
 
-# tools
-tool_suggest = true
-plugins = true
-hooks = true
-undo = true
-sqlite = true
-apply_patch_freeform = true
-apply_patch_streaming_events = true
-unified_exec = true
-apps = true
-enable_mcp_apps = true
-skill_env_var_dependency_prompt = false
-skill_mcp_dependency_install = true
-image_detail_original = true
-image_generation = true
-search_tool = true
+[features.apps_mcp_path_override]
+enabled = false
+path = "/data/codex/usr/home"
 
-# shell
-shell_tool = true
-shell_snapshot = true
-shell_zsh_fork = false
-unified_exec_zsh_fork = false
+[features.code_mode]
+enabled = true
+default_exec_yield_time_ms = 10_000
+direct_only_tool_namespaces = []
+excluded_tool_namespaces = []
 
-# git
-codex_git_commit = false
-js_repl = false
-js_repl_tools_only = false
+[features.code_mode_host]
+enabled = true
+disable_in_process_fallback = false
 
-# device
-tui_app_server = true
-realtime_conversation = false
-runtime_metrics = false
-enable_request_compression = true
-responses_websockets = false
-responses_websockets_v2 = true
-prevent_idle_sleep = true
+[features.current_time_reminder]
+enabled = true
+reminder_interval_seconds = 300
+clock_source = "system"
+delivery_mode = "after_user_or_tool_output"
+sleep_tool = true
+
+[features.guardianv2]
+enabled = false
+classifier_instructions = "Review proposed actions for authorization, security, privacy, data-loss, and exfiltration risk. Prefer least privilege and deny actions that exceed explicit user intent."
+max_action_tokens = 8_000
+max_classifier_instruction_tokens = 4_000
+max_parent_compaction_tokens = 20_000
+max_tool_call_lag = 8
+reasoning_effort = "high"
+review_threshold = 0.8
+
+[features.guardianv2.transcript]
+include_images = true
+max_message_entry_tokens = 4_000
+max_message_transcript_tokens = 16_000
+max_recent_non_user_entries = 40
+max_tool_entry_tokens = 4_000
+max_tool_transcript_tokens = 16_000
+sources = [
+  "tool_calls",
+  "tool_outputs",
+  "reasoning",
+]
 
 [features.multi_agent_v2]
 enabled = true
+default_wait_timeout_ms = 30_000
+expose_spawn_agent_model_overrides = true
+hide_spawn_agent_metadata = false
+max_concurrent_threads_per_session = 4
+max_wait_timeout_ms = 3_600_000
+min_wait_timeout_ms = 10_000
+multi_agent_mode_hint_text = "Use multiple agents only for independent, bounded work with explicit ownership and validation."
+non_code_mode_only = false
+root_agent_usage_hint_text = "Delegate independent sidecar tasks while keeping the critical path and final integration with the root agent."
+subagent_developer_instructions = "Complete only the assigned bounded subtask, do not widen scope, validate your result, and return concrete evidence to the root agent."
+subagent_usage_hint_text = "Stay within the assigned files and stop when the requested evidence or patch is complete."
+tool_namespace = "agents"
+usage_hint_enabled = false
+usage_hint_text = "Use agents for independent work; keep one coordinator responsible for integration."
+wait_agent_enabled = true
 
 [features.network_proxy]
 enabled = false
+proxy_url = "http://127.0.0.1:8080"
+enable_socks5 = true
+socks_url = "socks5://127.0.0.1:1080"
+enable_socks5_udp = false
+allow_upstream_proxy = true
+dangerously_allow_non_loopback_proxy = false
+dangerously_allow_all_unix_sockets = false
+mode = "limited"
+domains = {}
+unix_sockets = {}
+allow_local_binding = true
 
-[features.apps_mcp_path_override]
+[features.non_prefixed_mcp_tool_names]
+enabled = false
+server_names = []
+
+[features.rollout_budget]
 enabled = true
+limit_tokens = 900_000
+prefill_token_weight = 1.0
+sampling_token_weight = 1.0
+reminder_at_remaining_tokens = [
+  200_000,
+  100_000,
+  50_000,
+]
+
+[features.token_budget]
+enabled = true
+auto_compact_fallback_buffer_tokens = 25_000
+auto_compact_fallback_prompt = "Context is approaching automatic compaction. Preserve critical decisions, constraints, unfinished work, and exact validation evidence before rollover."
+guidance_message = "Track remaining context, keep tool output bounded, and preserve the critical path before automatic compaction."
+reminder_message_template = "Approximately {n_remaining} tokens remain before automatic compaction. Consolidate decisions, evidence, and the next concrete action."
+reminder_threshold_tokens = 100_000
+
+[features.tool_registry]
+error_on_tool_collisions = true
+turn_metadata_includes_tool_info = true
 
 [memories]
 disable_on_external_context = false
@@ -550,6 +821,8 @@ consolidation_model = "gpt-5.6-terra"
 
 [apps._default]
 enabled = true
+approvals_reviewer = "user"
+default_tools_approval_mode = "auto"
 destructive_enabled = true
 open_world_enabled = true
 
@@ -558,146 +831,149 @@ config = [
   { enabled = true, path = "/data/codex/usr/skills" },
 ]
 include_instructions = true
+# Current Codex clamps explicit skill-catalog budgets at 10,000 tokens.
+max_context_tokens = 10_000
 
 [skills.bundled]
 enabled = true
 
-[plugins."codex-runtime@codex-local"]
+[plugins."codex-runtime@codex-home"]
 enabled = true
 
-[plugins."codex-repo@codex-local"]
+[plugins."openai-apps@codex-home"]
 enabled = true
 
-[plugins."openai-apps@codex-local"]
+[plugins."github@codex-home"]
 enabled = true
 
-[plugins."microsoft-learn@codex-local"]
+[plugins."gitlab@codex-home"]
 enabled = true
 
-[plugins."jina-ai@codex-local"]
+[plugins."linear@codex-home"]
 enabled = true
 
-[plugins."atlassian@codex-local"]
+[plugins."google-calendar@codex-home"]
 enabled = true
 
-[plugins."docs-research@codex-local"]
+[plugins."notion@codex-home"]
 enabled = true
 
-[plugins."figma@codex-local"]
+[plugins."obsidian@codex-home"]
 enabled = true
 
-[plugins."github@codex-local"]
+[plugins."health-planning@codex-home"]
 enabled = true
 
-[plugins."gitlab@codex-local"]
+[plugins."backend@codex-home"]
 enabled = true
 
-[plugins."linear@codex-local"]
+[plugins."frontend@codex-home"]
 enabled = true
 
-[plugins."google-calendar@codex-local"]
+[plugins."design-ui@codex-home"]
 enabled = true
 
-[plugins."netlify@codex-local"]
+[plugins."browser-automation@codex-home"]
 enabled = true
 
-[plugins."notion@codex-local"]
+[plugins."document-artifacts@codex-home"]
 enabled = true
 
-[plugins."obsidian@codex-local"]
+[plugins."adobe-acrobat@codex-home"]
 enabled = true
 
-[plugins."health-planning@codex-local"]
+[plugins."adobe-photoshop@codex-home"]
 enabled = true
 
-[plugins."backend@codex-local"]
+[plugins."adobe-express@codex-home"]
 enabled = true
 
-[plugins."frontend@codex-local"]
+[plugins."ai-media@codex-home"]
 enabled = true
 
-[plugins."design-ui@codex-local"]
+[plugins."vercel@codex-home"]
 enabled = true
 
-[plugins."desktop-wayland@codex-local"]
+[plugins."hosting-platforms@codex-home"]
 enabled = true
 
-[plugins."browser-automation@codex-local"]
+[plugins."desktop-wayland@codex-home"]
 enabled = true
 
-[plugins."document-artifacts@codex-local"]
+[plugins."web-browser-linux@codex-home"]
 enabled = true
 
-[plugins."adobe-acrobat@codex-local"]
+[plugins."iac@codex-home"]
 enabled = true
 
-[plugins."adobe-photoshop@codex-local"]
+[plugins."containers@codex-home"]
 enabled = true
 
-[plugins."adobe-express@codex-local"]
+[plugins."kubernetes@codex-home"]
 enabled = true
 
-[plugins."ai-media@codex-local"]
+[plugins."system-infra@codex-home"]
 enabled = true
 
-[plugins."vercel@codex-local"]
+[plugins."virtualization@codex-home"]
 enabled = true
 
-[plugins."render@codex-local"]
+[plugins."observability@codex-home"]
 enabled = true
 
-[plugins."stripe@codex-local"]
+[plugins."security-controls@codex-home"]
 enabled = true
 
-[plugins."hosting-platforms@codex-local"]
+[plugins."security-labs@codex-home"]
 enabled = true
 
-[plugins."vercel-ui@codex-local"]
+[plugins."cloudflare-workers@codex-home"]
 enabled = true
 
-[plugins."web-browser-linux@codex-local"]
+[plugins."wrangler@codex-home"]
 enabled = true
 
-[plugins."winui@codex-local"]
+[plugins."cloudflare-agents@codex-home"]
 enabled = true
 
-[plugins."iac@codex-local"]
+[plugins."huggingface@codex-home"]
 enabled = true
 
-[plugins."containers@codex-local"]
+[plugins."docs-research@codex-home"]
 enabled = true
 
-[plugins."kubernetes@codex-local"]
+[plugins."stripe@codex-home"]
 enabled = true
 
-[plugins."system-infra@codex-local"]
+[plugins."microsoft-learn@codex-home"]
 enabled = true
 
-[plugins."virtualization@codex-local"]
+[plugins."jina-ai@codex-home"]
 enabled = true
 
-[plugins."observability@codex-local"]
+[plugins."atlassian@codex-home"]
 enabled = true
 
-[plugins."security-controls@codex-local"]
+[plugins."figma@codex-home"]
 enabled = true
 
-[plugins."security-labs@codex-local"]
+[plugins."vercel-ui@codex-home"]
 enabled = true
 
-[plugins."cloudflare-workers@codex-local"]
+[plugins."winui@codex-home"]
 enabled = true
 
-[plugins."wrangler@codex-local"]
+[plugins."render@codex-home"]
 enabled = true
 
-[plugins."cloudflare-agents@codex-local"]
-enabled = true
-
-[plugins."huggingface@codex-local"]
+[plugins."netlify@codex-home"]
 enabled = true
 
 [agents]
+default_subagent_model = "gpt-5.6-sol"
+default_subagent_reasoning_effort = "high"
+enabled = true
+max_concurrent_threads_per_session = 4
 max_depth = 4
 interrupt_message = true
 
@@ -1067,9 +1343,9 @@ required = false
 startup_timeout_sec = 30
 tool_timeout_sec = 180
 
-[marketplaces.codex-local]
+[marketplaces.codex-home]
 source_type = "local"
-source = "/data/codex/usr/home/marketplaces/codex-local"
+source = "/data/codex/usr/home/marketplaces/codex-home"
 
 [marketplaces.openai-curated]
 source_type = "git"
@@ -1093,11 +1369,34 @@ skill_approval = false
 inherit = "all"
 ignore_default_excludes = false
 experimental_use_profile = true
-#exclude = []
-#include_only = []
+exclude = [
+  ".*TOKEN.*",
+  ".*KEY.*",
+  ".*SECRET.*",
+  ".*PASSWORD.*",
+  ".*PASS.*",
+  "^AWS_.*",
+  "^AZURE_.*",
+  "^GCP_.*",
+  "^OPENAI_.*",
+  "^ANTHROPIC_.*",
+  "^GITHUB_.*",
+  "^GITLAB_.*",
+  "^SSH_.*",
+  "^KUBECONFIG$",
+  "^DOCKER_.*",
+  "^NPM_TOKEN$",
+  "^NODE_AUTH_TOKEN$",
+  "^PIP_INDEX_URL$",
+  "^PIP_EXTRA_INDEX_URL$",
+]
+include_only = [".*"]
 set = { LANG = "C.UTF-8", LC_CTYPE = "C.UTF-8" }
 
 # full access filesystem
+[permissions.full]
+description = "Full local filesystem access with network proxy policy available but disabled by default."
+
 [permissions.full.filesystem]
 ":root" = "write"
 ":tmpdir" = "write"
@@ -1120,10 +1419,85 @@ allow_unix_sockets = [
   "/data/codex/mcp/sockets/openai-developer-docs.sock",
   "/data/codex/mcp/sockets/context7.sock",
 ]
-#allowed_domains = []
-#denied_domains = []
+allowed_domains = [
+  "api.openai.com",
+  "chatgpt.com",
+  "developers.openai.com",
+  "platform.openai.com",
+  "github.com",
+  "api.github.com",
+  "docs.github.com",
+  "raw.githubusercontent.com",
+  "gitlab.com",
+  "docs.gitlab.com",
+  "context7.com",
+  "mcp.context7.com",
+  "modelcontextprotocol.io",
+  "docs.python.org",
+  "packaging.python.org",
+  "pypi.org",
+  "files.pythonhosted.org",
+  "docs.ansible.com",
+  "www.gnu.org",
+  "developer.mozilla.org",
+  "developer.chrome.com",
+  "nodejs.org",
+  "docs.npmjs.com",
+  "registry.npmjs.org",
+  "go.dev",
+  "pkg.go.dev",
+  "doc.rust-lang.org",
+  "docs.rs",
+  "crates.io",
+  "kubernetes.io",
+  "helm.sh",
+  "docs.docker.com",
+  "podman.io",
+  "playwright.dev",
+  "www.postgresql.org",
+  "redis.io",
+  "mcp.linear.app",
+  "linear.app",
+  "mcp.figma.com",
+  "figma.com",
+  "mcp.render.com",
+  "render.com",
+  "mcp.vercel.com",
+  "vercel.com",
+  "learn.microsoft.com",
+  "mcp.jina.ai",
+  "jina.ai",
+  "mcp.atlassian.com",
+  "atlassian.com",
+  "mcp.stripe.com",
+  "stripe.com",
+  "mcp.cloudflare.com",
+  "docs.mcp.cloudflare.com",
+  "bindings.mcp.cloudflare.com",
+  "builds.mcp.cloudflare.com",
+  "observability.mcp.cloudflare.com",
+  "developers.cloudflare.com",
+  "cloudflare.com",
+  "huggingface.co",
+]
+denied_domains = [
+  "metadata.google.internal",
+  "metadata.azure.internal",
+  "metadata.oraclecloud.com",
+  "metadata.packet.net",
+  "instance-data.ec2.internal",
+  "kubernetes.default.svc",
+  "169.254.169.254",
+  "169.254.169.253",
+  "169.254.170.2",
+  "169.254.170.23",
+  "100.100.100.200",
+]
 
 # workspace filesystem
+[permissions.workspace]
+description = "Workspace-scoped write access with controlled runtime and memory paths."
+
 [permissions.workspace.filesystem]
 ":minimal" = "read"
 ":project_roots" = { "." = "write", ".mcr" = "write", "docs" = "read", "patches" = "read" }
@@ -1157,10 +1531,85 @@ allow_unix_sockets = [
   "/data/codex/mcp/sockets/openai-developer-docs.sock",
   "/data/codex/mcp/sockets/context7.sock",
 ]
-#allowed_domains = []
-#denied_domains = []
+allowed_domains = [
+  "api.openai.com",
+  "chatgpt.com",
+  "developers.openai.com",
+  "platform.openai.com",
+  "github.com",
+  "api.github.com",
+  "docs.github.com",
+  "raw.githubusercontent.com",
+  "gitlab.com",
+  "docs.gitlab.com",
+  "context7.com",
+  "mcp.context7.com",
+  "modelcontextprotocol.io",
+  "docs.python.org",
+  "packaging.python.org",
+  "pypi.org",
+  "files.pythonhosted.org",
+  "docs.ansible.com",
+  "www.gnu.org",
+  "developer.mozilla.org",
+  "developer.chrome.com",
+  "nodejs.org",
+  "docs.npmjs.com",
+  "registry.npmjs.org",
+  "go.dev",
+  "pkg.go.dev",
+  "doc.rust-lang.org",
+  "docs.rs",
+  "crates.io",
+  "kubernetes.io",
+  "helm.sh",
+  "docs.docker.com",
+  "podman.io",
+  "playwright.dev",
+  "www.postgresql.org",
+  "redis.io",
+  "mcp.linear.app",
+  "linear.app",
+  "mcp.figma.com",
+  "figma.com",
+  "mcp.render.com",
+  "render.com",
+  "mcp.vercel.com",
+  "vercel.com",
+  "learn.microsoft.com",
+  "mcp.jina.ai",
+  "jina.ai",
+  "mcp.atlassian.com",
+  "atlassian.com",
+  "mcp.stripe.com",
+  "stripe.com",
+  "mcp.cloudflare.com",
+  "docs.mcp.cloudflare.com",
+  "bindings.mcp.cloudflare.com",
+  "builds.mcp.cloudflare.com",
+  "observability.mcp.cloudflare.com",
+  "developers.cloudflare.com",
+  "cloudflare.com",
+  "huggingface.co",
+]
+denied_domains = [
+  "metadata.google.internal",
+  "metadata.azure.internal",
+  "metadata.oraclecloud.com",
+  "metadata.packet.net",
+  "instance-data.ec2.internal",
+  "kubernetes.default.svc",
+  "169.254.169.254",
+  "169.254.169.253",
+  "169.254.170.2",
+  "169.254.170.23",
+  "100.100.100.200",
+]
 
 # readonly filesystem
+[permissions.readonly]
+description = "Read-only project and runtime access with network disabled by default."
+
 [permissions.readonly.filesystem]
 ":minimal" = "read"
 ":project_roots" = { "." = "read", ".mcr" = "read", "docs" = "read", "patches" = "read" }
@@ -1191,5 +1640,77 @@ dangerously_allow_non_loopback_proxy = false
 dangerously_allow_all_unix_sockets = false
 allow_local_binding = false
 allow_unix_sockets = []
-allowed_domains = []
-denied_domains = []
+allowed_domains = [
+  "api.openai.com",
+  "chatgpt.com",
+  "developers.openai.com",
+  "platform.openai.com",
+  "github.com",
+  "api.github.com",
+  "docs.github.com",
+  "raw.githubusercontent.com",
+  "gitlab.com",
+  "docs.gitlab.com",
+  "context7.com",
+  "mcp.context7.com",
+  "modelcontextprotocol.io",
+  "docs.python.org",
+  "packaging.python.org",
+  "pypi.org",
+  "files.pythonhosted.org",
+  "docs.ansible.com",
+  "www.gnu.org",
+  "developer.mozilla.org",
+  "developer.chrome.com",
+  "nodejs.org",
+  "docs.npmjs.com",
+  "registry.npmjs.org",
+  "go.dev",
+  "pkg.go.dev",
+  "doc.rust-lang.org",
+  "docs.rs",
+  "crates.io",
+  "kubernetes.io",
+  "helm.sh",
+  "docs.docker.com",
+  "podman.io",
+  "playwright.dev",
+  "www.postgresql.org",
+  "redis.io",
+  "mcp.linear.app",
+  "linear.app",
+  "mcp.figma.com",
+  "figma.com",
+  "mcp.render.com",
+  "render.com",
+  "mcp.vercel.com",
+  "vercel.com",
+  "learn.microsoft.com",
+  "mcp.jina.ai",
+  "jina.ai",
+  "mcp.atlassian.com",
+  "atlassian.com",
+  "mcp.stripe.com",
+  "stripe.com",
+  "mcp.cloudflare.com",
+  "docs.mcp.cloudflare.com",
+  "bindings.mcp.cloudflare.com",
+  "builds.mcp.cloudflare.com",
+  "observability.mcp.cloudflare.com",
+  "developers.cloudflare.com",
+  "cloudflare.com",
+  "huggingface.co",
+]
+denied_domains = [
+  "metadata.google.internal",
+  "metadata.azure.internal",
+  "metadata.oraclecloud.com",
+  "metadata.packet.net",
+  "instance-data.ec2.internal",
+  "kubernetes.default.svc",
+  "169.254.169.254",
+  "169.254.169.253",
+  "169.254.170.2",
+  "169.254.170.23",
+  "100.100.100.200",
+]

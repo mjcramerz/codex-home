@@ -88,7 +88,6 @@ You must read only the smallest section that resolves the current task, follow t
 - Release owner acknowledges manual approvals and promotion order before execution.
 See also:
 - `overview.md`
-- `codex-repo.md`
 - `ci-cd.md`
 - `gitlab-ci.md`
 - `../security/secrets.md`

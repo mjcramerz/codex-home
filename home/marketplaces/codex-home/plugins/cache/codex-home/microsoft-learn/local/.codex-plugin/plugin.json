@@ -1,0 +1,34 @@
+{
+  "name": "microsoft-learn",
+  "version": "1.0.0",
+  "description": "Microsoft Learn and Azure implementation research workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Microsoft Learn",
+    "shortDescription": "Azure implementation guidance",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Microsoft Learn plugin for Microsoft documentation research and Azure implementation planning."
+    ],
+    "longDescription": "Use this plugin for Microsoft Learn research, Azure implementation guidance, and turning Microsoft docs into concrete engineering plans.",
+    "developerName": "Microsoft",
+    "brandColor": "#2563EB",
+    "websiteURL": "https://learn.microsoft.com/",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Microsoft"
+  },
+  "homepage": "https://learn.microsoft.com/",
+  "keywords": [
+    "microsoft",
+    "learn",
+    "azure",
+    "docs",
+    "research"
+  ]
+}

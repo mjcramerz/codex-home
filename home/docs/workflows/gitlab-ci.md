@@ -14,7 +14,7 @@ You must read only the smallest section that resolves the current task, follow t
 ## Direct routing
 - For cross-platform CI policy, use `ci-cd.md`.
 - For runner host or executor policy, use `gitlab-runner.md`.
-- For Cloudflare Worker or R2 publication repos, use `cloudflare-delivery.md` or `cloudflare-r2.md`.
+- For Cloudflare R2 publication, use `cloudflare-r2.md`.
 - For Git-driven promotion or reconciliation flows, use `gitops.md`.
 - For release tagging and publish sequencing, use `release.md`.
 
@@ -60,7 +60,6 @@ You must read only the smallest section that resolves the current task, follow t
 ## See also
 - `ci-cd.md`
 - `gitlab-runner.md`
-- `cloudflare-delivery.md`
 - `cloudflare-r2.md`
 - `gitops.md`
 - `release.md`

@@ -26,7 +26,7 @@ depend on one fixed value for `$CODEX_HOME`.
 - `home/.hooks/modules/Codex/Hook/*.pm` contains validation, policy, context,
   repository, plugin, and output logic. Side effects remain in the wrappers and
   driver; reusable parsing and rendering logic stays in modules.
-- `schemas/*.command.input.schema.json` is the repository schema source for
+- `generate/schemas/*.command.input.schema.json` is the repository schema source for
   hook input. `home/.hooks/schema/generated/*.command.input.schema.json` is the
   installed runtime mirror and must remain byte-identical to the root schema
   set.

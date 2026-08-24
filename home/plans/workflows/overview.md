@@ -9,15 +9,11 @@ You must read only the smallest section that resolves the current task, follow t
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
 
-## Catalog additions for current repo family
+## Workflow plans
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/plans/workflows/workflow-agent-orchestration.md` — Plan
 - `$CODEX_HOME/plans/workflows/workflow-planning.md` — Plan
 - `$CODEX_HOME/plans/workflows/workflow-memory-runtime.md` — Plan
-- `$CODEX_HOME/plans/workflows/workflow-runtime-pack-maintenance.md` — Plan
-- `$CODEX_HOME/plans/workflows/workflow-codex-manager.md` — Plan
-- `$CODEX_HOME/plans/workflows/workflow-codex-mcp.md` — Plan
-- `$CODEX_HOME/plans/workflows/workflow-cloudflare-delivery.md` — Plan
 - `$CODEX_HOME/plans/workflows/workflow-cloudflare-r2.md` — Plan
 - `$CODEX_HOME/plans/workflows/workflow-debian-preseed.md` — Plan
 - `$CODEX_HOME/plans/workflows/workflow-gitlab-runner.md` — Plan

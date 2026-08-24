@@ -21,6 +21,5 @@ You must read only the smallest section that resolves the current task, follow t
 
 ## After that, you must check related files
 - `$CODEX_HOME/docs/style/perl.md`
-- `$CODEX_HOME/docs/workflows/codex-manager.md`
 - `$CODEX_HOME/templates/perl/codex-hook-module/`
 - `$CODEX_HOME/index/domains/lang/perl.md`

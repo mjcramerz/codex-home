@@ -11,21 +11,20 @@ templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
 
-## Required source files for pack work
+## Required runtime surfaces for pack work
 - `$CODEX_HOME/index/manifest.yml` for routing metadata
 - `$CODEX_HOME/memories/` when runtime memory already exists for the active workspace
 - `$CODEX_HOME/docs/**` for runtime docs and workflows
-- `$CODEX_HOME/docs/instruction-system.md` for instruction, catalog, source,
-  mirror, and rendered-runtime boundaries
 - `$CODEX_HOME/plans/**` for plan templates
 - `$CODEX_HOME/templates/**` for reusable scaffolds
-- `$CODEX_HOME/.models/**` plus the managed `instructions/**` source tree for
-  model catalogs and instruction assets
+- `$CODEX_HOME/.models/**` plus `/data/codex/usr/instructions/**` for model
+  catalogs and instruction assets
 - `$CODEX_HOME/.agents/skills/**` for the runtime skill catalog and skill assets
 - `$CODEX_HOME/plugins/cache/**` plus `$CODEX_HOME/.agents/plugins/marketplace.json` for plugin bundles and marketplace wiring
 
 ## Pack scope
-- Source-managed pack content stops at docs, plans, templates, skills, rules, snippets, routing metadata, and plugins. Runtime memory is generated later by Codex and is not shipped from this repository.
+- Pack content stops at docs, plans, templates, skills, rules, snippets,
+  routing metadata, and plugins. Runtime memory is generated later by Codex.
 - You must keep installed-path references coherent across `$CODEX_HOME/**`, `$CODEX_AGENTS/**`, and `$CODEX_HOME/.agents/skills/**`.
 - You must treat `$CODEX_HOME/memories/` and the mirrored memory instruction assets as pack source when the task is memory-related.
 
@@ -33,7 +32,6 @@ templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/index/pack/config.md` — Pack configuration (entrypoint)
 - `$CODEX_HOME/index/pack/docs.md` — Docs index (entrypoint)
-- `$CODEX_HOME/index/pack/instructions.md` — Runtime instructions and model catalogs (entrypoint)
 - `$CODEX_HOME/index/pack/plans.md` — Plans (entrypoint)
 - `$CODEX_HOME/index/pack/prompts.md` — Prompts maintenance (entrypoint)
 - `$CODEX_HOME/index/pack/rules.md` — Execpolicy rules (entrypoint)
@@ -45,7 +43,7 @@ templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 <!-- END:contents -->
 
 ## Recommended progression
-1. Classify the work as configuration, instructions/catalogs, docs, plans, or
+1. Classify the work as configuration, catalogs, docs, plans, or
    another pack surface.
 2. Open the matching hub and one workflow/plan when the work is non-trivial.
 3. Load only the needed skill and shell guidance.

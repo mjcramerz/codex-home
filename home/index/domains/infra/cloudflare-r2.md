@@ -18,6 +18,5 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - $CODEX_HOME/docs/workflows/cloudflare-r2.md
-- $CODEX_HOME/docs/workflows/cloudflare-delivery.md
 - You must use skill `cloudflare-r2`.
 <!-- END:related -->

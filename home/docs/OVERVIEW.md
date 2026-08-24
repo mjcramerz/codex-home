@@ -20,21 +20,19 @@ You must read only the smallest section that resolves the current task, follow t
 - `$CODEX_HOME/docs/lang/overview.md` — Language-focused guidance
 - `$CODEX_HOME/docs/templates/overview.md` — Template guidance
 - `$CODEX_HOME/docs/architecture.md` — Runtime-pack architecture
-- `$CODEX_HOME/docs/instruction-system.md` — Instruction, catalog, and rendered-runtime contract
 - `$CODEX_HOME/docs/create-prompts.md` — Prompt-file design guide
 - `$CODEX_HOME/docs/plugins.md` — Runtime plugins and marketplace guidance
 <!-- END:contents -->
 
-## Repo-aligned workflow shortcuts
-- Codex installer/runtime repo -> `$CODEX_HOME/docs/workflows/codex-manager.md`
+## Workflow shortcuts
 - Repo-aware memory routing -> `$CODEX_HOME/memories/`
-- Podman MCP stack repo -> `$CODEX_HOME/docs/workflows/codex-mcp.md`
-- Cloudflare + GitLab delivery repos -> `$CODEX_HOME/docs/workflows/cloudflare-delivery.md`
+- Cloudflare R2 operations -> `$CODEX_HOME/docs/workflows/cloudflare-r2.md`
 - Debian installer repo -> `$CODEX_HOME/docs/workflows/debian-preseed.md`
-- Runtime-pack maintenance -> `$CODEX_HOME/docs/workflows/runtime-pack-maintenance.md`
 
 ## You must maintain this file by following these rules
 - You must keep docs operational, concrete, and path-correct.
-- You must use `$CODEX_HOME`, `$CODEX_AGENTS`, and `$CODEX_HOME/.agents/skills` runtime paths instead of repository-source paths unless the repo itself is the subject.
+- You must use `$CODEX_HOME`, `$CODEX_AGENTS`, and
+  `$CODEX_HOME/.agents/skills` runtime paths and avoid machine-local
+  source-tree paths.
 - You must keep prompt-file references centralized in `$CODEX_HOME/docs/create-prompts.md`.
 - You must keep documentation focused on stable pack surfaces; route memory-specific work through `$CODEX_HOME/memories/` when needed.

@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend APIs, scaffolding, VS Code extensions, and ASP.NET Core workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Backend",
+    "shortDescription": "Backend APIs and scaffolding",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Backend plugin for backend APIs, scaffolding, VS Code extension work, and ASP.NET Core implementation."
+    ],
+    "longDescription": "Use this plugin for backend framework work, app scaffolding, VS Code extensions, and ASP.NET Core implementation.",
+    "developerName": "Codex Setup",
+    "brandColor": "#2563EB",
+    "composerIcon": "./skills/backend-axum/assets/icon-32.png",
+    "logo": "./skills/backend-axum/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "backend",
+    "development",
+    "axum",
+    "fastapi",
+    "aspnet",
+    "core"
+  ]
+}

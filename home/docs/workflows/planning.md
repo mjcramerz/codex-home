@@ -62,6 +62,5 @@ A plan should include:
 
 ## References
 - `overview.md`
-- `codex-repo.md`
 - `$CODEX_HOME/index/pack/workflows.md`
 - `$CODEX_HOME/index/core/plan.md`

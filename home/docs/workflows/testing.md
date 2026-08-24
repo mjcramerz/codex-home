@@ -77,7 +77,6 @@ You must read only the smallest section that resolves the current task, follow t
 - Release owner receives final pass matrix, known quarantines, and residual testing risk.
 See also:
 - `overview.md`
-- `codex-repo.md`
 - `code-review.md`
 - `$CODEX_HOME/index/pack/workflows.md`
 - `$CODEX_HOME/index/core/testing.md`

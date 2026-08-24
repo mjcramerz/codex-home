@@ -30,7 +30,7 @@ Guidance for choosing and applying templates in this pack.
 - Template catalog: `$CODEX_HOME/templates/OVERVIEW.md`
 - Usage guide: `using-templates.md`
 - Build workflow: `../workflows/build-an-app.md`
-- Cloudflare/delivery workflow: `../workflows/cloudflare-delivery.md`
+- Cloudflare R2 workflow: `../workflows/cloudflare-r2.md`
 - Template plan: `$CODEX_HOME/plans/templates-library.md`
 
 ## Categories

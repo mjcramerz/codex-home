@@ -95,7 +95,6 @@ You must read only the smallest section that resolves the current task, follow t
 - Next operator acknowledges pending risky steps and explicit go/no-go before continuing.
 See also:
 - `overview.md`
-- `codex-repo.md`
 - `release.md`
 - `dependency-updates.md`
 - `$CODEX_HOME/index/pack/workflows.md`

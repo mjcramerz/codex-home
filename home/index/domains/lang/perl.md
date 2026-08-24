@@ -13,6 +13,5 @@ Canonical content: `$CODEX_HOME/docs/lang/perl.md`
 
 ## After that, you must check related files
 - `$CODEX_HOME/docs/style/perl.md`
-- `$CODEX_HOME/docs/workflows/codex-manager.md`
 - `$CODEX_HOME/templates/perl/codex-hook-module/`
 - You must use skill `perl`.
