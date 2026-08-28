@@ -6,6 +6,7 @@ use warnings;
 use Exporter qw(import);
 use File::Spec;
 use JSON::PP qw(decode_json);
+use version ();
 
 our @EXPORT_OK = qw(plugin_catalog_context);
 
@@ -28,26 +29,95 @@ sub _read_json_object {
     return $payload;
 }
 
+sub _enabled_plugin_bindings {
+    my $home = _trim($ENV{CODEX_HOME});
+    return {} if !length($home);
+    my $config_path = File::Spec->catfile($home, 'config.toml');
+    return {} if !-f $config_path;
+
+    open my $fh, '<:encoding(UTF-8)', $config_path or return {};
+    my %bindings;
+    my ($bundle, $marketplace) = ('', '');
+    while (my $line = <$fh>) {
+        if ($line =~ /^\s*\[plugins\."([A-Za-z0-9._-]+)\@([A-Za-z0-9._-]+)"\]\s*(?:#.*)?$/) {
+            ($bundle, $marketplace) = ($1, $2);
+            next;
+        }
+        if ($line =~ /^\s*\[/) {
+            ($bundle, $marketplace) = ('', '');
+            next;
+        }
+        next if !length($bundle) || !length($marketplace);
+        if ($line =~ /^\s*enabled\s*=\s*true\s*(?:#.*)?$/) {
+            push @{ $bindings{$bundle} }, $marketplace;
+            ($bundle, $marketplace) = ('', '');
+        }
+    }
+    close $fh;
+    return \%bindings;
+}
+
+sub _compare_versions {
+    my ($left, $right) = @_;
+    my $left_version = eval { version->parse($left) };
+    my $right_version = eval { version->parse($right) };
+    if (defined($left_version) && defined($right_version)) {
+        return $left_version <=> $right_version;
+    }
+    return $left cmp $right;
+}
+
+sub _bundle_install_root {
+    my ($cache_root, $marketplace, $bundle) = @_;
+    return '' if !defined($cache_root) || !length($cache_root);
+    return '' if !defined($marketplace) || !length($marketplace);
+    return '' if !defined($bundle) || !length($bundle);
+
+    my $bundle_root = File::Spec->catdir($cache_root, $marketplace, $bundle);
+    return '' if !-d $bundle_root || -l $bundle_root;
+    opendir my $dh, $bundle_root or return '';
+    my @children = sort grep {
+        $_ ne '.'
+          && $_ ne '..'
+          && -d File::Spec->catdir($bundle_root, $_)
+          && !-l File::Spec->catdir($bundle_root, $_)
+    } readdir $dh;
+    closedir $dh;
+
+    my @candidates;
+    for my $child (@children) {
+        my $root = File::Spec->catdir($bundle_root, $child);
+        my $manifest = _read_json_object(
+            File::Spec->catfile($root, '.codex-plugin', 'plugin.json')
+        );
+        next if ref($manifest) ne 'HASH';
+        next if _trim($manifest->{name}) ne $bundle;
+        my $manifest_version = _trim($manifest->{version});
+        next if !length($manifest_version);
+        next if $child ne $manifest_version;
+        push @candidates, {
+            root    => $root,
+            version => $manifest_version,
+        };
+    }
+
+    @candidates = sort {
+        _compare_versions($b->{version}, $a->{version})
+          || $a->{root} cmp $b->{root}
+    } @candidates;
+    return @candidates ? $candidates[0]->{root} : '';
+}
+
 sub _plugin_root {
     my ($bundle) = @_;
     my $home = _trim($ENV{CODEX_HOME});
     return '' if !length($home);
+    my $bindings = _enabled_plugin_bindings();
+    my $marketplaces = $bindings->{$bundle};
+    return '' if ref($marketplaces) ne 'ARRAY' || @{$marketplaces} != 1;
+
     my $cache_root = File::Spec->catdir($home, 'plugins', 'cache');
-    return '' if !-d $cache_root;
-
-    opendir my $dh, $cache_root or return '';
-    my @marketplaces = sort grep {
-        $_ ne '.'
-          && $_ ne '..'
-          && -d File::Spec->catdir($cache_root, $_)
-    } readdir $dh;
-    closedir $dh;
-
-    for my $marketplace (@marketplaces) {
-        my $candidate = File::Spec->catdir($cache_root, $marketplace, $bundle, 'local');
-        return $candidate if -d $candidate;
-    }
-    return '';
+    return _bundle_install_root($cache_root, $marketplaces->[0], $bundle);
 }
 
 sub _plugin_manifest {
@@ -93,35 +163,23 @@ sub _installed_plugin_catalog {
     my $cache_root = File::Spec->catdir($home, 'plugins', 'cache');
     return {} if !-d $cache_root;
 
+    my $bindings = _enabled_plugin_bindings();
     my %catalog;
-    opendir my $mdh, $cache_root or return {};
-    my @marketplaces = sort grep {
-        $_ ne '.'
-          && $_ ne '..'
-          && -d File::Spec->catdir($cache_root, $_)
-    } readdir $mdh;
-    closedir $mdh;
-
-    for my $marketplace (@marketplaces) {
-        my $marketplace_root = File::Spec->catdir($cache_root, $marketplace);
-        opendir my $pdh, $marketplace_root or next;
-        my @plugins = sort grep {
-            $_ ne '.'
-              && $_ ne '..'
-              && -d File::Spec->catdir($marketplace_root, $_, 'local')
-        } readdir $pdh;
-        closedir $pdh;
-
-        for my $bundle (@plugins) {
-            next if exists $catalog{$bundle};
-            my $root = File::Spec->catdir($marketplace_root, $bundle, 'local');
-            my $manifest = _read_json_object(File::Spec->catfile($root, '.codex-plugin', 'plugin.json'));
-            next if ref($manifest) ne 'HASH';
-            $catalog{$bundle} = {
-                root     => $root,
-                manifest => $manifest,
-            };
-        }
+    for my $bundle (sort keys %{$bindings}) {
+        my $marketplaces = $bindings->{$bundle};
+        next if ref($marketplaces) ne 'ARRAY' || @{$marketplaces} != 1;
+        my $marketplace = $marketplaces->[0];
+        my $root = _bundle_install_root($cache_root, $marketplace, $bundle);
+        next if !length($root);
+        my $manifest = _read_json_object(
+            File::Spec->catfile($root, '.codex-plugin', 'plugin.json')
+        );
+        next if ref($manifest) ne 'HASH';
+        $catalog{$bundle} = {
+            root        => $root,
+            marketplace => $marketplace,
+            manifest    => $manifest,
+        };
     }
     return \%catalog;
 }

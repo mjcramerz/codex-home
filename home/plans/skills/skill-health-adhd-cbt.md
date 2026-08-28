@@ -60,7 +60,7 @@ You must use this plan when applying or updating the `health-adhd-cbt` skill.
 
 ## Examples
 - Example objective: "Generate a 5-day ADHD daily pack with a weekly plan page."
-- Example validation: `python3 "$CODEX_HOME/plugins/cache/<marketplace>/health-planning/local/skills/health-adhd-cbt/scripts/build_pack.py" --config "$CODEX_HOME/plugins/cache/<marketplace>/health-planning/local/skills/health-adhd-cbt/assets/data/pack-config.json" --out "${TMPDIR:-/tmp}/adhd-pack.html"`
+- Example validation: `python3 "$CODEX_HOME/plugins/cache/<marketplace>/health-planning/<version>/skills/health-adhd-cbt/scripts/build_pack.py" --config "$CODEX_HOME/plugins/cache/<marketplace>/health-planning/<version>/skills/health-adhd-cbt/assets/data/pack-config.json" --out "${TMPDIR:-/tmp}/adhd-pack.html"`
 
 ## Open questions
 - None.

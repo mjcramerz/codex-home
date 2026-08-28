@@ -25,7 +25,7 @@ validate_scope_operation() {
   local scope_file="$1"
   local target="$2"
   local operation="$3"
-  python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/local/skills/offsec-defense/scripts/scope_guard.py" \
+  python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/offsec-defense/scripts/scope_guard.py" \
     --scope-file "$scope_file" \
     --target "$target" \
     --operation "$operation"

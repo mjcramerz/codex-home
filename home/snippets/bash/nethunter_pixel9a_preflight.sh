@@ -70,7 +70,7 @@ done
 [[ -n "$device_id" ]] || { echo "ERROR: --device-id is required" >&2; exit 2; }
 [[ -n "$out_dir" ]] || { echo "ERROR: --out-dir is required" >&2; exit 2; }
 
-python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/local/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py" \
+python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py" \
   --scope-file "$scope_file" \
   --operation "rooting-preflight" \
   --device-id "$device_id" >/dev/null

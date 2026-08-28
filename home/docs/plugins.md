@@ -9,9 +9,15 @@ You must use this guide when working with runtime plugin bundles inside an insta
 - The configured `codex-home` marketplace root lives at `$CODEX_HOME/marketplaces/codex-home/`.
 - Additional configured Git marketplaces can point at external plugin repos such as the official `openai-curated` source at `https://github.com/openai/plugins`.
 - The managed in-place runtime snapshot still lives at `$CODEX_HOME/.agents/plugins/marketplace.json`.
-- Installed plugin bundles live under `$CODEX_HOME/plugins/cache/<marketplace>/<plugin>/local/`.
-- Marketplace source paths must resolve from a marketplace root's `.agents/plugins/marketplace.json`
-  back to that root's `plugins/cache/<marketplace>/<plugin>/local/`.
+- Marketplace source bundles live under
+  `$CODEX_HOME/marketplaces/<marketplace>/plugins/cache/<marketplace>/<plugin>/local/`.
+- Installed plugin bundles live under
+  `$CODEX_HOME/plugins/cache/<marketplace>/<plugin>/<version>/`; `<version>`
+  must match `.codex-plugin/plugin.json`.
+- Marketplace source paths must resolve from a marketplace root's
+  `.agents/plugins/marketplace.json` back to that marketplace root's `local/`
+  source bundle. Runtime skill paths must resolve through the versioned cache,
+  never through another marketplace or a stale `local/` cache directory.
 - Plugin bundle ids use `<plugin>@<marketplace>`.
 
 ## Current high-value bundles
@@ -38,6 +44,9 @@ You must use this guide when working with runtime plugin bundles inside an insta
 - Inspect configured Git marketplace sources with `rg -n "^\[marketplaces\." "$CODEX_HOME/config.toml"`.
 - Inspect the marketplace with `python3 -m json.tool "$CODEX_HOME/.agents/plugins/marketplace.json"`.
 - Inspect one installed bundle with `find "$CODEX_HOME/plugins/cache" -maxdepth 5 -type f | sort`.
+- Validate local marketplace sources, versioned runtime mirrors, manifests,
+  and `agents/openai.yaml` files with
+  `python3 generate/scripts/plugin_catalog_coverage.py` from the repository root.
 
 ## Related runtime paths
 - `$CODEX_HOME/config.toml`

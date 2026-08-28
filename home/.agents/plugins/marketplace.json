@@ -5,7 +5,7 @@
       "name": "codex-runtime",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/codex-runtime/local"
+        "path": "./plugins/cache/codex-home/codex-runtime/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -33,7 +33,7 @@
       "name": "openai-apps",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/openai-apps/local"
+        "path": "./plugins/cache/codex-home/openai-apps/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -64,7 +64,7 @@
       "name": "github",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/github/local"
+        "path": "./plugins/cache/codex-home/github/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -96,7 +96,7 @@
       "name": "gitlab",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/gitlab/local"
+        "path": "./plugins/cache/codex-home/gitlab/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -127,7 +127,7 @@
       "name": "linear",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/linear/local"
+        "path": "./plugins/cache/codex-home/linear/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -160,7 +160,7 @@
       "name": "google-calendar",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/google-calendar/local"
+        "path": "./plugins/cache/codex-home/google-calendar/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -193,7 +193,7 @@
       "name": "notion",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/notion/local"
+        "path": "./plugins/cache/codex-home/notion/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -224,7 +224,7 @@
       "name": "obsidian",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/obsidian/local"
+        "path": "./plugins/cache/codex-home/obsidian/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -255,7 +255,7 @@
       "name": "health-planning",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/health-planning/local"
+        "path": "./plugins/cache/codex-home/health-planning/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -285,7 +285,7 @@
       "name": "backend",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/backend/local"
+        "path": "./plugins/cache/codex-home/backend/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -315,7 +315,7 @@
       "name": "frontend",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/frontend/local"
+        "path": "./plugins/cache/codex-home/frontend/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -345,7 +345,7 @@
       "name": "design-ui",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/design-ui/local"
+        "path": "./plugins/cache/codex-home/design-ui/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -373,7 +373,7 @@
       "name": "browser-automation",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/browser-automation/local"
+        "path": "./plugins/cache/codex-home/browser-automation/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -403,7 +403,7 @@
       "name": "document-artifacts",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/document-artifacts/local"
+        "path": "./plugins/cache/codex-home/document-artifacts/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -433,7 +433,7 @@
       "name": "adobe-acrobat",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/adobe-acrobat/local"
+        "path": "./plugins/cache/codex-home/adobe-acrobat/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -467,7 +467,7 @@
       "name": "adobe-photoshop",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/adobe-photoshop/local"
+        "path": "./plugins/cache/codex-home/adobe-photoshop/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -501,7 +501,7 @@
       "name": "adobe-express",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/adobe-express/local"
+        "path": "./plugins/cache/codex-home/adobe-express/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -535,7 +535,7 @@
       "name": "ai-media",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/ai-media/local"
+        "path": "./plugins/cache/codex-home/ai-media/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -566,7 +566,7 @@
       "name": "vercel",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/vercel/local"
+        "path": "./plugins/cache/codex-home/vercel/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -600,7 +600,7 @@
       "name": "hosting-platforms",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/hosting-platforms/local"
+        "path": "./plugins/cache/codex-home/hosting-platforms/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -628,7 +628,7 @@
       "name": "desktop-wayland",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/desktop-wayland/local"
+        "path": "./plugins/cache/codex-home/desktop-wayland/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -658,7 +658,7 @@
       "name": "web-browser-linux",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/web-browser-linux/local"
+        "path": "./plugins/cache/codex-home/web-browser-linux/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -688,7 +688,7 @@
       "name": "iac",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/iac/local"
+        "path": "./plugins/cache/codex-home/iac/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -718,7 +718,7 @@
       "name": "containers",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/containers/local"
+        "path": "./plugins/cache/codex-home/containers/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -748,7 +748,7 @@
       "name": "kubernetes",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/kubernetes/local"
+        "path": "./plugins/cache/codex-home/kubernetes/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -779,7 +779,7 @@
       "name": "system-infra",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/system-infra/local"
+        "path": "./plugins/cache/codex-home/system-infra/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -809,7 +809,7 @@
       "name": "virtualization",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/virtualization/local"
+        "path": "./plugins/cache/codex-home/virtualization/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -839,7 +839,7 @@
       "name": "observability",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/observability/local"
+        "path": "./plugins/cache/codex-home/observability/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -869,7 +869,7 @@
       "name": "security-controls",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/security-controls/local"
+        "path": "./plugins/cache/codex-home/security-controls/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -899,7 +899,7 @@
       "name": "security-labs",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/security-labs/local"
+        "path": "./plugins/cache/codex-home/security-labs/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -929,7 +929,7 @@
       "name": "cloudflare-workers",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/cloudflare-workers/local"
+        "path": "./plugins/cache/codex-home/cloudflare-workers/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -960,7 +960,7 @@
       "name": "wrangler",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/wrangler/local"
+        "path": "./plugins/cache/codex-home/wrangler/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -991,7 +991,7 @@
       "name": "cloudflare-agents",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/cloudflare-agents/local"
+        "path": "./plugins/cache/codex-home/cloudflare-agents/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1020,7 +1020,7 @@
       "name": "huggingface",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/huggingface/local"
+        "path": "./plugins/cache/codex-home/huggingface/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1049,7 +1049,7 @@
       "name": "docs-research",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/docs-research/local"
+        "path": "./plugins/cache/codex-home/docs-research/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1077,7 +1077,7 @@
       "name": "stripe",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/stripe/local"
+        "path": "./plugins/cache/codex-home/stripe/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1109,7 +1109,7 @@
       "name": "microsoft-learn",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/microsoft-learn/local"
+        "path": "./plugins/cache/codex-home/microsoft-learn/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1138,7 +1138,7 @@
       "name": "jina-ai",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/jina-ai/local"
+        "path": "./plugins/cache/codex-home/jina-ai/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1167,7 +1167,7 @@
       "name": "atlassian",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/atlassian/local"
+        "path": "./plugins/cache/codex-home/atlassian/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1196,7 +1196,7 @@
       "name": "figma",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/figma/local"
+        "path": "./plugins/cache/codex-home/figma/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1230,7 +1230,7 @@
       "name": "vercel-ui",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/vercel-ui/local"
+        "path": "./plugins/cache/codex-home/vercel-ui/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1259,7 +1259,7 @@
       "name": "winui",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/winui/local"
+        "path": "./plugins/cache/codex-home/winui/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1289,7 +1289,7 @@
       "name": "render",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/render/local"
+        "path": "./plugins/cache/codex-home/render/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -1320,7 +1320,7 @@
       "name": "netlify",
       "source": {
         "source": "local",
-        "path": "./plugins/cache/codex-home/netlify/local"
+        "path": "./plugins/cache/codex-home/netlify/1.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -3,11 +3,11 @@
 
 This generator is intentionally self-contained under ``generate/``. It reads
 only ``generate/schemas/`` and may write only ``generate/examples/``. Each
-setting receives one schema-valid representative value, while comment-only
-annotations document every finite alternative that cannot coexist in one TOML
-document (for example, ``oneOf`` branches). A machine-readable coverage ledger
-at the end of the reference makes schema drift a check failure instead of a
-documentation omission.
+canonical setting receives one schema-valid representative value, while
+deprecated aliases and finite alternatives that cannot coexist in one TOML
+document remain comment-only. A machine-readable coverage ledger at the end of
+the reference makes schema drift a check failure instead of a documentation
+omission.
 """
 
 from __future__ import annotations
@@ -38,6 +38,18 @@ OPTION_MARKER = "# schema-options: "
 FINITE_OPTION_MARKER = "# schema-finite-option: "
 EXAMPLE_MARKER = "# schema-example: "
 _OMIT = object()
+
+DEPRECATED_ROOT_ALIASES = frozenset({"experimental_use_unified_exec_tool"})
+DEPRECATED_FEATURE_ALIASES = {
+    "codex_hooks": "hooks",
+    "collab": "multi_agent",
+    "connectors": "apps",
+    "enable_experimental_windows_sandbox": "experimental_windows_sandbox",
+    "experimental_use_unified_exec_tool": "unified_exec",
+    "memory_tool": "memories",
+    "request_permissions": "exec_permission_approvals",
+}
+CANONICAL_FEATURE_KEYS = frozenset(DEPRECATED_FEATURE_ALIASES.values())
 
 SUPPORTED_SCHEMA_KEYWORDS = frozenset(
     {
@@ -462,8 +474,13 @@ def sample_object(
     result: dict[str, Any] = {}
     forbidden = forbidden_required_groups(schema, node)
     properties = property_schemas(schema, node)
+    is_feature_object = CANONICAL_FEATURE_KEYS <= properties.keys()
 
     for name in sorted(properties):
+        if name in DEPRECATED_ROOT_ALIASES or (
+            is_feature_object and name in DEPRECATED_FEATURE_ALIASES
+        ):
+            continue
         prospective = set(result) | {name}
         if any(group <= prospective for group in forbidden):
             continue
@@ -623,6 +640,8 @@ def root_property_values(
         base="example-profile",
     )
     for name in sorted(root_properties):
+        if name in DEPRECATED_ROOT_ALIASES:
+            continue
         node = root_properties[name]
         property_comments: list[str] = []
         description = describe(node)
@@ -855,9 +874,9 @@ def render_home_example(schema: dict[str, Any]) -> str:
         "# Generated from ../schemas/config.schema.json; do not edit manually.",
         "#",
         "# This is an exhaustive user configuration reference, not an installable",
-        "# default. Active settings use one schema-valid representative value. For",
-        "# mutually exclusive choices, the adjacent alternatives comment lists every",
-        "# finite schema branch. Replace placeholders before using this as config.toml.",
+        "# default. Active canonical settings use one schema-valid representative",
+        "# value. Deprecated aliases and mutually exclusive alternatives remain in",
+        "# comment-only coverage metadata. Replace placeholders before using this.",
         "#",
         f"# The agents.example.config_file setting points to {AGENT_ROLE_EXAMPLE_PATH.name}.",
         "",
@@ -1020,6 +1039,26 @@ def config_file_values(value: Any) -> set[str]:
     return values
 
 
+def deprecated_alias_errors(value: Any, path: str = "$") -> list[str]:
+    """Reject deprecated aliases from active generated TOML mappings."""
+    if not isinstance(value, dict):
+        return []
+
+    errors: list[str] = []
+    for name, child in value.items():
+        child_path = f"{path}.{name}"
+        if name in DEPRECATED_ROOT_ALIASES:
+            errors.append(f"{child_path}: deprecated config alias is active")
+        if name == "features" and isinstance(child, dict):
+            for alias, replacement in DEPRECATED_FEATURE_ALIASES.items():
+                if alias in child:
+                    errors.append(
+                        f"{child_path}.{alias}: use canonical feature {replacement!r}"
+                    )
+        errors.extend(deprecated_alias_errors(child, child_path))
+    return errors
+
+
 def validate_rendered_examples(
     schema: dict[str, Any],
     home_text: str,
@@ -1033,6 +1072,7 @@ def validate_rendered_examples(
         return [f"generated TOML is invalid: {exc}"]
 
     errors.extend(validate_value(schema, home, schema))
+    errors.extend(deprecated_alias_errors(home))
     role_schema = definitions(schema)["AgentRoleToml"]
     errors.extend(validate_value(schema, role, role_schema, "agent-role.toml"))
     role_file_values = config_file_values(home)

@@ -130,7 +130,6 @@ When invoked, you receive the latest conversation transcript and any relevant mo
 When user text is routed from realtime, treat it as a transcript. It may be unpunctuated or contain recognition errors.
 
 - Keep responses concise and action-oriented. Your updates should help the intermediary respond to the user."""
-experimental_use_unified_exec_tool = true
 
 # model
 chatgpt_base_url = 'https://chatgpt.com/backend-api'
@@ -619,24 +618,19 @@ code_mode_buffered_exec = false
 code_mode_interrupt = true
 code_mode_only = true
 codex_git_commit = false
-codex_hooks = true
-collab = true
 collaboration_modes = true
 computer_use = true
 concurrent_reasoning_summaries = false
-connectors = true
 default_mode_request_user_input = true
 deferred_executor = false
 deferred_tool_world_state = false
 elevated_windows_sandbox = false
-enable_experimental_windows_sandbox = false
 enable_fanout = false
 enable_mcp_apps = true
 enable_request_compression = true
 exec_permission_approvals = false
 executed_tool_call_metadata = true
 executor_capability_discovery = true
-experimental_use_unified_exec_tool = true
 experimental_windows_sandbox = false
 external_agent_memory_import = false
 external_migration = false
@@ -661,7 +655,6 @@ js_repl_tools_only = false
 local_thread_store_compression = false
 mcp_2026_07_28 = false
 memories = true
-memory_tool = true
 mentions_v2 = true
 multi_agent = true
 multi_agent_mode = false
@@ -677,7 +670,6 @@ remote_compaction_v2 = true
 remote_control = true
 remote_models = true
 remote_plugin = true
-request_permissions = true
 request_permissions_tool = true
 request_rule = true
 resize_all_images = true

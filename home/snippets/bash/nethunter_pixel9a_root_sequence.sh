@@ -87,11 +87,11 @@ done
 [[ -f "$stock_boot" ]] || { echo "ERROR: stock boot image not found: $stock_boot" >&2; exit 1; }
 [[ -f "$patched_boot" ]] || { echo "ERROR: patched boot image not found: $patched_boot" >&2; exit 1; }
 
-python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/local/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py" \
+python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py" \
   --scope-file "$scope_file" \
   --operation "boot-image-patch" \
   --device-id "$device_id" >/dev/null
-python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/local/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py" \
+python3 "$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py" \
   --scope-file "$scope_file" \
   --operation "flash-validation" \
   --device-id "$device_id" >/dev/null
