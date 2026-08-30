@@ -15,3 +15,11 @@ home/installation_id
 home/mcp-oauth-locks
 home/memories/*
 home/plugins/cache/*-remote/
+home/plugins/.plugin-appserver/
+home/vendor_imports/
+home/.codex-global-state.json
+home/.codex-global-state.json.bak
+home/plugins/cache/openai-bundled/
+home/sqlite/
+home/vendor_imports/
+home/skills/.*

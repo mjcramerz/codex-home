@@ -667,7 +667,6 @@ psp = false
 realtime_conversation = true
 recommended_plugins = true
 remote_compaction_v2 = true
-remote_control = true
 remote_models = true
 remote_plugin = true
 request_permissions_tool = true
@@ -999,6 +998,15 @@ enabled = true
 enabled = true
 
 [plugins."delivery@repo-local"]
+enabled = true
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
 enabled = true
 
 [agents]
@@ -1375,6 +1383,30 @@ required = false
 startup_timeout_sec = 30
 tool_timeout_sec = 180
 
+[mcp_servers.node_repl]
+args = []
+command = "/usr/lib/chatgpt/resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/usr/lib/chatgpt/resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/usr/lib/chatgpt/resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/data/codex/usr/home:/usr/lib/chatgpt/resources/cua_node/lib/node_modules"
+CODEX_HOME = "/data/codex/usr/home"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_TINYSKY_ENABLED = "0"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.825.41651"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/data/codex/usr/home/plugins/cache/openai-bundled/browser/26.825.41651/scripts/browser-service.mjs"}'
+CODEX_CLI_PATH = "/usr/lib/chatgpt/resources/codex"
+
+[mcp_servers.cua_repl]
+command = "/usr/lib/chatgpt/ChatGPT"
+enabled = false
+
 [marketplaces.codex-home]
 source_type = "local"
 source = "/data/codex/usr/home/marketplaces/codex-home"
@@ -1391,6 +1423,10 @@ sparse_paths = [
   ".agents",
   "plugins",
 ]
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = "/data/codex/usr/home/.tmp/bundled-marketplaces/openai-bundled"
 
 # granular approval policy
 [approval_policy.granular]
