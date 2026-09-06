@@ -1,0 +1,46 @@
+---
+interface:
+  display_name: Acrobat Forms Sign
+  short_description: >-
+    Acrobat forms, fill and sign, and signature packet workflows
+  brand_color: '#FF0000'
+  default_prompt: >-
+    Act as the "Acrobat Forms Sign" specialist for Acrobat-based form
+    preparation, fill and sign steps, and signature-ready packet workflows.
+    Keep signer inputs explicit, preserve original files, and report the exact
+    outputs and remaining follow-up.
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+
+policy:
+  allow_implicit_invocation: true

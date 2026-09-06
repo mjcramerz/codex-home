@@ -1,0 +1,268 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "name": "profiles",
+      "enabled": true,
+      "short_description": "Profile-specific instruction overrides for CODEX_HOME/*.config.toml.",
+      "entries": [
+        {
+          "name": "agents_model_catalog",
+          "config_file": "agents.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "default_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Agents profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
+        },
+        {
+          "name": "agents_model_instructions",
+          "config_file": "agents.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "agents/models",
+          "enabled": true,
+          "short_description": "Agents profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/agents/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "agents_base_instructions",
+          "config_file": "agents.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "agents/models",
+          "enabled": true,
+          "short_description": "Agents profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/agents/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "cyber_model_catalog",
+          "config_file": "cyber.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "cyber_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Cyber profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/cyber_catalog.json"
+        },
+        {
+          "name": "cyber_model_instructions",
+          "config_file": "cyber.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/cyber/models",
+          "enabled": true,
+          "short_description": "Cyber profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/cyber/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "cyber_base_instructions",
+          "config_file": "cyber.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/cyber/models",
+          "enabled": true,
+          "short_description": "Cyber profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/cyber/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "debug_model_catalog",
+          "config_file": "debug.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "default_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Debug profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
+        },
+        {
+          "name": "debug_model_instructions",
+          "config_file": "debug.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/debug/models",
+          "enabled": true,
+          "short_description": "Debug profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/debug/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "debug_base_instructions",
+          "config_file": "debug.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/debug/models",
+          "enabled": true,
+          "short_description": "Debug profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/debug/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "default_model_catalog",
+          "config_file": "default.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "default_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Default profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
+        },
+        {
+          "name": "default_model_instructions",
+          "config_file": "default.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "default/models",
+          "enabled": true,
+          "short_description": "Default profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "default_base_instructions",
+          "config_file": "default.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "default/models",
+          "enabled": true,
+          "short_description": "Default profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "fast_model_catalog",
+          "config_file": "fast.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "default_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Fast profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
+        },
+        {
+          "name": "fast_model_instructions",
+          "config_file": "fast.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/fast/models",
+          "enabled": true,
+          "short_description": "Fast profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "fast_base_instructions",
+          "config_file": "fast.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/fast/models",
+          "enabled": true,
+          "short_description": "Fast profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "review_model_catalog",
+          "config_file": "review.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "review_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Review profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/review_catalog.json"
+        },
+        {
+          "name": "review_model_instructions",
+          "config_file": "review.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/review/models",
+          "enabled": true,
+          "short_description": "Review profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/review/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "review_base_instructions",
+          "config_file": "review.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/review/models",
+          "enabled": true,
+          "short_description": "Review profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/review/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "spark_model_catalog",
+          "config_file": "spark.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "default_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Spark profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
+        },
+        {
+          "name": "spark_model_instructions",
+          "config_file": "spark.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/fast/models",
+          "enabled": true,
+          "short_description": "Spark profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "spark_base_instructions",
+          "config_file": "spark.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/fast/models",
+          "enabled": true,
+          "short_description": "Spark profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "test_model_catalog",
+          "config_file": "test.config.toml",
+          "config_key": "model_catalog_json",
+          "file": "default_catalog.json",
+          "source_group": "models",
+          "enabled": false,
+          "short_description": "Test profile model catalog asset path.",
+          "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
+        },
+        {
+          "name": "test_model_instructions",
+          "config_file": "test.config.toml",
+          "config_key": "model_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/test/models",
+          "enabled": true,
+          "short_description": "Test profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/test/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        },
+        {
+          "name": "test_base_instructions",
+          "config_file": "test.config.toml",
+          "config_key": "instruction_overrides.models.base_instructions_file",
+          "file": "base.md",
+          "source_group": "profiles/test/models",
+          "enabled": true,
+          "short_description": "Test profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/test/models/base.md",
+          "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
+        }
+      ]
+    }
+  ]
+}

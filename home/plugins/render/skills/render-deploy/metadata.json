@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Deploy applications to Render by analyzing codebases, generating render.yaml Blueprints, and providing Dashboard deeplinks. Use when the user wants to deploy, host, publish, or set up their application on Render's cloud platform.",
+  "references": [
+    "https://raw.githubusercontent.com/render-oss/cli/main/bin/install.sh",
+    "https://dashboard.render.com/u/*/settings#api-keys",
+    "https://mcp.render.com/mcp",
+    "https://github.com/user/repo",
+    "https://gitlab.com/user/repo",
+    "https://bitbucket.org/user/repo",
+    "https://dashboard.render.com/blueprint/new?repo=https://github.com/username/repo-name"
+  ]
+}

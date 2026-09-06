@@ -1,0 +1,15 @@
+{
+  "filesystem": "filesystem",
+  "git": "git",
+  "fetch": "fetch",
+  "memory": "memory",
+  "sequential_thinking": "sequential-thinking",
+  "time": "time",
+  "markdown": "markdown",
+  "context7": "context7",
+  "playwright": "playwright",
+  "chrome-devtools": "chrome-devtools",
+  "postgres": "postgres",
+  "sqlite": "sqlite",
+  "semgrep": "semgrep"
+}

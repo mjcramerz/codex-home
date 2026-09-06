@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Build and maintain Go modules with idiomatic structure, dependency management, testing, and secure defaults. Use when the user asks for Go implementation, refactoring, or module/tooling fixes.",
+  "references": [
+    "https://go.dev/doc/",
+    "https://go.dev/ref/mod"
+  ]
+}

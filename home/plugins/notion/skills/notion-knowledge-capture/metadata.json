@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Capture conversations and decisions into structured Notion pages; use when turning chats/notes into wiki entries, how-tos, decisions, or FAQs with proper linking.",
+  "references": [
+    "https://developers.notion.com/reference/intro",
+    "https://developers.notion.com/reference/post-page",
+    "https://mcp.notion.com/mcp"
+  ]
+}

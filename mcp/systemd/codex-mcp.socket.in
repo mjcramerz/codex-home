@@ -1,0 +1,21 @@
+[Unit]
+Description=Codex MCP Unix stdio session listener
+Requires=codex-mcp-prepare.service
+After=codex-mcp-prepare.service
+PartOf=codex-mcp.target
+
+[Socket]
+ListenStream=@MCP_SOCKET@
+Accept=yes
+SocketUser=devops
+SocketGroup=devops
+SocketMode=0660
+DirectoryMode=0710
+RemoveOnStop=yes
+MaxConnections=@MAX_SESSIONS@
+Backlog=32
+TriggerLimitIntervalSec=30s
+TriggerLimitBurst=256
+
+[Install]
+WantedBy=codex-mcp.target

@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or reviewing DO code for best practices. Covers Workers integration, wrangler config, and testing with Vitest. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+  "references": [
+    "https://developers.cloudflare.com/durable-objects/",
+    "https://developers.cloudflare.com/durable-objects/api/",
+    "https://developers.cloudflare.com/durable-objects/best-practices/",
+    "https://developers.cloudflare.com/durable-objects/examples/"
+  ]
+}

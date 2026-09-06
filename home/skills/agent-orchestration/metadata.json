@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Decompose multi-agent coding work into owned slices, reconcile findings, and manage validation handoff without duplicating effort. Use when tasks need parallel explorers, workers, or staged integration.",
+  "references": [
+    "https://modelcontextprotocol.io/introduction",
+    "https://platform.openai.com/docs/guides/tools"
+  ]
+}

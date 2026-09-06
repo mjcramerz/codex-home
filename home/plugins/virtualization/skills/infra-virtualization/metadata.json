@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Design VM-based virtualization using QEMU/KVM/libvirt and Vagrant with reproducible network and storage layout. Use when the user asks for hypervisor-agnostic VM architecture or local VM dev environment setup.",
+  "references": [
+    "https://www.qemu.org/documentation/",
+    "https://developer.hashicorp.com/vagrant/docs",
+    "https://www.qemu.org/docs/master/",
+    "https://libvirt.org/docs.html"
+  ]
+}

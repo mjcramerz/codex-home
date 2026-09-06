@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Plan and review Jira- and Confluence-centered workflows, issue flows, and collaboration setup using Atlassian guidance.",
+  "references": [
+    "https://developer.atlassian.com/platform/",
+    "https://support.atlassian.com/rovo/docs/get-started-with-rovo-dev-cli/"
+  ]
+}

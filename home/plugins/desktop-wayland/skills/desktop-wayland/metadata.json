@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Configure a minimal Wayland plus Labwc desktop stack with secure defaults and predictable startup behavior. Use when the user asks for Wayland/Labwc session setup or troubleshooting.",
+  "references": [
+    "https://specifications.freedesktop.org/desktop-entry-spec/latest/",
+    "https://wayland.freedesktop.org/",
+    "https://mozilla.github.io/policy-templates/",
+    "https://github.com/labwc/labwc"
+  ]
+}

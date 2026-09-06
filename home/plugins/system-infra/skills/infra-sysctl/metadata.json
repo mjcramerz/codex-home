@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Apply kernel sysctl parameter changes with safe rollout, verification, and rollback guidance. Use when the user asks to tune /proc/sys values or persistent sysctl settings.",
+  "references": [
+    "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+    "https://docs.kernel.org/admin-guide/sysctl/index.html",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd-sysctl.service.html"
+  ]
+}

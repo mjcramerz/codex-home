@@ -1,0 +1,12 @@
+#!/usr/bin/python3 -I
+"""Run only root-installed Python modules; ignore PYTHONPATH and user packages."""
+import os
+from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'lib'))
+try:
+    from client import main
+    raise SystemExit(main())
+except (ValueError,OSError,RuntimeError) as error:
+    print('codex-mcp: '+str(error),file=sys.stderr)
+    raise SystemExit(1)

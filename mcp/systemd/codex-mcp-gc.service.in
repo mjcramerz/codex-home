@@ -1,0 +1,23 @@
+[Unit]
+Description=Reap only disconnected Codex MCP containers and staged credentials
+Requires=codex-mcp-prepare.service
+After=codex-mcp-prepare.service
+PartOf=codex-mcp.target
+
+[Service]
+Type=oneshot
+User=devops
+Group=devops
+UMask=0077
+ExecStart=@CURRENT@/bin/broker gc
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+PrivateDevices=yes
+ReadWritePaths=@MCP_RUNTIME_ROOT@
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX
+TimeoutStartSec=180s

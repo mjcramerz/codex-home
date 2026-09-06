@@ -1,0 +1,44 @@
+interface:
+  display_name: Vercel React Native Skills
+  short_description: React Native and Expo best practices for building performant
+    mobile apps. Use when building React Native components, opt
+  default_prompt: 'Use the Vercel React Native Skills skill when the task matches
+    this scope: React Native and Expo best practices for building performant mobile
+    apps. Use when building React Native components, optimizing list performance,
+    implementing animations, or working with native modules. Triggers on tasks involving
+    React Native, Expo, mobile performance, or native platform APIs.'
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+
+policy:
+  allow_implicit_invocation: true

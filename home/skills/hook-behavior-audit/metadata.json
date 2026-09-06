@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Review startup, resume, and stop hooks for schema compliance, blocking behavior, repo-context quality, and validation-gate correctness. Use when the user asks to audit hook UX, guardrails, or lifecycle automation.",
+  "references": [
+    "https://json-schema.org/",
+    "https://www.shellcheck.net/"
+  ]
+}

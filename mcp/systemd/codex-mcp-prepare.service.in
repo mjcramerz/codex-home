@@ -1,0 +1,11 @@
+[Unit]
+Description=Prepare private Codex MCP runtime and persistent state
+Requires=podman-devops-bootstrap.service user@@DEVOPS_UID@.service
+After=podman-devops-bootstrap.service user@@DEVOPS_UID@.service
+PartOf=codex-mcp.target
+
+[Service]
+Type=oneshot
+ExecStart=@CURRENT@/bin/codex-mcp-admin prepare
+RemainAfterExit=yes
+UMask=0077

@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Configure Mullvad Browser safely with privacy-preserving defaults and operational guardrails. Use when the user asks for Mullvad Browser installation, configuration, or hardening.",
+  "references": [
+    "https://specifications.freedesktop.org/desktop-entry-spec/latest/",
+    "https://wayland.freedesktop.org/",
+    "https://mozilla.github.io/policy-templates/",
+    "https://mullvad.net/en/browser"
+  ]
+}

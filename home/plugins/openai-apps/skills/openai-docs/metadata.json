@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Reference official OpenAI developer documentation and cite current guidance for APIs and platform features. Use when the user asks how to build with OpenAI products, SDKs, models, or API capabilities and needs up-to-date doc-backed answers.",
+  "references": [
+    "https://developers.openai.com/docs",
+    "https://developers.openai.com/docs/api-reference",
+    "https://developers.openai.com/docs/mcp",
+    "https://developers.openai.com/mcp",
+    "https://developers.openai.com/",
+    "https://platform.openai.com/docs"
+  ]
+}

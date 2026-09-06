@@ -1,0 +1,204 @@
+{
+  "target": "user custom build based on 0.147.0",
+  "schema_sha256": "30c625df04c94d5e71129945a930ef092827f03c85e14848399346fa328577af",
+  "authority": "The exact user-supplied schema is the acceptance contract; upstream 0.147.0 sources are used only for inherited lifecycle status and legacy aliases. Custom schema-only features are retained, not guessed obsolete.",
+  "removed": {
+    "undo": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 818
+    },
+    "js_repl": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 872
+    },
+    "js_repl_tools_only": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 908
+    },
+    "terminal_resize_reflow": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 914
+    },
+    "search_tool": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 938
+    },
+    "codex_git_commit": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 944
+    },
+    "sqlite": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 956
+    },
+    "apply_patch_freeform": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 986
+    },
+    "use_linux_sandbox_bwrap": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1016
+    },
+    "request_rule": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1028
+    },
+    "experimental_windows_sandbox": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1034
+    },
+    "elevated_windows_sandbox": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1040
+    },
+    "remote_models": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1046
+    },
+    "multi_agent_mode": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1086
+    },
+    "enable_fanout": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1092
+    },
+    "apps_mcp_path_override": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1116
+    },
+    "tool_search": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1122
+    },
+    "tool_search_always_defer_mcp_tools": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1128
+    },
+    "unavailable_dummy_tools": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1146
+    },
+    "plugin_hooks": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1176
+    },
+    "external_migration": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1230
+    },
+    "resize_all_images": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1248
+    },
+    "item_ids": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1254
+    },
+    "skill_env_var_dependency_prompt": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1278
+    },
+    "steer": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1290
+    },
+    "collaboration_modes": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1344
+    },
+    "remote_control": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1386
+    },
+    "image_detail_original": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1392
+    },
+    "tui_app_server": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1398
+    },
+    "workspace_owner_usage_nudge": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1422
+    },
+    "responses_websockets": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1428
+    },
+    "responses_websockets_v2": {
+      "stage": "Removed",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1434
+    }
+  },
+  "deprecated": {
+    "web_search_request": {
+      "stage": "Deprecated",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 920
+    },
+    "web_search_cached": {
+      "stage": "Deprecated",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 926
+    },
+    "use_legacy_landlock": {
+      "stage": "Deprecated",
+      "source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/lib.rs",
+      "line": 1022
+    }
+  },
+  "aliases": {
+    "connectors": "apps",
+    "enable_experimental_windows_sandbox": "experimental_windows_sandbox",
+    "experimental_use_unified_exec_tool": "unified_exec",
+    "request_permissions": "exec_permission_approvals",
+    "web_search": "web_search",
+    "imagegenext": "image_generation",
+    "collab": "multi_agent",
+    "memory_tool": "memories",
+    "telepathy": "chronicle",
+    "codex_hooks": "hooks"
+  },
+  "alias_source": "https://raw.githubusercontent.com/openai/codex/rust-v0.147.0/codex-rs/features/src/legacy.rs",
+  "schema_deprecated": [
+    "features.multi_agent_v2.usage_hint_enabled"
+  ],
+  "schema_rejected": [
+    "features.child_agents_md"
+  ],
+  "runtime_not_tested": "The custom executable and its private Rust source were not supplied. Schema conformance is verified; runtime feature implementation is not independently certified."
+}

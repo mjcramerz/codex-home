@@ -1,0 +1,12 @@
+{
+  "version": "1.2",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Design or update GitHub Actions pipelines with pinned tooling, least-privilege permissions, caching strategy, and reproducible CI gates. Use when the user asks to create, optimize, or harden GitHub Actions YAML configuration.",
+  "references": [
+    "https://git-scm.com/doc",
+    "https://docs.github.com/actions",
+    "https://docs.gitlab.com/ci/",
+    "https://docs.github.com/actions/writing-workflows/workflow-syntax-for-github-actions"
+  ]
+}

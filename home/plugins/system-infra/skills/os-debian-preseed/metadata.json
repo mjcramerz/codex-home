@@ -1,0 +1,13 @@
+{
+  "version": "1.1",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Create and review Debian preseed automation files for unattended installations with deterministic installer behavior, class-driven profiles, and staged runtime helpers. Use when the user asks for Debian auto-install, desktop/service role provisioning, or image delivery via preseed.",
+  "references": [
+    "https://www.debian.org/releases/stable/amd64/apbs04.en.html",
+    "https://wiki.debian.org/DebianInstaller/Preseed",
+    "https://github.com/labwc/labwc",
+    "https://github.com/Alexays/Waybar",
+    "https://hg.sr.ht/~scoopta/wofi"
+  ]
+}

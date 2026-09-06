@@ -1,0 +1,6 @@
+*
+!container/
+!container/Containerfile
+!container/entrypoint.py
+!container/git-askpass.py
+!servers.json

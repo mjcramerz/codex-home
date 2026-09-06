@@ -1,0 +1,12 @@
+[Unit]
+Description=Periodic Codex MCP orphan cleanup
+PartOf=codex-mcp.target
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+RandomizedDelaySec=15s
+Unit=codex-mcp-gc.service
+
+[Install]
+WantedBy=codex-mcp.target

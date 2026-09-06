@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Configure Wofi launchers with deterministic search, style, and command invocation rules. Use when the user asks about Wofi themes, launcher entries, or command safety in desktop launch flows.",
+  "references": [
+    "https://hg.sr.ht/~scoopta/wofi",
+    "https://man.archlinux.org/man/wofi.7.en"
+  ]
+}

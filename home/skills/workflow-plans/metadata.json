@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Generate concise execution plans for multi-step or ambiguous engineering tasks with milestones, risks, and validation checkpoints. Use when the user asks for a plan, roadmap, or phased implementation strategy.",
+  "references": [
+    "https://www.atlassian.com/work-management/project-management/project-life-cycle",
+    "https://cloud.google.com/architecture/devops/devops-tech-foundations"
+  ]
+}

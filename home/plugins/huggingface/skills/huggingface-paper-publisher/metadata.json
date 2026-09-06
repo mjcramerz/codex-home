@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles.",
+  "references": [
+    "https://arxiv.org/abs/2301.12345",
+    "https://huggingface.co/papers/2301.12345",
+    "https://huggingface.co/papers",
+    "https://huggingface.co/docs/hub/en/model-cards",
+    "https://huggingface.co/docs/hub/en/datasets-cards",
+    "https://huggingface.co/spaces/tfrere/research-article-template",
+    "https://arxiv.org/help/submit"
+  ]
+}

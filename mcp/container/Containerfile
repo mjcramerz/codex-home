@@ -1,0 +1,36 @@
+ARG BASE_IMAGE=registry.gitlab.com/registry-containers/mcp-images/mcp@sha256:c3f792dfd37e741be259cac10f80197e797633f4620f1ff5538a1798ab791f19
+FROM ${BASE_IMAGE}
+USER root
+ARG CONTAINER_UID=1000
+ARG CONTAINER_GID=1000
+ARG DBHUB_PATCH_VERSION=0.22.6
+# Compatible in-image command-line tools; never replace container libc with host libc.
+RUN apt-get update && apt-get install --yes --no-install-recommends \
+    passwd perl zsh openssh-client build-essential cmake ninja-build pkg-config \
+    golang-go rsync ripgrep file patch make sccache && \
+    rm -rf /var/lib/apt/lists/*
+# Keep the supplied image as the base, while fixing a known upstream advisory.
+# Existing package-lock data is retained and the resulting lockfile is included
+# in image evidence by the build command. Direct dependency is version-pinned.
+RUN cd /opt/mcp-node && \
+    npm install --omit=dev --no-audit --no-fund --save-exact "@bytebase/dbhub@${DBHUB_PATCH_VERSION}" && \
+    node -e 'const v=require("./node_modules/@bytebase/dbhub/package.json").version;if(v!==process.argv[1])process.exit(1)' "${DBHUB_PATCH_VERSION}"
+RUN groupadd --gid "${CONTAINER_GID}" devops && \
+    useradd --uid "${CONTAINER_UID}" --gid "${CONTAINER_GID}" --create-home \
+      --home-dir /home/devops --shell /usr/sbin/nologin devops && \
+    mkdir -p /opt/codex-mcp /state /run/mcp-credentials && \
+    chown devops:devops /home/devops /state && chmod 0700 /home/devops /state
+COPY container/entrypoint.py container/git-askpass.py /opt/codex-mcp/
+COPY servers.json /opt/codex-mcp/servers.json
+RUN chmod 0555 /opt/codex-mcp/*.py && chmod 0444 /opt/codex-mcp/servers.json
+ENV HOME=/home/devops USER=devops LOGNAME=devops \
+    XDG_CACHE_HOME=/tmp/xdg/cache XDG_CONFIG_HOME=/tmp/xdg/config XDG_STATE_HOME=/tmp/xdg/state \
+    PYTHONPYCACHEPREFIX=/tmp/python/pycache PIP_CACHE_DIR=/tmp/pip \
+    NPM_CONFIG_CACHE=/tmp/npm SEMGREP_CACHE_DIR=/tmp/semgrep \
+    SEMGREP_SEND_METRICS=off SEMGREP_ENABLE_VERSION_CHECK=0 \
+    DISABLE_THOUGHT_LOGGING=true CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS=1 \
+    CHROME_DEVTOOLS_MCP_NO_UPDATE_CHECKS=1
+USER devops:devops
+WORKDIR /workspace
+ENTRYPOINT ["/usr/bin/tini", "-g", "--", "/usr/bin/python3", "-I", "/opt/codex-mcp/entrypoint.py"]
+CMD ["filesystem"]

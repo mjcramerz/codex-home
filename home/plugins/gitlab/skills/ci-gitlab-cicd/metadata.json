@@ -1,0 +1,12 @@
+{
+  "version": "1.2",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Build and troubleshoot GitLab CI/CD pipelines with deterministic jobs, pinned images, shared include contracts, and protected delivery gates. Use when the user asks to create or fix `.gitlab-ci.yml` pipelines, shared GitLab delivery includes, or release-safe variable policy.",
+  "references": [
+    "https://docs.gitlab.com/ci/",
+    "https://docs.gitlab.com/ee/ci/yaml/",
+    "https://docs.gitlab.com/runner/",
+    "https://gitlab.com/gitlab-org/gitlab"
+  ]
+}

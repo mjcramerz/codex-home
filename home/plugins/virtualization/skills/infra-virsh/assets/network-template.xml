@@ -1,0 +1,9 @@
+<network>
+  <name>isolated-lab</name>
+  <bridge name='virbr10' stp='on' delay='0'/>
+  <ip address='192.168.110.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.110.100' end='192.168.110.200'/>
+    </dhcp>
+  </ip>
+</network>

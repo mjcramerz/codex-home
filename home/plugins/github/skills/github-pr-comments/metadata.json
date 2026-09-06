@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Work through open GitHub PR review comments using gh CLI, map each comment to code changes, and post or prepare responses. Use when the user asks to address reviewer feedback on the current PR.",
+  "references": [
+    "https://git-scm.com/doc",
+    "https://docs.github.com/actions",
+    "https://docs.gitlab.com/ci/",
+    "https://cli.github.com/manual/gh_pr_comment",
+    "https://docs.github.com/en/graphql",
+    "https://cli.github.com/manual/gh_pr_view",
+    "https://cli.github.com/manual/gh_api"
+  ]
+}

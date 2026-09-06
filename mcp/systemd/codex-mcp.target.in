@@ -1,0 +1,7 @@
+[Unit]
+Description=Rootless, credential-isolated Codex MCP transports
+Wants=codex-mcp.socket codex-mcp-gc.timer @SSH_WANT@
+After=codex-mcp-prepare.service
+
+[Install]
+WantedBy=multi-user.target

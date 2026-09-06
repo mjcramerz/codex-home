@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 20, 2026",
+  "abstract": "Build Perl modules, hook handlers, and deterministic CLI helpers with strict validation and testing guidance.",
+  "references": [
+    "https://perldoc.perl.org/",
+    "https://perldoc.perl.org/perlrun",
+    "https://perldoc.perl.org/perlsec"
+  ]
+}

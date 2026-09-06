@@ -1,0 +1,49 @@
+interface:
+  display_name: Hugging Face Trackio
+  short_description: 'Track and visualize ML training experiments with Trackio. Use
+    when logging metrics during training (Python API), firing '
+  default_prompt: 'Use the Hugging Face Trackio skill when the task matches this scope:
+    Track and visualize ML training experiments with Trackio. Use when logging metrics
+    during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing
+    logged metrics (CLI). Supports real-time dashboard visualization, alerts with
+    webhooks, HF Space syncing, and JSON output for automation.'
+dependencies:
+  tools:
+  - type: mcp
+    value: context7
+    description: context7 MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
+  - type: mcp
+    value: fetch
+    description: fetch MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
+  - type: mcp
+    value: filesystem
+    description: filesystem MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
+  - type: mcp
+    value: git
+    description: git MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
+  - type: mcp
+    value: linear
+    description: linear MCP server
+    transport: streamable_http
+    url: https://mcp.linear.app/mcp
+  - type: mcp
+    value: sequential_thinking
+    description: sequential_thinking MCP server
+    transport: stdio
+    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
+  - type: mcp
+    value: huggingface
+    description: huggingface MCP server
+    transport: streamable_http
+    url: https://huggingface.co/mcp?login
+
+policy:
+  allow_implicit_invocation: true

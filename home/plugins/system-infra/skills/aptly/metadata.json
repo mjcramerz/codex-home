@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Manage Aptly repositories with deterministic snapshot promotion, signing, cleanup, and publication contracts. Use when the user asks about package publication channels, retention, or managed Aptly service behavior.",
+  "references": [
+    "https://www.aptly.info/",
+    "https://github.com/aptly-dev/aptly"
+  ]
+}

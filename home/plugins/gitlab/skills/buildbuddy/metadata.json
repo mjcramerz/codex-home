@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Design BuildBuddy-backed remote cache and execution workflows with explicit auth, isolation, and fallback behavior. Use when the user asks about BuildBuddy integration, remote execution policy, or Bazel CI acceleration.",
+  "references": [
+    "https://www.buildbuddy.io/docs/",
+    "https://github.com/buildbuddy-io/buildbuddy"
+  ]
+}

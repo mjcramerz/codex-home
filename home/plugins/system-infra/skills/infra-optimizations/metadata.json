@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Tune host performance and security settings with measurement-first baselines and rollback controls. Use when the user asks to improve host throughput, latency, or system hardening posture.",
+  "references": [
+    "https://perf.wiki.kernel.org/index.php/Main_Page",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html",
+    "https://docs.kernel.org/admin-guide/perf/index.html"
+  ]
+}

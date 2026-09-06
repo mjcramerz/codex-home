@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Choose narrow, risk-based verification plans and turn code changes into targeted tests, sanity checks, and regression coverage. Use when the task is ambiguous, high-impact, or needs a concrete validation plan before editing.",
+  "references": [
+    "https://docs.pytest.org/",
+    "https://docs.python.org/3/library/unittest.html",
+    "https://doc.rust-lang.org/cargo/commands/cargo-test.html"
+  ]
+}

@@ -43,6 +43,10 @@ sub _candidate_schema_dirs {
     if (defined $ENV{CODEX_HOOK_SCHEMA_DIR} && length $ENV{CODEX_HOOK_SCHEMA_DIR}) {
         push @dirs, $ENV{CODEX_HOOK_SCHEMA_DIR};
     }
+    # The installed runtime carries the exact reviewed hook schemas.
+    if (defined $ENV{CODEX_HOME} && length $ENV{CODEX_HOME}) {
+        push @dirs, File::Spec->catdir($ENV{CODEX_HOME}, '.hooks', 'schemas');
+    }
     for my $base (@bases) {
         for my $parts (@relative_candidates) {
             push @dirs, File::Spec->catdir($base, @{$parts});

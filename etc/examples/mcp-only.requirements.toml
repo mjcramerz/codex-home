@@ -1,0 +1,40 @@
+# OPTIONAL policy example, not installed by default. Restricts MCP to the exact wrappers below.
+
+[mcp_servers.filesystem.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="filesystem"}] }
+
+[mcp_servers.git.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="git"}] }
+
+[mcp_servers.fetch.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="fetch"}] }
+
+[mcp_servers.memory.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="memory"}] }
+
+[mcp_servers.sequential-thinking.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="sequential-thinking"}] }
+
+[mcp_servers.time.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="time"}] }
+
+[mcp_servers.markdown.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="markdown"}] }
+
+[mcp_servers.context7.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="context7"}] }
+
+[mcp_servers.playwright.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="playwright"}] }
+
+[mcp_servers.chrome-devtools.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="chrome-devtools"}] }
+
+[mcp_servers.postgres.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="postgres"}] }
+
+[mcp_servers.sqlite.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="sqlite"}] }
+
+[mcp_servers.semgrep.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [{match="exact",value="connect"},{match="exact",value="semgrep"}] }

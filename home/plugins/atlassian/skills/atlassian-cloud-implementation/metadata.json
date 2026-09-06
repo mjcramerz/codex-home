@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Turn Atlassian cloud documentation into auth, workflow, and implementation checklists for Jira and Confluence integrations.",
+  "references": [
+    "https://developer.atlassian.com/cloud/",
+    "https://developer.atlassian.com/platform/"
+  ]
+}

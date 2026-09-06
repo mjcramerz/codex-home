@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Research across Notion and synthesize into structured documentation; use when gathering info from multiple Notion sources to produce briefs, comparisons, or reports with citations.",
+  "references": [
+    "https://developers.notion.com/reference/intro",
+    "https://developers.notion.com/reference/post-search",
+    "https://mcp.notion.com/mcp"
+  ]
+}

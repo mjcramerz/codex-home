@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Review install, home-sync, admin, upgrade, and cleanup flows for regressions, permission boundaries, and preserved-state drift. Use when the user asks for installer audits or rollout safety reviews.",
+  "references": [
+    "https://csrc.nist.gov/pubs/sp/800/218/final",
+    "https://12factor.net/"
+  ]
+}

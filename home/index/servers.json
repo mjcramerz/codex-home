@@ -1,0 +1,15 @@
+{
+  "filesystem": {"executable":"mcp-filesystem","network":false,"workspace":"rw","state":false,"credentials":[],"description":"Official filesystem server; desktop Workspace is writable"},
+  "git": {"executable":"mcp-server-git","network":false,"workspace":"rw","state":false,"credentials":["github-token"],"description":"Official Git server over local Workspace repositories"},
+  "fetch": {"executable":"mcp-server-fetch","network":true,"workspace":"none","state":false,"credentials":["fetch-proxy-url"],"description":"Official fetch server"},
+  "memory": {"executable":"mcp-memory","network":false,"workspace":"none","state":true,"exclusive":true,"credentials":[],"description":"Persistent reference memory; single writer"},
+  "sequential-thinking": {"executable":"mcp-sequential-thinking","network":false,"workspace":"none","state":false,"credentials":[],"description":"Official sequential thinking server"},
+  "time": {"executable":"mcp-server-time","network":false,"workspace":"none","state":false,"credentials":[],"description":"Official time server"},
+  "markdown": {"executable":"markitdown-mcp","network":true,"workspace":"ro","state":false,"credentials":["openai-api-key","azure-openai-api-key","azure-openai-endpoint","azure-openai-api-version"],"description":"Microsoft MarkItDown server"},
+  "context7": {"executable":"mcp-context7","network":true,"workspace":"none","state":false,"credentials":["context7-api-key"],"description":"Upstash Context7 documentation"},
+  "playwright": {"executable":"mcp-playwright","network":true,"workspace":"rw","state":false,"browser":true,"credentials":[],"description":"Microsoft Playwright, isolated headless browser"},
+  "chrome-devtools": {"executable":"mcp-chrome-devtools","network":true,"workspace":"rw","state":false,"browser":true,"credentials":[],"description":"Chrome DevTools, isolated headless browser"},
+  "postgres": {"executable":"mcp-dbhub","network":true,"workspace":"none","state":false,"credentials":["postgres-dsn"],"required_credentials":["postgres-dsn"],"description":"Patched DBHub, externally provisioned PostgreSQL database"},
+  "sqlite": {"executable":"mcp-dbhub","network":false,"workspace":"none","state":true,"exclusive":true,"credentials":[],"description":"Patched DBHub, persistent SQLite database"},
+  "semgrep": {"executable":"semgrep","network":true,"workspace":"ro","state":false,"credentials":["semgrep-app-token"],"description":"Semgrep MCP code analysis"}
+}

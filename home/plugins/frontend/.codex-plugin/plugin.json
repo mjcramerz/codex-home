@@ -1,0 +1,35 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend framework implementation and interactive web UI workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Frontend",
+    "shortDescription": "Frontend web app workflows",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Frontend plugin for frontend framework implementation and interactive web UI work."
+    ],
+    "longDescription": "Use this plugin for frontend framework implementation across HTML, HTMX, Next.js, Nuxt, React, SvelteKit, Vue, and browser-based web games.",
+    "developerName": "Codex Setup",
+    "brandColor": "#F97316",
+    "composerIcon": "./skills/web-html/assets/icon-32.png",
+    "logo": "./skills/web-html/assets/icon-128.png",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "frontend",
+    "development",
+    "web",
+    "html",
+    "htmx",
+    "nextjs"
+  ]
+}

@@ -1,0 +1,28 @@
+[Unit]
+Description=Loopback-only forced-command MCP SSH transport (desktop identity)
+Requires=codex-mcp.socket
+After=network.target codex-mcp.socket
+PartOf=codex-mcp.target
+StartLimitIntervalSec=60s
+StartLimitBurst=5
+
+[Service]
+Type=exec
+ExecStartPre=/usr/sbin/sshd -t -f /etc/codex/mcp/sshd_config
+ExecStart=/usr/sbin/sshd -D -e -f /etc/codex/mcp/sshd_config
+Restart=on-failure
+RestartSec=3s
+RuntimeDirectory=codex-mcp-sshd
+RuntimeDirectoryMode=0755
+UMask=0077
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/run/codex-mcp-sshd
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+# sshd must perform its own privilege separation and setuid to the desktop UID.
+# Do not set User=devops or grant that locked service account SSH access.

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Research across sources and synthesize into structured Obsidian documentation. Use when producing briefs, comparisons, or research reports in an Obsidian vault.",
+  "references": [
+    "https://help.obsidian.md/",
+    "https://help.obsidian.md/links"
+  ]
+}

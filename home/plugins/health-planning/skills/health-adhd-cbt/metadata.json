@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Comprehensive ADHD planning and CBT-based (sometimes requested as \"CBD\") daily templates with PDF generation workflows. Use when generating printable ADHD/CBT worksheets, daily planners, impulse-control decision filters, emotion regulation check-ins, or when converting template content to PDF/HTML using the bundled scripts and assets.",
+  "references": [
+    "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd",
+    "https://www.cdc.gov/adhd/index.html",
+    "https://www.nimh.nih.gov/health/topics/psychotherapies",
+    "https://www.nice.org.uk/guidance/ng87",
+    "https://www.who.int/health-topics/mental-health",
+    "https://owasp.org/www-project-application-security-verification-standard/"
+  ]
+}

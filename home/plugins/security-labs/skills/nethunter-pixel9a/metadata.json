@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 13, 2026",
+  "abstract": "Run scoped Kali NetHunter Pixel 9a kernel-porting and Android rooting lab operations, including Google kernel alignment, boot-image patch validation, and rollback-safe deployment checks.",
+  "references": [
+    "https://www.kali.org/docs/nethunter/building-nethunter/",
+    "https://www.kali.org/docs/nethunter/porting-nethunter/",
+    "https://www.kali.org/docs/nethunter/porting-nethunter-kernel-builder/",
+    "https://source.android.com/docs/setup/build/building",
+    "https://source.android.com/docs/setup/create/running",
+    "https://source.android.com/docs/core/architecture/bootloader/locking_unlocking",
+    "https://source.android.com/docs/core/architecture/partitions/gki",
+    "https://developer.android.com/studio/releases/platform-tools",
+    "https://nmap.org/book/man.html",
+    "https://www.cisa.gov/resources-tools/resources/mobile-security-best-practices",
+    "https://www.kali.org/docs/nethunter/nethunter-kernel-1-patching/",
+    "https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel-builder",
+    "https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer",
+    "https://source.android.com/docs/core/architecture/bootloader/fastbootd",
+    "https://source.android.com/docs/core/architecture/kernel/gki-releases",
+    "https://source.android.com/docs/core/ota/ab",
+    "https://developer.android.com/tools/releases/platform-tools",
+    "https://attack.mitre.org/",
+    "https://csrc.nist.gov/publications/detail/sp/800-115/final"
+  ]
+}

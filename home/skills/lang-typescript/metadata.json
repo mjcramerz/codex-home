@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Implement and refactor TypeScript projects with strict typing, tsconfig hygiene, and safe build defaults. Use when the user asks for TypeScript code, type errors, or project configuration changes.",
+  "references": [
+    "https://www.typescriptlang.org/docs/",
+    "https://www.typescriptlang.org/tsconfig"
+  ]
+}

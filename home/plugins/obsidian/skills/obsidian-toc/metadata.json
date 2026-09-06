@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Generate or update a table of contents for Obsidian Markdown notes. Use when a note needs a consistent TOC or when headings have changed.",
+  "references": [
+    "https://help.obsidian.md/",
+    "https://www.markdownguide.org/basic-syntax/#headings"
+  ]
+}

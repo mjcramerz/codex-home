@@ -114,41 +114,14 @@ def validate_skill_metadata(source: Path) -> tuple[int, int]:
 def validate_runtime_references() -> int:
     failures: list[str] = []
     checked = 0
-    try:
-        listing = subprocess.run(
-            [
-                "git",
-                "ls-files",
-                "-z",
-                "--cached",
-                "--others",
-                "--exclude-standard",
-                "--",
-                "home",
-            ],
-            cwd=REPOSITORY_ROOT,
-            check=True,
-            stdout=subprocess.PIPE,
-        ).stdout
-    except (OSError, subprocess.CalledProcessError) as exc:
-        raise ValidationError(f"cannot enumerate repository home files: {exc}") from exc
-
-    paths: list[Path] = []
-    for raw_path in listing.split(b"\0"):
-        if not raw_path:
-            continue
-        try:
-            relative = PurePosixPath(raw_path.decode("utf-8"))
-        except UnicodeDecodeError as exc:
-            raise ValidationError("repository contains a non-UTF-8 home path") from exc
-        if (
-            relative.is_absolute()
-            or ".." in relative.parts
-            or not relative.parts
-            or relative.parts[0] != "home"
-        ):
-            raise ValidationError(f"unsafe repository home path: {relative}")
-        paths.append(REPOSITORY_ROOT.joinpath(*relative.parts))
+    # Source tarballs need not be git checkouts. Enumerate the reviewed tree
+    # directly, rejecting links rather than following content outside it.
+    paths = []
+    for path in HOME_ROOT.rglob('*'):
+        if path.is_symlink():
+            raise ValidationError(f"repository home contains a symlink: {path}")
+        if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
+            paths.append(path)
 
     for path in sorted(set(paths)):
         if path in PROTECTED_HOME_PATHS:
@@ -208,9 +181,15 @@ def run() -> int:
         codex_home_versions: dict[str, str] = {}
         local_bindings: set[str] = set()
         local_marketplaces: set[str] = set()
+        external_marketplaces: list[str] = []
 
         for marketplace, settings in sorted(configured_marketplaces.items()):
             if not isinstance(settings, dict) or settings.get("source_type") != "local":
+                continue
+            # The supplied custom desktop generates its bundled marketplace.
+            # It is a runtime prerequisite, not an absent local source mirror.
+            if marketplace == 'openai-bundled' and settings.get('source') == str(INSTALLED_HOME / '.tmp/bundled-marketplaces/openai-bundled'):
+                external_marketplaces.append(marketplace)
                 continue
             local_marketplaces.add(marketplace)
             expected_source = str(INSTALLED_HOME / "marketplaces" / marketplace)
@@ -365,8 +344,10 @@ def run() -> int:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
+    if external_marketplaces:
+        print("External desktop marketplaces require target verification: " + ", ".join(external_marketplaces))
     print(
-        "Plugin catalog coverage is valid: "
+        "Local plugin catalog coverage is valid: "
         f"{plugin_count} plugins, {skill_count} skills, "
         f"{metadata_count} agents/openai.yaml files, and "
         f"{checked_files} repository home files checked for stale runtime paths."

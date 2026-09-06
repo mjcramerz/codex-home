@@ -1,0 +1,2 @@
+External desktop marketplaces require target verification: openai-bundled
+Local plugin catalog coverage is valid: 51 plugins, 159 skills, 159 agents/openai.yaml files, and 9166 repository home files checked for stale runtime paths.

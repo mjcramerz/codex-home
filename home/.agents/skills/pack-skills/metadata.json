@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Create or update Codex skills (SKILL.md, metadata, triggers, and bundled resources) with pack-compliant structure. Use when the user asks to add a new skill, tune skill triggering, or improve skill assets/scripts/references.",
+  "references": [
+    "https://yaml.org/spec/1.2.2/",
+    "https://developers.openai.com/docs/guides/prompt-engineering"
+  ]
+}

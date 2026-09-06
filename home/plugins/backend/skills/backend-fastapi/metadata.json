@@ -1,0 +1,10 @@
+{
+  "version": "1.1",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Implement production-ready Python FastAPI services with validated models, routing, auth hooks, error handling, and tests. Use when the user asks for backend API work in FastAPI.",
+  "references": [
+    "https://fastapi.tiangolo.com/",
+    "https://docs.pydantic.dev/latest/"
+  ]
+}

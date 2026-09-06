@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Design Logstash ingestion and transformation pipelines with strict input validation and controlled outputs. Use when the user asks for Logstash parser/filter/pipeline work.",
+  "references": [
+    "https://www.elastic.co/docs",
+    "https://www.elastic.co/guide/en/logstash/current/index.html"
+  ]
+}

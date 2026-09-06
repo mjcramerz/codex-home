@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Plan and review Debian preseed repositories with class manifests, destructive-storage safeguards, and staged installer hooks. Use when the user asks about unattended Debian installs, preseed class selection, or installer delivery contracts.",
+  "references": [
+    "https://www.debian.org/releases/stable/amd64/apbs04.en.html",
+    "https://wiki.debian.org/DebianInstaller/Preseed"
+  ]
+}

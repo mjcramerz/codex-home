@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Run scoped offensive-security simulation and cyber-defense operations. Use when requests involve documented-scope port scanning, credential-dumping detection (Mimikatz behavior), Pi-hole/Unbound DNS defense, Metasploit lab validation, Wi-Fi security assessment, purple-team exercises, and reverse-engineering triage in owned or lab environments.",
+  "references": [
+    "https://attack.mitre.org/",
+    "https://www.nist.gov/cyberframework",
+    "https://csrc.nist.gov/publications/detail/sp/800-115/final",
+    "https://attack.mitre.org/tactics/TA0006/",
+    "https://learn.microsoft.com/defender-xdr/threat-analytics",
+    "https://docs.pi-hole.net/",
+    "https://nlnetlabs.nl/projects/unbound/about/",
+    "https://www.cisa.gov/resources-tools/resources/securing-domain-name-system-dns",
+    "https://nmap.org/book/man.html",
+    "https://docs.metasploit.com/",
+    "https://csrc.nist.gov/publications/detail/sp/800-153/final",
+    "https://ghidra-sre.org/",
+    "https://www.rapid7.com/db/",
+    "https://www.cisecurity.org/controls/v8",
+    "https://www.sans.org/white-papers/39875/",
+    "https://github.com/mandiant/capa",
+    "https://www.cisa.gov/resources-tools/services/malware-analysis",
+    "https://www.wi-fi.org/discover-wi-fi/security"
+  ]
+}

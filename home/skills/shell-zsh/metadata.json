@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 11, 2026",
+  "abstract": "Write and review zsh-specific shell code, wrappers, and runtime integrations. Use when the confirmed runtime is zsh or when wrapper semantics, completion behavior, globbing, or zsh startup files matter.",
+  "references": [
+    "https://zsh.sourceforge.io/Doc/",
+    "https://zsh.sourceforge.io/Guide/"
+  ]
+}

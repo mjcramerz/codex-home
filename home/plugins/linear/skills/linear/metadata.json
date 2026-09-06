@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Manage issues, projects, and team workflows in Linear. Use when the user wants to read, create, or update tickets in Linear.",
+  "references": [
+    "https://developers.linear.app/docs/graphql/working-with-the-graphql-api",
+    "https://developers.linear.app/docs/graphql/authentication",
+    "https://mcp.linear.app/mcp"
+  ]
+}

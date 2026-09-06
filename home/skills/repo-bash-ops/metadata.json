@@ -1,0 +1,12 @@
+{
+  "version": "2.1",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Implement repository automation in Bash for safe git operations, release scripts, and CI helper tooling. Use when the user asks for shell-based repo ops, automation scripts, or release hygiene tasks.",
+  "references": [
+    "https://git-scm.com/doc",
+    "https://docs.github.com/actions",
+    "https://docs.gitlab.com/ci/",
+    "https://man7.org/linux/man-pages/man1/bash.1.html"
+  ]
+}

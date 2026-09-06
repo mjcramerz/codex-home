@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Plan Bazel build and test workflows with hermetic toolchains, cache discipline, and CI-safe remote execution boundaries. Use when the user asks about Bazel commands, CI wiring, or repository/runner layout for Bazel workloads.",
+  "references": [
+    "https://bazel.build/",
+    "https://github.com/bazelbuild/bazel"
+  ]
+}

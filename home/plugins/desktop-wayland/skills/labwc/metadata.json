@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Configure Labwc sessions with explicit compositor, autostart, lock, and launcher policy. Use when the user asks about Labwc behavior, config layout, or session helper scripts.",
+  "references": [
+    "https://labwc.github.io/",
+    "https://github.com/labwc/labwc"
+  ]
+}

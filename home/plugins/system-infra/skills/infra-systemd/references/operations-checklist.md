@@ -1,0 +1,34 @@
+---
+title: Operations checklist for infra-systemd
+status: active
+owner: Matthew Cramer
+tags:
+- skills
+- all
+- infra-systemd
+- references
+- operations-checklist-md
+- operations-checklist
+- user
+- infra
+updated: '2026-02-20'
+---
+# Operations checklist for infra-systemd
+
+## Objective
+Keep infra systemd work deterministic, reversible, and security-aware.
+
+## Pre-change
+- Confirm target environment, scope boundaries, and maintenance window.
+- Record current state and rollback entry points before applying changes.
+- Validate input shape/ranges and expected failure handling.
+
+## Change execution
+- Apply one coherent change unit at a time.
+- Keep commands explicit (no hidden defaults) and capture evidence.
+- Stop on first critical regression and execute rollback immediately.
+
+## Post-change validation
+- Verify functional behavior, security controls, and performance guardrails.
+- Run negative-path checks for the highest-risk boundary.
+- Document residual risk and next actions.

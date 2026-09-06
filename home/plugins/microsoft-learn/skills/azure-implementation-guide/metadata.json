@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Translate Azure platform docs, reference architectures, and service constraints into concrete implementation plans and verification steps.",
+  "references": [
+    "https://learn.microsoft.com/en-us/azure/architecture/",
+    "https://learn.microsoft.com/en-us/azure/"
+  ]
+}

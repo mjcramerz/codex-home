@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 20, 2026",
+  "abstract": "Install, configure, and rotate Bitwarden Secrets Manager CLI (bws) for local Debian systems with keyring-backed secret storage.",
+  "references": [
+    "https://bitwarden.com/help/secrets-manager-cli/",
+    "https://bitwarden.com/help/access-tokens/"
+  ]
+}

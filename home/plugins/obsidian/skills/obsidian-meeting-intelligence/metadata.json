@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Prepare meeting materials and capture outcomes in Obsidian. Use when drafting agendas, pre-reads, decision logs, or follow-up tasks inside an Obsidian vault.",
+  "references": [
+    "https://help.obsidian.md/",
+    "https://help.obsidian.md/plugins/daily-notes"
+  ]
+}

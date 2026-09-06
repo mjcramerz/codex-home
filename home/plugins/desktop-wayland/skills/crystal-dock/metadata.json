@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Coordinate Crystal Dock startup, restart, and PID-file behavior with explicit session ownership and bounded stop or retry handling. Use when the user asks about Crystal Dock launchers, restart helpers, PID files, or Labwc dock integration.",
+  "references": [
+    "references/latest-sources.md"
+  ]
+}

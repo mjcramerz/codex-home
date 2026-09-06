@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "June 28, 2026",
+  "abstract": "Author and review GitLab CI/CD pipelines that stay thin over shared include contracts, protected refs, runner tags, and release-safe variable policies. Use when the user asks about .gitlab-ci.yml structure, include boundaries, or GitLab delivery hardening.",
+  "references": [
+    "https://docs.gitlab.com/ci/",
+    "https://docs.gitlab.com/ee/ci/yaml/",
+    "https://gitlab.com/gitlab-org/gitlab"
+  ]
+}

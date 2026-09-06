@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 25, 2026",
+  "abstract": "Build and maintain SvelteKit applications with clear route/load boundaries, adapter setup, and runtime configuration. Use when the user asks for SvelteKit-specific routing or server/client integration tasks.",
+  "references": [
+    "https://svelte.dev/docs",
+    "https://svelte.dev/docs/kit",
+    "https://svelte.dev/docs/kit/form-actions",
+    "https://github.com/sveltejs/kit/releases/tag/%40sveltejs%2Fkit%402.53.1"
+  ]
+}

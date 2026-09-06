@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Use Jina Reader-style workflows to extract, compare, and summarize implementation-relevant web or documentation sources.",
+  "references": [
+    "https://github.com/jina-ai/reader/blob/main/docs/readme.md",
+    "https://jina.ai/"
+  ]
+}

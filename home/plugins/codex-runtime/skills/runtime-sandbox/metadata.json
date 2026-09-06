@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "July 11, 2026",
+  "abstract": "Review and maintain Bubblewrap-backed Codex runtime isolation without blocking normal coding workflows.",
+  "references": [
+    "SKILL.md",
+    "https://github.com/containers/bubblewrap"
+  ]
+}

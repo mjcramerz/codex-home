@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 25, 2026",
+  "abstract": "Build and maintain Nuxt applications with explicit runtime configuration, server rendering behavior, and deployment-safe defaults. Use when the user asks for Nuxt- specific work, especially Vue full-stack app structure and SSR features.",
+  "references": [
+    "https://nuxt.com/docs/getting-started/introduction",
+    "https://nuxt.com/docs/guide/best-practices/performance",
+    "https://nitro.unjs.io/",
+    "https://github.com/nuxt/nuxt/releases/tag/v4.3.1",
+    "https://nuxt.com/docs/guide/going-further/runtime-config"
+  ]
+}

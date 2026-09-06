@@ -1,3 +1,4 @@
+#:schema ./config.schema.json
 # Use the current permissions-profile system. This resolves to
 # [permissions.full] below.
 default_permissions = "full"
@@ -133,7 +134,7 @@ When user text is routed from realtime, treat it as a transcript. It may be unpu
 
 # model
 chatgpt_base_url = 'https://chatgpt.com/backend-api'
-openai_base_url = "https://api.openai.com/v1"
+#openai_base_url = "https://api.openai.com/v1"
 model = "gpt-5.6-sol"
 review_model = "gpt-5.6-terra"
 model_provider = "openai-custom"
@@ -604,7 +605,6 @@ enabled = false
 
 # runtime features
 [features]
-apply_patch_freeform = true
 apply_patch_preserve_line_endings = false
 apply_patch_streaming_events = true
 apps = true
@@ -617,23 +617,17 @@ chronicle = true
 code_mode_buffered_exec = false
 code_mode_interrupt = true
 code_mode_only = true
-codex_git_commit = false
-collaboration_modes = true
 computer_use = true
 concurrent_reasoning_summaries = false
 default_mode_request_user_input = true
 deferred_executor = false
 deferred_tool_world_state = false
-elevated_windows_sandbox = false
-enable_fanout = false
 enable_mcp_apps = true
 enable_request_compression = true
 exec_permission_approvals = false
 executed_tool_call_metadata = true
 executor_capability_discovery = true
-experimental_windows_sandbox = false
 external_agent_memory_import = false
-external_migration = false
 fast_mode = false
 goals = true
 guardian_approval = false
@@ -641,25 +635,18 @@ guardian_enhanced_node_repl_transcripts = false
 guardian_node_repl_transcript_images = false
 guardian_reuse_parent_compaction = false
 hooks = true
-image_detail_original = true
 image_generation = true
 image_resize_notice = true
-imagegenext = false
 in_app_browser = true
 in_app_chat = true
 in_app_dictation = true
 in_app_updates = true
-item_ids = true
-js_repl = false
-js_repl_tools_only = false
 local_thread_store_compression = false
 mcp_2026_07_28 = false
 memories = true
 mentions_v2 = true
 multi_agent = true
-multi_agent_mode = false
 personality = true
-plugin_hooks = false
 plugin_sharing = true
 plugins = true
 prevent_idle_sleep = true
@@ -667,54 +654,28 @@ psp = false
 realtime_conversation = true
 recommended_plugins = true
 remote_compaction_v2 = true
-remote_models = true
 remote_plugin = true
 request_permissions_tool = true
-request_rule = true
-resize_all_images = true
 respect_system_proxy = false
-responses_websockets = false
-responses_websockets_v2 = true
 retain_client_developer_messages = false
 runtime_metrics = false
-search_tool = true
 secret_auth_storage = true
 shell_snapshot = true
 shell_tool = true
 shell_zsh_fork = false
-skill_env_var_dependency_prompt = false
 skill_mcp_dependency_install = true
 skill_search = true
-sqlite = true
 standalone_web_search = true
-steer = true
-telepathy = true
-terminal_resize_reflow = true
 terminal_visualization_instructions = true
 tool_call_mcp_elicitation = true
-tool_search = true
-tool_search_always_defer_mcp_tools = false
 tool_suggest = true
-tui_app_server = true
-unavailable_dummy_tools = false
 unbounded_connection_retries = true
-undo = true
 unified_exec = true
 unified_exec_zsh_fork = true
 unified_image_budget = true
 use_agent_identity = true
-use_legacy_landlock = false
-use_linux_sandbox_bwrap = true
 view_image = true
-web_search = true
-web_search_cached = true
-web_search_request = true
 workspace_dependencies = false
-workspace_owner_usage_nudge = false
-
-[features.apps_mcp_path_override]
-enabled = false
-path = "/data/codex/usr/home"
 
 [features.code_mode]
 enabled = true
@@ -770,7 +731,6 @@ root_agent_usage_hint_text = "Delegate independent sidecar tasks while keeping t
 subagent_developer_instructions = "Complete only the assigned bounded subtask, do not widen scope, validate your result, and return concrete evidence to the root agent."
 subagent_usage_hint_text = "Stay within the assigned files and stop when the requested evidence or patch is complete."
 tool_namespace = "agents"
-usage_hint_enabled = false
 usage_hint_text = "Use agents for independent work; keep one coordinator responsible for integration."
 wait_agent_enabled = true
 
@@ -1250,143 +1210,140 @@ startup_timeout_sec = 20
 tool_timeout_sec = 120
 
 [mcp_servers.context7]
-command = "/data/codex/mcp/wrappers/mcp-context7-wrapper.sh"
-args = []
-env_vars = [
-  "CONTEXT7_API_KEY",
-]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "context7"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.filesystem]
-command = "/data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "filesystem"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.memory]
-command = "/data/codex/mcp/wrappers/mcp-memory-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "memory"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.sequential_thinking]
-command = "/data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "sequential-thinking"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.fetch]
-command = "/data/codex/mcp/wrappers/mcp-fetch-wrapper.sh"
-args = []
-env_vars = [
-  "FETCH_USER_AGENT",
-  "FETCH_PROXY_URL",
-  "FETCH_IGNORE_ROBOTS_TXT",
-]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "fetch"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.git]
-command = "/data/codex/mcp/wrappers/mcp-git-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "git"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.time]
-command = "/data/codex/mcp/wrappers/mcp-time-wrapper.sh"
-args = []
-env_vars = [
-  "LOCAL_TIMEZONE",
-]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "time"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.markdown]
-command = "/data/codex/mcp/wrappers/mcp-markdown-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "markdown"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.sqlite]
-command = "/data/codex/mcp/wrappers/mcp-sqlite-wrapper.sh"
-args = []
-env_vars = [
-  "SQLITE_DSN",
-  "DSN",
-  "DBHUB_CONFIG",
-]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "sqlite"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.playwright]
-command = "/data/codex/mcp/wrappers/mcp-playwright-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "playwright"]
 enabled = true
 required = false
-startup_timeout_sec = 45
+startup_timeout_sec = 120
 tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.chrome-devtools]
-command = "/data/codex/mcp/wrappers/mcp-chrome-devtools-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "chrome-devtools"]
 enabled = true
 required = false
-startup_timeout_sec = 45
+startup_timeout_sec = 120
 tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.postgres]
-command = "/data/codex/mcp/wrappers/mcp-postgres-wrapper.sh"
-args = []
-env_vars = [
-  "POSTGRES_DSN",
-  "DATABASE_URL",
-  "DSN",
-  "DBHUB_CONFIG",
-]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "postgres"]
 enabled = true
 required = false
-startup_timeout_sec = 20
-tool_timeout_sec = 120
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.semgrep]
-command = "/data/codex/mcp/wrappers/mcp-semgrep-wrapper.sh"
-args = []
-env_vars = []
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "semgrep"]
 enabled = true
 required = false
-startup_timeout_sec = 30
+startup_timeout_sec = 120
 tool_timeout_sec = 180
+supports_parallel_tool_calls = false
+default_tools_approval_mode = "auto"
 
 [mcp_servers.node_repl]
 args = []
 command = "/usr/lib/chatgpt/resources/cua_node/bin/node_repl"
 startup_timeout_sec = 120
+enabled = true
 
 [mcp_servers.node_repl.env]
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
@@ -1441,31 +1398,31 @@ skill_approval = false
 inherit = "all"
 ignore_default_excludes = false
 experimental_use_profile = true
-exclude = [
-  ".*TOKEN.*",
-  ".*KEY.*",
-  ".*SECRET.*",
-  ".*PASSWORD.*",
-  ".*PASS.*",
-  "^AWS_.*",
-  "^AZURE_.*",
-  "^GCP_.*",
-  "^OPENAI_.*",
-  "^ANTHROPIC_.*",
-  "^GITHUB_.*",
-  "^GITLAB_.*",
-  "^SSH_.*",
-  "^KUBECONFIG$",
-  "^DOCKER_.*",
-  "^NPM_TOKEN$",
-  "^NODE_AUTH_TOKEN$",
-  "^PIP_INDEX_URL$",
-  "^PIP_EXTRA_INDEX_URL$",
-]
-include_only = [".*"]
-set = { LANG = "C.UTF-8", LC_CTYPE = "C.UTF-8" }
+set = { LANG = "C.UTF-8", LC_CTYPE = "C.UTF-8", NODE = "/usr/local/lib/node-26/bin/node",CODEX_HOME = "/data/codex/usr/home",CODEX_AGENTS = "/data/codex/usr/agents",CODEX_SKILLS = "/data/codex/usr/skills",CODEX_HOOK_SCHEMA_DIR = "/data/codex/usr/home/.hooks/schemas"}
 
 # full access filesystem
+
+[shell_environment_policy.filters]
+".*" = "include"
+".*TOKEN.*" = "exclude"
+".*KEY.*" = "exclude"
+".*SECRET.*" = "exclude"
+".*PASSWORD.*" = "exclude"
+".*PASS.*" = "exclude"
+"^AWS_.*" = "exclude"
+"^AZURE_.*" = "exclude"
+"^GCP_.*" = "exclude"
+"^OPENAI_.*" = "exclude"
+"^ANTHROPIC_.*" = "exclude"
+"^GITHUB_.*" = "exclude"
+"^GITLAB_.*" = "exclude"
+"^SSH_.*" = "exclude"
+"^KUBECONFIG$" = "exclude"
+"^DOCKER_.*" = "exclude"
+"^NPM_TOKEN$" = "exclude"
+"^NODE_AUTH_TOKEN$" = "exclude"
+"^PIP_INDEX_URL$" = "exclude"
+"^PIP_EXTRA_INDEX_URL$" = "exclude"
 [permissions.full]
 description = "Full local filesystem access with network proxy policy available but disabled by default."
 
@@ -1477,96 +1434,91 @@ description = "Full local filesystem access with network proxy policy available 
 [permissions.full.network]
 enabled = false
 mode = "full"
-admin_url = "http://127.0.0.1:2019"
 proxy_url = "http://127.0.0.1:8080"
 socks_url = "socks5://127.0.0.1:1080"
 enable_socks5 = true
 enable_socks5_udp = true
 allow_upstream_proxy = true
-dangerously_allow_non_loopback_admin = false
 dangerously_allow_non_loopback_proxy = false
 dangerously_allow_all_unix_sockets = false
 allow_local_binding = true
-allow_unix_sockets = [
-  "/data/codex/mcp/sockets/openai-developer-docs.sock",
-  "/data/codex/mcp/sockets/context7.sock",
-]
-allowed_domains = [
-  "api.openai.com",
-  "chatgpt.com",
-  "developers.openai.com",
-  "platform.openai.com",
-  "github.com",
-  "api.github.com",
-  "docs.github.com",
-  "raw.githubusercontent.com",
-  "gitlab.com",
-  "docs.gitlab.com",
-  "context7.com",
-  "mcp.context7.com",
-  "modelcontextprotocol.io",
-  "docs.python.org",
-  "packaging.python.org",
-  "pypi.org",
-  "files.pythonhosted.org",
-  "docs.ansible.com",
-  "www.gnu.org",
-  "developer.mozilla.org",
-  "developer.chrome.com",
-  "nodejs.org",
-  "docs.npmjs.com",
-  "registry.npmjs.org",
-  "go.dev",
-  "pkg.go.dev",
-  "doc.rust-lang.org",
-  "docs.rs",
-  "crates.io",
-  "kubernetes.io",
-  "helm.sh",
-  "docs.docker.com",
-  "podman.io",
-  "playwright.dev",
-  "www.postgresql.org",
-  "redis.io",
-  "mcp.linear.app",
-  "linear.app",
-  "mcp.figma.com",
-  "figma.com",
-  "mcp.render.com",
-  "render.com",
-  "mcp.vercel.com",
-  "vercel.com",
-  "learn.microsoft.com",
-  "mcp.jina.ai",
-  "jina.ai",
-  "mcp.atlassian.com",
-  "atlassian.com",
-  "mcp.stripe.com",
-  "stripe.com",
-  "mcp.cloudflare.com",
-  "docs.mcp.cloudflare.com",
-  "bindings.mcp.cloudflare.com",
-  "builds.mcp.cloudflare.com",
-  "observability.mcp.cloudflare.com",
-  "developers.cloudflare.com",
-  "cloudflare.com",
-  "huggingface.co",
-]
-denied_domains = [
-  "metadata.google.internal",
-  "metadata.azure.internal",
-  "metadata.oraclecloud.com",
-  "metadata.packet.net",
-  "instance-data.ec2.internal",
-  "kubernetes.default.svc",
-  "169.254.169.254",
-  "169.254.169.253",
-  "169.254.170.2",
-  "169.254.170.23",
-  "100.100.100.200",
-]
 
 # workspace filesystem
+
+[permissions.full.network.domains]
+"api.openai.com" = "allow"
+"chatgpt.com" = "allow"
+"developers.openai.com" = "allow"
+"platform.openai.com" = "allow"
+"github.com" = "allow"
+"api.github.com" = "allow"
+"docs.github.com" = "allow"
+"raw.githubusercontent.com" = "allow"
+"gitlab.com" = "allow"
+"docs.gitlab.com" = "allow"
+"context7.com" = "allow"
+"mcp.context7.com" = "allow"
+"modelcontextprotocol.io" = "allow"
+"docs.python.org" = "allow"
+"packaging.python.org" = "allow"
+"pypi.org" = "allow"
+"files.pythonhosted.org" = "allow"
+"docs.ansible.com" = "allow"
+"www.gnu.org" = "allow"
+"developer.mozilla.org" = "allow"
+"developer.chrome.com" = "allow"
+"nodejs.org" = "allow"
+"docs.npmjs.com" = "allow"
+"registry.npmjs.org" = "allow"
+"go.dev" = "allow"
+"pkg.go.dev" = "allow"
+"doc.rust-lang.org" = "allow"
+"docs.rs" = "allow"
+"crates.io" = "allow"
+"kubernetes.io" = "allow"
+"helm.sh" = "allow"
+"docs.docker.com" = "allow"
+"podman.io" = "allow"
+"playwright.dev" = "allow"
+"www.postgresql.org" = "allow"
+"redis.io" = "allow"
+"mcp.linear.app" = "allow"
+"linear.app" = "allow"
+"mcp.figma.com" = "allow"
+"figma.com" = "allow"
+"mcp.render.com" = "allow"
+"render.com" = "allow"
+"mcp.vercel.com" = "allow"
+"vercel.com" = "allow"
+"learn.microsoft.com" = "allow"
+"mcp.jina.ai" = "allow"
+"jina.ai" = "allow"
+"mcp.atlassian.com" = "allow"
+"atlassian.com" = "allow"
+"mcp.stripe.com" = "allow"
+"stripe.com" = "allow"
+"mcp.cloudflare.com" = "allow"
+"docs.mcp.cloudflare.com" = "allow"
+"bindings.mcp.cloudflare.com" = "allow"
+"builds.mcp.cloudflare.com" = "allow"
+"observability.mcp.cloudflare.com" = "allow"
+"developers.cloudflare.com" = "allow"
+"cloudflare.com" = "allow"
+"huggingface.co" = "allow"
+"metadata.google.internal" = "deny"
+"metadata.azure.internal" = "deny"
+"metadata.oraclecloud.com" = "deny"
+"metadata.packet.net" = "deny"
+"instance-data.ec2.internal" = "deny"
+"kubernetes.default.svc" = "deny"
+"169.254.169.254" = "deny"
+"169.254.169.253" = "deny"
+"169.254.170.2" = "deny"
+"169.254.170.23" = "deny"
+"100.100.100.200" = "deny"
+
+[permissions.full.network.unix_sockets]
+"/data/accounts/devops/run/codex-mcp.sock" = "allow"
 [permissions.workspace]
 description = "Workspace-scoped write access with controlled runtime and memory paths."
 
@@ -1589,96 +1541,91 @@ description = "Workspace-scoped write access with controlled runtime and memory 
 [permissions.workspace.network]
 enabled = false
 mode = "limited"
-admin_url = "http://127.0.0.1:2019"
 proxy_url = "http://127.0.0.1:8080"
 socks_url = "socks5://127.0.0.1:1080"
 enable_socks5 = true 
 enable_socks5_udp = false
 allow_upstream_proxy = true
-dangerously_allow_non_loopback_admin = false
 dangerously_allow_non_loopback_proxy = false
 dangerously_allow_all_unix_sockets = false
 allow_local_binding = true
-allow_unix_sockets = [
-  "/data/codex/mcp/sockets/openai-developer-docs.sock",
-  "/data/codex/mcp/sockets/context7.sock",
-]
-allowed_domains = [
-  "api.openai.com",
-  "chatgpt.com",
-  "developers.openai.com",
-  "platform.openai.com",
-  "github.com",
-  "api.github.com",
-  "docs.github.com",
-  "raw.githubusercontent.com",
-  "gitlab.com",
-  "docs.gitlab.com",
-  "context7.com",
-  "mcp.context7.com",
-  "modelcontextprotocol.io",
-  "docs.python.org",
-  "packaging.python.org",
-  "pypi.org",
-  "files.pythonhosted.org",
-  "docs.ansible.com",
-  "www.gnu.org",
-  "developer.mozilla.org",
-  "developer.chrome.com",
-  "nodejs.org",
-  "docs.npmjs.com",
-  "registry.npmjs.org",
-  "go.dev",
-  "pkg.go.dev",
-  "doc.rust-lang.org",
-  "docs.rs",
-  "crates.io",
-  "kubernetes.io",
-  "helm.sh",
-  "docs.docker.com",
-  "podman.io",
-  "playwright.dev",
-  "www.postgresql.org",
-  "redis.io",
-  "mcp.linear.app",
-  "linear.app",
-  "mcp.figma.com",
-  "figma.com",
-  "mcp.render.com",
-  "render.com",
-  "mcp.vercel.com",
-  "vercel.com",
-  "learn.microsoft.com",
-  "mcp.jina.ai",
-  "jina.ai",
-  "mcp.atlassian.com",
-  "atlassian.com",
-  "mcp.stripe.com",
-  "stripe.com",
-  "mcp.cloudflare.com",
-  "docs.mcp.cloudflare.com",
-  "bindings.mcp.cloudflare.com",
-  "builds.mcp.cloudflare.com",
-  "observability.mcp.cloudflare.com",
-  "developers.cloudflare.com",
-  "cloudflare.com",
-  "huggingface.co",
-]
-denied_domains = [
-  "metadata.google.internal",
-  "metadata.azure.internal",
-  "metadata.oraclecloud.com",
-  "metadata.packet.net",
-  "instance-data.ec2.internal",
-  "kubernetes.default.svc",
-  "169.254.169.254",
-  "169.254.169.253",
-  "169.254.170.2",
-  "169.254.170.23",
-  "100.100.100.200",
-]
 
 # readonly filesystem
+
+[permissions.workspace.network.domains]
+"api.openai.com" = "allow"
+"chatgpt.com" = "allow"
+"developers.openai.com" = "allow"
+"platform.openai.com" = "allow"
+"github.com" = "allow"
+"api.github.com" = "allow"
+"docs.github.com" = "allow"
+"raw.githubusercontent.com" = "allow"
+"gitlab.com" = "allow"
+"docs.gitlab.com" = "allow"
+"context7.com" = "allow"
+"mcp.context7.com" = "allow"
+"modelcontextprotocol.io" = "allow"
+"docs.python.org" = "allow"
+"packaging.python.org" = "allow"
+"pypi.org" = "allow"
+"files.pythonhosted.org" = "allow"
+"docs.ansible.com" = "allow"
+"www.gnu.org" = "allow"
+"developer.mozilla.org" = "allow"
+"developer.chrome.com" = "allow"
+"nodejs.org" = "allow"
+"docs.npmjs.com" = "allow"
+"registry.npmjs.org" = "allow"
+"go.dev" = "allow"
+"pkg.go.dev" = "allow"
+"doc.rust-lang.org" = "allow"
+"docs.rs" = "allow"
+"crates.io" = "allow"
+"kubernetes.io" = "allow"
+"helm.sh" = "allow"
+"docs.docker.com" = "allow"
+"podman.io" = "allow"
+"playwright.dev" = "allow"
+"www.postgresql.org" = "allow"
+"redis.io" = "allow"
+"mcp.linear.app" = "allow"
+"linear.app" = "allow"
+"mcp.figma.com" = "allow"
+"figma.com" = "allow"
+"mcp.render.com" = "allow"
+"render.com" = "allow"
+"mcp.vercel.com" = "allow"
+"vercel.com" = "allow"
+"learn.microsoft.com" = "allow"
+"mcp.jina.ai" = "allow"
+"jina.ai" = "allow"
+"mcp.atlassian.com" = "allow"
+"atlassian.com" = "allow"
+"mcp.stripe.com" = "allow"
+"stripe.com" = "allow"
+"mcp.cloudflare.com" = "allow"
+"docs.mcp.cloudflare.com" = "allow"
+"bindings.mcp.cloudflare.com" = "allow"
+"builds.mcp.cloudflare.com" = "allow"
+"observability.mcp.cloudflare.com" = "allow"
+"developers.cloudflare.com" = "allow"
+"cloudflare.com" = "allow"
+"huggingface.co" = "allow"
+"metadata.google.internal" = "deny"
+"metadata.azure.internal" = "deny"
+"metadata.oraclecloud.com" = "deny"
+"metadata.packet.net" = "deny"
+"instance-data.ec2.internal" = "deny"
+"kubernetes.default.svc" = "deny"
+"169.254.169.254" = "deny"
+"169.254.169.253" = "deny"
+"169.254.170.2" = "deny"
+"169.254.170.23" = "deny"
+"100.100.100.200" = "deny"
+
+[permissions.workspace.network.unix_sockets]
+"/data/accounts/devops/run/codex-mcp.sock" = "allow"
 [permissions.readonly]
 description = "Read-only project and runtime access with network disabled by default."
 
@@ -1701,88 +1648,89 @@ description = "Read-only project and runtime access with network disabled by def
 [permissions.readonly.network]
 enabled = false
 mode = "limited"
-admin_url = "http://127.0.0.1:2019"
 proxy_url = "http://127.0.0.1:8080"
 socks_url = "socks5://127.0.0.1:1080"
 enable_socks5 = false 
 enable_socks5_udp = false
 allow_upstream_proxy = false
-dangerously_allow_non_loopback_admin = false
 dangerously_allow_non_loopback_proxy = false
 dangerously_allow_all_unix_sockets = false
 allow_local_binding = false
-allow_unix_sockets = []
-allowed_domains = [
-  "api.openai.com",
-  "chatgpt.com",
-  "developers.openai.com",
-  "platform.openai.com",
-  "github.com",
-  "api.github.com",
-  "docs.github.com",
-  "raw.githubusercontent.com",
-  "gitlab.com",
-  "docs.gitlab.com",
-  "context7.com",
-  "mcp.context7.com",
-  "modelcontextprotocol.io",
-  "docs.python.org",
-  "packaging.python.org",
-  "pypi.org",
-  "files.pythonhosted.org",
-  "docs.ansible.com",
-  "www.gnu.org",
-  "developer.mozilla.org",
-  "developer.chrome.com",
-  "nodejs.org",
-  "docs.npmjs.com",
-  "registry.npmjs.org",
-  "go.dev",
-  "pkg.go.dev",
-  "doc.rust-lang.org",
-  "docs.rs",
-  "crates.io",
-  "kubernetes.io",
-  "helm.sh",
-  "docs.docker.com",
-  "podman.io",
-  "playwright.dev",
-  "www.postgresql.org",
-  "redis.io",
-  "mcp.linear.app",
-  "linear.app",
-  "mcp.figma.com",
-  "figma.com",
-  "mcp.render.com",
-  "render.com",
-  "mcp.vercel.com",
-  "vercel.com",
-  "learn.microsoft.com",
-  "mcp.jina.ai",
-  "jina.ai",
-  "mcp.atlassian.com",
-  "atlassian.com",
-  "mcp.stripe.com",
-  "stripe.com",
-  "mcp.cloudflare.com",
-  "docs.mcp.cloudflare.com",
-  "bindings.mcp.cloudflare.com",
-  "builds.mcp.cloudflare.com",
-  "observability.mcp.cloudflare.com",
-  "developers.cloudflare.com",
-  "cloudflare.com",
-  "huggingface.co",
-]
-denied_domains = [
-  "metadata.google.internal",
-  "metadata.azure.internal",
-  "metadata.oraclecloud.com",
-  "metadata.packet.net",
-  "instance-data.ec2.internal",
-  "kubernetes.default.svc",
-  "169.254.169.254",
-  "169.254.169.253",
-  "169.254.170.2",
-  "169.254.170.23",
-  "100.100.100.200",
-]
+
+[permissions.readonly.network.domains]
+"api.openai.com" = "allow"
+"chatgpt.com" = "allow"
+"developers.openai.com" = "allow"
+"platform.openai.com" = "allow"
+"github.com" = "allow"
+"api.github.com" = "allow"
+"docs.github.com" = "allow"
+"raw.githubusercontent.com" = "allow"
+"gitlab.com" = "allow"
+"docs.gitlab.com" = "allow"
+"context7.com" = "allow"
+"mcp.context7.com" = "allow"
+"modelcontextprotocol.io" = "allow"
+"docs.python.org" = "allow"
+"packaging.python.org" = "allow"
+"pypi.org" = "allow"
+"files.pythonhosted.org" = "allow"
+"docs.ansible.com" = "allow"
+"www.gnu.org" = "allow"
+"developer.mozilla.org" = "allow"
+"developer.chrome.com" = "allow"
+"nodejs.org" = "allow"
+"docs.npmjs.com" = "allow"
+"registry.npmjs.org" = "allow"
+"go.dev" = "allow"
+"pkg.go.dev" = "allow"
+"doc.rust-lang.org" = "allow"
+"docs.rs" = "allow"
+"crates.io" = "allow"
+"kubernetes.io" = "allow"
+"helm.sh" = "allow"
+"docs.docker.com" = "allow"
+"podman.io" = "allow"
+"playwright.dev" = "allow"
+"www.postgresql.org" = "allow"
+"redis.io" = "allow"
+"mcp.linear.app" = "allow"
+"linear.app" = "allow"
+"mcp.figma.com" = "allow"
+"figma.com" = "allow"
+"mcp.render.com" = "allow"
+"render.com" = "allow"
+"mcp.vercel.com" = "allow"
+"vercel.com" = "allow"
+"learn.microsoft.com" = "allow"
+"mcp.jina.ai" = "allow"
+"jina.ai" = "allow"
+"mcp.atlassian.com" = "allow"
+"atlassian.com" = "allow"
+"mcp.stripe.com" = "allow"
+"stripe.com" = "allow"
+"mcp.cloudflare.com" = "allow"
+"docs.mcp.cloudflare.com" = "allow"
+"bindings.mcp.cloudflare.com" = "allow"
+"builds.mcp.cloudflare.com" = "allow"
+"observability.mcp.cloudflare.com" = "allow"
+"developers.cloudflare.com" = "allow"
+"cloudflare.com" = "allow"
+"huggingface.co" = "allow"
+"metadata.google.internal" = "deny"
+"metadata.azure.internal" = "deny"
+"metadata.oraclecloud.com" = "deny"
+"metadata.packet.net" = "deny"
+"instance-data.ec2.internal" = "deny"
+"kubernetes.default.svc" = "deny"
+"169.254.169.254" = "deny"
+"169.254.169.253" = "deny"
+"169.254.170.2" = "deny"
+"169.254.170.23" = "deny"
+"100.100.100.200" = "deny"
+
+[permissions.readonly.network.unix_sockets]
+"/data/accounts/devops/run/codex-mcp.sock" = "allow"
+
+[desktop]
+# Desktop-owned settings. Existing installation values are merged by install_assets.py.

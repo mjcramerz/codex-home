@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Audit config fragments, merge order, placeholder materialization, and policy drift with concrete risk calls and validation follow-up. Use when the user asks to review config layout, runtime overlays, or managed configuration contracts.",
+  "references": [
+    "https://json-schema.org/",
+    "https://toml.io/en/"
+  ]
+}

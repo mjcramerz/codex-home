@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Trigger when the user provides Figma URLs or node IDs, or asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection.",
+  "references": [
+    "https://mcp.figma.com/mcp",
+    "https://figma.com/design/kL9xQn2VwM8pYrTb4ZcHjF/DesignSystem?node-id=42-15",
+    "https://figma.com/design/pR8mNv5KqXzGwY2JtCfL4D/Dashboard?node-id=10-5",
+    "https://developers.figma.com/docs/figma-mcp-server/",
+    "https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/",
+    "https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma"
+  ]
+}

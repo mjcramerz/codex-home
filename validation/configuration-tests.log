@@ -1,0 +1,31 @@
+test_active_custom_features_and_original_values (test_configuration.ConfigurationTests.test_active_custom_features_and_original_values) ... ok
+test_all_config_layers_and_assets (test_configuration.ConfigurationTests.test_all_config_layers_and_assets) ... ok
+test_all_original_mcp_registrations_retained (test_configuration.ConfigurationTests.test_all_original_mcp_registrations_retained) ... ok
+test_atomic_write_refuses_symlink (test_configuration.ConfigurationTests.test_atomic_write_refuses_symlink) ... ok
+test_bad_existing_desktop_fails_closed (test_configuration.ConfigurationTests.test_bad_existing_desktop_fails_closed) ... ok
+test_bad_schema_pin_cannot_mutate_derived_files (test_configuration.ConfigurationTests.test_bad_schema_pin_cannot_mutate_derived_files) ... ok
+test_custom_instruction_and_catalog_bindings_preserved (test_configuration.ConfigurationTests.test_custom_instruction_and_catalog_bindings_preserved) ... ok
+test_desktop_settings_retained_recursively (test_configuration.ConfigurationTests.test_desktop_settings_retained_recursively) ... ok
+test_developer_instruction_text_not_replaced (test_configuration.ConfigurationTests.test_developer_instruction_text_not_replaced) ... ok
+test_exact_supplied_schema_pin (test_configuration.ConfigurationTests.test_exact_supplied_schema_pin) ... ok
+test_full_system_mirror_not_reduced_subset (test_configuration.ConfigurationTests.test_full_system_mirror_not_reduced_subset) ... ok
+test_generator_idempotent_and_does_not_rewrite_authoritative_files (test_configuration.ConfigurationTests.test_generator_idempotent_and_does_not_rewrite_authoritative_files) ... ok
+test_invalid_open_permission_map_internals_rejected (test_configuration.ConfigurationTests.test_invalid_open_permission_map_internals_rejected) ... ok
+test_model_selection_and_full_permissions_preserved (test_configuration.ConfigurationTests.test_model_selection_and_full_permissions_preserved) ... ok
+test_no_existing_desktop_does_not_reformat (test_configuration.ConfigurationTests.test_no_existing_desktop_does_not_reformat) ... ok
+test_no_original_hook_handler_removed (test_configuration.ConfigurationTests.test_no_original_hook_handler_removed) ... ok
+test_no_original_root_setting_lost (test_configuration.ConfigurationTests.test_no_original_root_setting_lost) ... ok
+test_node_repl_remains_distinct_from_removed_feature (test_configuration.ConfigurationTests.test_node_repl_remains_distinct_from_removed_feature) ... ok
+test_not_deprecated_in_requested_base_version (test_configuration.ConfigurationTests.test_not_deprecated_in_requested_base_version) ... ok
+test_permission_selectors_cannot_compete (test_configuration.ConfigurationTests.test_permission_selectors_cannot_compete) ... ok
+test_schema_accepted_deprecated_flag_rejected (test_configuration.ConfigurationTests.test_schema_accepted_deprecated_flag_rejected) ... ok
+test_schema_accepted_removed_flag_still_rejected (test_configuration.ConfigurationTests.test_schema_accepted_removed_flag_still_rejected) ... ok
+test_sequential_thinking_identity_and_broker_name (test_configuration.ConfigurationTests.test_sequential_thinking_identity_and_broker_name) ... ok
+test_shell_filter_shapes_cannot_compete (test_configuration.ConfigurationTests.test_shell_filter_shapes_cannot_compete) ... ok
+test_unknown_feature_rejected (test_configuration.ConfigurationTests.test_unknown_feature_rejected) ... ok
+test_unknown_root_rejected (test_configuration.ConfigurationTests.test_unknown_root_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 1.878s
+
+OK

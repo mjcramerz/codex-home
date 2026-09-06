@@ -1,3 +1,4 @@
+#:schema ../home/config.schema.json
 model = "gpt-5.6-sol"
 review_model = "gpt-5.4"
 personality = "pragmatic"
@@ -28,51 +29,34 @@ enabled = false
 [features]
 guardian_approval = false
 tool_call_mcp_elicitation = true
-elevated_windows_sandbox = false
-experimental_windows_sandbox = false
 default_mode_request_user_input = true
 exec_permission_approvals = true
 request_permissions_tool = true
-use_linux_sandbox_bwrap = true
-request_rule = false
 auth_elicitation = false
-image_detail_original = false
 image_generation = false
 fast_mode = false
 code_mode = true
 memories = false
 personality = true
-child_agents_md = true
 multi_agent = true
-enable_fanout = false
-remote_models = true
 hooks = true
 plugins = true
-undo = false
-sqlite = false
-apply_patch_freeform = true
 apply_patch_streaming_events = false
 unified_exec = true
 apps = true
 enable_mcp_apps = true
-skill_env_var_dependency_prompt = false
 skill_mcp_dependency_install = true
 shell_tool = true
 shell_snapshot = true
 shell_zsh_fork = false
 unified_exec_zsh_fork = false
-codex_git_commit = false
-js_repl = false
-js_repl_tools_only = false
 realtime_conversation = false
 runtime_metrics = false
 enable_request_compression = true
-responses_websockets_v2 = true
 prevent_idle_sleep = false
 
 [features.multi_agent_v2]
 enabled = true
-usage_hint_enabled = true
 max_concurrent_threads_per_session = 4
 min_wait_timeout_ms = 15000
 default_wait_timeout_ms = 180000

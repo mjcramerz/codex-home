@@ -1,0 +1,34 @@
+{
+  "name": "vercel-ui",
+  "version": "1.0.0",
+  "description": "Vercel-authored React and component-architecture guidance workflows.",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Vercel UI",
+    "shortDescription": "Vercel React and UI patterns",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use the Vercel UI plugin for Vercel-authored React and UI architecture guidance."
+    ],
+    "longDescription": "Use this plugin for Vercel-authored React, component composition, and React Native guidance.",
+    "developerName": "Vercel",
+    "brandColor": "#111827",
+    "websiteURL": "https://vercel.com/blog",
+    "screenshots": []
+  },
+  "author": {
+    "name": "Vercel"
+  },
+  "homepage": "https://vercel.com/blog",
+  "keywords": [
+    "vercel",
+    "react",
+    "ui",
+    "composition",
+    "performance"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Create or update pack documentation and workflows under $CODEX_HOME/docs/. Use when adding new guides, updating doc indexes, or aligning docs with prompts, templates, and skills.",
+  "references": [
+    "https://yaml.org/spec/1.2.2/",
+    "https://www.markdownguide.org/basic-syntax/"
+  ]
+}

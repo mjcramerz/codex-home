@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "This skill should be used when users want to train or fine-tune language models using TRL (Transformer Reinforcement Learning) on Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, and model persistence. Should be invoked for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup.",
+  "references": [
+    "https://huggingface.co/docs/trl/sft_trainer",
+    "https://huggingface.co/docs/trl/dpo_trainer",
+    "https://hf.co/pro",
+    "https://hf.co/enterprise",
+    "https://huggingface.co/jobs/username/abc123xyz",
+    "https://huggingface.co/user/repo/resolve/main/train.py",
+    "https://raw.githubusercontent.com/user/repo/main/train.py",
+    "https://gist.githubusercontent.com/user/id/raw/train.py",
+    "https://huggingface.co/USERNAME/my-training-scripts/resolve/main/train.py",
+    "https://github.com/huggingface/trl/blob/main/trl/scripts/sft.py",
+    "https://github.com/huggingface/trl/tree/main/examples/scripts",
+    "https://example.com/train.py",
+    "https://github.com/huggingface/trl-jobs",
+    "https://huggingface.co/datasets/mcp-tools/skills/raw/main/dataset_inspector.py",
+    "https://huggingface.co/docs/trl",
+    "https://huggingface.co/docs/trl/en/jobs_training",
+    "https://huggingface.co/docs/huggingface_hub/guides/jobs",
+    "https://docs.astral.sh/uv/guides/scripts/",
+    "https://huggingface.co/uv-scripts"
+  ]
+}

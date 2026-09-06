@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Modify GRUB bootloader configuration and kernel parameters with rollback-aware safety checks. Use when the user asks to change boot entries, kernel args, or GRUB defaults.",
+  "references": [
+    "https://wiki.archlinux.org/title/GRUB",
+    "https://www.gnu.org/software/grub/manual/grub/grub.html",
+    "https://docs.kernel.org/admin-guide/kernel-parameters.html",
+    "https://www.gnu.org/software/grub/"
+  ]
+}

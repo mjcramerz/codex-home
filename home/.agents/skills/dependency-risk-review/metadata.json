@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Review dependency surfaces for upgrade risk, auth coupling, supply-chain exposure, and missing pinning or verification steps. Use when the user asks for dependency audits, risk summaries, or release hardening reviews.",
+  "references": [
+    "https://slsa.dev/",
+    "https://owasp.org/www-project-dependency-check/",
+    "https://csrc.nist.gov/pubs/sp/800/218/final"
+  ]
+}

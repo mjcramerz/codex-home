@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Create or update hardened snippets under $CODEX_HOME/snippets/. Use when adding reusable patterns, updating snippet catalogs, or wiring snippets into docs and indexes.",
+  "references": [
+    "https://yaml.org/spec/1.2.2/",
+    "https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/"
+  ]
+}

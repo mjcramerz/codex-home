@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 11, 2026",
+  "abstract": "Write portable POSIX sh scripts that run correctly under /bin/sh, dash, and BusyBox ash.",
+  "references": [
+    "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html",
+    "https://manpages.debian.org/stable/dash/dash.1.en.html"
+  ]
+}

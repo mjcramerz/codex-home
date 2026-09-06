@@ -2,7 +2,7 @@
 """Generate and verify exhaustive TOML examples from ``config.schema.json``.
 
 This generator is intentionally self-contained under ``generate/``. It reads
-only ``generate/schemas/`` and may write only ``generate/examples/``. Each
+``generate/schemas/`` and ``generate/feature-policy.json`` and writes only examples. Each
 canonical setting receives one schema-valid representative value, while
 deprecated aliases and finite alternatives that cannot coexist in one TOML
 document remain comment-only. A machine-readable coverage ledger at the end of
@@ -39,7 +39,7 @@ FINITE_OPTION_MARKER = "# schema-finite-option: "
 EXAMPLE_MARKER = "# schema-example: "
 _OMIT = object()
 
-DEPRECATED_ROOT_ALIASES = frozenset({"experimental_use_unified_exec_tool"})
+DEPRECATED_ROOT_ALIASES = frozenset({"experimental_use_unified_exec_tool", "ghost_snapshot"})
 DEPRECATED_FEATURE_ALIASES = {
     "codex_hooks": "hooks",
     "collab": "multi_agent",
@@ -50,6 +50,11 @@ DEPRECATED_FEATURE_ALIASES = {
     "request_permissions": "exec_permission_approvals",
 }
 CANONICAL_FEATURE_KEYS = frozenset(DEPRECATED_FEATURE_ALIASES.values())
+# The exact custom schema retains compatibility keys; examples must not activate
+# removed/no-op flags merely because JSON Schema still accepts them.
+FEATURE_POLICY = json.loads((GENERATION_ROOT / 'feature-policy.json').read_text())
+OBSOLETE_FEATURE_KEYS = frozenset(FEATURE_POLICY['removed']) | frozenset(FEATURE_POLICY['deprecated']) | frozenset(FEATURE_POLICY['aliases'])
+DEPRECATED_FEATURE_ALIASES.update(FEATURE_POLICY['aliases'])
 
 SUPPORTED_SCHEMA_KEYWORDS = frozenset(
     {
@@ -478,9 +483,13 @@ def sample_object(
 
     for name in sorted(properties):
         if name in DEPRECATED_ROOT_ALIASES or (
-            is_feature_object and name in DEPRECATED_FEATURE_ALIASES
+            is_feature_object and name in OBSOLETE_FEATURE_KEYS
         ):
             continue
+        if {'filters', 'inherit', 'ignore_default_excludes'} <= properties.keys() and name in {'exclude', 'include_only'}:
+            continue  # Prefer canonical keyed shell filters in generated examples.
+        if name == 'usage_hint_enabled':
+            continue  # The supplied schema calls this an ignored compatibility field.
         prospective = set(result) | {name}
         if any(group <= prospective for group in forbidden):
             continue
@@ -1050,7 +1059,8 @@ def deprecated_alias_errors(value: Any, path: str = "$") -> list[str]:
         if name in DEPRECATED_ROOT_ALIASES:
             errors.append(f"{child_path}: deprecated config alias is active")
         if name == "features" and isinstance(child, dict):
-            for alias, replacement in DEPRECATED_FEATURE_ALIASES.items():
+            for alias in OBSOLETE_FEATURE_KEYS:
+                replacement = DEPRECATED_FEATURE_ALIASES.get(alias, "removed/deprecated; omit")
                 if alias in child:
                     errors.append(
                         f"{child_path}.{alias}: use canonical feature {replacement!r}"

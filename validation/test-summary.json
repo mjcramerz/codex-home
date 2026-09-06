@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-06",
+  "target": "user custom Codex based on 0.147.0",
+  "python": "3.13.5",
+  "python_tests_passed": 106,
+  "configuration_regression_tests_passed": 26,
+  "mcp_tests_passed": 80,
+  "original_perl_plugin_hook_assertions_passed": 6,
+  "schema_configuration_layers_passed": 26,
+  "schema_sha256": "30c625df04c94d5e71129945a930ef092827f03c85e14848399346fa328577af",
+  "active_main_root_keys": 75,
+  "active_main_feature_keys": 81,
+  "original_instruction_files_unchanged": 491,
+  "instruction_catalog_agent_references_checked": 115,
+  "all_original_source_files_present": 6802,
+  "original_files_byte_identical": 6772,
+  "mcp_registered": 30,
+  "mcp_podman_modes": 13,
+  "original_hook_events": 11,
+  "original_hook_handlers": 97,
+  "local_plugin_bundles_checked": 51,
+  "local_plugin_skills_checked": 159,
+  "systemd_syntax_verification": {
+    "passed": true,
+    "executables": "stand-ins only; not activation"
+  },
+  "commands_passed": [
+    "make verify",
+    "prove -v home/.hooks/t/plugin_hint.t",
+    "bash -n repo.sh",
+    "sh -n mcp/integration/71-devops-de.sh.reference"
+  ],
+  "not_run": [
+    "full Perl hook event test suite: Moo, MooX::HandlesVia, MooX::StrictConstructor and Types::Standard dependencies unavailable",
+    "custom engine configuration load/effective settings",
+    "ChatGPT desktop resource and bundled-marketplace readiness",
+    "Podman image pull/build/scan",
+    "systemd activation and real LoadCredential delivery",
+    "AppArmor/ACL target application",
+    "SSH key generation and handshake",
+    "all-server live MCP smoke test",
+    "host/container tool ABI probe"
+  ],
+  "real_io_in_mcp_unit_tests": [
+    "local subprocess pipes and Unix socket relay",
+    "backpressure",
+    "half-close",
+    "cancellation",
+    "startup timeout"
+  ],
+  "mocked_boundaries": [
+    "Podman API",
+    "target identity/service operations",
+    "upstream MCP server binaries"
+  ],
+  "requirements_validation": "separate explicit nonrestrictive project policy; not claimed covered by config.schema.json",
+  "custom_rust_source_available": false
+}

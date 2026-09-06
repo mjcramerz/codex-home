@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Coordinate Adobe Photoshop workflows for retouching, compositing, and exporting image assets while keeping handoffs explicit.",
+  "references": [
+    "https://www.adobe.com/products/photoshop/online.html",
+    "https://www.adobe.com/privacy/policy.html",
+    "https://www.adobe.com/legal/terms.html"
+  ]
+}

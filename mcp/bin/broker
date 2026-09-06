@@ -1,0 +1,10 @@
+#!/usr/bin/python3 -I
+from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'lib'))
+try:
+    from broker import main
+    raise SystemExit(main())
+except (ValueError,OSError,RuntimeError) as error:
+    print('codex-mcp broker: '+str(error),file=sys.stderr)
+    raise SystemExit(1)

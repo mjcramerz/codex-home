@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 11, 2026",
+  "abstract": "Inspect and operate Redis safely with the redis-cli shell.",
+  "references": [
+    "https://redis.io/docs/latest/develop/tools/cli/",
+    "https://redis.io/docs/latest/commands/scan/",
+    "https://redis.io/docs/latest/commands/ttl/"
+  ]
+}

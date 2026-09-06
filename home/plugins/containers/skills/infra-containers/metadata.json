@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Design and operate container workflows across Docker/Podman/Compose/Buildx/Buildah with explicit network and runtime safety controls. Use when the user asks for container builds, compose stacks, rootless runtime setup, or containerized dev environments.",
+  "references": [
+    "https://docs.docker.com/",
+    "https://compose-spec.io/",
+    "https://docs.podman.io/",
+    "https://docs.docker.com/engine/security/rootless/",
+    "https://docs.podman.io/en/latest/",
+    "https://docs.docker.com/build/",
+    "https://docs.docker.com/reference/compose-file/"
+  ]
+}

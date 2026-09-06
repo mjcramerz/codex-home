@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Run scoped C2 simulation defense operations for Cobalt Strike-like traffic, redirector behavior, reverse-shell telemetry, and SharpKatz-style credential access detection. Use for detection engineering, controlled purple-team replay, and containment validation in documented scope.",
+  "references": [
+    "https://attack.mitre.org/",
+    "https://www.cisa.gov/",
+    "https://docs.splunk.com/",
+    "https://www.elastic.co/guide/"
+  ]
+}

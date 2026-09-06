@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Validate and tune Thorium Browser builds, runtime settings, and desktop integration safety checks. Use when the user asks about Thorium-specific setup or build verification.",
+  "references": [
+    "https://specifications.freedesktop.org/desktop-entry-spec/latest/",
+    "https://wayland.freedesktop.org/",
+    "https://mozilla.github.io/policy-templates/",
+    "https://github.com/Alex313031/thorium/releases"
+  ]
+}

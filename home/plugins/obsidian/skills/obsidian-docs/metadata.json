@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Create, update, and structure Obsidian documentation vaults and notes. Use when organizing knowledge, standardizing frontmatter, building indexes, or applying templates inside an Obsidian vault.",
+  "references": [
+    "https://help.obsidian.md/",
+    "https://help.obsidian.md/syntax"
+  ]
+}

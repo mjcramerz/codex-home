@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Manage libvirt and KVM virtual machines directly with virsh commands and XML-based domain control. Use when the user asks for virsh/libvirt operations outside Proxmox- managed environments.",
+  "references": [
+    "https://www.libvirt.org/manpages/virsh.html",
+    "https://libvirt.org/formatdomain.html",
+    "https://libvirt.org/storage.html"
+  ]
+}

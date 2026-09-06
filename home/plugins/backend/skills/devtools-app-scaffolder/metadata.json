@@ -1,0 +1,14 @@
+{
+  "version": "1.1",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Scaffold new production-ready applications from templates (FastAPI, Axum, React, and supporting services) with config, logging, tests, and CI wired in. Use when the user asks to bootstrap a new app, starter repo, or full project skeleton.",
+  "references": [
+    "https://fastapi.tiangolo.com/",
+    "https://docs.rs/axum/latest/axum/",
+    "https://react.dev/",
+    "https://code.visualstudio.com/api",
+    "https://packaging.python.org/en/latest/tutorials/packaging-projects/",
+    "https://doc.rust-lang.org/cargo/"
+  ]
+}

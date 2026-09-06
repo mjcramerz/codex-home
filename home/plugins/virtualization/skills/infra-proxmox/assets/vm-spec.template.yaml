@@ -1,0 +1,21 @@
+vmid: 1000
+name: app-vm
+node: pve-node-1
+machine: q35
+bios: ovmf
+onboot: true
+protection: true
+agent_enabled: true
+cpu_cores: 4
+memory_mb: 8192
+disk:
+  datastore: local-lvm
+  size_gb: 64
+  discard: on
+network:
+  bridge: vmbr0
+  vlan_tag: 10
+  ip_mode: dhcp
+cloud_init:
+  user: devops
+  ssh_public_key: "ssh-ed25519 AAAA..."

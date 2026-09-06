@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 12, 2026",
+  "abstract": "Review Stripe billing operations, invoices, entitlements, disputes, and operational runbooks with clear customer-impact analysis.",
+  "references": [
+    "https://docs.stripe.com/billing",
+    "https://docs.stripe.com/webhooks"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Build and validate custom Linux kernel configurations with reproducible compile and boot validation steps. Use when the user asks for custom kernel config, compile, or test guidance.",
+  "references": [
+    "https://docs.kernel.org/admin-guide/README.html",
+    "https://docs.kernel.org/kbuild/index.html",
+    "https://docs.kernel.org/kbuild/kconfig-language.html"
+  ]
+}

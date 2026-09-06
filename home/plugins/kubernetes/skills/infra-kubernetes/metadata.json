@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 12, 2026",
+  "abstract": "Create and validate Kubernetes manifests, workload configs, and cluster operation patterns with secure defaults. Use when the user asks for Kubernetes YAML, deployment troubleshooting, or k8s hardening.",
+  "references": [
+    "https://kubernetes.io/docs/home/",
+    "https://kubernetes.io/docs/reference/kubectl/",
+    "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+    "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+  ]
+}

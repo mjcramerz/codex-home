@@ -1,0 +1,14 @@
+{
+  "codex-home.zip": {
+    "sha256": "0e7940d2a803c306ef7a137e20db068599d15333c3d011985a9759e14d8db504",
+    "bytes": 26610904
+  },
+  "debian-preseed-de(2).zip": {
+    "sha256": "db47317ee8b9e7b14c28a94b848c2da85ab26fd2f92c8f7e1e030074df143521",
+    "bytes": 23760782
+  },
+  "Dockerfile": {
+    "sha256": "6da302eee6789f251390574de9a291a955b6c961aadf311aafa3a59842ec64bc",
+    "bytes": 15263
+  }
+}

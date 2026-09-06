@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 15, 2026",
+  "abstract": "Create or update runtime prompt assets under $CODEX_HOME/.prompt/. Use when refining prompt contracts, adding operator-local prompt files, or improving prompt-maintenance assets.",
+  "references": [
+    "https://yaml.org/spec/1.2.2/",
+    "https://developers.openai.com/docs/guides/prompt-engineering"
+  ]
+}

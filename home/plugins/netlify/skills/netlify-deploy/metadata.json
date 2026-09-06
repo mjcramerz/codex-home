@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "March 9, 2026",
+  "abstract": "Deploy web projects to Netlify using the Netlify CLI (`npx netlify`). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and production deploys.",
+  "references": [
+    "https://app.netlify.com/user/applications#personal-access-tokens",
+    "https://github.com/username/repo",
+    "https://github.com/user/repo",
+    "https://docs.netlify.com/cli/get-started/",
+    "https://docs.netlify.com/configure-builds/file-based-configuration/"
+  ]
+}

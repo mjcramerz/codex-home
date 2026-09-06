@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "organization": "Codex Setup",
+  "date": "February 25, 2026",
+  "abstract": "Build and troubleshoot Next.js applications with app router boundaries, SSR/ISR behavior, and server/client separation. Use when the user asks for full-stack React framework behavior rather than generic React-only component work.",
+  "references": [
+    "https://nextjs.org/docs",
+    "https://nextjs.org/docs/app",
+    "https://github.com/vercel/next.js/releases/tag/v16.1.6",
+    "https://github.com/facebook/react/releases/tag/v19.2.4",
+    "https://nextjs.org/docs/app/getting-started/caching-and-revalidating",
+    "https://react.dev/"
+  ]
+}
