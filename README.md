@@ -1,113 +1,124 @@
-# Codex Home: restored custom 0.147.0 configuration and MCP deployment
+# Codex Home: Debian desktop assets and isolated MCP deployment
 
-This tree targets **the user's custom Codex binary based on 0.147.0**, using the
-**exact supplied `config.schema.json`**, not the latest upstream release. The schema
-attachment is byte-identical to the schema in the original archive. Custom fields,
-model catalogs, instruction overrides, profiles, hooks and original feature choices
-are retained. The earlier stock-oriented refactor is superseded.
+This source tree contains `home/` for CODEX_HOME, sibling `agents/`, `skills/` and
+`instructions/`, system defaults under `etc/`, and the Podman deployment in `mcp/`.
+The default installed roots match the submitted Debian preseed:
+`/data/codex/usr/{home,agents,skills,instructions}` and `/etc/codex`.
 
-## What is authoritative
+**Read `REFACTOR-REPORT.md` and `validation/RESULTS.md` before deployment.** Offline
+validation is not a claim that the image was pulled or that a target host, private
+Codex build, desktop app, database, browser or third-party service was exercised.
+No API credentials or SSH private keys were generated or added; retained plugin
+and model assets originate from the submitted archive.
 
-`home/config.toml` is the complete configuration, not a generated minimal preset.
-`etc/config.toml` is its complete mirror. All 81 nondeprecated canonical/custom
-feature keys from the supplied schema are present with the original values;
-removed/deprecated aliases are listed individually in `generate/feature-policy.json`.
-All original top-level config settings remain present. Schema acceptance alone
-is not proof that a retained compatibility flag has a live implementation.
+## Configuration and instructions
 
-`instructions/` contains all 491 original instruction/template/catalog files,
-unchanged, plus supplementary operations guidance. All configured file-backed
-instruction, catalog and agent references resolve inside the archive. The original
-14 agent roles, profile files, 11 hook events/97 handlers, model assets, plugin
-sources and caches, indexes, documentation, plans, templates, rules and skills are
-back at their original locations. Every one of the original 6,802 files is present.
-They are not hidden exclusively in a migration archive.
+`home/` is the future **$CODEX_HOME**, not a reference-document output directory.
+`home/config.toml` contains actual deployment settings as root keys, `[tables]`,
+nested tables and `[[arrays.of.tables]]`; `etc/config.toml` is its byte-identical
+source mirror. No JSON Schema keywords, pointer ledgers, definition dumps or
+reference appendices are embedded in any TOML file.
 
-The preseed layout is `/data/codex/usr/{home,agents,skills,instructions}`. The
-custom executable expected by the preseed wrapper is `/data/codex/share/bin/codex`.
-The home supplies `NODE=/usr/local/lib/node-26/bin/node` without replacing the
-inherited toolchain PATH. The desktop `node_repl` MCP and its original bundled
-Node path are restored separately from the removed built-in `js_repl` feature.
+The exact supplied schema is pinned under `generate/schemas/` for build-time
+validation only. `make examples` converts supported configuration properties to
+standalone TOML syntax examples in `generate/examples/`; coverage is separate JSON
+in `generate/reports/`. Neither directory is installed. Examples contain placeholder
+values and are not deployment defaults. Mutually exclusive sandbox and compaction
+forms have separate alternative examples instead of conflicting live keys.
 
-## Review and install
+The active main configuration has 75 live user-config feature keys; six
+requirements-only desktop capability gates are enabled in `etc/requirements.toml`.
+Removed/deprecated/alias flags are not active. The original custom models,
+catalogs, agent registrations and other integrations remain available; their
+availability still depends on the actual binary, app and account. `[desktop]`
+preferences are opaque and merged on installation, not guessed. Explicit Node
+and bundled REPL launcher paths are provided and checked at launch.
 
-Close local clients before replacing static assets. Extract into a **new source
-directory** rather than unpacking over a live runtime home. Review the deliberately
-restored full-access permission profile, original granular approval choices,
-Apps defaults, provider endpoints and original model IDs before use.
+**Full host permissions and automatic local MCP tool approval are retained from
+the requested environment.** Container isolation does not make destructive tool
+calls safe, and this pack is not a multi-tenant security boundary. Granular approval
+flags allow prompts rather than rejecting them. The existing `full`, `workspace`, and `readonly` permission profiles remain
+selectable through the schema-supported root `default_permissions` selector.
+Requirements impose no artificial MCP, plugin or region allowlists and do not
+claim to override organization policy or authentication.
+
+`instructions/` is the editable source; `home/instructions/` is generated from it.
+The instruction hierarchy, external-content handling, evidence reporting and
+realtime coordination were revised. Hooks retain all 11 events and 97 handlers
+behind a bounded runner. Real Perl handlers require the documented dependencies.
+Read `home/AGENTS.md`, `home/INDEX.md` and `home/docs/operations/` for routing.
+
+## Install on the intended desktop account
+
+Extract outside the live CODEX_HOME, close clients, review the full-access default
+and `mcp/.env`, then run from this source directory. Capture the desktop name in
+the normal user's shell, not a root login shell.
 
 ```sh
-cd codex-home
+DESKTOP_USER="$(id -un)"
 sudo make dependencies
-make verify
-make test-hooks
+make generate
+make verify-full
 make install-home
 sudo make install-config
-make check-runtime
-```
-
-`make verify` checks the exact schema, source preservation, generated references,
-Python regressions, MCP tests and systemd unit syntax. `make test-hooks` requires
-the real Perl dependencies and fails rather than silently skipping them.
-`make check-runtime` checks installed paths and executable prerequisites; it does
-not run model inference or prove account entitlements.
-
-The asset installer validates first, locks concurrent installs, rejects symlink
-source/target paths, backs up overwritten files and replaces each file atomically.
-It preserves existing opaque `[desktop]` settings; explicit source desktop values
-win on overlapping keys. It never performs a directory-wide deletion. Changed
-static assets in the source, including supplied versioned plugin files, can be
-updated with backups; unrelated authentication, session/state files and caches
-are not deleted. This is per-file atomic installation, not one transaction over
-all files. Backups are under `.asset-backups/` in the destination.
-
-`sudo make install-config` installs the full config, `requirements.toml`, and the
-exact schema under `/etc/codex/`. Requirements are a separate format, not an
-instance of `config.schema.json`. The active local requirements intentionally omit
-restrictive identity, app, plugin, region and permission allowlists, enabling the
-specified desktop capability gates without denying future additions. This is not
-a grant of cloud credentials or a bypass of OS/organization policy.
-
-## Retained Podman deployment
-
-All 30 original MCP registrations are retained. Thirteen use the new local broker;
-15 are remote integrations and two are desktop-local (`node_repl`, `cua_repl`).
-Originally disabled remote/CUA registrations remain disabled. The 13 deployed image
-modes are all enabled, with `sequential_thinking` retaining its original config ID
-and mapping to the broker's `sequential-thinking` mode.
-
-```sh
 cd mcp
-# Review .env. Keep PODMAN_USER=devops; Unix is appropriate for the preseed wrapper.
 sudo make dependencies
-sudo make preflight DESKTOP_USER="$(id -un)"
-sudo make deploy DESKTOP_USER="$(id -un)"
+sudo make preflight DESKTOP_USER="$DESKTOP_USER"
+sudo make deploy DESKTOP_USER="$DESKTOP_USER"
 sudo make credential NAME=postgres-dsn
+make config
 make smoke
 sudo make toolchain-check
 sudo make doctor
 ```
 
-The deployment retains digest-pinned image acquisition, the derived DBHub fix,
-systemd LoadCredential, devops rootless Podman, per-session containers, bounded
-transport, cleanup/locking, private persistent state, Workspace ACLs and optional
-restricted SSH. API values are not stored in client TOML or `.env`. See `mcp/README.md`
-and `mcp/docs/`. Live Podman, systemd, credentials, custom binary/app-server and
-browser tests must be performed on the target.
+`make verify-full` includes the original Perl suite; `make verify` is the offline
+Python/schema/catalog/unit-parser suite. Installation backs up overwritten static
+files; it does not erase authentication or session databases. Re-run
+`make check-runtime` from the source root after installation and app upgrades.
 
-## Maintenance without stripping configuration
+Provision other keys one at a time, for example `sudo make credential
+NAME=context7-api-key`. Input is hidden; never place the value in a Make variable.
+Only PostgreSQL requires a credential to initialize. It needs a real existing
+PostgreSQL database and a least-privilege role. The SQLite mode owns local state;
+it does not require or install a PostgreSQL daemon.
 
-Edit `home/config.toml`, the original profile/agent files or instruction sources
-directly. Run `make generate` to update only mirrors, schemas and indexes. It does
-**not** reconstruct config from a smaller hard-coded template, delete custom
-prompts, change model IDs or rewrite feature values. Then run `make verify`.
+## All image-backed MCP modes
 
-`generate/examples/config.home.toml` is an exhaustive **reference example**, not an
-installable production preset. It includes comment-only schema coverage for keys
-whose alternatives cannot coexist. `scripts/refresh_schema.py` downloads only
-version-pinned upstream reference material; its default is 0.147.0 and it never
-replaces the supplied custom schema. A future custom-binary schema change requires
-an explicit reviewed schema/policy update.
+Filesystem, Git, Fetch, Memory, Sequential Thinking, Time, MarkItDown (`markdown`),
+Context7, Playwright, Chrome DevTools, PostgreSQL, SQLite and Semgrep are registered
+and enabled. Their stdio sessions use the fixed wrapper `/usr/local/bin/codex-mcp`.
+The rootless Podman owner and container account are both `devops`. The desktop's
+`$HOME/Workspace` is mounted at `/workspace`; filesystem has write access, and
+ACLs allow desktop editing of normally created files. Explicit chmod(0600) by a
+server can override inherited ACL access; the live cross-user smoke test checks
+actual behavior. Tool installation roots from `71-devops-de.sh` are mapped
+read-only, while caches/configs are private. Secrets, the host home, live PGDATA,
+SSH agents and engine sockets are not shared into containers.
 
-See `validation/RESULTS.md`, `validation/CONFIG-COVERAGE.md`,
-`validation/RESTORATION.md`, and `migration/original-files.json` for exact evidence.
+Your exact registry digest is the base. The derived image upgrades DBHub from
+0.22.3 to 0.22.6 for its published read-only bypass advisory, creates `devops`, and
+installs compatible in-image utilities. Build-time probes verify identity, every
+MCP executable and the patched package; the resulting image ID and package lock
+are recorded. A digest pin verifies identity, not the absence of vulnerabilities.
+
+Unix stdio is the default because the supplied Bubblewrap wrapper isolates its
+loopback network. Optional SSH uses generated Ed25519 keys, pinned host identity
+and a forced-command-only listener at 127.0.0.1:2229. It authenticates the desktop
+user and never enables devops login or modifies the host's `DenyUsers` policy.
+Use `make smoke-ssh` only in the native desktop shell. `make config` generates
+explicit Unix and SSH snippets; do not concatenate duplicate TOML tables.
+
+See `mcp/docs/ACCEPTANCE.md` for required host acceptance and failure drills.
+Shared host Forky binaries can be ABI-incompatible with the Trixie image; mounting
+a directory does not prove every tool can execute. Do not fix that by overmounting
+host libc, adding the engine socket, disabling AppArmor or enabling privileged mode.
+
+## Maintenance and evidence
+
+`make generate` validates the source and synchronizes mirrors without rewriting
+`home/config.toml`; it never inserts schema metadata or reference material. `make verify` checks them. `make package` produces
+a deterministic source tarball and SHA256 file. `migration/` retains historical
+inputs; `validation/previous/` contains old reports and is not current evidence.
+Use `validation/RESULTS.md` for current results, `validation/changed-files.json`
+for the correction inventory, and `RESEARCH-SOURCES.md` for external sources.

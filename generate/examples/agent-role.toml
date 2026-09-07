@@ -1,7 +1,5 @@
-# Generated companion for config.home.toml agents.<role>.config_file.
-# Copy this file and tailor it for each named agent role.
+# Companion configuration layer for config.home.toml.
+# Role descriptions and nicknames belong in the parent [agents.<role>] table.
 
-description = "example"
-nickname_candidates = ["example"]
-
-# schema-definition: AgentRoleToml
+model_reasoning_effort = "high"
+developer_instructions = "Complete the assigned bounded subtask and report verification evidence."

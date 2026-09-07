@@ -1,4 +1,3 @@
-#:schema ./config.schema.json
 # Optional override layer. Base home/config.toml already selects the original full profile.
 default_permissions = "full"
 approval_policy = "never"

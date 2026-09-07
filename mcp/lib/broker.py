@@ -19,6 +19,15 @@ def log(event: str, **fields: object) -> None:
     print(json.dumps({'event':event, **fields}, sort_keys=True), file=sys.stderr, flush=True)
 
 
+def unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError('duplicate envelope key')
+        result[key] = value
+    return result
+
+
 def read_header(sock: socket.socket, timeout: float, max_size: int = 1024) -> dict:
     deadline = time.monotonic()+timeout
     data = bytearray()
@@ -33,7 +42,7 @@ def read_header(sock: socket.socket, timeout: float, max_size: int = 1024) -> di
         data += chunk
         if chunk == b'\n':
             try:
-                result = json.loads(data)
+                result = json.loads(data, object_pairs_hook=unique_object)
             except (ValueError, UnicodeError):
                 raise ConfigError('invalid control header') from None
             if not isinstance(result,dict) or set(result) != {'version','server'}:
@@ -52,6 +61,7 @@ def serve(instance: str = '') -> int:
         raise ConfigError('session broker must run as devops')
     sock = socket.socket(fileno=os.dup(0))
     peer_pid, peer_uid, _ = struct.unpack('3i',sock.getsockopt(socket.SOL_SOCKET,socket.SO_PEERCRED,12))
+    started_at = time.monotonic()
     ready = False
     interrupted = False
     def terminate(_signum: int, _frame: object) -> None:
@@ -79,13 +89,13 @@ def serve(instance: str = '') -> int:
                     stderr_fd=process.stderr.fileno(),stderr_limit=cfg['MAX_STDERR_BYTES'],
                     stderr_sink=digest.update if cfg['CAPTURE_SERVER_STDERR'] else None,
                     startup_timeout=cfg['STARTUP_TIMEOUT_SECONDS'],eof_grace=cfg['STOP_TIMEOUT_SECONDS'])
-            log('session_end',server=server,session=session.id,**counters,
+            log('session_end',server=server,session=session.id,duration_seconds=round(time.monotonic()-started_at,3),**counters,
                 stderr_sample_sha256=digest.hexdigest() if cfg['CAPTURE_SERVER_STDERR'] else None)
         return 0
     except (ConfigError,RelayError,OSError,TimeoutError) as exc:
         # Do not log exception payloads from arbitrary upstream processes.
         message = str(exc) if isinstance(exc,(ConfigError,RelayError)) else type(exc).__name__
-        log('session_error',kind=type(exc).__name__,message=message,peer_uid=peer_uid)
+        log('session_error',kind=type(exc).__name__,message=message,peer_uid=peer_uid,duration_seconds=round(time.monotonic()-started_at,3))
         if not ready:
             with contextlib.suppress(OSError):
                 sock.settimeout(2)

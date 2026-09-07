@@ -82,3 +82,12 @@ Restore rejects traversal, links, special files, unexpected paths and archives a
 ACL snapshots are under `/etc/codex/mcp/acl-backups/`. Review and restore the applicable snapshots using `setfacl --restore=FILE` only after stopping clients and comparing any intentional ACL changes since installation. A stale ACL backup can undo later legitimate access changes. New Workspace files did not exist in the snapshot; review their inherited ACLs separately. Revoke the dedicated SSH authorization and delete its desktop private/public key only after confirming no consumer still uses it. Remove retained secrets and state under a separate explicit retention/destruction decision; never run a blanket Podman prune.
 
 Client startup/tool deadlines are explicit in home/config.toml (currently 120/180 seconds). Broker startup is 90 seconds in .env. Edit the relevant client values deliberately when changing broker timing, then run root make generate to synchronize the complete etc mirror. Generation never overwrites user config from .env. An alternate ENV_FILE does not rewrite client TOML; the broker lifetime/startup/idle controls remain independent from client deadlines.
+
+## Backup publication and import limits
+
+Backup destinations must be in a dedicated root-owned protected directory. A
+mode-0600 temporary archive is flushed before atomic no-overwrite publication;
+partial data is never published under the requested backup name. Restore rejects
+links, special files, path traversal, more than 100000 members and data above
+10 GiB. Restore remains a stopped-service, per-state-directory operation, not a
+whole-host transaction. Preserve an independent verified backup first.

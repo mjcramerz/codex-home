@@ -3,6 +3,7 @@ from __future__ import annotations
 import contextlib
 import json
 import os
+import signal
 from pathlib import Path
 import re
 import shutil
@@ -217,11 +218,14 @@ class Session:
             # Stop the client before querying final container ownership/state.
             if self.process is not None:
                 if self.process.poll() is None:
-                    self.process.terminate()
+                    with contextlib.suppress(ProcessLookupError):
+                        os.killpg(self.process.pid,signal.SIGTERM)
                     try:
                         self.process.wait(timeout=5)
                     except subprocess.TimeoutExpired:
-                        self.process.kill(); self.process.wait(timeout=5)
+                        with contextlib.suppress(ProcessLookupError):
+                            os.killpg(self.process.pid,signal.SIGKILL)
+                        self.process.wait(timeout=5)
                 for stream in (self.process.stdin, self.process.stdout, self.process.stderr):
                     if stream is not None:
                         stream.close()

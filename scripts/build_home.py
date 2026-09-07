@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Synchronize derived assets WITHOUT regenerating or replacing custom configuration.
+"""Validate authoritative runtime TOML and atomically synchronize source mirrors.
 
-home/config.toml and instructions/ are authoritative. This command does not
-rewrite model choices, prompts, feature values, agent roles, hooks, or profiles.
+Never write schema metadata or generated examples into CODEX_HOME. The source
+home/config.toml is user-editable and is not rewritten by this generator.
 """
 from __future__ import annotations
 import fcntl
@@ -34,16 +34,20 @@ def atomic(path: Path, payload: bytes) -> bool:
 def generate() -> int:
     # Validate source shape before any derived file is touched.
     from jsonschema import Draft7Validator
-    data=tomllib.loads((ROOT/'home/config.toml').read_text())
+    from config_toml import clean_load
+    data=clean_load(ROOT/'home/config.toml')
     schema_bytes=(ROOT/'generate/schemas/config.schema.json').read_bytes()
     schema=json.loads(schema_bytes);Draft7Validator.check_schema(schema)
-    Draft7Validator(schema).validate(data)
+    errors=list(Draft7Validator(schema).iter_errors(data))
+    if errors:
+        raise ValueError("configuration violates pinned schema at: "+"; ".join("/".join(map(str,e.path))+" ("+str(e.validator)+")" for e in errors[:8]))
     policy=json.loads((ROOT/'generate/feature-policy.json').read_text())
     if hashlib.sha256(schema_bytes).hexdigest()!=policy['schema_sha256']:
         raise ValueError('custom schema changed; review and update the explicit schema pin first')
+    from validate import validate_data
+    validate_data(data, schema, policy, 'home/config.toml')
     count=0
-    for target in ('home/config.schema.json','etc/config.schema.json','generate/schemas/supplied-config.schema.json'):
-        count+=atomic(ROOT/target,schema_bytes)
+    count+=atomic(ROOT/'generate/schemas/supplied-config.schema.json',schema_bytes)
     count+=atomic(ROOT/'etc/config.toml',(ROOT/'home/config.toml').read_bytes())
     for source in sorted((ROOT/'instructions').rglob('*')):
         if source.is_symlink():raise ValueError(f'source symlink: {source}')
@@ -63,7 +67,7 @@ def main() -> int:
         with os.fdopen(fd,'a') as lock:
             fcntl.flock(lock,fcntl.LOCK_EX)
             count=generate()
-        print(f'Synchronized {count} derived files; custom config, hooks and instruction sources preserved.')
+        print(f'Synchronized {count} derived files; authoritative runtime TOML unchanged; no schema metadata installed.')
         return 0
     except (OSError,ValueError) as exc:
         print(str(exc),file=sys.stderr);return 1

@@ -1,0 +1,25 @@
+{
+  "revision_date": "2026-09-06",
+  "validation_contract": "schema embedded in uploaded codex-home archive",
+  "schema_sha256": "30c625df04c94d5e71129945a930ef092827f03c85e14848399346fa328577af",
+  "offline_verify": "pass",
+  "configuration_and_hook_runner_tests_passed": 39,
+  "mcp_tests_passed": 96,
+  "total_python_tests_passed": 135,
+  "systemd_parser": "pass with stub dependencies and substituted executable paths",
+  "original_perl_suite": "blocked: missing Moo and related dependencies",
+  "live_tests_performed": false,
+  "not_run": [
+    "image pull/build",
+    "real systemd activation",
+    "LoadCredential delivery",
+    "AppArmor enforcement",
+    "SSH sessions",
+    "Podman containers",
+    "external database/API/browser connectivity",
+    "private Codex and desktop runtime"
+  ],
+  "original_supplied_asset_paths": 6802,
+  "original_supplied_asset_paths_present": 6802,
+  "immediate_input_manifest_files": 10122
+}

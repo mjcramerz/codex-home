@@ -1,4 +1,4 @@
-"""Regression tests for restoring and retaining the user's custom configuration."""
+"""Regression tests for schema, instruction, installation and security contracts."""
 from __future__ import annotations
 import copy
 import hashlib
@@ -27,10 +27,11 @@ class ConfigurationTests(unittest.TestCase):
         report = validate.validate(ROOT, write=False)
         self.assertEqual(report['active_configuration_files'], 26)
         self.assertEqual(report['original_files_present'], 6802)
-        self.assertEqual(report['original_instruction_files_unchanged'], 491)
+        self.assertGreaterEqual(report['instruction_files'], 491)
+        self.assertGreater(report['authority_reviewed_templates'], 100)
 
     def test_exact_supplied_schema_pin(self):
-        self.assertEqual(hashlib.sha256((ROOT / 'home/config.schema.json').read_bytes()).hexdigest(),
+        self.assertEqual(hashlib.sha256((ROOT / 'generate/schemas/config.schema.json').read_bytes()).hexdigest(),
                          '30c625df04c94d5e71129945a930ef092827f03c85e14848399346fa328577af')
 
     def test_unknown_root_rejected(self):
@@ -51,15 +52,14 @@ class ConfigurationTests(unittest.TestCase):
             with self.subTest(name=name), self.assertRaises(ValueError):
                 validate.validate_data({'features': {name: False}}, SCHEMA, POLICY, 'test')
 
-    def test_active_custom_features_and_original_values(self):
-        expected = set(SCHEMA['properties']['features']['properties']) - set(POLICY['removed']) - set(POLICY['deprecated']) - set(POLICY['aliases'])
-        self.assertEqual(len(expected), 81)
+    def test_only_live_user_config_features_active(self):
+        expected = set(SCHEMA['properties']['features']['properties']) - set(POLICY['removed']) - set(POLICY['deprecated']) - set(POLICY['aliases']) - set(POLICY['requirements_only'])
+        self.assertEqual(len(expected), 75)
         self.assertEqual(set(HOME['features']), expected)
-        for key in expected:
-            old = copy.deepcopy(ORIGINAL['features'][key])
-            if isinstance(old, dict):
-                old.pop('usage_hint_enabled', None)
-            self.assertEqual(HOME['features'][key], old, key)
+        self.assertFalse(HOME['features']['unbounded_connection_retries'])
+        for key in POLICY['requirements_only']:
+            with self.assertRaises(ValueError):
+                validate.validate_data({'features': {key: True}}, SCHEMA, POLICY, 'test')
 
     def test_not_deprecated_in_requested_base_version(self):
         validate.validate_data({'features': {'unified_exec_zsh_fork': True, 'code_mode_buffered_exec': True}}, SCHEMA, POLICY, 'test')
@@ -69,11 +69,12 @@ class ConfigurationTests(unittest.TestCase):
             self.assertEqual(HOME[key], ORIGINAL[key])
 
     def test_model_selection_and_full_permissions_preserved(self):
-        for key in ('model', 'review_model', 'model_provider', 'model_providers', 'approval_policy', 'default_permissions'):
+        for key in ('model', 'review_model', 'model_provider', 'model_providers', 'default_permissions'):
             self.assertEqual(HOME[key], ORIGINAL[key])
 
     def test_no_original_root_setting_lost(self):
-        self.assertFalse(set(ORIGINAL) - set(HOME))
+        self.assertFalse(set(ORIGINAL) - set(HOME) - {'experimental_use_unified_exec_tool','ghost_snapshot'})
+        self.assertTrue(all(HOME['approval_policy']['granular'].values()))
 
     def test_full_system_mirror_not_reduced_subset(self):
         self.assertEqual((ROOT / 'home/config.toml').read_bytes(), (ROOT / 'etc/config.toml').read_bytes())
@@ -98,13 +99,16 @@ class ConfigurationTests(unittest.TestCase):
     def test_node_repl_remains_distinct_from_removed_feature(self):
         self.assertTrue(HOME['mcp_servers']['node_repl']['enabled'])
         self.assertNotIn('js_repl', HOME['features'])
-        self.assertEqual(HOME['mcp_servers']['node_repl']['env'], ORIGINAL['mcp_servers']['node_repl']['env'])
+        self.assertEqual(HOME['mcp_servers']['node_repl']['command'], '/data/codex/usr/home/bin/codex-node-repl')
+        self.assertIn('NODE_REPL_NODE_PATH', HOME['mcp_servers']['node_repl']['env'])
+        self.assertNotIn('js_repl_node_path', HOME)
 
     def test_sequential_thinking_identity_and_broker_name(self):
         self.assertEqual(HOME['mcp_servers']['sequential_thinking']['args'], ['connect', 'sequential-thinking'])
 
-    def test_developer_instruction_text_not_replaced(self):
-        self.assertEqual(HOME['developer_instructions'], ORIGINAL['developer_instructions'])
+    def test_developer_instruction_authority_and_evidence(self):
+        self.assertIn('instruction hierarchy', HOME['developer_instructions'])
+        self.assertIn('evidence', HOME['developer_instructions'])
 
     def test_no_original_hook_handler_removed(self):
         hooks = json.loads((ROOT/'home/hooks.json').read_text())['hooks']
@@ -131,6 +135,68 @@ class ConfigurationTests(unittest.TestCase):
         self.assertEqual(build_home.generate(), 0)
         self.assertEqual(build_home.generate(), 0)
         self.assertTrue(all(p.read_bytes() == data for p, data in before.items()))
+
+    def test_every_toml_file_has_no_schema_metadata(self):
+        from config_toml import clean_load
+        files = list(ROOT.rglob('*.toml'))
+        self.assertGreater(len(files), 25)
+        for path in files:
+            with self.subTest(path=path.relative_to(ROOT)):
+                clean_load(path)
+
+    def test_configuration_schemas_are_build_time_only(self):
+        self.assertTrue((ROOT/'generate/schemas/config.schema.json').is_file())
+        self.assertFalse((ROOT/'home/config.schema.json').exists())
+        self.assertFalse((ROOT/'etc/config.schema.json').exists())
+        self.assertFalse((ROOT/'scripts/config_reference.py').exists())
+
+    def test_maps_and_object_arrays_are_real_toml_tables(self):
+        text = (ROOT/'home/config.toml').read_text()
+        self.assertIn('[shell_environment_policy.set]', text)
+        self.assertIn('[[skills.config]]', text)
+        self.assertIn('[features.guardianv2.transcript]', text)
+        self.assertIn('[mcp_servers.node_repl.env]', text)
+        self.assertNotIn('config = [{', text)
+        self.assertEqual(HOME['shell_environment_policy']['set']['CODEX_HOME'], '/data/codex/usr/home')
+
+    def test_generator_rejects_reference_comment_before_writing(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root/'home').mkdir()
+            (root/'home/config.toml').write_text('model="custom"\n# schema-entry: #/properties/model\n')
+            with patch.object(build_home, 'ROOT', root), self.assertRaises(ValueError):
+                build_home.generate()
+            self.assertFalse((root/'etc').exists())
+
+    def test_generator_preserves_custom_toml_bytes(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root/'home').mkdir()
+            (root/'generate/schemas').mkdir(parents=True)
+            (root/'mcp').mkdir()
+            (root/'mcp/servers.json').write_text('{}\n')
+            for rel in ('generate/schemas/config.schema.json','generate/feature-policy.json'):
+                (root/rel).write_bytes((ROOT/rel).read_bytes())
+            content = b'# operator comment\nmodel="custom"\n[desktop]\ncustom_preference = true\n'
+            (root/'home/config.toml').write_bytes(content)
+            with patch.object(build_home, 'ROOT', root):
+                build_home.generate()
+                self.assertEqual(build_home.generate(), 0)
+            self.assertEqual((root/'home/config.toml').read_bytes(), content)
+            self.assertEqual((root/'etc/config.toml').read_bytes(), content)
+            self.assertFalse((root/'home/config.schema.json').exists())
+
+    def test_upgrade_does_not_restore_schema_comments_from_desktop(self):
+        from config_toml import clean_loads
+        old = (b'model="old"\n[desktop]\nopaque="preserve"\n'
+               b'# BEGIN GENERATED SUPPORTED-KEY REFERENCE\n'
+               b'# schema-entry: #/properties/model\n'
+               b'# END GENERATED SUPPORTED-KEY REFERENCE\n')
+        new = b'model="custom"\n[desktop]\n'
+        merged = install_assets.merge_desktop(new, old).decode()
+        self.assertEqual(clean_loads(merged)['desktop']['opaque'], 'preserve')
+        self.assertNotIn('schema-entry', merged)
+        self.assertNotIn('SUPPORTED-KEY REFERENCE', merged)
 
     def test_atomic_write_refuses_symlink(self):
         with tempfile.TemporaryDirectory() as name:

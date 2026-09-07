@@ -1,0 +1,4 @@
+# Alternative to experimental_compact_prompt_file, not a second compaction source.
+# Remove the file-based compaction override before using this setting.
+
+compact_prompt = "Preserve decisions, constraints, validation evidence and the remaining work."

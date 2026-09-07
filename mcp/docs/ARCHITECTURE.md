@@ -20,7 +20,7 @@ The selector relay has bounded input/output buffers, backpressure, half-close ha
 
 On disconnect or termination, stop the local Podman client, verify managed labels, remove the matching container, then remove credential staging. Do not equate an engine API error with a missing container. Ambiguous cleanup leaves a pending directory and credentials until removal is confirmed. The service's stop hook and periodic GC reconcile inactive sessions. A reboot loses volatile metadata; GC additionally checks exact labels and name patterns for orphaned containers. It does not run a global prune or delete another deployment's containers.
 
-The root installation uses file locks, same-directory temporary files, fsync and atomic replacements, plus immutable versioned code directories and an atomic `current` link. Installation stops the target first. This is not an all-system transaction: a mid-install failure requires checking the recorded backups, release and configuration before restarting.
+The root installation uses one management lock shared by install/build/credential/lifecycle/backup/restore operations, same-directory temporary files, fsync and atomic replacements, plus content-verified versioned code directories and an atomic `current` link. Installation stops the target first. This is not an all-system transaction: a mid-install failure requires checking the recorded backups, release and configuration before restarting.
 
 ## Resource model
 

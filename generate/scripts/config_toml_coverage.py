@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-"""Generate and verify exhaustive TOML examples from ``config.schema.json``.
+"""Convert supported configuration properties into real TOML examples.
 
-This generator is intentionally self-contained under ``generate/``. It reads
-``generate/schemas/`` and ``generate/feature-policy.json`` and writes only examples. Each
-canonical setting receives one schema-valid representative value, while
-deprecated aliases and finite alternatives that cannot coexist in one TOML
-document remain comment-only. A machine-readable coverage ledger at the end of
-the reference makes schema drift a check failure instead of a documentation
-omission.
+Generated TOML contains settings, tables and arrays of tables, not JSON Schema
+keywords, pointers, ledgers or definition dumps. Build-time coverage information
+is written separately as JSON under generate/reports/. Nothing writes to home/,
+etc/ or agents/. Examples contain placeholders and are never installed.
 """
 
 from __future__ import annotations
@@ -17,6 +14,8 @@ import copy
 import hashlib
 import json
 import math
+import os
+import tempfile
 import re
 import sys
 import tomllib
@@ -30,13 +29,12 @@ SCHEMA_PATH = SCHEMAS_DIRECTORY / "config.schema.json"
 EXAMPLES_DIRECTORY = GENERATION_ROOT / "examples"
 HOME_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "config.home.toml"
 AGENT_ROLE_EXAMPLE_PATH = EXAMPLES_DIRECTORY / "agent-role.toml"
+REPORTS_DIRECTORY = GENERATION_ROOT / "reports"
+COVERAGE_PATH = REPORTS_DIRECTORY / "config-coverage.json"
+sys.path.insert(0, str(GENERATION_ROOT.parent / "scripts"))
+from config_toml import clean_loads, dumps as config_dumps, render_mapping
 
-DEFINITION_MARKER = "# schema-definition: "
-ENTRY_MARKER = "# schema-entry: "
-VARIANT_MARKER = "# schema-variant: "
-OPTION_MARKER = "# schema-options: "
-FINITE_OPTION_MARKER = "# schema-finite-option: "
-EXAMPLE_MARKER = "# schema-example: "
+
 _OMIT = object()
 
 DEPRECATED_ROOT_ALIASES = frozenset({"experimental_use_unified_exec_tool", "ghost_snapshot"})
@@ -53,7 +51,7 @@ CANONICAL_FEATURE_KEYS = frozenset(DEPRECATED_FEATURE_ALIASES.values())
 # The exact custom schema retains compatibility keys; examples must not activate
 # removed/no-op flags merely because JSON Schema still accepts them.
 FEATURE_POLICY = json.loads((GENERATION_ROOT / 'feature-policy.json').read_text())
-OBSOLETE_FEATURE_KEYS = frozenset(FEATURE_POLICY['removed']) | frozenset(FEATURE_POLICY['deprecated']) | frozenset(FEATURE_POLICY['aliases'])
+OBSOLETE_FEATURE_KEYS = frozenset(FEATURE_POLICY['removed']) | frozenset(FEATURE_POLICY['deprecated']) | frozenset(FEATURE_POLICY['aliases']) | frozenset(FEATURE_POLICY.get('requirements_only', []))
 DEPRECATED_FEATURE_ALIASES.update(FEATURE_POLICY['aliases'])
 
 SUPPORTED_SCHEMA_KEYWORDS = frozenset(
@@ -102,7 +100,10 @@ class GenerationError(ValueError):
 
 def load_schema() -> dict[str, Any]:
     ensure_schema_path(SCHEMA_PATH)
-    schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    content = SCHEMA_PATH.read_bytes()
+    if hashlib.sha256(content).hexdigest() != FEATURE_POLICY['schema_sha256']:
+        raise GenerationError('supplied schema checksum changed; review the schema pin first')
+    schema = json.loads(content)
     errors = unsupported_schema_keywords(schema)
     if errors:
         raise GenerationError("\n".join(errors))
@@ -396,6 +397,12 @@ def sample_value(
 
     union_kind, branches = union_branches(schema, node)
     if union_kind is not None:
+        # Prefer the table form of bool-or-table settings so nested configuration
+        # keys are converted into named TOML tables, rather than disappearing
+        # behind a boolean shorthand in the reference examples.
+        branches = sorted(branches, key=lambda branch: (
+            is_object_schema(schema, branch), len(property_schemas(schema, branch))
+        ), reverse=True)
         for branch in branches:
             try:
                 return sample_value(
@@ -603,6 +610,12 @@ def finite_options(
     candidates: list[Any] = []
     union_kind, branches = union_branches(schema, node)
     if union_kind is not None:
+        # Prefer the table form of bool-or-table settings so nested configuration
+        # keys are converted into named TOML tables, rather than disappearing
+        # behind a boolean shorthand in the reference examples.
+        branches = sorted(branches, key=lambda branch: (
+            is_object_schema(schema, branch), len(property_schemas(schema, branch))
+        ), reverse=True)
         for branch in branches:
             candidates.extend(finite_options(schema, branch, ref_stack=ref_stack))
     else:
@@ -685,43 +698,6 @@ def root_property_values(
 
 def toml_path(path: tuple[str, ...]) -> str:
     return ".".join(toml_key(segment) for segment in path)
-
-
-def render_mapping(
-    lines: list[str],
-    value: dict[str, Any],
-    *,
-    path: tuple[str, ...] = (),
-    comments: dict[tuple[str, ...], list[str]] | None = None,
-) -> None:
-    """Render a mapping with TOML tables instead of opaque nested inline tables."""
-    comments = comments or {}
-    table_values: list[tuple[str, Any]] = []
-    for name, child in value.items():
-        child_path = path + (name,)
-        child_comments = comments.get(child_path, [])
-        if isinstance(child, dict) or (
-            isinstance(child, list) and child and all(isinstance(item, dict) for item in child)
-        ):
-            table_values.append((name, child))
-            continue
-        lines.extend(child_comments)
-        lines.append(f"{toml_key(name)} = {toml_literal(child)}")
-
-    if path and (value or not lines or lines[-1] != ""):
-        lines.append("")
-    if table_values and lines and lines[-1] != "":
-        lines.append("")
-    for name, child in table_values:
-        child_path = path + (name,)
-        lines.extend(comments.get(child_path, []))
-        if isinstance(child, dict):
-            lines.append(f"[{toml_path(child_path)}]")
-            render_mapping(lines, child, path=child_path, comments=comments)
-            continue
-        for item in child:
-            lines.append(f"[[{toml_path(child_path)}]]")
-            render_mapping(lines, item, path=child_path, comments=comments)
 
 
 def schema_entry_nodes(schema: dict[str, Any]) -> dict[str, Any]:
@@ -824,17 +800,6 @@ def schema_option_summary(schema: dict[str, Any], node: Any) -> str:
     return "any TOML value"
 
 
-def option_matrix_lines(schema: dict[str, Any]) -> list[str]:
-    lines = [
-        "",
-        "# Option matrix: each schema entry is listed below. Finite alternatives",
-        "# are summarized; object and array entries link to their child paths.",
-    ]
-    for pointer, node in sorted(schema_entry_nodes(schema).items()):
-        lines.append(f"{OPTION_MARKER}{pointer} = {schema_option_summary(schema, node)}")
-    return lines
-
-
 def finite_option_entries(schema: dict[str, Any]) -> list[str]:
     """Return an exhaustive ledger of every finite TOML option in the schema."""
     entries: list[str] = []
@@ -844,80 +809,29 @@ def finite_option_entries(schema: dict[str, Any]) -> list[str]:
     return entries
 
 
-def finite_option_lines(schema: dict[str, Any]) -> list[str]:
-    lines = [
-        "",
-        "# Finite option matrix: every TOML-expressible enum and constant is",
-        "# listed independently so changing a schema option makes verification fail.",
-    ]
-    lines.extend(f"{FINITE_OPTION_MARKER}{entry}" for entry in finite_option_entries(schema))
-    return lines
-
-
-def definition_example_lines(schema: dict[str, Any]) -> list[str]:
-    lines = [
-        "",
-        "# Definition examples: one schema-valid TOML value for every reusable",
-        "# definition, including definitions reached only through untyped maps.",
-    ]
-    for name, node in sorted(definitions(schema).items()):
-        value = sample_value(schema, node)
-        errors = validate_value(schema, value, node, f"definition {name}")
-        if errors:
-            raise GenerationError("\n".join(errors))
-        lines.append(f"{EXAMPLE_MARKER}{name} = {toml_literal(value)}")
-    return lines
-
-
-def coverage_ledger_lines(schema: dict[str, Any]) -> list[str]:
-    definition_names, entries, variants = pointer_ledger(schema)
-    lines = ["# Coverage ledger: every marker below is checked against ../schemas/config.schema.json."]
-    lines.extend(f"{DEFINITION_MARKER}{name}" for name in definition_names)
-    lines.extend(f"{ENTRY_MARKER}{pointer}" for pointer in entries)
-    lines.extend(f"{VARIANT_MARKER}{pointer}" for pointer in variants)
-    return lines
-
-
 def render_home_example(schema: dict[str, Any]) -> str:
-    lines = [
-        "# Generated from ../schemas/config.schema.json; do not edit manually.",
-        "#",
-        "# This is an exhaustive user configuration reference, not an installable",
-        "# default. Active canonical settings use one schema-valid representative",
-        "# value. Deprecated aliases and mutually exclusive alternatives remain in",
-        "# comment-only coverage metadata. Replace placeholders before using this.",
-        "#",
-        f"# The agents.example.config_file setting points to {AGENT_ROLE_EXAMPLE_PATH.name}.",
-        "",
-    ]
-    root_values, root_comments = root_property_values(schema)
-    render_mapping(lines, root_values, comments=root_comments)
-    lines.extend(option_matrix_lines(schema))
-    lines.extend(finite_option_lines(schema))
-    lines.extend(definition_example_lines(schema))
-    lines.append("")
-    lines.extend(coverage_ledger_lines(schema))
-    return "\n".join(lines).rstrip() + "\n"
+    values, comments = root_property_values(schema)
+    # Keep mutually exclusive configurations in separate actual TOML files.
+    for name in ('sandbox_mode', 'sandbox_workspace_write', 'compact_prompt'):
+        values.pop(name, None)
+    return config_dumps(values, comments=comments, header=[
+        '# Configuration syntax examples only; NOT deployment defaults.',
+        '# Replace example values before copying individual settings.',
+        '# Never install this entire file as CODEX_HOME/config.toml.',
+        '# Agent configuration layers use the companion agent-role.toml.',
+    ])
 
 
 def render_agent_role_example(schema: dict[str, Any], *, home_example_path: Path) -> str:
-    role_schema = definitions(schema).get("AgentRoleToml")
-    if not isinstance(role_schema, dict):
-        raise GenerationError("config schema does not define AgentRoleToml")
-    value = sample_value(schema, role_schema)
-    if not isinstance(value, dict):
-        raise GenerationError("AgentRoleToml must generate an object")
-    value.pop("config_file", None)
-    lines = [
-        f"# Generated companion for {home_example_path.name} agents.<role>.config_file.",
-        "# Copy this file and tailor it for each named agent role.",
-        "",
-    ]
-    for name, child in value.items():
-        lines.append(f"{toml_key(name)} = {toml_literal(child)}")
-    lines.append("")
-    lines.append(f"{DEFINITION_MARKER}AgentRoleToml")
-    return "\n".join(lines).rstrip() + "\n"
+    # config_file points to a CONFIG LAYER, not an AgentRoleToml declaration.
+    # description/nickname_candidates belong in [agents.<role>] in the parent.
+    return config_dumps({
+        'model_reasoning_effort': 'high',
+        'developer_instructions': 'Complete the assigned bounded subtask and report verification evidence.',
+    }, header=[
+        f'# Companion configuration layer for {home_example_path.name}.',
+        '# Role descriptions and nicknames belong in the parent [agents.<role>] table.',
+    ])
 
 
 def matches_type(value: Any, expected: str) -> bool:
@@ -1028,14 +942,6 @@ def validate_value(schema: dict[str, Any], value: Any, node: Any, path: str = "$
     return errors
 
 
-def marker_values(content: str, prefix: str) -> set[str]:
-    return {
-        line.removeprefix(prefix)
-        for line in content.splitlines()
-        if line.startswith(prefix)
-    }
-
-
 def config_file_values(value: Any) -> set[str]:
     """Collect role-layer file names from generated config mappings."""
     if not isinstance(value, dict):
@@ -1069,78 +975,107 @@ def deprecated_alias_errors(value: Any, path: str = "$") -> list[str]:
     return errors
 
 
+def alternative_examples(schema: dict[str, Any]) -> dict[Path, str]:
+    props = schema['properties']
+    sandbox = {
+        'sandbox_mode': 'workspace-write',
+        'sandbox_workspace_write': sample_value(schema, props['sandbox_workspace_write']),
+    }
+    compact = {'compact_prompt': 'Preserve decisions, constraints, validation evidence and the remaining work.'}
+    return {
+        EXAMPLES_DIRECTORY / 'alternatives/sandbox-workspace.toml': config_dumps(sandbox, header=[
+            '# Alternative to default_permissions and [permissions], not an additional layer.',
+            '# Remove the permission-profile selector before using this older sandbox form.',
+        ]),
+        EXAMPLES_DIRECTORY / 'alternatives/inline-compaction.toml': config_dumps(compact, header=[
+            '# Alternative to experimental_compact_prompt_file, not a second compaction source.',
+            '# Remove the file-based compaction override before using this setting.',
+        ]),
+    }
+
+
 def validate_rendered_examples(
-    schema: dict[str, Any],
-    home_text: str,
-    role_text: str,
+    schema: dict[str, Any], home_text: str, role_text: str,
 ) -> list[str]:
     errors: list[str] = []
     try:
-        home = tomllib.loads(home_text)
-        role = tomllib.loads(role_text)
-    except tomllib.TOMLDecodeError as exc:
-        return [f"generated TOML is invalid: {exc}"]
-
+        home = clean_loads(home_text, 'config.home.toml')
+        role = clean_loads(role_text, 'agent-role.toml')
+    except (ValueError, tomllib.TOMLDecodeError) as exc:
+        return [f'generated TOML is invalid: {exc}']
     errors.extend(validate_value(schema, home, schema))
     errors.extend(deprecated_alias_errors(home))
-    role_schema = definitions(schema)["AgentRoleToml"]
-    errors.extend(validate_value(schema, role, role_schema, "agent-role.toml"))
-    role_file_values = config_file_values(home)
-    if AGENT_ROLE_EXAMPLE_PATH.name not in role_file_values:
-        errors.append(
-            "config.home.toml does not reference its generated agent-role companion"
-        )
-
-    expected_definitions, expected_entries, expected_variants = pointer_ledger(schema)
-    actual_definitions = marker_values(home_text, DEFINITION_MARKER)
-    actual_entries = marker_values(home_text, ENTRY_MARKER)
-    actual_variants = marker_values(home_text, VARIANT_MARKER)
-    actual_options = marker_values(home_text, OPTION_MARKER)
-    actual_finite_options = marker_values(home_text, FINITE_OPTION_MARKER)
-    actual_examples = marker_values(home_text, EXAMPLE_MARKER)
-    for label, expected, actual in (
-        ("definition", set(expected_definitions), actual_definitions),
-        ("entry", set(expected_entries), actual_entries),
-        ("variant", set(expected_variants), actual_variants),
-        ("option", set(expected_entries), {value.split(" = ", 1)[0] for value in actual_options}),
-        ("definition example", set(expected_definitions), {value.split(" = ", 1)[0] for value in actual_examples}),
-    ):
-        missing = sorted(expected - actual)
-        extra = sorted(actual - expected)
-        if missing:
-            errors.append(f"coverage ledger is missing {label} markers: {', '.join(missing[:10])}")
-        if extra:
-            errors.append(f"coverage ledger has unknown {label} markers: {', '.join(extra[:10])}")
-    expected_finite_options = set(finite_option_entries(schema))
-    missing_finite_options = sorted(expected_finite_options - actual_finite_options)
-    extra_finite_options = sorted(actual_finite_options - expected_finite_options)
-    if missing_finite_options:
-        errors.append(
-            "coverage ledger is missing finite option markers: "
-            + ", ".join(missing_finite_options[:10])
-        )
-    if extra_finite_options:
-        errors.append(
-            "coverage ledger has unknown finite option markers: "
-            + ", ".join(extra_finite_options[:10])
-        )
+    errors.extend(validate_value(schema, role, schema, 'agent-role.toml'))
+    if AGENT_ROLE_EXAMPLE_PATH.name not in config_file_values(home):
+        errors.append('config.home.toml does not reference its generated agent-role companion')
+    if 'sandbox_mode' in home and 'default_permissions' in home:
+        errors.append('permission selectors must live in separate examples')
+    if 'compact_prompt' in home and 'experimental_compact_prompt_file' in home:
+        errors.append('compaction sources must live in separate examples')
     return errors
+
+
+def coverage_report(schema: dict[str, Any], outputs: dict[Path, str]) -> dict[str, Any]:
+    """All schema internals remain in JSON, never in a .toml file."""
+    from jsonschema import Draft7Validator
+    definition_names, entries, variants = pointer_ledger(schema)
+    converted: dict[str, list[str]] = {}
+    file_records: dict[str, Any] = {}
+    for path, text in outputs.items():
+        data = clean_loads(text, str(path))
+        relative = str(path.relative_to(GENERATION_ROOT))
+        file_records[relative] = {'sha256': hashlib.sha256(text.encode()).hexdigest(), 'root_keys': sorted(data)}
+        # The companion config layer is validated separately and is not the
+        # exhaustive root-settings catalog.
+        if path == AGENT_ROLE_EXAMPLE_PATH:
+            continue
+        Draft7Validator(schema).validate(data)
+        for name in data:
+            converted.setdefault(name, []).append(relative)
+    wanted = set(schema['properties']) - set(DEPRECATED_ROOT_ALIASES)
+    missing = wanted - set(converted)
+    if missing:
+        raise GenerationError('unconverted configuration properties: ' + ', '.join(sorted(missing)))
+    if set(converted) - wanted:
+        raise GenerationError('unsupported or retired root configuration in generated TOML')
+    samples = {}
+    for name, node in sorted(definitions(schema).items()):
+        value = sample_value(schema, node)
+        errors = validate_value(schema, value, node, f'definition {name}')
+        if errors:
+            raise GenerationError('\n'.join(errors))
+        Draft7Validator({'$ref': '#/definitions/' + name, 'definitions': definitions(schema)}).validate(value)
+        samples[name] = value
+    return {
+        'format': 1,
+        'purpose': 'Build-time accounting only; never install into CODEX_HOME or /etc/codex.',
+        'schema_sha256': FEATURE_POLICY['schema_sha256'],
+        'counts': {'root_properties': len(schema['properties']), 'converted_root_properties': len(converted),
+                   'definitions': len(definition_names), 'entries': len(entries), 'union_variants': len(variants)},
+        'root_properties': {name: {
+            'status': 'retired-compatibility-only' if name in DEPRECATED_ROOT_ALIASES else 'converted-to-toml',
+            'toml_files': converted.get(name, []),
+        } for name in sorted(schema['properties'])},
+        'files': file_records,
+        'definitions': definition_names,
+        'entries': entries,
+        'union_variants': variants,
+        'options': {pointer: schema_option_summary(schema, node) for pointer, node in sorted(schema_entry_nodes(schema).items())},
+        'finite_options': finite_option_entries(schema),
+        'definition_values': samples,
+    }
 
 
 def rendered_examples(schema: dict[str, Any]) -> dict[Path, str]:
     home = render_home_example(schema)
     role = render_agent_role_example(schema, home_example_path=HOME_EXAMPLE_PATH)
-    errors = validate_rendered_examples(
-        schema,
-        home,
-        role,
-    )
+    errors = validate_rendered_examples(schema, home, role)
     if errors:
-        raise GenerationError("\n".join(errors))
-    return {
-        HOME_EXAMPLE_PATH: home,
-        AGENT_ROLE_EXAMPLE_PATH: role,
-    }
+        raise GenerationError('\n'.join(errors))
+    outputs = {HOME_EXAMPLE_PATH: home, AGENT_ROLE_EXAMPLE_PATH: role, **alternative_examples(schema)}
+    report = coverage_report(schema, outputs)
+    outputs[COVERAGE_PATH] = json.dumps(report, indent=2, ensure_ascii=True) + '\n'
+    return outputs
 
 
 def ensure_schema_path(path: Path) -> None:
@@ -1156,25 +1091,41 @@ def ensure_schema_path(path: Path) -> None:
 
 
 def ensure_example_path(path: Path) -> None:
+    """Allow outputs only below the source-only examples/reports directories."""
     generation_root = GENERATION_ROOT.resolve()
-    examples_root = EXAMPLES_DIRECTORY.resolve()
-    try:
-        examples_root.relative_to(generation_root)
-        path.resolve().relative_to(examples_root)
-    except ValueError as exc:
-        raise GenerationError(
-            f"refusing to write outside generate/examples/: {path}"
-        ) from exc
+    for allowed in (EXAMPLES_DIRECTORY, REPORTS_DIRECTORY):
+        try:
+            allowed.resolve().relative_to(generation_root)
+            path.resolve().relative_to(allowed.resolve())
+            if path.is_symlink():
+                raise GenerationError(f'refusing symlink output: {path}')
+            return
+        except ValueError:
+            continue
+    raise GenerationError(f'refusing to write outside generate/examples/ or generate/reports/: {path}')
 
 
 def write_if_changed(path: Path, content: str) -> bool:
     ensure_example_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    if path.exists() and path.read_text(encoding="utf-8") == content:
+    if path.exists() and path.read_text(encoding='utf-8') == content:
         return False
-    temporary = path.with_name(f".{path.name}.tmp")
-    temporary.write_text(content, encoding="utf-8")
-    temporary.replace(path)
+    fd, temporary = tempfile.mkstemp(prefix='.codex-example-', dir=path.parent)
+    try:
+        with os.fdopen(fd, 'w', encoding='utf-8', newline='\n') as stream:
+            stream.write(content)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.chmod(temporary, 0o644)
+        os.replace(temporary, path)
+        directory_fd = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
     return True
 
 
@@ -1182,7 +1133,7 @@ def run(write: bool) -> int:
     try:
         schema = load_schema()
         outputs = rendered_examples(schema)
-    except (GenerationError, json.JSONDecodeError) as exc:
+    except (GenerationError, json.JSONDecodeError, OSError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
@@ -1204,12 +1155,12 @@ def run(write: bool) -> int:
     changed = [path for path, content in outputs.items() if write_if_changed(path, content)] if write else []
     definition_names, entries, variants = pointer_ledger(schema)
     if changed:
-        print("Generated config schema examples:")
+        print("Generated TOML settings examples and separate JSON coverage:")
         for path in changed:
             digest = hashlib.sha256(path.read_bytes()).hexdigest()[:12]
             print(f"  generate/{path.relative_to(GENERATION_ROOT)} ({digest})")
     print(
-        "Config schema example coverage is valid: "
+        "TOML conversion and external JSON coverage are valid: "
         f"{len(definition_names)} definitions, {len(entries)} entries, "
         f"and {len(variants)} explicit union variants."
     )
@@ -1222,7 +1173,7 @@ def main(argv: list[str]) -> int:
     mode.add_argument(
         "--write",
         action="store_true",
-        help="write only the generated files under generate/examples/",
+        help="write TOML under generate/examples/ and JSON under generate/reports/ only",
     )
     mode.add_argument(
         "--check",

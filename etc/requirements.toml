@@ -1,5 +1,5 @@
 # Local requirements for the supplied custom Codex build based on 0.147.0.
-# requirements.toml is a separate format, NOT an instance of config.schema.json.
+# Requirements and runtime defaults use separate configuration formats.
 # The original full defaults, providers, profiles, Apps and all MCP registrations
 # live in the companion /etc/codex/config.toml (a mirror of home/config.toml).
 #

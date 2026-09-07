@@ -23,6 +23,10 @@ def bridge(read_a: int, write_a: int, read_b: int, write_b: int, *,
     Writes close once their input reaches EOF and queued bytes have drained.
     The remaining direction gets a bounded grace period to return final replies.
     """
+    if limit <= 0 or min(idle,lifetime,eof_grace) <= 0 or stderr_limit < 0:
+        raise ValueError('relay limits must be positive (stderr limit may be zero)')
+    if startup_timeout is not None and startup_timeout <= 0:
+        raise ValueError('startup timeout must be positive')
     inputs = [read_a, read_b]
     outputs = [write_b, write_a]
     closers = [close_write_b, close_write_a]
@@ -112,6 +116,8 @@ def bridge(read_a: int, write_a: int, read_b: int, write_b: int, *,
                             continue
                         except (BrokenPipeError, ConnectionResetError):
                             raise RelayError('peer disconnected') from None
+                        if count <= 0:
+                            raise RelayError('peer accepted a zero-byte write')
                         del pending[i][:count]; last = now
     return {'to_server_bytes':counts[0], 'from_server_bytes':counts[1],
             'suppressed_stderr_bytes':stderr_count}

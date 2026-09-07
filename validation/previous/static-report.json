@@ -1,0 +1,194 @@
+{
+  "target": "custom Codex based on 0.147.0",
+  "schema_used": "generate/schemas/config.schema.json",
+  "schema_sha256": "30c625df04c94d5e71129945a930ef092827f03c85e14848399346fa328577af",
+  "schema_provenance": "byte-for-byte user attachment; no upstream substitution",
+  "active_configuration_files": 26,
+  "main_config_lines": 1736,
+  "schema_feature_keys": 126,
+  "active_feature_keys": 81,
+  "feature_dispositions": {
+    "removed": 32,
+    "deprecated": 3,
+    "legacy_aliases": 10
+  },
+  "instruction_catalog_agent_references": 115,
+  "original_instruction_files_unchanged": 491,
+  "mcp_registrations": 30,
+  "podman_mcp_servers": 13,
+  "plugins_configured": 54,
+  "hook_events": 11,
+  "hook_handlers": 97,
+  "original_files": 6802,
+  "original_files_present": 6802,
+  "original_files_unchanged": 6772,
+  "original_files_modified": [
+    "agents/analyst.toml",
+    "agents/coder.toml",
+    "agents/default.toml",
+    "agents/delegator.toml",
+    "agents/explorer.toml",
+    "agents/hunter.toml",
+    "agents/integrator.toml",
+    "agents/manager.toml",
+    "agents/orchestrator.toml",
+    "agents/planner.toml",
+    "agents/reviewer.toml",
+    "agents/synthesizer.toml",
+    "agents/tester.toml",
+    "agents/worker.toml",
+    "etc/config.toml",
+    "etc/requirements.toml",
+    "generate/examples/config.home.toml",
+    "generate/scripts/config_toml_coverage.py",
+    "generate/scripts/plugin_catalog_coverage.py",
+    "home/.hooks/modules/Codex/Hook/Schema.pm",
+    "home/agents.config.toml",
+    "home/config.toml",
+    "home/cyber.config.toml",
+    "home/debug.config.toml",
+    "home/default.config.toml",
+    "home/fast.config.toml",
+    "home/maximus.config.toml",
+    "home/review.config.toml",
+    "home/spark.config.toml",
+    "home/test.config.toml"
+  ],
+  "missing_original_files": [],
+  "results": [
+    {
+      "file": "home/agents.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/cyber.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/debug.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/default.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/fast.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/full-access.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/maximus.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/review.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/spark.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "home/test.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/analyst.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/coder.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/default.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/delegator.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/explorer.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/hunter.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/integrator.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/manager.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/orchestrator.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/planner.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/reviewer.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/synthesizer.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/tester.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "agents/worker.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
+      "file": "etc/config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    }
+  ],
+  "requirements_check": "TOML + explicit nonrestrictive project-policy checks; separate from config.schema.json",
+  "live_engine_tested": false,
+  "live_podman_tested": false,
+  "remaining": "Run target dependency, executable/resource, effective custom-client configuration and live MCP checks."
+}

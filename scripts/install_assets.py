@@ -41,13 +41,16 @@ def directory(path: Path,root_only: bool=False) -> None:
 def merge_desktop(source: bytes, existing: bytes) -> bytes:
     """Preserve opaque product-owned settings; explicit reviewed source values win."""
     import tomlkit
+    from config_toml import clean_loads
+    clean_loads(source.decode('utf-8'), 'install source')
     old = tomllib.loads(existing.decode('utf-8'))
     if 'desktop' not in old:
         return source
     if not isinstance(old['desktop'], dict):
         raise ValueError('existing desktop settings are not a TOML table')
     new = tomlkit.parse(source.decode('utf-8'))
-    existing_doc = tomlkit.parse(existing.decode('utf-8'))
+    # Keep opaque desktop VALUES, not trailing legacy schema/reference comments.
+    existing_desktop = tomlkit.item(old['desktop'])
     # The opaque table may contain nested product-specific fields. Do not infer,
     # migrate, or discard them. Reviewed explicit replacements take precedence.
     def merge(a, b):
@@ -57,8 +60,9 @@ def merge_desktop(source: bytes, existing: bytes) -> bytes:
             else:
                 a[key] = value
         return a
-    new['desktop'] = merge(existing_doc['desktop'], new.get('desktop', {}))
+    new['desktop'] = merge(existing_desktop, new.get('desktop', {}))
     result = tomlkit.dumps(new).encode('utf-8')
+    clean_loads(result.decode('utf-8'), 'merged desktop configuration')
     from jsonschema import Draft7Validator
     schema = json.loads((ROOT/'generate/schemas/config.schema.json').read_text())
     Draft7Validator(schema).validate(tomllib.loads(result.decode('utf-8')))
@@ -75,7 +79,7 @@ def install(mode: str) -> dict:
     else:
         if os.geteuid()!=0:raise ValueError('install-config requires sudo')
         dest=Path('/etc/codex')
-        sources=[ROOT/'etc/config.toml',ROOT/'etc/requirements.toml',ROOT/'etc/config.schema.json']
+        sources=[ROOT/'etc/config.toml',ROOT/'etc/requirements.toml']
     directory(dest,mode=='config')
     stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S')
     backup=dest/'.asset-backups'/(stamp+'-'+str(os.getpid()))

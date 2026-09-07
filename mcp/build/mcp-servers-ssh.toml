@@ -1,0 +1,107 @@
+# Generated local MCP registrations only. Merge by server ID, do not append duplicate tables.
+# No API values are stored here. The broker reads systemd credentials.
+# "configured" follows /etc/codex/mcp/client.json; explicit variants override it.
+
+[mcp_servers."filesystem"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "filesystem", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."git"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "git", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."fetch"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "fetch", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."memory"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "memory", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."sequential_thinking"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "sequential-thinking", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."time"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "time", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."markdown"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "markdown", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."context7"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "context7", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."playwright"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "playwright", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."chrome-devtools"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "chrome-devtools", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."postgres"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "postgres", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."sqlite"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "sqlite", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180
+
+[mcp_servers."semgrep"]
+command = "/usr/local/bin/codex-mcp"
+args = ["connect", "semgrep", "--transport", "ssh"]
+enabled = true
+required = false
+startup_timeout_sec = 120
+tool_timeout_sec = 180

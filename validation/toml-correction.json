@@ -1,0 +1,124 @@
+{
+  "source_archive": "codex-home.tar.gz",
+  "source_archive_sha256": "82d06c3a982b9949b4b10b26c55b8739de3da322f705751673c0626aeb311438",
+  "previous_main_config_lines": 5509,
+  "corrected_main_config_lines": 1576,
+  "runtime_root_settings_preserved": 76,
+  "runtime_and_requirements_files_semantically_identical": 27,
+  "source_main_and_system_mirror_byte_identical": true,
+  "all_toml_files_checked": 47,
+  "toml_schema_metadata_violations": 0,
+  "upgrade_from_previous_config_clean": true,
+  "mcp_files_unchanged": true,
+  "instruction_sources_unchanged": true,
+  "runtime_checks": [
+    {
+      "file": "agents/analyst.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/coder.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/default.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/delegator.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/explorer.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/hunter.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/integrator.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/manager.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/orchestrator.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/planner.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/reviewer.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/synthesizer.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/tester.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "agents/worker.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "etc/config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "etc/requirements.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/agents.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/cyber.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/debug.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/default.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/fast.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/full-access.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/maximus.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/review.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/spark.config.toml",
+      "parsed_values_unchanged": true
+    },
+    {
+      "file": "home/test.config.toml",
+      "parsed_values_unchanged": true
+    }
+  ]
+}

@@ -226,8 +226,13 @@ def run(argv: list[str], *, timeout: int = 30, env: dict[str,str] | None = None,
 
 
 def digest_tree(root: Path) -> str:
+    """Hash the exact distributed release payload, rejecting source symlinks."""
     h=hashlib.sha256()
     for p in sorted(root.rglob('*')):
-        if p.is_file() and '__pycache__' not in p.parts and '.pyc'!=p.suffix:
-            h.update(str(p.relative_to(root)).encode()+b'\0'+p.read_bytes()+b'\0')
+        relative=p.relative_to(root)
+        if any(x in {'__pycache__','.git','build','validation'} for x in relative.parts):continue
+        if p.name=='.env' or p.name.endswith('.local') or p.suffix=='.pyc':continue
+        if p.is_symlink():raise ConfigError('source symlink requires explicit review: '+str(relative))
+        if p.is_file():
+            h.update(str(relative).encode()+b'\0'+p.read_bytes()+b'\0')
     return h.hexdigest()

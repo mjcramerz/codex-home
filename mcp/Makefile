@@ -6,9 +6,9 @@ ADMIN := ./bin/codex-mcp-admin --env "$(ENV_FILE)"
 ifneq ($(strip $(DESKTOP_USER)),)
 ADMIN += --desktop-user "$(DESKTOP_USER)"
 endif
-.PHONY: help check test dependencies preflight install pull build deploy up down restart status logs doctor smoke smoke-ssh toolchain-check credential backup restore uninstall
+.PHONY: help check test dependencies preflight install pull build deploy up down restart status logs doctor smoke smoke-ssh toolchain-check credential backup restore uninstall config env-check acceptance
 help:
-	@printf '%s\n' 'Desktop: make check test; edit .env; sudo make deploy DESKTOP_USER=alice' 'Provision: sudo make credential NAME=postgres-dsn (hidden prompt)' 'Accept: make smoke; make smoke-ssh; sudo make toolchain-check' 'Manage: sudo make up|down|restart|doctor|backup FILE=/secure/state.tar.gz' 'Never put API keys or DSNs in Make variables or .env.'
+	@printf '%s\n' 'Desktop: make check test; edit .env; sudo make deploy DESKTOP_USER=alice' 'Provision: sudo make credential NAME=postgres-dsn (hidden prompt)' 'Accept: make smoke; make smoke-ssh; sudo make toolchain-check' 'Manage: sudo make up|down|restart|doctor|backup FILE=/secure/state.tar.gz' 'make config: generate configured/Unix/SSH TOML snippets without modifying clients' 'Never put API keys or DSNs in Make variables or .env.'
 check:
 	python3 -m compileall -q lib bin scripts tests container
 	python3 scripts/check.py
@@ -34,3 +34,11 @@ credential:
 backup restore:
 	@test -n "$(FILE)" || { echo 'FILE is required.' >&2; exit 1; }
 	$(ADMIN) $@ --file "$(FILE)"
+
+config:
+	python3 scripts/configure_clients.py --env "$(ENV_FILE)"
+env-check:
+	python3 scripts/check.py
+acceptance: smoke
+	sudo $(ADMIN) doctor
+	sudo $(ADMIN) toolchain-check

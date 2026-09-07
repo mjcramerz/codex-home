@@ -1,7 +1,7 @@
 {
   "target": "user custom build based on 0.147.0",
   "schema_sha256": "30c625df04c94d5e71129945a930ef092827f03c85e14848399346fa328577af",
-  "authority": "The exact user-supplied schema is the acceptance contract; upstream 0.147.0 sources are used only for inherited lifecycle status and legacy aliases. Custom schema-only features are retained, not guessed obsolete.",
+  "authority": "The exact schema embedded in the uploaded codex-home archive is the acceptance contract; upstream 0.147.0 sources are used only for inherited lifecycle status and legacy aliases. Custom schema-only features are retained, not guessed obsolete.",
   "removed": {
     "undo": {
       "stage": "Removed",
@@ -200,5 +200,19 @@
   "schema_rejected": [
     "features.child_agents_md"
   ],
-  "runtime_not_tested": "The custom executable and its private Rust source were not supplied. Schema conformance is verified; runtime feature implementation is not independently certified."
+  "runtime_not_tested": "The custom executable and its private Rust source were not supplied. Schema conformance is verified; runtime feature implementation is not independently certified.",
+  "requirements_only": [
+    "browser_use",
+    "browser_use_external",
+    "browser_use_full_cdp_access",
+    "computer_use",
+    "in_app_browser",
+    "in_app_updates"
+  ],
+  "refactor_notes": {
+    "approval_policy": "granular flags allow prompts; false rejects prompt categories, it does not approve actions",
+    "requirements_only": "These six capabilities are pinned in etc/requirements.toml, not falsely enabled through user features.",
+    "schema_provenance": "Schema found inside codex-home attachment; no separate schema attachment was present in this session.",
+    "runtime_not_tested": "Custom binary and private Rust implementation were not supplied."
+  }
 }

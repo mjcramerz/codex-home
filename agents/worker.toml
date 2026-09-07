@@ -1,4 +1,3 @@
-#:schema ../home/config.schema.json
 model = "gpt-5.4-mini"
 review_model = "gpt-5.4"
 personality = "friendly"

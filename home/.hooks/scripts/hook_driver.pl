@@ -20,7 +20,7 @@ BEGIN {
 }
 
 use Codex::Hook::Driver qw(run_event);
-use Codex::Hook::Output qw(emit_payload json_true);
+use Codex::Hook::Output qw(emit_payload json_true json_false);
 use Codex::Hook::Script qw(seed_runtime_schema_env);
 
 seed_runtime_schema_env(script_dir => $Bin);
@@ -48,11 +48,9 @@ _usage() if @ARGV != 1 || !$allowed{$event};
 
 my $ok = eval { run_event($event); 1 };
 if (!$ok) {
-    my $error = $@;
-    $error =~ s/\s+\z//;
     emit_payload({
-        continue      => json_true(),
-        systemMessage => "Hook driver error: $error",
+        continue      => ($event eq "pre-tool-use" || $event eq "permission-request") ? json_false() : json_true(),
+        systemMessage => "Hook infrastructure error; run the local dependency and hook tests.",
     });
 }
 

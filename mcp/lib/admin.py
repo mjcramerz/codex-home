@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tarfile
@@ -15,7 +16,7 @@ import tempfile
 import time
 from common import (SOURCE_ROOT,CREDENTIALS,ConfigError,atomic_write,load_env,
                     load_runtime,locked,resolve_accounts,run)
-from install import (as_devops,install,preflight,prepare,root_required)
+from install import (as_devops,install,preflight,prepare,root_required,protected_directory)
 from runtime import catalog
 
 
@@ -48,7 +49,7 @@ def build(cfg: dict) -> None:
     images = json.loads(as_devops(cfg,['image','inspect',cfg['MCP_DERIVED_IMAGE']]).stdout)
     ident = image_id(images[0]['Id'])
     # Verify the patched package version and nonroot identity inside the actual image.
-    script = 'import json,os,pwd; assert os.geteuid()!=0; assert pwd.getpwuid(os.geteuid()).pw_name=="devops"; print(json.load(open("/opt/mcp-node/node_modules/@bytebase/dbhub/package.json"))["version"])'
+    script = 'import json,os,pwd; from pathlib import Path; assert os.geteuid()!=0; assert pwd.getpwuid(os.geteuid()).pw_name=="devops"; assert all(os.access("/usr/local/bin/"+v["executable"],os.X_OK) for v in json.load(open("/opt/codex-mcp/servers.json")).values()); assert os.access("/usr/local/bin/chrome-for-mcp",os.X_OK); print(json.load(open("/opt/mcp-node/node_modules/@bytebase/dbhub/package.json"))["version"])'
     probe = as_devops(cfg,['run','--rm','--network=none','--read-only','--cap-drop=all',
           '--security-opt=no-new-privileges','--entrypoint=/usr/bin/python3',ident,'-I','-c',script])
     if probe.stdout.decode().strip()!=cfg['DBHUB_PATCH_VERSION']:
@@ -85,18 +86,26 @@ def network(cfg: dict) -> None:
 
 def credential(cfg: dict, name: str, path: Path | None) -> None:
     root_required()
+    if name not in CREDENTIALS:
+        raise ConfigError('unknown credential name')
     if path is None:
         import getpass
         data = getpass.getpass('Value for '+name+' (input hidden): ').encode()
     else:
-        if path.is_symlink() or not path.is_file():
-            raise ConfigError('credential import must be a regular, non-symlink file')
-        st = path.stat()
-        if st.st_mode & 0o077:
-            raise ConfigError('credential import file must not be accessible by group or other users')
-        data = path.read_bytes().rstrip(b'\r\n')
+        fd = os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK|os.O_CLOEXEC)
+        with os.fdopen(fd,'rb') as source:
+            st = os.fstat(source.fileno())
+            if not stat.S_ISREG(st.st_mode) or st.st_mode & 0o077:
+                raise ConfigError('credential import must be a private regular file')
+            if st.st_size > 65538:
+                raise ConfigError('credential import is too large')
+            data = source.read(65539).rstrip(b'\r\n')
     if not data or len(data)>65536 or any(b in data for b in (b'\x00',b'\r',b'\n')):
         raise ConfigError('credential must be nonempty, single-line, and at most 65536 bytes')
+    try:
+        data.decode('utf-8')
+    except UnicodeError:
+        raise ConfigError('credential must be UTF-8 text') from None
     # No secret value is accepted on a command line, written to stdout, or copied into .env.
     atomic_write(Path(cfg['MCP_CONFIG_DIR'])/'credentials'/name,data,0o600,0,0)
     print(name+' updated atomically. Reconnect affected MCP sessions to load it.')
@@ -184,7 +193,11 @@ def backup(cfg: dict, destination: Path) -> None:
     if not state.exists():
         raise ConfigError('state directory is missing')
     destination = destination.absolute()
-    fd = os.open(destination,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600)
+    parent_mode=stat.S_IMODE(destination.parent.lstat().st_mode) if destination.parent.exists() else 0o700
+    protected_directory(destination.parent,parent_mode)
+    fd, temporary_name = tempfile.mkstemp(prefix='.codex-mcp-backup-',dir=destination.parent)
+    temporary = Path(temporary_name)
+    os.fchmod(fd,0o600)
     try:
         # Read service-controlled state as devops, never as root. A malicious
         # concurrent symlink change therefore cannot disclose root-only files.
@@ -206,9 +219,13 @@ with tarfile.open(fileobj=sys.stdout.buffer,mode='w|gz') as tar:
             if result.returncode:
                 raise ConfigError('state backup failed; no partial archive retained')
             stream.flush(); os.fsync(stream.fileno())
-    except BaseException:
-        destination.unlink(missing_ok=True)
-        raise
+        # Link publication is atomic and refuses to overwrite an existing backup.
+        os.link(temporary,destination,follow_symlinks=False)
+        directory_fd=os.open(destination.parent,os.O_RDONLY|os.O_DIRECTORY)
+        try:os.fsync(directory_fd)
+        finally:os.close(directory_fd)
+    finally:
+        temporary.unlink(missing_ok=True)
     print('State backed up to '+str(destination)+'. Services remain stopped; run make up.')
 
 
@@ -220,7 +237,11 @@ def restore(cfg: dict, archive: Path) -> None:
         raise ConfigError('restore requires empty memory/sqlite state; preserve existing data first')
     with tarfile.open(archive,'r:*') as tar:
         total = 0
-        for info in tar.getmembers():
+        members=[]
+        for info in tar:
+            members.append(info)
+            if len(members)>100000:
+                raise ConfigError('backup exceeds the 100000 member restore limit')
             p = Path(info.name)
             if (p.is_absolute() or '..' in p.parts or not p.parts or p.parts[0]!='state'
                 or not (info.isfile() or info.isdir())):
@@ -232,7 +253,7 @@ def restore(cfg: dict, archive: Path) -> None:
                 raise ConfigError('backup exceeds the 10 GiB restore limit')
         # Never restore ownership from an archive supplied by a caller.
         with tempfile.TemporaryDirectory(prefix='codex-mcp-restore-',dir=root.parent) as temp:
-            tar.extractall(temp,filter='data')
+            tar.extractall(temp,members=members,filter='data')
             for name in ('memory','sqlite'):
                 source = Path(temp)/'state'/name
                 if not source.is_dir():
@@ -290,13 +311,20 @@ def main() -> int:
         cfg = install(args.env,args.desktop_user)
         print('Installed protected release '+cfg['RELEASE_SHA256']+'. Build image and start target next.')
         return 0
-    cfg = load_runtime()
+    if args.operation in {'pull','build','up','restart','down','credential','backup','restore','uninstall'}:
+        root_required()
+        # Fixed, protected directory: do not choose a lock using stale runtime data.
+        with locked(Path('/etc/codex/mcp/admin.lock'),blocking=True):
+            return dispatch(args,parser,load_runtime())
+    return dispatch(args,parser,load_runtime())
+
+
+def dispatch(args, parser, cfg) -> int:
     op = args.operation
     if op=='prepare': prepare(cfg)
     elif op in ('pull','build'):
         root_required()
-        with locked(Path(cfg['MCP_CONFIG_DIR'])/'build.lock'):
-            pull(cfg) if op=='pull' else build(cfg)
+        pull(cfg) if op=='pull' else build(cfg)
     elif op in ('up','restart','down'):
         root_required()
         if op!='down':

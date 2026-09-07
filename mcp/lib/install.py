@@ -371,7 +371,7 @@ def install(env_path: Path, desktop: str | None = None) -> dict[str,Any]:
         raise ConfigError('preflight failed:\n'+ '\n'.join(errors))
     root = Path(cfg['MCP_CONFIG_DIR'])
     protected_directory(root,0o755)
-    with locked(root/'install.lock',blocking=True):
+    with locked(root/'admin.lock',blocking=True):
         run(['/usr/bin/systemctl','stop','codex-mcp.target'],check=False)
         old_config = root/'runtime.json'
         if old_config.exists():
@@ -392,13 +392,18 @@ def install(env_path: Path, desktop: str | None = None) -> dict[str,Any]:
             staging = releases/('.staging-'+release_hash)
             if staging.exists():
                 shutil.rmtree(staging)
-            shutil.copytree(SOURCE_ROOT,staging,ignore=shutil.ignore_patterns('__pycache__','*.pyc','.env','*.local','build','validation'))
+            shutil.copytree(SOURCE_ROOT,staging,symlinks=True,ignore=shutil.ignore_patterns('__pycache__','*.pyc','.env','*.local','build','validation','.git'))
             for path in staging.rglob('*'):
                 if path.is_symlink():
                     raise ConfigError('release must not contain symlinks')
                 os.chown(path,0,0)
                 os.chmod(path,0o755 if path.is_dir() or path.parent.name=='bin' else 0o644)
+            os.chmod(staging,0o755)
+            if digest_tree(staging)!=release_hash:
+                raise ConfigError('source changed during snapshot; rerun installation from a stable tree')
             os.rename(staging,release)
+        if digest_tree(release)!=release_hash:
+            raise ConfigError('installed release digest mismatch')
         current = Path(cfg['MCP_INSTALL_ROOT'])/'current'
         temporary = current.with_name('.current-new')
         if temporary.is_symlink():

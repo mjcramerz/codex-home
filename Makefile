@@ -1,8 +1,8 @@
 SHELL := /bin/sh
 .DEFAULT_GOAL := help
-.PHONY: help dependencies generate examples check test test-hooks check-runtime verify install-home install-config package
+.PHONY: help dependencies generate examples check test test-hooks check-runtime verify verify-full install-home install-config package
 help:
-	@printf '%s\n' 'sudo make dependencies: Python/Perl configuration and hook dependencies' 'make verify: exact-schema, preservation, regression, MCP and unit syntax checks' 'make test-hooks: run original Perl hook tests (dependencies required)' 'make generate: synchronize derived files WITHOUT replacing custom configuration' 'make check-runtime: inspect installed custom binary, Node and hook prerequisites' 'make install-home: desktop-user assets; preserves existing desktop settings' 'sudo make install-config: full config, requirements and schema in /etc/codex' 'make package: produce ../codex-home.tar.gz with content and archive checksums'
+	@printf '%s\n' 'sudo make dependencies: Python/Perl configuration and hook dependencies' 'make verify: exact-schema, instruction, regression, MCP and unit syntax checks' 'make test-hooks: run real Perl hook tests (dependencies required)' 'make generate: synchronize derived files WITHOUT replacing custom configuration' 'make check-runtime: inspect installed custom binary, Node and hook prerequisites' 'make install-home: desktop-user assets; preserves existing desktop settings' 'sudo make install-config: runtime config and requirements in /etc/codex' 'make package: produce ../codex-home.tar.gz with content and archive checksums'
 dependencies:
 	@test "$$(id -u)" = 0 || { echo 'Run with sudo.' >&2; exit 1; }
 	apt-get update
@@ -32,3 +32,5 @@ install-config:
 	python3 scripts/install_assets.py config
 package: verify
 	python3 scripts/package.py
+
+verify-full: verify test-hooks

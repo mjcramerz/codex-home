@@ -43,7 +43,7 @@ def main() -> int:
             command = server['command']
             record('MCP command '+name, os.access(command, os.X_OK) if '/' in command else shutil.which(command), command)
     node = data.get('mcp_servers', {}).get('node_repl', {}).get('env', {})
-    for k in ('NODE_REPL_NODE_PATH', 'CODEX_CLI_PATH'):
+    for k in ('NODE_REPL_LAUNCHER', 'NODE_REPL_NODE_PATH', 'CODEX_CLI_PATH'):
         if k in node:record(k, os.access(node[k], os.X_OK), node[k])
     if node.get('NODE_REPL_TRUSTED_CODE_PATHS'):
         for path in node['NODE_REPL_TRUSTED_CODE_PATHS'].split(':'):
