@@ -5,6 +5,10 @@ impactDescription: prevents render thrashing during scroll
 tags: scroll, performance, reanimated, useRef
 ---
 
+# scroll position no state
+
+Apply the following scroll position no state guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Never Track Scroll Position in useState
 
 Never store scroll position in `useState`. Scroll events fire rapidly—state

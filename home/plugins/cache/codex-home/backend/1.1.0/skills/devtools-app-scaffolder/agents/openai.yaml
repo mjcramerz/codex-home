@@ -1,18 +1,16 @@
 interface:
-  display_name: "DEVTOOLS-App Scaffolding"
-  short_description: "Scaffold full-fledged apps using the provided templates; wire up config,"
-  icon_small: "./assets/icon-32.png"
-  icon_large: "./assets/icon-128.png"
-  brand_color: "#93CC32"
-  default_prompt: "Use $devtools-app-scaffolder. Act as the \"DEVTOOLS-App Scaffolding\" specialist for \"Scaffold full-fledged apps using the provided templates; wire up config,\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
-
+  display_name: DEVTOOLS-App Scaffolding
+  short_description: Use this skill for scaffold full-fledged apps using the provided templates; wire up config
+  icon_small: ./assets/icon-32.png
+  icon_large: ./assets/icon-128.png
+  brand_color: '#93CC32'
+  default_prompt: Use $devtools-app-scaffolder for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "microsoft-learn"
-      description: "microsoft-learn MCP server"
-      transport: "streamable_http"
-      url: "https://learn.microsoft.com/api/mcp"
-
+  - type: mcp
+    value: microsoft-learn
+    description: microsoft-learn MCP server
+    transport: streamable_http
+    url: https://learn.microsoft.com/api/mcp
 policy:
   allow_implicit_invocation: true

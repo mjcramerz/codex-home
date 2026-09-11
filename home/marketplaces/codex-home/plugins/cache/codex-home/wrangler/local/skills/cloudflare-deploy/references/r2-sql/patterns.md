@@ -1,5 +1,7 @@
 # R2 SQL Patterns
 
+Consult this reference when r2 sql patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common patterns, use cases, and integration examples for R2 SQL.
 
 ## Wrangler CLI Query
@@ -38,6 +40,7 @@ curl -X POST https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/sql/q
 ```
 
 Response:
+
 ```json
 {
   "success": true,
@@ -73,7 +76,7 @@ npx wrangler r2 sql query "my-bucket" "
 "
 ```
 
-See [pipelines/patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/patterns.md) for detailed setup.
+See [pipelines/patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/patterns.md) for detailed setup.
 
 ## PyIceberg Integration
 
@@ -111,6 +114,7 @@ table.append(pa.Table.from_pandas(df, schema=schema))
 ```
 
 Query with R2 SQL:
+
 ```bash
 npx wrangler r2 sql query "my-bucket" "
   SELECT user_id, SUM(page_views)
@@ -120,11 +124,12 @@ npx wrangler r2 sql query "my-bucket" "
 "
 ```
 
-See [r2-data-catalog/patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2-data-catalog/patterns.md) for advanced PyIceberg patterns.
+See [r2-data-catalog/patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2-data-catalog/patterns.md) for advanced PyIceberg patterns.
 
 ## Use Cases
 
 ### Log Analytics
+
 ```sql
 -- Error rate by endpoint
 SELECT path, COUNT(*), SUM(CASE WHEN status >= 400 THEN 1 ELSE 0 END) as errors
@@ -143,6 +148,7 @@ GROUP BY status ORDER BY COUNT(*) DESC;
 ```
 
 ### Fraud Detection
+
 ```sql
 -- High-value transactions
 SELECT location, COUNT(*), SUM(amount), AVG(amount)
@@ -156,6 +162,7 @@ GROUP BY merchant_category HAVING COUNT(*) > 10 ORDER BY COUNT(*) DESC;
 ```
 
 ### Business Intelligence
+
 ```sql
 -- Sales by department
 SELECT department, SUM(revenue), AVG(revenue), COUNT(*) FROM sales.transactions
@@ -183,11 +190,12 @@ val spark = SparkSession.builder()
 spark.sql("SELECT * FROM my_catalog.default.my_table LIMIT 10").show()
 ```
 
-See [r2-data-catalog/patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2-data-catalog/patterns.md) for more engines.
+See [r2-data-catalog/patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2-data-catalog/patterns.md) for more engines.
 
 ## Performance Optimization
 
 ### Partitioning
+
 - **Time-series:** day/hour on timestamp
 - **Geographic:** region/country
 - **Avoid:** High-cardinality keys (user_id)
@@ -200,6 +208,7 @@ PartitionSpec(PartitionField(source_id=1, field_id=1000, transform=DayTransform(
 ```
 
 ### Query Optimization
+
 - **Always use LIMIT** for early termination
 - **Filter on partition keys first**
 - **Multiple filters** for better pruning
@@ -211,6 +220,7 @@ WHERE timestamp >= '2025-01-15T00:00:00Z' AND status = 404 AND method = 'GET' LI
 ```
 
 ### File Organization
+
 - **Pipelines roll:** Dev 10-30s, Prod 300+s
 - **Target Parquet:** 100-500MB compressed
 
@@ -218,5 +228,5 @@ WHERE timestamp >= '2025-01-15T00:00:00Z' AND status = 404 AND method = 'GET' LI
 
 - [api.md](api.md) - SQL syntax reference
 - [gotchas.md](gotchas.md) - Limitations and troubleshooting
-- [r2-data-catalog/patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2-data-catalog/patterns.md) - PyIceberg advanced patterns
-- [pipelines/patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/patterns.md) - Streaming ingestion patterns
+- [r2-data-catalog/patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2-data-catalog/patterns.md) - PyIceberg advanced patterns
+- [pipelines/patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/patterns.md) - Streaming ingestion patterns

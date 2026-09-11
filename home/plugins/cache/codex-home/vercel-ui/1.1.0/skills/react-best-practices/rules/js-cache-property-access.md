@@ -5,6 +5,10 @@ impactDescription: reduces lookups
 tags: javascript, loops, optimization, caching
 ---
 
+# js cache property access
+
+Apply the following js cache property access guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Cache Property Access in Loops
 
 Cache object property lookups in hot paths.

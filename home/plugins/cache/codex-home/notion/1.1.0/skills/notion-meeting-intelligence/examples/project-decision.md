@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Project Decision Meeting Prep
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## User Request
 
@@ -420,27 +423,30 @@ rich_text: [{
 ## Key Features Demonstrated
 
 ### Context Gathering
+
 - **Targeted search**: Engineering teamspace, recent documents
 - **Multiple perspectives**: Performance data, proposals, analysis, historical lessons
 - **Comprehensive synthesis**: Combined technical, business, and historical context
 
 ### Options Analysis
+
 - **Structured comparison**: Pros/cons for each option
 - **Cost-benefit**: Effort and infrastructure costs included
 - **Risk assessment**: Probability and impact noted
 - **Recommendation**: Clear engineering preference stated
 
 ### Decision Support
+
 - **Discussion topics**: 16 questions organized by theme
 - **Decision framework**: Evaluation criteria defined
 - **Decision makers**: Roles and responsibilities clear
 - **Outcome capture**: Sections ready for decision and actions
 
 ### Meeting Structure
+
 - **Pre-read**: Comprehensive background (can be read in 10 minutes)
 - **Options**: Clear comparison for quick decision
 - **Discussion**: Structured topics prevent rambling
 - **Capture**: Templates for decision and actions
 
 Perfect for: Architecture decisions, technical trade-offs, strategic choices
-

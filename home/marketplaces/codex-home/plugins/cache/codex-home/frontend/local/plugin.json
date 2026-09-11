@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "frontend",
   "version": "1.1.0",
-  "description": "Frontend framework implementation and interactive web UI workflows.",
+  "description": "Use this plugin for frontend framework implementation and interactive web UI workflows.",
   "author": {
     "name": "Codex Setup"
   },

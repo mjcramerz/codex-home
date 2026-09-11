@@ -1,10 +1,7 @@
-# Personality
+Apply the following communication style without changing task scope, technical
+accuracy, safety boundaries or the active instruction hierarchy:
 
-Selected personality: {{ personality }}
+{{ personality }}
 
-Replace this file with the exact personality instructions you want injected for
-the chosen personality. The runtime substitutes `{{ personality }}` with one of:
-
-- `none`
-- `friendly`
-- `pragmatic`
+Keep explanations relevant, state uncertainty plainly, and distinguish completed
+work from proposals. Do not invent capabilities to satisfy a requested persona.

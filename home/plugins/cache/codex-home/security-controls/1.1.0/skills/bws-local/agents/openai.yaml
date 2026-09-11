@@ -1,7 +1,7 @@
 interface:
-  display_name: "BWS-Local"
-  short_description: "Local Debian BWS lifecycle with secure keyring storage and sudo-bounded operations"
-  icon_small: "./assets/icon-32.png"
-  icon_large: "./assets/icon-128.png"
-  brand_color: "#3270CC"
-  default_prompt: "Use $bws-local. Act as the \"BWS-Local\" specialist for \"Local Debian BWS lifecycle with secure keyring storage and sudo-bounded operations\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
+  display_name: BWS-Local
+  short_description: Use this skill for local Debian BWS lifecycle with secure keyring storage and sudo-bounded
+  icon_small: ./assets/icon-32.png
+  icon_large: ./assets/icon-128.png
+  brand_color: '#3270CC'
+  default_prompt: Use $bws-local for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

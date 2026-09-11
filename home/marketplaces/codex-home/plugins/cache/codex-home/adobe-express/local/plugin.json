@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "adobe-express",
   "version": "1.1.0",
-  "description": "Adobe Express workflows for quick visual design, social assets, and campaign-ready exports.",
+  "description": "Use this plugin for adobe Express workflows for quick visual design, social assets, and campaign-ready exports.",
   "author": {
     "name": "Adobe",
     "url": "https://www.adobe.com/express/"

@@ -5,6 +5,10 @@ impactDescription: caches across requests
 tags: server, cache, lru, cross-request
 ---
 
+# server cache lru
+
+Apply the following server cache lru guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Cross-Request LRU Caching
 
 `React.cache()` only works within one request. For data shared across sequential requests (user clicks button A then button B), use an LRU cache.

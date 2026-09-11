@@ -1,5 +1,7 @@
 # PptxGenJS Helpers
 
+Consult this reference when pptxgenjs helpers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## When To Read This
 
 Read this file when you need helper API details, command examples for the bundled Python scripts, or dependency notes for a slide-generation task.

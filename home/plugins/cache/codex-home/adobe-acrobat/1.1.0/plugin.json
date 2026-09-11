@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "adobe-acrobat",
   "version": "1.1.0",
-  "description": "Adobe Acrobat workflows for PDF reading, forms, signing, reviews, and document handoffs.",
+  "description": "Use this plugin for adobe Acrobat workflows for PDF reading, forms, signing, reviews, and document handoffs.",
   "author": {
     "name": "Adobe"
   },

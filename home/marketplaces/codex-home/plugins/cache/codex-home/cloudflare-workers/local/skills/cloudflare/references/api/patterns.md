@@ -1,5 +1,7 @@
 # Common Patterns
 
+Consult this reference when common patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## List All with Auto-Pagination
 
 **Problem:** API returns paginated results. Default page size is 20.
@@ -199,6 +201,6 @@ results.forEach((result, i) => {
 
 ## See Also
 
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/api/api.md) - SDK client initialization, basic operations
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/api/gotchas.md) - Rate limits, common errors
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/api/configuration.md) - SDK configuration options
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/api/api.md) - SDK client initialization, basic operations
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/api/gotchas.md) - Rate limits, common errors
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/api/configuration.md) - SDK configuration options

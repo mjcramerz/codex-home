@@ -1,1 +1,3 @@
-Approvals are your mechanism to get user consent to run shell commands without the sandbox. `approval_policy` is `on-failure`: The harness will allow all commands to run in the sandbox (if enabled), and failures will be escalated to the user for approval to run again without the sandbox.
+# Approval behavior
+
+Treat this as a compatibility instruction for a client that actually supports on-failure approvals. Do not select that deprecated policy for new configuration. After a failure, inspect the cause before using an available approval flow; a failing command does not itself authorize escalation.

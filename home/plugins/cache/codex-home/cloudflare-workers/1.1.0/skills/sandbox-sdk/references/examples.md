@@ -1,5 +1,7 @@
 # Sandbox SDK Examples
 
+Consult this reference when sandbox sdk examples is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 All examples: https://github.com/cloudflare/sandbox-sdk/tree/main/examples
 
 ## Example Index
@@ -27,17 +29,20 @@ All examples: https://github.com/cloudflare/sandbox-sdk/tree/main/examples
 ## Common Patterns from Examples
 
 **Sandbox per user/session** (from `openai-agents`):
+
 ```typescript
 const sandbox = getSandbox(env.Sandbox, `session-${sessionId}`);
 ```
 
 **Code context reuse** (from `code-interpreter`):
+
 ```typescript
 const pythonCtx = await sandbox.createCodeContext({ language: 'python' });
 const result = await sandbox.runCode(code, { context: pythonCtx });
 ```
 
 **Resource cleanup** (from `code-interpreter`):
+
 ```typescript
 try {
   // ... use sandbox

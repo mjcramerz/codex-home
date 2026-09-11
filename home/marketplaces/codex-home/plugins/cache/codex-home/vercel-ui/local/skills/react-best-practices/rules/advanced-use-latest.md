@@ -5,6 +5,10 @@ impactDescription: prevents effect re-runs
 tags: advanced, hooks, useEffectEvent, refs, optimization
 ---
 
+# advanced use latest
+
+Apply the following advanced use latest guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## useEffectEvent for Stable Callback Refs
 
 Access latest values in callbacks without adding them to dependency arrays. Prevents effect re-runs while avoiding stale closures.

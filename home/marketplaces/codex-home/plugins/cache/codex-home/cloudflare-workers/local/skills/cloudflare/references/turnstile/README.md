@@ -1,5 +1,7 @@
 # Cloudflare Turnstile Implementation Skill Reference
 
+Consult this reference when cloudflare turnstile implementation skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for implementing Cloudflare Turnstile - a smart CAPTCHA alternative that protects websites from bots without showing traditional CAPTCHA puzzles.
 
 ## Overview
@@ -17,6 +19,7 @@ Turnstile is a user-friendly CAPTCHA alternative that runs challenges in the bac
 ## Quick Start
 
 ### Implicit Rendering (HTML-based)
+
 ```html
 <!-- 1. Add script -->
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -29,6 +32,7 @@ Turnstile is a user-friendly CAPTCHA alternative that runs challenges in the bac
 ```
 
 ### Explicit Rendering (JavaScript-based)
+
 ```html
 <div id="turnstile-container"></div>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
@@ -41,6 +45,7 @@ window.turnstile.render('#turnstile-container', {
 ```
 
 ### Server Validation (Required)
+
 ```javascript
 // Cloudflare Workers
 export default {

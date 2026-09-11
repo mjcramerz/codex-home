@@ -1,8 +1,8 @@
 ---
 name: pack-prompts
-description: Create or update runtime prompt assets under $CODEX_HOME/.prompt/. Use when
-  refining prompt contracts, adding operator-local prompt files, or improving prompt-maintenance
-  assets.
+description: Use this skill to create or update runtime prompt assets under $CODEX_HOME/.prompt/.
+  Use when refining prompt contracts, adding operator-local prompt files, or improving
+  prompt-maintenance assets.
 metadata:
   version: '1.0'
   short-description: Maintain pack prompts and prompt-maintenance assets
@@ -16,55 +16,33 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#CC6A32'
-  default-prompt: Act as the "PACK-Prompts" specialist for "Maintain pack prompts and prompt-maintenance
-    assets". Deliver focused, deterministic results with minimal, reviewable changes and explicit
-    assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks,
-    and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "PACK-Prompts" specialist for "Maintain pack prompts
+    and prompt-maintenance assets". Deliver focused, deterministic results with minimal,
+    reviewable changes and explicit assumptions. Validate untrusted inputs and bounded
+    I/O, run the narrowest relevant checks, and report concrete actions, evidence,
+    and residual risks.
 ---
 
-# PACK-Prompts
-
-## Use this skill when
-- creating, updating, or retiring files in `$CODEX_HOME/.prompt/`
-- tightening `{{args}}` contracts, command naming, or prompt invocation guidance
-- adding prompt-maintenance support assets (workflow docs, plans, templates, snippets, routing links)
-- validating prompt-library consistency after pack routing or index changes
-
-## Inputs
-- target prompt command(s) and expected invocation contract
-- required linked assets (workflow docs, plans, templates, snippets, index links)
-- compatibility constraints for existing command names and argument placeholders
-
-## Scope and boundaries
-- Edit source prompt files under `$CODEX_HOME/.prompt/`.
-- Keep prompt contracts explicit; avoid hidden assumptions in free-form args.
-- Preserve existing command names unless renaming is explicitly requested.
+# Pack Prompts
 
 ## Workflow
-1) Define the prompt objective, required inputs, and acceptance criteria.
-2) Edit source-of-truth prompt assets only in `$CODEX_HOME/.prompt/*`.
-3) Update prompt-maintenance routing/docs/plans/templates/snippets as needed for discoverability.
-5) Summarize changed prompt commands, contract changes, and follow-up actions.
 
-## Prompt maintenance guardrails
-- Keep prompt command names stable unless a rename is explicitly requested.
-- Keep `{{args}}` placeholders explicit and avoid ambiguous free-form contracts.
-- Ensure prompt docs point to the active source (`$CODEX_HOME/.prompt/*`) and linked maintenance assets.
-- Avoid instructing bypasses for auth, validation, or destructive operations.
+1. Identify the canonical prompt and instruction assets, their consumers and generated/runtime mirrors. Inspect the current request before selecting files.
 
-## Agent orchestration
-- Delegate read-only inventory checks for prompt/link coverage only.
-- Keep one owner for prompt contract edits and verification.
+2. Write prompt and instruction assets directly to the coding assistant with an explicit trigger, bounded procedure and stop condition. Preserve valid examples, placeholders and format contracts.
 
-## Validation and testing
-- Confirm every changed prompt asset is discoverable through `$CODEX_HOME/docs/create-prompts.md`.
-- Verify linked docs, plans, templates, and snippets still point to existing runtime paths.
+3. Resolve every changed local reference and tool dependency. Do not invent commands, imply tool availability from a manifest or inject full schemas as general context.
 
-## Outputs
-- Actionable prompt-library edits aligned to user intent.
-- Updated prompt-maintenance assets (workflow, plan, template, snippet, and routing links) when required.
-- Verification evidence from prompt checks and pack-level checks.
+4. Keep related mirrors synchronized, reparse affected structured metadata and inspect rendered Markdown structure. Do not modify unrelated assets or create general tests outside scope.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
+
+- `$CODEX_HOME/.prompt/`
 - `$CODEX_HOME/docs/create-prompts.md`
 - `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

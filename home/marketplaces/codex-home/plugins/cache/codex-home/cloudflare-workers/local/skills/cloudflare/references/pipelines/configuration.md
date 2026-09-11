@@ -1,5 +1,7 @@
 # Pipelines Configuration
 
+Consult this reference when pipelines configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Worker Binding
 
 ```jsonc
@@ -46,6 +48,7 @@ npx wrangler pipelines streams delete <ID>
 ## Sink Configuration
 
 **R2 Data Catalog (Iceberg):**
+
 ```bash
 npx wrangler pipelines sinks create my-sink \
   --type r2-data-catalog \
@@ -55,6 +58,7 @@ npx wrangler pipelines sinks create my-sink \
 ```
 
 **R2 Raw (Parquet):**
+
 ```bash
 npx wrangler pipelines sinks create my-sink \
   --type r2 --bucket my-bucket --format parquet \

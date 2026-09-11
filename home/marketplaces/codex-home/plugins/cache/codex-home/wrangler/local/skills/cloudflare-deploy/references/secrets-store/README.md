@@ -1,5 +1,7 @@
 # Cloudflare Secrets Store
 
+Consult this reference when cloudflare secrets store is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Account-level encrypted secret management for Workers and AI Gateway.
 
 ## Overview
@@ -64,11 +66,12 @@ API Token permissions: `Account Secrets Store Edit/Read`
 
 ### Files
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/secrets-store/configuration.md) - Wrangler commands, binding config
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/secrets-store/api.md) - Binding API, get/put/delete operations
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/secrets-store/patterns.md) - Rotation, encryption, access control
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/secrets-store/gotchas.md) - Security issues, limits, best practices
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/secrets-store/configuration.md) - Wrangler commands, binding config
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/secrets-store/api.md) - Binding API, get/put/delete operations
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/secrets-store/patterns.md) - Rotation, encryption, access control
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/secrets-store/gotchas.md) - Security issues, limits, best practices
 
 ## See Also
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker bindings integration
-- [wrangler]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/) - CLI secret management commands
+
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker bindings integration
+- [wrangler]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/) - CLI secret management commands

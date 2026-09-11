@@ -1,3 +1,7 @@
+# ci images
+
+Use this guide when the task concerns ci images. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 <!-- Build or refresh CI images with pinned packages, shared-include compatibility, and deterministic runtime contracts. -->
 
 Act as a senior software developer with deep experience in Debian packaging, GitLab CI/CD, container image build pipelines, and supply-chain-safe runtime tooling.

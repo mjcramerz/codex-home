@@ -19,17 +19,7 @@ SKILL_CATEGORY = 'GIT'
 SKILL_DESCRIPTION = 'Drive safe repo automation, branch promotion, release flows, and git hygiene.'
 LAST_REFRESH_UTC = '2026-03-06'
 REQUIRED_MCP_TOOLS = {'filesystem', 'sequential_thinking'}
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Inputs',
-    'Scope and boundaries',
-    'Workflow',
-    'Implementation guidance',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'Git documentation', 'url': 'https://git-scm.com/doc', 'note': 'Core git behavior and safe workflows.'},
     {'title': 'Git push documentation', 'url': 'https://git-scm.com/docs/git-push', 'note': 'Protected branch and ref update considerations.'},

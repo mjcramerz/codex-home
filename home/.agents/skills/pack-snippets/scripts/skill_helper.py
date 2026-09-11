@@ -18,14 +18,7 @@ SKILL_NAME = 'pack-snippets'
 SKILL_CATEGORY = 'PACK'
 SKILL_DESCRIPTION = 'Create or update hardened snippets under $CODEX_HOME/snippets/. Use when adding reusable patterns, updating snippet catalogs, or wiring snippets into docs and indexes.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'YAML 1.2 specification', 'url': 'https://yaml.org/spec/1.2.2/', 'note': 'Manifest syntax and deterministic formatting rules.'},
     {'title': 'OWASP secure coding practices', 'url': 'https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/', 'note': 'Hardened snippet safety baseline.'}

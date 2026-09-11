@@ -1,8 +1,11 @@
-# CLI reference (`$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/speech/scripts/text_to_speech.py`)
+# CLI reference (`$CODEX_HOME/plugins/ai-media/skills/speech/scripts/text_to_speech.py`)
+
+Consult this reference when cli reference (`$codex_home/plugins/cache/codex-home/ai-media/1.0.0/skills/speech/scripts/text_to_speech.py`) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 This file contains the "command catalog" for the bundled speech generation CLI. Keep `SKILL.md` as overview-first; put verbose CLI details here.
 
 ## What this CLI does
+
 - `speak`: generate a single audio file
 - `speak-batch`: run many jobs from a JSONL file (one job per line)
 - `list-voices`: list supported voices
@@ -10,6 +13,7 @@ This file contains the "command catalog" for the bundled speech generation CLI. 
 Real API calls require network access + `OPENAI_API_KEY`. `--dry-run` does not.
 
 ## Quick start (works from any repo)
+
 Set a stable path to the skill CLI (default `CODEX_HOME` is `~/.codex`):
 
 ```
@@ -40,11 +44,13 @@ python "$TTS_GEN" speak --input "Hello" --voice cedar --out speech.mp3
 ```
 
 ## Guardrails (important)
+
 - Use `python "$TTS_GEN" ...` (or equivalent full path) for all TTS work.
 - Do **not** create one-off runners (e.g., `gen_audio.py`) unless the user explicitly asks.
-- **Never modify** `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/speech/scripts/text_to_speech.py`. If something is missing, ask the user before doing anything else.
+- **Never modify** `$CODEX_HOME/plugins/ai-media/skills/speech/scripts/text_to_speech.py`. If something is missing, ask the user before doing anything else.
 
 ## Defaults (unless overridden by flags)
+
 - Model: `gpt-4o-mini-tts-2025-12-15`
 - Voice: `cedar`
 - Response format: `mp3`
@@ -52,21 +58,25 @@ python "$TTS_GEN" speak --input "Hello" --voice cedar --out speech.mp3
 - Batch rpm cap: `50`
 
 ## Input limits
+
 - Input text must be <= 4096 characters per request.
 - For longer text, split into smaller chunks (manual or via batch JSONL).
 
 ## Instructions compatibility
+
 - `instructions` are supported for GPT-4o mini TTS models.
 - `tts-1` and `tts-1-hd` ignore instructions (the CLI will warn and drop them).
 
 ## Common recipes
 
 List voices:
+
 ```
 python "$TTS_GEN" list-voices
 ```
 
 Generate with explicit pacing:
+
 ```
 python "$TTS_GEN" speak \
   --input "Welcome to the demo. We'll show how it works." \
@@ -75,6 +85,7 @@ python "$TTS_GEN" speak \
 ```
 
 Batch generation (JSONL):
+
 ```
 mkdir -p tmp/speech
 cat > tmp/speech/jobs.jsonl << 'JSONL'
@@ -94,5 +105,6 @@ Notes:
 - Treat the JSONL file as temporary: write it under `tmp/` and delete it after the run (do not commit it).
 
 ## See also
-- API parameter quick reference: `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/speech/references/audio-api.md`
-- Instruction patterns and examples: `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/speech/references/voice-directions.md`
+
+- API parameter quick reference: `$CODEX_HOME/plugins/ai-media/skills/speech/references/audio-api.md`
+- Instruction patterns and examples: `$CODEX_HOME/plugins/ai-media/skills/speech/references/voice-directions.md`

@@ -1,8 +1,11 @@
-# CLI reference (`$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/scripts/sora.py`)
+# CLI reference (`$CODEX_HOME/plugins/ai-media/skills/sora/scripts/sora.py`)
+
+Consult this reference when cli reference (`$codex_home/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/scripts/sora.py`) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 This file contains the command catalog for the bundled video generation CLI. Keep `SKILL.md` overview-first; put verbose CLI details here.
 
 ## What this CLI does
+
 - `create`: create a new video job (async)
 - `create-and-poll`: create a job, poll until complete, optionally download
 - `poll`: wait for an existing job to finish
@@ -16,6 +19,7 @@ This file contains the command catalog for the bundled video generation CLI. Kee
 Real API calls require **network access** + `OPENAI_API_KEY`. `--dry-run` does not.
 
 ## Quick start (works from any repo)
+
 Set a stable path to the skill CLI (default `CODEX_HOME` is `~/.codex`):
 
 ```
@@ -124,12 +128,14 @@ uv run --with openai python "$SORA_CLI" download --id video_abc123 --variant spr
 ```
 
 ## Guardrails (important)
+
 - Use `python "$SORA_CLI" ...` (or equivalent full path) for all video work.
 - For API calls, prefer `uv run --with openai ...` to avoid missing SDK errors.
 - Do **not** create one-off runners unless the user explicitly asks.
-- **Never modify** `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/scripts/sora.py` unless the user asks.
+- **Never modify** `$CODEX_HOME/plugins/ai-media/skills/sora/scripts/sora.py` unless the user asks.
 
 ## Defaults (unless overridden by flags)
+
 - Model: `sora-2`
 - Size: `1280x720`
 - Seconds: `4` (API expects a string enum: "4", "8", "12")
@@ -137,16 +143,19 @@ uv run --with openai python "$SORA_CLI" download --id video_abc123 --variant spr
 - Poll interval: `10` seconds
 
 ## JSON output (`--json-out`)
+
 - For `create`, `status`, `list`, `delete`, `poll`, and `remix`, `--json-out` writes the JSON response to a file.
 - For `create-and-poll`, `--json-out` writes a bundle: `{ "create": ..., "final": ... }`.
 - If the path has no extension, `.json` is added automatically.
 - In `--dry-run`, `--json-out` writes the request preview instead of a response.
 
 ## Input reference images
+
 - Must be jpg/png/webp; they should match the target size.
 - Provide the path with `--input-reference`.
 
 ## Optional deps
+
 Prefer `uv run --with ...` for an out-of-the-box run without changing the current project env; otherwise install into your active env:
 
 ```
@@ -154,6 +163,7 @@ uv pip install openai
 ```
 
 ## JSONL schema for `create-batch`
+
 Each line is a JSON object (or a raw prompt string). Required key: `prompt`.
 
 Top-level override keys:
@@ -235,13 +245,15 @@ Notes:
 - Treat the JSONL file as temporary: write it under `tmp/` and delete it after the run (do not commit it). If `rm` is blocked in your sandbox, skip cleanup or truncate the file.
 
 ## CLI notes
-- Supported sizes depend on model (see `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/references/video-api.md`).
+
+- Supported sizes depend on model (see `$CODEX_HOME/plugins/ai-media/skills/sora/references/video-api.md`).
 - Seconds are limited to 4, 8, or 12.
 - Download URLs expire after about 1 hour; copy assets to your own storage.
 - In CI/sandboxes where long-running commands time out, prefer `create` + `poll` (or add `--timeout`).
 
 ## See also
-- API parameter quick reference: `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/references/video-api.md`
-- Prompt structure and examples: `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/references/prompting.md`
-- Sample prompts: `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/references/sample-prompts.md`
-- Troubleshooting: `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/references/troubleshooting.md`
+
+- API parameter quick reference: `$CODEX_HOME/plugins/ai-media/skills/sora/references/video-api.md`
+- Prompt structure and examples: `$CODEX_HOME/plugins/ai-media/skills/sora/references/prompting.md`
+- Sample prompts: `$CODEX_HOME/plugins/ai-media/skills/sora/references/sample-prompts.md`
+- Troubleshooting: `$CODEX_HOME/plugins/ai-media/skills/sora/references/troubleshooting.md`

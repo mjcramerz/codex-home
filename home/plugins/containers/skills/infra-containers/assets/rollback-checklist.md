@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Rollback checklist (infra-containers)
+
+Use this guide when you change Docker, Podman, Compose or container build and runtime definitions. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 - Confirm rollback trigger and decision owner.
 - Capture diagnostics before reverting.

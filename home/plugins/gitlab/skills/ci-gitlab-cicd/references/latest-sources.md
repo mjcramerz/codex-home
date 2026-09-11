@@ -8,19 +8,25 @@ tags:
 - references
 updated: '2026-06-28'
 ---
+
 # ci-gitlab-cicd reference bundle
+
+Consult this reference when ci-gitlab-cicd reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-06-28 (UTC)
 - Freshness method: repo-adjacent local inspection plus primary vendor documentation.
 
 ## Skill purpose
+
 Build deterministic GitLab pipelines with shared include and delivery discipline.
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/gitlab/1.0.0/skills/ci-gitlab-cicd/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/gitlab/1.0.0/skills/ci-gitlab-cicd/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/gitlab/skills/ci-gitlab-cicd/SKILL.md`
+- `$CODEX_HOME/plugins/gitlab/skills/ci-gitlab-cicd/agents/openai.yaml`
 
 ## External references
+
 - [GitLab CI/CD docs](https://docs.gitlab.com/ci/) - Pipeline orchestration, includes, rules, and variables.
 - [GitLab CI YAML reference](https://docs.gitlab.com/ee/ci/yaml/) - Key-level syntax and behavior.
 - [GitLab Runner docs](https://docs.gitlab.com/runner/) - Runner and executor behavior that affects pipeline contracts.

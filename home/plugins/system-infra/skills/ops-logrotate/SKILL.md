@@ -1,7 +1,6 @@
 ---
 name: ops-logrotate
-description: Design logrotate policies for predictable retention, rotation cadence, and service-
-  safe log handling. Use when the user asks to configure or troubleshoot Linux log rotation.
+description: Design logrotate policies for predictable retention, rotation cadence, and service- safe log handling. Use when the user asks to configure or troubleshoot Linux log rotation.
 metadata:
   version: '1.0'
   short-description: Design logrotate policies with safe defaults
@@ -16,28 +15,45 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#CC3235'
-  default-prompt: Act as the "OPS-Logrotate" specialist for "Design logrotate policies with
-    safe defaults". Deliver focused, deterministic results with minimal, reviewable changes
-    and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest
-    relevant checks, and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "OPS-Logrotate" specialist for "Design logrotate policies with safe defaults". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
 ---
 
+# SKILL
+
+## Execute the scoped task
+
+1. Identify the Debian release, architecture, package versions and configured repositories. Preserve dpkg-managed paths and local administrator configuration outside the requested change.
+
+2. Use repository-scoped signed-by keyrings and trusted package sources. Do not disable TLS or signature verification or pipe remote installation scripts directly into a shell.
+
+3. Inspect maintainer scripts and service restart behavior before installation. Confirm locks, disk space, noninteractive settings and recovery requirements for package operations.
+
+4. Keep file ownership, modes, conffile behavior and idempotence explicit. Avoid recursive chown or chmod over shared directories.
+
+5. Use the existing package checks and an isolated staging environment where available. Report separately what was parsed, installed, started and observed on the target host.
+
+## Task-specific details and resources
+
 ## Use this skill when
+
 - creating log rotation rules
 - reviewing retention/compression policies
 
 ## Workflow
-1) Identify log sources and retention requirements
-2) Draft rotation policy
-3) Validate with dry‑run
-4) Deploy and verify permissions
+
+1. Identify log sources and retention requirements
+2. Draft rotation policy
+3. Validate with dry‑run
+4. Deploy and verify permissions
 
 ## Agent orchestration
+
 - Confirm that the request fits this skill and state boundaries if other skills are needed.
 - For multi-step work, keep a concise plan, execute in small reversible steps, and surface assumptions early.
 - Delegate only independent discovery tasks, then reconcile findings before making edits.
 
 ## Validation and testing
+
 - Validate critical inputs and bound external I/O (size, retries, and timeouts) before applying changes.
 - Run the narrowest relevant checks that prove behavior (tests, lint, or build as applicable).
 - Include risk-based negative or edge-case coverage for security-sensitive, parsing, or automation changes.
@@ -49,6 +65,7 @@ interface:
 - References to relevant files, commands, or templates.
 
 ## References
+
 - `$CODEX_HOME/index/domains/observability/logrotate.md`
 - `$CODEX_HOME/docs/observability/logrotate.md`
 - `$CODEX_HOME/docs/workflows/logrotate.md`

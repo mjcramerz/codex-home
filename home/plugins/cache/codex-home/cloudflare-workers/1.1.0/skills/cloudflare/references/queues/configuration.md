@@ -1,5 +1,7 @@
 # Queues Configuration
 
+Consult this reference when queues configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Create Queue
 
 ```bash
@@ -11,6 +13,7 @@ wrangler queues create my-queue --delivery-delay-secs=300
 ## Producer Binding
 
 **wrangler.jsonc:**
+
 ```jsonc
 {
   "queues": {
@@ -28,6 +31,7 @@ wrangler queues create my-queue --delivery-delay-secs=300
 ## Consumer Configuration (Push-based)
 
 **wrangler.jsonc:**
+
 ```jsonc
 {
   "queues": {
@@ -48,6 +52,7 @@ wrangler queues create my-queue --delivery-delay-secs=300
 ## Consumer Configuration (Pull-based)
 
 **wrangler.jsonc:**
+
 ```jsonc
 {
   "queues": {

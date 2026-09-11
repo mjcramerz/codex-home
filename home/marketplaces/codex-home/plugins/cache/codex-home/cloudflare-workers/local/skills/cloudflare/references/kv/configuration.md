@@ -1,5 +1,7 @@
 # KV Configuration
 
+Consult this reference when kv configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Create Namespace
 
 ```bash
@@ -12,6 +14,7 @@ wrangler kv namespace create MY_NAMESPACE --preview  # For local dev
 ## Workers Binding
 
 **wrangler.jsonc:**
+
 ```jsonc
 {
   "kv_namespaces": [
@@ -31,6 +34,7 @@ wrangler kv namespace create MY_NAMESPACE --preview  # For local dev
 ## TypeScript Types
 
 **env.d.ts:**
+
 ```typescript
 interface Env {
   MY_KV: KVNamespace;
@@ -40,6 +44,7 @@ interface Env {
 ```
 
 **worker.ts:**
+
 ```typescript
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -51,6 +56,7 @@ export default {
 ```
 
 **Type-safe JSON operations:**
+
 ```typescript
 interface UserProfile {
   name: string;

@@ -1,6 +1,8 @@
 ---
 name: hook-behavior-audit
-description: Review startup, resume, and stop hooks for schema compliance, blocking behavior, repo-context quality, and validation-gate correctness. Use when the user asks to audit hook UX, guardrails, or lifecycle automation.
+description: Use this skill to review startup, resume, and stop hooks for schema compliance,
+  blocking behavior, repo-context quality, and validation-gate correctness. Use this
+  skill when you need to audit hook UX, guardrails, or lifecycle automation.
 metadata:
   version: '1.0'
   short-description: Audit startup/resume/stop hooks and lifecycle guardrails
@@ -15,28 +17,31 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#8B5CF6'
-  default-prompt: Act as the "AUDIT-Hook Behavior" specialist for "Audit startup/resume/stop hooks and lifecycle guardrails". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "AUDIT-Hook Behavior" specialist for "Audit startup/resume/stop
+    hooks and lifecycle guardrails". Deliver focused, deterministic results with minimal,
+    reviewable changes and explicit assumptions. Validate untrusted inputs and bounded
+    I/O, run the narrowest relevant checks, and report concrete actions, evidence,
+    and residual risks.
 ---
-## Use this skill when
-- the active task matches this skill's description and needs deterministic implementation guidance
+
+# Hook Behavior Audit
 
 ## Workflow
-1) Check hook input/output schema expectations before reading shell scripts.
-2) Confirm which hooks add context, which warn, and which can block.
-3) Verify that hook feedback stays specific, non-destructive, and evidence-based.
 
-## Agent orchestration
-- Confirm ownership, validation scope, and whether another skill or plugin should be combined before editing.
-- Delegate only bounded scouting or independent verification work.
+1. Trace the registered event through hooks.json to the actual executable. Verify event-specific input/output against the selected Codex version.
 
-## Validation and testing
-- Run the narrowest syntax, parser, or unit checks that prove the change.
-- Explicitly call out skipped checks and why they remain out of scope.
+2. Check timeout, payload/output bounds, exit behavior, symlink/path handling and malformed-input behavior. Keep stdout valid JSON and stderr redacted.
 
-## Outputs
-- Minimal, reviewable edits aligned to the skill contract.
-- Concrete validation commands and residual risks.
+3. Ensure context contains only bounded repository hints and relevant guidance, never config schemas, credentials, transcripts or raw tool results.
+
+4. Verify permission hooks never turn context hints into blanket approval, and stop/compaction hooks neither invent validation success nor cause continuation loops.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- [JSON Schema](https://json-schema.org/)
-- [ShellCheck](https://www.shellcheck.net/)
+
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

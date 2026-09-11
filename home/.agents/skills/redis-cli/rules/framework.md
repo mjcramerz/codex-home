@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-03-11'
 ---
+
 # DB Redis CLI Framework
+
+Apply the following db redis cli framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `redis-cli`
 - Source of truth: `$CODEX_SKILLS/redis-cli/SKILL.md`

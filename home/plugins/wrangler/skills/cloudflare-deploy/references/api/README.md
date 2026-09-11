@@ -1,15 +1,17 @@
 # Cloudflare API Integration
 
+Consult this reference when cloudflare api integration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Guide for working with Cloudflare's REST API - authentication, SDK usage, common patterns, and troubleshooting.
 
 ## Quick Decision Tree
 
 ```
 How are you calling the Cloudflare API?
-├─ From Workers runtime → Use bindings, not REST API (see $CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/bindings/)
+├─ From Workers runtime → Use bindings, not REST API (see $CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/bindings/)
 ├─ Server-side (Node/Python/Go) → Official SDK (see api.md)
 ├─ CLI/scripts → Wrangler or curl (see configuration.md)
-├─ Infrastructure-as-code → See $CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/ or $CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/
+├─ Infrastructure-as-code → See $CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/ or $CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/
 └─ One-off requests → curl examples (see api.md)
 ```
 
@@ -61,5 +63,5 @@ All SDKs are Stainless-generated from OpenAPI spec (consistent APIs).
 ## See Also
 
 - [Cloudflare API Docs](https://developers.cloudflare.com/api/)
-- [Bindings Reference]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/bindings/) - Workers runtime bindings (preferred over REST API)
-- [Wrangler Reference]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/) - CLI tool for Cloudflare development
+- [Bindings Reference]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/bindings/) - Workers runtime bindings (preferred over REST API)
+- [Wrangler Reference]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/) - CLI tool for Cloudflare development

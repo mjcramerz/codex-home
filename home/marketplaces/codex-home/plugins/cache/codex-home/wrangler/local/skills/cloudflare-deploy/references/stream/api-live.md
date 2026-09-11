@@ -1,5 +1,7 @@
 # Stream Live Streaming API
 
+Consult this reference when stream live streaming api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Live input creation, status checking, simulcast, and WebRTC streaming.
 
 ## Create Live Input
@@ -184,12 +186,12 @@ const recordingConfig = {
 
 ## In This Reference
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/configuration.md) - Setup and config
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, best practices
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting
+- [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/configuration.md) - Setup and config
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, best practices
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Deploy live APIs in Workers
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Deploy live APIs in Workers

@@ -1,5 +1,7 @@
 # Render Blueprint Specification
 
+Consult this reference when render blueprint specification is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Complete reference for render.yaml Blueprint files. Blueprints define your infrastructure as code for reproducible deployments on Render.
 
 ## Overview
@@ -48,6 +50,7 @@ HTTP services, APIs, and web applications. Publicly accessible via HTTPS.
 - `scaling`: Autoscaling configuration
 
 **Example:**
+
 ```yaml
 services:
   - type: web
@@ -82,6 +85,7 @@ Background job processors, queue consumers. Not publicly accessible.
 - No port binding required
 
 **Example:**
+
 ```yaml
 services:
   - type: worker
@@ -117,6 +121,7 @@ Scheduled tasks that run on a cron schedule.
 - `0 9 * * 1` - Every Monday at 9 AM UTC
 
 **Example:**
+
 ```yaml
 services:
   - type: cron
@@ -149,6 +154,7 @@ Serve static HTML/CSS/JS files via CDN.
 - `buildFilter`: Path filters for build triggers
 
 **Example:**
+
 ```yaml
 services:
   - type: web
@@ -183,6 +189,7 @@ Internal services accessible only within your Render account.
 - Microservices not exposed to internet
 
 **Example:**
+
 ```yaml
 services:
   - type: pserv
@@ -235,6 +242,7 @@ Build from a Dockerfile in your repository.
 - `dockerContext`: Build context directory (default: `.`)
 
 **Example:**
+
 ```yaml
 services:
   - type: web
@@ -253,6 +261,7 @@ Deploy pre-built Docker images from a registry.
 - `registryCredential`: Credentials for private registries
 
 **Example:**
+
 ```yaml
 services:
   - type: web
@@ -287,6 +296,7 @@ Available deployment regions:
 - `singapore` (Asia)
 
 **Example:**
+
 ```yaml
 services:
   - type: web
@@ -431,6 +441,7 @@ databases:
 - `diskSizeGB`: Storage size (paid plans only)
 
 **High Availability (paid plans):**
+
 ```yaml
 databases:
   - name: postgres
@@ -440,6 +451,7 @@ databases:
 ```
 
 **Read Replicas (paid plans):**
+
 ```yaml
 databases:
   - name: postgres

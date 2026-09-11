@@ -1,3 +1,7 @@
+# docs refresh
+
+Use this guide when you change POSIX shell, Bash or zsh scripts and repository automation. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 <!-- Refresh documentation, plans, and workflows so they match current runtime behavior and repo contracts. -->
 
 Act as a senior software developer maintaining repository documentation and operator guidance.

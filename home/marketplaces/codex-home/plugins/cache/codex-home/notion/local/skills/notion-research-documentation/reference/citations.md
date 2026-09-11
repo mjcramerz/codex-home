@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Citation Styles
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## Basic Page Citation
 
@@ -137,6 +140,7 @@ When attributing information to specific people:
 ## Citation Frequency
 
 **Over-citing** (every sentence):
+
 ```markdown
 The revenue increased (<mention-page url="...">Report</mention-page>).
 Costs decreased (<mention-page url="...">Report</mention-page>).
@@ -144,11 +148,13 @@ Margin improved (<mention-page url="...">Report</mention-page>).
 ```
 
 **Under-citing** (no attribution):
+
 ```markdown
 The revenue increased, costs decreased, and margin improved.
 ```
 
 **Right balance** (grouped citation):
+
 ```markdown
 The revenue increased, costs decreased, and margin improved (<mention-page url="...">Q4 Financial Report</mention-page>).
 ```
@@ -192,14 +198,15 @@ Before finalizing research:
 Choose one citation style and use throughout:
 
 **Inline style** (lightweight):
+
 ```markdown
 Revenue grew 23% (Financial Report). Customer count increased 18% (Metrics Dashboard).
 ```
 
 **Formal style** (full mentions):
+
 ```markdown
 Revenue grew 23% (<mention-page url="...">Q4 Financial Report</mention-page>). Customer count increased 18% (<mention-page url="...">Metrics Dashboard</mention-page>).
 ```
 
 **Recommend formal style** for most research documentation as it provides clickable navigation.
-

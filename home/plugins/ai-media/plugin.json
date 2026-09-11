@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ai-media",
   "version": "1.1.0",
-  "description": "Image, video, speech, and transcription workflows for generated media.",
+  "description": "Use this plugin for image, video, speech, and transcription workflows for generated media.",
   "author": {
     "name": "OpenAI"
   },

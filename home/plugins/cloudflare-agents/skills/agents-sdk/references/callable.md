@@ -1,5 +1,7 @@
 # Callable Methods
 
+Consult this reference when callable methods is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Fetch `docs/callable-methods.md` from `https://github.com/cloudflare/agents/tree/main/docs` for complete documentation.
 
 ## Overview

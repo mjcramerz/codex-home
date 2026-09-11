@@ -5,6 +5,10 @@ impactDescription: avoids blocking unused code paths
 tags: async, await, conditional, optimization
 ---
 
+# async defer await
+
+Apply the following async defer await guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Defer Await Until Needed
 
 Move `await` operations into the branches where they're actually used to avoid blocking code paths that don't need them.

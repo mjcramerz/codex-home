@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Competitor Analysis
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## User Request
 
@@ -217,6 +220,7 @@ All competitors offer discounts at scale:
 ### Market Positioning
 
 ```
+
 High Volume / Enterprise
     ↑
     |                    Adyen
@@ -227,6 +231,7 @@ High Volume / Enterprise
     |
     └──────────────────→
       Small / Simple        Complex / International
+
 ```
 
 ## Strategic Implications
@@ -295,4 +300,3 @@ High Volume / Enterprise
 - **Comparison template** (matrix + detailed analysis)
 - **Strategic layer** (implications and recommendations)
 - **Action-oriented** (next steps included)
-

@@ -1,5 +1,7 @@
 # Workers Patterns
 
+Consult this reference when workers patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Error Handling
 
 ```typescript
@@ -39,7 +41,7 @@ const handler = router[`${request.method} ${url.pathname}`];
 return handler ? handler(request, env) : new Response('Not Found', { status: 404 });
 ```
 
-**Production**: Use Hono, itty-router, or Worktop (see [frameworks.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/frameworks.md))
+**Production**: Use Hono, itty-router, or Worktop (see [frameworks.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/frameworks.md))
 
 ## Request Validation (Zod)
 
@@ -69,7 +71,7 @@ async function handleCreateUser(request: Request) {
 }
 ```
 
-**With Hono**: Use `@hono/zod-validator` for automatic validation (see [frameworks.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/frameworks.md))
+**With Hono**: Use `@hono/zod-validator` for automatic validation (see [frameworks.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/frameworks.md))
 
 ## Performance
 
@@ -154,7 +156,7 @@ const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(user
 if (new Uint8Array(hash)[0] % 100 < rolloutPercent) return newFeature(request);
 ```
 
-Rate limiting: See [Durable Objects]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/README.md)
+Rate limiting: See [Durable Objects]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/README.md)
 
 ## R2 Multipart Upload
 
@@ -192,7 +194,7 @@ Multi-step jobs with automatic retries, state persistence, resume from failure
 
 ## See Also
 
-- [API]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/api.md) - Runtime APIs
-- [Gotchas]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/gotchas.md) - Common issues
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/configuration.md) - Setup
-- [Frameworks]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/frameworks.md) - Hono, routing, validation
+- [API]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/api.md) - Runtime APIs
+- [Gotchas]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/gotchas.md) - Common issues
+- [Configuration]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/configuration.md) - Setup
+- [Frameworks]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/frameworks.md) - Hono, routing, validation

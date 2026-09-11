@@ -18,14 +18,7 @@ SKILL_NAME = 'shell-sh'
 SKILL_CATEGORY = 'LANG'
 SKILL_DESCRIPTION = 'Write portable POSIX sh scripts with safe defaults.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'POSIX Shell Command Language', 'url': 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html', 'note': 'Portable shell behavior requirements.'},
     {'title': 'Dash shell manpage', 'url': 'https://manpages.debian.org/stable/dash/dash.1.en.html', 'note': 'Portable shell implementation notes.'}

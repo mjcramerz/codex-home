@@ -13,15 +13,20 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # pack-docs reference bundle
+
+Consult this reference when pack-docs reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Create or update pack documentation and workflows under $CODEX_HOME/docs/. Use when adding new guides, updating doc indexes, or aligning docs with prompts, templates, and skills.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Agent orchestration
@@ -30,14 +35,16 @@ Create or update pack documentation and workflows under $CODEX_HOME/docs/. Use w
 - References
 
 ## Local implementation anchors
+
 - `$CODEX_SKILLS/pack-docs/SKILL.md`
 - `$CODEX_SKILLS/pack-docs/agents/openai.yaml`
 
 ## External references
+
 - [YAML 1.2 specification](https://yaml.org/spec/1.2.2/) - Manifest syntax and deterministic formatting rules.
 - [Markdown style guide](https://www.markdownguide.org/basic-syntax/) - Documentation formatting baseline.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `pack-docs` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `pack-docs` before finalizing changes.
-

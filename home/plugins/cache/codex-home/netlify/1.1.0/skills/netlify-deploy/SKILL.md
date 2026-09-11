@@ -3,13 +3,13 @@ name: netlify-deploy
 description: Deploy web projects to Netlify using the Netlify CLI (`npx netlify`). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and production deploys.
 ---
 
-# Netlify Deployment Skill
+# Netlify Deployment
 
-Deploy web projects to Netlify using the Netlify CLI with intelligent detection of project configuration and deployment context.
+Deploy only the site, team and environment authorized by the request. Inspect the repository configuration, pinned CLI version, existing site link, build command and output directory first. Prefer a preview for an unqualified deployment request; publishing production requires production intent. Treat linking a repository, creating a site and publishing a deploy as separate mutations.
 
-## Overview
+## Choose the authorized operations
 
-This skill automates Netlify deployments by:
+Use the following sequence for an authorized deployment:
 - Verifying Netlify CLI authentication
 - Detecting project configuration and framework
 - Linking to existing sites or creating new ones
@@ -20,12 +20,12 @@ This skill automates Netlify deployments by:
 - **Netlify CLI**: Installed via npx (no global install required)
 - **Authentication**: Netlify account with active login session
 - **Project**: Valid web project in current directory
-- When sandboxing blocks the deployment network calls, rerun with `sandbox_permissions=require_escalated`.
-- The deployment might take a few minutes. Use appropriate timeout values.
+- When native sandbox policy blocks a required call, use the client's supported approval flow only when permitted. Never bypass a denial or assume an escalation parameter exists.
+- Use bounded command timeouts and inspect the reported deployment status; do not claim a deployment completed while it is still pending.
 
 ## Authentication Pattern
 
-The skill uses the **pre-authenticated Netlify CLI** approach:
+Reuse an existing scoped Netlify login when available; do not assume authentication:
 
 1. Check authentication status with `npx netlify status`
 2. If not authenticated, guide user through `npx netlify login`
@@ -59,10 +59,11 @@ This opens a browser window for OAuth authentication. Wait for user to complete 
 
 **Alternative: API Key authentication**
 
-If browser authentication isn't available, users can set:
+When browser authentication is unavailable, use an already authorized secret environment:
 
 ```bash
-export NETLIFY_AUTH_TOKEN=your_token_here
+# Supply NETLIFY_AUTH_TOKEN through the approved secret environment.
+# Never paste a real token into a transcript, source file or command argument.
 ```
 
 Tokens can be generated at: https://app.netlify.com/user/applications#personal-access-tokens
@@ -81,7 +82,7 @@ From `netlify status` output, determine:
 
 ```bash
 # Check if project is Git-based
-git remote show origin
+git remote get-url origin
 
 # If Git-based, extract remote URL
 # Format: https://github.com/username/repo or git@github.com:username/repo.git
@@ -97,7 +98,7 @@ npx netlify link --git-remote-url <REMOTE_URL>
 npx netlify init
 ```
 
-This guides user through:
+Confirm each interactive choice against the authorized scope:
 1. Choosing team/account
 2. Setting site name
 3. Configuring build settings
@@ -173,7 +174,7 @@ npx netlify login
 
 # 2. Link site (if needed)
 # Try Git-based linking first
-git remote show origin
+git remote get-url origin
 npx netlify link --git-remote-url https://github.com/user/repo
 
 # If no site exists, create new one:

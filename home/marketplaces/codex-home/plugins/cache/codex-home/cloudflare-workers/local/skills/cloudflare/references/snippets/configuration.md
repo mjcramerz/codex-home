@@ -1,8 +1,11 @@
 # Snippets Configuration Guide
 
+Consult this reference when snippets configuration guide is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Configuration Methods
 
 ### 1. Dashboard (GUI)
+
 **Best for**: Quick tests, single snippets, visual rule building
 
 ```
@@ -18,6 +21,7 @@
 ```
 
 ### 2. REST API
+
 **Best for**: CI/CD, automation, programmatic management
 
 ```bash
@@ -55,6 +59,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/$SNIPPET_NAME
 ```
 
 ### 3. Terraform
+
 **Best for**: Infrastructure-as-code, multi-zone deployments
 
 ```hcl
@@ -98,6 +103,7 @@ resource "cloudflare_snippet_rules" "security_rules" {
 ```
 
 ### 4. Pulumi
+
 **Best for**: Multi-cloud IaC, TypeScript/Python/Go workflows
 
 ```typescript
@@ -187,6 +193,7 @@ not http.headers["user-agent"] contains "bot"
 ## Deployment Workflow
 
 ### Development
+
 1. Write snippet code locally
 2. Test syntax with `node snippet.js` or TypeScript compiler
 3. Deploy to Dashboard or use API with `Save as Draft`
@@ -194,6 +201,7 @@ not http.headers["user-agent"] contains "bot"
 5. Enable rule when ready
 
 ### Production
+
 1. Store snippet code in version control
 2. Use Terraform/Pulumi for reproducible deployments
 3. Deploy to staging zone first
@@ -214,6 +222,7 @@ not http.headers["user-agent"] contains "bot"
 ## Authentication
 
 ### API Token (Recommended)
+
 ```bash
 # Create token at: https://dash.cloudflare.com/profile/api-tokens
 # Required permissions: Zone.Snippets:Edit, Zone.Rules:Edit
@@ -221,7 +230,8 @@ export CLOUDFLARE_API_TOKEN="your_token_here"
 ```
 
 ### API Key (Legacy)
+
 ```bash
 export CLOUDFLARE_EMAIL="your@email.com"
 export CLOUDFLARE_API_KEY="your_global_api_key"
-``` 
+```

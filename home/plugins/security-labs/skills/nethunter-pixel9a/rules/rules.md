@@ -12,11 +12,15 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # NetHunter Pixel9a Rules
 
+Apply the following nethunter pixel9a rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the procedure in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/nethunter-pixel9a/SKILL.md`.
-- Validate scope first with `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/nethunter-pixel9a/references/` for factual guidance.
+
+- Follow the procedure in `$CODEX_HOME/plugins/security-labs/skills/nethunter-pixel9a/SKILL.md`.
+- Validate scope first with `$CODEX_HOME/plugins/security-labs/skills/nethunter-pixel9a/scripts/nethunter_scope_guard.py`.
+- Use references in `$CODEX_HOME/plugins/security-labs/skills/nethunter-pixel9a/references/` for factual guidance.
 - Require documented owner/device scope with `lab_only=true` and an unexpired scope window.
 - Refuse bootloader/FRP/carrier-lock bypass requests outside explicit lab boundaries.

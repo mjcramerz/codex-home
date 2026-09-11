@@ -1,8 +1,6 @@
 ---
 name: openai-docs
-description: Reference official OpenAI developer documentation and cite current guidance for
-  APIs and platform features. Use when the user asks how to build with OpenAI products, SDKs,
-  models, or API capabilities and needs up-to-date doc-backed answers.
+description: Use this skill for reference official OpenAI developer documentation and cite current guidance for APIs and platform features. Use when the user asks how to build with OpenAI products, SDKs, models, or API capabilities and needs up-to-date doc-backed answers.
 metadata:
   version: '1.0'
   short-description: Reference the official OpenAI Developer docs
@@ -18,12 +16,8 @@ interface:
   icon-small: assets/openai-small.svg
   icon-large: assets/openai.png
   brand-color: '#10A37F'
-  default-prompt: Act as the "OpenAI Docs" specialist for "Reference the official OpenAI Developer
-    docs". Deliver focused, deterministic results with minimal, reviewable changes and explicit
-    assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks,
-    and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "OpenAI Docs" specialist for "Reference the official OpenAI Developer docs". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
 ---
-
 
 # OpenAI Docs
 

@@ -1,5 +1,7 @@
 # Error patterns (compact)
 
+Consult this reference when error patterns (compact) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use this to quickly map log signatures to likely causes and fixes.
 
 | Log pattern | Likely cause | Quick fix |

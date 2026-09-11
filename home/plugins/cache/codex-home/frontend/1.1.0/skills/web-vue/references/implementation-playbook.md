@@ -13,17 +13,23 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web Vue Implementation Playbook
 
+Consult this reference when web vue implementation playbook is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Scope and intent
+
 Use this playbook for Vue client applications focused on component/composable design, predictable reactivity, and maintainable state flow.
 
 ## Intake checklist
+
 - Identify affected components, composables, and state stores.
 - Confirm data-flow boundaries and async behavior expectations.
 - Confirm UX/a11y targets for impacted screens.
 
 ## Delivery sequence
+
 1. Build component/composable ownership map.
 2. Normalize reactive state shape and API contracts.
 3. Apply patterns from `composition-reactivity-patterns.md`.
@@ -32,6 +38,7 @@ Use this playbook for Vue client applications focused on component/composable de
 6. Return implementation evidence and open risks.
 
 ## Decision rules
+
 - Prefer composables for reusable async/state logic.
 - Keep component props/events explicit and typed.
 - Derive computed values rather than duplicating source state.

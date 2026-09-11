@@ -1,5 +1,7 @@
 # Gotchas & Troubleshooting
 
+Consult this reference when gotchas & troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "Slow initial connect (~1.8s)"
@@ -10,7 +12,7 @@
 ### "No media flow"
 
 **Cause:** SDP exchange incomplete, connection not established, tracks not added before offer, browser permissions missing
-**Solution:** 
+**Solution:**
 1. Verify SDP exchange complete
 2. Check `pc.connectionState === 'connected'`
 3. Ensure tracks added before creating offer
@@ -20,7 +22,7 @@
 ### "Track not receiving"
 
 **Cause:** Track not published, track ID not shared, session IDs mismatch, `pc.ontrack` not set, renegotiation needed
-**Solution:** 
+**Solution:**
 1. Verify track published successfully
 2. Confirm track ID shared between peers
 3. Check session IDs match
@@ -31,6 +33,7 @@
 
 **Cause:** Network changed, firewall blocked UDP, TURN needed, transient network issue
 **Solution:**
+
 ```typescript
 pc.oniceconnectionstatechange = async () => {
   if (pc.iceConnectionState === 'failed') {
@@ -64,6 +67,7 @@ pc.oniceconnectionstatechange = async () => {
 
 **Cause:** Mobile switching WiFi↔cellular, laptop changing networks
 **Solution:**
+
 ```typescript
 // Listen for network changes
 if ('connection' in navigator) {

@@ -13,15 +13,20 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # storage-filesystems reference bundle
+
+Consult this reference when storage-filesystems reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Safe filesystem planning: partitioning, mkfs, mounting, and fstab with explicit confirmation and rollback.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Safety rules (non-negotiable)
 - Workflow
@@ -31,19 +36,23 @@ Safe filesystem planning: partitioning, mkfs, mounting, and fstab with explicit 
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/storage-filesystems/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/storage-filesystems/agents/openai.yaml`
-- `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/storage-filesystems/scripts/skill_helper.py`
+
+- `$CODEX_HOME/plugins/system-infra/skills/storage-filesystems/SKILL.md`
+- `$CODEX_HOME/plugins/system-infra/skills/storage-filesystems/agents/openai.yaml`
+- `$CODEX_HOME/plugins/system-infra/skills/storage-filesystems/scripts/skill_helper.py`
 
 ## Reference files in this directory
+
 - `latest-sources.md`
 - `operations-checklist.md`
 - `risk-register.md`
 
 ## External references
+
 - [fstab man page](https://man7.org/linux/man-pages/man5/fstab.5.html) - Filesystem mount table schema and semantics.
 - [mount man page](https://man7.org/linux/man-pages/man8/mount.8.html) - Mount options and lifecycle operations.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `storage-filesystems` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `storage-filesystems` before finalizing changes.

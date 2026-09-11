@@ -8,9 +8,12 @@ tags:
 - rules
 updated: '2026-06-28'
 ---
+
 # Perl Framework
 
+Apply the following perl framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `perl`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/codex-runtime/1.0.0/skills/perl/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/codex-runtime/1.0.0/skills/perl/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/codex-runtime/1.0.0/skills/perl/references/`
+- Source of truth: `$CODEX_HOME/plugins/codex-runtime/skills/perl/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/codex-runtime/skills/perl/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/codex-runtime/skills/perl/references/`

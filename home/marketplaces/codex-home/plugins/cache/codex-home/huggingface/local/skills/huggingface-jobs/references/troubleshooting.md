@@ -1,5 +1,7 @@
 # Troubleshooting Guide
 
+Consult this reference when troubleshooting guide is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common issues and solutions for Hugging Face Jobs.
 
 ## Authentication Issues
@@ -7,6 +9,7 @@ Common issues and solutions for Hugging Face Jobs.
 ### Error: 401 Unauthorized
 
 **Symptoms:**
+
 ```
 401 Client Error: Unauthorized for url: https://huggingface.co/api/...
 ```
@@ -23,6 +26,7 @@ Common issues and solutions for Hugging Face Jobs.
 4. Check token hasn't expired
 
 **Verification:**
+
 ```python
 # In your script
 import os
@@ -32,6 +36,7 @@ assert "HF_TOKEN" in os.environ, "HF_TOKEN missing!"
 ### Error: 403 Forbidden
 
 **Symptoms:**
+
 ```
 403 Client Error: Forbidden for url: https://huggingface.co/api/...
 ```
@@ -50,6 +55,7 @@ assert "HF_TOKEN" in os.environ, "HF_TOKEN missing!"
 ### Error: Token not found in environment
 
 **Symptoms:**
+
 ```
 KeyError: 'HF_TOKEN'
 ValueError: HF_TOKEN not found
@@ -87,6 +93,7 @@ ValueError: HF_TOKEN not found
 5. Add 20-30% buffer to estimated time
 
 **MCP Tool Example:**
+
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -95,6 +102,7 @@ hf_jobs("uv", {
 ```
 
 **Python API Example:**
+
 ```python
 from huggingface_hub import run_uv_job, inspect_job, fetch_job_logs
 
@@ -112,6 +120,7 @@ if job_info.status.stage == "ERROR":
 ### Error: Out of Memory (OOM)
 
 **Symptoms:**
+
 ```
 RuntimeError: CUDA out of memory
 MemoryError: Unable to allocate array
@@ -130,6 +139,7 @@ MemoryError: Unable to allocate array
 5. Enable gradient checkpointing (for training)
 
 **Example:**
+
 ```python
 # Reduce batch size
 batch_size = 1
@@ -142,6 +152,7 @@ for chunk in chunks:
 ### Error: Missing Dependencies
 
 **Symptoms:**
+
 ```
 ModuleNotFoundError: No module named 'package_name'
 ImportError: cannot import name 'X'
@@ -154,6 +165,7 @@ ImportError: cannot import name 'X'
 
 **Solutions:**
 1. Add to PEP 723 header:
+
    ```python
    # /// script
    # dependencies = ["package-name>=1.0.0"]
@@ -166,6 +178,7 @@ ImportError: cannot import name 'X'
 ### Error: Script Not Found
 
 **Symptoms:**
+
 ```
 FileNotFoundError: script.py not found
 ```
@@ -182,6 +195,7 @@ FileNotFoundError: script.py not found
 4. Check URL is correct
 
 **Correct approaches:**
+
 ```python
 # ✅ Inline code
 hf_jobs("uv", {"script": "# /// script\n# dependencies = [...]\n# ///\n\n<code>"})
@@ -195,6 +209,7 @@ hf_jobs("uv", {"script": "https://huggingface.co/user/repo/resolve/main/script.p
 ### Error: Push Failed
 
 **Symptoms:**
+
 ```
 Error pushing to Hub
 Upload failed
@@ -216,6 +231,7 @@ Upload failed
 ### Error: Repository Not Found
 
 **Symptoms:**
+
 ```
 404 Client Error: Not Found
 Repository not found
@@ -228,6 +244,7 @@ Repository not found
 
 **Solutions:**
 1. Create repository first:
+
    ```python
    from huggingface_hub import HfApi
    api = HfApi()
@@ -256,6 +273,7 @@ Repository not found
 4. Add error handling around push
 
 **Example:**
+
 ```python
 try:
     dataset.push_to_hub("username/dataset")
@@ -270,6 +288,7 @@ except Exception as e:
 ### Error: GPU Not Available
 
 **Symptoms:**
+
 ```
 CUDA not available
 No GPU found
@@ -375,6 +394,7 @@ print(f"HF_TOKEN present: {'HF_TOKEN' in os.environ}")
 ### 3. Test Locally First
 
 Run script locally before submitting to catch errors early:
+
 ```bash
 python script.py
 # Or with uv
@@ -384,17 +404,20 @@ uv run script.py
 ### 4. Check Job Logs
 
 **MCP Tool:**
+
 ```python
 # View logs
 hf_jobs("logs", {"job_id": "your-job-id"})
 ```
 
 **CLI:**
+
 ```bash
 hf jobs logs <job-id>
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import fetch_job_logs
 for log in fetch_job_logs(job_id="your-job-id"):
@@ -472,4 +495,3 @@ If issues persist:
 5. **Test locally** - Catch errors before submitting
 6. **Add error handling** - Better debugging information
 7. **Monitor costs** - Set timeouts to avoid unexpected charges
-

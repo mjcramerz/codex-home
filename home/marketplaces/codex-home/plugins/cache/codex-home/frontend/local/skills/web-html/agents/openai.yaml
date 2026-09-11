@@ -1,18 +1,16 @@
 interface:
-  display_name: "WEB-HTML"
-  short_description: "Build accessible, semantic HTML pages"
-  icon_small: "./assets/icon-32.png"
-  icon_large: "./assets/icon-128.png"
-  brand_color: "#3532CC"
-  default_prompt: "Use $web-html. Act as the \"WEB-HTML\" specialist for \"Build accessible, semantic HTML pages\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
-
+  display_name: WEB-HTML
+  short_description: Build accessible, semantic HTML pages
+  icon_small: ./assets/icon-32.png
+  icon_large: ./assets/icon-128.png
+  brand_color: '#3532CC'
+  default_prompt: Use $web-html for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "jina-ai"
-      description: "jina-ai MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.jina.ai/v1"
-
+  - type: mcp
+    value: jina-ai
+    description: jina-ai MCP server
+    transport: streamable_http
+    url: https://mcp.jina.ai/v1
 policy:
   allow_implicit_invocation: true

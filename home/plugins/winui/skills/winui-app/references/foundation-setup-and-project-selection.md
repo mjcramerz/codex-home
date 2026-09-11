@@ -9,13 +9,17 @@ sources:
   - https://learn.microsoft.com/windows/apps/windows-app-sdk/system-requirements
 ---
 
+# foundation setup and project selection
+
+Consult this reference when foundation setup and project selection is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when the user is starting from scratch, choosing a project template, or asking what a WinUI machine needs before code work begins.
 
 ## Prefer
 
-- The setup-and-scaffold flow in [$CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/SKILL.md]($CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/SKILL.md) for prerequisite setup, template verification, and the first scaffold.
+- The setup-and-scaffold flow in [$CODEX_HOME/plugins/winui/skills/winui-app/SKILL.md]($CODEX_HOME/plugins/winui/skills/winui-app/SKILL.md) for prerequisite setup, template verification, and the first scaffold.
 - A C# WinUI 3 desktop app on the Windows App SDK unless the user has a clear reason to prefer C++ or an existing non-WinUI stack.
 - Official project templates and default packaging choices first.
 - The current supported LTS .NET SDK for new C# work instead of only meeting the bare minimum.
@@ -32,8 +36,8 @@ Use this file when the user is starting from scratch, choosing a project templat
 
 ## Setup Baseline
 
-- Use the setup-and-scaffold flow in [$CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/SKILL.md]($CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/SKILL.md) for prerequisite setup, template verification, and the first scaffold.
-- Treat [$CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/config.yaml]($CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/config.yaml) as the bundled WinGet bootstrap source for setup and remediation.
+- Use the setup-and-scaffold flow in [$CODEX_HOME/plugins/winui/skills/winui-app/SKILL.md]($CODEX_HOME/plugins/winui/skills/winui-app/SKILL.md) for prerequisite setup, template verification, and the first scaffold.
+- Treat [$CODEX_HOME/plugins/winui/skills/winui-app/config.yaml]($CODEX_HOME/plugins/winui/skills/winui-app/config.yaml) as the bundled WinGet bootstrap source for setup and remediation.
 - Return to this reference only after that workflow completes or when the task moves beyond initial project creation.
 - Windows 10 version 1809 (build 17763) or later is the floor.
 - Windows SDK 10.0.19041.0 or later is the practical baseline.

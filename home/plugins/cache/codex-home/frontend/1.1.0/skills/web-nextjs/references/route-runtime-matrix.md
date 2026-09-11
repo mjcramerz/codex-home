@@ -13,15 +13,20 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Next.js Route and Runtime Matrix
 
+Consult this reference when next.js route and runtime matrix is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Route ownership model
+
 - **Server Component**: default for data-heavy UI and secure server access.
 - **Client Component**: interactive islands needing browser APIs or immediate local state.
 - **Route handler**: HTTP boundary for API-like interactions; validate inputs and authz.
 - **Middleware**: lightweight auth/routing decisions; avoid heavy work.
 
 ## Rendering and caching decisions
+
 | Scenario | Preferred mode | Cache strategy | Notes |
 | --- | --- | --- | --- |
 | Personal dashboard | Dynamic SSR | `no-store` or short revalidate | User-specific data |
@@ -30,12 +35,14 @@ updated: '2026-02-25'
 | Search UI | Dynamic + streamed partials | request scoped | Latency-sensitive |
 
 ## Server action checklist
+
 - Validate schema and normalize inputs.
 - Re-check authz server-side for every mutation.
 - Bound retries/timeouts for outbound calls.
 - Return typed error states for deterministic UI rendering.
 
 ## Middleware checklist
+
 - Keep logic deterministic and fast.
 - Avoid database-heavy work in middleware.
 - Add explicit bypass rules for static assets and health checks.

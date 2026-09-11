@@ -1,5 +1,7 @@
 # AI Search Configuration
 
+Consult this reference when ai search configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Worker Setup
 
 ```jsonc
@@ -59,6 +61,7 @@ Permissions:
 - **Edit** - instance management
 
 Store securely:
+
 ```bash
 wrangler secret put AI_SEARCH_TOKEN
 ```

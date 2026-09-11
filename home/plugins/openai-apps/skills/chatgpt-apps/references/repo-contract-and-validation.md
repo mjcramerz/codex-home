@@ -1,5 +1,7 @@
 # Repo Contract And Validation
 
+Consult this reference when repo contract and validation is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Load this reference when scaffolding or reviewing a generated ChatGPT app repo.
 
 The goal is not “files were created.” The goal is “the repo is plausibly runnable and follows a stable working-app contract.”

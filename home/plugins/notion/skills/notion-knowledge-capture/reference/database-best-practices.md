@@ -13,36 +13,44 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Database Best Practices
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 General guidance for creating and maintaining knowledge capture databases.
 
 ## Core Principles
 
 ### 1. Keep It Simple
+
 - Start with core properties
 - Add more only when needed
 - Don't over-engineer
 
 ### 2. Use Consistent Naming
+
 - Title property for main identifier
 - Status for lifecycle tracking
 - Tags for flexible categorization
 - Owner for accountability
 
 ### 3. Include Metadata
+
 - Created/Updated timestamps
 - Owner or maintainer
 - Last reviewed dates
 - Status indicators
 
 ### 4. Enable Discovery
+
 - Use tags liberally
 - Create helpful views
 - Link related content
 - Use clear titles
 
 ### 5. Plan for Scale
+
 - Consider filters early
 - Use relations for connections
 - Think about search
@@ -124,4 +132,3 @@ This returns the exact property names and types to use.
 5. **Review properties** quarterly - remove unused ones
 6. **Document the schema** in database description
 7. **Train team** on property usage and conventions
-

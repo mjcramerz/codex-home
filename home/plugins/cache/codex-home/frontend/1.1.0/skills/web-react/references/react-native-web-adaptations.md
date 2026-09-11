@@ -13,11 +13,15 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # React Native Rules Adapted for Web React
+
+Consult this reference when react native rules adapted for web react is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 This guide adapts patterns from:
 
 ## Mapping table
+
 | React Native rule theme | Web React adaptation |
 | --- | --- |
 | `list-performance-virtualize` | Use virtualization (`react-window`, `@tanstack/react-virtual`) for long lists |
@@ -33,12 +37,14 @@ This guide adapts patterns from:
 | `state-ground-truth` | Ensure each state value represents user-observable truth |
 
 ## Practical application sequence
+
 1. Stabilize list rendering behavior.
 2. Reduce animation/layout thrash.
 3. Normalize input/press interactions.
 4. Remove redundant or derived state.
 
 ## Validation hints
+
 - Profile list scrolling and interaction latency.
 - Confirm no regressions in keyboard behavior when replacing interactive primitives.
 - Record measured wins (fps, interaction latency, rerender counts).

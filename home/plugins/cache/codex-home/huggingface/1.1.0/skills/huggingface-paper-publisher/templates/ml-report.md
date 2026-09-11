@@ -1,12 +1,14 @@
 ---
-title: {{TITLE}}
-authors: {{AUTHORS}}
-date: {{DATE}}
+title: "{{TITLE}}"
+authors: "{{AUTHORS}}"
+date: "{{DATE}}"
 type: ml-experiment-report
 tags: [machine-learning, experiment-report]
 ---
 
 # {{TITLE}}
+
+Use this template when you prepare a research paper in the selected publication style. Replace every placeholder with verified content. Serialize resolved frontmatter values as YAML strings, escaping quotes and newlines; do not publish placeholders, invented results or unsupported citations.
 
 **Machine Learning Experiment Report**
 
@@ -21,11 +23,13 @@ tags: [machine-learning, experiment-report]
 {{ABSTRACT}}
 
 ### Key Findings
+
 - Finding 1
 - Finding 2
 - Finding 3
 
 ### Recommendations
+
 - Recommendation 1
 - Recommendation 2
 

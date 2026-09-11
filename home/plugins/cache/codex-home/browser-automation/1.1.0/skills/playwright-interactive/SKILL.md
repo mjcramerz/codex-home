@@ -1,6 +1,6 @@
 ---
-name: "playwright-interactive"
-description: "Inspect and test browser interfaces through available Playwright or Chrome DevTools MCP tools."
+name: playwright-interactive
+description: Inspect and test browser interfaces through available Playwright or Chrome DevTools MCP tools.
 ---
 
 # Browser automation with the deployed MCP servers

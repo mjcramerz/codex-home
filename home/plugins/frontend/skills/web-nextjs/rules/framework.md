@@ -13,9 +13,12 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web Nextjs Framework
 
+Apply the following web nextjs framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `web-nextjs`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/frontend/1.0.0/skills/web-nextjs/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/frontend/1.0.0/skills/web-nextjs/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/frontend/1.0.0/skills/web-nextjs/references/`
+- Source of truth: `$CODEX_HOME/plugins/frontend/skills/web-nextjs/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/frontend/skills/web-nextjs/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/frontend/skills/web-nextjs/references/`

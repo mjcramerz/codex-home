@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Comprehensive Report Format
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **When to use**:
 - Formal documentation requirements
@@ -53,4 +56,3 @@ See [comprehensive-report-template.md](comprehensive-report-template.md) for the
 - "Document the full technical investigation of the database migration"
 - "Prepare an in-depth report on vendor options for executive review"
 - "Analyze the pros and cons of different architectural approaches"
-

@@ -5,6 +5,10 @@ impactDescription: avoid redundant computation
 tags: javascript, cache, memoization, performance
 ---
 
+# js cache function results
+
+Apply the following js cache function results guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Cache Repeated Function Calls
 
 Use a module-level Map to cache function results when the same function is called repeatedly with the same inputs during render.

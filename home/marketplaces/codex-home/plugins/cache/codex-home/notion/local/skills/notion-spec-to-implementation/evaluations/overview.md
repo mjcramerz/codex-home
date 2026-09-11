@@ -12,7 +12,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Spec to Implementation Skill Evaluations (overview)
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Evaluation scenarios for testing the Spec to Implementation skill across different Codex models.
 
@@ -28,6 +31,7 @@ These evaluations ensure the Spec to Implementation skill:
 ## Evaluation Files
 
 ### basic-spec-implementation.json
+
 Tests basic workflow of turning a spec into an implementation plan.
 
 **Scenario**: Implement user authentication feature from spec
@@ -40,6 +44,7 @@ Tests basic workflow of turning a spec into an implementation plan.
 - Includes timeline and dependencies
 
 ### spec-to-tasks.json
+
 Tests creating concrete tasks from a specification in a task database.
 
 **Scenario**: Create tasks from API redesign spec
@@ -69,6 +74,7 @@ Tests creating concrete tasks from a specification in a task database.
 Spec to Implementation evaluations should verify:
 
 ### Spec Discovery & Parsing
+
 - Searches Notion for specification pages
 - Fetches complete spec content
 - Extracts all requirements accurately
@@ -77,6 +83,7 @@ Spec to Implementation evaluations should verify:
 - Notes any ambiguities or missing details
 
 ### Implementation Planning
+
 - Creates implementation plan page
 - Breaks work into logical phases:
   - Phase 1: Foundation/Setup
@@ -87,6 +94,7 @@ Spec to Implementation evaluations should verify:
 - Links back to original spec
 
 ### Task Creation
+
 - Finds or identifies task database
 - Fetches database schema for property names
 - Creates tasks with correct properties
@@ -100,6 +108,7 @@ Spec to Implementation evaluations should verify:
 - Dependencies between tasks are noted
 
 ### Progress Tracking
+
 - Implementation plan includes progress markers
 - Tasks can be updated as work progresses
 - Status updates link to completed work

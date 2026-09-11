@@ -13,18 +13,24 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web Next.js Implementation Playbook
 
+Consult this reference when web next.js implementation playbook is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Scope and intent
+
 Use this playbook for Next.js App Router projects with explicit server/client boundaries, route-level caching strategy, and secure mutation paths.
 
 ## Intake checklist
+
 - Identify affected routes, layouts, and shared components.
 - Confirm runtime target (Node, edge, serverless) and deployment constraints.
 - Confirm data consistency rules (revalidate windows, tag invalidation, ISR behavior).
 - Confirm auth/session model and protected route surfaces.
 
 ## Delivery sequence
+
 1. Build route ownership matrix (Server Component, Client Component, route handler, middleware).
 2. Choose rendering and caching strategy per route using `route-runtime-matrix.md`.
 3. Apply React performance guidance from `react-performance-rules.md`.
@@ -33,6 +39,7 @@ Use this playbook for Next.js App Router projects with explicit server/client bo
 6. Return evidence with unresolved tradeoffs and rollback hints.
 
 ## Decision rules
+
 - Keep data fetching on the server unless direct client interactivity requires client fetching.
 - Treat every route handler and server action as an API surface requiring strict input validation.
 - Use explicit cache invalidation APIs (`revalidatePath`, `revalidateTag`) instead of ad hoc cache busting.

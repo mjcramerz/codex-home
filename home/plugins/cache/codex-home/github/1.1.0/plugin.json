@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "github",
   "version": "1.1.0",
-  "description": "GitHub review, PR-comment, and Actions workflow plugins.",
+  "description": "Use this plugin for gitHub review, PR-comment, and Actions workflow plugins.",
   "author": {
     "name": "Codex Setup"
   },

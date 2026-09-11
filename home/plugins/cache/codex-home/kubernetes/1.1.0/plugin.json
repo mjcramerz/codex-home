@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "kubernetes",
   "version": "1.1.0",
-  "description": "Kubernetes workload, manifest, and cluster-operation workflows.",
+  "description": "Use this plugin for kubernetes workload, manifest, and cluster-operation workflows.",
   "author": {
     "name": "Codex Setup"
   },

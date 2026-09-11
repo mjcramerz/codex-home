@@ -5,6 +5,10 @@ impactDescription: avoids expensive object recreation
 tags: javascript, intl, optimization, memoization
 ---
 
+# js hoist intl
+
+Apply the following js hoist intl guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Hoist Intl Formatter Creation
 
 Don't create `Intl.DateTimeFormat`, `Intl.NumberFormat`, or

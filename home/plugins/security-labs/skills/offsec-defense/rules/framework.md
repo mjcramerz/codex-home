@@ -13,9 +13,12 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # OffSec Defense Framework
 
+Apply the following offsec defense framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `offsec-defense`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/offsec-defense/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/offsec-defense/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/offsec-defense/references/`
+- Source of truth: `$CODEX_HOME/plugins/security-labs/skills/offsec-defense/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/security-labs/skills/offsec-defense/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/security-labs/skills/offsec-defense/references/`

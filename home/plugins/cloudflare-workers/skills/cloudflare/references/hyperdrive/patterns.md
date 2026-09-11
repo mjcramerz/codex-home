@@ -1,6 +1,8 @@
 # Patterns
 
-See [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/README.md), [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/configuration.md), [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/api.md).
+Consult this reference when patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
+See [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/README.md), [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/configuration.md), [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/api.md).
 
 ## High-Traffic Read-Heavy
 
@@ -124,6 +126,7 @@ return Response.json({user, orders, stats});
 Operates in **transaction mode**: connection acquired per transaction, `RESET` on return.
 
 **SET statements:**
+
 ```typescript
 // ✅ Within transaction
 await client.query("BEGIN");
@@ -140,6 +143,7 @@ await client.query("SELECT * FROM large_table");  // SET not applied
 ```
 
 **Best practices:**
+
 ```typescript
 // ❌ Long transactions block pooling
 await client.query("BEGIN");
@@ -161,11 +165,13 @@ await client.query("COMMIT");
 ## Performance Tips
 
 **Enable prepared statements (required for caching):**
+
 ```typescript
 const sql = postgres(connectionString, {prepare: true});  // Default, enables caching
 ```
 
 **Optimize connection settings:**
+
 ```typescript
 const sql = postgres(connectionString, {
   max: 5,             // Stay under Workers' 6 connection limit
@@ -175,6 +181,7 @@ const sql = postgres(connectionString, {
 ```
 
 **Write cache-friendly queries:**
+
 ```typescript
 // ✅ Cacheable (deterministic)
 await sql`SELECT * FROM products WHERE category = 'electronics' LIMIT 10`;
@@ -187,4 +194,4 @@ const ts = Date.now();
 await sql`SELECT * FROM logs WHERE created_at > ${ts}`;
 ```
 
-See [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/gotchas.md) for limits, troubleshooting.
+See [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/gotchas.md) for limits, troubleshooting.

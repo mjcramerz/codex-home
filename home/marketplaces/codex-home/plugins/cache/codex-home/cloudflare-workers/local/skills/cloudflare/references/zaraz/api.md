@@ -1,5 +1,7 @@
 # Zaraz Web API
 
+Consult this reference when zaraz web api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Client-side JavaScript API for tracking events, setting properties, and managing consent.
 
 ## zaraz.track()

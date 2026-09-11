@@ -1,5 +1,7 @@
 # MCP Server Integration
 
+Consult this reference when mcp server integration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Fetch `docs/mcp-client.md` and `docs/mcp-servers.md` from `https://github.com/cloudflare/agents/tree/main/docs` for complete documentation.
 
 Agents include a multi-server MCP client for connecting to external MCP servers.
@@ -77,11 +79,13 @@ await this.removeMcpServer(serverId);
 Use `McpAgent` from the SDK to create an MCP server.
 
 **Install dependencies:**
+
 ```bash
 npm install @modelcontextprotocol/sdk zod
 ```
 
 **Wrangler config:**
+
 ```jsonc
 {
   "durable_objects": {
@@ -92,6 +96,7 @@ npm install @modelcontextprotocol/sdk zod
 ```
 
 **Server implementation:**
+
 ```typescript
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { McpAgent } from "agents/mcp";

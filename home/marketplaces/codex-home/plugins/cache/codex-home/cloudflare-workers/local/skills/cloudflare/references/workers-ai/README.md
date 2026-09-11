@@ -1,5 +1,7 @@
 # Cloudflare Workers AI
 
+Consult this reference when cloudflare workers ai is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for Cloudflare Workers AI - serverless GPU-powered AI inference at the edge.
 
 ## Overview
@@ -77,7 +79,7 @@ wrangler deploy
 
 ### Native Binding (Recommended)
 
-**When**: Building Workers/Pages with TypeScript  
+**When**: Building Workers/Pages with TypeScript
 **Why**: Zero external dependencies, best performance, native types
 
 ```typescript
@@ -86,7 +88,7 @@ await env.AI.run(model, input);
 
 ### REST API
 
-**When**: External services, non-Workers environments, testing  
+**When**: External services, non-Workers environments, testing
 **Why**: Standard HTTP, works anywhere
 
 ```bash
@@ -97,7 +99,7 @@ curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/run/@cf/meta/
 
 ### Vercel AI SDK Integration
 
-**When**: Using Vercel AI SDK features (streaming UI, tool calling abstractions)  
+**When**: Using Vercel AI SDK features (streaming UI, tool calling abstractions)
 **Why**: Unified interface across providers
 
 ```typescript
@@ -112,12 +114,14 @@ const model = openai('model-name', {
 ## RAG vs Direct Generation
 
 ### Use RAG (Vectorize + Workers AI) When:
+
 - Answering questions about specific documents/data
 - Need factual accuracy from known corpus
 - Context exceeds model's window (>4K tokens)
 - Building knowledge base chat
 
 ### Use Direct Generation When:
+
 - Creative writing, brainstorming
 - General knowledge questions
 - Small context fits in prompt (<4K tokens)
@@ -185,13 +189,13 @@ wrangler deploy
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-ai/configuration.md) - wrangler.jsonc setup, TypeScript types, bindings, environment variables
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-ai/api.md) - env.AI.run(), streaming, function calling, REST API, response types
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-ai/patterns.md) - RAG with Vectorize, prompt engineering, batching, error handling, caching
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-ai/gotchas.md) - Deprecated @cloudflare/ai package, rate limits, pricing, common errors
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-ai/configuration.md) - wrangler.jsonc setup, TypeScript types, bindings, environment variables
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-ai/api.md) - env.AI.run(), streaming, function calling, REST API, response types
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-ai/patterns.md) - RAG with Vectorize, prompt engineering, batching, error handling, caching
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-ai/gotchas.md) - Deprecated @cloudflare/ai package, rate limits, pricing, common errors
 
 ## See Also
 
-- [vectorize]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/vectorize/) - Vector database for RAG patterns
-- [ai-gateway]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/ai-gateway/) - Caching, rate limiting, analytics for AI requests
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Worker runtime and fetch handler patterns
+- [vectorize]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/vectorize/) - Vector database for RAG patterns
+- [ai-gateway]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/ai-gateway/) - Caching, rate limiting, analytics for AI requests
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Worker runtime and fetch handler patterns

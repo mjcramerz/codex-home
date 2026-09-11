@@ -6,6 +6,8 @@
 
 ```hcl
 # terraform/argo.tf
+
+Consult this reference when terraform/argo.tf is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 # Note: Use Cloudflare Terraform provider
 
 resource "cloudflare_argo" "example" {
@@ -110,6 +112,7 @@ Before enabling Argo Smart Routing, ensure billing is configured for the account
 ## Environment Variable Setup
 
 **Required Environment Variables:**
+
 ```bash
 # .env
 CLOUDFLARE_API_TOKEN=your_api_token_here
@@ -122,6 +125,7 @@ ARGO_TIERED_CACHE=true
 ```
 
 **TypeScript Configuration Loader:**
+
 ```typescript
 // config/env.ts
 import { z } from 'zod';
@@ -145,6 +149,7 @@ export const argoConfig = {
 ## CI/CD Integration
 
 **GitHub Actions Example:**
+
 ```yaml
 # .github/workflows/deploy-argo.yml
 name: Deploy Argo Configuration

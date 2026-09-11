@@ -1,1 +1,4 @@
-Review the code changes against the base branch '{{base_branch}}'. The merge base commit for this comparison is {{merge_base_sha}}. Run `git diff {{merge_base_sha}}` to inspect the changes relative to {{base_branch}}. Provide prioritized, actionable findings.
+Review the current change relative to {{base_branch}}, using {{merge_base_sha}}
+as the supplied merge-base candidate. Verify the refs and diff before drawing
+conclusions. Trace changed behavior and report concrete introduced defects with
+short, precise line ranges. Preserve the worktree and do not implement fixes.

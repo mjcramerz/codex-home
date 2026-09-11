@@ -1,5 +1,7 @@
 # Cloudflare Realtime SFU Reference
 
+Consult this reference when cloudflare realtime sfu reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for building real-time audio/video/data applications using Cloudflare Realtime SFU (Selective Forwarding Unit).
 
 ## Reading Order

@@ -18,21 +18,7 @@ SKILL_NAME = 'shell-bash'
 SKILL_CATEGORY = 'LANG'
 SKILL_DESCRIPTION = 'Write production-grade Bash: strict mode, safe subprocess usage, portability, robust error handling, and security hardening.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'When to use',
-    'Non-negotiables',
-    'Skeleton',
-    'Safe subprocess patterns',
-    'Prefer arrays',
-    'Never interpolate untrusted strings into a shell',
-    'Filesystem safety',
-    'Portability tips (macOS/Linux)',
-    'Testing / validation',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References in this pack'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'GNU Bash manual', 'url': 'https://man7.org/linux/man-pages/man1/bash.1.html', 'note': 'Bash scripting semantics and safety notes.'},
     {'title': 'ShellCheck wiki', 'url': 'https://www.shellcheck.net/wiki/', 'note': 'Practical bash lint and safety guidance.'}

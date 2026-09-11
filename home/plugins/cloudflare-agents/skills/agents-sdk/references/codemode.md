@@ -1,5 +1,7 @@
 # Code Mode (Experimental)
 
+Consult this reference when code mode (experimental) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Code Mode generates executable JavaScript instead of making individual tool calls. This significantly reduces token usage and enables complex multi-tool workflows.
 
 ## Why Code Mode?

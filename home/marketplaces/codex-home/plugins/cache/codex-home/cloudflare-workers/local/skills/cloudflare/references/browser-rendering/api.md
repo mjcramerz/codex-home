@@ -1,8 +1,10 @@
 # Browser Rendering API
 
+Consult this reference when browser rendering api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## REST API
 
-**Base:** `https://api.cloudflare.com/client/v4/accounts/{accountId}/browser-rendering`  
+**Base:** `https://api.cloudflare.com/client/v4/accounts/{accountId}/browser-rendering`
 **Auth:** `Authorization: Bearer <token>` (Browser Rendering - Edit permission)
 
 ### Endpoints

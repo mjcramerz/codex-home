@@ -1,5 +1,7 @@
 # Workflow APIs
 
+Consult this reference when workflow apis is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Step APIs
 
 ```typescript
@@ -136,6 +138,7 @@ Sleeping instances don't count toward concurrency.
 ## Parameters
 
 **Pass from Worker:**
+
 ```typescript
 const instance = await env.MY_WORKFLOW.create({
   id: crypto.randomUUID(),
@@ -144,6 +147,7 @@ const instance = await env.MY_WORKFLOW.create({
 ```
 
 **Access in Workflow:**
+
 ```typescript
 async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
   const userId = event.params.userId;
@@ -153,6 +157,7 @@ async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
 ```
 
 **CLI Trigger:**
+
 ```bash
 npx wrangler workflows trigger my-workflow '{"userId":"user123"}'
 ```
@@ -182,4 +187,4 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/workflows/{work
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events" -H "Authorization: Bearer {token}" -d '{"type":"approval","payload":{"approved":true}}'
 ```
 
-See: [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workflows/configuration.md), [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workflows/patterns.md)
+See: [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workflows/configuration.md), [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workflows/patterns.md)

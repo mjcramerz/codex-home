@@ -5,6 +5,10 @@ impactDescription: native performance, gestures, accessibility
 tags: modals, bottom-sheet, native, react-navigation
 ---
 
+# ui native modals
+
+Apply the following ui native modals guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Native Modals Over JS-Based Bottom Sheets
 
 Use native `<Modal>` with `presentationStyle="formSheet"` or React Navigation

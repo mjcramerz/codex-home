@@ -1,5 +1,7 @@
 # Common Patterns
 
+Consult this reference when common patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## AI Code Execution with Code Context
 
 ```typescript
@@ -75,6 +77,7 @@ export default {
 ```
 
 **Dockerfile**:
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:latest
 RUN npm install -g ws
@@ -157,10 +160,6 @@ export default {
   }
 };
 ```
-
-
-
-
 
 ## Multi-Tenant Pattern
 

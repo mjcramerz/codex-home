@@ -5,6 +5,10 @@ impactDescription: prevents production crash
 tags: rendering, conditional, jsx, crash
 ---
 
+# rendering no falsy and
+
+Apply the following rendering no falsy and guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Never Use && with Potentially Falsy Values
 
 Never use `{value && <Component />}` when `value` could be an empty string or

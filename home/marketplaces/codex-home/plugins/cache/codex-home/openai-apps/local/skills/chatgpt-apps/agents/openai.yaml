@@ -1,15 +1,13 @@
 interface:
-  display_name: "ChatGPT Apps"
-  short_description: "Build and scaffold ChatGPT apps"
-  default_prompt: "Use $chatgpt-apps to classify the app archetype first, fetch current OpenAI Apps SDK docs before generating code, default to the standard `search` and `fetch` tools when the app is connector-like or sync-oriented, adapt the closest upstream example when one fits, and only fall back to the local Node scaffold for minimal `@modelcontextprotocol/ext-apps` starters. Produce a working repo shape, then report what validation was actually run."
-
+  display_name: ChatGPT Apps
+  short_description: Build and scaffold ChatGPT apps
+  default_prompt: Use $chatgpt-apps for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "openaiDeveloperDocs"
-      description: "openaiDeveloperDocs MCP server"
-      transport: "streamable_http"
-      url: "https://developers.openai.com/mcp"
-
+  - type: mcp
+    value: openaiDeveloperDocs
+    description: openaiDeveloperDocs MCP server
+    transport: streamable_http
+    url: https://developers.openai.com/mcp
 policy:
   allow_implicit_invocation: true

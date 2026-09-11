@@ -1,15 +1,13 @@
 interface:
-  display_name: "Setup Audit"
-  short_description: "Audit installer behavior, rollout state, and verification coverage"
-  default_prompt: "Use $setup-audit. Act as the Setup Audit specialist. Audit installer behavior, runtime rollout state, and verification commands with focused, reviewable findings."
-
+  display_name: Setup Audit
+  short_description: Audit installer behavior, rollout state, and verification coverage
+  default_prompt: Use $setup-audit for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "openaiDeveloperDocs"
-      description: "openaiDeveloperDocs MCP server"
-      transport: "streamable_http"
-      url: "https://developers.openai.com/mcp"
-
+  - type: mcp
+    value: openaiDeveloperDocs
+    description: openaiDeveloperDocs MCP server
+    transport: streamable_http
+    url: https://developers.openai.com/mcp
 policy:
   allow_implicit_invocation: true

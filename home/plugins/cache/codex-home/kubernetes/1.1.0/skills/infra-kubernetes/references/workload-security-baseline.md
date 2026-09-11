@@ -13,9 +13,13 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Workload security baseline
 
+Consult this reference when workload security baseline is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Required pod security controls
+
 - `runAsNonRoot: true`
 - `allowPrivilegeEscalation: false`
 - `readOnlyRootFilesystem: true` where feasible
@@ -23,6 +27,7 @@ updated: '2026-02-20'
 - Drop all capabilities by default and add back only documented exceptions
 
 ## Manifest review checklist
+
 - Confirm namespace and ownership labels are explicit.
 - Require resource requests/limits on every container.
 - Ensure readiness and liveness probes are present and bounded.

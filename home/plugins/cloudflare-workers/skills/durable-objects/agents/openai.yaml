@@ -1,30 +1,28 @@
 interface:
-  display_name: "Durable Objects"
-  short_description: "Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, bo"
-  default_prompt: "Use $durable-objects. Use the Durable Objects skill when the task matches this scope: Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or reviewing DO code for best practices. Covers Workers integration, wrangler config, and testing with Vitest. Biases towards retrieval from Cloudflare docs over pre-trained knowledge."
-
+  display_name: Durable Objects
+  short_description: Create and review Cloudflare Durable Objects. Use when building stateful coordination (cha
+  default_prompt: Use $durable-objects for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "cloudflare-api"
-      description: "cloudflare-api MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-docs"
-      description: "cloudflare-docs MCP server"
-      transport: "streamable_http"
-      url: "https://docs.mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-bindings"
-      description: "cloudflare-bindings MCP server"
-      transport: "streamable_http"
-      url: "https://bindings.mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-observability"
-      description: "cloudflare-observability MCP server"
-      transport: "streamable_http"
-      url: "https://observability.mcp.cloudflare.com/mcp"
-
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-bindings
+    description: cloudflare-bindings MCP server
+    transport: streamable_http
+    url: https://bindings.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-observability
+    description: cloudflare-observability MCP server
+    transport: streamable_http
+    url: https://observability.mcp.cloudflare.com/mcp
 policy:
   allow_implicit_invocation: true

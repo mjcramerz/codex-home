@@ -1,8 +1,9 @@
 # BuildBuddy (entrypoint)
-Purpose: stable link to BuildBuddy guidance for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this route when you need buildbuddy. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/domains/infra/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -19,5 +20,5 @@ Use when:
 Related:
 - $CODEX_HOME/docs/workflows/bazel-buildbuddy.md
 - $CODEX_HOME/docs/infra/bazel.md
-- You must use skill `buildbuddy`.
+- Read the `buildbuddy` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

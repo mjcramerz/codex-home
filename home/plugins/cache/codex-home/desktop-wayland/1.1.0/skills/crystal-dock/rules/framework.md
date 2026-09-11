@@ -8,9 +8,12 @@ tags:
 - rules
 updated: '2026-06-28'
 ---
+
 # Crystal Dock Framework
 
+Apply the following crystal dock framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `crystal-dock`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/crystal-dock/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/crystal-dock/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/crystal-dock/references/`
+- Source of truth: `$CODEX_HOME/plugins/desktop-wayland/skills/crystal-dock/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/desktop-wayland/skills/crystal-dock/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/desktop-wayland/skills/crystal-dock/references/`

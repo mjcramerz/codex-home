@@ -1,10 +1,13 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Schema Validation 2.0 Setup
 
 > ⚠️ **Classic Schema Validation deprecated.** Use Schema Validation 2.0.
 
 **Upload schema (Dashboard):**
+
 ```
 Security > API Shield > Schema Validation > Add validation
 - Upload .yml/.yaml/.json (OpenAPI v3.0)
@@ -14,6 +17,7 @@ Security > API Shield > Schema Validation > Add validation
 ```
 
 **Change validation action:**
+
 ```
 Security > API Shield > Settings > Schema Validation
 Per-endpoint: Filter → ellipses → Change action
@@ -21,6 +25,7 @@ Default action: Set global mitigation action
 ```
 
 **Migration from Classic:**
+
 ```
 1. Export existing schema (if available)
 2. Delete all Classic schema validation rules
@@ -30,6 +35,7 @@ Default action: Set global mitigation action
 ```
 
 **Fallthrough rule** (catch-all unknown endpoints):
+
 ```
 Security > API Shield > Settings > Fallthrough > Use Template
 - Select hostnames
@@ -42,6 +48,7 @@ Security > API Shield > Settings > Fallthrough > Use Template
 ## JWT Validation
 
 **Setup token config:**
+
 ```
 Security > API Shield > Settings > JWT Settings > Add configuration
 - Name: "Auth0 JWT Config"
@@ -50,6 +57,7 @@ Security > API Shield > Settings > JWT Settings > Add configuration
 ```
 
 **Create validation rule:**
+
 ```
 Security > API Shield > API Rules > Add rule
 - Hostname: api.example.com
@@ -60,6 +68,7 @@ Security > API Shield > API Rules > Add rule
 ```
 
 **Rate limit by JWT claim:**
+
 ```wirefilter
 lookup_json_string(http.request.jwt.claims["{config_id}"][0], "sub")
 ```
@@ -73,6 +82,7 @@ lookup_json_string(http.request.jwt.claims["{config_id}"][0], "sub")
 ## Mutual TLS (mTLS)
 
 **Setup:**
+
 ```
 SSL/TLS > Client Certificates > Create Certificate
 - Generate CF-managed CA (all plans)
@@ -80,6 +90,7 @@ SSL/TLS > Client Certificates > Create Certificate
 ```
 
 **Configure mTLS rule:**
+
 ```
 Security > API Shield > mTLS
 - Select hostname(s)
@@ -88,6 +99,7 @@ Security > API Shield > mTLS
 ```
 
 **Test:**
+
 ```bash
 openssl req -x509 -newkey rsa:4096 -keyout client-key.pem -out client-cert.pem -days 365
 curl https://api.example.com/endpoint --cert client-cert.pem --key client-key.pem
@@ -100,6 +112,7 @@ Critical for BOLA Detection, Sequence Mitigation, and analytics. Configure heade
 **Examples:** JWT sub claim, session token, API key, custom user ID header
 
 **Configure:**
+
 ```
 Security > API Shield > Settings > Session Identifiers
 - Type: Header/Cookie
@@ -111,6 +124,7 @@ Security > API Shield > Settings > Session Identifiers
 Detects Broken Object Level Authorization attacks (enumeration + parameter pollution).
 
 **Enable:**
+
 ```
 Security > API Shield > Schema Validation > [Select Schema] > BOLA Detection
 - Enable detection
@@ -128,6 +142,7 @@ Security > API Shield > Schema Validation > [Select Schema] > BOLA Detection
 Identifies unprotected or inconsistently protected endpoints.
 
 **View report:**
+
 ```
 Security > API Shield > Authentication Posture
 - Shows endpoints lacking JWT/mTLS

@@ -1,8 +1,7 @@
 ---
-name: "figma-implement-design"
-description: "Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Trigger when the user provides Figma URLs or node IDs, or asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection."
+name: figma-implement-design
+description: Use this skill for translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Trigger when the user provides Figma URLs or node IDs, or asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection.
 ---
-
 
 # Implement Design
 
@@ -215,7 +214,7 @@ Validate frequently during implementation, not just at the end. This catches iss
 
 ### Document Deviations
 
-If you must deviate from the Figma design (e.g., for accessibility or technical constraints), document why in code comments.
+If deviate from the Figma design (e.g., for accessibility or technical constraints), document why in code comments.
 
 ### Reuse Over Recreation
 

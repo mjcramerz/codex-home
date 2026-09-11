@@ -1,5 +1,7 @@
 # Durable Objects Patterns
 
+Consult this reference when durable objects patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## When to Use Which Pattern
 
 | Need | Pattern | ID Strategy |
@@ -13,7 +15,7 @@
 
 ## RPC vs fetch()
 
-**RPC** (compat ≥2024-04-03): Type-safe, simpler, default for new projects  
+**RPC** (compat ≥2024-04-03): Type-safe, simpler, default for new projects
 **fetch()**: Legacy compat, HTTP semantics, proxying
 
 ```typescript
@@ -110,6 +112,7 @@ async webSocketMessage(ws: WebSocket, msg: string) {
 ### WebSocket Reconnection
 
 **Client-side** (exponential backoff):
+
 ```typescript
 class ResilientWS {
   private delay = 1000;
@@ -124,6 +127,7 @@ class ResilientWS {
 ```
 
 **Server-side** (cleanup on close):
+
 ```typescript
 async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
   const { userId } = ws.deserializeAttachment();
@@ -196,6 +200,6 @@ async myMethod() {
 
 ## See Also
 
-- **[API]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/api.md)** - ctx methods, WebSocket handlers
-- **[Gotchas]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/gotchas.md)** - Hibernation caveats, common errors
-- **[DO Storage]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/README.md)** - Storage patterns and transactions
+- **[API]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/api.md)** - ctx methods, WebSocket handlers
+- **[Gotchas]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/gotchas.md)** - Hibernation caveats, common errors
+- **[DO Storage]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/README.md)** - Storage patterns and transactions

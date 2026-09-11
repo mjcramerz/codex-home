@@ -1,5 +1,7 @@
 # Neo4j Import Notes
 
+Consult this reference when neo4j import notes is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use these steps when persisting the ownership graph to Neo4j.
 
 ## Quick import (LOAD CSV)

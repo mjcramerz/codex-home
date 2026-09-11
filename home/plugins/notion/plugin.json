@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "notion",
   "version": "1.1.0",
-  "description": "Notion capture, meeting, research, and implementation-planning workflows.",
+  "description": "Use this plugin for notion capture, meeting, research, and implementation-planning workflows.",
   "author": {
     "name": "Codex Setup"
   },

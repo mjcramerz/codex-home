@@ -13,17 +13,22 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Plan: {{title}}
+
+Use this guide when the task concerns plan: {{title}}. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 ## Goals
 
 ## Requirements
 
 ## Scope
+
 - In:
 - Out:
 
 ## Action items
+
 - [ ]
 
 ## Validation

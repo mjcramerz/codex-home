@@ -1,15 +1,13 @@
 interface:
-  display_name: "Runtime Sandbox"
-  short_description: "Bubblewrap runtime isolation"
-  default_prompt: "Use $runtime-sandbox. Act as the Runtime Sandbox specialist. Audit Bubblewrap mounts, ephemeral Codex runtime state, identity masking, and developer-workflow compatibility with concrete validation evidence."
-
+  display_name: Runtime Sandbox
+  short_description: Use this skill for bubblewrap runtime isolation
+  default_prompt: Use $runtime-sandbox for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "openaiDeveloperDocs"
-      description: "openaiDeveloperDocs MCP server"
-      transport: "streamable_http"
-      url: "https://developers.openai.com/mcp"
-
+  - type: mcp
+    value: openaiDeveloperDocs
+    description: openaiDeveloperDocs MCP server
+    transport: streamable_http
+    url: https://developers.openai.com/mcp
 policy:
   allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: huggingface-jobs
-description: This skill should be used when users want to run any workload on Hugging Face Jobs infrastructure. Covers UV scripts, Docker-based jobs, hardware selection, cost estimation, authentication with tokens, secrets management, timeout configuration, and result persistence. Designed for general-purpose compute workloads including data processing, inference, experiments, batch jobs, and any Python-based tasks. Should be invoked for tasks involving cloud compute, GPU workloads, or when users mention running jobs on Hugging Face infrastructure without local setup.
+description: Use this skill when users want to run any workload on Hugging Face Jobs infrastructure. Covers UV scripts, Docker-based jobs, hardware selection, cost estimation, authentication with tokens, secrets management, timeout configuration, and result persistence. Designed for general-purpose compute workloads including data processing, inference, experiments, batch jobs, and any Python-based tasks. Should be invoked for tasks involving cloud compute, GPU workloads, or when users mention running jobs on Hugging Face infrastructure without local setup.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -49,6 +49,7 @@ When assisting with jobs:
 Before starting any job, verify:
 
 ### ✅ **Account & Authentication**
+
 - Hugging Face Account with [Pro](https://hf.co/pro), [Team](https://hf.co/enterprise), or [Enterprise](https://hf.co/enterprise) plan (Jobs require paid plan)
 - Authenticated login: Check with `hf_whoami()`
 - **HF_TOKEN for Hub Access** ⚠️ CRITICAL - Required for any Hub operations (push models/datasets, download private repos, etc.)
@@ -63,6 +64,7 @@ Before starting any job, verify:
 - Any authenticated Hub operations
 
 **How to provide tokens:**
+
 ```python
 {
     "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # Recommended: automatic token
@@ -186,12 +188,14 @@ api = HfApi()  # Automatically uses HF_TOKEN env var
 ### Token Verification
 
 **Check if you're logged in:**
+
 ```python
 from huggingface_hub import whoami
 user_info = whoami()  # Returns your username if authenticated
 ```
 
 **Verify token in job:**
+
 ```python
 import os
 assert "HF_TOKEN" in os.environ, "HF_TOKEN not found!"
@@ -270,6 +274,7 @@ print("✅ Dataset pushed successfully!")
 UV scripts use PEP 723 inline dependencies for clean, self-contained workloads.
 
 **MCP Tool:**
+
 ```python
 hf_jobs("uv", {
     "script": """
@@ -291,11 +296,13 @@ print(result)
 ```
 
 **CLI Equivalent:**
+
 ```bash
 hf jobs uv run my_script.py --flavor cpu-basic --timeout 30m
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import run_uv_job
 run_uv_job("my_script.py", flavor="cpu-basic", timeout="30m")
@@ -318,6 +325,7 @@ hf_jobs("uv", {
 ```
 
 **CLI:**
+
 ```bash
 hf jobs uv run --image vllm/vllm-openai:latest --flavor a10g-large inference.py
 ```
@@ -337,6 +345,7 @@ hf_jobs("uv", {
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import run_uv_job
 run_uv_job("my_script.py", python="3.11")
@@ -390,6 +399,7 @@ hf_jobs("uv", {
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import run_uv_job
 run_uv_job("inference.py", dependencies=["transformers", "torch>=2.0"])
@@ -400,6 +410,7 @@ run_uv_job("inference.py", dependencies=["transformers", "torch>=2.0"])
 Run jobs with custom Docker images and commands.
 
 **MCP Tool:**
+
 ```python
 hf_jobs("run", {
     "image": "python:3.12",
@@ -410,11 +421,13 @@ hf_jobs("run", {
 ```
 
 **CLI Equivalent:**
+
 ```bash
 hf jobs run python:3.12 python -c "print('Hello from HF Jobs!')"
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import run_job
 run_job(image="python:3.12", command=["python", "-c", "print('Hello!')"], flavor="cpu-basic")
@@ -424,6 +437,7 @@ run_job(image="python:3.12", command=["python", "-c", "print('Hello!')"], flavor
 **When to use:** Need specific Docker images, non-Python workloads, complex environments
 
 **Example with GPU:**
+
 ```python
 hf_jobs("run", {
     "image": "pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel",
@@ -436,6 +450,7 @@ hf_jobs("run", {
 **Using Hugging Face Spaces as Images:**
 
 You can use Docker images from HF Spaces:
+
 ```python
 hf_jobs("run", {
     "image": "hf.co/spaces/lhoestq/duckdb",  # Space as Docker image
@@ -445,6 +460,7 @@ hf_jobs("run", {
 ```
 
 **CLI:**
+
 ```bash
 hf jobs run hf.co/spaces/lhoestq/duckdb duckdb -c "SELECT 'Hello!'"
 ```
@@ -536,6 +552,7 @@ requests.post("https://your-api.com/results", json=results)
 ### Required Configuration for Hub Push
 
 **In job submission:**
+
 ```python
 {
     "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # Enables authentication
@@ -543,6 +560,7 @@ requests.post("https://your-api.com/results", json=results)
 ```
 
 **In script:**
+
 ```python
 import os
 from huggingface_hub import HfApi
@@ -573,6 +591,7 @@ Jobs automatically stop after the timeout. For long-running tasks like training,
 ### Setting Timeouts
 
 **MCP Tool:**
+
 ```python
 {
     "timeout": "2h"   # 2 hours
@@ -585,6 +604,7 @@ Jobs automatically stop after the timeout. For long-running tasks like training,
 - Examples: `"90m"`, `"2h"`, `"1.5h"`, `300`, `"1d"`
 
 **Python API:**
+
 ```python
 from huggingface_hub import run_job, run_uv_job
 
@@ -643,6 +663,7 @@ Total Cost = (Hours of runtime) × (Cost per hour)
 ### Check Job Status
 
 **MCP Tool:**
+
 ```python
 # List all jobs
 hf_jobs("ps")
@@ -658,6 +679,7 @@ hf_jobs("cancel", {"job_id": "your-job-id"})
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import list_jobs, inspect_job, fetch_job_logs, cancel_job
 
@@ -679,6 +701,7 @@ cancel_job(job_id="your-job-id")
 ```
 
 **CLI:**
+
 ```bash
 hf jobs ps                    # List jobs
 hf jobs logs <job-id>         # View logs
@@ -690,6 +713,7 @@ hf jobs cancel <job-id>       # Cancel job
 ### Job URLs
 
 After submission, jobs have monitoring URLs:
+
 ```
 https://huggingface.co/jobs/username/job-id
 ```
@@ -716,6 +740,7 @@ for job in jobs:
 Run jobs on a schedule using CRON expressions or predefined schedules.
 
 **MCP Tool:**
+
 ```python
 # Schedule a UV script that runs every hour
 hf_jobs("scheduled uv", {
@@ -741,6 +766,7 @@ hf_jobs("scheduled run", {
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import create_scheduled_job, create_scheduled_uv_job
 
@@ -771,6 +797,7 @@ create_scheduled_uv_job(
 - CRON expression - Custom schedule (e.g., `"*/5 * * * *"` for every 5 minutes)
 
 **Manage scheduled jobs:**
+
 ```python
 # MCP Tool
 hf_jobs("scheduled ps")                              # List scheduled jobs
@@ -781,6 +808,7 @@ hf_jobs("scheduled delete", {"job_id": "..."})      # Delete
 ```
 
 **Python API for management:**
+
 ```python
 from huggingface_hub import (
     list_scheduled_jobs,
@@ -811,6 +839,7 @@ delete_scheduled_job(scheduled_job_id)
 Trigger jobs automatically when changes happen in Hugging Face repositories.
 
 **Python API:**
+
 ```python
 from huggingface_hub import create_webhook
 
@@ -838,6 +867,7 @@ webhook = create_webhook(
 - Generate reports on repository activity
 
 **Access webhook payload in script:**
+
 ```python
 import os
 import json
@@ -957,6 +987,7 @@ hf_jobs("uv", {
 
 **Fix:**
 Add to PEP 723 header:
+
 ```python
 # /// script
 # dependencies = ["package1", "package2>=1.0.0"]
@@ -985,12 +1016,14 @@ Add to PEP 723 header:
 ## Resources
 
 ### References (In This Skill)
+
 - `references/token_usage.md` - Complete token usage guide
 - `references/hardware_guide.md` - Hardware specs and selection
 - `references/hub_saving.md` - Hub persistence guide
 - `references/troubleshooting.md` - Common issues and solutions
 
 ### Scripts (In This Skill)
+
 - `scripts/generate-responses.py` - vLLM batch generation: dataset → responses → push to Hub
 - `scripts/cot-self-instruct.py` - CoT Self-Instruct synthetic data generation + filtering → push to Hub
 - `scripts/finepdfs-stats.py` - Polars streaming stats over `finepdfs-edu` parquet on Hub (optional push)
@@ -1033,4 +1066,3 @@ Add to PEP 723 header:
 | Cancel job | `hf_jobs("cancel", {...})` | `hf jobs cancel <id>` | `cancel_job(job_id)` |
 | Schedule UV | `hf_jobs("scheduled uv", {...})` | - | `create_scheduled_uv_job()` |
 | Schedule Docker | `hf_jobs("scheduled run", {...})` | - | `create_scheduled_job()` |
-

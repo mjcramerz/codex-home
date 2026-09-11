@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Learning/Post-Mortem Database
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **Purpose**: Capture learnings from incidents, projects, or experiences.
 
@@ -47,4 +50,3 @@ Each learning page should include:
 4. **Create action items**: Turn learnings into improvements
 5. **Follow up**: Track that action items are completed
 6. **Share widely**: Make learnings accessible to entire team
-

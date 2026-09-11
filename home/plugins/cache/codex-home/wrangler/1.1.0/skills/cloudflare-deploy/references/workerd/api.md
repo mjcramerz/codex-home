@@ -1,8 +1,11 @@
 # Workerd APIs
 
+Consult this reference when workerd apis is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Worker Code (JS/TS)
 
 ### ES Modules (Recommended)
+
 ```javascript
 export default {
   async fetch(request, env, ctx) {
@@ -20,11 +23,13 @@ export default {
 ### TypeScript Types
 
 **Generate from wrangler.toml (Recommended):**
+
 ```bash
 wrangler types  # Output: worker-configuration.d.ts
 ```
 
 **Manual types:**
+
 ```typescript
 interface Env {
   API: Fetcher;
@@ -42,6 +47,7 @@ export default {
 ```
 
 **Setup:**
+
 ```bash
 npm install -D @cloudflare/workers-types
 ```
@@ -52,6 +58,7 @@ npm install -D @cloudflare/workers-types
 ```
 
 ### Service Worker Syntax (Legacy)
+
 ```javascript
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request));
@@ -64,6 +71,7 @@ async function handleRequest(request) {
 ```
 
 ### Durable Objects
+
 ```javascript
 export class Room {
   constructor(state, env) { this.state = state; this.env = env; }
@@ -81,6 +89,7 @@ export class Room {
 ```
 
 ### RPC Between Services
+
 ```javascript
 // Caller: env.AUTH.validateToken(token) returns structured data
 const user = await env.AUTH.validateToken(request.headers.get("Authorization"));
@@ -94,27 +103,33 @@ export default {
 ## Web Platform APIs
 
 ### Fetch
+
 - `fetch()`, `Request`, `Response`, `Headers`
 - `AbortController`, `AbortSignal`
 
 ### Streams
+
 - `ReadableStream`, `WritableStream`, `TransformStream`
 - Byte streams, BYOB readers
 
 ### Web Crypto
+
 - `crypto.subtle` (encrypt/decrypt/sign/verify)
 - `crypto.randomUUID()`, `crypto.getRandomValues()`
 
 ### Encoding
+
 - `TextEncoder`, `TextDecoder`
 - `atob()`, `btoa()`
 
 ### Web Standards
+
 - `URL`, `URLSearchParams`
 - `Blob`, `File`, `FormData`
 - `WebSocket`
 
 ### Server-Sent Events (EventSource)
+
 ```javascript
 // Server-side SSE
 const { readable, writable } = new TransformStream();
@@ -124,6 +139,7 @@ return new Response(readable, {headers: {'Content-Type': 'text/event-stream'}});
 ```
 
 ### HTMLRewriter (HTML Parsing/Transformation)
+
 ```javascript
 const response = await fetch('https://example.com');
 return new HTMLRewriter()
@@ -137,6 +153,7 @@ return new HTMLRewriter()
 ```
 
 ### TCP Sockets (Experimental)
+
 ```javascript
 const socket = await connect({ hostname: 'example.com', port: 80 });
 const writer = socket.writable.getWriter();
@@ -147,13 +164,16 @@ return new Response(value);
 ```
 
 ### Performance
+
 - `performance.now()`, `performance.timeOrigin`
 - `setTimeout()`, `setInterval()`, `queueMicrotask()`
 
 ### Console
+
 - `console.log()`, `console.error()`, `console.warn()`
 
 ### Node.js Compat (`nodejs_compat` flag)
+
 ```javascript
 import { Buffer } from 'node:buffer';
 import { randomBytes } from 'node:crypto';
@@ -177,9 +197,10 @@ workerd test config.capnp [--test-only=test.js]    # Run tests
 ## Wrangler Integration
 
 Use Wrangler for development:
+
 ```bash
 wrangler dev     # Uses workerd internally
 wrangler types   # Generate TypeScript types from wrangler.toml
 ```
 
-See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/patterns.md) for usage examples, [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/configuration.md) for config details.
+See [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/patterns.md) for usage examples, [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/configuration.md) for config details.

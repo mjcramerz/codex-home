@@ -1,8 +1,10 @@
 # Workflow plan catalog
+
+Use this plan when you need to carry out workflow plan catalog work. Fill in the concrete scope, evidence, ordered actions and completion criteria before executing dependent steps. Keep deployment and new test files out of scope unless the task authorizes them.
 Choose the plan template that matches the selected workflow.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/plans/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -10,6 +12,7 @@ You must read only the smallest section that resolves the current task, follow t
 <!-- END:nav -->
 
 ## Workflow plans
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/plans/workflows/workflow-agent-orchestration.md` — Plan
 - `$CODEX_HOME/plans/workflows/workflow-planning.md` — Plan
@@ -27,6 +30,7 @@ You must read only the smallest section that resolves the current task, follow t
 - `$CODEX_HOME/plans/workflows/workflow-rust-toolchain.md` — Plan
 <!-- END:contents -->
 
-## You must maintain this file by following these rules
+## Maintain this file by following these rules
+
 - File names should map to workflow docs as `workflow-<name>.md`.
 - If a workflow exists without a matching plan, add it here in the same change.

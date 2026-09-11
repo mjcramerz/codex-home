@@ -5,6 +5,10 @@ impactDescription: native safe area handling, no layout shifts
 tags: safe-area, scrollview, layout
 ---
 
+# ui safe area scroll
+
+Apply the following ui safe area scroll guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use contentInsetAdjustmentBehavior for Safe Areas
 
 Use `contentInsetAdjustmentBehavior="automatic"` on the root ScrollView instead of wrapping content in SafeAreaView or manual padding. This lets iOS handle safe area insets natively with proper scroll behavior.

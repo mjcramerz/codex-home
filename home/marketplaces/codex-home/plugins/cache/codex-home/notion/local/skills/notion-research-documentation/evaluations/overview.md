@@ -12,7 +12,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Research & Documentation Skill Evaluations (overview)
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Evaluation scenarios for testing the Research & Documentation skill across different Codex models.
 
@@ -28,6 +31,7 @@ These evaluations ensure the Research & Documentation skill:
 ## Evaluation Files
 
 ### basic-research.json
+
 Tests basic research workflow with synthesis across multiple Notion pages.
 
 **Scenario**: Research Q4 product roadmap and create summary
@@ -40,6 +44,7 @@ Tests basic research workflow with synthesis across multiple Notion pages.
 - Creates structured document with clear sections
 
 ### research-to-database.json
+
 Tests creating research documentation in a Notion database with properties.
 
 **Scenario**: Research competitor landscape and save to Research database
@@ -66,6 +71,7 @@ Tests creating research documentation in a Notion database with properties.
 Research & Documentation evaluations should verify:
 
 ### Notion Search & Synthesis
+
 - Searches workspace with relevant queries
 - Fetches multiple source pages (3-5+)
 - Synthesizes information across sources
@@ -73,6 +79,7 @@ Research & Documentation evaluations should verify:
 - Handles conflicting information appropriately
 
 ### Format Selection
+
 - Chooses correct format based on scope and depth:
   - **Research Summary**: Quick overview with key findings
   - **Comprehensive Report**: Deep analysis with multiple sections
@@ -82,6 +89,7 @@ Research & Documentation evaluations should verify:
 - Uses appropriate sections and headings
 
 ### Citation & Attribution
+
 - Includes citations for all Notion sources
 - Uses mention-page tags: `<mention-page url="...">`
 - Attributes findings to specific sources
@@ -89,6 +97,7 @@ Research & Documentation evaluations should verify:
 - Links related documents
 
 ### Document Quality
+
 - Title clearly indicates research topic and date
 - Executive summary or key findings upfront
 - Organized with clear hierarchy

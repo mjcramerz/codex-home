@@ -7,6 +7,10 @@ sources:
   - https://learn.microsoft.com/dotnet/communitytoolkit/windows/getting-started
 ---
 
+# community toolkit controls and helpers
+
+Consult this reference when community toolkit controls and helpers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when deciding whether the Windows Community Toolkit should be added to a WinUI 3 app.

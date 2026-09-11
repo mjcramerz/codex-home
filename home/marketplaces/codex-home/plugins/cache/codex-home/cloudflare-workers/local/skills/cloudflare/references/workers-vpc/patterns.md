@@ -1,5 +1,7 @@
 # Common Patterns
 
+Consult this reference when common patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Real-world patterns and examples for TCP Sockets in Cloudflare Workers.
 
 ```typescript
@@ -70,7 +72,7 @@ await writer.write(new TextEncoder().encode(`*2\r\n$3\r\nGET\r\n$3\r\nkey\r\n`))
 
 ### PostgreSQL
 
-**Use [Hyperdrive]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/) for production.** Raw Postgres protocol is complex (startup, auth, query messages).
+**Use [Hyperdrive]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/) for production.** Raw Postgres protocol is complex (startup, auth, query messages).
 
 ### MQTT
 
@@ -205,5 +207,3 @@ export default {
   }
 };
 ```
-
-

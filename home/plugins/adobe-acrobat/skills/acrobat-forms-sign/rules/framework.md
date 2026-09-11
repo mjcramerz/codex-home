@@ -12,9 +12,12 @@ tags:
 - productivity
 updated: '2026-03-12'
 ---
+
 # Acrobat Forms Sign Framework
 
+Apply the following acrobat forms sign framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `acrobat-forms-sign`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/adobe-acrobat/1.0.0/skills/acrobat-forms-sign/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/adobe-acrobat/1.0.0/skills/acrobat-forms-sign/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/adobe-acrobat/1.0.0/skills/acrobat-forms-sign/references/`
+- Source of truth: `$CODEX_HOME/plugins/adobe-acrobat/skills/acrobat-forms-sign/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/adobe-acrobat/skills/acrobat-forms-sign/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/adobe-acrobat/skills/acrobat-forms-sign/references/`

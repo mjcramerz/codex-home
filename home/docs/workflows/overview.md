@@ -1,8 +1,9 @@
 # Workflow catalog
-Purpose: map recurring task types to operational playbooks and help the agent choose one workflow before editing for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this guide when the task concerns workflow catalog. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/docs/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -10,6 +11,7 @@ You must read only the smallest section that resolves the current task, follow t
 <!-- END:nav -->
 
 ## Workflow catalog
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/docs/workflows/agent-orchestration.md` — Agent orchestration workflow
 - `$CODEX_HOME/docs/workflows/planning.md` — Planning workflow
@@ -31,7 +33,8 @@ You must read only the smallest section that resolves the current task, follow t
 - `$CODEX_HOME/docs/workflows/repo-ops.md` — Repo operations workflow
 <!-- END:contents -->
 
-## You must choose the workflow this way
+## Choose the workflow this way
+
 - Multi-agent routing and handoff design -> `agent-orchestration.md`
 - Plan creation, validation ladders, and rollout shape -> `planning.md`
 - Repo-aware memory routing or retired memory-flow cleanup -> `memory-runtime.md`
@@ -47,7 +50,8 @@ You must read only the smallest section that resolves the current task, follow t
 - Crystal Dock start/restart behavior -> `crystal-dock.md`
 - Cargo, rustc, and rustup policy -> `rust-toolchain.md`
 
-## You must maintain this file by following these rules
+## Maintain this file by following these rules
+
 - Every workflow added here should have a corresponding plan under
   `$CODEX_HOME/plans/workflows/` when the execution path is non-trivial.
 - Keep workflow guidance platform- or domain-scoped and free of machine-local

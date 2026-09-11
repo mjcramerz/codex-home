@@ -7,6 +7,10 @@ tags: rerender, memo, optimization
 
 ---
 
+# rerender memo with default value
+
+Apply the following rerender memo with default value guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Extract Default Non-primitive Parameter Value from Memoized Component to Constant
 
 When memoized component has a default value for some non-primitive optional parameter, such as an array, function, or object, calling the component without that parameter results in broken memoization. This is because new value instances are created on every rerender, and they do not pass strict equality comparison in `memo()`.

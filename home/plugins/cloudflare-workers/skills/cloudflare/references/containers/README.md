@@ -1,5 +1,7 @@
 # Cloudflare Containers Skill Reference
 
+Consult this reference when cloudflare containers skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **APPLIES TO: Cloudflare Containers ONLY - NOT general Cloudflare Workers**
 
 Use when working with Cloudflare Containers: deploying containerized apps on Workers platform, configuring container-enabled Durable Objects, managing container lifecycle, or implementing stateful/stateless container patterns.
@@ -79,7 +81,7 @@ export default {
 
 ## See Also
 
-- [Durable Objects]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/durable-objects/) - Containers extend Durable Objects
-- [Workflows]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/) - Orchestrate container operations
-- [Queues]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/queues/) - Trigger containers from queue messages
+- [Durable Objects]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/durable-objects/) - Containers extend Durable Objects
+- [Workflows]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/) - Orchestrate container operations
+- [Queues]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/queues/) - Trigger containers from queue messages
 - [Cloudflare Docs](https://developers.cloudflare.com/containers/)

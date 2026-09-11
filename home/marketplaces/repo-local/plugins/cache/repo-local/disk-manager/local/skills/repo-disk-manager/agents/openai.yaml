@@ -1,4 +1,4 @@
 interface:
-  display_name: "Disk Manager Repository"
-  short_description: "Disk manager repository workflow"
-  default_prompt: "Use $repo-disk-manager to change disk-manager safely without running destructive device operations."
+  display_name: Disk Manager Repository
+  short_description: Use this skill for disk manager repository workflow
+  default_prompt: Use $repo-disk-manager for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

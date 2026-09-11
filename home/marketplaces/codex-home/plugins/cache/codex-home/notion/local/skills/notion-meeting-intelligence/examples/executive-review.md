@@ -13,13 +13,17 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Executive Review Prep
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **User Request**: "Prep for quarterly executive review on Friday"
 
 ## Workflow
 
 ### 1. Search for Context
+
 ```
 Notion:notion-search
 query: "Q4 objectives" + "KPIs" + "quarterly results"
@@ -32,6 +36,7 @@ Found:
 - Customer feedback summary
 
 ### 2. Fetch & Analyze
+
 ```
 Notion:notion-fetch (5 pages)
 ```
@@ -44,12 +49,14 @@ Notion:notion-fetch (5 pages)
 - **Engineering**: 94% uptime (above 95% SLA)
 
 ### 3. Add Codex Research Context
+
 Added context on:
 - Industry benchmarks for SaaS metrics
 - Typical Q4 sales patterns
 - Best practices for executive presentations
 
 ### 4. Create Pre-Read (Internal)
+
 ```
 Notion:notion-create-pages
 title: "Q4 Review - Pre-Read (Internal)"
@@ -63,6 +70,7 @@ title: "Q4 Review - Pre-Read (Internal)"
 - **Q1 Preview**: Strategic priorities
 
 ### 5. Create Presentation Agenda
+
 ```
 Notion:notion-create-pages
 title: "Q4 Executive Review - Agenda"
@@ -77,6 +85,7 @@ title: "Q4 Executive Review - Agenda"
 - Discussion & Questions (15 min)
 
 ### 6. Link Supporting Docs
+
 Connected to OKRs, metrics dashboards, and Q1 planning docs.
 
 ## Outputs
@@ -86,6 +95,7 @@ Connected to OKRs, metrics dashboards, and Q1 planning docs.
 **Both in Notion** with links to supporting data
 
 ## Key Success Factors
+
 - Synthesized data from multiple sources (OKRs, metrics, feedback)
 - Added industry context and benchmarks
 - Created honest internal assessment (not just wins)

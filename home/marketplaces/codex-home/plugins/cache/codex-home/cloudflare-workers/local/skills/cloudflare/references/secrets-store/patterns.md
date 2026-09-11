@@ -1,5 +1,7 @@
 # Patterns
 
+Consult this reference when patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Secret Rotation
 
 Zero-downtime rotation with versioned naming (`api_key_v1`, `api_key_v2`):
@@ -202,6 +204,6 @@ echo '{"host":"db.example.com","port":5432,"username":"app","password":"secret"}
 
 Auth Worker signs JWT with Secrets Store; API Worker verifies via service binding.
 
-See: [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) for service binding patterns.
+See: [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) for service binding patterns.
 
-See: [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/secrets-store/api.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/secrets-store/gotchas.md)
+See: [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/secrets-store/api.md), [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/secrets-store/gotchas.md)

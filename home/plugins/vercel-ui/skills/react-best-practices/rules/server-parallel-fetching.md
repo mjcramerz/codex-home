@@ -5,6 +5,10 @@ impactDescription: eliminates server-side waterfalls
 tags: server, rsc, parallel-fetching, composition
 ---
 
+# server parallel fetching
+
+Apply the following server parallel fetching guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Parallel Data Fetching with Component Composition
 
 React Server Components execute sequentially within a tree. Restructure with composition to parallelize data fetching.

@@ -8,12 +8,17 @@ tags:
 - references
 updated: '2026-03-12'
 ---
+
 # parser-design reference bundle
 
+Consult this reference when parser-design reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Skill purpose
+
 Design and refactor parsers, tokenizers, grammars, AST transforms, and syntax-error handling with explicit contracts and bounded input handling. Use when the user asks about parsing, grammar changes, query languages, or text-to-structure conversion.
 
 ## External references
+
 - [Lark parser](https://lark-parser.readthedocs.io/)
 - [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
 - [Python re module](https://docs.python.org/3/library/re.html)

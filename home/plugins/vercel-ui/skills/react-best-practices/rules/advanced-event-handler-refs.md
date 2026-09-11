@@ -5,6 +5,10 @@ impactDescription: stable subscriptions
 tags: advanced, hooks, refs, event-handlers, optimization
 ---
 
+# advanced event handler refs
+
+Apply the following advanced event handler refs guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Store Event Handlers in Refs
 
 Store callbacks in refs when used in effects that shouldn't re-subscribe on callback changes.

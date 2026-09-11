@@ -5,6 +5,10 @@ impactDescription: prevents schema conflicts, reduces storage size
 tags: client, localStorage, storage, versioning, data-minimization
 ---
 
+# client localstorage schema
+
+Apply the following client localstorage schema guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Version and Minimize localStorage Data
 
 Add version prefix to keys and store only needed fields. Prevents schema conflicts and accidental storage of sensitive data.

@@ -13,15 +13,20 @@ tags:
 - default
 updated: '2026-06-03'
 ---
+
 # shell-zsh reference bundle
+
+Consult this reference when shell-zsh reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-06-03 (UTC)
 - Freshness method: pack-local source inspection plus primary zsh documentation review.
 
 ## Skill purpose
+
 Write robust zsh scripts, wrappers, and shell integrations.
 
 ## SKILL.md coverage checklist
+
 - When to use
 - Non-negotiables
 - Workflow
@@ -32,13 +37,16 @@ Write robust zsh scripts, wrappers, and shell integrations.
 - References
 
 ## Local implementation anchors
+
 - `$CODEX_SKILLS/shell-zsh/SKILL.md`
 - `$CODEX_SKILLS/shell-zsh/agents/openai.yaml`
 
 ## External references
+
 - [Zsh manual](https://zsh.sourceforge.io/Doc/) - Core shell semantics, options, completion, and startup behavior.
 - [Zsh Guide](https://zsh.sourceforge.io/Guide/) - Practical guidance for functions, options, expansion, and shell ergonomics.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `shell-zsh` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `shell-zsh` before finalizing changes.

@@ -1,5 +1,7 @@
 # Tunnel Networking
 
+Consult this reference when tunnel networking is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Connectivity Requirements
 
 ### Outbound Ports
@@ -12,6 +14,7 @@ Cloudflared requires outbound access on:
 | 443 | TCP | Fallback (HTTP/2) | Yes |
 
 **Network path:**
+
 ```
 cloudflared → edge.argotunnel.com:7844 (preferred)
 cloudflared → region.argotunnel.com:443 (fallback)
@@ -20,6 +23,7 @@ cloudflared → region.argotunnel.com:443 (fallback)
 ### Firewall Rules
 
 #### Minimal (Production)
+
 ```bash
 # Outbound only
 ALLOW tcp/udp 7844 to *.argotunnel.com
@@ -27,6 +31,7 @@ ALLOW tcp 443 to *.argotunnel.com
 ```
 
 #### Full (Recommended)
+
 ```bash
 # Tunnel connectivity
 ALLOW tcp/udp 7844 to *.argotunnel.com
@@ -43,6 +48,7 @@ ALLOW tcp 443 to objects.githubusercontent.com
 ### IP Ranges
 
 Cloudflare Anycast IPs (tunnel endpoints):
+
 ```
 # IPv4
 198.41.192.0/24
@@ -91,11 +97,13 @@ Cloudflared automatically selects protocol:
 | HTTP/2 | 443 TCP | 2nd (fallback) | QUIC blocked by firewall |
 
 **Force HTTP/2 fallback:**
+
 ```bash
 cloudflared tunnel --protocol http2 run my-tunnel
 ```
 
 **Verify active protocol:**
+
 ```bash
 cloudflared tunnel info my-tunnel
 # Shows "connections" with protocol type

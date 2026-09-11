@@ -1,6 +1,8 @@
 # API Reference
 
-See [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/README.md) for overview, [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/configuration.md) for setup.
+Consult this reference when api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
+See [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/README.md) for overview, [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/configuration.md) for setup.
 
 ## Binding Interface
 
@@ -82,12 +84,14 @@ ctx.waitUntil(conn.end());
 ## Query Caching
 
 **Cacheable:**
+
 ```sql
 SELECT * FROM posts WHERE published = true;
 SELECT COUNT(*) FROM users;
 ```
 
 **NOT cacheable:**
+
 ```sql
 -- Writes
 INSERT/UPDATE/DELETE
@@ -105,6 +109,7 @@ SELECT UUID();     -- MySQL
 - Disable: `--caching-disabled=true`
 
 **Multiple configs pattern:**
+
 ```typescript
 // Reads: cached
 const sqlCached = postgres(env.HYPERDRIVE_CACHED.connectionString);
@@ -118,6 +123,7 @@ const orders = await sqlNoCache`SELECT * FROM orders WHERE created_at > NOW() - 
 ## ORMs
 
 **Drizzle:**
+
 ```typescript
 import { drizzle } from "drizzle-orm/postgres-js";  // drizzle-orm@^0.45.1
 import postgres from "postgres";
@@ -128,6 +134,7 @@ const users = await db.select().from(users).where(eq(users.active, true)).limit(
 ```
 
 **Kysely:**
+
 ```typescript
 import { Kysely, PostgresDialect } from "kysely";  // kysely@^0.27+
 import postgres from "postgres";
@@ -140,4 +147,4 @@ const db = new Kysely({
 const users = await db.selectFrom("users").selectAll().where("active", "=", true).execute();
 ```
 
-See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/patterns.md) for use cases, [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/gotchas.md) for limits.
+See [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/patterns.md) for use cases, [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/gotchas.md) for limits.

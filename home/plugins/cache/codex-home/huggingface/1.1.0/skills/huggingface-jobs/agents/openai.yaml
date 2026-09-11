@@ -1,15 +1,13 @@
 interface:
-  display_name: "Hugging Face Jobs"
-  short_description: "This skill should be used when users want to run any workload on Hugging Face Jobs infrastructure. Covers UV scripts, Do"
-  default_prompt: "Use $huggingface-jobs. Use the Hugging Face Jobs skill when the task matches this scope: This skill should be used when users want to run any workload on Hugging Face Jobs infrastructure. Covers UV scripts, Docker-based jobs, hardware selection, cost estimation, authentication with tokens, secrets management, timeout configuration, and result persistence. Designed for general-purpose compute workloads including data processing, inference, experiments, batch jobs, and any Python-based tasks. Should be invoked for tasks involving cloud compute, GPU workloads, or when users mention running jobs on Hugging Face infrastructure without local setup."
-
+  display_name: Hugging Face Jobs
+  short_description: Use this skill when users want to run any workload on Hugging Face Jobs infrastructure. Co
+  default_prompt: Use $huggingface-jobs for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "huggingface"
-      description: "huggingface MCP server"
-      transport: "streamable_http"
-      url: "https://huggingface.co/mcp?login"
-
+  - type: mcp
+    value: huggingface
+    description: huggingface MCP server
+    transport: streamable_http
+    url: https://huggingface.co/mcp?login
 policy:
   allow_implicit_invocation: true

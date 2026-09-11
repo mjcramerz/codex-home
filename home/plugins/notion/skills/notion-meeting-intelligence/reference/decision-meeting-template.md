@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Decision Meeting Template
+
+Use this guide when you you need to make an important decision with your team. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 Use this template when you need to make an important decision with your team.
 
@@ -106,4 +109,3 @@ Use this template when you need to make an important decision with your team.
 **Next review**: [Date]
 **Success metrics**: [How we'll know this worked]
 ```
-

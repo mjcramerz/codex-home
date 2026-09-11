@@ -1,5 +1,7 @@
 # Post-deploy checks
 
+Consult this reference when post-deploy checks is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use this after any deploy or service creation. Keep it short; stop when a check fails.
 
 ## 1) Confirm deploy status

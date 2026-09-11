@@ -1,8 +1,9 @@
 # Skill plan catalog
-Purpose: choose one skill-specific plan template for repeatable skill-driven work for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this plan when you need to carry out skill plan catalog work. Fill in the concrete scope, evidence, ordered actions and completion criteria before executing dependent steps. Keep deployment and new test files out of scope unless the task authorizes them.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/plans/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -10,6 +11,7 @@ You must read only the smallest section that resolves the current task, follow t
 <!-- END:nav -->
 
 ## Skill plans
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/plans/skills/skill-lang-perl.md` — Plan
 - `$CODEX_HOME/plans/skills/skill-lang-rust.md` — Plan
@@ -34,6 +36,7 @@ You must read only the smallest section that resolves the current task, follow t
 - `$CODEX_HOME/plans/skills/skill-os-debian-preseed.md` — Plan
 <!-- END:contents -->
 
-## You must maintain this file by following these rules
+## Maintain this file by following these rules
+
 - File names should map to skill names as `skill-<skill>.md`.
 - If a skill exists without a matching plan, add it here in the same change.

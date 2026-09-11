@@ -1,6 +1,6 @@
 ---
 name: hosting-platforms
-description: Choose and coordinate deployment workflows across Vercel, Render, and Netlify. Use when the user wants to host or deploy a project but the provider is not fixed yet, or when comparing those platforms.
+description: Use this skill for choose and coordinate deployment workflows across Vercel, Render, and Netlify. Use when the user wants to host or deploy a project but the provider is not fixed yet, or when comparing those platforms.
 ---
 
 # Hosting Platforms

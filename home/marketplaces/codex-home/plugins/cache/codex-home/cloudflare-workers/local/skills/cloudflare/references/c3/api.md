@@ -1,5 +1,7 @@
 # C3 CLI Reference
 
+Consult this reference when c3 cli reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Invocation
 
 ```bash

@@ -1,40 +1,42 @@
 # Workers Gotchas
 
+Consult this reference when workers gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "Too much CPU time used"
 
-**Cause:** Worker exceeded CPU time limit (10ms standard, 30ms unbound)  
+**Cause:** Worker exceeded CPU time limit (10ms standard, 30ms unbound)
 **Solution:** Use `ctx.waitUntil()` for background work, offload heavy compute to Durable Objects, or consider Workers AI for ML workloads
 
 ### "Module-Level State Lost"
 
-**Cause:** Workers are stateless between requests; module-level variables reset unpredictably  
+**Cause:** Workers are stateless between requests; module-level variables reset unpredictably
 **Solution:** Use KV, D1, or Durable Objects for persistent state; don't rely on module-level variables
 
 ### "Body has already been used"
 
-**Cause:** Attempting to read response body twice (bodies are streams)  
+**Cause:** Attempting to read response body twice (bodies are streams)
 **Solution:** Clone response before reading: `response.clone()` or read once and create new Response with the text
 
 ### "Node.js module not found"
 
-**Cause:** Node.js built-ins not available by default  
+**Cause:** Node.js built-ins not available by default
 **Solution:** Use Workers APIs (e.g., R2 for file storage) or enable Node.js compat with `"compatibility_flags": ["nodejs_compat_v2"]`
 
 ### "Cannot fetch in global scope"
 
-**Cause:** Attempting to use fetch during module initialization  
+**Cause:** Attempting to use fetch during module initialization
 **Solution:** Move fetch calls inside handler functions (fetch, scheduled, etc.) where they're allowed
 
 ### "Subrequest depth limit exceeded"
 
-**Cause:** Too many nested subrequests creating deep call chain  
+**Cause:** Too many nested subrequests creating deep call chain
 **Solution:** Flatten request chain or use service bindings for direct Worker-to-Worker communication
 
 ### "D1 read-after-write inconsistency"
 
-**Cause:** D1 is eventually consistent; reads may not reflect recent writes  
+**Cause:** D1 is eventually consistent; reads may not reflect recent writes
 **Solution:** Use D1 Sessions (2024+) to guarantee read-after-write consistency within a session:
 
 ```typescript
@@ -47,7 +49,7 @@ const user = await session.prepare('SELECT * FROM users WHERE name = ?').bind('A
 
 ### "wrangler types not generating TypeScript definitions"
 
-**Cause:** Type generation not configured or outdated  
+**Cause:** Type generation not configured or outdated
 **Solution:** Run `npx wrangler types` after changing bindings in wrangler.jsonc:
 
 ```bash
@@ -60,7 +62,7 @@ Then import: `import type { Env } from './.wrangler/types/runtime';`
 
 ### "Durable Object RPC errors with deprecated fetch pattern"
 
-**Cause:** Using old `stub.fetch()` pattern instead of RPC (2024+)  
+**Cause:** Using old `stub.fetch()` pattern instead of RPC (2024+)
 **Solution:** Export methods directly, call via RPC:
 
 ```typescript
@@ -85,7 +87,7 @@ const count = await stub.increment(); // Direct method call
 
 ### "WebSocket connection closes unexpectedly"
 
-**Cause:** Worker reaches CPU limit while maintaining WebSocket connection  
+**Cause:** Worker reaches CPU limit while maintaining WebSocket connection
 **Solution:** Use WebSocket hibernation (2024+) to offload idle connections:
 
 ```typescript
@@ -103,7 +105,7 @@ Hibernation automatically suspends inactive connections, wakes on events
 
 ### "Framework middleware not working with Workers"
 
-**Cause:** Framework expects Node.js primitives (e.g., Express uses Node streams)  
+**Cause:** Framework expects Node.js primitives (e.g., Express uses Node streams)
 **Solution:** Use Workers-native frameworks (Hono, itty-router, Worktop) or adapt middleware:
 
 ```typescript
@@ -113,7 +115,7 @@ const app = new Hono();
 app.use('*', async (c, next) => { /* middleware */ await next(); });
 ```
 
-See [frameworks.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/frameworks.md) for full patterns
+See [frameworks.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/frameworks.md) for full patterns
 
 ## Limits
 
@@ -130,7 +132,7 @@ See [frameworks.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.
 
 ## See Also
 
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/patterns.md) - Best practices
-- [API]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/api.md) - Runtime APIs
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/configuration.md) - Setup
-- [Frameworks]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/frameworks.md) - Hono, routing, validation
+- [Patterns]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/patterns.md) - Best practices
+- [API]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/api.md) - Runtime APIs
+- [Configuration]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/configuration.md) - Setup
+- [Frameworks]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/frameworks.md) - Hono, routing, validation

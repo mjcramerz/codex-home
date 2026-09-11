@@ -1,5 +1,7 @@
 # Cloudflare Observability Skill Reference
 
+Consult this reference when cloudflare observability skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **Purpose**: Comprehensive guidance for implementing observability in Cloudflare Workers, covering traces, logs, metrics, and analytics.
 
 **Scope**: Cloudflare Observability features ONLY - Workers Logs, Traces, Analytics Engine, Logpush, Metrics & Analytics, and OpenTelemetry exports.
@@ -37,29 +39,34 @@ Load files in this order based on task:
 ## Product Overview
 
 ### Workers Logs
+
 - **What:** Console output from Workers (console.log/warn/error)
 - **Access:** Dashboard (Real-time Logs), Logpush, Tail Workers
 - **Cost:** Free (included with all Workers)
 - **Retention:** Real-time only (no historical storage in dashboard)
 
 ### Workers Traces
+
 - **What:** Execution traces with timing, CPU usage, outcome
 - **Access:** Dashboard (Workers Analytics → Traces), Logpush
 - **Cost:** $0.10/1M spans (GA pricing starts March 1, 2026), 10M free/month
 - **Retention:** 14 days included
 
 ### Analytics Engine
+
 - **What:** High-cardinality event storage and SQL queries
 - **Access:** SQL API, Dashboard (Analytics → Analytics Engine)
 - **Cost:** $0.25/1M writes beyond 10M free/month
 - **Retention:** 90 days (configurable up to 1 year)
 
 ### Tail Workers
+
 - **What:** Workers that receive logs/traces from other Workers
 - **Use Cases:** Log filtering, transformation, external export
 - **Cost:** Standard Workers pricing
 
 ### Logpush
+
 - **What:** Stream logs to external storage (S3, R2, Datadog, etc.)
 - **Access:** Dashboard, API
 - **Cost:** Requires Business/Enterprise plan
@@ -85,4 +92,4 @@ Load files in this order based on task:
 - [Cloudflare Workers Docs](https://developers.cloudflare.com/workers/)
 - [Analytics Engine Docs](https://developers.cloudflare.com/analytics/analytics-engine/)
 - [Workers Traces Docs](https://developers.cloudflare.com/workers/observability/traces/)
-- [GraphQL Analytics API Reference]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/graphql-api/) - Query Workers metrics, HTTP analytics, and 70+ other datasets via GraphQL
+- [GraphQL Analytics API Reference]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/graphql-api/) - Query Workers metrics, HTTP analytics, and 70+ other datasets via GraphQL

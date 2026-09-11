@@ -1,5 +1,7 @@
 # Cloudflare Sandbox SDK
 
+Consult this reference when cloudflare sandbox sdk is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Secure isolated code execution in containers on Cloudflare's edge. Run untrusted code, manage files, expose services, integrate with AI agents.
 
 **Use cases**: AI code execution, interactive dev environments, data analysis, CI/CD, code interpreters, multi-tenant execution.
@@ -33,6 +35,7 @@ export default {
 ```
 
 **wrangler.jsonc**:
+
 ```jsonc
 {
   "name": "my-sandbox-worker",
@@ -58,6 +61,7 @@ export default {
 ```
 
 **Dockerfile**:
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:latest
 RUN pip3 install --no-cache-dir pandas numpy matplotlib
@@ -85,12 +89,14 @@ EXPOSE 8080 3000  # Required for wrangler dev
 - Retry on `CONTAINER_NOT_READY`
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/sandbox/configuration.md) - Config, CLI, environment setup
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/sandbox/api.md) - Programmatic API, testing patterns
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/sandbox/patterns.md) - Common workflows, CI/CD integration
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/sandbox/gotchas.md) - Issues, limits, best practices
+
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/sandbox/configuration.md) - Config, CLI, environment setup
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/sandbox/api.md) - Programmatic API, testing patterns
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/sandbox/patterns.md) - Common workflows, CI/CD integration
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/sandbox/gotchas.md) - Issues, limits, best practices
 
 ## See Also
-- [durable-objects]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/) - Sandbox runs on DO infrastructure
-- [containers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/containers/) - Container runtime fundamentals
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Entry point for sandbox requests
+
+- [durable-objects]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/) - Sandbox runs on DO infrastructure
+- [containers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/containers/) - Container runtime fundamentals
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Entry point for sandbox requests

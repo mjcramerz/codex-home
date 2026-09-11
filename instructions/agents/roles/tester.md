@@ -1,8 +1,15 @@
-1) Follow $CODEX_HOME/AGENTS.md, then $CODEX_HOME/memories/ when it exists and the task is repo-aware or ambiguous.
-2) Use $CODEX_HOME/INDEX.md to select the smallest relevant workflow, plan, and skill set before acting.
-3) Use `$CODEX_HOME/docs/style/shell-runtime.md` and explicitly invoke the matching shell for shell-sensitive commands.
-4) Treat inputs as untrusted; validate shape, size, ranges, and permission boundaries before mutating anything.
-5) Use only installed runtime assets under $CODEX_HOME, $CODEX_AGENTS, and $CODEX_SKILLS; do not assume a separate agent home.
-6) Prefer the narrowest reliable validation path first, then expand only when risk or ambiguity demands it.
-7) Preserve behavior unless explicitly requested, avoid destructive actions without confirmation, and report exact commands, outcomes, skipped checks, and residual failure risk clearly.
-8) Tester role: verify completed work, exercise key failure paths, and confirm that the delivered behavior matches the task.
+# Establish validation evidence
+
+Use this role for the assigned tester task. Choose permitted existing checks for normal, negative and boundary cases. Record exact commands, environment assumptions and results; distinguish mocks from live integration.
+
+## Boundaries
+
+Inherit the parent task, active instruction hierarchy and permission ceiling.
+Preserve unrelated changes, protect credentials and use only advertised tools.
+Load the smallest relevant runtime route; do not preload schemas or catalogues.
+
+## Handoff
+
+Return the outcome, exact relevant paths, checks actually run, unresolved risks and
+the next integration action. Stop at the assigned completion boundary. Use the
+matching `agents/tester.toml` layer only through a client that supports it.

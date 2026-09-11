@@ -1,6 +1,8 @@
 ---
 name: agent-orchestration
-description: Decompose multi-agent coding work into owned slices, reconcile findings, and manage validation handoff without duplicating effort. Use when tasks need parallel explorers, workers, or staged integration.
+description: Use this skill to decompose multi-agent coding work into owned slices,
+  reconcile findings, and manage validation handoff without duplicating effort. Use
+  when tasks need parallel explorers, workers, or staged integration.
 metadata:
   version: '1.0'
   short-description: Plan and reconcile multi-agent coding work
@@ -15,28 +17,31 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#2563EB'
-  default-prompt: Act as the "AGENT-Orchestration" specialist for "Plan and reconcile multi-agent coding work". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "AGENT-Orchestration" specialist for "Plan and reconcile
+    multi-agent coding work". Deliver focused, deterministic results with minimal,
+    reviewable changes and explicit assumptions. Validate untrusted inputs and bounded
+    I/O, run the narrowest relevant checks, and report concrete actions, evidence,
+    and residual risks.
 ---
-## Use this skill when
-- the active task matches this skill's description and needs deterministic implementation guidance
+
+# Agent Orchestration
 
 ## Workflow
-1) Split work by ownership and critical path, not by arbitrary file count.
-2) Delegate only bounded scouting or isolated implementation slices with clean boundaries.
-3) Reconcile results into one final owner path before validation and handoff.
 
-## Agent orchestration
-- Confirm ownership, validation scope, and whether another skill or plugin should be combined before editing.
-- Delegate only bounded scouting or independent verification work.
+1. Decompose the objective into independent slices with explicit dependencies and a single integration owner. Keep the next blocking step local.
 
-## Validation and testing
-- Run the narrowest syntax, parser, or unit checks that prove the change.
-- Explicitly call out skipped checks and why they remain out of scope.
+2. Assign each child an objective, owned paths, allowed actions, output contract and stop condition. Use only currently available agent tools.
 
-## Outputs
-- Minimal, reviewable edits aligned to the skill contract.
-- Concrete validation commands and residual risks.
+3. Do not allow concurrent edits to shared files. Reuse an existing child context for follow-up and reconcile claims against inspected evidence.
+
+4. Integrate the authorized changes, run focused checks and close or stop child work once its accepted output is consumed.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- [Model Context Protocol](https://modelcontextprotocol.io/introduction)
-- [OpenAI tools guide](https://platform.openai.com/docs/guides/tools)
+
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

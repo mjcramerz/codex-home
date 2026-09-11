@@ -5,6 +5,10 @@ impactDescription: stable references, fewer re-renders
 tags: rerender, hooks, performance, react-compiler
 ---
 
+# react compiler destructure functions
+
+Apply the following react compiler destructure functions guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Destructure Functions Early in Render
 
 This rule is only applicable if you are using the React Compiler.

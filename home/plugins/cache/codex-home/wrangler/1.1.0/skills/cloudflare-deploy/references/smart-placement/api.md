@@ -1,5 +1,7 @@
 # Smart Placement API
 
+Consult this reference when smart placement api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Placement Status API
 
 Query Worker placement status via Cloudflare API:

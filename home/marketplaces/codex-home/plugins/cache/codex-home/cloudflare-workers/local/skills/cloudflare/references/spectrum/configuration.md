@@ -1,3 +1,7 @@
+# configuration
+
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Origin Types
 
 ### Direct IP Origin
@@ -5,6 +9,7 @@
 Use when origin is a single server with static IP.
 
 **TypeScript SDK:**
+
 ```typescript
 const app = await client.spectrum.apps.create({
   zone_id: 'your-zone-id',
@@ -17,6 +22,7 @@ const app = await client.spectrum.apps.create({
 ```
 
 **Terraform:**
+
 ```hcl
 resource "cloudflare_spectrum_application" "ssh" {
   zone_id  = var.zone_id
@@ -39,6 +45,7 @@ resource "cloudflare_spectrum_application" "ssh" {
 Use when origin is a hostname (not static IP). Spectrum resolves DNS dynamically.
 
 **TypeScript SDK:**
+
 ```typescript
 const app = await client.spectrum.apps.create({
   zone_id: 'your-zone-id',
@@ -51,6 +58,7 @@ const app = await client.spectrum.apps.create({
 ```
 
 **Terraform:**
+
 ```hcl
 resource "cloudflare_spectrum_application" "database" {
   zone_id  = var.zone_id
@@ -76,6 +84,7 @@ resource "cloudflare_spectrum_application" "database" {
 Use for high availability and failover.
 
 **Terraform:**
+
 ```hcl
 resource "cloudflare_load_balancer" "game_lb" {
   zone_id          = var.zone_id
@@ -112,6 +121,7 @@ resource "cloudflare_spectrum_application" "game" {
 | `strict` | Full + valid cert verification | Max security | Yes (CA) |
 
 **Example:**
+
 ```typescript
 const app = await client.spectrum.apps.create({
   zone_id: 'your-zone-id',
@@ -139,6 +149,7 @@ Forwards real client IP to origin. Origin must support parsing.
 - **simple**: Cloudflare-specific UDP format
 
 **Enable:**
+
 ```typescript
 const app = await client.spectrum.apps.create({
   // ...
@@ -147,6 +158,7 @@ const app = await client.spectrum.apps.create({
 ```
 
 **Origin Config (nginx):**
+
 ```nginx
 stream {
     server {

@@ -1,5 +1,7 @@
 # Search And Fetch Standard
 
+Consult this reference when search and fetch standard is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Load this reference when the app is connector-like, data-only, sync-oriented, or meant to work well with company knowledge or deep research.
 
 ## Default Rule

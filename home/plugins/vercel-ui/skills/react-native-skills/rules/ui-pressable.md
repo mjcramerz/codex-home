@@ -5,6 +5,10 @@ impactDescription: modern API, more flexible
 tags: ui, pressable, touchable, gestures
 ---
 
+# ui pressable
+
+Apply the following ui pressable guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Pressable Instead of Touchable Components
 
 Never use `TouchableOpacity` or `TouchableHighlight`. Use `Pressable` from

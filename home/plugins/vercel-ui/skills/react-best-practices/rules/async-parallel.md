@@ -5,6 +5,10 @@ impactDescription: 2-10× improvement
 tags: async, parallelization, promises, waterfalls
 ---
 
+# async parallel
+
+Apply the following async parallel guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Promise.all() for Independent Operations
 
 When async operations have no interdependencies, execute them concurrently using `Promise.all()`.

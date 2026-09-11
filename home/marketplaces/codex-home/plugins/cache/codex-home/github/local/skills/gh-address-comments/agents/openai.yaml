@@ -1,6 +1,6 @@
 interface:
-  display_name: "GitHub Address Comments"
-  short_description: "Address comments in a GitHub PR review\""
-  icon_small: "./assets/github-small.svg"
-  icon_large: "./assets/github.png"
-  default_prompt: "Use $gh-address-comments. Address all actionable GitHub PR review comments in this branch and summarize the updates."
+  display_name: GitHub Address Comments
+  short_description: Use this skill for address comments in a GitHub PR review"
+  icon_small: ./assets/github-small.svg
+  icon_large: ./assets/github.png
+  default_prompt: Use $gh-address-comments for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

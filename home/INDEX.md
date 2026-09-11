@@ -1,22 +1,25 @@
-# Codex Home index
+# Select runtime guidance
 
-Start with `AGENTS.md`, then choose one relevant entrypoint. Stop broad discovery
-when a concrete next file or command is known. Memories are optional evidence, not
-authority; load them only when relevant to the current repository and task.
+Use this index when the current task needs guidance from `$CODEX_HOME`. Read the
+nearest applicable repository instructions first. Choose one primary route; add a
+second only when the task crosses a genuine boundary. Stop browsing when you can
+name the next concrete edit or check.
 
-| Work | Entrypoint |
+| Task | Read next |
 | --- | --- |
-| General engineering | `index/core/overview.md` |
-| Platform or domain work | `index/domains/overview.md` |
-| Pack and instruction maintenance | `index/pack/overview.md` |
-| Language and shell conventions | `index/style/overview.md` |
-| Configuration and schema coverage | `docs/operations/CONFIGURATION.md` |
-| Deployment and host integration | `docs/operations/DEPLOYMENT.md` |
-| MCP inventory | `index/servers.json` |
-| Plugin trust and lifecycle | `docs/operations/PLUGINS.md` |
-| Validation evidence | `docs/operations/VERIFICATION.md` |
+| Implement, debug, review, plan or test | `index/core/overview.md` |
+| Work on infrastructure, services or a platform | `index/domains/overview.md` |
+| Apply language or shell conventions | `index/style/overview.md` |
+| Maintain this pack, its instructions or routing | `index/pack/overview.md` |
+| Change Codex configuration or permissions | `docs/operations/CONFIGURATION.md` |
+| Change context hooks | `docs/operations/HOOKS.md` |
+| Inspect deployment boundaries | `docs/operations/DEPLOYMENT.md` |
+| Select available MCP integrations | `index/servers.json`, then the active tool schema |
+| Inspect plugin trust and mirrored sources | `docs/operations/PLUGINS.md` |
+| Choose scoped checks and report evidence | `docs/operations/VERIFICATION.md` |
 
-Existing detailed routers, plans, workflows, templates and plugin sources remain
-available. `index/manifest.yml` describes the original detailed routing taxonomy;
-this file and `docs/operations/` add deployment-specific routing. Model catalogs are
-selected by config, not inferred from `.models/` alone.
+Treat `index/manifest.yml` as a routing inventory, not a command queue. Read only a
+matching skill's `SKILL.md` and required references. Discover actual plugin/MCP
+availability before use. Do not load schemas, model catalogues, memories or full
+transcripts as ambient context. Read a schema only for an explicit configuration
+or protocol maintenance task, and inspect only the relevant definitions.

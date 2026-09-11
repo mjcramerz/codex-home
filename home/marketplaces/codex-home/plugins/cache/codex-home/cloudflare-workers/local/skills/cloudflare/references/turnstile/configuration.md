@@ -1,20 +1,27 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Script Loading
 
 ### Basic (Implicit Rendering)
+
 ```html
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 ```
+
 Automatically renders widgets with `class="cf-turnstile"` on page load.
 
 ### Explicit Rendering
+
 ```html
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
 ```
+
 Manual control over when/where widgets render via `window.turnstile.render()`.
 
 ### With Load Callback
+
 ```html
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=myCallback"></script>
 <script>
@@ -26,9 +33,11 @@ function myCallback() {
 ```
 
 ### Compatibility Mode
+
 ```html
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha"></script>
 ```
+
 Provides `grecaptcha` API for Google reCAPTCHA drop-in replacement.
 
 ## Widget Configuration
@@ -118,6 +127,7 @@ For implicit rendering, use data attributes on `<div class="cf-turnstile">`:
 | `refresh-expired` | `data-refresh-expired` | `data-refresh-expired="manual"` |
 
 **Example:**
+
 ```html
 <div class="cf-turnstile"
      data-sitekey="YOUR_SITE_KEY"
@@ -136,6 +146,7 @@ frame-src https://challenges.cloudflare.com;
 ```
 
 **Full Example:**
+
 ```html
 <meta http-equiv="Content-Security-Policy" 
       content="default-src 'self'; 
@@ -146,9 +157,11 @@ frame-src https://challenges.cloudflare.com;
 ## Framework-Specific Setup
 
 ### React
+
 ```bash
 npm install @marsidev/react-turnstile
 ```
+
 ```jsx
 import Turnstile from '@marsidev/react-turnstile';
 
@@ -159,9 +172,11 @@ import Turnstile from '@marsidev/react-turnstile';
 ```
 
 ### Vue
+
 ```bash
 npm install vue-turnstile
 ```
+
 ```vue
 <template>
   <VueTurnstile site-key="YOUR_SITE_KEY" @success="onSuccess" />
@@ -172,9 +187,11 @@ import VueTurnstile from 'vue-turnstile';
 ```
 
 ### Svelte
+
 ```bash
 npm install svelte-turnstile
 ```
+
 ```svelte
 <script>
 import Turnstile from 'svelte-turnstile';
@@ -183,6 +200,7 @@ import Turnstile from 'svelte-turnstile';
 ```
 
 ### Next.js (App Router)
+
 ```tsx
 // app/components/TurnstileWidget.tsx
 'use client';

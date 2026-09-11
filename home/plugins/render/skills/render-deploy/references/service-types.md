@@ -1,5 +1,7 @@
 # Render Service Types
 
+Consult this reference when render service types is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Detailed explanation of each service type available on Render. Choose the right service type based on your application's needs.
 
 ## Web Services (`type: web`)
@@ -39,12 +41,14 @@ startCommand: npm start
 ### Best Practices
 
 1. **Bind to environment PORT**:
+
 ```javascript
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0');
 ```
 
 2. **Add health check endpoint**:
+
 ```javascript
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
@@ -94,6 +98,7 @@ startCommand: celery -A tasks worker --loglevel=info
 ### Best Practices
 
 1. **Connect to message queue**:
+
 ```python
 import redis
 r = redis.from_url(os.environ['REDIS_URL'])
@@ -110,6 +115,7 @@ r = redis.from_url(os.environ['REDIS_URL'])
 ### Common Patterns
 
 **Node.js with BullMQ:**
+
 ```yaml
 type: worker
 name: job-processor
@@ -124,6 +130,7 @@ envVars:
 ```
 
 **Python with Celery:**
+
 ```yaml
 type: worker
 name: celery-worker
@@ -205,6 +212,7 @@ Standard cron syntax: `minute hour day month weekday`
 ### Example Use Cases
 
 **Daily Database Backup:**
+
 ```yaml
 type: cron
 name: db-backup
@@ -222,6 +230,7 @@ envVars:
 ```
 
 **Hourly Cache Refresh:**
+
 ```yaml
 type: cron
 name: cache-refresh

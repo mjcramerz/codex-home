@@ -5,6 +5,10 @@ impactDescription: reduces perceived latency
 tags: bundle, preload, user-intent, hover
 ---
 
+# bundle preload
+
+Apply the following bundle preload guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Preload Based on User Intent
 
 Preload heavy bundles before they're needed to reduce perceived latency.

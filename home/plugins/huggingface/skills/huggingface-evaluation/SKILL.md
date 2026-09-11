@@ -1,15 +1,18 @@
 ---
 name: huggingface-evaluation
-description: Add and manage evaluation results in Hugging Face model cards. Supports extracting eval tables from README content, importing scores from Artificial Analysis API, and running custom model evaluations with vLLM/lighteval. Works with the model-index metadata format.
+description: Use this skill for add and manage evaluation results in Hugging Face model cards. Supports extracting eval tables from README content, importing scores from Artificial Analysis API, and running custom model evaluations with vLLM/lighteval. Works with the model-index metadata format.
 ---
 
 # Overview
+
+Apply this skill to the matching task described in its metadata. Inspect the relevant inputs and active tool contracts before following the procedure. Use only the resources needed for the current step; a bundled tool reference does not prove that tool is available or authorized.
 This skill provides tools to add structured evaluation results to Hugging Face model cards. It supports multiple methods for adding evaluation data:
 - Extracting existing evaluation tables from README content
 - Importing benchmark scores from Artificial Analysis
 - Running custom model evaluations with vLLM or accelerate backends (lighteval/inspect-ai)
 
 ## Integration with HF Ecosystem
+
 - **Model Cards**: Updates model-index metadata for leaderboard integration
 - **Artificial Analysis**: Direct API integration for benchmark imports
 - **Papers with Code**: Compatible with their model-index specification
@@ -19,11 +22,13 @@ This skill provides tools to add structured evaluation results to Hugging Face m
 - **inspect-ai**: UK AI Safety Institute's evaluation framework
 
 # Version
+
 1.3.0
 
 # Dependencies
 
 ## Core Dependencies
+
 - huggingface_hub>=0.26.0
 - markdown-it-py>=3.0.0
 - python-dotenv>=1.2.1
@@ -32,11 +37,13 @@ This skill provides tools to add structured evaluation results to Hugging Face m
 - re (built-in)
 
 ## Inference Provider Evaluation
+
 - inspect-ai>=0.3.0
 - inspect-evals
 - openai
 
 ## vLLM Custom Model Evaluation (GPU required)
+
 - lighteval[accelerate,vllm]>=0.6.0
 - vllm>=0.4.0
 - torch>=2.0.0
@@ -70,23 +77,25 @@ file.**
 > Before running any script, first `cd` to that directory or use the full
 path.
 
-
 **Use `--help` for the latest workflow guidance.** Works with plain Python or `uv run`:
+
 ```bash
 uv run scripts/evaluation_manager.py --help
 uv run scripts/evaluation_manager.py inspect-tables --help
 uv run scripts/evaluation_manager.py extract-readme --help
 ```
+
 Key workflow (matches CLI help):
 
-1) `get-prs` → check for existing open PRs first
-2) `inspect-tables` → find table numbers/columns  
-3) `extract-readme --table N` → prints YAML by default  
-4) add `--apply` (push) or `--create-pr` to write changes
+1. `get-prs` → check for existing open PRs first
+2. `inspect-tables` → find table numbers/columns
+3. `extract-readme --table N` → prints YAML by default
+4. add `--apply` (push) or `--create-pr` to write changes
 
 # Core Capabilities
 
 ## 1. Inspect and Extract Evaluation Tables from README
+
 - **Inspect Tables**: Use `inspect-tables` to see all tables in a README with structure, columns, and sample rows
 - **Parse Markdown Tables**: Accurate parsing using markdown-it-py (ignores code blocks and examples)
 - **Table Selection**: Use `--table N` to extract from a specific table (required when multiple tables exist)
@@ -96,18 +105,21 @@ Key workflow (matches CLI help):
 - **Task Typing**: `--task-type` sets the `task.type` field in model-index output (e.g., `text-generation`, `summarization`)
 
 ## 2. Import from Artificial Analysis
+
 - **API Integration**: Fetch benchmark scores directly from Artificial Analysis
 - **Automatic Formatting**: Convert API responses to model-index format
 - **Metadata Preservation**: Maintain source attribution and URLs
 - **PR Creation**: Automatically create pull requests with evaluation updates
 
 ## 3. Model-Index Management
+
 - **YAML Generation**: Create properly formatted model-index entries
 - **Merge Support**: Add evaluations to existing model cards without overwriting
 - **Validation**: Ensure compliance with Papers with Code specification
 - **Batch Operations**: Process multiple models efficiently
 
 ## 4. Run Evaluations on HF Jobs (Inference Providers)
+
 - **Inspect-AI Integration**: Run standard evaluations using the `inspect-ai` library
 - **UV Integration**: Seamlessly run Python scripts with ephemeral dependencies on HF infrastructure
 - **Zero-Config**: No Dockerfiles or Space management required
@@ -131,6 +143,7 @@ Key workflow (matches CLI help):
 ```bash
 uv run scripts/train_sft_example.py
 ```
+
 ### Features
 
 - **vLLM Backend**: High-performance GPU inference (5-10x faster than standard HF methods)
@@ -143,6 +156,7 @@ uv run scripts/train_sft_example.py
 The skill includes Python scripts in `scripts/` to perform operations.
 
 ### Prerequisites
+
 - Preferred: use `uv run` (PEP 723 header auto-installs deps)
 - Or install manually: `pip install huggingface-hub markdown-it-py python-dotenv pyyaml requests`
 - Set `HF_TOKEN` environment variable with Write-access token
@@ -152,6 +166,7 @@ The skill includes Python scripts in `scripts/` to perform operations.
 ### Method 1: Extract from README (CLI workflow)
 
 Recommended flow (matches `--help`):
+
 ```bash
 # 1) Inspect tables to get table numbers and column hints
 uv run scripts/evaluation_manager.py inspect-tables --repo-id "username/model"
@@ -185,6 +200,7 @@ Validation checklist:
 Fetch benchmark scores from Artificial Analysis API and add them to a model card.
 
 **Basic Usage:**
+
 ```bash
 AA_API_KEY="your-api-key" uv run scripts/evaluation_manager.py import-aa \
   --creator-slug "anthropic" \
@@ -193,6 +209,7 @@ AA_API_KEY="your-api-key" uv run scripts/evaluation_manager.py import-aa \
 ```
 
 **With Environment File:**
+
 ```bash
 # Create .env file
 echo "AA_API_KEY=your-api-key" >> .env
@@ -206,6 +223,7 @@ uv run scripts/evaluation_manager.py import-aa \
 ```
 
 **Create Pull Request:**
+
 ```bash
 uv run scripts/evaluation_manager.py import-aa \
   --creator-slug "anthropic" \
@@ -219,6 +237,7 @@ uv run scripts/evaluation_manager.py import-aa \
 Submit an evaluation job on Hugging Face infrastructure using the `hf jobs uv run` CLI.
 
 **Direct CLI Usage:**
+
 ```bash
 HF_TOKEN=$HF_TOKEN \
 hf jobs uv run hf-evaluation/scripts/inspect_eval_uv.py \
@@ -229,6 +248,7 @@ hf jobs uv run hf-evaluation/scripts/inspect_eval_uv.py \
 ```
 
 **GPU Example (A10G):**
+
 ```bash
 HF_TOKEN=$HF_TOKEN \
 hf jobs uv run hf-evaluation/scripts/inspect_eval_uv.py \
@@ -239,6 +259,7 @@ hf jobs uv run hf-evaluation/scripts/inspect_eval_uv.py \
 ```
 
 **Python Helper (optional):**
+
 ```bash
 uv run scripts/run_eval_job.py \
   --model "meta-llama/Llama-2-7b-hf" \
@@ -265,6 +286,7 @@ Evaluate custom HuggingFace models directly on GPU using vLLM or accelerate back
 lighteval is HuggingFace's evaluation library, supporting Open LLM Leaderboard tasks.
 
 **Standalone (local GPU):**
+
 ```bash
 # Run MMLU 5-shot with vLLM
 uv run scripts/lighteval_vllm_uv.py \
@@ -290,6 +312,7 @@ uv run scripts/lighteval_vllm_uv.py \
 ```
 
 **Via HF Jobs:**
+
 ```bash
 hf jobs uv run scripts/lighteval_vllm_uv.py \
   --flavor a10g-small \
@@ -327,6 +350,7 @@ Multiple tasks can be specified as comma-separated values: `--tasks "leaderboard
 inspect-ai is the UK AI Safety Institute's evaluation framework.
 
 **Standalone (local GPU):**
+
 ```bash
 # Run MMLU with vLLM
 uv run scripts/inspect_vllm_uv.py \
@@ -347,6 +371,7 @@ uv run scripts/inspect_vllm_uv.py \
 ```
 
 **Via HF Jobs:**
+
 ```bash
 hf jobs uv run scripts/inspect_vllm_uv.py \
   --flavor a10g-small \
@@ -402,17 +427,20 @@ uv run scripts/run_vllm_eval_job.py \
 ### Commands Reference
 
 **Top-level help and version:**
+
 ```bash
 uv run scripts/evaluation_manager.py --help
 uv run scripts/evaluation_manager.py --version
 ```
 
 **Inspect Tables (start here):**
+
 ```bash
 uv run scripts/evaluation_manager.py inspect-tables --repo-id "username/model-name"
 ```
 
 **Extract from README:**
+
 ```bash
 uv run scripts/evaluation_manager.py extract-readme \
   --repo-id "username/model-name" \
@@ -425,6 +453,7 @@ uv run scripts/evaluation_manager.py extract-readme \
 ```
 
 **Import from Artificial Analysis:**
+
 ```bash
 AA_API_KEY=... uv run scripts/evaluation_manager.py import-aa \
   --creator-slug "creator-name" \
@@ -434,18 +463,22 @@ AA_API_KEY=... uv run scripts/evaluation_manager.py import-aa \
 ```
 
 **View / Validate:**
+
 ```bash
 uv run scripts/evaluation_manager.py show --repo-id "username/model-name"
 uv run scripts/evaluation_manager.py validate --repo-id "username/model-name"
 ```
 
 **Check Open PRs (ALWAYS run before --create-pr):**
+
 ```bash
 uv run scripts/evaluation_manager.py get-prs --repo-id "username/model-name"
 ```
+
 Lists all open pull requests for the model repository. Shows PR number, title, author, date, and URL.
 
 **Run Evaluation Job (Inference Providers):**
+
 ```bash
 hf jobs uv run scripts/inspect_eval_uv.py \
   --flavor "cpu-basic|t4-small|..." \
@@ -464,6 +497,7 @@ uv run scripts/run_eval_job.py \
 ```
 
 **Run vLLM Evaluation (Custom Models):**
+
 ```bash
 # lighteval with vLLM
 hf jobs uv run scripts/lighteval_vllm_uv.py \
@@ -514,6 +548,7 @@ model-index:
 WARNING: Do not use markdown formatting in the model name. Use the exact name from the table. Only use urls in the source.url field.
 
 ### Error Handling
+
 - **Table Not Found**: Script will report if no evaluation tables are detected
 - **Invalid Format**: Clear error messages for malformed tables
 - **API Errors**: Retry logic for transient Artificial Analysis API failures
@@ -552,11 +587,12 @@ When extracting evaluation tables with multiple models (either as columns or row
 - Finds the row in the first column matching the model name
 - Extracts all benchmark scores from that row only
 
-This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints. 
+This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints.
 
 ### Common Patterns
 
 **Update Your Own Model:**
+
 ```bash
 # Extract from README and push directly
 uv run scripts/evaluation_manager.py extract-readme \
@@ -565,6 +601,7 @@ uv run scripts/evaluation_manager.py extract-readme \
 ```
 
 **Update Someone Else's Model (Full Workflow):**
+
 ```bash
 # Step 1: ALWAYS check for existing PRs first
 uv run scripts/evaluation_manager.py get-prs \
@@ -582,6 +619,7 @@ uv run scripts/evaluation_manager.py extract-readme \
 ```
 
 **Import Fresh Benchmarks:**
+
 ```bash
 # Step 1: Check for existing PRs
 uv run scripts/evaluation_manager.py get-prs \
@@ -631,6 +669,7 @@ AA_API_KEY=... uv run scripts/evaluation_manager.py import-aa \
 ### Integration Examples
 
 **Python Script Integration:**
+
 ```python
 import subprocess
 import os

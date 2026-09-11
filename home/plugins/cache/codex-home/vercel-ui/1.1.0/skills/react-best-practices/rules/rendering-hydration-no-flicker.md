@@ -5,6 +5,10 @@ impactDescription: avoids visual flicker and hydration errors
 tags: rendering, ssr, hydration, localStorage, flicker
 ---
 
+# rendering hydration no flicker
+
+Apply the following rendering hydration no flicker guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Prevent Hydration Mismatch Without Flickering
 
 When rendering content that depends on client-side storage (localStorage, cookies), avoid both SSR breakage and post-hydration flickering by injecting a synchronous script that updates the DOM before React hydrates.

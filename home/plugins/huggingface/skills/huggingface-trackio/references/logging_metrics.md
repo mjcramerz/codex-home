@@ -1,5 +1,7 @@
 # Logging Metrics with Trackio
 
+Consult this reference when logging metrics with trackio is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **Trackio** is a lightweight, free experiment tracking library from Hugging Face. It provides a wandb-compatible API for logging metrics with local-first design.
 
 - **GitHub**: [gradio-app/trackio](https://github.com/gradio-app/trackio)
@@ -73,6 +75,7 @@ trackio.show()
 ```
 
 Or from terminal:
+
 ```bash
 trackio show --project my-project
 ```

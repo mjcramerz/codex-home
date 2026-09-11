@@ -1,25 +1,23 @@
 interface:
-  display_name: "Wrangler"
-  short_description: "Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, C"
-  default_prompt: "Use $wrangler. Use the Wrangler skill when the task matches this scope: Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines, and Secrets Store. Load before running wrangler commands to ensure correct syntax and best practices. Biases towards retrieval from Cloudflare docs over pre-trained knowledge."
-
+  display_name: Wrangler
+  short_description: Use this skill for cloudflare Workers CLI for deploying, developing, and managing Workers,
+  default_prompt: Use $wrangler for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "cloudflare-api"
-      description: "cloudflare-api MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-docs"
-      description: "cloudflare-docs MCP server"
-      transport: "streamable_http"
-      url: "https://docs.mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-builds"
-      description: "cloudflare-builds MCP server"
-      transport: "streamable_http"
-      url: "https://builds.mcp.cloudflare.com/mcp"
-
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-builds
+    description: cloudflare-builds MCP server
+    transport: streamable_http
+    url: https://builds.mcp.cloudflare.com/mcp
 policy:
   allow_implicit_invocation: true

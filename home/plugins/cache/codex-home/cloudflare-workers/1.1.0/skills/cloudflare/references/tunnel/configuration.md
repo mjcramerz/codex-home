@@ -1,5 +1,7 @@
 # Tunnel Configuration
 
+Consult this reference when tunnel configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Config Source
 
 Tunnels use one of two config sources:
@@ -55,6 +57,7 @@ ingress:
 ```
 
 **Validation**:
+
 ```bash
 cloudflared tunnel ingress validate
 cloudflared tunnel ingress rule https://foo.example.com
@@ -75,6 +78,7 @@ cloudflared tunnel ingress rule https://foo.example.com
 ## Origin Configuration
 
 ### Connection Settings
+
 ```yaml
 originRequest:
   connectTimeout: 30s
@@ -85,6 +89,7 @@ originRequest:
 ```
 
 ### TLS Settings
+
 ```yaml
 originRequest:
   noTLSVerify: true                      # Disable cert verification
@@ -93,6 +98,7 @@ originRequest:
 ```
 
 ### HTTP Settings
+
 ```yaml
 originRequest:
   disableChunkedEncoding: true
@@ -118,6 +124,7 @@ cloudflared tunnel route ip add 192.168.1.100/32 my-tunnel
 ## Config Source Comparison
 
 ### Local Config
+
 ```yaml
 # config.yml
 tunnel: <UUID>
@@ -137,6 +144,7 @@ cloudflared tunnel run my-tunnel
 **Cons:** Requires file distribution, manual restarts
 
 ### Cloudflare Config (Token-Based)
+
 ```bash
 # No config file needed
 cloudflared tunnel --no-autoupdate run --token <TOKEN>

@@ -8,7 +8,10 @@ tags:
 - framework
 updated: '2026-03-12'
 ---
+
 # skill-catalog-audit framework
+
+Apply the following skill-catalog-audit framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `skill-catalog-audit`
 - Category: `AUDIT`

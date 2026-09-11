@@ -1,5 +1,7 @@
 # Prompt contract snippet
-Purpose: tell the Codex coding agent how to use `snippets/docs/prompt_contract.md` as a runtime-pack surface and when to stop browsing.
+
+Use this guide when the task concerns prompt contract snippet. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 Use this snippet when writing or revising slash-command prompt files.
 
 ```markdown

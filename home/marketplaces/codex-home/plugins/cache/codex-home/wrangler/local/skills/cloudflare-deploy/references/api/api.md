@@ -1,5 +1,7 @@
 # API Reference
 
+Consult this reference when api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Client Initialization
 
 ### TypeScript
@@ -199,6 +201,6 @@ client.dns.records.create(
 
 ## See Also
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/configuration.md) - SDK configuration, environment variables
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/patterns.md) - Real-world patterns and workflows
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/gotchas.md) - Rate limits, troubleshooting
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/configuration.md) - SDK configuration, environment variables
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/patterns.md) - Real-world patterns and workflows
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/gotchas.md) - Rate limits, troubleshooting

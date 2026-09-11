@@ -1,5 +1,7 @@
 # C3 (create-cloudflare)
 
+Consult this reference when c3 (create-cloudflare) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Official CLI for scaffolding Cloudflare Workers and Pages projects with templates, TypeScript, and instant deployment.
 
 ## Quick Start

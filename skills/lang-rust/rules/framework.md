@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # LANG-Rust Framework
+
+Apply the following lang-rust framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `lang-rust`
 - Source of truth: `$CODEX_SKILLS/lang-rust/SKILL.md`

@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Progress Tracking
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## Update Frequency
 
@@ -470,4 +473,3 @@ Compares to target: [On schedule/Behind/Ahead]
 6. **Track decisions**: Document why, not just what
 7. **Be honest**: Report actual status, not optimistic status
 8. **Update in one place**: Keep implementation plan as source of truth
-

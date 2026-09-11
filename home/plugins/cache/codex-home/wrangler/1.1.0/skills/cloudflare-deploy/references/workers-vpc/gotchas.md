@@ -1,5 +1,7 @@
 # Gotchas and Troubleshooting
 
+Consult this reference when gotchas and troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common pitfalls, limitations, and solutions for TCP Sockets in Cloudflare Workers.
 
 ## Platform Limits
@@ -95,7 +97,7 @@ await Promise.race([socket.opened, timeout]);
 
 **Problem:** New connection overhead per request
 
-**Solution:** Use [Hyperdrive]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/) for databases (built-in pooling)
+**Solution:** Use [Hyperdrive]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/) for databases (built-in pooling)
 
 ### Not Using Smart Placement
 
@@ -150,7 +152,7 @@ if (!host || !ALLOWED.includes(host)) return new Response('Forbidden', { status:
 
 | Use Case | Alternative | Reason |
 |----------|-------------|--------|
-| PostgreSQL/MySQL | [Hyperdrive]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/) | Connection pooling, caching |
+| PostgreSQL/MySQL | [Hyperdrive]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/) | Connection pooling, caching |
 | HTTP/HTTPS | `fetch()` | Simpler, built-in |
 | HTTP with SSRF protection | VPC Services (beta 2025+) | Declarative bindings |
 
@@ -162,6 +164,6 @@ if (!host || !ALLOWED.includes(host)) return new Response('Forbidden', { status:
 
 ## Related
 
-- [Hyperdrive]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/) - Database connections
-- [Smart Placement]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/smart-placement/) - Latency optimization
-- [Tunnel Troubleshooting]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/gotchas.md)
+- [Hyperdrive]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/) - Database connections
+- [Smart Placement]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/smart-placement/) - Latency optimization
+- [Tunnel Troubleshooting]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/gotchas.md)

@@ -1,5 +1,7 @@
 # Cloudflare Workflows
 
+Consult this reference when cloudflare workflows is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Durable multi-step applications with automatic retries, state persistence, and long-running execution.
 
 ## What It Does
@@ -54,16 +56,18 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 ## Reading Order
 
-**Getting Started:** configuration.md → api.md → patterns.md  
+**Getting Started:** configuration.md → api.md → patterns.md
 **Troubleshooting:** gotchas.md
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/configuration.md) - wrangler.jsonc setup, step config, bindings
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/api.md) - Step APIs, instance management, sleep/parameters
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/patterns.md) - Common workflows, testing, orchestration
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/gotchas.md) - Timeouts, limits, debugging strategies
+
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/configuration.md) - wrangler.jsonc setup, step config, bindings
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/api.md) - Step APIs, instance management, sleep/parameters
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/patterns.md) - Common workflows, testing, orchestration
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/gotchas.md) - Timeouts, limits, debugging strategies
 
 ## See Also
-- [durable-objects]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/durable-objects/) - Alternative stateful approach
-- [queues]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/queues/) - Message-driven workflows
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Entry point for workflow instances
+
+- [durable-objects]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/durable-objects/) - Alternative stateful approach
+- [queues]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/queues/) - Message-driven workflows
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Entry point for workflow instances

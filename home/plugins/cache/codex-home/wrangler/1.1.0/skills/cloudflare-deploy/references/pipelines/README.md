@@ -1,5 +1,7 @@
 # Cloudflare Pipelines
 
+Consult this reference when cloudflare pipelines is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ETL streaming platform for ingesting, transforming, and loading data into R2 with SQL transformations.
 
 ## Overview
@@ -9,7 +11,7 @@ Pipelines provides:
 - **Pipelines**: SQL-based transformations
 - **Sinks**: R2 destinations (Iceberg tables or Parquet/JSON files)
 
-**Status**: Open beta (Workers Paid plan)  
+**Status**: Open beta (Workers Paid plan)
 **Pricing**: No charge beyond standard R2 storage/operations
 
 ## Architecture
@@ -34,6 +36,7 @@ npx wrangler pipelines setup
 ```
 
 **Minimal Worker example:**
+
 ```typescript
 interface Env {
   STREAM: Pipeline;
@@ -79,26 +82,26 @@ Using external tools (Spark/Athena)?
 ## Reading Order
 
 **New to Pipelines?** Start here:
-1. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/configuration.md) - Setup streams, sinks, pipelines
-2. [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/api.md) - Send events, TypeScript types, SQL functions
-3. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/patterns.md) - Best practices, integrations, complete example
-4. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/gotchas.md) - Critical warnings, troubleshooting
+1. [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/configuration.md) - Setup streams, sinks, pipelines
+2. [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/api.md) - Send events, TypeScript types, SQL functions
+3. [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/patterns.md) - Best practices, integrations, complete example
+4. [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/gotchas.md) - Critical warnings, troubleshooting
 
 **Task-based routing:**
-- Setup pipeline → [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/configuration.md)
-- Send/query data → [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/api.md)
-- Implement pattern → [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/patterns.md)
-- Debug issue → [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/gotchas.md)
+- Setup pipeline → [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/configuration.md)
+- Send/query data → [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/api.md)
+- Implement pattern → [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/patterns.md)
+- Debug issue → [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/gotchas.md)
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/configuration.md) - wrangler.jsonc bindings, schema definition, sink options, CLI commands
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/api.md) - Pipeline binding interface, send() method, HTTP ingest, SQL function reference
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/patterns.md) - Fire-and-forget, schema validation with Zod, integrations, performance tuning
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pipelines/gotchas.md) - Silent validation failures, immutable pipelines, latency expectations, limits
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/configuration.md) - wrangler.jsonc bindings, schema definition, sink options, CLI commands
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/api.md) - Pipeline binding interface, send() method, HTTP ingest, SQL function reference
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/patterns.md) - Fire-and-forget, schema validation with Zod, integrations, performance tuning
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pipelines/gotchas.md) - Silent validation failures, immutable pipelines, latency expectations, limits
 
 ## See Also
 
-- [r2]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/) - R2 storage backend for sinks
-- [queues]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/queues/) - Compare with Queues for async processing
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker runtime for event ingestion
+- [r2]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/) - R2 storage backend for sinks
+- [queues]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/queues/) - Compare with Queues for async processing
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker runtime for event ingestion

@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # WORKFLOW-Plans Framework
+
+Apply the following workflow-plans framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `workflow-plans`
 - Source of truth: `$CODEX_SKILLS/workflow-plans/SKILL.md`

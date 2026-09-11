@@ -12,12 +12,16 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # C2 Defense Ops Rules
 
+Apply the following c2 defense ops rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/c2-defense-ops/SKILL.md`.
-- Prefer deterministic scripts in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/c2-defense-ops/scripts/`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/c2-defense-ops/references/` for factual guidance.
-- Run `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/c2-defense-ops/scripts/c2_scope_guard.py` before replay/validation activity.
+
+- Follow the workflow in `$CODEX_HOME/plugins/security-labs/skills/c2-defense-ops/SKILL.md`.
+- Prefer deterministic scripts in `$CODEX_HOME/plugins/security-labs/skills/c2-defense-ops/scripts/`.
+- Use references in `$CODEX_HOME/plugins/security-labs/skills/c2-defense-ops/references/` for factual guidance.
+- Run `$CODEX_HOME/plugins/security-labs/skills/c2-defense-ops/scripts/c2_scope_guard.py` before replay/validation activity.
 - Require allowed target labels, operation class allowlists, and an unexpired scope window.
 - Refuse persistence enablement, credential theft, or stealth abuse requests.

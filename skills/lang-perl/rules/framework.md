@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # LANG-Perl Framework
+
+Apply the following lang-perl framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `lang-perl`
 - Source of truth: `$CODEX_SKILLS/lang-perl/SKILL.md`

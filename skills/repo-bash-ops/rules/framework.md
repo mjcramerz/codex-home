@@ -12,7 +12,10 @@ tags:
 - admin
 updated: '2026-02-20'
 ---
+
 # Repo Bash Ops Framework
+
+Apply the following repo bash ops framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `repo-bash-ops`
 - Source of truth: `$CODEX_SKILLS/repo-bash-ops/SKILL.md`

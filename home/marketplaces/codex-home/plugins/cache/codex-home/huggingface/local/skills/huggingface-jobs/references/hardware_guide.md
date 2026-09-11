@@ -1,5 +1,7 @@
 # Hardware Selection Guide
 
+Consult this reference when hardware selection guide is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Choosing the right hardware (flavor) is critical for cost-effective workloads.
 
 > **Reference:** [HF Jobs Hardware Documentation](https://huggingface.co/docs/hub/en/spaces-config-reference) (updated 07/2025)
@@ -7,6 +9,7 @@ Choosing the right hardware (flavor) is critical for cost-effective workloads.
 ## Available Hardware
 
 ### CPU Flavors
+
 | Flavor | Description | Use Case |
 |--------|-------------|----------|
 | `cpu-basic` | Basic CPU instance | Testing, lightweight scripts |
@@ -130,11 +133,13 @@ Choosing the right hardware (flavor) is critical for cost-effective workloads.
 ### Estimating Memory Requirements
 
 **For inference:**
+
 ```
 Memory (GB) ≈ (Model params in billions) × 2-4
 ```
 
 **For training:**
+
 ```
 Memory (GB) ≈ (Model params in billions) × 20 (full) or × 4 (LoRA)
 ```
@@ -149,11 +154,13 @@ Memory (GB) ≈ (Model params in billions) × 20 (full) or × 4 (LoRA)
 If hitting memory limits:
 
 1. **Reduce batch size**
+
    ```python
    batch_size = 1
    ```
 
 2. **Process in chunks**
+
    ```python
    for chunk in chunks:
        process(chunk)
@@ -217,6 +224,7 @@ Multi-GPU flavors automatically distribute workloads:
 - Tensor parallelism for inference
 
 **MCP Tool Example:**
+
 ```python
 hf_jobs("uv", {
     "script": "process.py",
@@ -227,6 +235,7 @@ hf_jobs("uv", {
 ```
 
 **CLI Equivalent:**
+
 ```bash
 hf jobs uv run process.py --flavor a10g-largex2 --timeout 4h
 ```
@@ -333,4 +342,3 @@ hf jobs run --flavor v5e-1x1 your-tpu-image python script.py
 # UV script with GPU
 hf jobs uv run --flavor a10g-small my_script.py
 ```
-

@@ -5,6 +5,10 @@ impactDescription: automatic deduplication
 tags: client, swr, deduplication, data-fetching
 ---
 
+# client swr dedup
+
+Apply the following client swr dedup guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use SWR for Automatic Deduplication
 
 SWR enables request deduplication, caching, and revalidation across component instances.

@@ -1,10 +1,9 @@
 interface:
-  display_name: "GitLab CI/CD"
-  short_description: "Thin consumer pipelines over shared include contracts"
-  icon_small: "./assets/icon-32.png"
-  icon_large: "./assets/icon-128.png"
-  brand_color: "#FC6D26"
-  default_prompt: "Use $gitlab-cicd. Act as the \"GitLab CI/CD\" specialist for \"Thin consumer pipelines over shared include contracts\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
-
+  display_name: GitLab CI/CD
+  short_description: Use this skill for thin consumer pipelines over shared include contracts
+  icon_small: ./assets/icon-32.png
+  icon_large: ./assets/icon-128.png
+  brand_color: '#FC6D26'
+  default_prompt: Use $gitlab-cicd for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

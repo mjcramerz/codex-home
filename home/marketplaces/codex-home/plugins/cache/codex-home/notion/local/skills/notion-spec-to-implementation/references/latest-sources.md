@@ -13,15 +13,20 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # notion-spec-to-implementation reference bundle
+
+Consult this reference when notion-spec-to-implementation reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Quick start
 - Workflow
@@ -37,15 +42,17 @@ Turn Notion specs into implementation plans, tasks, and progress tracking; use w
 - References and examples
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/notion/1.0.0/skills/notion-spec-to-implementation/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/notion/1.0.0/skills/notion-spec-to-implementation/agents/openai.yaml`
-- `$CODEX_HOME/plugins/cache/codex-home/notion/1.0.0/skills/notion-spec-to-implementation/reference/` (previous notes retained by this skill)
+
+- `$CODEX_HOME/plugins/notion/skills/notion-spec-to-implementation/SKILL.md`
+- `$CODEX_HOME/plugins/notion/skills/notion-spec-to-implementation/agents/openai.yaml`
+- `$CODEX_HOME/plugins/notion/skills/notion-spec-to-implementation/reference/` (previous notes retained by this skill)
 
 ## External references
+
 - [Notion API intro](https://developers.notion.com/reference/intro) - Notion integration behavior and limits.
 - [Notion block API](https://developers.notion.com/reference/block) - Spec decomposition and structured task mapping.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `notion-spec-to-implementation` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `notion-spec-to-implementation` before finalizing changes.
-

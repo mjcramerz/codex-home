@@ -1,54 +1,29 @@
-# POSIX/BusyBox sh style guide
-Purpose: tell the Codex coding agent how to use `docs/style/sh.md` as a runtime-pack surface and when to stop browsing.
-This guide targets `/bin/sh`, BusyBox `ash`, `dash`, and other POSIX shells.
+# POSIX sh
 
+Use this guide when you change POSIX shell, Bash or zsh scripts and repository automation. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/style/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+## Apply these practices
 
+**1.** Inspect the shebang and declared interpreter. Keep POSIX sh free of Bash or zsh extensions; select Bash explicitly when arrays or other Bash features are required.
 
-## Baseline
-- You must use `#!/bin/sh` and avoid bashisms (`[[ ]]`, arrays, brace expansion, `$'...'`, process substitution).
-- Quote variable expansions unless you explicitly need word splitting or globbing.
-- You must prefer `printf` over `echo -e`.
-- You must use `command -v` for dependency checks.
-- You must prefer `getopts` for flags; avoid non-POSIX `getopt`.
+**2.** Quote expansions, use -- before untrusted operands where supported, prefer argument arrays in Bash, and never use eval to dispatch user input. Avoid parsing ls or splitting filenames on whitespace.
 
-## Strict mode
-```
-set -eu
-(set -o pipefail 2>/dev/null) || true
-IFS=$(printf '\n\t')
-```
+**3.** Check failures explicitly around expected fallible operations. Do not assume set -e, pipelines or subshells give uniform error propagation across shells; isolate deliberate nonzero statuses.
 
-Notes:
-- `pipefail` is not POSIX; guard it as shown.
-- `set -e` does not trigger on every failure. Use explicit checks where needed.
+**4.** Use private temporary directories and cleanup traps scoped to paths you created. Resolve and check destructive targets, reject empty paths, and preserve caller-owned files.
 
-## Functions and flow
-- You must define functions as `name() { ...; }` and avoid `function` keyword.
-- You must use `case` for branching; avoid regex-heavy `expr` or `grep` when possible.
-- You must use `trap` for cleanup (`EXIT`, `INT`, `TERM`), not `ERR`.
+**5.** Keep stdout machine-readable when required, send redacted diagnostics to stderr and bound command duration. Run the matching interpreter's syntax check and existing ShellCheck/tests where available.
 
-## Files and temp paths
-- You must use `umask 077` before writing secrets or private keys.
-- You must prefer `mktemp` when available and verify it exists; fall back only when necessary.
-- Avoid writing into world-writable locations without randomness.
+Use `dash -n` when dash is the target `/bin/sh`; avoid arrays, `[[ ]]`, process substitution, `source` and assumptions about `pipefail`. Use portable `printf` and `.` where appropriate.
 
-## Portability checklist
-- No `[[ ]]`, `local`, `source`, or arithmetic arrays.
-- No `read -a`, `mapfile`, or process substitution.
-- You must use `IFS= read -r` when reading lines.
-- Avoid `sed -r` or `grep -P`; stick to POSIX flags.
+## Select related guidance
 
-See also:
-- `overview.md`
+- `$CODEX_HOME/docs/style/overview.md`
+- `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/OVERVIEW.md`
 - `$CODEX_HOME/snippets/sh/`
-- You must use skill shell-sh.
 - `$CODEX_HOME/templates/sh/posix-sh-script/`
 - `$CODEX_HOME/index/pack/style.md`
 - `$CODEX_HOME/index/style/sh.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

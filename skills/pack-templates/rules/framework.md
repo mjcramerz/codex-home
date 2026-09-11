@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # PACK-Templates Framework
+
+Use this template when you need pack-templates framework in the authorized project. Replace placeholders, adapt the examples to the detected toolchain, and preserve the requested output contract. Do not treat sample values or commands as verified deployment settings.
 
 - Skill: `pack-templates`
 - Source of truth: `$CODEX_SKILLS/pack-templates/SKILL.md`

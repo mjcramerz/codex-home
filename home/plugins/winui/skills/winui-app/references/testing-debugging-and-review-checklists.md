@@ -8,6 +8,10 @@ sources:
   - https://learn.microsoft.com/windows/apps/performance/winui-perf
 ---
 
+# testing debugging and review checklists
+
+Consult this reference when testing debugging and review checklists is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file for final review passes, debugging sessions, and "what should I verify before I call this done?" prompts.

@@ -1,5 +1,7 @@
 # R2 SQL Configuration
 
+Consult this reference when r2 sql configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Setup and configuration for R2 SQL queries.
 
 ## Prerequisites
@@ -23,6 +25,7 @@ Output includes:
 - **Catalog URI** - REST endpoint for catalog operations
 
 Example output:
+
 ```
 Catalog enabled successfully
 Warehouse: my-bucket
@@ -142,6 +145,6 @@ If successful, returns JSON array of results.
 
 ## See Also
 
-- [r2-data-catalog/configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2-data-catalog/configuration.md) - Detailed token setup and PyIceberg connection
+- [r2-data-catalog/configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2-data-catalog/configuration.md) - Detailed token setup and PyIceberg connection
 - [patterns.md](patterns.md) - Query examples using configuration
 - [gotchas.md](gotchas.md) - Common configuration errors

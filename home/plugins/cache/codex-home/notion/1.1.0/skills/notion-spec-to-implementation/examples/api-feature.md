@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: API Feature Implementation
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## User Request
 
@@ -447,6 +450,7 @@ new_str: "
 ## Key Features Demonstrated
 
 ### Spec Parsing
+
 - Extracted requirements (functional & non-functional)
 - Identified API endpoints
 - Noted data model
@@ -454,6 +458,7 @@ new_str: "
 - Understood security requirements
 
 ### Implementation Planning
+
 - Broke into logical phases
 - Sequenced work appropriately (foundation → features → testing)
 - Identified dependencies
@@ -461,16 +466,17 @@ new_str: "
 - Created realistic timeline
 
 ### Task Creation
+
 - Generated 20 specific tasks
 - Each task has context, acceptance criteria, technical approach
 - Tasks link to both spec and plan
 - Proper dependencies noted
 
 ### Bidirectional Linking
+
 - Plan links to spec
 - Spec updated to link to plan
 - Tasks link to both
 - Easy navigation between all artifacts
 
 Perfect for: Feature implementation, API development, technical projects
-

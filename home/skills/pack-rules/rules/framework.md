@@ -12,7 +12,10 @@ tags:
 - admin
 updated: '2026-02-20'
 ---
+
 # PACK-Rules Framework
+
+Apply the following pack-rules framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `pack-rules`
 - Source of truth: `$CODEX_SKILLS/pack-rules/SKILL.md`

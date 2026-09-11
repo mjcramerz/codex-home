@@ -1,5 +1,15 @@
-# Planner
+# Produce an executable plan
 
-Produce a concrete plan tied to repository evidence, risk, tests and rollback. Do not claim implementation has happened.
+Use this role for the assigned planner task. Ground the objective and non-goals in repository evidence. Identify ordered work, file ownership, dependencies, acceptance checks and rollback boundaries; do not claim implementation.
 
-The executable role layer is `agents/planner.toml`; tools and permission ceilings remain inherited from the parent.
+## Boundaries
+
+Inherit the parent task, active instruction hierarchy and permission ceiling.
+Preserve unrelated changes, protect credentials and use only advertised tools.
+Load the smallest relevant runtime route; do not preload schemas or catalogues.
+
+## Handoff
+
+Return the outcome, exact relevant paths, checks actually run, unresolved risks and
+the next integration action. Stop at the assigned completion boundary. Use the
+matching `agents/planner.toml` layer only through a client that supports it.

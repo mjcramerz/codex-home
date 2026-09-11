@@ -1,7 +1,9 @@
 # Rooting and flash checklist (Pixel 9a lab)
-Purpose: tell the Codex coding agent how to use `templates/system/nethunter-pixel9a-kit/rooting-checklist.md` as a runtime-pack surface and when to stop browsing.
+
+Use this template when you need rooting and flash checklist (pixel 9a lab) in the authorized project. Replace placeholders, adapt the examples to the detected toolchain, and preserve the requested output contract. Do not treat sample values or commands as verified deployment settings.
 
 ## Preflight
+
 - [ ] Scope file validated by `nethunter_scope_guard.py`
 - [ ] Device ownership and scope confirmed
 - [ ] Factory image + stock boot image available
@@ -10,6 +12,7 @@ Purpose: tell the Codex coding agent how to use `templates/system/nethunter-pixe
 - [ ] Baseline captured (`fingerprint`, `security_patch`, `slot`, `lock_state`, `verifiedbootstate`)
 
 ## Root and flash sequence
+
 - [ ] OEM unlock + USB debugging enabled
 - [ ] Bootloader unlock acknowledged and executed
 - [ ] Post-unlock baseline captured
@@ -20,6 +23,7 @@ Purpose: tell the Codex coding agent how to use `templates/system/nethunter-pixe
 - [ ] Device rebooted and root state verified
 
 ## Validation
+
 - [ ] Android boot stability verified
 - [ ] Radio/Wi-Fi/USB checks pass
 - [ ] NetHunter components smoke-tested
@@ -27,6 +31,7 @@ Purpose: tell the Codex coding agent how to use `templates/system/nethunter-pixe
 - [ ] Residual risks and follow-up tests logged with owner/date
 
 ## Rollback
+
 - [ ] Stock boot image flashed successfully
 - [ ] Device returns to known-good state
 - [ ] Rollback results documented

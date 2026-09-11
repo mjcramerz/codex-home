@@ -12,15 +12,20 @@ tags:
 - common
 updated: '2026-03-06'
 ---
+
 # repo-ops reference bundle
+
+Consult this reference when repo-ops reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-03-06 (UTC)
 - Freshness method: local repo policy review plus primary git and CI documentation references.
 
 ## Skill purpose
+
 Repo operations workflow safety across git automation, branch promotion, release tagging, patch delivery, and CI helper tooling.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Inputs
 - Scope and boundaries
@@ -32,15 +37,18 @@ Repo operations workflow safety across git automation, branch promotion, release
 - References
 
 ## Local implementation anchors
+
 - `$CODEX_SKILLS/repo-ops/SKILL.md`
 - `$CODEX_SKILLS/repo-ops/agents/openai.yaml`
 
 ## External references
+
 - [Git documentation](https://git-scm.com/doc) - Core git behavior and safe workflows.
 - [Git push documentation](https://git-scm.com/docs/git-push) - Protected branch and ref update considerations.
 - [GitHub Actions docs](https://docs.github.com/actions) - CI workflow orchestration and security hardening.
 - [GitLab CI/CD docs](https://docs.gitlab.com/ci/) - Delivery pipeline orchestration and variables.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `repo-ops` that covers one read-only audit, one dry-run mutation path, and one rollback note.
 - Produce one positive-path and one negative-path validation scenario aligned to `repo-ops` before finalizing changes.

@@ -1,5 +1,7 @@
 # React (JavaScript/TypeScript) Web Security Spec (React 19.x, TypeScript 5.x)
 
+Consult this reference when react (javascript/typescript) web security spec (react 19.x, typescript 5.x) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
 
 1. **Secure-by-default code generation** for new React code.
@@ -977,9 +979,9 @@ Sanitizer reference:
 [14]: https://legacy.reactjs.org/docs/introducing-jsx.html "Introducing JSX – React"
 [15]: https://www.w3.org/TR/trusted-types/ "Trusted Types"
 [16]: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps "
-            
+
                 draft-ietf-oauth-browser-based-apps-26
-            
+
         "
 [17]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel "HTML attribute: rel - HTML | MDN"
 [18]: https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Secure_Contexts "Secure contexts - Security | MDN"

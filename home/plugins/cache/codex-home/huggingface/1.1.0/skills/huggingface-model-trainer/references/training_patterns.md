@@ -1,5 +1,7 @@
 # Common Training Patterns
 
+Consult this reference when common training patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This guide provides common training patterns and use cases for TRL on Hugging Face Jobs.
 
 ## Multi-GPU Training
@@ -100,7 +102,7 @@ hf_jobs("uv", {
 
 ## Trackio Configuration
 
-**Use sensible defaults for trackio setup.** See `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/references/trackio_guide.md` for complete documentation including grouping runs for experiments.
+**Use sensible defaults for trackio setup.** See `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/references/trackio_guide.md` for complete documentation including grouping runs for experiments.
 
 ### Basic Pattern
 
@@ -138,7 +140,7 @@ trackio.init(project="hyperparam-sweep", run_name="lr-0.01", group="lr_0.01")
 
 | Use Case | Pattern | Hardware | Time |
 |----------|---------|----------|------|
-| SFT training | `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_sft_example.py` | a10g-large | 2-6 hours |
+| SFT training | `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_sft_example.py` | a10g-large | 2-6 hours |
 | Large dataset (>10K) | Multi-GPU | a10g-largex2 | 4-12 hours |
 | Preference learning | DPO Training | a10g-large | 2-4 hours |
 | Online RL | GRPO Training | a10g-large | 3-6 hours |
@@ -148,6 +150,7 @@ trackio.init(project="hyperparam-sweep", run_name="lr-0.01", group="lr_0.01")
 **⚠️ IMPORTANT**: If you set `eval_strategy="steps"` or `eval_strategy="epoch"`, you **MUST** provide an `eval_dataset` to the trainer, or the training will hang.
 
 ### ✅ CORRECT - With eval dataset:
+
 ```python
 dataset_split = dataset.train_test_split(test_size=0.1, seed=42)
 
@@ -160,6 +163,7 @@ trainer = SFTTrainer(
 ```
 
 ### ❌ WRONG - Will hang:
+
 ```python
 trainer = SFTTrainer(
     model="Qwen/Qwen2.5-0.5B",
@@ -170,6 +174,7 @@ trainer = SFTTrainer(
 ```
 
 ### Option: Disable evaluation if no eval dataset
+
 ```python
 config = SFTConfig(
     eval_strategy="no",  # ← Explicitly disable evaluation
@@ -195,9 +200,9 @@ trainer = SFTTrainer(
 
 ## See Also
 
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_sft_example.py` - Complete SFT template with Trackio and eval split
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_dpo_example.py` - Complete DPO template
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_grpo_example.py` - Complete GRPO template
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/references/hardware_guide.md` - Detailed hardware specifications
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/references/training_methods.md` - Overview of all TRL training methods
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/references/troubleshooting.md` - Common issues and solutions
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_sft_example.py` - Complete SFT template with Trackio and eval split
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_dpo_example.py` - Complete DPO template
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_grpo_example.py` - Complete GRPO template
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/references/hardware_guide.md` - Detailed hardware specifications
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/references/training_methods.md` - Overview of all TRL training methods
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/references/troubleshooting.md` - Common issues and solutions

@@ -6,6 +6,10 @@ impactDescription:
 tags: images, gallery, lightbox, expo-image, ui
 ---
 
+# ui image gallery
+
+Apply the following ui image gallery guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Galeria for Image Galleries and Lightbox
 
 For image galleries with lightbox (tap to fullscreen), use `@nandorojo/galeria`.

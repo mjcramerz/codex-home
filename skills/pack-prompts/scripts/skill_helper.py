@@ -18,15 +18,7 @@ SKILL_NAME = 'pack-prompts'
 SKILL_CATEGORY = 'PACK'
 SKILL_DESCRIPTION = 'Create or update runtime prompt assets under $CODEX_HOME/.prompt/. Use when refining prompt contracts, adding operator-local prompt files, or improving prompt-maintenance assets.'
 LAST_REFRESH_UTC = '2026-02-15'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Prompt maintenance guardrails',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References',
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {
         'title': 'YAML 1.2 specification',

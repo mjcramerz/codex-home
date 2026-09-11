@@ -1,5 +1,7 @@
 # Reliability Principles for Training Jobs
 
+Consult this reference when reliability principles for training jobs is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 These principles are derived from real production failures and successful fixes. Following them prevents common failure modes and ensures reliable job execution.
 
 ## Principle 1: Always Verify Before Use
@@ -55,7 +57,7 @@ hub_repo_details(["trl-lib/ultrafeedback_binarized"], repo_type="dataset")
 - [ ] Validate file paths in repositories
 - [ ] Check for recent updates/renames of resources
 
-**Time cost:** 5-10 seconds  
+**Time cost:** 5-10 seconds
 **Time saved:** Hours of failed job time + debugging
 
 ---
@@ -130,7 +132,7 @@ subprocess.run([
 - [ ] Document known incompatibilities
 - [ ] Provide "safe" and "fast" variants when needed
 
-**Performance loss:** 10-20% in best case  
+**Performance loss:** 10-20% in best case
 **Reliability gain:** 95%+ success rate vs 60-70%
 
 ---
@@ -210,7 +212,7 @@ subprocess.run(["git", "clone", "https://github.com/ggerganov/llama.cpp.git", "/
 - [ ] Test scripts in clean environment
 - [ ] Document why each dependency is needed
 
-**Complexity:** Slightly longer scripts  
+**Complexity:** Slightly longer scripts
 **Reliability:** Scripts "just work" every time
 
 ---
@@ -310,7 +312,7 @@ TEST_BASE = "Qwen/Qwen2.5-0.5B"  # Compatible base
 - [ ] Keep test jobs cheap (small models, short timeouts)
 - [ ] Only move to production after test succeeds
 
-**Time cost:** 5-10 minutes for test run  
+**Time cost:** 5-10 minutes for test run
 **Debugging time saved:** Hours
 
 ---
@@ -320,6 +322,7 @@ TEST_BASE = "Qwen/Qwen2.5-0.5B"  # Compatible base
 Before submitting ANY job:
 
 ### Pre-Flight Checks
+
 - [ ] **Verified** all repos/datasets exist (hub_repo_details)
 - [ ] **Tested** with known-good inputs if new code
 - [ ] **Using** proven hardware/configuration
@@ -330,6 +333,7 @@ Before submitting ANY job:
 - [ ] **Added** clear error handling
 
 ### Script Quality
+
 - [ ] Self-contained (no external setup needed)
 - [ ] Complete dependencies listed
 - [ ] Build tools installed by script
@@ -338,6 +342,7 @@ Before submitting ANY job:
 - [ ] Configuration logged at start
 
 ### Job Configuration
+
 - [ ] Timeout > expected runtime + 30% buffer
 - [ ] Hardware appropriate for model size
 - [ ] Secrets include HF_TOKEN

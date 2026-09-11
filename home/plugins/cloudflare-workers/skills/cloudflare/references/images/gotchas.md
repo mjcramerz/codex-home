@@ -1,5 +1,7 @@
 # Gotchas & Best Practices
 
+Consult this reference when gotchas & best practices is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Fit Modes
 
 | Mode | Best For | Behavior |
@@ -29,12 +31,15 @@ format: 'auto' // Recommended - negotiates best format
 ## Common Errors
 
 ### 5403: "Image transformation failed"
+
 - Verify `width`/`height` ≤ 12000
 - Check `quality` 1-100, `dpr` 1-3
 - Don't combine incompatible options
 
 ### 9413: "Rate limit exceeded"
+
 Implement caching and exponential backoff:
+
 ```typescript
 for (let i = 0; i < 3; i++) {
   try { return await env.IMAGES.input(buffer).transform({...}).output(); }
@@ -43,12 +48,15 @@ for (let i = 0; i < 3; i++) {
 ```
 
 ### 5401: "Image too large"
+
 Pre-process images before upload (max 100MB, 12000×12000px)
 
 ### 5400: "Invalid image format"
+
 Supported: JPEG, PNG, GIF, WebP, AVIF, SVG
 
 ### 401/403: "Unauthorized"
+
 Verify API token has `Cloudflare Images → Edit` permission
 
 ## Limits
@@ -65,6 +73,7 @@ Verify API token has `Cloudflare Images → Edit` permission
 
 - **Slower encoding**: First request may have higher latency
 - **Browser detection**:
+
 ```typescript
 const format = /image\/avif/.test(request.headers.get('Accept') || '') ? 'avif' : 'webp';
 ```

@@ -1,18 +1,16 @@
 interface:
-  display_name: "OpenAI Docs"
-  short_description: "Reference the official OpenAI Developer docs"
-  icon_small: "./assets/openai-small.svg"
-  icon_large: "./assets/openai.png"
-  brand_color: "#10A37F"
-  default_prompt: "Use $openai-docs. Act as the \"OpenAI Docs\" specialist for \"Reference the official OpenAI Developer docs\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
-
+  display_name: OpenAI Docs
+  short_description: Use this skill for reference the official OpenAI Developer docs
+  icon_small: ./assets/openai-small.svg
+  icon_large: ./assets/openai.png
+  brand_color: '#10A37F'
+  default_prompt: Use $openai-docs for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "openaiDeveloperDocs"
-      description: "openaiDeveloperDocs MCP server"
-      transport: "streamable_http"
-      url: "https://developers.openai.com/mcp"
-
+  - type: mcp
+    value: openaiDeveloperDocs
+    description: openaiDeveloperDocs MCP server
+    transport: streamable_http
+    url: https://developers.openai.com/mcp
 policy:
   allow_implicit_invocation: true

@@ -1,5 +1,7 @@
 # Analytics Engine Patterns
 
+Consult this reference when analytics engine patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Use Cases
 
 | Use Case | Key Metrics | Index On |

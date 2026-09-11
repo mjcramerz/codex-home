@@ -1,5 +1,7 @@
 # Saving Results to Hugging Face Hub
 
+Consult this reference when saving results to hugging face hub is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **⚠️ CRITICAL:** Job environments are ephemeral. ALL results are lost when a job completes unless persisted to the Hub or external storage.
 
 ## Why Persistence is Required
@@ -17,18 +19,21 @@ When running on Hugging Face Jobs:
 ### Option 1: Push to Hugging Face Hub (Recommended)
 
 **For models:**
+
 ```python
 from transformers import AutoModel
 model.push_to_hub("username/model-name", token=os.environ.get("HF_TOKEN"))
 ```
 
 **For datasets:**
+
 ```python
 from datasets import Dataset
 dataset.push_to_hub("username/dataset-name", token=os.environ.get("HF_TOKEN"))
 ```
 
 **For files/artifacts:**
+
 ```python
 from huggingface_hub import HfApi
 api = HfApi(token=os.environ.get("HF_TOKEN"))
@@ -43,6 +48,7 @@ api.upload_file(
 ### Option 2: External Storage
 
 **S3:**
+
 ```python
 import boto3
 s3 = boto3.client('s3')
@@ -50,6 +56,7 @@ s3.upload_file('results.json', 'my-bucket', 'results.json')
 ```
 
 **Google Cloud Storage:**
+
 ```python
 from google.cloud import storage
 client = storage.Client()
@@ -70,6 +77,7 @@ requests.post("https://your-api.com/results", json=results)
 ### Job Configuration
 
 **Always include HF_TOKEN:**
+
 ```python
 hf_jobs("uv", {
     "script": "your_script.py",
@@ -80,12 +88,14 @@ hf_jobs("uv", {
 ### Script Configuration
 
 **Verify token exists:**
+
 ```python
 import os
 assert "HF_TOKEN" in os.environ, "HF_TOKEN required for Hub operations!"
 ```
 
 **Use token for Hub operations:**
+
 ```python
 from huggingface_hub import HfApi
 
@@ -321,16 +331,19 @@ api.create_repo(
 Check logs for push progress:
 
 **MCP Tool:**
+
 ```python
 hf_jobs("logs", {"job_id": "your-job-id"})
 ```
 
 **CLI:**
+
 ```bash
 hf jobs logs <job-id>
 ```
 
 **Python API:**
+
 ```python
 from huggingface_hub import fetch_job_logs
 for log in fetch_job_logs(job_id="your-job-id"):
@@ -338,6 +351,7 @@ for log in fetch_job_logs(job_id="your-job-id"):
 ```
 
 **Look for:**
+
 ```
 Pushing to username/repo-name...
 Upload file results.json: 100%
@@ -349,4 +363,3 @@ Upload file results.json: 100%
 **Without `secrets={"HF_TOKEN": "$HF_TOKEN"}` and persistence code, all results are permanently lost.**
 
 Always verify both are configured before submitting any job that produces results.
-

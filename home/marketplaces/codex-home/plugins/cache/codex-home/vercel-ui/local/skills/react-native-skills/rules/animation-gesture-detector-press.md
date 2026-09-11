@@ -5,6 +5,10 @@ impactDescription: UI thread animations, smoother press feedback
 tags: animation, gestures, press, reanimated
 ---
 
+# animation gesture detector press
+
+Apply the following animation gesture detector press guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use GestureDetector for Animated Press States
 
 For animated press states (scale, opacity on press), use `GestureDetector` with

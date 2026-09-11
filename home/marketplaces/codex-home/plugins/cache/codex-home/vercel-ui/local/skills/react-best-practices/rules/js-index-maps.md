@@ -5,6 +5,10 @@ impactDescription: 1M ops to 2K ops
 tags: javascript, map, indexing, optimization, performance
 ---
 
+# js index maps
+
+Apply the following js index maps guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Build Index Maps for Repeated Lookups
 
 Multiple `.find()` calls by the same key should use a Map.

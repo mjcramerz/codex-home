@@ -5,6 +5,10 @@ impactDescription: Optional description of impact (e.g., "20-50% improvement")
 tags: tag1, tag2
 ---
 
+# _template
+
+Apply the following _template guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Rule Title Here
 
 **Impact: MEDIUM (optional impact description)**

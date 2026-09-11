@@ -18,14 +18,7 @@ SKILL_NAME = 'pack-templates'
 SKILL_CATEGORY = 'PACK'
 SKILL_DESCRIPTION = 'Create or update pack templates under $CODEX_HOME/templates/. Use when adding scaffolds, adjusting template READMEs, or wiring template references into docs and indexes.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'YAML 1.2 specification', 'url': 'https://yaml.org/spec/1.2.2/', 'note': 'Manifest syntax and deterministic formatting rules.'},
     {'title': 'Jinja template docs', 'url': 'https://jinja.palletsprojects.com/en/stable/templates/', 'note': 'Template rendering and reuse patterns.'}

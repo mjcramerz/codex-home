@@ -13,15 +13,20 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # pm-linear-issues reference bundle
+
+Consult this reference when pm-linear-issues reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Manage issues, projects, and team workflows in Linear. Use when the user wants to read, create, or update tickets in Linear.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Overview
 - Prerequisites
@@ -41,14 +46,16 @@ Manage issues, projects, and team workflows in Linear. Use when the user wants t
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/linear/1.0.0/skills/linear/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/linear/1.0.0/skills/linear/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/linear/skills/linear/SKILL.md`
+- `$CODEX_HOME/plugins/linear/skills/linear/agents/openai.yaml`
 
 ## External references
+
 - [Linear API docs](https://developers.linear.app/docs/graphql/working-with-the-graphql-api) - Linear GraphQL workflow reference.
 - [Linear API auth docs](https://developers.linear.app/docs/graphql/authentication) - Authentication and token handling for Linear workflows.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `pm-linear-issues` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `pm-linear-issues` before finalizing changes.
-

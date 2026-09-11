@@ -5,6 +5,10 @@ impactDescription: self-documenting code, no hidden conditionals
 tags: composition, variants, architecture
 ---
 
+# patterns explicit variants
+
+Apply the following patterns explicit variants guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Create Explicit Component Variants
 
 Instead of one component with many boolean props, create explicit variant

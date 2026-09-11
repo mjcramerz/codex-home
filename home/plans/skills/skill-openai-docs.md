@@ -1,9 +1,11 @@
-# Plan
-Purpose: tell the Codex coding agent how to use `plans/skills/skill-openai-docs.md` as a runtime-pack surface and when to stop browsing.
+# Openai docs plan
 
-You must use this plan when applying or updating the `openai-docs` skill.
+Use this plan when you applying or updating the `openai-docs` skill. Fill in the concrete scope, evidence, ordered actions and completion criteria before executing dependent steps. Keep deployment and new test files out of scope unless the task authorizes them.
+
+Use this plan when applying or updating the `openai-docs` skill.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/plans/skills/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -11,52 +13,62 @@ You must use this plan when applying or updating the `openai-docs` skill.
 <!-- END:nav -->
 
 ## Inputs
-- You must use skill openai-docs.
+
+- Read the `openai-docs` skill only when its trigger matches this task and the skill is available.
 - Any referenced scripts, assets, or references in the skill
 
 ## Scope
+
 - In: tasks covered by the `openai-docs` skill and its resources.
 - Out: tasks outside the skill's domain.
 
 - For API/protocol surfaces, define contract versioning, timeout/retry ceilings, and idempotency/error-model expectations.
 
 ## Action items
-[ ] Use skill openai-docs and linked resources.
-[ ] Collect required inputs (products, endpoints, and target OpenAI docs sections).
-[ ] Execute the skill workflow and produce source-cited outputs.
-[ ] Validate outputs and update links/backlinks if applicable.
+
+- [ ] Use skill openai-docs and linked resources.
+- [ ] Collect required inputs (products, endpoints, and target OpenAI docs sections).
+- [ ] Execute the skill workflow and produce source-cited outputs.
+- [ ] Validate outputs and update links/backlinks if applicable.
 
 ## Testing and validation
-- You must follow validation steps in the skill or linked docs.
+
+- Follow validation steps in the skill or linked docs.
 
 ## Security checkpoints
-- You must confirm trust boundaries, credentials, and least-privilege assumptions before execution.
-- You must validate input bounds, timeout/retry limits, and failure behavior for risky operations.
-- You must record any approved exception, owner, and expiry before proceeding.
+
+- Confirm trust boundaries, credentials, and least-privilege assumptions before execution.
+- Validate input bounds, timeout/retry limits, and failure behavior for risky operations.
+- Record any approved exception, owner, and expiry before proceeding.
 
 ## Testing checkpoints
-- You must define fast-path and deep validation commands before making changes.
-- You must capture expected outcomes and acceptance criteria for each validation step.
-- You must re-run impacted checks after major changes and before final handoff.
+
+- Define fast-path and deep validation commands before making changes.
+- Capture expected outcomes and acceptance criteria for each validation step.
+- Re-run impacted checks after major changes and before final handoff.
 
 ## Deployment checkpoints
-- You must document rollout order, blast-radius controls, and rollback conditions.
-- You must confirm migration/backfill or feature-flag sequencing when applicable.
-- You must record post-deploy verification owners and evidence.
+
+- Document rollout order, blast-radius controls, and rollback conditions.
+- Confirm migration/backfill or feature-flag sequencing when applicable.
+- Record post-deploy verification owners and evidence.
 
 ## Multi-agent handoff
-- Coordinator hands off scope, constraints, and stop condition with the target entrypoint.
-- Executor reports touched files, commands run, evidence, blockers, and next action.
-- Receiving agent acknowledges handoff completeness before continuing execution.
+
+- When coordinating, hand off scope, constraints, and stop condition with the target entrypoint.
+- When executing, report touched files, commands run, evidence, blockers, and next action.
+- When receiving work, acknowledge handoff completeness before continuing execution.
 
 ## Risks and edge cases
+
 - Missing OpenAI docs MCP server configuration or unavailable endpoint.
 - Mismatched product scope can produce irrelevant documentation guidance.
 
 ## Examples
 
 - Example objective: "Find the latest Responses API guidance for JSON schema outputs"
-- Example validation: "Confirm citations point to official OpenAI docs pages"
+- Select an existing repository check that exercises the changed contract; do not copy an example command without confirming that its target, dependencies and side effects match this repository.
 
 ## Open questions
+
 - None.

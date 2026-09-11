@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # PACK-Snippets Framework
+
+Apply the following pack-snippets framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `pack-snippets`
 - Source of truth: `$CODEX_SKILLS/pack-snippets/SKILL.md`

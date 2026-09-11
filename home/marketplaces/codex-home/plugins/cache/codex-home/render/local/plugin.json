@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "render",
   "version": "1.1.0",
-  "description": "Render deployment and blueprint workflows.",
+  "description": "Use this plugin for render deployment and blueprint workflows.",
   "author": {
     "name": "Render"
   },

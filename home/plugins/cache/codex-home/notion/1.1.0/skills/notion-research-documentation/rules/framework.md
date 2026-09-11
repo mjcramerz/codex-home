@@ -13,9 +13,12 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # NOTION-Research Docs Framework
 
+Apply the following notion-research docs framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `notion-research-documentation`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/notion/1.0.0/skills/notion-research-documentation/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/notion/1.0.0/skills/notion-research-documentation/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/notion/1.0.0/skills/notion-research-documentation/references/`
+- Source of truth: `$CODEX_HOME/plugins/notion/skills/notion-research-documentation/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/notion/skills/notion-research-documentation/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/notion/skills/notion-research-documentation/references/`

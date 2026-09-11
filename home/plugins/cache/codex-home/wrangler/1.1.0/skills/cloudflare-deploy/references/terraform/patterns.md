@@ -1,5 +1,7 @@
 # Terraform Patterns & Use Cases
 
+Consult this reference when terraform patterns & use cases is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Architecture patterns, multi-environment setups, and real-world use cases.
 
 ## Recommended Directory Structure
@@ -76,7 +78,7 @@ resource "cloudflare_worker_script" "app" {
 
 **CRITICAL**: Wrangler and Terraform must NOT manage same resources.
 
-**Terraform**: Zones, DNS, security rules, Access, load balancers, worker deployments (CI/CD), KV/R2/D1 resource creation  
+**Terraform**: Zones, DNS, security rules, Access, load balancers, worker deployments (CI/CD), KV/R2/D1 resource creation
 **Wrangler**: Local dev (`wrangler dev`), manual deploys, D1 migrations, KV bulk ops, log streaming (`wrangler tail`)
 
 ### CI/CD Pattern
@@ -168,7 +170,7 @@ output "zone_id" { value = cloudflare_zone.main.id }
 
 ## See Also
 
-- [README]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/README.md) - Provider setup
-- [Configuration Reference]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/configuration.md) - All resource types
-- [API Reference]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/api.md) - Data sources
-- [Troubleshooting]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/gotchas.md) - Best practices, common issues
+- [README]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/README.md) - Provider setup
+- [Configuration Reference]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/configuration.md) - All resource types
+- [API Reference]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/api.md) - Data sources
+- [Troubleshooting]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/gotchas.md) - Best practices, common issues

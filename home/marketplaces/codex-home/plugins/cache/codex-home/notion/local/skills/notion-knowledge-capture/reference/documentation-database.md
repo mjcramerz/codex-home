@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # General Documentation Database
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **Purpose**: Store all types of documentation in a searchable, organized database.
 
@@ -105,4 +108,3 @@ Use `Notion:notion-create-database`:
 4. **Review properties** quarterly - remove unused ones
 5. **Document the schema** in database description
 6. **Train team** on property usage and conventions
-

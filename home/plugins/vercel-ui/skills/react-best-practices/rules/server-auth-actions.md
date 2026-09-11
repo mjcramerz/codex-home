@@ -5,6 +5,10 @@ impactDescription: prevents unauthorized access to server mutations
 tags: server, server-actions, authentication, security, authorization
 ---
 
+# server auth actions
+
+Apply the following server auth actions guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Authenticate Server Actions Like API Routes
 
 **Impact: CRITICAL (prevents unauthorized access to server mutations)**

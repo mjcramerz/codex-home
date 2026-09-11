@@ -5,6 +5,10 @@ impactDescription: faster initial paint
 tags: async, suspense, streaming, layout-shift
 ---
 
+# async suspense boundaries
+
+Apply the following async suspense boundaries guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Strategic Suspense Boundaries
 
 Instead of awaiting data in async components before returning JSX, use Suspense boundaries to show the wrapper UI faster while data loads.

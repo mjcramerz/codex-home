@@ -1,28 +1,23 @@
-# Perl style guide
-Purpose: tell the Codex coding agent how to use `docs/style/perl.md` as a runtime-pack surface and when to stop browsing.
-Canonical Perl guidance for this pack. Follow repo-specific conventions first.
+# Perl
 
-## Baseline
-- Enable `use strict;` and `use warnings;`.
-- You must prefer lexical filehandles, three-arg `open`, and explicit UTF-8 handling when reading text.
-- You must keep parsing, normalization, and rendering logic in small pure functions where possible.
-- You must use `Path::Tiny`, `File::Spec`, or `File::Basename` patterns instead of hand-rolled path string hacks.
+Use this guide when you implement or review Perl modules, command-line helpers or hook adapters. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Input safety
-- You must treat hook payloads, env vars, files, and subprocess output as untrusted.
-- You must validate key presence, scalar shapes, ranges, and path boundaries before mutating anything.
-- Avoid passing untrusted input through a shell; prefer list-form `system` or direct module APIs.
+## Apply these practices
 
-## Data formats
-- You must prefer explicit JSON/TOML/YAML parsing libraries instead of regex-only transforms.
-- Reparse generated output before finishing the turn.
-- You must keep STDERR human-readable and STDOUT machine-readable for CLI helpers.
+**1.** Identify the minimum Perl version, module search path, package namespace and entrypoint contract. Enable strict and warnings; keep package initialization free of external side effects.
 
-## Validation
-- `perl -c path/to/file.pm`
-- `prove -lr t` when the repo ships Perl tests
+**2.** Validate JSON shapes, string lengths, paths and encodings before use. Use lexical handles and three-argument open; check open, print, close and rename failures when the operation matters.
 
-## After that, you must check related files
+**3.** Use list-form system or exec with an explicit executable. Do not construct shell commands from input, use string eval for data, or treat a successful spawn as a successful child exit.
+
+**4.** Keep stdout reserved for the documented machine-readable result. Send bounded, redacted diagnostics to stderr; preserve exit status and distinguish malformed input, tool failure and policy denial.
+
+**5.** Run perl -c with the intended trusted library paths, then the narrow existing tests or fixture calls. Remember that compile-time BEGIN blocks can execute even during syntax checking; inspect unfamiliar modules first.
+
+## Select related guidance
+
 - `$CODEX_HOME/docs/lang/perl.md`
 - `$CODEX_HOME/templates/perl/codex-hook-module/`
 - `$CODEX_HOME/index/style/perl.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

@@ -1,8 +1,9 @@
 # Plugins (entrypoint)
-Purpose: route portable plugin, marketplace, compatibility, and runtime-cache work for the Codex coding agent.
-You must read only the smallest section that resolves the current task and stop broad browsing once the source and validator are known.
+
+Use this route when you need plugins. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/pack/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`

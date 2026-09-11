@@ -5,6 +5,10 @@ impactDescription: fonts available at launch, no async loading
 tags: fonts, expo, performance, config-plugin
 ---
 
+# fonts config plugin
+
+Apply the following fonts config plugin guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Expo Config Plugin for Font Loading
 
 Use the `expo-font` config plugin to embed fonts at build time instead of

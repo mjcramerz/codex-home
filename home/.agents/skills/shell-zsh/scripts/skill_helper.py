@@ -18,16 +18,7 @@ SKILL_NAME = 'shell-zsh'
 SKILL_CATEGORY = 'LANG'
 SKILL_DESCRIPTION = 'Write robust zsh scripts, wrappers, and shell integrations.'
 LAST_REFRESH_UTC = '2026-06-03'
-COVERAGE_HEADINGS = [
-    'When to use',
-    'Non-negotiables',
-    'Workflow',
-    'Zsh-specific guidance',
-    'Shared-shell safety',
-    'Validation and testing',
-    'Outputs',
-    'References',
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'Zsh manual', 'url': 'https://zsh.sourceforge.io/Doc/', 'note': 'Core shell semantics, options, completion, and startup behavior.'},
     {'title': 'Zsh Guide', 'url': 'https://zsh.sourceforge.io/Guide/', 'note': 'Practical guidance for functions, options, expansion, and shell ergonomics.'},

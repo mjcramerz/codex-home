@@ -5,6 +5,10 @@ impactDescription: native accessibility, platform-consistent UX
 tags: user-interface, menus, context-menus, zeego, accessibility
 ---
 
+# ui menus
+
+Apply the following ui menus guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Native Menus for Dropdowns and Context Menus
 
 Use native platform menus instead of custom JS implementations. Native menus

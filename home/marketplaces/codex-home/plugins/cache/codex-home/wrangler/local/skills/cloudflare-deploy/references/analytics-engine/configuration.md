@@ -1,5 +1,7 @@
 # Analytics Engine Configuration
 
+Consult this reference when analytics engine configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Setup
 
 1. Add binding to `wrangler.jsonc`
@@ -19,6 +21,7 @@
 ```
 
 Multiple datasets for separate concerns:
+
 ```jsonc
 {
   "analytics_engine_datasets": [

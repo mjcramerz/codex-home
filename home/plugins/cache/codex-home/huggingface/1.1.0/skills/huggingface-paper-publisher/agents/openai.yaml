@@ -1,15 +1,13 @@
 interface:
-  display_name: "Hugging Face Paper Publisher"
-  short_description: "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets"
-  default_prompt: "Use $huggingface-paper-publisher. Use the Hugging Face Paper Publisher skill when the task matches this scope: Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles."
-
+  display_name: Hugging Face Paper Publisher
+  short_description: Use this skill for publish and manage research papers on Hugging Face Hub. Supports creati
+  default_prompt: Use $huggingface-paper-publisher for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "huggingface"
-      description: "huggingface MCP server"
-      transport: "streamable_http"
-      url: "https://huggingface.co/mcp?login"
-
+  - type: mcp
+    value: huggingface
+    description: huggingface MCP server
+    transport: streamable_http
+    url: https://huggingface.co/mcp?login
 policy:
   allow_implicit_invocation: true

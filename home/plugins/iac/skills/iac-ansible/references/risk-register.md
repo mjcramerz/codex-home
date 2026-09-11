@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Risk register for iac-ansible
+
+Consult this reference when risk register for iac-ansible is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 | Risk area | Example failure mode | Preventive control | Detection signal | Recovery action |
 | --- | --- | --- | --- | --- |

@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## TypeScript Setup
 
 **Generate types from wrangler.jsonc** (replaces deprecated `@cloudflare/workers-types`):
@@ -76,6 +78,7 @@ SECRET_KEY="my-secret-value"
 ```
 
 Accessed via `ctx.env.SECRET_KEY`. Set production secrets:
+
 ```bash
 echo "value" | npx wrangler pages secret put SECRET_KEY --project-name=my-app
 ```
@@ -83,17 +86,20 @@ echo "value" | npx wrangler pages secret put SECRET_KEY --project-name=my-app
 ## Static Config Files
 
 **_routes.json** - Custom routing:
+
 ```json
 { "version": 1, "include": ["/api/*"], "exclude": ["/static/*"] }
 ```
 
 **_headers** - Static headers:
+
 ```
 /static/*
   Cache-Control: public, max-age=31536000
 ```
 
 **_redirects** - Redirects:
+
 ```
 /old  /new  301
 ```
@@ -119,4 +125,4 @@ npx wrangler pages deploy ./dist --branch preview
 npx wrangler pages download config my-project
 ```
 
-**See also:** [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pages-functions/api.md) for binding usage examples
+**See also:** [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pages-functions/api.md) for binding usage examples

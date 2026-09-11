@@ -1,14 +1,13 @@
 interface:
-  display_name: "Figma"
-  short_description: "Use Figma MCP for design-to-code work"
-  icon_small: "./assets/figma-small.svg"
-  icon_large: "./assets/figma.png"
-  default_prompt: "Use $figma. Use Figma MCP to inspect the target design and translate it into implementable UI decisions."
-
+  display_name: Figma
+  short_description: Use Figma MCP for design-to-code work
+  icon_small: ./assets/figma-small.svg
+  icon_large: ./assets/figma.png
+  default_prompt: Use $figma for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "figma"
-      description: "figma MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.figma.com/mcp"
+  - type: mcp
+    value: figma
+    description: figma MCP server
+    transport: streamable_http
+    url: https://mcp.figma.com/mcp

@@ -37,17 +37,18 @@ Composable utility (stdin → NDJSON):
 - `references/hf_enrich_models.sh` — reads model IDs from stdin, fetches metadata per ID, emits one JSON object per line for streaming pipelines.
 
 Composability through piping (shell-friendly JSON output):
+
 ```bash
-$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-tool-builder/references/baseline_hf_api.sh 25 \
+$CODEX_HOME/plugins/huggingface/skills/huggingface-tool-builder/references/baseline_hf_api.sh 25 \
   | jq -r '.[].id' \
-  | $CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-tool-builder/references/hf_enrich_models.sh \
+  | $CODEX_HOME/plugins/huggingface/skills/huggingface-tool-builder/references/hf_enrich_models.sh \
   | jq -s 'sort_by(.downloads) | reverse | .[:10]'
 
-$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-tool-builder/references/baseline_hf_api.sh 50 \
+$CODEX_HOME/plugins/huggingface/skills/huggingface-tool-builder/references/baseline_hf_api.sh 50 \
   | jq '[.[] | {id, downloads}] | sort_by(.downloads) | reverse | .[:10]'
 
 printf '%s\n' openai/gpt-oss-120b meta-llama/Meta-Llama-3.1-8B \
-  | $CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-tool-builder/references/hf_model_card_frontmatter.sh \
+  | $CODEX_HOME/plugins/huggingface/skills/huggingface-tool-builder/references/hf_model_card_frontmatter.sh \
   | jq -s 'map({id, license, has_extra_gated_prompt})'
 ```
 
@@ -72,9 +73,9 @@ The following are the main API endpoints available at `https://huggingface.co`
 
 The API is documented with the OpenAPI standard at `https://huggingface.co/.well-known/openapi.json`.
 
-**IMPORTANT:** DO NOT ATTEMPT to read `https://huggingface.co/.well-known/openapi.json` directly as it is too large to process. 
+**IMPORTANT:** DO NOT ATTEMPT to read `https://huggingface.co/.well-known/openapi.json` directly as it is too large to process.
 
-**IMPORTANT** Use `jq` to query and extract relevant parts. For example, 
+**IMPORTANT** Use `jq` to query and extract relevant parts. For example,
 
  Command to Get All 160 Endpoints
 
@@ -92,7 +93,7 @@ You can also query endpoints to see the shape of the data. When doing so constra
 
 ## Using the HF command line tool
 
-The `hf` command line tool gives you further access to Hugging Face repository content and infrastructure. 
+The `hf` command line tool gives you further access to Hugging Face repository content and infrastructure.
 
 ```bash
 ❯ hf --help

@@ -1,13 +1,12 @@
 interface:
-  display_name: "WinUI App"
-  short_description: "[Windows only] Build native WinUI 3 apps"
-  icon_large: "./assets/winui.png"
-  default_prompt: "Create a new $winui-app desktop app for me."
-
+  display_name: WinUI App
+  short_description: Use this skill for [Windows only] Build native WinUI 3 apps
+  icon_large: ./assets/winui.png
+  default_prompt: Use $winui-app for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "microsoft-learn"
-      description: "microsoft-learn MCP server"
-      transport: "streamable_http"
-      url: "https://learn.microsoft.com/api/mcp"
+  - type: mcp
+    value: microsoft-learn
+    description: microsoft-learn MCP server
+    transport: streamable_http
+    url: https://learn.microsoft.com/api/mcp

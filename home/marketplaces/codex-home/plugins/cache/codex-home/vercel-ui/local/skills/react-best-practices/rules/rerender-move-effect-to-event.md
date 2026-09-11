@@ -5,6 +5,10 @@ impactDescription: avoids effect re-runs and duplicate side effects
 tags: rerender, useEffect, events, side-effects, dependencies
 ---
 
+# rerender move effect to event
+
+Apply the following rerender move effect to event guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Put Interaction Logic in Event Handlers
 
 If a side effect is triggered by a specific user action (submit, click, drag), run it in that event handler. Do not model the action as state + effect; it makes effects re-run on unrelated changes and can duplicate the action.

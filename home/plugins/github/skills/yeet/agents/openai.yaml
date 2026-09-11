@@ -1,6 +1,6 @@
 interface:
-  display_name: "Yeet"
-  short_description: "Stage, commit, and open PR"
-  icon_small: "./assets/yeet-small.svg"
-  icon_large: "./assets/yeet.png"
-  default_prompt: "Use $yeet. Prepare this branch for review: stage intended changes, write a focused commit, and open a PR."
+  display_name: Yeet
+  short_description: Use this skill for stage, commit, and open PR
+  icon_small: ./assets/yeet-small.svg
+  icon_large: ./assets/yeet.png
+  default_prompt: Use $yeet for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

@@ -1,5 +1,7 @@
 # Workers VPC Connectivity
 
+Consult this reference when workers vpc connectivity is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Connect Cloudflare Workers to private networks and internal infrastructure using TCP Sockets.
 
 ## Overview
@@ -21,10 +23,10 @@ Need private network connectivity from Workers?
 | Requirement | Use | Why |
 |------------|-----|-----|
 | HTTP/HTTPS APIs in private network | VPC Services (beta, separate docs) | SSRF-safe, declarative bindings |
-| PostgreSQL/MySQL databases | [Hyperdrive]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/) | Connection pooling, caching, optimized |
+| PostgreSQL/MySQL databases | [Hyperdrive]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/) | Connection pooling, caching, optimized |
 | Custom TCP protocols (SSH, MQTT, proprietary) | **TCP Sockets (this doc)** | Full protocol control |
-| Simple HTTP with lowest latency | TCP Sockets + [Smart Placement]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/) | Manual optimization |
-| Expose on-prem to internet (inbound) | [Cloudflare Tunnel]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/tunnel/) | Not Worker-specific |
+| Simple HTTP with lowest latency | TCP Sockets + [Smart Placement]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/) | Manual optimization |
+| Expose on-prem to internet (inbound) | [Cloudflare Tunnel]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/tunnel/) | Not Worker-specific |
 
 ## When to Use TCP Sockets
 
@@ -85,15 +87,15 @@ Most private network connectivity combines TCP Sockets with Cloudflare Tunnel:
 2. Tunnel endpoint routes to private IP
 3. Response flows back through Tunnel to Worker
 
-See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-vpc/configuration.md) for Tunnel setup details.
+See [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-vpc/configuration.md) for Tunnel setup details.
 
 ## Reading Order
 
 1. **Start here (README.md)** - Overview and decision guide
-2. **[api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-vpc/api.md)** - Socket interface, types, methods
-3. **[configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-vpc/configuration.md)** - Wrangler setup, Tunnel integration
-4. **[patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-vpc/patterns.md)** - Real-world examples (databases, protocols, error handling)
-5. **[gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-vpc/gotchas.md)** - Limits, blocked ports, common errors
+2. **[api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-vpc/api.md)** - Socket interface, types, methods
+3. **[configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-vpc/configuration.md)** - Wrangler setup, Tunnel integration
+4. **[patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-vpc/patterns.md)** - Real-world examples (databases, protocols, error handling)
+5. **[gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-vpc/gotchas.md)** - Limits, blocked ports, common errors
 
 ## Key Limits
 
@@ -103,7 +105,7 @@ See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1
 | Blocked destinations | Cloudflare IPs, localhost, port 25 |
 | Scope requirement | Must create in handler (not global) |
 
-See [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-vpc/gotchas.md) for complete limits and troubleshooting.
+See [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-vpc/gotchas.md) for complete limits and troubleshooting.
 
 ## Best Practices
 
@@ -115,9 +117,9 @@ See [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/s
 
 ## Related Technologies
 
-- **[Hyperdrive]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/)** - PostgreSQL/MySQL with connection pooling
-- **[Cloudflare Tunnel]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/tunnel/)** - Secure private network access
-- **[Smart Placement]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/)** - Auto-locate Workers near backends
+- **[Hyperdrive]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/)** - PostgreSQL/MySQL with connection pooling
+- **[Cloudflare Tunnel]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/tunnel/)** - Secure private network access
+- **[Smart Placement]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/)** - Auto-locate Workers near backends
 - **VPC Services (beta)** - HTTP-only service bindings with SSRF protection (separate docs)
 
 ## Reference

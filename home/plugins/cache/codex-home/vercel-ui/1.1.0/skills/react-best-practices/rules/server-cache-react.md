@@ -5,6 +5,10 @@ impactDescription: deduplicates within request
 tags: server, cache, react-cache, deduplication
 ---
 
+# server cache react
+
+Apply the following server cache react guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Per-Request Deduplication with React.cache()
 
 Use `React.cache()` for server-side request deduplication. Authentication and database queries benefit most.
@@ -53,7 +57,7 @@ getUser(1)
 getUser(1)  // Cache hit, returns cached result
 ```
 
-If you must pass objects, pass the same reference:
+If pass objects, pass the same reference:
 
 ```typescript
 const params = { uid: 1 }

@@ -1,5 +1,7 @@
 # Realtime, gRPC, And Background Work
 
+Consult this reference when realtime, grpc, and background work is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Primary docs:
 - https://learn.microsoft.com/aspnet/core/signalr/introduction
 - https://learn.microsoft.com/aspnet/core/grpc/

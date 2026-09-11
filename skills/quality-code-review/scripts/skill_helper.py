@@ -19,17 +19,7 @@ SKILL_CATEGORY = 'AUDIT'
 SKILL_DESCRIPTION = 'High-rigor code review skill: intent alignment, correctness, security, performance, and reproducibility checks with actionable output.'
 LAST_REFRESH_UTC = '2026-02-11'
 REQUIRED_MCP_TOOLS = {'filesystem'}
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Review output format',
-    'Review heuristics',
-    'Security and reliability checks (quick)',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'OWASP Cheat Sheet Series', 'url': 'https://cheatsheetseries.owasp.org/', 'note': 'Secure defaults and implementation guidance.'},
     {'title': 'OWASP ASVS', 'url': 'https://owasp.org/www-project-application-security-verification-standard/', 'note': 'Application security verification requirements.'},

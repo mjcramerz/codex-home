@@ -1,5 +1,7 @@
 # Stream Configuration
 
+Consult this reference when stream configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Setup, environment variables, and wrangler configuration.
 
 ## Installation
@@ -55,6 +57,7 @@ STREAM_CUSTOMER_CODE=your-customer-code
 Create once for self-signing tokens (thousands of daily users).
 
 **Create key**
+
 ```bash
 curl -X POST \
   "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/keys" \
@@ -64,6 +67,7 @@ curl -X POST \
 ```
 
 **Store in secrets**
+
 ```bash
 wrangler secret put STREAM_KEY_ID
 wrangler secret put STREAM_JWK
@@ -72,6 +76,7 @@ wrangler secret put STREAM_JWK
 ## Webhooks
 
 **Setup webhook URL**
+
 ```bash
 curl -X PUT \
   "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/webhook" \
@@ -83,6 +88,7 @@ curl -X PUT \
 ```
 
 **Store secret**
+
 ```bash
 wrangler secret put WEBHOOK_SECRET
 ```
@@ -129,13 +135,13 @@ const playerParams = new URLSearchParams({
 
 ## In This Reference
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
-- [api-live.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming APIs
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, best practices
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting
+- [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
+- [api-live.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming APIs
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, best practices
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting
 
 ## See Also
 
-- [wrangler]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/) - Wrangler CLI and configuration
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs in Workers
+- [wrangler]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/) - Wrangler CLI and configuration
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs in Workers

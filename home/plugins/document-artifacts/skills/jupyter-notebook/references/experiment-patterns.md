@@ -1,5 +1,7 @@
 # Experiment Patterns
 
+Consult this reference when experiment patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use this structure for exploratory and experimental work:
 
 - Title and objective: state the question and the success criteria.

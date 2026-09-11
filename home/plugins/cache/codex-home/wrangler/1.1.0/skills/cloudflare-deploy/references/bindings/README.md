@@ -1,5 +1,7 @@
 # Cloudflare Bindings Skill Reference
 
+Consult this reference when cloudflare bindings skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance on Cloudflare Workers Bindings - the runtime APIs that connect Workers to Cloudflare platform resources.
 
 ## What Are Bindings?
@@ -77,6 +79,7 @@ Bindings are how Workers access Cloudflare resources (storage, compute, services
 ## Quick Start
 
 1. **Add binding to wrangler.jsonc:**
+
 ```jsonc
 {
   "kv_namespaces": [
@@ -86,11 +89,13 @@ Bindings are how Workers access Cloudflare resources (storage, compute, services
 ```
 
 2. **Generate types:**
+
 ```bash
 npx wrangler types
 ```
 
 3. **Access in Worker:**
+
 ```typescript
 export default {
   async fetch(request, env, ctx) {

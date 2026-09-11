@@ -1,5 +1,7 @@
 # Workers AI API Reference
 
+Consult this reference when workers ai api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Core Method
 
 ```typescript
@@ -21,6 +23,7 @@ console.log(result.response);
 ```
 
 **Streaming:**
+
 ```typescript
 const stream = await env.AI.run(model, { messages, stream: true });
 return new Response(stream, { headers: { 'Content-Type': 'text/event-stream' } });

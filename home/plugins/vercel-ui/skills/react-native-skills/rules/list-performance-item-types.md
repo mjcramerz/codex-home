@@ -5,6 +5,10 @@ impactDescription: efficient recycling, less layout thrashing
 tags: list, performance, recycling, heterogeneous, LegendList
 ---
 
+# list performance item types
+
+Apply the following list performance item types guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Item Types for Heterogeneous Lists
 
 When a list has different item layouts (messages, images, headers, etc.), use a

@@ -1,5 +1,7 @@
 # Patterns & Use Cases
 
+Consult this reference when patterns & use cases is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Protect API with Schema + JWT
 
 ```bash
@@ -41,6 +43,7 @@ PUT /zones/{zone_id}/api_gateway/settings/schema_validation
 ## BOLA Detection
 
 ### Enumeration Detection
+
 Detects sequential resource access (e.g., `/users/1`, `/users/2`, `/users/3`).
 
 ```javascript
@@ -50,6 +53,7 @@ Detects sequential resource access (e.g., `/users/1`, `/users/2`, `/users/3`).
 ```
 
 ### Parameter Pollution
+
 Detects duplicate/excessive parameters in requests.
 
 ```javascript
@@ -59,6 +63,7 @@ Detects duplicate/excessive parameters in requests.
 ```
 
 ### Combined BOLA Protection
+
 ```javascript
 // Comprehensive BOLA rule
 (cf.api_gateway.cf-risk-bola-enumeration or cf.api_gateway.cf-risk-bola-pollution)
@@ -69,6 +74,7 @@ and http.host eq "api.example.com"
 ## Authentication Posture
 
 ### Detect Missing Auth
+
 ```javascript
 // Log endpoints lacking authentication
 (cf.api_gateway.cf-risk-missing-auth and http.host eq "api.example.com")
@@ -76,6 +82,7 @@ and http.host eq "api.example.com"
 ```
 
 ### Detect Mixed Auth
+
 ```javascript
 // Alert on inconsistent auth patterns
 (cf.api_gateway.cf-risk-mixed-auth and http.host eq "api.example.com")
@@ -130,8 +137,8 @@ and http.host eq "api.example.com"
 
 ## Architecture Patterns
 
-**Public API:** Discovery + Schema Validation 2.0 + JWT + Rate Limiting + Bot Management  
-**Partner API:** mTLS + Schema Validation + Sequence Mitigation  
+**Public API:** Discovery + Schema Validation 2.0 + JWT + Rate Limiting + Bot Management
+**Partner API:** mTLS + Schema Validation + Sequence Mitigation
 **Internal API:** Discovery + Schema Learning + Auth Posture
 
 ## OWASP API Security Top 10 Mapping (2026)
@@ -151,8 +158,8 @@ and http.host eq "api.example.com"
 
 ## Monitoring
 
-**Security Events:** `Security > Events` → Filter: Action = block, Service = API Shield  
-**Firewall Analytics:** `Analytics > Security` → Filter by `cf.api_gateway.*` fields  
+**Security Events:** `Security > Events` → Filter: Action = block, Service = API Shield
+**Firewall Analytics:** `Analytics > Security` → Filter by `cf.api_gateway.*` fields
 **Logpush fields:** APIGatewayAuthIDPresent, APIGatewayRequestViolatesSchema, APIGatewayFallthroughDetected, JWTValidationResult
 
 ## Availability (2026)

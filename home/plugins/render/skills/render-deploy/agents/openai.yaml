@@ -1,14 +1,13 @@
 interface:
-  display_name: "Render Deploy"
-  short_description: "Deploy applications to Render via Blueprints or MCP"
-  icon_small: "./assets/render-small.svg"
-  icon_large: "./assets/render.png"
-  default_prompt: "Use $render-deploy. Deploy this application to Render and provide service URL, env vars, and next checks."
-
+  display_name: Render Deploy
+  short_description: Deploy applications to Render via Blueprints or MCP
+  icon_small: ./assets/render-small.svg
+  icon_large: ./assets/render.png
+  default_prompt: Use $render-deploy for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "render"
-      description: "render MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.render.com/mcp"
+  - type: mcp
+    value: render
+    description: render MCP server
+    transport: streamable_http
+    url: https://mcp.render.com/mcp

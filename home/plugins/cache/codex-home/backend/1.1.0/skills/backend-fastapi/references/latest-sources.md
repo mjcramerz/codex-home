@@ -13,15 +13,20 @@ tags:
 - web
 updated: '2026-02-20'
 ---
+
 # backend-fastapi reference bundle
+
+Consult this reference when backend-fastapi reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 FastAPI production patterns: configuration, routing, validation, auth hooks, error handling, and testing with secure defaults.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Defaults
 - Testing
@@ -31,14 +36,16 @@ FastAPI production patterns: configuration, routing, validation, auth hooks, err
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/backend-fastapi/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/backend-fastapi/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/backend/skills/backend-fastapi/SKILL.md`
+- `$CODEX_HOME/plugins/backend/skills/backend-fastapi/agents/openai.yaml`
 
 ## External references
+
 - [FastAPI docs](https://fastapi.tiangolo.com/) - Framework patterns and API wiring.
 - [Pydantic docs](https://docs.pydantic.dev/latest/) - Validation and schema serialization patterns.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `backend-fastapi` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `backend-fastapi` before finalizing changes.
-

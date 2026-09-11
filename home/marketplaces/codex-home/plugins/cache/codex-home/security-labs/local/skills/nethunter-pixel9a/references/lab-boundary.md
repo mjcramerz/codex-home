@@ -13,11 +13,15 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Scoped lab boundary (NetHunter Pixel 9a)
+
+Consult this reference when scoped lab boundary (nethunter pixel 9a) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 Use this reference before any rooting or flashing operation.
 
 ## Mandatory controls
+
 - Require a documented `scope_id` for the rooting or flashing run.
 - Operate only on organization-owned and allowed lab devices.
 - Keep full backup + rollback images before unlock/flash actions.
@@ -25,6 +29,7 @@ Use this reference before any rooting or flashing operation.
 - Keep evidence: operator, timestamp, build IDs, hash values, and outcome.
 
 ## Required scope schema (minimum)
+
 ```json
 {
   "scope_id": "MOB-2026-0099",
@@ -46,6 +51,7 @@ Use this reference before any rooting or flashing operation.
 ```
 
 ## Stop conditions
+
 - Device is not in the allowed list.
 - Scope expired or required scope details are missing.
 - No rollback path or no known-good boot image.

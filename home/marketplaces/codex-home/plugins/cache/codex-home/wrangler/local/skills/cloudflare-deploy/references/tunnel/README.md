@@ -1,5 +1,7 @@
 # Cloudflare Tunnel
 
+Consult this reference when cloudflare tunnel is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Secure outbound-only connections between infrastructure and Cloudflare's global network.
 
 ## Overview
@@ -21,6 +23,7 @@ Cloudflare Tunnel (formerly Argo Tunnel) enables:
 ## Quick Start
 
 ### Local Config
+
 ```bash
 # Install cloudflared
 brew install cloudflared  # macOS
@@ -39,6 +42,7 @@ cloudflared tunnel run my-tunnel
 ```
 
 ### Dashboard Config (Recommended)
+
 1. **Zero Trust** > **Networks** > **Tunnels** > **Create**
 2. Name tunnel, copy token
 3. Configure routes in dashboard
@@ -47,6 +51,7 @@ cloudflared tunnel run my-tunnel
 ## Decision Tree
 
 **Choose config source:**
+
 ```
 Need centralized config updates?
 ├─ Yes → Token-based (dashboard config)
@@ -101,29 +106,29 @@ ingress:
 
 **New to Cloudflare Tunnel:**
 1. This README (overview, quick start)
-2. [networking.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/networking.md) - Firewall rules, connectivity pre-checks
-3. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/configuration.md) - Config file options, ingress rules
-4. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/patterns.md) - Docker, Kubernetes, production deployment
-5. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/gotchas.md) - Troubleshooting, best practices
+2. [networking.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/networking.md) - Firewall rules, connectivity pre-checks
+3. [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/configuration.md) - Config file options, ingress rules
+4. [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/patterns.md) - Docker, Kubernetes, production deployment
+5. [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/gotchas.md) - Troubleshooting, best practices
 
 **Enterprise deployment:**
-1. [networking.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/networking.md) - Corporate firewall requirements
-2. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/gotchas.md) - HA setup, security best practices
-3. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/patterns.md) - Kubernetes, rolling updates
+1. [networking.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/networking.md) - Corporate firewall requirements
+2. [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/gotchas.md) - HA setup, security best practices
+3. [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/patterns.md) - Kubernetes, rolling updates
 
 **Programmatic control:**
-1. [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/api.md) - REST API, TypeScript SDK
+1. [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/api.md) - REST API, TypeScript SDK
 
 ## In This Reference
 
-- [networking.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/networking.md) - Firewall rules, ports, connectivity pre-checks
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/configuration.md) - Config file options, ingress rules, TLS settings
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/api.md) - REST API, TypeScript SDK, token-based tunnels
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/patterns.md) - Docker, Kubernetes, Terraform, HA, use cases
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/tunnel/gotchas.md) - Troubleshooting, limitations, best practices
+- [networking.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/networking.md) - Firewall rules, ports, connectivity pre-checks
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/configuration.md) - Config file options, ingress rules, TLS settings
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/api.md) - REST API, TypeScript SDK, token-based tunnels
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/patterns.md) - Docker, Kubernetes, Terraform, HA, use cases
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/tunnel/gotchas.md) - Troubleshooting, limitations, best practices
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Workers with Tunnel integration
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Workers with Tunnel integration
 - [access](../access/) - Zero Trust access policies
 - [warp](../warp/) - WARP client for private networks

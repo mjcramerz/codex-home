@@ -1,5 +1,7 @@
 # Workers Frameworks
 
+Consult this reference when workers frameworks is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Hono (Recommended)
 
 Workers-native web framework with excellent TypeScript support and middleware ecosystem.
@@ -192,6 +194,6 @@ router.listen();
 
 ## See Also
 
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/patterns.md) - Common workflows
-- [API]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/api.md) - Runtime APIs
-- [Gotchas]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/gotchas.md) - Framework-specific issues
+- [Patterns]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/patterns.md) - Common workflows
+- [API]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/api.md) - Runtime APIs
+- [Gotchas]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/gotchas.md) - Framework-specific issues

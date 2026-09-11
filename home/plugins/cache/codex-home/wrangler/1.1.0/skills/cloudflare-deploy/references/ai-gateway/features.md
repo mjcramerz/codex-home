@@ -1,5 +1,7 @@
 # Features & Capabilities
 
+Consult this reference when features & capabilities is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Caching
 
 Dashboard: Settings → Cache Responses → Enable

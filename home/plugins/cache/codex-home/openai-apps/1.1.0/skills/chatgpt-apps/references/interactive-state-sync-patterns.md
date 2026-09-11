@@ -1,5 +1,7 @@
 # Interactive State Sync Patterns
 
+Consult this reference when interactive state sync patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use this reference when building ChatGPT apps with long-lived widget state, repeated interactions, or component-initiated tool calls (for example: games, boards, maps, dashboards, editors, or realtime-ish UIs).
 
 Do not load this file for simple read-only render apps unless state sync behavior is part of the task.

@@ -13,9 +13,12 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Storage Filesystems Framework
 
+Apply the following storage filesystems framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `storage-filesystems`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/storage-filesystems/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/storage-filesystems/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/storage-filesystems/references/`
+- Source of truth: `$CODEX_HOME/plugins/system-infra/skills/storage-filesystems/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/system-infra/skills/storage-filesystems/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/system-infra/skills/storage-filesystems/references/`

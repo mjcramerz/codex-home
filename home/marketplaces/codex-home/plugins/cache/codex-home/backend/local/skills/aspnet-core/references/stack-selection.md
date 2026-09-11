@@ -1,5 +1,7 @@
 # Stack Selection
 
+Consult this reference when stack selection is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Primary docs:
 - https://learn.microsoft.com/aspnet/core/
 - https://learn.microsoft.com/aspnet/core/blazor/

@@ -13,15 +13,20 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # iac-ansible reference bundle
+
+Consult this reference when iac-ansible reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Build idempotent Ansible playbooks and roles safely.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Checkpoint gates
@@ -31,19 +36,23 @@ Build idempotent Ansible playbooks and roles safely.
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/iac/1.0.0/skills/iac-ansible/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/iac/1.0.0/skills/iac-ansible/agents/openai.yaml`
-- `$CODEX_HOME/plugins/cache/codex-home/iac/1.0.0/skills/iac-ansible/scripts/skill_helper.py`
+
+- `$CODEX_HOME/plugins/iac/skills/iac-ansible/SKILL.md`
+- `$CODEX_HOME/plugins/iac/skills/iac-ansible/agents/openai.yaml`
+- `$CODEX_HOME/plugins/iac/skills/iac-ansible/scripts/skill_helper.py`
 
 ## Reference files in this directory
+
 - `latest-sources.md`
 - `operations-checklist.md`
 - `risk-register.md`
 
 ## External references
+
 - [Ansible documentation](https://docs.ansible.com/) - Automation and idempotent provisioning patterns.
 - [Ansible best practices](https://docs.ansible.com/ansible/latest/playbook_guide/index.html) - Role layout and idempotency patterns.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `iac-ansible` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `iac-ansible` before finalizing changes.

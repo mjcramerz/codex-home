@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Decision: {{title}}
+
+Use this guide when the task concerns decision: {{title}}. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 ## Context
 

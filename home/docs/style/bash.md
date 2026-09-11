@@ -1,67 +1,32 @@
-# Bash style guide
-Purpose: tell the Codex coding agent how to use `docs/style/bash.md` as a runtime-pack surface and when to stop browsing.
-Canonical Bash guidance for this pack. Follow repo-specific conventions first.
+# Bash
 
+Use this guide when you change POSIX shell, Bash or zsh scripts and repository automation. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/style/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+## Apply these practices
 
+**1.** Inspect the shebang and declared interpreter. Keep POSIX sh free of Bash or zsh extensions; select Bash explicitly when arrays or other Bash features are required.
 
-## Baseline: strict mode
-Use strict mode for any non-trivial script:
+**2.** Quote expansions, use -- before untrusted operands where supported, prefer argument arrays in Bash, and never use eval to dispatch user input. Avoid parsing ls or splitting filenames on whitespace.
 
-```bash
-#!/usr/bin/env bash
-set -Eeuo pipefail
-IFS=$'\n\t'
-```
+**3.** Check failures explicitly around expected fallible operations. Do not assume set -e, pipelines or subshells give uniform error propagation across shells; isolate deliberate nonzero statuses.
 
-Prefer the hardened snippet: `$CODEX_HOME/snippets/bash/strict.sh`.
-If `$CODEX_HOME/AGENTS.md` confirms the active session is Bash, read `$CODEX_HOME/docs/style/shell-runtime.md` before using this deeper style guide.
+**4.** Use private temporary directories and cleanup traps scoped to paths you created. Resolve and check destructive targets, reject empty paths, and preserve caller-owned files.
 
-## Input handling
-- You must treat **all inputs as untrusted**: CLI args, env vars, files, git output, network responses.
-- You must validate and normalize early (required flags, mutually exclusive options, path sanity).
-- You must use `--` to separate flags from positionals; reject unknown flags.
-- You must prefer explicit allowlists (subcommands, modes, file extensions) over implicit behavior.
+**5.** Keep stdout machine-readable when required, send redacted diagnostics to stderr and bound command duration. Run the matching interpreter's syntax check and existing ShellCheck/tests where available.
 
-## Subprocess safety
-- **Never** build shell strings with untrusted input (avoid `bash -lc`, `sh -c`, `eval`).
-- Prefer `bash -c` over `bash -lc` unless login-shell startup files are the explicit subject of the task.
-- You must prefer exec-arg APIs and arrays:
-  - `cmd=(rg --fixed-string -- "$pattern" "$path"); "${cmd[@]}"`
-- Set timeouts for network calls (or refuse network by default).
+Use arrays for argument construction and `[[ ]]` for Bash-specific conditions. Treat `set -euo pipefail` as a deliberate policy with known exceptions, not a substitute for explicit error handling.
 
-## Filesystem safety
-- Refuse dangerous paths (`""`, `/`, `.` when destructive).
-- You must prefer `mktemp -d` + `trap` cleanup; avoid predictable temp names.
-- Avoid TOCTOU when writing: write to temp + atomic rename where feasible.
-- Avoid following indirect path aliases when writing if the path is attacker-controlled.
+## Select related guidance
 
-## Output and logging
-- **stdout**: machine-readable output (JSON, newline-delimited values).
-- **stderr**: human logs (`INFO/WARN/ERROR`, timestamps).
-- Provide `--dry-run` for scripts that mutate state.
-
-Prefer the hardened snippet: `$CODEX_HOME/snippets/bash/logging.sh`.
-
-## Portability
-- Declare bash explicitly; do not rely on `/bin/sh` behavior.
-- Watch for BSD vs GNU differences (`sed`, `date`, `stat`).
-- If you must rely on GNU behavior, detect platform and fail with a clear message.
-
-## Linting
-- You must run `shellcheck` on scripts and treat new warnings as failures.
-- You must keep scripts shellcheck-clean or document specific disables with comments.
-
-## References
-- `overview.md`
-- Snippets: `$CODEX_HOME/snippets/bash/`
-- Skill: Use skill shell-bash.
-- Template: `$CODEX_HOME/templates/bash/script-skeleton/`
+- `$CODEX_HOME/docs/style/overview.md`
+- `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/OVERVIEW.md`
+- `$CODEX_HOME/snippets/bash/strict.sh`
+- `$CODEX_HOME/AGENTS.md`
+- `$CODEX_HOME/docs/style/shell-runtime.md`
+- `$CODEX_HOME/snippets/bash/logging.sh`
+- `$CODEX_HOME/snippets/bash/`
+- `$CODEX_HOME/templates/bash/script-skeleton/`
 - `$CODEX_HOME/index/pack/style.md`
-- `$CODEX_HOME/index/style/bash.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

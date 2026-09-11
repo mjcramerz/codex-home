@@ -1,5 +1,7 @@
 # Binding Configuration Reference
 
+Consult this reference when binding configuration reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Storage Bindings
 
 ```jsonc
@@ -14,6 +16,7 @@
 ```
 
 **Create commands:**
+
 ```bash
 npx wrangler kv namespace create MY_KV
 npx wrangler r2 bucket create my-bucket
@@ -45,6 +48,7 @@ npx wrangler queues list
 ```
 
 **Create workflows:**
+
 ```bash
 npx wrangler workflows create my-workflow
 ```
@@ -77,6 +81,7 @@ npx wrangler workflows create my-workflow
 ```
 
 **Secrets (never in config):**
+
 ```bash
 npx wrangler secret put API_KEY
 ```
@@ -99,6 +104,7 @@ npx wrangler secret put API_KEY
 ```
 
 **Deploy:**
+
 ```bash
 npx wrangler deploy              # Production
 npx wrangler deploy --env staging
@@ -117,6 +123,7 @@ npx wrangler deploy --env staging
 ```
 
 **Or use remote:**
+
 ```bash
 npx wrangler dev --remote  # Uses production bindings
 ```

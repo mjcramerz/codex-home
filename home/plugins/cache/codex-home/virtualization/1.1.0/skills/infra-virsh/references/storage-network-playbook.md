@@ -13,19 +13,25 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Storage and network playbook
 
+Consult this reference when storage and network playbook is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Storage checks
+
 - Confirm pool existence: `virsh pool-list --all`
 - Confirm target volume availability before attach.
 - Record backing image chain for qcow2.
 
 ## Network checks
+
 - Confirm network definitions: `virsh net-list --all`
 - Validate bridge/NAT selection against exposure requirements.
 - Verify guest interface assignment after boot.
 
 ## Rollback checklist
+
 - Detach new disks/interfaces if boot regression appears.
 - Revert to previous XML snapshot copy.
 - Re-test console and SSH reachability.

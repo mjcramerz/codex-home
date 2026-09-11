@@ -5,6 +5,10 @@ impactDescription: reduces iterations
 tags: javascript, arrays, loops, performance
 ---
 
+# js combine iterations
+
+Apply the following js combine iterations guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Combine Multiple Array Iterations
 
 Multiple `.filter()` or `.map()` calls iterate the array multiple times. Combine into one loop.

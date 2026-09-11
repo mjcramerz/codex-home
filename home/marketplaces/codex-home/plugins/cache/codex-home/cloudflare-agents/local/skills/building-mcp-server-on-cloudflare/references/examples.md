@@ -1,5 +1,7 @@
 # Project Bootstrapping
 
+Consult this reference when project bootstrapping is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Instructions for creating new MCP server projects.
 
 ---

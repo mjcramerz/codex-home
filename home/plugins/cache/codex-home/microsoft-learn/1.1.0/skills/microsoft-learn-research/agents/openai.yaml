@@ -1,16 +1,14 @@
 interface:
-  display_name: "Microsoft Learn Research"
-  short_description: "Research Microsoft Learn guidance, Azure docs, and implementation constraints using primary-source vendor material."
-  brand_color: "#2563EB"
-  default_prompt: "Use $microsoft-learn-research. Act as the Microsoft Learn Research specialist. Use current evidence, keep changes reviewable, and report assumptions and validation clearly."
-
+  display_name: Microsoft Learn Research
+  short_description: Use this skill for research Microsoft Learn guidance, Azure docs, and implementation const
+  brand_color: '#2563EB'
+  default_prompt: Use $microsoft-learn-research for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "microsoft-learn"
-      description: "microsoft-learn MCP server"
-      transport: "streamable_http"
-      url: "https://learn.microsoft.com/api/mcp"
-
+  - type: mcp
+    value: microsoft-learn
+    description: microsoft-learn MCP server
+    transport: streamable_http
+    url: https://learn.microsoft.com/api/mcp
 policy:
   allow_implicit_invocation: true

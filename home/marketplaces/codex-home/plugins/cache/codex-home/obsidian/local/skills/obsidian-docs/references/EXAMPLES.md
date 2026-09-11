@@ -13,9 +13,13 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Obsidian Documentation Examples
 
+Consult this reference when obsidian documentation examples is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Example frontmatter
+
 ```yaml
 ---
 title: "API Rate Limits"
@@ -27,6 +31,7 @@ updated: 2025-12-21
 ```
 
 ## Example outline
+
 ```
 # API Rate Limits
 

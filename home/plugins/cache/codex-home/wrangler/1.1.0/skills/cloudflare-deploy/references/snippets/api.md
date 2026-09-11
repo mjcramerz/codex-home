@@ -1,8 +1,11 @@
 # Snippets API Reference
 
+Consult this reference when snippets api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Request Object
 
 ### HTTP Properties
+
 ```javascript
 request.method    // GET, POST, PUT, DELETE, etc.
 request.url       // Full URL string
@@ -12,6 +15,7 @@ request.cf        // Cloudflare properties (see below)
 ```
 
 ### URL Operations
+
 ```javascript
 const url = new URL(request.url);
 url.hostname             // "example.com"
@@ -23,6 +27,7 @@ url.searchParams.delete("q")
 ```
 
 ### Header Operations
+
 ```javascript
 // Read headers
 request.headers.get("User-Agent")
@@ -36,6 +41,7 @@ modifiedRequest.headers.delete("X-Remove")
 ```
 
 ### Cloudflare Properties (`request.cf`)
+
 Access Cloudflare-specific metadata about the request:
 
 ```javascript
@@ -75,6 +81,7 @@ request.cf.requestPriority // "weight=192;exclusive=0"
 ## Response Object
 
 ### Response Constructors
+
 ```javascript
 // Plain text
 new Response("Hello", { status: 200 })
@@ -96,6 +103,7 @@ new Response(response.body, response)
 ```
 
 ### Response Headers
+
 ```javascript
 // Create modified response
 const newResponse = new Response(response.body, response);
@@ -111,6 +119,7 @@ newResponse.headers.set("Content-Type", "application/json")
 ```
 
 ### Response Properties
+
 ```javascript
 response.status       // 200, 404, 500, etc.
 response.statusText   // "OK", "Not Found", etc.
@@ -123,16 +132,19 @@ response.redirected   // true if redirected
 ## REST API Operations
 
 ### List Snippets
+
 ```bash
 GET /zones/{zone_id}/snippets
 ```
 
 ### Get Snippet
+
 ```bash
 GET /zones/{zone_id}/snippets/{snippet_name}
 ```
 
 ### Create/Update Snippet
+
 ```bash
 PUT /zones/{zone_id}/snippets/{snippet_name}
 Content-Type: multipart/form-data
@@ -142,16 +154,19 @@ metadata={"main_module":"snippet.js"}
 ```
 
 ### Delete Snippet
+
 ```bash
 DELETE /zones/{zone_id}/snippets/{snippet_name}
 ```
 
 ### List Snippet Rules
+
 ```bash
 GET /zones/{zone_id}/rulesets/phases/http_request_snippets/entrypoint
 ```
 
 ### Update Snippet Rules
+
 ```bash
 PUT /zones/{zone_id}/snippets/snippet_rules
 Content-Type: application/json
@@ -169,6 +184,7 @@ Content-Type: application/json
 ## Available APIs in Snippets
 
 ### ✅ Supported
+
 - `fetch()` - HTTP requests (2-5 subrequests per plan)
 - `Request` / `Response` - Standard Web APIs
 - `URL` / `URLSearchParams` - URL manipulation
@@ -178,6 +194,7 @@ Content-Type: application/json
 - `crypto.randomUUID()` - UUID generation
 
 ### ❌ Not Supported in Snippets
+
 - `caches` API - Not available (use Workers)
 - `KV`, `D1`, `R2` - Storage APIs (use Workers)
 - `Durable Objects` - Stateful objects (use Workers)
@@ -187,6 +204,7 @@ Content-Type: application/json
 - `addEventListener` - Use `export default { async fetch() {}` pattern
 
 ## Snippet Structure
+
 ```javascript
 export default {
   async fetch(request) {

@@ -1,12 +1,12 @@
 ---
 name: cloudflare
-description: Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare development task. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
+description: Use this skill for comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare development task. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
 references:
-  - workers
-  - pages
-  - d1
-  - durable-objects
-  - workers-ai
+- workers
+- pages
+- d1
+- durable-objects
+- workers-ai
 ---
 
 # Cloudflare Platform Skill
@@ -127,6 +127,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 ## Product Index
 
 ### Compute & Runtime
+
 | Product | Reference |
 |---------|-----------|
 | Workers | `references/workers/` |
@@ -142,6 +143,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | Smart Placement | `references/smart-placement/` |
 
 ### Storage & Data
+
 | Product | Reference |
 |---------|-----------|
 | KV | `references/kv/` |
@@ -156,6 +158,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | R2 SQL | `references/r2-sql/` |
 
 ### AI & Machine Learning
+
 | Product | Reference |
 |---------|-----------|
 | Workers AI | `references/workers-ai/` |
@@ -165,6 +168,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | AI Search | `references/ai-search/` |
 
 ### Networking & Connectivity
+
 | Product | Reference |
 |---------|-----------|
 | Tunnel | `references/tunnel/` |
@@ -175,6 +179,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | Workers VPC | `references/workers-vpc/` |
 
 ### Security
+
 | Product | Reference |
 |---------|-----------|
 | WAF | `references/waf/` |
@@ -184,6 +189,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | Turnstile | `references/turnstile/` |
 
 ### Media & Content
+
 | Product | Reference |
 |---------|-----------|
 | Images | `references/images/` |
@@ -192,12 +198,14 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | Zaraz | `references/zaraz/` |
 
 ### Real-Time Communication
+
 | Product | Reference |
 |---------|-----------|
 | RealtimeKit | `references/realtimekit/` |
 | Realtime SFU | `references/realtime-sfu/` |
 
 ### Developer Tools
+
 | Product | Reference |
 |---------|-----------|
 | Wrangler | `references/wrangler/` |
@@ -212,6 +220,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | Workers Playground | `references/workers-playground/` |
 
 ### Infrastructure as Code
+
 | Product | Reference |
 |---------|-----------|
 | Pulumi | `references/pulumi/` |
@@ -219,6 +228,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | API | `references/api/` |
 
 ### Other Services
+
 | Product | Reference |
 |---------|-----------|
 | Email Routing | `references/email-routing/` |

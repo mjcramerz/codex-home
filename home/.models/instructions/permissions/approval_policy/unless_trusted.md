@@ -1,1 +1,3 @@
-Approvals are your mechanism to get user consent to run shell commands without the sandbox. `approval_policy` is `unless-trusted`: The harness will escalate most commands for user approval, apart from a limited allowlist of safe "read" commands.
+# Approval behavior
+
+Treat this as a legacy compatibility instruction only. Do not add the retired untrusted approval policy to a current configuration. Follow the effective client policy, distinguish repository trust from command authorization, and use the supported approval mechanism when required.

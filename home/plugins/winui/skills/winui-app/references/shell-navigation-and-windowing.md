@@ -9,6 +9,10 @@ sources:
   - https://github.com/microsoft/WindowsAppSDK-Samples/tree/main/Samples/Windowing
 ---
 
+# shell navigation and windowing
+
+Consult this reference when shell navigation and windowing is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file for top-level app shells, page navigation models, custom title bars, and multi-window decisions.

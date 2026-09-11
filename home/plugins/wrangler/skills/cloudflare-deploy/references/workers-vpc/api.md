@@ -1,5 +1,7 @@
 # TCP Sockets API Reference
 
+Consult this reference when tcp sockets api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Complete API reference for the Cloudflare Workers TCP Sockets API (`cloudflare:sockets`).
 
 ## Core Function: `connect()`
@@ -180,7 +182,7 @@ export default {
 };
 ```
 
-See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers-vpc/patterns.md) for multi-chunk reading, error handling, and protocol implementations.
+See [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers-vpc/patterns.md) for multi-chunk reading, error handling, and protocol implementations.
 
 ## Quick Reference
 
@@ -197,6 +199,6 @@ See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/clo
 
 ## See Also
 
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers-vpc/patterns.md) - Real-world protocol implementations
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers-vpc/configuration.md) - Wrangler setup and environment variables
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers-vpc/gotchas.md) - Limits and error handling
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers-vpc/patterns.md) - Real-world protocol implementations
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers-vpc/configuration.md) - Wrangler setup and environment variables
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers-vpc/gotchas.md) - Limits and error handling

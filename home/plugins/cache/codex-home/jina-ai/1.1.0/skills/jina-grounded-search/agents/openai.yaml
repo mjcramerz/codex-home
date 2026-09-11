@@ -1,16 +1,14 @@
 interface:
-  display_name: "Jina Grounded Search"
-  short_description: "Turn Jina search and retrieval results into grounded implementation notes, tradeoffs, and integration checklists."
-  brand_color: "#0EA5E9"
-  default_prompt: "Use $jina-grounded-search. Act as the Jina Grounded Search specialist. Use current evidence, keep changes reviewable, and report assumptions and validation clearly."
-
+  display_name: Jina Grounded Search
+  short_description: 'Turn Jina search and retrieval results into grounded implementation notes, tradeoffs, and '
+  brand_color: '#0EA5E9'
+  default_prompt: Use $jina-grounded-search for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "jina-ai"
-      description: "jina-ai MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.jina.ai/v1"
-
+  - type: mcp
+    value: jina-ai
+    description: jina-ai MCP server
+    transport: streamable_http
+    url: https://mcp.jina.ai/v1
 policy:
   allow_implicit_invocation: true

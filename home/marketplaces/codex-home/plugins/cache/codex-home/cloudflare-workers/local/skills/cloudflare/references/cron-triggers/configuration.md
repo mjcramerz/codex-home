@@ -1,5 +1,7 @@
 # Cron Triggers Configuration
 
+Consult this reference when cron triggers configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## wrangler.jsonc
 
 ```jsonc
@@ -45,14 +47,14 @@ Schedule crons during low-carbon periods for carbon-aware execution:
 - Maximum delay: 24 hours from scheduled time
 - Ideal for batch jobs with flexible timing requirements
 
-**Use cases:** 
+**Use cases:**
 - Nightly data processing and ETL pipelines
 - Weekly/monthly report generation
 - Database backups and maintenance
 - Analytics aggregation
 - ML model training
 
-**Not suitable for:** 
+**Not suitable for:**
 - Time-sensitive operations (SLA requirements)
 - User-facing features requiring immediate execution
 - Real-time monitoring and alerting
@@ -89,7 +91,7 @@ Schedule crons during low-carbon periods for carbon-aware execution:
 
 ## Managing Triggers
 
-**Remove all:** `"triggers": { "crons": [] }`  
+**Remove all:** `"triggers": { "crons": [] }`
 **Preserve existing:** Omit `"triggers"` field entirely
 
 ## Deployment
@@ -110,12 +112,14 @@ npx wrangler deployments list
 ## API Management
 
 **Get triggers:**
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts/{script_name}/schedules" \
   -H "Authorization: Bearer {api_token}"
 ```
 
 **Update triggers:**
+
 ```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts/{script_name}/schedules" \
   -H "Authorization: Bearer {api_token}" \
@@ -124,6 +128,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/
 ```
 
 **Delete all:**
+
 ```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts/{script_name}/schedules" \
   -H "Authorization: Bearer {api_token}" \
@@ -175,6 +180,6 @@ For complex schedules, use multiple workers:
 
 ## See Also
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/README.md) - Overview, quick start
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/api.md) - Handler implementation
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/patterns.md) - Multi-cron routing examples
+- [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/README.md) - Overview, quick start
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/api.md) - Handler implementation
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/patterns.md) - Multi-cron routing examples

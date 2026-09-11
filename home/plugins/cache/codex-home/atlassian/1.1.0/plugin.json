@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "atlassian",
   "version": "1.1.0",
-  "description": "Atlassian cloud, Jira, and Confluence workflow research and implementation guidance.",
+  "description": "Use this plugin for atlassian cloud, Jira, and Confluence workflow research and implementation guidance.",
   "author": {
     "name": "Atlassian"
   },

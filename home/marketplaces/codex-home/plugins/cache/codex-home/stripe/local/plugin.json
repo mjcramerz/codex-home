@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "stripe",
   "version": "1.1.0",
-  "description": "Stripe payment, billing, and webhook implementation workflows.",
+  "description": "Use this plugin for stripe payment, billing, and webhook implementation workflows.",
   "author": {
     "name": "Stripe",
     "url": "https://stripe.com"

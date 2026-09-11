@@ -1,7 +1,7 @@
 interface:
-  display_name: "NetHunter Pixel9a"
-  short_description: "Pixel 9a NetHunter kernel port + Android root lab operations with strict scope controls"
-  icon_small: "./assets/icon-32.png"
-  icon_large: "./assets/icon-128.png"
-  brand_color: "#CC4A32"
-  default_prompt: "Use $nethunter-pixel9a. Act as the \"NetHunter Pixel9a\" specialist for \"Pixel 9a NetHunter kernel port + Android root lab operations with strict scope controls\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
+  display_name: NetHunter Pixel9a
+  short_description: Use this skill for pixel 9a NetHunter kernel port + Android root lab operations with stric
+  icon_small: ./assets/icon-32.png
+  icon_large: ./assets/icon-128.png
+  brand_color: '#CC4A32'
+  default_prompt: Use $nethunter-pixel9a for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

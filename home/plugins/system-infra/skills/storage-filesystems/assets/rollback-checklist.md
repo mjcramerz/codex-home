@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Rollback checklist (storage-filesystems)
+
+Use this template when you plan or evaluate the assigned system change. Record the actual target, baseline, change, health criteria and rollback trigger. Preserve a verified recovery path, and do not treat sample commands or a completed checklist as proof that a live operation succeeded.
 
 - Confirm rollback trigger and decision owner.
 - Capture diagnostics before reverting.

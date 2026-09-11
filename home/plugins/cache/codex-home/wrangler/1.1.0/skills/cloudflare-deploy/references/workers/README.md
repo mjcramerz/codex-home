@@ -1,5 +1,7 @@
 # Cloudflare Workers
 
+Consult this reference when cloudflare workers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for building, deploying, and optimizing Cloudflare Workers applications.
 
 ## Overview
@@ -75,17 +77,17 @@ async tail(events: TraceItem[], env: Env, ctx: ExecutionContext): Promise<void>
 
 ## Resources
 
-**Docs**: https://developers.cloudflare.com/workers/  
-**Examples**: https://developers.cloudflare.com/workers/examples/  
+**Docs**: https://developers.cloudflare.com/workers/
+**Examples**: https://developers.cloudflare.com/workers/examples/
 **Runtime APIs**: https://developers.cloudflare.com/workers/runtime-apis/
 
 ## In This Reference
 
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/configuration.md) - wrangler.jsonc setup, bindings, environments
-- [API]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/api.md) - Runtime APIs, bindings, execution context
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/patterns.md) - Common workflows, testing, optimization
-- [Frameworks]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/frameworks.md) - Hono, routing, validation
-- [Gotchas]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/gotchas.md) - Common issues, limits, troubleshooting
+- [Configuration]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/configuration.md) - wrangler.jsonc setup, bindings, environments
+- [API]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/api.md) - Runtime APIs, bindings, execution context
+- [Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/patterns.md) - Common workflows, testing, optimization
+- [Frameworks]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/frameworks.md) - Hono, routing, validation
+- [Gotchas]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/gotchas.md) - Common issues, limits, troubleshooting
 
 ## Reading Order
 
@@ -100,9 +102,9 @@ async tail(events: TraceItem[], env: Env, ctx: ExecutionContext): Promise<void>
 
 ## See Also
 
-- [KV]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/kv/README.md) - Key-value storage
-- [D1]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/README.md) - SQL database
-- [R2]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/README.md) - Object storage
-- [Durable Objects]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/README.md) - Stateful coordination
-- [Queues]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/queues/README.md) - Message queues
-- [Wrangler]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/README.md) - CLI tool reference
+- [KV]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/kv/README.md) - Key-value storage
+- [D1]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/README.md) - SQL database
+- [R2]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/README.md) - Object storage
+- [Durable Objects]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/README.md) - Stateful coordination
+- [Queues]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/queues/README.md) - Message queues
+- [Wrangler]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/README.md) - CLI tool reference

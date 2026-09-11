@@ -13,9 +13,13 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # {{title}} — {{date}}
 
+Use this guide when you need to work on {{title}} — {{date}}. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 ## Agenda
+
 -
 
 ## Context / Pre-read
@@ -25,6 +29,7 @@ updated: '2026-02-20'
 ## Decisions
 
 ## Action items
+
 - Owner:
 - Due:
 

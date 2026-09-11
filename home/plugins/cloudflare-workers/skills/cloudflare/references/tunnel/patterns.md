@@ -1,8 +1,11 @@
 # Tunnel Patterns
 
+Consult this reference when tunnel patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Docker Deployment
 
 ### Token-Based (Recommended)
+
 ```yaml
 services:
   cloudflared:
@@ -12,6 +15,7 @@ services:
 ```
 
 ### Local Config
+
 ```yaml
 services:
   cloudflared:
@@ -74,6 +78,7 @@ Run same config on multiple machines. Cloudflare automatically load balances. Lo
 ## Use Cases
 
 ### Web Application
+
 ```yaml
 ingress:
   - hostname: myapp.example.com
@@ -82,6 +87,7 @@ ingress:
 ```
 
 ### SSH Access
+
 ```yaml
 ingress:
   - hostname: ssh.example.com
@@ -92,6 +98,7 @@ ingress:
 Client: `cloudflared access ssh --hostname ssh.example.com`
 
 ### gRPC Service
+
 ```yaml
 ingress:
   - hostname: grpc.example.com
@@ -179,6 +186,7 @@ new cloudflare.Record("dns", {
 ## Service Installation
 
 ### Linux systemd
+
 ```bash
 cloudflared service install
 systemctl start cloudflared && systemctl enable cloudflared
@@ -186,6 +194,7 @@ journalctl -u cloudflared -f  # Logs
 ```
 
 ### macOS launchd
+
 ```bash
 sudo cloudflared service install
 sudo launchctl start com.cloudflare.cloudflared

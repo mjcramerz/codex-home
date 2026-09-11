@@ -13,9 +13,12 @@ tags:
 - security
 updated: '2026-02-20'
 ---
+
 # Secops Crowdsec Framework
 
+Apply the following secops crowdsec framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `secops-crowdsec`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/secops-crowdsec/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/secops-crowdsec/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/secops-crowdsec/references/`
+- Source of truth: `$CODEX_HOME/plugins/security-controls/skills/secops-crowdsec/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/security-controls/skills/secops-crowdsec/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/security-controls/skills/secops-crowdsec/references/`

@@ -1,5 +1,7 @@
 # D1 Patterns & Best Practices
 
+Consult this reference when d1 patterns & best practices is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Pagination
 
 ```typescript
@@ -141,7 +143,7 @@ export default {
 }
 ```
 
-**Use replicas for**: Analytics dashboards, search results, public queries (eventual consistency OK)  
+**Use replicas for**: Analytics dashboards, search results, public queries (eventual consistency OK)
 **Use primary for**: Read-after-write, financial transactions, authentication (consistency required)
 
 ## Sessions API Pattern (Paid Plans)

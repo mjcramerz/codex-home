@@ -1,10 +1,13 @@
 # Hardware Selection Guide
 
+Consult this reference when hardware selection guide is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Choosing the right hardware (flavor) is critical for cost-effective training.
 
 ## Available Hardware
 
 ### CPU
+
 - `cpu-basic` - Basic CPU, testing only
 - `cpu-upgrade` - Enhanced CPU
 
@@ -128,11 +131,13 @@ Choosing the right hardware (flavor) is critical for cost-effective training.
 ### Estimating Memory Requirements
 
 **Full fine-tuning:**
+
 ```
 Memory (GB) ≈ (Model params in billions) × 20
 ```
 
 **LoRA fine-tuning:**
+
 ```
 Memory (GB) ≈ (Model params in billions) × 4
 ```
@@ -149,26 +154,31 @@ Memory (GB) ≈ (Model params in billions) × 4
 If hitting memory limits:
 
 1. **Use LoRA/PEFT**
+
    ```python
    peft_config=LoraConfig(r=16, lora_alpha=32)
    ```
 
 2. **Reduce batch size**
+
    ```python
    per_device_train_batch_size=1
    ```
 
 3. **Increase gradient accumulation**
+
    ```python
    gradient_accumulation_steps=8  # Effective batch size = 1×8
    ```
 
 4. **Enable gradient checkpointing**
+
    ```python
    gradient_checkpointing=True
    ```
 
 5. **Use mixed precision**
+
    ```python
    bf16=True  # or fp16=True
    ```
@@ -230,6 +240,7 @@ TRL automatically handles multi-GPU training with Accelerate when using multi-GP
 - Large datasets (>50K examples)
 
 **Example:**
+
 ```python
 hf_jobs("uv", {
     "script": "train.py",

@@ -1,8 +1,9 @@
 # Wofi (entrypoint)
-Purpose: stable link to Wofi guidance for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this route when you need wofi. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/domains/desktop/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -20,5 +21,5 @@ Related:
 - `$CODEX_HOME/docs/workflows/wofi.md`
 - `$CODEX_HOME/docs/workflows/desktop-wayland.md`
 - `$CODEX_HOME/docs/desktop/wayland.md`
-- You must use skill `wofi`.
+- Read the `wofi` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

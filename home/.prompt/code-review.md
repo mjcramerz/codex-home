@@ -1,3 +1,7 @@
+# code review
+
+Use this guide when the task concerns code review. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 <!-- Perform a findings-first code review focused on bugs, regressions, and validation gaps. -->
 
 Act as a senior software developer performing a strict code review.

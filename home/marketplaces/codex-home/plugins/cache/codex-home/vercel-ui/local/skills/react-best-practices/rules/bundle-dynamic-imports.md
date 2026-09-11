@@ -5,6 +5,10 @@ impactDescription: directly affects TTI and LCP
 tags: bundle, dynamic-import, code-splitting, next-dynamic
 ---
 
+# bundle dynamic imports
+
+Apply the following bundle dynamic imports guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Dynamic Imports for Heavy Components
 
 Use `next/dynamic` to lazy-load large components not needed on initial render.

@@ -1,5 +1,7 @@
 # React Native Guidelines
 
+Use this guide when the task concerns react native guidelines. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 A structured repository for creating and maintaining React Native Best Practices
 optimized for agents and LLMs.
 

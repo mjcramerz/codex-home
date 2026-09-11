@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Setup Methods
 
 ### Proxied Sites (Automatic)
@@ -16,6 +18,7 @@ Dashboard → Web Analytics → Add site → Select hostname → Done
 **Fails if response has:** `Cache-Control: public, no-transform`
 
 **CSP required:**
+
 ```
 script-src https://static.cloudflareinsights.com https://cloudflareinsights.com;
 ```

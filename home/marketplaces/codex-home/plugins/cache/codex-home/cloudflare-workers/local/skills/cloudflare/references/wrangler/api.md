@@ -1,5 +1,7 @@
 # Wrangler Programmatic API
 
+Consult this reference when wrangler programmatic api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Node.js APIs for testing and development.
 
 ## startWorker (Testing)
@@ -183,6 +185,6 @@ await auth.dispose();
 
 ## See Also
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/README.md) - CLI commands
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/configuration.md) - Config
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/patterns.md) - Testing patterns
+- [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/README.md) - CLI commands
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/configuration.md) - Config
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/patterns.md) - Testing patterns

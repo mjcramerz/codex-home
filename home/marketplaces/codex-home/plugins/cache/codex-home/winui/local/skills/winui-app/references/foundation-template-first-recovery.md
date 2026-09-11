@@ -9,6 +9,10 @@ sources:
   - https://github.com/microsoft/WinUI-Gallery
 ---
 
+# foundation template first recovery
+
+Consult this reference when foundation template first recovery is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when a new app should stay close to the `dotnet new winui` scaffold, or when opaque `MSB3073`, `XamlCompiler.exe`, and startup failures make it unclear whether the problem is in app code, shared resources, or the surrounding project structure.

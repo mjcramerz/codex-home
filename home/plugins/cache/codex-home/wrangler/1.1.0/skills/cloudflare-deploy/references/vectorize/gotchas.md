@@ -1,11 +1,15 @@
 # Vectorize Gotchas
 
+Consult this reference when vectorize gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Critical Warnings
 
 ### Async Mutations
+
 Insert/upsert/delete return immediately but vectors aren't queryable for 5-10 seconds.
 
 ### Batch Size Limit
+
 **Workers API: 500 vectors max per call** (undocumented, silently truncates)
 
 ```typescript
@@ -16,6 +20,7 @@ for (let i = 0; i < vectors.length; i += 500) {
 ```
 
 ### Metadata Truncation
+
 `returnMetadata: "indexed"` returns only first 64 bytes of strings. Use `"all"` for complete metadata (but max topK drops to 20).
 
 ### topK Limits
@@ -27,6 +32,7 @@ for (let i = 0; i < vectors.length; i += 500) {
 | any | `true` | **20** |
 
 ### Metadata Indexes First
+
 Create BEFORE inserting - existing vectors not retroactively indexed.
 
 ```bash
@@ -36,6 +42,7 @@ wrangler vectorize insert my-index --file=data.ndjson
 ```
 
 ### Index Config Immutable
+
 Cannot change dimensions/metric after creation. Must create new index and migrate.
 
 ## Limits (V2)

@@ -13,25 +13,31 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Workflow patterns for skills
-Guidance for structuring multi-step skill workflows with clear sequencing and decision points.
+
+Consult this reference when workflow patterns for skills is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+Apply the following practices to structuring multi-step skill workflows with clear sequencing and decision points.
 
 ## Default flow (apply unless overridden)
-1) **Clarify intent** — restate the goal and constraints.
-2) **Discover context** — locate entrypoints, configs, tests, and conventions.
-3) **Select path** — prefer workflows/plans/templates/snippets before skills; use prompts as macros after plan selection.
-4) **Plan** — create/update a plan before coding when triggers in `$CODEX_HOME/AGENTS.md` apply.
-5) **Implement** — minimal diffs, deterministic steps.
-6) **Validate** — run the narrowest relevant checks.
-7) **Harden** — handle error paths, limits, auth boundaries.
-8) **Report** — summary, tests, risks, next steps.
+
+1. **Clarify intent** — restate the goal and constraints.
+2. **Discover context** — locate entrypoints, configs, tests, and conventions.
+3. **Select path** — prefer workflows/plans/templates/snippets before skills; use prompts as macros after plan selection.
+4. **Plan** — create/update a plan before coding when triggers in `$CODEX_HOME/AGENTS.md` apply.
+5. **Implement** — minimal diffs, deterministic steps.
+6. **Validate** — run the narrowest relevant checks.
+7. **Harden** — handle error paths, limits, auth boundaries.
+8. **Report** — summary, tests, risks, next steps.
 
 ## Decision points
+
 - **Missing inputs**: ask 1–2 focused questions; otherwise proceed with stated assumptions.
 - **Risky changes**: require explicit confirmation (filesystem ops, prod data, destructive actions).
 - **Multiple paths**: pick the lowest-risk option and explain trade-offs.
 
 ## Guardrails
+
 - Preserve behavior unless explicitly requested.
 - Treat inputs as hostile; validate size/shape/timeouts.
 - No new dependencies unless clearly justified.
@@ -40,6 +46,7 @@ Guidance for structuring multi-step skill workflows with clear sequencing and de
 - Place skills last in related lists.
 
 ## Checklist template
+
 - [ ] Restate goal, constraints, and non-goals
 - [ ] Identify entrypoints and conventions
 - [ ] Choose prompt/workflow/template/skill path

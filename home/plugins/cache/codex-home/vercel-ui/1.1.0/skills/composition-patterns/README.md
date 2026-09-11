@@ -1,5 +1,7 @@
 # React Composition Patterns
 
+Use this guide when the task concerns react composition patterns. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 A structured repository for React composition patterns that scale. These
 patterns help avoid boolean prop proliferation by using compound components,
 lifting state, and composing internals.

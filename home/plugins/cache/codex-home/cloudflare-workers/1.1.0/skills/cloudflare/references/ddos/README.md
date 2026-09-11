@@ -1,5 +1,7 @@
 # Cloudflare DDoS Protection
 
+Consult this reference when cloudflare ddos protection is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Autonomous, always-on protection against DDoS attacks across L3/4 and L7.
 
 ## Protection Types
@@ -31,11 +33,12 @@ Autonomous, always-on protection against DDoS attacks across L3/4 and L7.
 
 | File | Purpose | Start Here If... |
 |------|---------|------------------|
-| [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/ddos/configuration.md) | Dashboard setup, rule structure, adaptive profiles | You're setting up DDoS protection for the first time |
-| [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/ddos/api.md) | API endpoints, SDK usage, ruleset ID discovery | You're automating configuration or need programmatic access |
-| [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/ddos/patterns.md) | Protection strategies, defense-in-depth, dynamic response | You need implementation patterns or layered security |
-| [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/ddos/gotchas.md) | False positives, tuning, error handling | You're troubleshooting or optimizing existing protection |
+| [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/ddos/configuration.md) | Dashboard setup, rule structure, adaptive profiles | You're setting up DDoS protection for the first time |
+| [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/ddos/api.md) | API endpoints, SDK usage, ruleset ID discovery | You're automating configuration or need programmatic access |
+| [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/ddos/patterns.md) | Protection strategies, defense-in-depth, dynamic response | You need implementation patterns or layered security |
+| [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/ddos/gotchas.md) | False positives, tuning, error handling | You're troubleshooting or optimizing existing protection |
 
 ## See Also
-- [waf]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/waf/) - Application-layer security rules
-- [bot-management]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/bot-management/) - Bot detection and mitigation
+
+- [waf]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/waf/) - Application-layer security rules
+- [bot-management]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/bot-management/) - Bot detection and mitigation

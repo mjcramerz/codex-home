@@ -13,15 +13,20 @@ tags:
 - security
 updated: '2026-02-20'
 ---
+
 # appsec-hardening reference bundle
+
+Consult this reference when appsec-hardening reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Practical application security hardening: input validation, auth, safe subprocess, web security headers, and abuse resistance.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Hardening workflow
@@ -33,15 +38,18 @@ Practical application security hardening: input validation, auth, safe subproces
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/appsec-hardening/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/appsec-hardening/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/security-controls/skills/appsec-hardening/SKILL.md`
+- `$CODEX_HOME/plugins/security-controls/skills/appsec-hardening/agents/openai.yaml`
 
 ## External references
+
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/) - Secure defaults and implementation guidance.
 - [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) - Application security verification requirements.
 - [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) - Secure software development baseline controls.
 - [CWE Top 25](https://cwe.mitre.org/top25/archive/2024/2024_key_insights.html) - Prioritized weakness classes for reviews.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `appsec-hardening` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `appsec-hardening` before finalizing changes.

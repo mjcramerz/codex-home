@@ -1,5 +1,7 @@
 # Functions API
 
+Consult this reference when functions api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## File-Based Routing
 
 ```
@@ -154,6 +156,7 @@ export default {
 Automatically optimizes function execution location based on traffic patterns.
 
 **Configuration** (in wrangler.jsonc):
+
 ```jsonc
 {
   "placement": {

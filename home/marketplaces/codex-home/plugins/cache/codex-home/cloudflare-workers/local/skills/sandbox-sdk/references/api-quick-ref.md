@@ -1,5 +1,7 @@
 # Sandbox SDK API Reference
 
+Consult this reference when sandbox sdk api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Detailed API for `@cloudflare/sandbox`. For full docs: https://developers.cloudflare.com/sandbox/api/
 
 ## Lifecycle

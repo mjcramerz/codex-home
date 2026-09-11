@@ -1,6 +1,6 @@
 interface:
-  display_name: "Sentry (Read-only Observability)"
-  short_description: "Read-only Sentry observability"
-  icon_small: "./assets/sentry-small.svg"
-  icon_large: "./assets/sentry.png"
-  default_prompt: "Use $sentry. Investigate this issue in read-only Sentry data and report likely root cause, impact, and next steps."
+  display_name: Sentry (Read-only Observability)
+  short_description: Use this skill for read-only Sentry observability
+  icon_small: ./assets/sentry-small.svg
+  icon_large: ./assets/sentry.png
+  default_prompt: Use $sentry for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

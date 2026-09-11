@@ -1,5 +1,7 @@
 # RealtimeKit API Reference
 
+Consult this reference when realtimekit api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Complete API reference for Meeting object, REST endpoints, and SDK methods.
 
 ## Meeting Object API
@@ -21,6 +23,7 @@ meeting.self.on('audioUpdate', ({ audioEnabled, audioTrack }) => {})
 ### `meeting.participants` - Remote Participants
 
 **Collections**:
+
 ```typescript
 meeting.participants.joined / active / waitlisted / pinned  // Maps
 const participants = meeting.participants.joined.toArray()
@@ -29,6 +32,7 @@ const p = meeting.participants.joined.get('peer-id')
 ```
 
 **Participant Properties**:
+
 ```typescript
 participant.id / userId / name
 participant.audioEnabled / videoEnabled / screenShareEnabled
@@ -36,17 +40,20 @@ participant.audioTrack / videoTrack / screenShareTracks
 ```
 
 **Events**:
+
 ```typescript
 meeting.participants.joined.on('participantJoined', (participant) => {})
 meeting.participants.joined.on('participantLeft', (participant) => {})
 ```
 
 ### `meeting.meta` - Metadata
+
 ```typescript
 meeting.meta.meetingId / meetingTitle / meetingStartedTimestamp
 ```
 
 ### `meeting.chat` - Chat
+
 ```typescript
 meeting.chat.messages  // Array
 await meeting.chat.sendTextMessage("Hello") / sendImageMessage(file)
@@ -54,6 +61,7 @@ meeting.chat.on('chatUpdate', ({ message, messages }) => {})
 ```
 
 ### `meeting.polls` - Polling
+
 ```typescript
 meeting.polls.items  // Array
 await meeting.polls.create(question, options, anonymous, hideVotes)
@@ -61,17 +69,20 @@ await meeting.polls.vote(pollId, optionIndex)
 ```
 
 ### `meeting.plugins` - Collaborative Apps
+
 ```typescript
 meeting.plugins.all  // Array
 await meeting.plugins.activate(pluginId) / deactivate()
 ```
 
 ### `meeting.ai` - AI Features
+
 ```typescript
 meeting.ai.transcripts  // Live transcriptions (when enabled in Preset)
 ```
 
 ### Core Methods
+
 ```typescript
 await meeting.join()   // Emits 'roomJoined' on meeting.self
 await meeting.leave()
@@ -130,6 +141,7 @@ const count = meeting.participants.joined.size();
 Base: `https://api.cloudflare.com/client/v4/accounts/{account_id}/realtime/kit/{app_id}`
 
 ### Meetings
+
 ```bash
 GET    /meetings                                    # List all
 GET    /meetings/{meeting_id}                       # Get details
@@ -138,6 +150,7 @@ PATCH  /meetings/{meeting_id}                       # Update: {"title": "...", "
 ```
 
 ### Participants
+
 ```bash
 GET    /meetings/{meeting_id}/participants                          # List all
 GET    /meetings/{meeting_id}/participants/{participant_id}         # Get details
@@ -148,6 +161,7 @@ POST   /meetings/{meeting_id}/participants/{participant_id}/token   # Refresh to
 ```
 
 ### Active Session
+
 ```bash
 GET  /meetings/{meeting_id}/active-session               # Get active session
 POST /meetings/{meeting_id}/active-session/kick          # Kick users: {"user_ids": ["id1", "id2"]}
@@ -156,6 +170,7 @@ POST /meetings/{meeting_id}/active-session/poll          # Create poll: {"questi
 ```
 
 ### Recording
+
 ```bash
 GET  /recordings?meeting_id={meeting_id}                 # List recordings
 GET  /recordings/active-recording/{meeting_id}           # Get active recording
@@ -165,6 +180,7 @@ POST /recordings/track                                   # Track recording: {"me
 ```
 
 ### Livestreaming
+
 ```bash
 GET  /livestreams?exclude_meetings=false                                # List all
 GET  /livestreams/{livestream_id}                                       # Get details
@@ -174,6 +190,7 @@ POST /livestreams                                                       # Create
 ```
 
 ### Sessions & Analytics
+
 ```bash
 GET  /sessions                                                          # List all
 GET  /sessions/{session_id}                                             # Get details
@@ -188,6 +205,7 @@ GET  /analytics/livestreams/overall                                     # Livest
 ```
 
 ### Webhooks
+
 ```bash
 GET    /webhooks                    # List all
 POST   /webhooks                    # Create: {"url": "https://...", "events": ["session.started", "session.ended"]}
@@ -207,6 +225,6 @@ UI Kit handles state transitions automatically.
 
 ## See Also
 
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/realtimekit/configuration.md) - Setup and installation
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/realtimekit/patterns.md) - Usage examples
-- [README]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/realtimekit/README.md) - Overview and quick start
+- [Configuration]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/realtimekit/configuration.md) - Setup and installation
+- [Patterns]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/realtimekit/patterns.md) - Usage examples
+- [README]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/realtimekit/README.md) - Overview and quick start

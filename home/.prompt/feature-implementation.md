@@ -1,3 +1,7 @@
+# feature implementation
+
+Use this guide when the task concerns feature implementation. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 <!-- Implement a new feature end-to-end with bounded scope, validation, and rollout awareness. -->
 
 Act as a senior software developer implementing a new feature in the current repository.

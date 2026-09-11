@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Research Summary Template
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Use this for most research requests. See [research-summary-format.md](research-summary-format.md) for when to use this format.
 
@@ -61,4 +64,3 @@ Use this for most research requests. See [research-summary-format.md](research-s
 - <mention-page url="...">Page Title</mention-page>
 - <mention-page url="...">Page Title</mention-page>
 ```
-

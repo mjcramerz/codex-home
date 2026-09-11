@@ -13,7 +13,10 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Latest sources for offsec-defense
+
+Consult this reference when latest sources for offsec-defense is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - https://attack.mitre.org/
 - https://nmap.org/book/man.html

@@ -13,18 +13,24 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web React Implementation Playbook
 
+Consult this reference when web react implementation playbook is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Scope and intent
+
 Use this playbook for framework-neutral React work: components, hooks, client routing integrations, and performance-oriented refactors.
 
 ## Intake checklist
+
 - Clarify whether request is feature, bug, refactor, or perf hardening.
 - Identify critical screens and user journeys affected.
 - Confirm state ownership and data source boundaries.
 - Confirm acceptable performance and accessibility targets.
 
 ## Delivery sequence
+
 1. Build component/state ownership map.
 2. Identify side effects and move non-essential effects to render/event flow.
 3. Apply prioritized rules from `react-performance-rules.md`.
@@ -33,6 +39,7 @@ Use this playbook for framework-neutral React work: components, hooks, client ro
 6. Return evidence, tradeoffs, and next-step recommendations.
 
 ## Decision rules
+
 - Keep state minimal and derive computed values where possible.
 - Prefer stable props and event handlers for memoized child trees.
 - Treat async behavior as a design concern, not an afterthought.

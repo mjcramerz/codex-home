@@ -1,5 +1,7 @@
 # Express (Node.js) Web Security Spec (Express 5.x / 4.19.2+, Node.js LTS)
 
+Consult this reference when express (node.js) web security spec (express 5.x / 4.19.2+, node.js lts) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
 
 1. **Secure-by-default code generation** for new Express apps and routes.
@@ -376,7 +378,7 @@ Required:
 
 IMPORTANT NOTE:
 
-* If authentication is done via `Authorization: Bearer ...` headers (and not cookies), classic browser CSRF is typically not applicable; 
+* If authentication is done via `Authorization: Bearer ...` headers (and not cookies), classic browser CSRF is typically not applicable;
 
 Insecure patterns:
 

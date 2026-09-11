@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "iac",
   "version": "1.1.0",
-  "description": "Infrastructure-as-code workflows for Ansible and Terraform automation.",
+  "description": "Use this plugin for infrastructure-as-code workflows for Ansible and Terraform automation.",
   "author": {
     "name": "Codex Setup"
   },

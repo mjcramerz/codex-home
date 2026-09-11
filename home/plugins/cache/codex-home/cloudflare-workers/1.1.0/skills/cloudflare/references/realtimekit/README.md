@@ -1,5 +1,7 @@
 # Cloudflare RealtimeKit
 
+Consult this reference when cloudflare realtimekit is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for building real-time video and audio applications using **Cloudflare RealtimeKit** - a comprehensive SDK suite for adding customizable live video and voice to web or mobile applications.
 
 ## Overview
@@ -43,6 +45,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtim
 ### 2. Client Integration
 
 **React**:
+
 ```tsx
 import { RtkMeeting } from '@cloudflare/realtimekit-react-ui';
 
@@ -52,6 +55,7 @@ function App() {
 ```
 
 **Core SDK**:
+
 ```typescript
 import RealtimeKitClient from '@cloudflare/realtimekit';
 
@@ -93,17 +97,17 @@ Need raw WebRTC control?
 
 ## In This Reference
 
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/realtimekit/configuration.md) - Setup, installation, wrangler config
-- [API]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/realtimekit/api.md) - Meeting object, REST API, SDK methods
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/realtimekit/patterns.md) - Common workflows, code examples
-- [Gotchas]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/realtimekit/gotchas.md) - Common issues, troubleshooting
+- [Configuration]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/realtimekit/configuration.md) - Setup, installation, wrangler config
+- [API]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/realtimekit/api.md) - Meeting object, REST API, SDK methods
+- [Patterns]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/realtimekit/patterns.md) - Common workflows, code examples
+- [Gotchas]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/realtimekit/gotchas.md) - Common issues, troubleshooting
 
 ## See Also
 
-- [Workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Backend integration
-- [D1]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/d1/) - Meeting metadata storage
-- [R2]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/r2/) - Recording storage
-- [KV]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/kv/) - Session management
+- [Workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Backend integration
+- [D1]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/d1/) - Meeting metadata storage
+- [R2]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/r2/) - Recording storage
+- [KV]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/kv/) - Session management
 
 ## Reference Links
 

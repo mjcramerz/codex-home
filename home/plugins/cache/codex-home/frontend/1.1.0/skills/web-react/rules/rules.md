@@ -12,9 +12,13 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web React Rules
 
+Apply the following web react rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/frontend/1.0.0/skills/web-react/SKILL.md`.
-- Prefer deterministic scripts in `$CODEX_HOME/plugins/cache/codex-home/frontend/1.0.0/skills/web-react/scripts/`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/frontend/1.0.0/skills/web-react/references/` for factual guidance.
+
+- Follow the workflow in `$CODEX_HOME/plugins/frontend/skills/web-react/SKILL.md`.
+- Prefer deterministic scripts in `$CODEX_HOME/plugins/frontend/skills/web-react/scripts/`.
+- Use references in `$CODEX_HOME/plugins/frontend/skills/web-react/references/` for factual guidance.

@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Compose security checklist
+
+Consult this reference when compose security checklist is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 - `read_only: true` where feasible; mount only what must be writable.
 - `cap_drop: [ALL]` plus `security_opt: [no-new-privileges:true]`.
 - Avoid Docker socket mounts and `--privileged`.

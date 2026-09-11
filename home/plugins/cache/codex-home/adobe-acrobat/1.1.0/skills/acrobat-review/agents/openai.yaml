@@ -1,10 +1,9 @@
 interface:
-  display_name: "Acrobat Review"
-  short_description: "Acrobat PDF compare and review workflow"
-  icon_small: "./assets/app-icon.png"
-  icon_large: "./assets/app-icon.png"
-  brand_color: "#FA0F00"
-  default_prompt: "Use $acrobat-review. Act as the Acrobat Review specialist. Use Adobe Acrobat to compare PDF revisions, manage comments, summarize material differences, and prepare clean collaborator handoffs."
-
+  display_name: Acrobat Review
+  short_description: Use this skill for acrobat PDF compare and review workflow
+  icon_small: ./assets/app-icon.png
+  icon_large: ./assets/app-icon.png
+  brand_color: '#FA0F00'
+  default_prompt: Use $acrobat-review for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

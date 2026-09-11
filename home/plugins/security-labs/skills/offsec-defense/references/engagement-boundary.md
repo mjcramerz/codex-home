@@ -13,11 +13,15 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Scoped security engagement boundary
+
+Consult this reference when scoped security engagement boundary is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 Use this reference before any offensive or dual-use operation.
 
 ## Mandatory controls
+
 - Require explicit user authorization and documented target ownership.
 - Keep operations scoped to allowed networks and systems only.
 - Prefer lab or staging environments for exploit simulation.
@@ -26,6 +30,7 @@ Use this reference before any offensive or dual-use operation.
 - Keep an evidence trail: timestamp, operator, target, command class, and outcome.
 
 ## Required scope file schema
+
 ```json
 {
   "scope_id": "SEC-2026-0001",
@@ -46,6 +51,7 @@ Use this reference before any offensive or dual-use operation.
 ```
 
 ## Stop conditions
+
 - Target is outside the documented scope.
 - Scope is expired or `lab_only` is false.
 - User asks for stealth abuse, persistence, ransomware behavior, or credential theft.
@@ -53,6 +59,7 @@ Use this reference before any offensive or dual-use operation.
 - Production risk is unclear or change window is missing.
 
 ## References
+
 - MITRE ATT&CK: https://attack.mitre.org/
 - NIST CSF 2.0: https://www.nist.gov/cyberframework
 - NIST SP 800-115: https://csrc.nist.gov/publications/detail/sp/800-115/final

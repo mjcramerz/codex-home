@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "winui",
   "version": "1.1.0",
-  "description": "Microsoft WinUI and Windows App SDK desktop application workflows.",
+  "description": "Use this plugin for microsoft WinUI and Windows App SDK desktop application workflows.",
   "author": {
     "name": "Microsoft"
   },

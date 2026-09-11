@@ -13,10 +13,14 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Output patterns
+
+Consult this reference when output patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 Reusable output structures for skill responses.
 
 ## Plan output (default)
+
 ```
 # Plan
 
@@ -46,6 +50,7 @@ Reusable output structures for skill responses.
 ```
 
 ## Triage summary
+
 ```
 ## Summary
 - What changed and why
@@ -59,6 +64,7 @@ Reusable output structures for skill responses.
 ```
 
 ## Checklist output
+
 ```
 ## Checklist
 - [ ] ...
@@ -66,6 +72,7 @@ Reusable output structures for skill responses.
 ```
 
 ## Linking guidance
+
 - Related lists may place prompts first for discoverability; routing order still applies.
 - Place skills last.
 - Use backticked relative paths for navigation.

@@ -1,5 +1,7 @@
 # TURN API Reference
 
+Consult this reference when turn api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Complete API documentation for Cloudflare TURN service credentials and key management.
 
 ## Authentication
@@ -234,6 +236,6 @@ async function fetchTURNServers(
 
 ## See Also
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/configuration.md) - Worker setup, environment variables
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/patterns.md) - Implementation examples using these APIs
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/gotchas.md) - Security best practices, common mistakes
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/configuration.md) - Worker setup, environment variables
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/patterns.md) - Implementation examples using these APIs
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/gotchas.md) - Security best practices, common mistakes

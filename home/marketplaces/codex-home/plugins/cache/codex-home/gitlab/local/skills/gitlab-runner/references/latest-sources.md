@@ -8,19 +8,25 @@ tags:
 - references
 updated: '2026-06-28'
 ---
+
 # gitlab-runner reference bundle
+
+Consult this reference when gitlab-runner reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-06-28 (UTC)
 - Freshness method: repo-adjacent local inspection plus primary vendor documentation.
 
 ## Skill purpose
+
 Service-account, runner-tag, and execution-root contracts
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/gitlab/1.0.0/skills/gitlab-runner/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/gitlab/1.0.0/skills/gitlab-runner/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/gitlab/skills/gitlab-runner/SKILL.md`
+- `$CODEX_HOME/plugins/gitlab/skills/gitlab-runner/agents/openai.yaml`
 
 ## External references
+
 - https://docs.gitlab.com/runner/
 - https://gitlab.com/gitlab-org/gitlab-runner
 - https://docs.gitlab.com/runner/executors/docker/

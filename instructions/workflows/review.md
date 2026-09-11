@@ -1,4 +1,11 @@
-# Review a change
-Read the requested scope, applicable guidance and diff. Check correctness, input boundaries, authentication, authorization, resource lifecycle, concurrency, migration behavior and tests. Verify suspected findings against reachable code paths.
+# Review without modifying
 
-Report actionable defects first, with file and line references, impact and a concrete scenario. Keep style suggestions separate. Do not invent vulnerabilities from a dangerous-looking API without showing how its preconditions can arise. State verification gaps even when no blocker is found.
+Use this workflow to review without modifying.
+
+1. Identify the requested diff or ref comparison and confirm the worktree state.
+
+2. Trace changed behavior, callers, failure paths and permission boundaries.
+
+3. Report supported introduced defects with exact locations, impact and confidence; omit speculation and unrelated style preferences.
+
+4. Return review results without implementing fixes unless separately authorized.

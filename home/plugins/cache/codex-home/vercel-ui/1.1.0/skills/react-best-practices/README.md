@@ -1,5 +1,7 @@
 # React Best Practices
 
+Use this guide when the task concerns react best practices. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 A structured repository for creating and maintaining React Best Practices optimized for agents and LLMs.
 
 ## Structure
@@ -16,21 +18,25 @@ A structured repository for creating and maintaining React Best Practices optimi
 ## Getting Started
 
 1. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
 2. Build AGENTS.md from rules:
+
    ```bash
    pnpm build
    ```
 
 3. Validate rule files:
+
    ```bash
    pnpm validate
    ```
 
 4. Extract test cases:
+
    ```bash
    pnpm extract-tests
    ```
@@ -71,12 +77,14 @@ Brief explanation of the rule and why it matters.
 
 ```typescript
 // Bad code example
+
 ```
 
 **Correct (description of what's right):**
 
 ```typescript
 // Good code example
+
 ```
 
 Optional explanatory text after examples.

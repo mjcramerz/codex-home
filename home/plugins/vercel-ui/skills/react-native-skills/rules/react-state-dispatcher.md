@@ -5,6 +5,10 @@ impactDescription: avoids stale closures, prevents unnecessary re-renders
 tags: state, hooks, useState, callbacks
 ---
 
+# react state dispatcher
+
+Apply the following react state dispatcher guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Dispatch Updaters for State That Depends on Current Value
 
 When the next state depends on the current state, use a dispatch updater

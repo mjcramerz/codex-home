@@ -1,8 +1,11 @@
 # Quick Reference Guide
 
+Consult this reference when quick reference guide is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Essential Commands
 
 ### Paper Indexing
+
 ```bash
 # Index from arXiv
 python scripts/paper_manager.py index --arxiv-id "2301.12345"
@@ -12,6 +15,7 @@ python scripts/paper_manager.py check --arxiv-id "2301.12345"
 ```
 
 ### Linking Papers
+
 ```bash
 # Link to model
 python scripts/paper_manager.py link \
@@ -33,6 +37,7 @@ python scripts/paper_manager.py link \
 ```
 
 ### Creating Papers
+
 ```bash
 # Standard template
 python scripts/paper_manager.py create \
@@ -62,6 +67,7 @@ python scripts/paper_manager.py create \
 ```
 
 ### Citations
+
 ```bash
 # Generate BibTeX
 python scripts/paper_manager.py citation \
@@ -70,6 +76,7 @@ python scripts/paper_manager.py citation \
 ```
 
 ### Paper Info
+
 ```bash
 # JSON format
 python scripts/paper_manager.py info \
@@ -85,10 +92,12 @@ python scripts/paper_manager.py info \
 ## URL Formats
 
 ### Hugging Face Paper Pages
+
 - View paper: `https://huggingface.co/papers/{arxiv-id}`
 - Example: `https://huggingface.co/papers/2301.12345`
 
 ### arXiv
+
 - Abstract: `https://arxiv.org/abs/{arxiv-id}`
 - PDF: `https://arxiv.org/pdf/{arxiv-id}.pdf`
 - Example: `https://arxiv.org/abs/2301.12345`
@@ -96,6 +105,7 @@ python scripts/paper_manager.py info \
 ## YAML Metadata Format
 
 ### Model Card
+
 ```yaml
 ---
 language:
@@ -109,6 +119,7 @@ library_name: transformers
 ```
 
 ### Dataset Card
+
 ```yaml
 ---
 language:
@@ -132,11 +143,13 @@ All these formats work:
 ## Environment Setup
 
 ### Set Token
+
 ```bash
 export HF_TOKEN="your_token"
 ```
 
 ### Or use .env file
+
 ```bash
 echo "HF_TOKEN=your_token" > .env
 ```
@@ -144,12 +157,14 @@ echo "HF_TOKEN=your_token" > .env
 ## Common Workflows
 
 ### 1. Index & Link
+
 ```bash
 python scripts/paper_manager.py index --arxiv-id "2301.12345"
 python scripts/paper_manager.py link --repo-id "user/model" --arxiv-id "2301.12345"
 ```
 
 ### 2. Create & Publish
+
 ```bash
 python scripts/paper_manager.py create --template "modern" --title "Title" --output "paper.md"
 # Edit paper.md
@@ -159,6 +174,7 @@ python scripts/paper_manager.py link --repo-id "user/model" --arxiv-id "NEW_ID"
 ```
 
 ### 3. Batch Link
+
 ```bash
 for id in "2301.12345" "2302.67890"; do
   python scripts/paper_manager.py link --repo-id "user/model" --arxiv-id "$id"
@@ -168,12 +184,15 @@ done
 ## Troubleshooting
 
 ### Paper not found
+
 Visit `https://huggingface.co/papers/{arxiv-id}` to trigger indexing
 
 ### Permission denied
+
 Check `HF_TOKEN` is set and has write access
 
 ### arXiv API errors
+
 Wait a moment and retry - arXiv has rate limits
 
 ## Tips
@@ -193,10 +212,10 @@ Wait a moment and retry - arXiv has rate limits
 
 ## File Locations
 
-- Scripts: `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-paper-publisher/scripts/paper_manager.py`
-- Templates: `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-paper-publisher/templates/`
-- Examples: `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-paper-publisher/examples/example_usage.md`
-- This guide: `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-paper-publisher/references/quick_reference.md`
+- Scripts: `$CODEX_HOME/plugins/huggingface/skills/huggingface-paper-publisher/scripts/paper_manager.py`
+- Templates: `$CODEX_HOME/plugins/huggingface/skills/huggingface-paper-publisher/templates/`
+- Examples: `$CODEX_HOME/plugins/huggingface/skills/huggingface-paper-publisher/examples/example_usage.md`
+- This guide: `$CODEX_HOME/plugins/huggingface/skills/huggingface-paper-publisher/references/quick_reference.md`
 
 ## Getting Help
 
@@ -210,7 +229,7 @@ python scripts/paper_manager.py link --help
 
 ## Additional Resources
 
-- [Full documentation]($CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-paper-publisher/SKILL.md)
-- [Usage examples]($CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-paper-publisher/examples/example_usage.md)
+- [Full documentation]($CODEX_HOME/plugins/huggingface/skills/huggingface-paper-publisher/SKILL.md)
+- [Usage examples]($CODEX_HOME/plugins/huggingface/skills/huggingface-paper-publisher/examples/example_usage.md)
 - [HF Paper Pages](https://huggingface.co/papers)
 - [tfrere's template](https://huggingface.co/spaces/tfrere/research-article-template)

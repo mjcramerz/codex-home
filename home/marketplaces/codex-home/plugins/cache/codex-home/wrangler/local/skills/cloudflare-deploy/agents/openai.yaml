@@ -1,24 +1,23 @@
 interface:
-  display_name: "Cloudflare Deploy"
-  short_description: "Deploy Workers, Pages, and platform services on Cloudflare"
-  icon_small: "./assets/cloudflare-small.svg"
-  icon_large: "./assets/cloudflare.png"
-  default_prompt: "Use $cloudflare-deploy. Deploy this app to Cloudflare (Workers or Pages) and return URL, config, and required env vars."
-
+  display_name: Cloudflare Deploy
+  short_description: Deploy Workers, Pages, and platform services on Cloudflare
+  icon_small: ./assets/cloudflare-small.svg
+  icon_large: ./assets/cloudflare.png
+  default_prompt: Use $cloudflare-deploy for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "cloudflare-api"
-      description: "cloudflare-api MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-docs"
-      description: "cloudflare-docs MCP server"
-      transport: "streamable_http"
-      url: "https://docs.mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-builds"
-      description: "cloudflare-builds MCP server"
-      transport: "streamable_http"
-      url: "https://builds.mcp.cloudflare.com/mcp"
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-builds
+    description: cloudflare-builds MCP server
+    transport: streamable_http
+    url: https://builds.mcp.cloudflare.com/mcp

@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Meeting Template Selection Guide
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Choose the right template for your meeting type.
 
@@ -68,4 +71,3 @@ All templates can be customized:
 3. **Enrich with research**: Add Codex insights where valuable
 4. **Customize as needed**: Adapt template to specific situation
 5. **Share early**: Give attendees time to review
-

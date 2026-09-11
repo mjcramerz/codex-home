@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Specification Parsing
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## Finding the Specification
 
@@ -348,12 +351,14 @@ What's assumed:
 Extract risk information:
 
 ### Technical Risks
+
 - Unproven technology
 - Complex integration
 - Performance concerns
 - Scalability unknowns
 
 ### Business Risks
+
 - Market timing
 - Resource availability
 - Dependency on others
@@ -395,4 +400,3 @@ Before creating implementation plan:
 ☐ Technical approach understood
 ☐ Scope is clear
 ☐ Priorities are defined
-

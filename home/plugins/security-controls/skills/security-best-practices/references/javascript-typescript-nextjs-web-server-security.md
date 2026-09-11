@@ -1,5 +1,7 @@
 # Next.js (TypeScript/JavaScript) Web Security Spec (Next.js 16.1.x, Node.js 20.9+)
 
+Consult this reference when next.js (typescript/javascript) web security spec (next.js 16.1.x, node.js 20.9+) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
 
 1. **Secure-by-default code generation** for new Next.js backend code (Route Handlers, API Routes, Server Actions, Proxy/Middleware).
@@ -208,7 +210,6 @@ Fix:
 
 * Upgrade `next` to a supported and patched version.
 * Add a dependency update process + CI checks.
-
 
 ---
 

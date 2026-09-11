@@ -5,6 +5,10 @@ impactDescription: avoids re-creation
 tags: rendering, jsx, static, optimization
 ---
 
+# rendering hoist jsx
+
+Apply the following rendering hoist jsx guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Hoist Static JSX Elements
 
 Extract static JSX outside components to avoid re-creation.

@@ -8,6 +8,10 @@ sources:
   - https://github.com/CommunityToolkit/Windows
 ---
 
+# motion animations and polish
+
+Consult this reference when motion animations and polish is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when adding polish to a WinUI app through motion, transitions, and subtle animated state changes.

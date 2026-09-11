@@ -1,6 +1,9 @@
 ---
 name: parser-design
-description: Design and refactor parsers, tokenizers, grammars, AST transforms, and syntax-error handling with explicit contracts and bounded input handling. Use when the user asks about parsing, grammar changes, query languages, or text-to-structure conversion.
+description: Use this skill to design and refactor parsers, tokenizers, grammars,
+  AST transforms, and syntax-error handling with explicit contracts and bounded input
+  handling. Use when the user asks about parsing, grammar changes, query languages,
+  or text-to-structure conversion.
 metadata:
   version: '1.0'
   short-description: Design parsers, grammars, and AST transforms safely
@@ -16,29 +19,31 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#8B5CF6'
-  default-prompt: Act as the "PARSER-Design" specialist for "Design parsers, grammars, and AST transforms safely". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "PARSER-Design" specialist for "Design parsers, grammars,
+    and AST transforms safely". Deliver focused, deterministic results with minimal,
+    reviewable changes and explicit assumptions. Validate untrusted inputs and bounded
+    I/O, run the narrowest relevant checks, and report concrete actions, evidence,
+    and residual risks.
 ---
-## Use this skill when
-- the active task matches this skill's description and needs deterministic implementation guidance
+
+# Parser Design
 
 ## Workflow
-1) Define the input grammar and failure cases before changing parsing code.
-2) Keep tokenization, parsing, and validation responsibilities separated.
-3) Add positive and negative-path fixtures for malformed input, not just happy paths.
 
-## Agent orchestration
-- Confirm ownership, validation scope, and whether another skill or plugin should be combined before editing.
-- Delegate only bounded scouting or independent verification work.
+1. Specify the grammar, accepted encoding, maximum input/depth and structured output before editing. Enumerate ambiguity and recovery rules.
 
-## Validation and testing
-- Run the narrowest syntax, parser, or unit checks that prove the change.
-- Explicitly call out skipped checks and why they remain out of scope.
+2. Separate lexing, parsing, validation and execution. Preserve source locations and deterministic diagnostics. Never eval untrusted input.
 
-## Outputs
-- Minimal, reviewable edits aligned to the skill contract.
-- Concrete validation commands and residual risks.
+3. Bound recursion, allocation and backtracking; reject malformed or trailing input according to the contract. Avoid regex-only parsing for recursive structured languages.
+
+4. Use existing focused fixtures for valid, malformed, boundary and round-trip cases. Report any intentionally incompatible grammar change.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- [Lark parser](https://lark-parser.readthedocs.io/)
-- [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
-- [Python re module](https://docs.python.org/3/library/re.html)
+
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

@@ -1,7 +1,9 @@
 # Python CLI Template (overview)
-Purpose: tell the Codex coding agent how to use `templates/python/cli-app/overview.md` as a runtime-pack surface and when to stop browsing.
+
+Use this template when you need python cli template (overview) in the authorized project. Replace placeholders, adapt the examples to the detected toolchain, and preserve the requested output contract. Do not treat sample values or commands as verified deployment settings.
 
 ## Quickstart
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -15,20 +17,24 @@ cli-app --help
 ```
 
 ## Logging
+
 - `--log-format json` for structured logs (stderr)
 - `-v` / `-vv` to increase verbosity
 - `LOG_LEVEL` and `LOG_FORMAT` env vars override defaults
 
 ## Notes
-- You must keep dependencies minimal and pinned.
-- You must use `APP_` env prefix if you add settings.
+
+- Keep dependencies minimal and pinned.
+- Use `APP_` env prefix if you add settings.
 
 ## Inputs
+
 - Destination repository path for this template.
 - Exact runtime/toolchain versions and pinning policy.
 - Repository-specific values for placeholders, secrets, and host paths.
 
 ## Outputs
+
 - Files copied from this template directory.
 - `.gitignore`
 - `cli_app/`
@@ -37,10 +43,12 @@ cli-app --help
 - `tests/`
 
 ## Next steps
-1) Copy files into deterministic repository paths.
-2) Replace placeholders and pin versions/images before first commit.
-3) Run the narrowest relevant checks (lint/test/build or dry-run) before commit.
 
-## After that, you must check related files
+1. Copy files into deterministic repository paths.
+2. Replace placeholders and pin versions/images before first commit.
+3. Run the narrowest relevant checks (lint/test/build or dry-run) before commit.
+
+## After that, check related files
+
 - Docs: `$CODEX_HOME/docs/style/python.md`
 - Snippets: `$CODEX_HOME/snippets/python/`

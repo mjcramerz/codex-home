@@ -1,4 +1,4 @@
 interface:
-  display_name: "GitOps Repository"
-  short_description: "GitOps repository workflow and safety"
-  default_prompt: "Use $repo-gitops to update the GitOps repository with non-destructive validation and explicit branch safeguards."
+  display_name: GitOps Repository
+  short_description: Use this skill for gitOps repository workflow and safety
+  default_prompt: Use $repo-gitops for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

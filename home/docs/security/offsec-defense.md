@@ -1,23 +1,25 @@
 # Offsec defense reference
-Purpose: tell the Codex coding agent how to use `docs/security/offsec-defense.md` as a runtime-pack surface and when to stop browsing.
+
+Use this guide when you review authentication, authorization, trust boundaries or defensive security controls. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 This reference supports reusable offsec-defense and cyber-defense work with explicit scope, evidence, and rollback boundaries.
 
-
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/docs/security/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
 
-
 ## Intent
+
 - Combine scoped offensive simulation with practical defensive outcomes.
-- You must keep assessments bounded, evidence-backed, and reversible.
+- Keep assessments bounded, evidence-backed, and reversible.
 - Prioritize risk reduction over exploit novelty.
 
 ## Coverage domains
+
 - Port scanning and service exposure triage.
 - Credential-access detection validation (Mimikatz behavior).
 - DNS defense operations (Pi-hole + Unbound).
@@ -27,12 +29,14 @@ This reference supports reusable offsec-defense and cyber-defense work with expl
 - Reverse-engineering triage for suspicious binaries and scripts.
 
 ## Control baseline
+
 - Documented scope manifest before offensive actions.
 - Deterministic commands with bounded retries/timeouts.
 - Artifact retention and redaction policy for sensitive evidence.
 - Containment-first response whenever detection indicates active risk.
 
 ## Operational outputs
+
 - Scope validation record
 - Findings backlog with severity/owner/due date
 - Detection gap register with mapped ATT&CK techniques
@@ -45,4 +49,4 @@ See also:
 - `security-labs-repo-catalog.md`
 - `security-labs-tool-guides.md`
 - `$CODEX_HOME/plans/workflows/workflow-offsec-defense.md`
-- You must use skill offsec-defense.
+- Read the `offsec-defense` skill only when its trigger matches this task and the skill is available.

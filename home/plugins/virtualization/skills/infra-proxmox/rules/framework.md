@@ -13,9 +13,12 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Infra Proxmox Framework
 
+Apply the following infra proxmox framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `infra-proxmox`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/virtualization/1.0.0/skills/infra-proxmox/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/virtualization/1.0.0/skills/infra-proxmox/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/virtualization/1.0.0/skills/infra-proxmox/references/`
+- Source of truth: `$CODEX_HOME/plugins/virtualization/skills/infra-proxmox/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/virtualization/skills/infra-proxmox/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/virtualization/skills/infra-proxmox/references/`

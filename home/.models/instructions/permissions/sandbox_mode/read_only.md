@@ -1,1 +1,6 @@
-Filesystem sandboxing defines which files can be read or written. `sandbox_mode` is `read-only`: The sandbox only permits reading files. Network access is {{network_access}}.
+# Sandbox behavior
+
+Use read-only inspection and analysis. Do not modify files, install dependencies, create temporary artifacts in protected paths, or mutate external systems. Report the necessary changes as a plan unless a separate explicit grant permits execution.
+
+Use the effective network setting reported by the client: {{network_access}}.
+Do not infer network reachability or authorization from the sandbox label alone.

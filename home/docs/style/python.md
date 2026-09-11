@@ -1,53 +1,26 @@
-# Python style guide
-Purpose: tell the Codex coding agent how to use `docs/style/python.md` as a runtime-pack surface and when to stop browsing.
-Canonical Python guidance for this pack. Follow repo-specific conventions first.
+# Python
 
+Use this guide when you implement or review Python modules, CLIs, packaging or automation. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/style/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+## Apply these practices
 
+**1.** Read pyproject.toml, interpreter constraints, lockfiles and the affected callers. Reuse the project's environment and package manager; do not upgrade the system interpreter or globally install dependencies for a local code change.
 
-## Baseline
-- Target Python 3.11+ unless repo constraints say otherwise.
-- You must prefer type hints everywhere; use `mypy` or `pyright` when the repo supports it.
-- You must prefer `ruff` for linting and formatting; keep configuration in `pyproject.toml`.
+**2.** Define types at public boundaries and validate external data before constructing domain objects. Separate parsing, pure transformations and side effects; use explicit exceptions rather than blanket catch-and-continue.
 
-## Structure
-- You must prefer explicit packages/modules; avoid circular imports.
-- You must keep I/O at the edges; keep core logic pure and testable.
-- You must use `pydantic`/`pydantic-settings` only when it meaningfully improves validation.
+**3.** Use pathlib for paths, context managers for resources, subprocess argument lists with shell=False, explicit encodings, bounded reads and timeouts. Avoid eval, unsafe deserialization and module imports from untrusted working directories.
 
-## Errors
-- Raise specific exceptions.
-- Map internal exceptions to safe external errors (don’t leak internals).
-- For APIs: centralize error mapping (HTTP status + redacted message) and log the internal error.
+**4.** Use module loggers and structured context. Redact tokens and payloads, preserve exception causes, and avoid logging the same failure at every layer.
 
-## Security
-- No `eval`, no `pickle` for untrusted input.
-- You must validate inputs at boundaries; enforce size limits.
-- You must use `secrets` for tokens; use `hashlib`/`hmac` correctly; no custom crypto.
-- HTTP clients must set timeouts and avoid redirect surprises; prefer `trust_env=False` unless you control the environment.
-- Avoid SSRF: never fetch arbitrary user-provided URLs without host allowlists and private-IP blocking.
+**5.** Check the narrow changed contract using existing lint, type and test commands. Compiling source proves syntax only; it does not validate imports, optional dependencies, live services or runtime behavior.
 
-## Performance
-- Avoid quadratic string concatenation; prefer `''.join(...)`.
-- Stream large files instead of buffering whole content.
-- You must add timeouts to requests; keep retries bounded.
-- You must prefer context managers for resources (`with open(...)`, `with httpx.Client(...)`).
+## Select related guidance
 
-## Logging
-- Default to structured logs to stderr; keep stdout for machine output.
-- Include request-id/correlation-id when applicable.
-- Never log secrets or request bodies by default.
-
-## References
-- `overview.md`
-- Snippets: `$CODEX_HOME/snippets/python/`
-- Docs: `../security/logging.md`, `../security/web-hardening.md`
-- Skill: Use skill backend-fastapi. (when building APIs)
+- `$CODEX_HOME/docs/style/overview.md`
+- `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/OVERVIEW.md`
+- `$CODEX_HOME/snippets/python/`
 - `$CODEX_HOME/index/pack/style.md`
 - `$CODEX_HOME/index/style/python.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

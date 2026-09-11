@@ -1,6 +1,6 @@
 interface:
-  display_name: "Spreadsheet Skill"
-  short_description: "Create, edit, and analyze spreadsheets"
-  icon_small: "./assets/spreadsheet-small.svg"
-  icon_large: "./assets/spreadsheet.png"
-  default_prompt: "Use $spreadsheet to create or update a spreadsheet for this task with the right formulas, structure, and formatting."
+  display_name: Spreadsheet Skill
+  short_description: Use this skill for create, edit, and analyze spreadsheets
+  icon_small: ./assets/spreadsheet-small.svg
+  icon_large: ./assets/spreadsheet.png
+  default_prompt: Use $spreadsheet for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

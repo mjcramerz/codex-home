@@ -1,5 +1,7 @@
 # Cache Reserve Patterns
 
+Consult this reference when cache reserve patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Best Practices
 
 ### 1. Always Enable Tiered Cache
@@ -191,7 +193,7 @@ console.log(mediaLibrary);
 
 ## See Also
 
-- [README]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/README.md) - Overview and core concepts
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/configuration.md) - Setup and Cache Rules
-- [API Reference]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/api.md) - Purging and monitoring
-- [Gotchas]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/gotchas.md) - Common issues and troubleshooting
+- [README]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/README.md) - Overview and core concepts
+- [Configuration]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/configuration.md) - Setup and Cache Rules
+- [API Reference]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/api.md) - Purging and monitoring
+- [Gotchas]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/gotchas.md) - Common issues and troubleshooting

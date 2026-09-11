@@ -1,5 +1,7 @@
 # Terraform Data Sources Reference
 
+Consult this reference when terraform data sources reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Query existing Cloudflare resources to reference in your configurations.
 
 ## v5 Data Source Names
@@ -172,7 +174,7 @@ output "name_servers" {
 
 ## See Also
 
-- [README]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/README.md) - Provider setup
-- [Configuration Reference]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/configuration.md) - All resource types
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/patterns.md) - Architecture patterns
-- [Troubleshooting]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/gotchas.md) - Common issues
+- [README]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/README.md) - Provider setup
+- [Configuration Reference]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/configuration.md) - All resource types
+- [Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/patterns.md) - Architecture patterns
+- [Troubleshooting]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/gotchas.md) - Common issues

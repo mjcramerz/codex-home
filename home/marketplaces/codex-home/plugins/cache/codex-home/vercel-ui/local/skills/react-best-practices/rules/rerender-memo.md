@@ -5,6 +5,10 @@ impactDescription: enables early returns
 tags: rerender, memo, useMemo, optimization
 ---
 
+# rerender memo
+
+Apply the following rerender memo guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Extract to Memoized Components
 
 Extract expensive work into memoized components to enable early returns before computation.

@@ -8,7 +8,10 @@ tags:
 - framework
 updated: '2026-03-12'
 ---
+
 # hook-behavior-audit framework
+
+Apply the following hook-behavior-audit framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `hook-behavior-audit`
 - Category: `AUDIT`

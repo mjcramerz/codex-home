@@ -13,9 +13,12 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # BWS-Local Framework
 
+Apply the following bws-local framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `bws-local`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/bws-local/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/bws-local/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/bws-local/references/`
+- Source of truth: `$CODEX_HOME/plugins/security-controls/skills/bws-local/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/security-controls/skills/bws-local/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/security-controls/skills/bws-local/references/`

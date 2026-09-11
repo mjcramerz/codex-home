@@ -1,5 +1,7 @@
 # Patterns
 
+Consult this reference when patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## API Routes
 
 ```typescript
@@ -147,7 +149,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
 };
 ```
 
-**Best for**: Read-heavy apps with D1/Durable Objects in specific regions.  
+**Best for**: Read-heavy apps with D1/Durable Objects in specific regions.
 **Not needed**: Apps without data locality constraints or with evenly distributed traffic.
 
 ## Framework Integration
@@ -159,6 +161,7 @@ npm create cloudflare@latest my-app -- --framework=svelte
 ```
 
 ### SvelteKit
+
 ```typescript
 // src/routes/+page.server.ts
 export const load = async ({ platform }) => {
@@ -168,6 +171,7 @@ export const load = async ({ platform }) => {
 ```
 
 ### Astro
+
 ```astro
 ---
 const { DB } = Astro.locals.runtime.env;
@@ -177,6 +181,7 @@ const todos = await DB.prepare('SELECT * FROM todos').all();
 ```
 
 ### Nuxt
+
 ```typescript
 // server/api/todos.get.ts
 export default defineEventHandler(async (event) => {
@@ -199,6 +204,6 @@ Dashboard → Settings → Build → Root directory. Set to subproject (e.g., `a
 
 ## Best Practices
 
-**Performance**: Exclude static via `_routes.json`; cache with KV; keep bundle < 1MB  
-**Security**: Use secrets (not vars); validate inputs; rate limit with KV/DO  
+**Performance**: Exclude static via `_routes.json`; cache with KV; keep bundle < 1MB
+**Security**: Use secrets (not vars); validate inputs; rate limit with KV/DO
 **Workflow**: Preview per branch; local dev with `wrangler pages dev`; instant rollbacks in Dashboard

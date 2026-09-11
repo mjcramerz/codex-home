@@ -13,9 +13,12 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Obs Kibana Framework
 
+Apply the following obs kibana framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `obs-kibana`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-kibana/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-kibana/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-kibana/references/`
+- Source of truth: `$CODEX_HOME/plugins/observability/skills/obs-kibana/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/observability/skills/obs-kibana/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/observability/skills/obs-kibana/references/`

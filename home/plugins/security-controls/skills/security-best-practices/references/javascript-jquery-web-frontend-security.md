@@ -1,5 +1,7 @@
 # jQuery Frontend Security Spec (jQuery 4.0.x, modern browsers)
 
+Consult this reference when jquery frontend security spec (jquery 4.0.x, modern browsers) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
 
 1. **Secure-by-default code generation** for new jQuery-based frontend code.
@@ -122,7 +124,7 @@ This is the smallest “production baseline” that prevents common jQuery-relat
 
 * MUST use a supported jQuery major version and keep it updated.
 * As of 2026-01-27, the jQuery project ships jQuery 4.0.0 as the latest major release. ([blog.jquery.com][7])
-* If you must support very old browsers (notably IE < 11), jQuery 4 does not support them and you may need to stay on jQuery 3.x; treat this as a higher risk posture and patch aggressively. ([blog.jquery.com][7])
+* If support very old browsers (notably IE < 11), jQuery 4 does not support them and you may need to stay on jQuery 3.x; treat this as a higher risk posture and patch aggressively. ([blog.jquery.com][7])
 
 ### 3.2 Load jQuery safely (MUST)
 
@@ -481,7 +483,7 @@ Severity: Medium (can become High if it enables wrong-element selection in secur
 
 Required:
 
-* If you must select by an ID/class that can contain special CSS characters, SHOULD use `jQuery.escapeSelector()` (available in jQuery 3.0+). ([jQuery API][20])
+* If select by an ID/class that can contain special CSS characters, SHOULD use `jQuery.escapeSelector()` (available in jQuery 3.0+). ([jQuery API][20])
 * MUST NOT concatenate raw attacker-controlled strings into selector expressions.
 
 Insecure patterns:

@@ -5,6 +5,10 @@ impactDescription: enables swapping state implementations without changing UI
 tags: composition, state, architecture
 ---
 
+# state decouple implementation
+
+Apply the following state decouple implementation guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Decouple State Management from UI
 
 The provider component should be the only place that knows how state is managed.

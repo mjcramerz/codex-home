@@ -1,5 +1,7 @@
 # Cloudflare Workers Best Practices
 
+Consult this reference when cloudflare workers best practices is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 High-level guidance for Workers that invoke Durable Objects.
 
 ## Wrangler Configuration
@@ -320,6 +322,7 @@ wrangler secret put DATABASE_URL
 ```
 
 Access in code:
+
 ```typescript
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {

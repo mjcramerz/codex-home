@@ -1,5 +1,7 @@
 # Cloudflare Wrangler
 
+Consult this reference when cloudflare wrangler is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Official CLI for Cloudflare Workers - develop, manage, and deploy Workers from the command line.
 
 ## What is Wrangler?
@@ -26,15 +28,16 @@ Run commands: `npx wrangler <command>` (or `pnpm`/`yarn wrangler`)
 
 | If you want to... | Start here |
 |-------------------|------------|
-| Create/deploy Worker quickly | Essential Commands below → [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/patterns.md) §New Worker |
-| Configure bindings (KV, D1, R2) | [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/configuration.md) §Bindings |
-| Write integration tests | [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/api.md) §startWorker |
-| Debug production issues | [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/gotchas.md) + Essential Commands §Monitoring |
-| Set up multi-environment workflow | [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/configuration.md) §Environments |
+| Create/deploy Worker quickly | Essential Commands below → [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/patterns.md) §New Worker |
+| Configure bindings (KV, D1, R2) | [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/configuration.md) §Bindings |
+| Write integration tests | [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/api.md) §startWorker |
+| Debug production issues | [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/gotchas.md) + Essential Commands §Monitoring |
+| Set up multi-environment workflow | [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/configuration.md) §Environments |
 
 ## Essential Commands
 
 ### Project & Development
+
 ```bash
 wrangler init [name]              # Create new project
 wrangler dev                      # Local dev server (fast, simulated)
@@ -50,6 +53,7 @@ wrangler whoami                   # Check auth status
 ## Resource Management
 
 ### KV
+
 ```bash
 wrangler kv namespace create NAME
 wrangler kv key put "key" "value" --namespace-id=<id>
@@ -57,6 +61,7 @@ wrangler kv key get "key" --namespace-id=<id>
 ```
 
 ### D1
+
 ```bash
 wrangler d1 create NAME
 wrangler d1 execute NAME --command "SQL"
@@ -65,6 +70,7 @@ wrangler d1 migrations apply NAME
 ```
 
 ### R2
+
 ```bash
 wrangler r2 bucket create NAME
 wrangler r2 object put BUCKET/key --file path
@@ -72,6 +78,7 @@ wrangler r2 object get BUCKET/key
 ```
 
 ### Other Resources
+
 ```bash
 wrangler queues create NAME
 wrangler vectorize create NAME --dimensions N --metric cosine
@@ -83,6 +90,7 @@ wrangler pages deployment create --project NAME --branch main
 ```
 
 ### Secrets
+
 ```bash
 wrangler secret put NAME          # Set Worker secret
 wrangler secret list              # List Worker secrets
@@ -95,6 +103,7 @@ wrangler secret-store:secret list STORE_NAME
 ```
 
 ### Monitoring
+
 ```bash
 wrangler tail                     # Real-time logs
 wrangler tail --env production    # Tail specific env
@@ -103,11 +112,11 @@ wrangler tail --status error      # Filter by status
 
 ## In This Reference
 
-- [auth.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/auth.md) - Authentication setup (`wrangler login`, API tokens)
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/configuration.md) - wrangler.jsonc setup, environments, bindings
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/api.md) - Programmatic API (`startWorker`, `getPlatformProxy`, events)
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/patterns.md) - Common workflows and development patterns
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/gotchas.md) - Common pitfalls, limits, and troubleshooting
+- [auth.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/auth.md) - Authentication setup (`wrangler login`, API tokens)
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/configuration.md) - wrangler.jsonc setup, environments, bindings
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/api.md) - Programmatic API (`startWorker`, `getPlatformProxy`, events)
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/patterns.md) - Common workflows and development patterns
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/gotchas.md) - Common pitfalls, limits, and troubleshooting
 
 ## Quick Decision Tree
 
@@ -136,6 +145,6 @@ Authentication issues?
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Workers runtime API reference
-- [miniflare]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/miniflare/) - Local testing with Miniflare
-- [workerd]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/) - Runtime that powers `wrangler dev`
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Workers runtime API reference
+- [miniflare]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/miniflare/) - Local testing with Miniflare
+- [workerd]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/) - Runtime that powers `wrangler dev`

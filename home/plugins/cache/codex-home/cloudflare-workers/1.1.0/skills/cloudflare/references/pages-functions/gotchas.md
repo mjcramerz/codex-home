@@ -1,5 +1,7 @@
 # Gotchas & Debugging
 
+Consult this reference when gotchas & debugging is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Error Diagnosis
 
 | Symptom | Likely Cause | Solution |
@@ -9,7 +11,7 @@
 | **TypeScript errors on `ctx.env`** | Missing type definition | Run `wrangler types` or define `interface Env {}` |
 | **Middleware not running** | Wrong filename/location or missing `ctx.next()` | Name exactly `_middleware.js`, export `onRequest`, call `ctx.next()` |
 | **Secrets missing in production** | `.dev.vars` not deployed | `.dev.vars` is local only - set production secrets via dashboard or `wrangler secret put` |
-| **Type mismatch on binding** | Wrong interface type | See [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/api.md) bindings table for correct types |
+| **Type mismatch on binding** | Wrong interface type | See [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/api.md) bindings table for correct types |
 | **"KV key not found" but exists** | Key in wrong namespace or env | Verify namespace binding, check preview vs production env |
 | **Function times out** | Synchronous wait or missing `await` | All I/O must be async/await, use `ctx.waitUntil()` for background tasks |
 
@@ -17,9 +19,10 @@
 
 ### TypeScript type errors
 
-**Problem:** `ctx.env.MY_BINDING` shows type error  
-**Cause:** No type definition for `Env`  
+**Problem:** `ctx.env.MY_BINDING` shows type error
+**Cause:** No type definition for `Env`
 **Solution:** Run `npx wrangler types` or manually define:
+
 ```typescript
 interface Env { MY_BINDING: KVNamespace; }
 export const onRequest: PagesFunction<Env> = async (ctx) => { /* ... */ };
@@ -27,9 +30,10 @@ export const onRequest: PagesFunction<Env> = async (ctx) => { /* ... */ };
 
 ### Secrets not available in production
 
-**Problem:** `ctx.env.SECRET_KEY` is undefined in production  
-**Cause:** `.dev.vars` is local-only, not deployed  
+**Problem:** `ctx.env.SECRET_KEY` is undefined in production
+**Cause:** `.dev.vars` is local-only, not deployed
 **Solution:** Set production secrets:
+
 ```bash
 echo "value" | npx wrangler pages secret put SECRET_KEY --project-name=my-app
 ```
@@ -91,4 +95,4 @@ npx wrangler pages deployment tail --status error
 - [Examples](https://github.com/cloudflare/pages-example-projects)
 - [Discord](https://discord.gg/cloudflaredev)
 
-**See also:** [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md) for TypeScript setup | [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/patterns.md) for middleware/auth | [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/api.md) for bindings
+**See also:** [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md) for TypeScript setup | [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/patterns.md) for middleware/auth | [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/api.md) for bindings

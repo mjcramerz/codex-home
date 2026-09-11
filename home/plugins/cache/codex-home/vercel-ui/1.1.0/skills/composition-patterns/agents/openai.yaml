@@ -1,7 +1,6 @@
 interface:
-  display_name: "Vercel Composition Patterns"
-  short_description: "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexibl"
-  default_prompt: "Use $composition-patterns. Use the Vercel Composition Patterns skill when the task matches this scope: React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes."
-
+  display_name: Vercel Composition Patterns
+  short_description: 'Use this skill for react composition patterns that scale. Use when refactoring components '
+  default_prompt: Use $vercel-composition-patterns for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Environment Variables
 
 ### Set Variables
@@ -155,6 +157,6 @@ account_id = "your-account-id"
 
 ## See Also
 
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/api.md) - Client initialization, authentication
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/gotchas.md) - Rate limits, timeout errors
-- [Wrangler Reference]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/) - CLI tool details
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/api.md) - Client initialization, authentication
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/gotchas.md) - Rate limits, timeout errors
+- [Wrangler Reference]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/) - CLI tool details

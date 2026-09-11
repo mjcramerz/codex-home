@@ -1,5 +1,7 @@
 # Workers Runtime APIs
 
+Consult this reference when workers runtime apis is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Fetch Handler
 
 ```typescript
@@ -190,6 +192,6 @@ export class ServiceWorker {
 
 ## See Also
 
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/configuration.md) - Binding setup
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/patterns.md) - Common workflows
-- [KV]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/kv/README.md), [D1]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/d1/README.md), [R2]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/r2/README.md), [Durable Objects]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/durable-objects/README.md), [Queues]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/queues/README.md)
+- [Configuration]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/configuration.md) - Binding setup
+- [Patterns]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/patterns.md) - Common workflows
+- [KV]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/kv/README.md), [D1]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/d1/README.md), [R2]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/r2/README.md), [Durable Objects]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/durable-objects/README.md), [Queues]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/queues/README.md)

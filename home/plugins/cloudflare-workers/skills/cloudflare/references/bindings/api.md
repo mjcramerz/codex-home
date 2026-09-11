@@ -1,5 +1,7 @@
 # Bindings API Reference
 
+Consult this reference when bindings api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## TypeScript Types
 
 Cloudflare generates binding types via `npx wrangler types`. This creates `.wrangler/types/runtime.d.ts` with your Env interface.
@@ -118,6 +120,7 @@ npx wrangler types
 ## Key Binding Methods
 
 **KV:**
+
 ```typescript
 await env.MY_KV.get(key, { type: 'json' });  // text|json|arrayBuffer|stream
 await env.MY_KV.put(key, value, { expirationTtl: 3600 });
@@ -126,6 +129,7 @@ await env.MY_KV.list({ prefix: 'user:' });
 ```
 
 **R2:**
+
 ```typescript
 await env.BUCKET.get(key);
 await env.BUCKET.put(key, value);
@@ -134,27 +138,32 @@ await env.BUCKET.list({ prefix: 'images/' });
 ```
 
 **D1:**
+
 ```typescript
 await env.DB.prepare('SELECT * FROM users WHERE id = ?').bind(userId).first();
 await env.DB.batch([stmt1, stmt2]);
 ```
 
 **Service:**
+
 ```typescript
 await env.MY_SERVICE.fetch(new Request('https://fake/path'));
 ```
 
 **Workers AI:**
+
 ```typescript
 await env.AI.run('@cf/meta/llama-3.1-8b-instruct', { prompt: 'Hello' });
 ```
 
 **Queues:**
+
 ```typescript
 await env.MY_QUEUE.send({ userId: 123, action: 'process' });
 ```
 
 **Durable Objects:**
+
 ```typescript
 const id = env.MY_DO.idFromName('user-123');
 const stub = env.MY_DO.get(id);
@@ -169,6 +178,7 @@ await stub.fetch(new Request('https://fake/increment'));
 | `wrangler types` | After config change | Your specific bindings (Env interface) |
 
 **Install both:**
+
 ```bash
 npm install -D @cloudflare/workers-types
 npx wrangler types
@@ -177,6 +187,7 @@ npx wrangler types
 ## Type Safety Best Practices
 
 1. **Never use `any` for env:**
+
 ```typescript
 // ❌ BAD
 async fetch(request: Request, env: any) { }
@@ -186,12 +197,14 @@ async fetch(request: Request, env: Env) { }
 ```
 
 2. **Run wrangler types after config changes:**
+
 ```bash
 # After editing wrangler.jsonc
 npx wrangler types
 ```
 
 3. **Check generated types match config:**
+
 ```bash
 # View generated Env interface
 cat .wrangler/types/runtime.d.ts

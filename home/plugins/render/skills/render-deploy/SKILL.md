@@ -96,6 +96,7 @@ git remote -v
 **2. Check MCP Tools Availability (Preferred for Single-Service)**
 
 MCP tools provide the best experience. Check if available by attempting:
+
 ```
 list_services()
 ```
@@ -103,9 +104,11 @@ list_services()
 If MCP tools are available, you can skip CLI installation for most operations.
 
 **3. Check Render CLI Installation (for Blueprint validation)**
+
 ```bash
 render --version
 ```
+
 If not installed, offer to install:
 - macOS: `brew install render`
 - Linux/macOS: `curl -fsSL https://raw.githubusercontent.com/render-oss/cli/main/bin/install.sh | sh`
@@ -118,12 +121,14 @@ If `list_services()` fails because MCP isn't configured, ask whether they want t
 
 Walk the user through these steps:
 
-1) Get a Render API key:
+1. Get a Render API key:
+
 ```
 https://dashboard.render.com/u/*/settings#api-keys
 ```
 
-2) Add this to `~/.cursor/mcp.json` (replace `<YOUR_API_KEY>`):
+2. Add this to `~/.cursor/mcp.json` (replace `<YOUR_API_KEY>`):
+
 ```json
 {
   "mcpServers": {
@@ -137,44 +142,49 @@ https://dashboard.render.com/u/*/settings#api-keys
 }
 ```
 
-3) Restart Cursor, then retry `list_services()`.
+3. Restart Cursor, then retry `list_services()`.
 
 ### Claude Code
 
 Walk the user through these steps:
 
-1) Get a Render API key:
+1. Get a Render API key:
+
 ```
 https://dashboard.render.com/u/*/settings#api-keys
 ```
 
-2) Add the MCP server with Claude Code (replace `<YOUR_API_KEY>`):
+2. Add the MCP server with Claude Code (replace `<YOUR_API_KEY>`):
+
 ```bash
 claude mcp add --transport http render https://mcp.render.com/mcp --header "Authorization: Bearer <YOUR_API_KEY>"
 ```
 
-3) Restart Claude Code, then retry `list_services()`.
+3. Restart Claude Code, then retry `list_services()`.
 
 ### Codex
 
 Walk the user through these steps:
 
-1) Get a Render API key:
+1. Get a Render API key:
+
 ```
 https://dashboard.render.com/u/*/settings#api-keys
 ```
 
-2) Set it in their shell:
+2. Set it in their shell:
+
 ```bash
 export RENDER_API_KEY="<YOUR_API_KEY>"
 ```
 
-3) Add the MCP server with the Codex CLI:
+3. Add the MCP server with the Codex CLI:
+
 ```bash
 codex mcp add render --url https://mcp.render.com/mcp --bearer-token-env-var RENDER_API_KEY
 ```
 
-4) Restart Codex, then retry `list_services()`.
+4. Restart Codex, then retry `list_services()`.
 
 ### Other Tools
 
@@ -191,6 +201,7 @@ Set my Render workspace to [WORKSPACE_NAME]
 **5. Check Authentication (CLI fallback only)**
 
 If MCP isn't available, use the CLI instead and verify you can access your account:
+
 ```bash
 # Check if user is logged in (use -o json for non-interactive mode)
 render whoami -o json
@@ -205,16 +216,19 @@ If neither is configured, ask user which method they prefer:
 **6. Check Workspace Context**
 
 Verify the active workspace:
+
 ```
 get_selected_workspace()
 ```
 
 Or via CLI:
+
 ```bash
 render workspace current -o json
 ```
 
 To list available workspaces:
+
 ```
 list_workspaces()
 ```
@@ -247,6 +261,7 @@ Complete specification: [references/blueprint-spec.md](references/blueprint-spec
 - Use appropriate runtime: [references/runtimes.md](references/runtimes.md)
 
 **Basic Structure:**
+
 ```yaml
 services:
   - type: web
@@ -310,7 +325,7 @@ Configuration guide: [references/configuration-guide.md](references/configuratio
 
 ### Step 4: Commit and Push
 
-**IMPORTANT:** You must merge the `render.yaml` file into your repository before deploying.
+**IMPORTANT:** Merge the `render.yaml` file into your repository before deploying.
 
 Ensure the `render.yaml` file is committed and pushed to your Git remote:
 
@@ -345,11 +360,13 @@ This will return a URL from your Git provider. **If the URL is SSH format, conve
 **Conversion pattern:** Replace `git@<host>:` with `https://<host>/` and remove `.git` suffix.
 
 Format the Dashboard deeplink using the HTTPS repository URL:
+
 ```
 https://dashboard.render.com/blueprint/new?repo=<REPOSITORY_URL>
 ```
 
 Example:
+
 ```
 https://dashboard.render.com/blueprint/new?repo=https://github.com/username/repo-name
 ```
@@ -375,17 +392,21 @@ The deployment will begin automatically. Users can monitor progress in the Rende
 After the user deploys via Dashboard, verify everything is working.
 
 **Check deployment status via MCP:**
+
 ```
 list_deploys(serviceId: "<service-id>", limit: 1)
 ```
+
 Look for `status: "live"` to confirm successful deployment.
 
 **Check for runtime errors (wait 2-3 minutes after deploy):**
+
 ```
 list_logs(resource: ["<service-id>"], level: ["error"], limit: 20)
 ```
 
 **Check service health metrics:**
+
 ```
 get_metrics(
   resourceId: "<service-id>",
@@ -428,19 +449,23 @@ If no remote exists, stop and ask the user to create/push a remote or switch to 
 Use the concise steps below, and refer to [references/direct-creation.md](references/direct-creation.md) for full MCP command examples and follow-on configuration.
 
 ### Step 1: Analyze Codebase
+
 Use [references/codebase-analysis.md](references/codebase-analysis.md) to determine runtime, build/start commands, env vars, and datastores.
 
 ### Step 2: Create Resources via MCP
+
 Create the service (web or static) and any required databases or key-value stores. See [references/direct-creation.md](references/direct-creation.md).
 
 If MCP returns an error about missing Git credentials or repo access, stop and guide the user to connect their Git provider in the Render Dashboard, then retry.
 
 ### Step 3: Configure Environment Variables
+
 Add required env vars via MCP after creation. See [references/direct-creation.md](references/direct-creation.md).
 
 Remind the user that secrets can be set in the Dashboard if they prefer not to pass them via MCP.
 
 ### Step 4: Verify Deployment
+
 Check deploy status, logs, and metrics. See [references/direct-creation.md](references/direct-creation.md).
 
 ---

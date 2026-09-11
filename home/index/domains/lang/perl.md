@@ -1,8 +1,9 @@
 # Perl (entrypoint)
-Purpose: stable link to Perl guidance for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this route when you need perl. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/domains/lang/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -11,7 +12,8 @@ You must read only the smallest section that resolves the current task, follow t
 
 Canonical content: `$CODEX_HOME/docs/lang/perl.md`
 
-## After that, you must check related files
+## After that, check related files
+
 - `$CODEX_HOME/docs/style/perl.md`
 - `$CODEX_HOME/templates/perl/codex-hook-module/`
-- You must use skill `perl`.
+- Read the `perl` skill only when its trigger matches this task and the skill is available.

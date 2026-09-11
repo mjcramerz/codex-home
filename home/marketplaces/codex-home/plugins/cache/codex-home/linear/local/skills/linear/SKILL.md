@@ -1,7 +1,6 @@
 ---
 name: linear
-description: Manage issues, projects, and team workflows in Linear. Use when the user wants
-  to read, create, or update tickets in Linear.
+description: Manage issues, projects, and team workflows in Linear. Use when the user wants to read, create, or update tickets in Linear.
 metadata:
   version: '1.0'
   short-description: Manage Linear issues in Codex
@@ -16,15 +15,13 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#3D32CC'
-  default-prompt: Act as the "Linear" specialist for "Manage Linear issues in Codex".
-    Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions.
-    Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report
-    concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "Linear" specialist for "Manage Linear issues in Codex". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
 ---
 
 # Linear
 
 ## Use this skill when
+
 - triaging, creating, or updating Linear issues and project metadata
 - preparing sprint/cycle plans or workload balancing tasks in Linear
 - summarizing issue health and follow-up actions for stakeholders
@@ -34,6 +31,7 @@ interface:
 This skill provides a structured workflow for managing issues, projects & team workflows in Linear. It ensures consistent integration with the Linear MCP server, which offers natural-language project management for issues, projects, documentation, and team collaboration.
 
 ## Prerequisites
+
 - Linear MCP server must be connected and accessible via OAuth
 - Confirm access to the relevant Linear workspace, teams, and projects
 
@@ -55,23 +53,28 @@ If any MCP call fails because Linear MCP is not connected, pause and set it up:
 After successful login, the user will have to restart codex. You should finish your answer and tell them so when they try again they can continue with Step 1.
 
 **Windows/WSL note:** If you see connection errors on Windows, try configuring the Linear MCP to run via WSL:
+
 ```json
 {"mcpServers": {"linear": {"command": "wsl", "args": ["npx", "-y", "mcp-remote", "https://mcp.linear.app/mcp", "--transport", "sse-only"]}}}
 ```
 
 ### Step 1
+
 Clarify the user's goal and scope (e.g., issue triage, sprint planning, documentation audit, workload balance). Confirm team/project, priority, labels, cycle, and due dates as needed.
 
 ### Step 2
+
 Select the appropriate workflow (see Practical Workflows below) and identify the Linear MCP tools you will need. Confirm required identifiers (issue ID, project ID, team key) before calling tools.
 
 ### Step 3
+
 Execute Linear MCP tool calls in logical batches:
 - Read first (list/get/search) to build context.
 - Create or update next (issues, projects, labels, comments) with all required fields.
 - For bulk operations, explain the grouping logic before applying changes.
 
 ### Step 4
+
 Summarize results, call out remaining gaps or blockers, and propose next actions (additional issues, label changes, assignments, or follow-up comments).
 
 ## Available Tools
@@ -109,11 +112,13 @@ Documentation & Collaboration: `list_documents`, `get_document`, `search_documen
 - Performance: Remember Linear API rate limits; batch bulk operations, use specific filters, or cache frequent queries.
 
 ## Agent orchestration
+
 - Confirm that the request fits this skill and state boundaries if other skills are needed.
 - For multi-step work, keep a concise plan, execute in small reversible steps, and surface assumptions early.
 - Delegate only independent discovery tasks, then reconcile findings before making edits.
 
 ## Validation and testing
+
 - Validate critical inputs and bound external I/O (size, retries, and timeouts) before applying changes.
 - Run the narrowest relevant checks that prove behavior (tests, lint, or build as applicable).
 - Include risk-based negative or edge-case coverage for security-sensitive, parsing, or automation changes.
@@ -124,7 +129,7 @@ Documentation & Collaboration: `list_documents`, `get_document`, `search_documen
 - Actionable steps or artifacts aligned to the skill.
 - References to relevant files, commands, or templates.
 
-
 ## References
+
 - `$CODEX_HOME/plans/skills/skill-pm-linear-issues.md`
 - `$CODEX_HOME/docs/workflows/planning.md`

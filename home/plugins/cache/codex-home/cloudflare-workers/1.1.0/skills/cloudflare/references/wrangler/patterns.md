@@ -1,5 +1,7 @@
 # Wrangler Development Patterns
 
+Consult this reference when wrangler development patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common workflows and best practices.
 
 ## New Worker Project
@@ -101,6 +103,7 @@ describe("API", () => {
 Install: `npm install -D vitest @cloudflare/vitest-pool-workers`
 
 **vitest.config.ts:**
+
 ```typescript
 import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
 export default defineWorkersConfig({
@@ -109,6 +112,7 @@ export default defineWorkersConfig({
 ```
 
 **tests/api.test.ts:**
+
 ```typescript
 import { env, SELF } from "cloudflare:test";
 import { describe, it, expect } from "vitest";
@@ -203,7 +207,7 @@ export default {
 
 ## See Also
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/README.md) - Commands
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/configuration.md) - Config
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/api.md) - Programmatic API
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/gotchas.md) - Issues
+- [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/README.md) - Commands
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/configuration.md) - Config
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/api.md) - Programmatic API
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/gotchas.md) - Issues

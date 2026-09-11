@@ -1,5 +1,7 @@
 # Bot Management Patterns
 
+Consult this reference when bot management patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## E-commerce Protection
 
 ```txt
@@ -179,4 +181,4 @@ Rate limiting > Custom rules
 
 ## See Also
 
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/bot-management/gotchas.md) - Common errors, false positives/negatives, limitations
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/bot-management/gotchas.md) - Common errors, false positives/negatives, limitations

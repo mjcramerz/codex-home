@@ -1,5 +1,7 @@
 # Workers Configuration
 
+Consult this reference when workers configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## wrangler.jsonc (Recommended)
 
 ```jsonc
@@ -27,8 +29,8 @@
 
 ## Configuration Rules
 
-**Inheritable**: `name`, `main`, `compatibility_date`, `routes`, `workers_dev`  
-**Non-inheritable**: All bindings (`vars`, `kv_namespaces`, `r2_buckets`, etc.)  
+**Inheritable**: `name`, `main`, `compatibility_date`, `routes`, `workers_dev`
+**Non-inheritable**: All bindings (`vars`, `kv_namespaces`, `r2_buckets`, etc.)
 **Top-level only**: `migrations`, `keep_vars`, `send_metrics`
 
 **ALWAYS set `compatibility_date` to current date for new projects**
@@ -180,6 +182,6 @@ npx wrangler deploy --dry-run    # Validate only
 
 ## See Also
 
-- [API]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/api.md) - Runtime APIs and bindings usage
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/patterns.md) - Deployment strategies
-- [Wrangler]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/README.md) - CLI reference
+- [API]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/api.md) - Runtime APIs and bindings usage
+- [Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/patterns.md) - Deployment strategies
+- [Wrangler]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/README.md) - CLI reference

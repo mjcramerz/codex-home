@@ -1,5 +1,7 @@
 # Cloudflare Pulumi Provider
 
+Consult this reference when cloudflare pulumi provider is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for Cloudflare Pulumi Provider (@pulumi/cloudflare).
 
 ## Overview
@@ -40,6 +42,7 @@ const provider = new cloudflare.Provider("cf", { apiUserServiceKey: process.env.
 ## Setup
 
 **Pulumi.yaml:**
+
 ```yaml
 name: my-cloudflare-app
 runtime: nodejs
@@ -49,12 +52,14 @@ config:
 ```
 
 **Pulumi.<stack>.yaml:**
+
 ```yaml
 config:
   cloudflare:accountId: "abc123..."
 ```
 
 **index.ts:**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as cloudflare from "@pulumi/cloudflare";
@@ -62,6 +67,7 @@ const accountId = new pulumi.Config("cloudflare").require("accountId");
 ```
 
 ## Common Resource Types
+
 - `Provider` - Provider config
 - `WorkerScript` - Worker
 - `WorkersKvNamespace` - KV
@@ -74,6 +80,7 @@ const accountId = new pulumi.Config("cloudflare").require("accountId");
 - `WorkersDomain` - Custom domain
 
 ## Key Properties
+
 - `accountId` - Required for most resources
 - `zoneId` - Required for DNS/domain
 - `name`/`title` - Resource identifier
@@ -83,18 +90,20 @@ const accountId = new pulumi.Config("cloudflare").require("accountId");
 
 | Order | File | What | When to Read |
 |-------|------|------|--------------|
-| 1 | [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/configuration.md) | Resource config for Workers/KV/D1/R2/Queues/Pages | First time setup, resource reference |
-| 2 | [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/patterns.md) | Architecture patterns, multi-env, component resources | Building complex apps, best practices |
-| 3 | [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/api.md) | Outputs, dependencies, imports, dynamic providers | Advanced features, integrations |
-| 4 | [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/gotchas.md) | Common errors, troubleshooting, limits | Debugging, deployment issues |
+| 1 | [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/configuration.md) | Resource config for Workers/KV/D1/R2/Queues/Pages | First time setup, resource reference |
+| 2 | [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/patterns.md) | Architecture patterns, multi-env, component resources | Building complex apps, best practices |
+| 3 | [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/api.md) | Outputs, dependencies, imports, dynamic providers | Advanced features, integrations |
+| 4 | [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/gotchas.md) | Common errors, troubleshooting, limits | Debugging, deployment issues |
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/configuration.md) - Provider config, stack setup, Workers/bindings
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/api.md) - Resource types, Workers script, KV/D1/R2/queues/Pages
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/patterns.md) - Multi-env, secrets, CI/CD, stack management
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/gotchas.md) - State issues, deployment failures, limits
+
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/configuration.md) - Provider config, stack setup, Workers/bindings
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/api.md) - Resource types, Workers script, KV/D1/R2/queues/Pages
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/patterns.md) - Multi-env, secrets, CI/CD, stack management
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/gotchas.md) - State issues, deployment failures, limits
 
 ## See Also
-- [terraform]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/) - Alternative IaC for Cloudflare
-- [wrangler]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/) - CLI deployment alternative
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker runtime documentation
+
+- [terraform]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/) - Alternative IaC for Cloudflare
+- [wrangler]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/) - CLI deployment alternative
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker runtime documentation

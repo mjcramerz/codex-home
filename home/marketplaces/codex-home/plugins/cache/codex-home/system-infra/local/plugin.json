@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "system-infra",
   "version": "1.1.0",
-  "description": "Host infrastructure workflows for boot, installer, storage, package publication, tuning, logging, and base system automation.",
+  "description": "Use this plugin for host infrastructure workflows for boot, installer, storage, package publication, tuning, logging, and base system automation.",
   "author": {
     "name": "Codex Setup"
   },

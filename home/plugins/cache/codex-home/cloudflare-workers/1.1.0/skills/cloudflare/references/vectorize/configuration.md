@@ -1,5 +1,7 @@
 # Vectorize Configuration
 
+Consult this reference when vectorize configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Create Index
 
 ```bash
@@ -70,6 +72,7 @@ wrangler vectorize delete-metadata-index <index-name> --property-name=field
 ## Cardinality Best Practice
 
 Bucket high-cardinality data:
+
 ```typescript
 // ❌ Millisecond timestamps
 metadata: { timestamp: Date.now() }

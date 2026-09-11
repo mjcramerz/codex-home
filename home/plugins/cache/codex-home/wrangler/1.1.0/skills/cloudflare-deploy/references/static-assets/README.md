@@ -1,5 +1,7 @@
 # Cloudflare Static Assets Skill Reference
 
+Consult this reference when cloudflare static assets skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for deploying and configuring static assets with Cloudflare Workers. This skill covers configuration patterns, routing architectures, asset binding usage, and best practices for SPAs, SSG sites, and full-stack applications.
 
 ## Quick Start

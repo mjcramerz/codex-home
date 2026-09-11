@@ -1,6 +1,6 @@
 ---
 name: huggingface-model-trainer
-description: This skill should be used when users want to train or fine-tune language models using TRL (Transformer Reinforcement Learning) on Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, and model persistence. Should be invoked for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup.
+description: Use this skill when users want to train or fine-tune language models using TRL (Transformer Reinforcement Learning) on Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, and model persistence. Should be invoked for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -17,6 +17,7 @@ Train language models using TRL (Transformer Reinforcement Learning) on fully ma
 - **Reward Modeling** - Train reward models for RLHF
 
 **For detailed TRL method documentation:**
+
 ```python
 hf_doc_search("your query", product="trl")
 hf_doc_fetch("https://huggingface.co/docs/trl/sft_trainer")  # SFT
@@ -61,6 +62,7 @@ When assisting with training jobs:
 ## Local Script Dependencies
 
 To run scripts locally (like `estimate_cost.py`), install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -70,20 +72,23 @@ pip install -r requirements.txt
 Before starting any training job, verify:
 
 ### ✅ **Account & Authentication**
+
 - Hugging Face Account with [Pro](https://hf.co/pro), [Team](https://hf.co/enterprise), or [Enterprise](https://hf.co/enterprise) plan (Jobs require paid plan)
 - Authenticated login: Check with `hf_whoami()`
 - **HF_TOKEN for Hub Push** ⚠️ CRITICAL - Training environment is ephemeral, must push to Hub or ALL training results are lost
-- Token must have write permissions  
+- Token must have write permissions
 - **MUST pass `secrets={"HF_TOKEN": "$HF_TOKEN"}` in job config** to make token available (the `$HF_TOKEN` syntax
   references your actual token value)
 
 ### ✅ **Dataset Requirements**
+
 - Dataset must exist on Hub or be loadable via `datasets.load_dataset()`
 - Format must match training method (SFT: "messages"/text/prompt-completion; DPO: chosen/rejected; GRPO: prompt-only)
 - **ALWAYS validate unknown datasets** before GPU training to prevent format failures (see Dataset Validation section below)
 - Size appropriate for hardware (Demo: 50-100 examples on t4-small; Production: 1K-10K+ on a10g-large/a100-large)
 
 ### ⚠️ **Critical Settings**
+
 - **Timeout must exceed expected training time** - Default 30min is TOO SHORT for most training. Minimum recommended: 1-2 hours. Job fails and loses all progress if timeout is exceeded.
 - **Hub push must be enabled** - Config: `push_to_hub=True`, `hub_model_id="username/model-name"`; Job: `secrets={"HF_TOKEN": "$HF_TOKEN"}`
 
@@ -100,6 +105,7 @@ Before starting any training job, verify:
 4. **Wait for user** to request status checks - don't poll automatically
 
 ### Ground Rules
+
 - **Jobs run in background** - Submission returns immediately; training continues independently
 - **Initial logs delayed** - Can take 30-60 seconds for logs to appear
 - **User checks status** - Wait for user to request status updates
@@ -114,6 +120,7 @@ Before starting any training job, verify:
 - ✅ Note that user can request status checks later
 
 **Example Response:**
+
 ```
 ✅ Job submitted successfully!
 
@@ -214,6 +221,7 @@ Jobs run in isolated Docker containers without access to your local filesystem. 
 - Private repo URLs (with HF_TOKEN)
 
 **Common mistakes:**
+
 ```python
 # ❌ These will all fail
 hf_jobs("uv", {"script": "train.py"})
@@ -222,6 +230,7 @@ hf_jobs("uv", {"script": "/path/to/train.py"})
 ```
 
 **Correct approaches:**
+
 ```python
 # ✅ Inline code (recommended)
 hf_jobs("uv", {"script": "# /// script\n# dependencies = [...]\n# ///\n\n<your code>"})
@@ -237,6 +246,7 @@ hf_jobs("uv", {"script": "https://gist.githubusercontent.com/user/id/raw/train.p
 ```
 
 **To use local scripts:** Upload to HF Hub first:
+
 ```bash
 huggingface-cli repo create my-training-scripts --type model
 huggingface-cli upload my-training-scripts ./train.py train.py
@@ -308,6 +318,7 @@ hf jobs uv run --secret HF_TOKEN "https://example.com/train.py"
 4. Script URL must be the last positional argument
 
 **Complete CLI example:**
+
 ```bash
 hf jobs uv run \
   --flavor a10g-large \
@@ -317,6 +328,7 @@ hf jobs uv run \
 ```
 
 **Check job status via CLI:**
+
 ```bash
 hf jobs ps                        # List all jobs
 hf jobs logs <job-id>             # View logs
@@ -372,6 +384,7 @@ The Jobs environment is temporary. All files are deleted when the job ends. If t
 ### Required Configuration
 
 **In training script/config:**
+
 ```python
 SFTConfig(
     push_to_hub=True,
@@ -381,6 +394,7 @@ SFTConfig(
 ```
 
 **In job submission:**
+
 ```python
 {
     "secrets": {"HF_TOKEN": "$HF_TOKEN"}  # Enables authentication
@@ -467,10 +481,9 @@ These scripts demonstrate proper Hub saving, Trackio integration, checkpoint man
 - **Space ID**: `{username}/trackio` (use "trackio" as default space name)
 - **Run naming**: Unless otherwise specified, name the run in a way the user will recognize (e.g., descriptive of the task, model, or purpose)
 - **Config**: Keep minimal - only include hyperparameters and model/dataset info
-- **Project Name**: Use a Project Name to associate runs with a particular Project 
+- **Project Name**: Use a Project Name to associate runs with a particular Project
 
 **User overrides:** If user requests specific trackio configuration (custom space, run naming, grouping, or additional config), apply their preferences instead of defaults.
-
 
 This is useful for managing multiple jobs with the same configuration or keeping training scripts portable.
 
@@ -589,6 +602,7 @@ After training, convert models to **GGUF format** for use with llama.cpp, Ollama
 **See:** `references/gguf_conversion.md` for complete conversion guide, including production-ready conversion script, quantization options, hardware requirements, usage examples, and troubleshooting.
 
 **Quick conversion:**
+
 ```python
 hf_jobs("uv", {
     "script": "<see references/gguf_conversion.md for complete script>",
@@ -617,14 +631,15 @@ See `references/training_patterns.md` for detailed examples including:
 ### Out of Memory (OOM)
 
 **Fix (try in order):**
-1. Reduce batch size: `per_device_train_batch_size=1`, increase `gradient_accumulation_steps=8`. Effective batch size is `per_device_train_batch_size` x `gradient_accumulation_steps`. For best performance keep effective batch size close to 128. 
+1. Reduce batch size: `per_device_train_batch_size=1`, increase `gradient_accumulation_steps=8`. Effective batch size is `per_device_train_batch_size` x `gradient_accumulation_steps`. For best performance keep effective batch size close to 128.
 2. Enable: `gradient_checkpointing=True`
-3. Upgrade hardware: t4-small → l4x1, a10g-small → a10g-large etc. 
+3. Upgrade hardware: t4-small → l4x1, a10g-small → a10g-large etc.
 
 ### Dataset Misformatted
 
 **Fix:**
 1. Validate first with dataset inspector:
+
    ```bash
    uv run https://huggingface.co/datasets/mcp-tools/skills/raw/main/dataset_inspector.py \
      --dataset name --split train
@@ -654,6 +669,7 @@ See `references/training_patterns.md` for detailed examples including:
 
 **Fix:**
 Add to PEP 723 header:
+
 ```python
 # /// script
 # dependencies = ["trl>=0.12.0", "peft>=0.7.0", "trackio", "missing-package"]
@@ -675,6 +691,7 @@ Add to PEP 723 header:
 ## Resources
 
 ### References (In This Skill)
+
 - `references/training_methods.md` - Overview of SFT, DPO, GRPO, KTO, PPO, Reward Modeling
 - `references/training_patterns.md` - Common training patterns and examples
 - `references/unsloth.md` - Unsloth for fast VLM training (~2x speed, 60% less VRAM)
@@ -685,6 +702,7 @@ Add to PEP 723 header:
 - `references/troubleshooting.md` - Common issues and solutions
 
 ### Scripts (In This Skill)
+
 - `scripts/train_sft_example.py` - Production SFT template
 - `scripts/train_dpo_example.py` - Production DPO template
 - `scripts/train_grpo_example.py` - Production GRPO template
@@ -693,9 +711,11 @@ Add to PEP 723 header:
 - `scripts/convert_to_gguf.py` - Complete GGUF conversion script
 
 ### External Scripts
+
 - [Dataset Inspector](https://huggingface.co/datasets/mcp-tools/skills/raw/main/dataset_inspector.py) - Validate dataset format before training (use via `uv run` or `hf_jobs`)
 
 ### External Links
+
 - [TRL Documentation](https://huggingface.co/docs/trl)
 - [TRL Jobs Training Guide](https://huggingface.co/docs/trl/en/jobs_training)
 - [TRL Jobs Package](https://github.com/huggingface/trl-jobs)

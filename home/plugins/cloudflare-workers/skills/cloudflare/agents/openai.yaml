@@ -1,30 +1,28 @@
 interface:
-  display_name: "Cloudflare"
-  short_description: "Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents"
-  default_prompt: "Use $cloudflare. Use the Cloudflare skill when the task matches this scope: Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare development task. Biases towards retrieval from Cloudflare docs over pre-trained knowledge."
-
+  display_name: Cloudflare
+  short_description: Use this skill for comprehensive Cloudflare platform skill covering Workers, Pages, storag
+  default_prompt: Use $cloudflare for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "cloudflare-api"
-      description: "cloudflare-api MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-docs"
-      description: "cloudflare-docs MCP server"
-      transport: "streamable_http"
-      url: "https://docs.mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-bindings"
-      description: "cloudflare-bindings MCP server"
-      transport: "streamable_http"
-      url: "https://bindings.mcp.cloudflare.com/mcp"
-    - type: "mcp"
-      value: "cloudflare-observability"
-      description: "cloudflare-observability MCP server"
-      transport: "streamable_http"
-      url: "https://observability.mcp.cloudflare.com/mcp"
-
+  - type: mcp
+    value: cloudflare-api
+    description: cloudflare-api MCP server
+    transport: streamable_http
+    url: https://mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-docs
+    description: cloudflare-docs MCP server
+    transport: streamable_http
+    url: https://docs.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-bindings
+    description: cloudflare-bindings MCP server
+    transport: streamable_http
+    url: https://bindings.mcp.cloudflare.com/mcp
+  - type: mcp
+    value: cloudflare-observability
+    description: cloudflare-observability MCP server
+    transport: streamable_http
+    url: https://observability.mcp.cloudflare.com/mcp
 policy:
   allow_implicit_invocation: true

@@ -1,5 +1,7 @@
 # Vectorize API Reference
 
+Consult this reference when vectorize api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Types
 
 ```typescript
@@ -27,6 +29,7 @@ const matches = await env.VECTORIZE.query(queryVector, {
 **returnMetadata:** `"none"` (fastest) → `"indexed"` (recommended) → `"all"` (topK max 20)
 
 **queryById (V2 only):** Search using existing vector as query.
+
 ```typescript
 await env.VECTORIZE.queryById("doc-123", { topK: 5 });
 ```

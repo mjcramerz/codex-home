@@ -18,7 +18,7 @@ SKILL_NAME = 'redis-cli'
 SKILL_CATEGORY = 'DB'
 SKILL_DESCRIPTION = 'Inspect and operate Redis safely with the redis-cli shell.'
 LAST_REFRESH_UTC = '2026-03-11'
-COVERAGE_HEADINGS = ['Use this skill when', 'Inputs', 'Scope and boundaries', 'Workflow', 'Validation and testing', 'Outputs', 'References']
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [{'title': 'redis-cli documentation', 'url': 'https://redis.io/docs/latest/develop/tools/cli/', 'note': 'redis-cli connection flags, shell modes, and diagnostic helpers.'}, {'title': 'SCAN command', 'url': 'https://redis.io/docs/latest/commands/scan/', 'note': 'Safe incremental keyspace inspection instead of KEYS *.'}, {'title': 'TTL command', 'url': 'https://redis.io/docs/latest/commands/ttl/', 'note': 'Expiration inspection and post-change verification guidance.'}]
 
 

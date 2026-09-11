@@ -7,6 +7,10 @@ sources:
   - https://learn.microsoft.com/windows/apps/winui/
 ---
 
+# foundation winui app structure
+
+Consult this reference when foundation winui app structure is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when structuring a WinUI 3 app, reviewing project layout, or deciding where shell, pages, controls, resources, and view models should live.

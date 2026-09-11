@@ -9,13 +9,17 @@ sources:
   - https://learn.microsoft.com/dotnet/core/install/windows
 ---
 
+# foundation environment audit and remediation
+
+Consult this reference when foundation environment audit and remediation is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file for machine-readiness checks, build failures caused by missing tools, and any request to install WinUI prerequisites.
 
 ## Required Workflow
 
-1. Use the setup-and-scaffold flow in [$CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/SKILL.md]($CODEX_HOME/plugins/cache/codex-home/winui/1.0.0/skills/winui-app/SKILL.md) for environment readiness, remediation, and initial verification.
+1. Use the setup-and-scaffold flow in [$CODEX_HOME/plugins/winui/skills/winui-app/SKILL.md]($CODEX_HOME/plugins/winui/skills/winui-app/SKILL.md) for environment readiness, remediation, and initial verification.
 2. If the user asked only for an audit and not for setup, explain that the bundled bootstrap may change the machine and get confirmation before running it.
 3. If the user declines machine changes, run a manual non-mutating audit instead and summarize the result under four headings:
    - present

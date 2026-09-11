@@ -1,5 +1,7 @@
 # Playwright CLI Workflows
 
+Consult this reference when playwright cli workflows is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use the wrapper script and snapshot often.
 Assume `PWCLI` is set and `pwcli` is an alias for `"$PWCLI"`.
 In this repo, run commands from `output/playwright/<label>/` to keep artifacts contained.

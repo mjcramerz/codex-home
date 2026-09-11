@@ -13,15 +13,20 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # lang-go reference bundle
+
+Consult this reference when lang-go reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Build Go modules with safe defaults and testing guidance.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Agent orchestration
@@ -30,14 +35,16 @@ Build Go modules with safe defaults and testing guidance.
 - References
 
 ## Local implementation anchors
+
 - `$CODEX_SKILLS/lang-go/SKILL.md`
 - `$CODEX_SKILLS/lang-go/agents/openai.yaml`
 
 ## External references
+
 - [Go documentation](https://go.dev/doc/) - Go language and toolchain references.
 - [Go module reference](https://go.dev/ref/mod) - Module dependency and version behavior.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `lang-go` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `lang-go` before finalizing changes.
-

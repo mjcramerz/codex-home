@@ -13,9 +13,12 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Obs Logstash Framework
 
+Apply the following obs logstash framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `obs-logstash`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-logstash/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-logstash/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-logstash/references/`
+- Source of truth: `$CODEX_HOME/plugins/observability/skills/obs-logstash/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/observability/skills/obs-logstash/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/observability/skills/obs-logstash/references/`

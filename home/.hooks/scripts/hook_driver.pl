@@ -1,57 +1,12 @@
 #!/usr/bin/env perl
+# Dispatch this compatibility entrypoint without a shell or repository imports.
 use strict;
 use warnings;
-
-use FindBin qw($Bin);
-use Cwd qw(abs_path);
+use FindBin qw($RealBin);
 use File::Spec;
-
-BEGIN {
-    my @candidates = (
-        File::Spec->catdir($Bin, "..", "modules"),
-        File::Spec->catdir($Bin, "lib"),
-    );
-    for my $candidate (@candidates) {
-        my $resolved = abs_path($candidate);
-        next if !defined $resolved || !-d $resolved;
-        unshift @INC, $resolved;
-        last;
-    }
-}
-
-use Codex::Hook::Driver qw(run_event);
-use Codex::Hook::Output qw(emit_payload json_true json_false);
-use Codex::Hook::Script qw(seed_runtime_schema_env);
-
-seed_runtime_schema_env(script_dir => $Bin);
-
-my %allowed = map { $_ => 1 } qw(
-  session-start
-  session-end
-  user-prompt-submit
-  stop
-  pre-tool-use
-  permission-request
-  post-tool-use
-  pre-compact
-  post-compact
-  subagent-start
-  subagent-stop
-);
-
-sub _usage {
-    die "usage: hook_driver.pl {session-start|session-end|user-prompt-submit|stop|pre-tool-use|permission-request|post-tool-use|pre-compact|post-compact|subagent-start|subagent-stop}\n";
-}
-
-my $event = $ARGV[0];
-_usage() if @ARGV != 1 || !$allowed{$event};
-
-my $ok = eval { run_event($event); 1 };
-if (!$ok) {
-    emit_payload({
-        continue      => ($event eq "pre-tool-use" || $event eq "permission-request") ? json_false() : json_true(),
-        systemMessage => "Hook infrastructure error; run the local dependency and hook tests.",
-    });
-}
-
-exit 0;
+my $event = shift @ARGV;
+die "Pass one supported event name.\n" if !defined($event) || @ARGV;
+my $runner = File::Spec->catfile($RealBin, '..', 'runner.py');
+exec { '/usr/bin/python3' } '/usr/bin/python3', '-I', $runner,
+    '--event', $event, '--timeout', '3';
+die "Cannot start the reviewed repository-context hook.\n";

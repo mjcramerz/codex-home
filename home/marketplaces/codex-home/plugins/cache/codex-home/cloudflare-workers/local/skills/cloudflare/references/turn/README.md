@@ -1,5 +1,7 @@
 # Cloudflare TURN Service
 
+Consult this reference when cloudflare turn service is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for implementing Cloudflare TURN Service in WebRTC applications.
 
 ## Overview
@@ -18,10 +20,10 @@ Cloudflare TURN (Traversal Using Relays around NAT) Service is a managed relay s
 
 | File | Purpose |
 |------|---------|
-| [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/api.md) | Credentials API, TURN key management, types, constraints |
-| [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/configuration.md) | Worker setup, wrangler.jsonc, env vars, IP allowlisting |
-| [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/patterns.md) | Implementation patterns, use cases, integration examples |
-| [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/gotchas.md) | Troubleshooting, limits, security, common mistakes |
+| [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/api.md) | Credentials API, TURN key management, types, constraints |
+| [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/configuration.md) | Worker setup, wrangler.jsonc, env vars, IP allowlisting |
+| [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/patterns.md) | Implementation patterns, use cases, integration examples |
+| [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/gotchas.md) | Troubleshooting, limits, security, common mistakes |
 
 ## Reading Order
 
@@ -37,18 +39,22 @@ Cloudflare TURN (Traversal Using Relays around NAT) Service is a managed relay s
 ## Service Addresses and Ports
 
 ### STUN over UDP
+
 - **Primary**: `stun.cloudflare.com:3478/udp`
 - **Alternate**: `stun.cloudflare.com:53/udp` (blocked by browsers, not recommended)
 
 ### TURN over UDP
+
 - **Primary**: `turn.cloudflare.com:3478/udp`
 - **Alternate**: `turn.cloudflare.com:53/udp` (blocked by browsers)
 
 ### TURN over TCP
+
 - **Primary**: `turn.cloudflare.com:3478/tcp`
 - **Alternate**: `turn.cloudflare.com:80/tcp`
 
 ### TURN over TLS
+
 - **Primary**: `turn.cloudflare.com:5349/tcp`
 - **Alternate**: `turn.cloudflare.com:443/tcp`
 

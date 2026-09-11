@@ -1,5 +1,7 @@
 # Analytics Engine Gotchas
 
+Consult this reference when analytics engine gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Critical Issues
 
 ### Sampling at High Volumes
@@ -7,6 +9,7 @@
 **Problem:** Queries return fewer points than written at >1M writes/min.
 
 **Solution:**
+
 ```typescript
 // Pre-aggregate before writing
 let buffer = { count: 0, total: 0 };
@@ -74,12 +77,12 @@ Auto-generated at write time. Store original in blob if needed.
 
 ## Best Practices
 
-✅ Pre-aggregate at high volumes  
-✅ Use index for high-cardinality (millions)  
-✅ Always include time filter in queries  
-✅ Design schema before coding  
+✅ Pre-aggregate at high volumes
+✅ Use index for high-cardinality (millions)
+✅ Always include time filter in queries
+✅ Design schema before coding
 
-❌ Don't await writeDataPoint  
-❌ Don't use index for low-cardinality  
-❌ Don't query without time range  
+❌ Don't await writeDataPoint
+❌ Don't use index for low-cardinality
+❌ Don't query without time range
 ❌ Don't assume all writes succeed

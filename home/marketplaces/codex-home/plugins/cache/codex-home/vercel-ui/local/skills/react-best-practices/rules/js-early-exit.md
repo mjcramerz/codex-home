@@ -5,6 +5,10 @@ impactDescription: avoids unnecessary computation
 tags: javascript, functions, optimization, early-return
 ---
 
+# js early exit
+
+Apply the following js early exit guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Early Return from Functions
 
 Return early when result is determined to skip unnecessary processing.

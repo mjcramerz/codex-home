@@ -5,7 +5,7 @@ description: Use this skill for Hugging Face Dataset Viewer API workflows that f
 
 # Hugging Face Dataset Viewer
 
-Use this skill to execute read-only Dataset Viewer API calls for dataset exploration and extraction.
+Use the Dataset Viewer for the requested read-only exploration or extraction. Confirm the dataset identifier, license, access restrictions, revision where available, subset and split. Bound page size and total transfer, follow the actual API response, and report partial coverage. Keep tokens out of URLs, logs and generated examples.
 
 ## Core workflow
 

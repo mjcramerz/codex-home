@@ -5,6 +5,10 @@ impactDescription: cleaner composition, better readability
 tags: composition, children, render-props
 ---
 
+# patterns children over render props
+
+Apply the following patterns children over render props guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Prefer Children Over Render Props
 
 Use `children` for composition instead of `renderX` props. Children are more

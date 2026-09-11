@@ -1,5 +1,7 @@
 # Cloudflare Argo Smart Routing Skill Reference
 
+Consult this reference when cloudflare argo smart routing skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Overview
 
 Cloudflare Argo Smart Routing is a performance optimization service that detects real-time network issues and routes web traffic across the most efficient network path. It continuously monitors network conditions and intelligently routes traffic through the fastest, most reliable routes in Cloudflare's network.
@@ -9,6 +11,7 @@ Cloudflare Argo Smart Routing is a performance optimization service that detects
 ## Quick Start
 
 ### Enable via cURL
+
 ```bash
 curl -X PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/argo/smart_routing" \
   -H "Authorization: Bearer YOUR_API_TOKEN" \
@@ -17,6 +20,7 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/argo/smart_r
 ```
 
 ### Enable via TypeScript SDK
+
 ```typescript
 import Cloudflare from 'cloudflare';
 
@@ -33,23 +37,27 @@ console.log(`Argo enabled: ${result.value}`);
 ## Core Concepts
 
 ### What It Does
+
 - **Intelligent routing**: Detects congestion, outages, packet loss in real-time
 - **Global optimization**: Routes across 300+ Cloudflare data centers
 - **Automatic failover**: Switches paths when issues detected (typically <1s)
 - **Works with existing setup**: No origin changes required
 
 ### Billing Model
+
 - Usage-based: Charged per GB of traffic (excluding DDoS/WAF mitigated traffic)
 - Requires billing configuration before enabling
 - Available on Enterprise+ plans (check zone eligibility)
 
 ### When to Use
+
 - **High-traffic production sites** with global user base
 - **Latency-sensitive applications** (APIs, real-time services)
 - **Sites behind Cloudflare proxy** (orange-clouded DNS records)
 - **Combined with Tiered Cache** for maximum performance gains
 
 ### When NOT to Use
+
 - Development/staging environments (cost control)
 - Low-traffic sites (<1TB/month) where cost may exceed benefit
 - Sites with primarily single-region traffic

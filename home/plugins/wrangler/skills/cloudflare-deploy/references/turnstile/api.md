@@ -1,5 +1,7 @@
 # API Reference
 
+Consult this reference when api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Client-Side JavaScript API
 
 The Turnstile JavaScript API is available at `window.turnstile` after loading the script.
@@ -15,6 +17,7 @@ Renders a Turnstile widget into a container element.
 **Returns:** `string` - Widget ID for use with other API methods
 
 **Example:**
+
 ```javascript
 const widgetId = window.turnstile.render('#my-container', {
   sitekey: 'YOUR_SITE_KEY',
@@ -33,6 +36,7 @@ Resets a widget (clears token, resets challenge state). Useful when form validat
 **Returns:** `void`
 
 **Example:**
+
 ```javascript
 // Reset on form error
 if (!validateForm()) {
@@ -50,6 +54,7 @@ Removes a widget from the DOM completely.
 **Returns:** `void`
 
 **Example:**
+
 ```javascript
 // Cleanup on navigation
 window.turnstile.remove(widgetId);
@@ -65,6 +70,7 @@ Gets the current token from a widget (if challenge completed).
 **Returns:** `string | undefined` - Token string, or undefined if not ready
 
 **Example:**
+
 ```javascript
 const token = window.turnstile.getResponse(widgetId);
 if (token) {
@@ -82,6 +88,7 @@ Checks if a widget's token has expired (>5 minutes old).
 **Returns:** `boolean` - True if expired
 
 **Example:**
+
 ```javascript
 if (window.turnstile.isExpired(widgetId)) {
   window.turnstile.reset(widgetId);
@@ -106,7 +113,7 @@ type UnsupportedCallback = () => void;
 
 ### Request
 
-**Method:** POST  
+**Method:** POST
 **Content-Type:** `application/json` or `application/x-www-form-urlencoded`
 
 ```typescript
@@ -119,6 +126,7 @@ interface SiteverifyRequest {
 ```
 
 **Example:**
+
 ```javascript
 // Cloudflare Workers
 const result = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
@@ -147,6 +155,7 @@ interface SiteverifyResponse {
 ```
 
 **Example Success:**
+
 ```json
 {
   "success": true,
@@ -158,6 +167,7 @@ interface SiteverifyResponse {
 ```
 
 **Example Failure:**
+
 ```json
 {
   "success": false,

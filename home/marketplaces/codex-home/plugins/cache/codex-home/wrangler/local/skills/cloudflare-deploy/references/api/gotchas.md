@@ -1,5 +1,7 @@
 # Gotchas & Troubleshooting
 
+Consult this reference when gotchas & troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Rate Limits & 429 Errors
 
 **Actual Limits:**
@@ -104,7 +106,7 @@ for await (const zone of client.zones.list()) {
 
 **Cause:** Workers subrequests count as separate API calls.
 
-**Solution:** Use bindings instead of REST API in Workers (see $CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/bindings/).
+**Solution:** Use bindings instead of REST API in Workers (see $CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/bindings/).
 
 ```typescript
 // ❌ WRONG - REST API in Workers (counts against rate limit)
@@ -220,6 +222,6 @@ export async function getZoneDetails(zoneId: string) {
 
 ## See Also
 
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/api.md) - Error types, authentication
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/configuration.md) - Timeout/retry configuration
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/api/patterns.md) - Error handling patterns
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/api.md) - Error types, authentication
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/configuration.md) - Timeout/retry configuration
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/api/patterns.md) - Error handling patterns

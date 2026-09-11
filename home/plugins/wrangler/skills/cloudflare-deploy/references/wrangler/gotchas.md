@@ -1,5 +1,7 @@
 # Wrangler Common Issues
 
+Consult this reference when wrangler common issues is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "Binding ID vs name mismatch"
@@ -24,6 +26,7 @@
 
 **Cause:** Using local mode when remote resources needed
 **Solution:** Use `remote` option:
+
 ```typescript
 const worker = await startWorker({ 
   config: "wrangler.jsonc",
@@ -35,6 +38,7 @@ const worker = await startWorker({
 
 **Cause:** Missing compatibility_date
 **Solution:** Always set `compatibility_date`:
+
 ```jsonc
 { "compatibility_date": "2025-01-01" }
 ```
@@ -43,6 +47,7 @@ const worker = await startWorker({
 
 **Cause:** Missing script_name for external DOs
 **Solution:** Always specify `script_name` for external Durable Objects:
+
 ```jsonc
 {
   "durable_objects": {
@@ -69,6 +74,7 @@ For local DOs in same Worker, `script_name` is optional.
 
 **Cause:** Missing Node.js compatibility flag
 **Solution:** Some bindings (Hyperdrive with `pg`) require:
+
 ```jsonc
 { "compatibility_flags": ["nodejs_compat_v2"] }
 ```
@@ -76,10 +82,11 @@ For local DOs in same Worker, `script_name` is optional.
 ### "Workers Assets 404 errors"
 
 **Cause:** Asset path mismatch or incorrect `html_handling`
-**Solution:** 
+**Solution:**
 - Check `assets.directory` points to correct build output
 - Set `html_handling: "auto-trailing-slash"` for SPAs
 - Use `not_found_handling: "single-page-application"` to serve index.html for 404s
+
 ```jsonc
 {
   "assets": {
@@ -94,6 +101,7 @@ For local DOs in same Worker, `script_name` is optional.
 
 **Cause:** Misunderstanding of Smart Placement
 **Solution:** Smart Placement only helps when Worker accesses D1 or Durable Objects. It doesn't affect KV, R2, or external API latency.
+
 ```jsonc
 { "placement": { "mode": "smart" } }  // Only beneficial with D1/DOs
 ```
@@ -102,6 +110,7 @@ For local DOs in same Worker, `script_name` is optional.
 
 **Cause:** Using outdated API
 **Solution:** Use stable `startWorker` instead:
+
 ```typescript
 import { startWorker } from "wrangler";  // Not unstable_startWorker
 ```
@@ -110,6 +119,7 @@ import { startWorker } from "wrangler";  // Not unstable_startWorker
 
 **Cause:** Mock function not returning Response
 **Solution:** Always return Response, use `fetch(req)` for passthrough:
+
 ```typescript
 const worker = await startWorker({
   outboundService: (req) => {
@@ -137,6 +147,7 @@ const worker = await startWorker({
 ## Troubleshooting
 
 ### Authentication Issues
+
 ```bash
 wrangler logout
 wrangler login
@@ -144,17 +155,21 @@ wrangler whoami
 ```
 
 ### Configuration Errors
+
 ```bash
 wrangler check  # Validate config
 ```
+
 Use wrangler.jsonc with `$schema` for validation.
 
 ### Binding Not Available
+
 - Check binding exists in config
 - For environments, ensure binding defined for that env
 - Local dev: some bindings need `--remote`
 
 ### Deployment Failures
+
 ```bash
 wrangler tail              # Check logs
 wrangler deploy --dry-run  # Validate
@@ -162,6 +177,7 @@ wrangler whoami            # Check account limits
 ```
 
 ### Local Development Issues
+
 ```bash
 rm -rf .wrangler/state     # Clear local state
 wrangler dev --remote      # Use remote bindings
@@ -170,6 +186,7 @@ wrangler dev --inspector-port 9229  # Enable debugging
 ```
 
 ### Testing Issues
+
 ```bash
 # If tests hang, ensure dispose() is called
 worker.dispose()  // Always cleanup
@@ -191,7 +208,7 @@ const worker = await startWorker({
 
 ## See Also
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/README.md) - Commands
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/configuration.md) - Config
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/api.md) - Programmatic API
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/patterns.md) - Workflows
+- [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/README.md) - Commands
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/configuration.md) - Config
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/api.md) - Programmatic API
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/patterns.md) - Workflows

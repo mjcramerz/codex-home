@@ -13,9 +13,12 @@ tags:
 - web
 updated: '2026-02-20'
 ---
+
 # Backend Axum Framework
 
+Apply the following backend axum framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `backend-axum`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/backend-axum/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/backend-axum/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/backend-axum/references/`
+- Source of truth: `$CODEX_HOME/plugins/backend/skills/backend-axum/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/backend/skills/backend-axum/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/backend/skills/backend-axum/references/`

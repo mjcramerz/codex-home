@@ -1,5 +1,7 @@
 # Stream Gotchas
 
+Consult this reference when stream gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "ERR_NON_VIDEO"
@@ -30,26 +32,32 @@
 ## Troubleshooting
 
 ### Video stuck in "inprogress" state
+
 - **Cause**: Processing large/complex video
 - **Solution**: Wait up to 5 minutes for processing; use webhooks instead of polling
 
 ### Signed URL returns 403
+
 - **Cause**: Token expired or invalid signature
 - **Solution**: Check expiration timestamp, verify JWK is correct, ensure clock sync
 
 ### Live stream not connecting
+
 - **Cause**: Invalid RTMPS URL or stream key
 - **Solution**: Use exact URL/key from API, ensure firewall allows outbound 443
 
 ### Webhook signature verification fails
+
 - **Cause**: Incorrect secret or timestamp window
 - **Solution**: Use exact secret from webhook setup, allow 5-minute timestamp drift
 
 ### Video uploads but isn't visible
+
 - **Cause**: `requireSignedURLs` enabled without providing token
 - **Solution**: Generate signed token or set `requireSignedURLs: false` for public videos
 
 ### Player shows infinite loading
+
 - **Cause**: CORS issue with allowedOrigins
 - **Solution**: Add your domain to `allowedOrigins` array
 
@@ -72,14 +80,17 @@
 ## Performance Issues
 
 ### Upload is slow
+
 - **Cause**: Large file size or network constraints
 - **Solution**: Use TUS resumable upload, compress video before upload, check bandwidth
 
 ### Playback buffering
+
 - **Cause**: Network congestion or low bandwidth
 - **Solution**: Use ABR (adaptive bitrate) with HLS/DASH, reduce max bitrate
 
 ### High processing time
+
 - **Cause**: Complex video codec, high resolution
 - **Solution**: Pre-encode with H.264 (most efficient), reduce resolution
 
@@ -119,12 +130,12 @@ async function uploadWithErrorHandling(url: string, file: File) {
 
 ## In This Reference
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/configuration.md) - Setup and config
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
-- [api-live.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming APIs
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, best practices
+- [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/configuration.md) - Setup and config
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
+- [api-live.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming APIs
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, best practices
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs securely
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs securely

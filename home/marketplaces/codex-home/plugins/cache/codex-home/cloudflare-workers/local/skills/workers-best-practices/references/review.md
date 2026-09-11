@@ -1,5 +1,7 @@
 # Code Review — Workers
 
+Consult this reference when code review — workers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 How to review Workers code for type correctness, API usage, config validity, and best practices. This is self-contained — do not assume access to other skills.
 
 ## Retrieval

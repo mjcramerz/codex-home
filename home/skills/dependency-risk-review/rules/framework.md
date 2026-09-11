@@ -8,7 +8,10 @@ tags:
 - framework
 updated: '2026-03-12'
 ---
+
 # dependency-risk-review framework
+
+Apply the following dependency-risk-review framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `dependency-risk-review`
 - Category: `AUDIT`

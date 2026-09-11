@@ -8,9 +8,12 @@ tags:
 - rules
 updated: '2026-06-28'
 ---
+
 # GitOps Framework
 
+Apply the following gitops framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `gitops`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/gitlab/1.0.0/skills/gitops/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/gitlab/1.0.0/skills/gitops/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/gitlab/1.0.0/skills/gitops/references/`
+- Source of truth: `$CODEX_HOME/plugins/gitlab/skills/gitops/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/gitlab/skills/gitops/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/gitlab/skills/gitops/references/`

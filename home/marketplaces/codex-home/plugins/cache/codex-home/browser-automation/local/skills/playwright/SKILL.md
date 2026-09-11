@@ -1,8 +1,7 @@
 ---
-name: "playwright"
-description: "Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script."
+name: playwright
+description: Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script.
 ---
-
 
 # Playwright CLI Skill
 
@@ -36,7 +35,6 @@ Once `npx` is present, proceed with the wrapper script. A global install of `pla
 ```bash
 export PWCLI="scripts/playwright_cli.sh"
 ```
-
 
 ## Quick start
 

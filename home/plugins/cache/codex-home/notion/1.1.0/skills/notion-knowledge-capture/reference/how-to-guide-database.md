@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # How-To Guide Database
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **Purpose**: Procedural documentation for common tasks.
 
@@ -50,4 +53,3 @@ Create how-to guides with properties:
 3. **Include time estimates**: Help users plan their time
 4. **Link prerequisites**: Make dependencies clear
 5. **Update regularly**: Re-test procedures when tools/systems change
-

@@ -18,14 +18,7 @@ SKILL_NAME = 'pack-docs'
 SKILL_CATEGORY = 'PACK'
 SKILL_DESCRIPTION = 'Create or update pack documentation and workflows under $CODEX_HOME/docs/. Use when adding new guides, updating doc indexes, or aligning docs with prompts, templates, and skills.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'YAML 1.2 specification', 'url': 'https://yaml.org/spec/1.2.2/', 'note': 'Manifest syntax and deterministic formatting rules.'},
     {'title': 'Markdown style guide', 'url': 'https://www.markdownguide.org/basic-syntax/', 'note': 'Documentation formatting baseline.'}

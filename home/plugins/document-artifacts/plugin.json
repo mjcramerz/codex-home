@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "document-artifacts",
   "version": "1.1.0",
-  "description": "Document, spreadsheet, slide, notebook, and other artifact-generation workflows.",
+  "description": "Use this plugin for document, spreadsheet, slide, notebook, and other artifact-generation workflows.",
   "author": {
     "name": "Codex Setup"
   },

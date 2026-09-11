@@ -5,6 +5,8 @@ description: Create and edit presentation slide decks (`.pptx`) with PptxGenJS, 
 
 # Slides
 
+Create an editable presentation for the assigned audience and delivery format. Establish the source material, aspect ratio and required output before authoring. Preserve user-provided content and attribute factual claims; do not invent data or claim a visual review you did not perform.
+
 ## Overview
 
 Use PptxGenJS for slide authoring. Do not use `python-pptx` for deck generation unless the task is inspection-only; keep editable output in JavaScript and deliver both the `.pptx` and the source `.js`.

@@ -1,5 +1,7 @@
 # GraphQL Analytics API Patterns & Best Practices
 
+Consult this reference when graphql analytics api patterns & best practices is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Time-Series Queries
 
 Use time dimension granularity matching your range (see Best Practices below).

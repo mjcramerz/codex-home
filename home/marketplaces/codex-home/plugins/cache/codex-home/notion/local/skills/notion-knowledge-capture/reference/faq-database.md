@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # FAQ Database
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **Purpose**: Organize frequently asked questions with answers.
 
@@ -69,4 +72,3 @@ Each FAQ page should include:
 3. **Link related FAQs**: Help users discover related information
 4. **Review regularly**: Keep answers current and accurate
 5. **Track what's helpful**: Use feedback to improve frequently accessed FAQs
-

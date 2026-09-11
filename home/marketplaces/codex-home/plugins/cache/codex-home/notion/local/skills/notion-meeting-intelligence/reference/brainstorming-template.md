@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Brainstorming Meeting Template
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Use this template for creative ideation and brainstorming sessions.
 
@@ -93,4 +96,3 @@ Use this template for creative ideation and brainstorming sessions.
 
 **Next meeting**: [Date to reconvene]
 ```
-

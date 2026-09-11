@@ -1,17 +1,20 @@
 ---
 name: sandbox-sdk
-description: Build sandboxed applications for secure code execution. Load when building AI code execution, code interpreters, CI/CD systems, interactive dev environments, or executing untrusted code. Covers Sandbox SDK lifecycle, commands, files, code interpreter, and preview URLs. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
+description: Use the Cloudflare Sandbox SDK when you implement isolated code execution, code interpreters, CI workers or interactive environments. Verify lifecycle, tenant isolation, commands, files and preview access against the installed version.
 ---
 
 # Cloudflare Sandbox SDK
 
-Build secure, isolated code execution environments on Cloudflare Workers.
+Use the Sandbox SDK for the requested isolated execution service. Inspect the existing package manager, pinned SDK version, Docker availability, worker bindings and resource limits before changing dependencies. Treat guest code and preview traffic as untrusted; separate tenant identities, restrict credentials and egress, and clean up resources on failure.
 
-## FIRST: Verify Installation
+## Inspect the existing installation
 
 ```bash
+# Confirm the existing lockfile and package-manager policy before installing.
+# Run installation only when dependency changes are in scope.
 npm install @cloudflare/sandbox
-docker info  # Must succeed - Docker required for local dev
+# Inspect local Docker availability only when local container execution is needed.
+docker info
 ```
 
 ## Retrieval Sources
@@ -29,7 +32,7 @@ When implementing features, fetch the relevant doc page or example first.
 
 ## Required Configuration
 
-**wrangler.jsonc** (exact - do not modify structure):
+Adapt this `wrangler.jsonc` example to the installed SDK and existing bindings. Preserve migration history and validate the actual configuration; these sample names and limits are not universal requirements:
 
 ```jsonc
 {

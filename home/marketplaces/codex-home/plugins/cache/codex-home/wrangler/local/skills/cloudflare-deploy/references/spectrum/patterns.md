@@ -1,8 +1,13 @@
+# patterns
+
+Consult this reference when patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Use Cases
 
 ### 1. SSH Server Protection
 
 **Terraform:**
+
 ```hcl
 resource "cloudflare_spectrum_application" "ssh" {
   zone_id  = var.zone_id
@@ -24,6 +29,7 @@ resource "cloudflare_spectrum_application" "ssh" {
 ### 2. Game Server
 
 **TypeScript (Minecraft):**
+
 ```typescript
 const app = await client.spectrum.apps.create({
   zone_id: 'your-zone-id',
@@ -40,6 +46,7 @@ const app = await client.spectrum.apps.create({
 ### 3. MQTT Broker
 
 **TypeScript:**
+
 ```typescript
 const mqttApp = await client.spectrum.apps.create({
   zone_id: 'your-zone-id',
@@ -57,6 +64,7 @@ const mqttApp = await client.spectrum.apps.create({
 Email submission (port 587). **WARNING**: See [gotchas.md](gotchas.md#smtp-reverse-dns)
 
 **Terraform:**
+
 ```hcl
 resource "cloudflare_spectrum_application" "smtp" {
   zone_id  = var.zone_id
@@ -82,6 +90,7 @@ resource "cloudflare_spectrum_application" "smtp" {
 MySQL/PostgreSQL. **Use with caution** - security critical.
 
 **PostgreSQL:**
+
 ```typescript
 const postgresApp = await client.spectrum.apps.create({
   zone_id: 'your-zone-id',
@@ -95,6 +104,7 @@ const postgresApp = await client.spectrum.apps.create({
 ```
 
 **MySQL:**
+
 ```hcl
 resource "cloudflare_spectrum_application" "mysql" {
   zone_id  = var.zone_id
@@ -127,6 +137,7 @@ resource "cloudflare_spectrum_application" "mysql" {
 **Requires IP firewall.**
 
 **Terraform:**
+
 ```hcl
 resource "cloudflare_spectrum_application" "rdp" {
   zone_id  = var.zone_id
@@ -150,6 +161,7 @@ resource "cloudflare_spectrum_application" "rdp" {
 High availability with load balancer.
 
 **Terraform:**
+
 ```hcl
 resource "cloudflare_load_balancer" "database_lb" {
   zone_id          = var.zone_id

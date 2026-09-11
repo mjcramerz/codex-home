@@ -13,9 +13,12 @@ tags:
 - security
 updated: '2026-02-20'
 ---
+
 # Appsec Hardening Framework
 
+Apply the following appsec hardening framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `appsec-hardening`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/appsec-hardening/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/appsec-hardening/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/appsec-hardening/references/`
+- Source of truth: `$CODEX_HOME/plugins/security-controls/skills/appsec-hardening/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/security-controls/skills/appsec-hardening/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/security-controls/skills/appsec-hardening/references/`

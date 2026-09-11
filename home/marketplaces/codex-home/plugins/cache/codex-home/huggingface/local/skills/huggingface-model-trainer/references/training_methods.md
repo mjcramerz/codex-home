@@ -1,5 +1,7 @@
 # TRL Training Methods Overview
 
+Consult this reference when trl training methods overview is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 TRL (Transformer Reinforcement Learning) provides multiple training methods for fine-tuning and aligning language models. This reference provides a brief overview of each method.
 
 ## Supervised Fine-Tuning (SFT)
@@ -14,6 +16,7 @@ TRL (Transformer Reinforcement Learning) provides multiple training methods for 
 **Dataset format:** Conversational format with "messages" field, OR text field, OR prompt/completion pairs
 
 **Example:**
+
 ```python
 from trl import SFTTrainer, SFTConfig
 
@@ -31,7 +34,7 @@ trainer = SFTTrainer(
 trainer.train()
 ```
 
-**Note:** For production training with evaluation monitoring, see `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_sft_example.py`
+**Note:** For production training with evaluation monitoring, see `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_sft_example.py`
 
 **Documentation:** `hf_doc_fetch("https://huggingface.co/docs/trl/sft_trainer")`
 
@@ -47,6 +50,7 @@ trainer.train()
 **Dataset format:** Preference pairs with "chosen" and "rejected" fields
 
 **Example:**
+
 ```python
 from trl import DPOTrainer, DPOConfig
 
@@ -63,7 +67,7 @@ trainer = DPOTrainer(
 trainer.train()
 ```
 
-**Note:** For production training with evaluation monitoring, see `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_dpo_example.py`
+**Note:** For production training with evaluation monitoring, see `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_dpo_example.py`
 
 **Documentation:** `hf_doc_fetch("https://huggingface.co/docs/trl/dpo_trainer")`
 
@@ -79,6 +83,7 @@ trainer.train()
 **Dataset format:** Prompt-only format (model generates responses, reward computed online)
 
 **Example:**
+
 ```python
 # Use TRL maintained script
 hf_jobs("uv", {
@@ -132,11 +137,13 @@ hf_jobs("uv", {
 ## Dataset Format Reference
 
 For complete dataset format specifications, use:
+
 ```python
 hf_doc_fetch("https://huggingface.co/docs/trl/dataset_formats")
 ```
 
 Or validate your dataset:
+
 ```bash
 uv run https://huggingface.co/datasets/mcp-tools/skills/raw/main/dataset_inspector.py \
   --dataset your/dataset --split train
@@ -144,7 +151,7 @@ uv run https://huggingface.co/datasets/mcp-tools/skills/raw/main/dataset_inspect
 
 ## See Also
 
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/references/training_patterns.md` - Common training patterns and examples
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_sft_example.py` - Complete SFT template
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/train_dpo_example.py` - Complete DPO template
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/references/training_patterns.md` - Common training patterns and examples
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_sft_example.py` - Complete SFT template
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/train_dpo_example.py` - Complete DPO template
 - [Dataset Inspector](https://huggingface.co/datasets/mcp-tools/skills/raw/main/dataset_inspector.py) - Dataset format validation tool

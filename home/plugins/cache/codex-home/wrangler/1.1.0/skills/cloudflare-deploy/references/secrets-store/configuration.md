@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Wrangler Config
 
 ### Basic Binding
@@ -182,4 +184,4 @@ script:
   - npx wrangler deploy
 ```
 
-See: [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/secrets-store/api.md), [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/secrets-store/patterns.md)
+See: [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/secrets-store/api.md), [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/secrets-store/patterns.md)

@@ -1,5 +1,7 @@
 # Hyperdrive
 
+Consult this reference when hyperdrive is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Accelerates database queries from Workers via connection pooling, edge setup, query caching.
 
 ## Key Features
@@ -66,17 +68,19 @@ export default {
 
 | New to Hyperdrive | Implementing | Troubleshooting |
 |-------------------|--------------|-----------------|
-| 1. README (this) | 1. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/configuration.md) | 1. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/gotchas.md) |
-| 2. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/configuration.md) | 2. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/api.md) | 2. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/patterns.md) |
-| 3. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/api.md) | 3. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/patterns.md) | 3. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/api.md) |
+| 1. README (this) | 1. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/configuration.md) | 1. [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/gotchas.md) |
+| 2. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/configuration.md) | 2. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/api.md) | 2. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/patterns.md) |
+| 3. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/api.md) | 3. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/patterns.md) | 3. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/api.md) |
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/configuration.md) - Setup, wrangler config, Smart Placement
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/api.md) - Binding APIs, query patterns, driver usage
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/patterns.md) - Use cases, ORMs, multi-query optimization
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/gotchas.md) - Limits, troubleshooting, connection management
+
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/configuration.md) - Setup, wrangler config, Smart Placement
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/api.md) - Binding APIs, query patterns, driver usage
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/patterns.md) - Use cases, ORMs, multi-query optimization
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/gotchas.md) - Limits, troubleshooting, connection management
 
 ## See Also
-- [smart-placement]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/) - Optimize multi-query Workers near databases
-- [d1]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/d1/) - Serverless SQLite alternative for edge-native apps
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Worker runtime with database bindings
+
+- [smart-placement]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/) - Optimize multi-query Workers near databases
+- [d1]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/d1/) - Serverless SQLite alternative for edge-native apps
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Worker runtime with database bindings

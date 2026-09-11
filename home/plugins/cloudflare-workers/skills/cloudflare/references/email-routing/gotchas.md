@@ -1,5 +1,7 @@
 # Gotchas & Troubleshooting
 
+Consult this reference when gotchas & troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Critical Pitfalls
 
 ### Stream Consumption (MOST COMMON)
@@ -9,6 +11,7 @@
 **Cause:** `message.raw` is `ReadableStream` - consume once only
 
 **Solution:**
+
 ```typescript
 // ❌ WRONG
 const email1 = await parser.parse(await message.raw.arrayBuffer());
@@ -36,6 +39,7 @@ Consume `message.raw` immediately before any async operations.
 **Cause:** Missing SPF/DKIM/DMARC on sender domain
 
 **Solution:** Configure sender DNS:
+
 ```dns
 example.com. IN TXT "v=spf1 include:_spf.example.com ~all"
 selector._domainkey.example.com. IN TXT "v=DKIM1; k=rsa; p=..."
@@ -47,6 +51,7 @@ _dmarc.example.com. IN TXT "v=DMARC1; p=quarantine"
 **Problem:** Filtering on wrong address
 
 **Solution:**
+
 ```typescript
 // Routing/auth: envelope
 if (message.from === "trusted@example.com") { }
@@ -71,6 +76,7 @@ const display = message.headers.get("from");
 **Cause:** Heavy parsing, large emails
 
 **Solution:**
+
 ```typescript
 const size = parseInt(message.headers.get("content-length") || "0") / 1024 / 1024;
 if (size > 20) {
@@ -93,6 +99,7 @@ await message.forward("dest@example.com");
 **Cause:** Missing header
 
 **Solution:**
+
 ```typescript
 // ❌ WRONG
 const subj = message.headers.get("subject").toLowerCase();
@@ -172,6 +179,7 @@ if (!auth.includes("pass")) {
 **Causes:** Forwarding breaks SPF, too many lookups (>10), missing includes
 
 **Solution:**
+
 ```dns
 ; ✅ Good
 example.com. IN TXT "v=spf1 include:_spf.google.com ~all"

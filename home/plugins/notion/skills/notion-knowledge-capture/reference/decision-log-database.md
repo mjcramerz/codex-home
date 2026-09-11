@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Decision Log Database (ADR - Architecture Decision Records)
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **Purpose**: Track important decisions with context and rationale.
 
@@ -70,4 +73,3 @@ Each decision page should include:
 3. **Track superseded decisions**: Update status when decisions change
 4. **Link related decisions**: Use relations to show dependencies
 5. **Review periodically**: Check if old decisions are still valid
-

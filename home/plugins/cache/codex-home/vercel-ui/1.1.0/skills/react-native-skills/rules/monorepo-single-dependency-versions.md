@@ -5,6 +5,10 @@ impactDescription: avoids duplicate bundles, version conflicts
 tags: monorepo, dependencies, installation
 ---
 
+# monorepo single dependency versions
+
+Apply the following monorepo single dependency versions guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Single Dependency Versions Across Monorepo
 
 Use a single version of each dependency across all packages in your monorepo.

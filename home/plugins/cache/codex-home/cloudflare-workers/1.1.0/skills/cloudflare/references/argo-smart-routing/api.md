@@ -3,15 +3,19 @@
 **Note on Smart Shield:** Argo Smart Routing is being integrated into Cloudflare's Smart Shield product. API endpoints remain stable; existing integrations continue to work without changes.
 
 ### Base Endpoint
+
 ```
 https://api.cloudflare.com/client/v4
 ```
 
 ### Authentication
+
 Use API tokens with Zone:Argo Smart Routing:Edit permissions:
 
 ```bash
 # Headers required
+
+Consult this reference when headers required is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 X-Auth-Email: user@example.com
 Authorization: Bearer YOUR_API_TOKEN
 ```
@@ -23,6 +27,7 @@ Authorization: Bearer YOUR_API_TOKEN
 **Description:** Retrieves current Argo Smart Routing enablement status.
 
 **cURL Example:**
+
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/argo/smart_routing" \
   -H "Authorization: Bearer YOUR_API_TOKEN" \
@@ -30,6 +35,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/argo/smart_rou
 ```
 
 **Response:**
+
 ```json
 {
   "result": {
@@ -45,6 +51,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/argo/smart_rou
 ```
 
 **TypeScript SDK Example:**
+
 ```typescript
 import Cloudflare from 'cloudflare';
 
@@ -57,6 +64,7 @@ console.log(`Argo status: ${status.value}, editable: ${status.editable}`);
 ```
 
 **Python SDK Example:**
+
 ```python
 from cloudflare import Cloudflare
 
@@ -73,6 +81,7 @@ print(f"Argo status: {status.value}, editable: {status.editable}")
 **Description:** Enable or disable Argo Smart Routing for a zone.
 
 **Request Body:**
+
 ```json
 {
   "value": "on"  // or "off"
@@ -80,6 +89,7 @@ print(f"Argo status: {status.value}, editable: {status.editable}")
 ```
 
 **cURL Example:**
+
 ```bash
 curl -X PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/argo/smart_routing" \
   -H "Authorization: Bearer YOUR_API_TOKEN" \
@@ -88,6 +98,7 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/argo/smart_r
 ```
 
 **TypeScript SDK Example:**
+
 ```typescript
 const result = await client.argo.smartRouting.edit({
   zone_id: 'your-zone-id',
@@ -97,6 +108,7 @@ console.log(`Updated: ${result.value} at ${result.modified_on}`);
 ```
 
 **Python SDK Example:**
+
 ```python
 result = client.argo.smart_routing.edit(
     zone_id='your-zone-id',
@@ -110,6 +122,7 @@ print(f"Updated: {result.value} at {result.modified_on}")
 **Critical:** Always check the `editable` field before attempting to enable/disable Argo. When `editable: false`, the zone has restrictions (billing not configured, insufficient permissions, or plan limitations).
 
 **Pattern:**
+
 ```typescript
 async function safelyEnableArgo(client: Cloudflare, zoneId: string): Promise<boolean> {
   const status = await client.argo.smartRouting.get({ zone_id: zoneId });
@@ -131,6 +144,7 @@ async function safelyEnableArgo(client: Cloudflare, zoneId: string): Promise<boo
 ```
 
 **Python Pattern:**
+
 ```python
 def safely_enable_argo(client: Cloudflare, zone_id: str) -> bool:
     status = client.argo.smart_routing.get(zone_id=zone_id)
@@ -186,6 +200,7 @@ async function enableArgoWithErrorHandling(client: Cloudflare, zoneId: string) {
 ```
 
 **Python Error Handling:**
+
 ```python
 from cloudflare import Cloudflare, APIError, RateLimitError
 

@@ -13,15 +13,20 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # workflow-plans reference bundle
+
+Consult this reference when workflow-plans reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Generate a plan for how an agent should accomplish a complex coding task. Use when a user asks for a plan, and optionally when they want to save a plan under $CODEX_HOME/plans.
 
 ## SKILL.md coverage checklist
+
 - Overview
 - Core rules
 - Workflow
@@ -42,13 +47,16 @@ Generate a plan for how an agent should accomplish a complex coding task. Use wh
 - Overview plan body template
 
 ## Local implementation anchors
+
 - `$CODEX_SKILLS/workflow-plans/SKILL.md`
 - `$CODEX_SKILLS/workflow-plans/agents/openai.yaml`
 
 ## External references
+
 - [Project management lifecycle overview](https://www.atlassian.com/work-management/project-management/project-life-cycle) - Planning phases and execution checkpoints.
 - [DORA metrics overview](https://cloud.google.com/architecture/devops/devops-tech-foundations) - Delivery metrics for workflow quality checks.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `workflow-plans` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `workflow-plans` before finalizing changes.

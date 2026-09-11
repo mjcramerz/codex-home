@@ -1,5 +1,7 @@
 # Pipelines Gotchas
 
+Consult this reference when pipelines gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Critical Issues
 
 ### Events Silently Dropped
@@ -11,6 +13,7 @@
 2. Waiting for roll interval (10-300s) - expected behavior
 
 **Solution:** Validate client-side with Zod:
+
 ```typescript
 const EventSchema = z.object({ user_id: z.string(), amount: z.number() });
 try {

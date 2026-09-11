@@ -13,9 +13,12 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Infra Virtualization Framework
 
+Apply the following infra virtualization framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `infra-virtualization`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/virtualization/1.0.0/skills/infra-virtualization/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/virtualization/1.0.0/skills/infra-virtualization/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/virtualization/1.0.0/skills/infra-virtualization/references/`
+- Source of truth: `$CODEX_HOME/plugins/virtualization/skills/infra-virtualization/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/virtualization/skills/infra-virtualization/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/virtualization/skills/infra-virtualization/references/`

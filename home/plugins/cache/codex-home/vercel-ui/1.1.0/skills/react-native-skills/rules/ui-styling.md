@@ -5,6 +5,10 @@ impactDescription: consistent design, smoother borders, cleaner layouts
 tags: styling, css, layout, shadows, gradients
 ---
 
+# ui styling
+
+Apply the following ui styling guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Modern React Native Styling Patterns
 
 Follow these styling patterns for cleaner, more consistent React Native code.

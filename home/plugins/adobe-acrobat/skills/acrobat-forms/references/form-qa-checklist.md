@@ -1,5 +1,7 @@
 # Form QA checklist
 
+Consult this reference when form qa checklist is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Before final handoff:
 - confirm required fields are populated
 - verify names, dates, and identifiers match provided source data

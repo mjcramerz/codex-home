@@ -5,6 +5,10 @@ impactDescription: reduces re-renders and improves code clarity
 tags: rendering, transitions, useTransition, loading, state
 ---
 
+# rendering usetransition loading
+
+Apply the following rendering usetransition loading guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use useTransition Over Manual Loading States
 
 Use `useTransition` instead of manual `useState` for loading states. This provides built-in `isPending` state and automatically manages transitions.

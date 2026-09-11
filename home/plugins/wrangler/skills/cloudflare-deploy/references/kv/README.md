@@ -1,5 +1,7 @@
 # Cloudflare Workers KV
 
+Consult this reference when cloudflare workers kv is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Globally-distributed, eventually-consistent key-value store optimized for high read volume and low latency.
 
 ## Overview
@@ -17,9 +19,9 @@ KV provides:
 
 | Need | Recommendation |
 |------|----------------|
-| Strong consistency | → [Durable Objects]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/) |
-| SQL queries | → [D1]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/) |
-| Object storage (files) | → [R2]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/) |
+| Strong consistency | → [Durable Objects]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/) |
+| SQL queries | → [D1]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/) |
+| Object storage (files) | → [R2]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/) |
 | High read, low write volume | → KV ✅ |
 | Sub-10ms global reads | → KV ✅ |
 
@@ -77,13 +79,13 @@ const json = await env.MY_KV.get<Config>("config", "json");
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/kv/configuration.md) - wrangler.jsonc setup, namespace creation, TypeScript types
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/kv/api.md) - KV methods, bulk operations, cacheTtl, content types
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/kv/patterns.md) - Caching, sessions, rate limiting, A/B testing
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/kv/gotchas.md) - Eventual consistency, concurrent writes, value limits
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/kv/configuration.md) - wrangler.jsonc setup, namespace creation, TypeScript types
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/kv/api.md) - KV methods, bulk operations, cacheTtl, content types
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/kv/patterns.md) - Caching, sessions, rate limiting, A/B testing
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/kv/gotchas.md) - Eventual consistency, concurrent writes, value limits
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker runtime for KV access
-- [d1]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/) - Use D1 for strong consistency needs
-- [durable-objects]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/) - Strongly consistent alternative
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker runtime for KV access
+- [d1]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/) - Use D1 for strong consistency needs
+- [durable-objects]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/) - Strongly consistent alternative

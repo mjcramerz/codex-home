@@ -1,24 +1,27 @@
 # Logstash
-Purpose: tell the Codex coding agent how to use `docs/observability/logstash.md` as a runtime-pack surface and when to stop browsing.
-Guidance for safe, testable ingestion pipelines.
 
+Use this guide when you change logging, metrics, tracing, audit collection or retention. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
+Apply the following practices to safe, testable ingestion pipelines.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/docs/observability/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
 
-
 ## Baseline practices
-- You must keep pipelines small and composable.
+
+- Keep pipelines small and composable.
 - Avoid unbounded regex/grok patterns on untrusted input.
-- You must validate inputs early; add tags for routing.
+- Validate inputs early; add tags for routing.
 
 ## Operations
+
 - Version control pipeline configs.
-- You must add dead-letter queues where supported.
+- Add dead-letter queues where supported.
 
 See also:
 - `overview.md`
@@ -27,6 +30,6 @@ See also:
 - `../workflows/elastic-stack.md`
 - `$CODEX_HOME/snippets/elastic/logstash.conf`
 - `$CODEX_HOME/templates/observability/elastic-stack-compose/`
-- You must use skill obs-logstash.
+- Read the `obs-logstash` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/observability/stack.md`
 - `$CODEX_HOME/index/domains/observability/logstash.md`

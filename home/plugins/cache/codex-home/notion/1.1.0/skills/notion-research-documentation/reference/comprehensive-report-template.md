@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Comprehensive Report Template
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Use for in-depth research requiring extensive analysis. See [comprehensive-report-format.md](comprehensive-report-format.md) for when to use this format.
 
@@ -76,4 +79,3 @@ Use for in-depth research requiring extensive analysis. See [comprehensive-repor
 ### Open Questions
 - [Unanswered questions for future research]
 ```
-

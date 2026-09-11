@@ -12,7 +12,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Knowledge Capture Skill Evaluations (overview)
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Evaluation scenarios for testing the Knowledge Capture skill across different Codex models.
 
@@ -28,6 +31,7 @@ These evaluations ensure the Knowledge Capture skill:
 ## Evaluation Files
 
 ### conversation-to-wiki.json
+
 Tests capturing conversation content as a how-to guide for the team wiki.
 
 **Scenario**: Save deployment discussion to wiki
@@ -39,6 +43,7 @@ Tests capturing conversation content as a how-to guide for the team wiki.
 - Preserves technical details (commands, configs)
 
 ### decision-record.json
+
 Tests capturing architectural or technical decisions with full context.
 
 **Scenario**: Document database migration decision
@@ -63,22 +68,26 @@ Tests capturing architectural or technical decisions with full context.
 Knowledge Capture evaluations should verify:
 
 ### Content Extraction
+
 - Accurately captures key points from conversation context
 - Preserves specific technical details, not generic placeholders
 - Maintains context and nuance from discussion
 
 ### Content Type Selection
+
 - Correctly identifies appropriate content type (how-to, FAQ, decision record, wiki page)
 - Uses matching structure from reference documentation
 - Applies proper Notion markdown formatting
 
 ### Notion Integration
+
 - Searches for appropriate target location (wiki, decision log, etc.)
 - Creates well-structured pages with clear titles
 - Uses proper parent placement
 - Includes discoverable titles and metadata
 
 ### Quality Standards
+
 - Content is actionable and future-reference ready
 - Technical accuracy is preserved
 - Organization aids discoverability

@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## wrangler.jsonc
 
 ```jsonc
@@ -32,12 +34,13 @@
 
 ## Build Config
 
-**Git deployment**: Dashboard → Project → Settings → Build settings  
+**Git deployment**: Dashboard → Project → Settings → Build settings
 Set build command, output dir, env vars. Framework auto-detection configures automatically.
 
 ## Environment Variables
 
 ### Local (.dev.vars)
+
 ```bash
 # .dev.vars (never commit)
 SECRET_KEY="local-secret-key"
@@ -45,6 +48,7 @@ API_TOKEN="dev-token-123"
 ```
 
 ### Production
+
 ```bash
 echo "secret-value" | npx wrangler pages secret put SECRET_KEY --project-name=my-project
 npx wrangler pages secret list --project-name=my-project
@@ -56,6 +60,7 @@ Access: `env.SECRET_KEY`
 ## Static Config Files
 
 ### _redirects
+
 Place in build output (e.g., `dist/_redirects`):
 
 ```txt
@@ -65,10 +70,11 @@ Place in build output (e.g., `dist/_redirects`):
 /api/* /api-v2/:splat 200        # Proxy (no redirect)
 ```
 
-**Limits**: 2,100 total (2,000 static + 100 dynamic), 1,000 char/line  
+**Limits**: 2,100 total (2,000 static + 100 dynamic), 1,000 char/line
 **Note**: Functions take precedence
 
 ### _headers
+
 ```txt
 /secure/*
   X-Frame-Options: DENY
@@ -81,10 +87,11 @@ Place in build output (e.g., `dist/_redirects`):
   Cache-Control: public, max-age=31536000, immutable
 ```
 
-**Limits**: 100 rules, 2,000 char/line  
+**Limits**: 100 rules, 2,000 char/line
 **Note**: Only static assets; Functions set headers in Response
 
 ### _routes.json
+
 Controls which requests invoke Functions (auto-generated for most frameworks):
 
 ```json
@@ -121,7 +128,7 @@ Automatically optimizes function execution location based on request patterns.
 - User clusters (e.g., regional traffic)
 - Data sources (e.g., D1 database primary location)
 
-**Benefits**: 
+**Benefits**:
 - Lower latency for read-heavy apps with centralized databases
 - Better performance for apps with regional traffic patterns
 
@@ -150,7 +157,7 @@ npx wrangler pages dev ./dist --remote --kv=KV --d1=DB
 - Debug binding-specific behavior
 - Validate changes before deployment
 
-**⚠️ Warning**: 
+**⚠️ Warning**:
 - Writes affect **real production data**
 - Use only for read-heavy debugging or with non-production accounts
 - Consider creating separate preview environments instead

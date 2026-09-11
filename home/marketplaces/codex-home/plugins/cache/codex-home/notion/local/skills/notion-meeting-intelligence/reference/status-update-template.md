@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Status Update Meeting Template
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Use this template for regular project status updates and check-ins.
 
@@ -86,4 +89,3 @@ Use this template for regular project status updates and check-ins.
 **Date**: [Date]
 **Focus**: [What next meeting will cover]
 ```
-

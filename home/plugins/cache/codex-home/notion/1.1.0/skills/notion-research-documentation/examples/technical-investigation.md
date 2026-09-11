@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Technical Investigation
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## User Request
 
@@ -85,7 +88,7 @@ pages: [{
 
 ## Output Document
 
-```markdown
+````markdown
 # Technical Summary: Caching Strategy - Oct 2025
 
 ## Executive Summary
@@ -113,8 +116,10 @@ Our caching infrastructure uses a two-tier approach with Redis for API response 
 
 ### Cache Key Format
 ```
+
 api:v1:{endpoint}:{params_hash}
 session:{user_id}:{session_id}
+
 ```
 
 ### Invalidation Strategy
@@ -213,20 +218,26 @@ session:{user_id}:{session_id}
 maxmemory: 8gb
 maxmemory-policy: allkeys-lru
 tcp-keepalive: 60
+
 ```
 
 ### Common Cache Operations
 ```python
+
 # Set with TTL
+
 cache.set(key, value, ttl=300)
 
 # Get with fallback
+
 value = cache.get(key) or fetch_from_db(key)
 
 # Invalidate pattern
+
 cache.delete_pattern("api:v1:users:*")
+
 ```
-```
+````
 
 ## Key Success Factors
 
@@ -245,4 +256,3 @@ This example shows the complete research workflow:
 - **Technical template** (architecture-focused format)
 - **Proper placement** (under engineering docs)
 - **Comprehensive citations** (links to all sources)
-

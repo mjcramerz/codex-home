@@ -1,10 +1,13 @@
 # Sample prompts (copy/paste)
 
+Consult this reference when sample prompts (copy/paste) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use these as starting points. Keep user-provided requirements and constraints; do not invent new creative elements.
 
-For prompting principles (structure, invariants, iteration), see `$CODEX_HOME/plugins/cache/codex-home/ai-media/1.0.0/skills/sora/references/prompting.md`.
+For prompting principles (structure, invariants, iteration), see `$CODEX_HOME/plugins/ai-media/skills/sora/references/prompting.md`.
 
 ## Contents
+
 - [Product teaser (single shot)](#product-teaser-single-shot)
 - [UI demo (screen recording style)](#ui-demo-screen-recording-style)
 - [Cinematic detail shot](#cinematic-detail-shot)
@@ -13,6 +16,7 @@ For prompting principles (structure, invariants, iteration), see `$CODEX_HOME/pl
 - [Ambient loop (atmosphere)](#ambient-loop-atmosphere)
 
 ## Product teaser (single shot)
+
 ```
 Use case: product teaser
 Primary request: close-up of a matte black wireless speaker on a stone pedestal
@@ -27,6 +31,7 @@ Avoid: harsh bloom; oversharpening; clutter
 ```
 
 ## UI demo (screen recording style)
+
 ```
 Use case: UI product demo
 Primary request: a clean mobile budgeting app demo showing a weekly spend chart
@@ -41,6 +46,7 @@ Constraints: no brand logos; keep UI text readable; avoid motion blur
 ```
 
 ## Cinematic detail shot
+
 ```
 Use case: cinematic product detail
 Primary request: macro shot of raindrops sliding across a car hood
@@ -55,6 +61,7 @@ Avoid: flicker; unstable reflections; excessive noise
 ```
 
 ## Social ad (6s with beats)
+
 ```
 Use case: social ad
 Primary request: minimal coffee subscription ad with three quick beats
@@ -68,6 +75,7 @@ Constraints: no logos; text must be legible; avoid fast motion
 ```
 
 ## Motion graphics explainer
+
 ```
 Use case: explainer clip
 Primary request: clean motion-graphics animation showing data flowing into a dashboard
@@ -81,6 +89,7 @@ Constraints: no logos; keep shapes simple; avoid heavy texture
 ```
 
 ## Ambient loop (atmosphere)
+
 ```
 Use case: ambient background loop
 Primary request: fog drifting through a pine forest at dawn

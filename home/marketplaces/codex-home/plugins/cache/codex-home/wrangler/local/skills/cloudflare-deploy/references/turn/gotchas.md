@@ -1,5 +1,7 @@
 # TURN Gotchas & Troubleshooting
 
+Consult this reference when turn gotchas & troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common mistakes, security best practices, and troubleshooting for Cloudflare TURN.
 
 ## Quick Reference
@@ -157,6 +159,7 @@ Reference: [RFC 8445 Section 2.4](https://datatracker.ietf.org/doc/html/rfc8445#
 - Network allows outbound HTTPS
 
 **Solution:**
+
 ```typescript
 // Validate before using
 if (ttl > 172800) {
@@ -184,7 +187,7 @@ if (ttl > 172800) {
 
 **Cause**: Credentials expired (48hr max)
 
-**Solution**: 
+**Solution**:
 - Set TTL to expected session duration
 - Implement credential refresh with setConfiguration()
 - Use ICE restart if connection fails
@@ -211,7 +214,7 @@ const filtered = urls.filter(url => !url.includes(':53'));
 
 **Cause**: Cloudflare changed IP addresses (14-day notice)
 
-**Solution**: 
+**Solution**:
 - Use DNS hostnames (`turn.cloudflare.com`)
 - Monitor DNS changes with automated alerts
 - Update allowlists within 14 days if using IP allowlisting
@@ -226,6 +229,6 @@ const filtered = urls.filter(url => !url.includes(':53'));
 
 ## See Also
 
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/turn/api.md) - Credential generation API, revocation
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/turn/configuration.md) - IP allowlisting, monitoring
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/turn/patterns.md) - ICE restart, credential refresh patterns
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/turn/api.md) - Credential generation API, revocation
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/turn/configuration.md) - IP allowlisting, monitoring
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/turn/patterns.md) - ICE restart, credential refresh patterns

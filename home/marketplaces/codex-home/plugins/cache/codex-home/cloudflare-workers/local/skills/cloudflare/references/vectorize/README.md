@@ -1,5 +1,7 @@
 # Cloudflare Vectorize
 
+Consult this reference when cloudflare vectorize is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Globally distributed vector database for AI applications. Store and query vector embeddings for semantic search, recommendations, RAG, and classification.
 
 **Status:** Generally Available (GA) | **Last Updated:** 2026-01-27

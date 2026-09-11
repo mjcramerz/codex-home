@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "containers",
   "version": "1.1.0",
-  "description": "Container build, runtime, and compose workflows for Docker and Podman.",
+  "description": "Use this plugin for container build, runtime, and compose workflows for Docker and Podman.",
   "author": {
     "name": "Codex Setup"
   },

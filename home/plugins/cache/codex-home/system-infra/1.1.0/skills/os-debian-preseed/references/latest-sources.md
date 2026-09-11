@@ -8,25 +8,32 @@ tags:
 - references
 updated: '2026-06-28'
 ---
+
 # os-debian-preseed reference bundle
+
+Consult this reference when os-debian-preseed reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-06-28 (UTC)
 - Freshness method: repo-adjacent local inspection plus primary vendor documentation.
 
 ## Skill purpose
+
 Class-driven Debian preseed files for unattended installations.
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/os-debian-preseed/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/os-debian-preseed/agents/openai.yaml`
-- `$CODEX_HOME/plugins/cache/codex-home/system-infra/1.0.0/skills/os-debian-preseed/scripts/skill_helper.py`
+
+- `$CODEX_HOME/plugins/system-infra/skills/os-debian-preseed/SKILL.md`
+- `$CODEX_HOME/plugins/system-infra/skills/os-debian-preseed/agents/openai.yaml`
+- `$CODEX_HOME/plugins/system-infra/skills/os-debian-preseed/scripts/skill_helper.py`
 
 ## Reference files in this directory
+
 - `latest-sources.md`
 - `operations-checklist.md`
 - `risk-register.md`
 
 ## External references
+
 - [Debian installer preseed guide](https://www.debian.org/releases/stable/amd64/apbs04.en.html) - Preseed directive behavior and examples.
 - [Debian preseed wiki](https://wiki.debian.org/DebianInstaller/Preseed) - Practical preseed notes and caveats.
 - [Labwc project](https://github.com/labwc/labwc) - Desktop role compositor reference.

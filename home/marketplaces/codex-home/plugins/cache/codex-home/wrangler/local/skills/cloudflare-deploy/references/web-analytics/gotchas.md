@@ -1,26 +1,30 @@
 # Web Analytics Gotchas
 
+Consult this reference when web analytics gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Critical Issues
 
 ### SPA Navigation Not Tracked
 
-**Symptom:** Only initial pageload counted  
+**Symptom:** Only initial pageload counted
 **Fix:** Add `spa: true`:
+
 ```html
 <script data-cf-beacon='{"token": "TOKEN", "spa": true}' ...></script>
 ```
 
 ### CSP Blocking Beacon
 
-**Symptom:** Console error "Refused to load script"  
+**Symptom:** Console error "Refused to load script"
 **Fix:** Allow both domains:
+
 ```
 script-src 'self' https://static.cloudflareinsights.com https://cloudflareinsights.com;
 ```
 
 ### Hash-Based Routing Unsupported
 
-**Symptom:** `#/path` URLs not tracked  
+**Symptom:** `#/path` URLs not tracked
 **Fix:** Migrate to History API (`BrowserRouter`, not `HashRouter`). No workaround for hash routing.
 
 ### No Data Appearing
@@ -33,12 +37,12 @@ script-src 'self' https://static.cloudflareinsights.com https://cloudflareinsigh
 
 ### Auto-Injection Fails
 
-**Cause:** `Cache-Control: no-transform` header  
+**Cause:** `Cache-Control: no-transform` header
 **Fix:** Remove `no-transform` or install beacon manually
 
 ### Duplicate Pageviews
 
-**Cause:** Multiple beacon scripts  
+**Cause:** Multiple beacon scripts
 **Fix:** Keep only one beacon per page
 
 ## Configuration Issues

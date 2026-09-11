@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "cloudflare-workers",
   "version": "1.1.0",
-  "description": "Cloudflare Workers platform, R2 publication, Durable Objects, sandboxing, and Workers best-practice workflows.",
+  "description": "Use this plugin for cloudflare Workers platform, R2 publication, Durable Objects, sandboxing, and Workers best-practice workflows.",
   "author": {
     "name": "Cloudflare"
   },

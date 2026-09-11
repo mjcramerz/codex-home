@@ -1,6 +1,8 @@
 ---
 name: skill-catalog-audit
-description: Audit skill metadata, routing coverage, namespace structure, and plugin bundle assignments for drift or missing capability coverage. Use when the user asks to review skill catalogs, plugin manifests, or routing quality.
+description: Use this skill to audit skill metadata, routing coverage, namespace structure,
+  and plugin bundle assignments for drift or missing capability coverage. Use this
+  skill when you need to review skill catalogs, plugin manifests, or routing quality.
 metadata:
   version: '1.0'
   short-description: Audit skill metadata, routing coverage, and bundle mapping
@@ -15,28 +17,31 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#14B8A6'
-  default-prompt: Act as the "AUDIT-Skill Catalog" specialist for "Audit skill metadata, routing coverage, and bundle mapping". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "AUDIT-Skill Catalog" specialist for "Audit skill metadata,
+    routing coverage, and bundle mapping". Deliver focused, deterministic results
+    with minimal, reviewable changes and explicit assumptions. Validate untrusted
+    inputs and bounded I/O, run the narrowest relevant checks, and report concrete
+    actions, evidence, and residual risks.
 ---
-## Use this skill when
-- the active task matches this skill's description and needs deterministic implementation guidance
+
+# Skill Catalog Audit
 
 ## Workflow
-1) Check namespace coverage and required files before reviewing content quality.
-2) Confirm every skill is discoverable through role/group or plugin bundle metadata.
-3) Call out generator drift separately from actual content gaps.
 
-## Agent orchestration
-- Confirm ownership, validation scope, and whether another skill or plugin should be combined before editing.
-- Delegate only bounded scouting or independent verification work.
+1. Enumerate canonical skills, names, frontmatter triggers, plugin ownership and configured mirrors. Resolve names to real entrypoints.
 
-## Validation and testing
-- Run the narrowest syntax, parser, or unit checks that prove the change.
-- Explicitly call out skipped checks and why they remain out of scope.
+2. Check routing against actual task coverage rather than generic descriptions. Keep IDs and interface metadata consistent across mirrors.
 
-## Outputs
-- Minimal, reviewable edits aligned to the skill contract.
-- Concrete validation commands and residual risks.
+3. Validate referenced resources, tool dependencies and trust assumptions without invoking unrelated integrations.
+
+4. Correct the smallest coherent set of entrypoints and mirrors; report missing capabilities instead of inventing installed tools.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- [JSON Schema](https://json-schema.org/)
-- [YAML 1.2.2](https://yaml.org/spec/1.2.2/)
+
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

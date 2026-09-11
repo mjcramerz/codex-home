@@ -1,5 +1,7 @@
 # Testing, Performance, And Operations
 
+Consult this reference when testing, performance, and operations is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Primary docs:
 - https://learn.microsoft.com/aspnet/core/test/integration-tests
 - https://learn.microsoft.com/aspnet/core/host-and-deploy/

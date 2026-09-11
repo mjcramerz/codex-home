@@ -13,9 +13,12 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Desktop Librewolf Framework
 
+Apply the following desktop librewolf framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `desktop-librewolf`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-librewolf/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-librewolf/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-librewolf/references/`
+- Source of truth: `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-librewolf/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-librewolf/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-librewolf/references/`

@@ -19,16 +19,7 @@ SKILL_CATEGORY = 'GIT'
 SKILL_DESCRIPTION = 'Repo operations automation in Bash: safe git workflows, CI scripting, release hygiene, and low-risk automation primitives.'
 LAST_REFRESH_UTC = '2026-02-11'
 REQUIRED_MCP_TOOLS = {'filesystem', 'sequential_thinking'}
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Inputs',
-    'Scope and boundaries',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'Git documentation', 'url': 'https://git-scm.com/doc', 'note': 'Core git behavior and safe workflows.'},
     {'title': 'GitHub Actions docs', 'url': 'https://docs.github.com/actions', 'note': 'Workflow syntax and security hardening.'},

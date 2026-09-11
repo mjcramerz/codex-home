@@ -11,9 +11,13 @@ tags:
 - admin
 updated: '2026-02-20'
 ---
+
 # Repo Bash Ops Rules
 
+Apply the following repo bash ops rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
+
 - Follow the workflow in `$CODEX_SKILLS/repo-bash-ops/SKILL.md`.
 - Prefer deterministic scripts in `$CODEX_SKILLS/repo-bash-ops/scripts/`.
 - Use references in `$CODEX_SKILLS/repo-bash-ops/references/` for factual guidance.

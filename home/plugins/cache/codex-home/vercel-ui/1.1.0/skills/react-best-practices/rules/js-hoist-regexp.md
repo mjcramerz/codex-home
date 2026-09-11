@@ -5,6 +5,10 @@ impactDescription: avoids recreation
 tags: javascript, regexp, optimization, memoization
 ---
 
+# js hoist regexp
+
+Apply the following js hoist regexp guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Hoist RegExp Creation
 
 Don't create RegExp inside render. Hoist to module scope or memoize with `useMemo()`.

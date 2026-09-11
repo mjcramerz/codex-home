@@ -1,5 +1,7 @@
 # Email Handling
 
+Consult this reference when email handling is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Fetch `docs/email.md` from `https://github.com/cloudflare/agents/tree/main/docs` for complete documentation.
 
 ## Overview

@@ -1,5 +1,7 @@
 # Cloudflare D1 Database
 
+Consult this reference when cloudflare d1 database is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for Cloudflare D1, a serverless SQLite database designed for horizontal scale-out across multiple databases.
 
 ## Overview
@@ -122,12 +124,12 @@ wrangler dev --persist-to=./.wrangler/state
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/configuration.md) - wrangler.jsonc setup, migrations, TypeScript types, ORMs, local dev
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/api.md) - Query methods (.all/.first/.run/.raw), batch, sessions, read replicas, error handling
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/patterns.md) - Pagination, bulk operations, caching, multi-tenant, sessions, analytics
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/gotchas.md) - SQL injection, limits by plan tier, performance, common errors
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/configuration.md) - wrangler.jsonc setup, migrations, TypeScript types, ORMs, local dev
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/api.md) - Query methods (.all/.first/.run/.raw), batch, sessions, read replicas, error handling
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/patterns.md) - Pagination, bulk operations, caching, multi-tenant, sessions, analytics
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/gotchas.md) - SQL injection, limits by plan tier, performance, common errors
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker runtime and fetch handler patterns
-- [hyperdrive]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/hyperdrive/) - Connection pooling for external databases
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker runtime and fetch handler patterns
+- [hyperdrive]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/hyperdrive/) - Connection pooling for external databases

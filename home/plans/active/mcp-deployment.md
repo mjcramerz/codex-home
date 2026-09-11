@@ -1,5 +1,7 @@
 # MCP deployment acceptance plan
 
+Use this plan when you need to carry out mcp deployment acceptance work. Fill in the concrete scope, evidence, ordered actions and completion criteria before executing dependent steps. Keep deployment and new test files out of scope unless the task authorizes them.
+
 1. Confirm the desktop account, devops socket, cgroup v2, immutable image reference,
    profile digest and Workspace ACL support with preflight.
 2. Install protected code, generate/preserve SSH identity and host key, build the

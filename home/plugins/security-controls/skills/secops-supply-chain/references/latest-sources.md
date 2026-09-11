@@ -12,15 +12,20 @@ tags:
 - admin
 updated: '2026-02-25'
 ---
+
 # secops-supply-chain reference bundle
+
+Consult this reference when secops-supply-chain reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-25 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Strengthen dependency hygiene: pinning, lockfiles, audits, SBOMs, CI enforcement, and avoiding dangerous install patterns.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Mandatory controls (baseline)
@@ -31,15 +36,18 @@ Strengthen dependency hygiene: pinning, lockfiles, audits, SBOMs, CI enforcement
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/secops-supply-chain/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/security-controls/1.0.0/skills/secops-supply-chain/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/security-controls/skills/secops-supply-chain/SKILL.md`
+- `$CODEX_HOME/plugins/security-controls/skills/secops-supply-chain/agents/openai.yaml`
 
 ## External references
+
 - [SLSA framework](https://slsa.dev/spec/v1.0/levels) - Supply-chain integrity maturity controls.
 - [sigstore documentation](https://docs.sigstore.dev/) - Signing and provenance verification workflows.
 - [OpenSSF Scorecard](https://securityscorecards.dev/) - Dependency and repository supply-chain checks.
 - [NIST SSDF SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final) - Secure software development supply-chain controls.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `secops-supply-chain` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `secops-supply-chain` before finalizing changes.

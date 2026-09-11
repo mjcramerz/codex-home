@@ -1,37 +1,27 @@
-# TypeScript
-Purpose: tell the Codex coding agent how to use `docs/lang/typescript.md` as a runtime-pack surface and when to stop browsing.
-Guidance for TypeScript project defaults and build hygiene.
+# Typescript
 
+Use this guide when you change TypeScript or JavaScript applications, tooling or packages. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/lang/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+## Apply these practices
 
+**1.** Inspect package.json, the single authoritative lockfile, tsconfig, runtime versions and actual script definitions. Use the existing package manager and avoid unrelated dependency refreshes.
 
-## Baseline practices
-- Enable `strict` mode; avoid `any`.
-- You must use `tsconfig` references for larger repos.
-- You must keep build outputs out of source directories.
-- You must keep runtime boundaries explicit (Node-only vs browser-safe modules).
-- Encode untrusted inputs as `unknown` and narrow with validators at boundaries.
+**2.** Keep strict types at module boundaries; treat network, JSON and environment values as unknown until validated. Do not replace a type error with any or an unchecked assertion.
 
-## Testing
-- You must run typecheck in CI.
-- You must prefer `eslint` + `tsc --noEmit` for fast feedback.
-- You must prefer deterministic package-manager flows (`pnpm install --frozen-lockfile`, pinned Node version).
+**3.** Handle rejected promises, cancellation and cleanup. Bound requests and retries, and avoid event-listener leaks or unbounded concurrency.
 
-## Codex source alignment
-- Codex currently uses TypeScript in tooling packages (`shell-tool-mcp`, `sdk/typescript`, `codex-cli`) with shared pnpm workspace conventions.
-- You must keep pack guidance aligned with workspace scripts and lockfile-driven installs when updating TypeScript workflows.
+**4.** Keep server credentials out of client bundles and logs. Validate URLs and output contexts, and preserve CSP, authentication and authorization boundaries.
 
-See also:
-- `overview.md`
-- `../style/typescript.md`
+**5.** Use the existing typecheck, lint, unit and build scripts after reading their commands. A script name is only a candidate until its side effects and prerequisites are understood.
+
+## Select related guidance
+
+- `$CODEX_HOME/docs/lang/overview.md`
+- `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/OVERVIEW.md`
 - `$CODEX_HOME/templates/typescript/ts-lib/`
 - `$CODEX_HOME/snippets/typescript/tsconfig.json`
-- You must use skill lang-typescript.
 - `$CODEX_HOME/index/domains/lang/languages.md`
 - `$CODEX_HOME/index/domains/lang/typescript.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

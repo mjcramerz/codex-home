@@ -5,6 +5,10 @@ impactDescription: fewer re-renders, less state drift
 tags: state, derived-state, hooks, optimization
 ---
 
+# react state minimize
+
+Apply the following react state minimize guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Minimize State Variables and Derive Values
 
 Use the fewest state variables possible. If a value can be computed from existing state or props, derive it during render instead of storing it in state. Redundant state causes unnecessary re-renders and can drift out of sync.

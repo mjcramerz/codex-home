@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "adobe-photoshop",
   "version": "1.1.0",
-  "description": "Adobe Photoshop workflows for image retouching, compositing, and export handoffs.",
+  "description": "Use this plugin for adobe Photoshop workflows for image retouching, compositing, and export handoffs.",
   "author": {
     "name": "Adobe",
     "url": "https://www.adobe.com/products/photoshop/online.html"

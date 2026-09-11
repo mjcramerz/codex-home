@@ -1,5 +1,7 @@
 # Function API
 
+Consult this reference when function api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## EventContext
 
 ```typescript
@@ -15,7 +17,7 @@ interface EventContext<Env = any> {
 }
 ```
 
-**TypeScript:** See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md) for `wrangler types` setup
+**TypeScript:** See [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md) for `wrangler types` setup
 
 ## Handlers
 
@@ -51,7 +53,7 @@ export async function onRequestPost(ctx: EventContext): Promise<Response> {
 | Analytics Engine | `AnalyticsEngineDataset` | `analytics_engine_datasets` | Event logging, metrics |
 | Environment Vars | `string` | `vars` | Non-sensitive config |
 
-See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md) for wrangler.jsonc examples.
+See [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md) for wrangler.jsonc examples.
 
 ## Bindings
 
@@ -140,4 +142,4 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-**See also:** [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md) for TypeScript setup and wrangler.jsonc | [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/patterns.md) for middleware and auth patterns
+**See also:** [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md) for TypeScript setup and wrangler.jsonc | [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/patterns.md) for middleware and auth patterns

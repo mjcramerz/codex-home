@@ -1,5 +1,7 @@
 # API Reference
 
+Consult this reference when api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Binding API
 
 ### Basic Access
@@ -132,6 +134,7 @@ GET /accounts/{account_id}/secrets_store/quota
 ### Responses
 
 Success:
+
 ```json
 {
   "success": true,
@@ -145,6 +148,7 @@ Success:
 ```
 
 Error:
+
 ```json
 {
   "success": false,
@@ -197,4 +201,4 @@ async function getAllSecrets(
 }
 ```
 
-See: [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/secrets-store/configuration.md), [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/secrets-store/patterns.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/secrets-store/gotchas.md)
+See: [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/secrets-store/configuration.md), [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/secrets-store/patterns.md), [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/secrets-store/gotchas.md)

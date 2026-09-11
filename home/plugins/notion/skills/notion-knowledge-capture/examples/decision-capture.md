@@ -13,13 +13,17 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Decision Record Capture
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **User Request**: "Document our decision to move from REST to GraphQL API"
 
 ## Workflow
 
 ### 1. Extract Decision from Context
+
 From conversation, identified:
 - **Decision**: Migrate customer-facing API from REST to GraphQL
 - **Context**: REST endpoints becoming unwieldy (50+ endpoints)
@@ -27,6 +31,7 @@ From conversation, identified:
 - **Rationale**: Better client experience, type safety, single endpoint
 
 ### 2. Find Decision Log
+
 ```
 Notion:notion-search
 query: "architecture decisions" or "ADR"
@@ -35,6 +40,7 @@ query: "architecture decisions" or "ADR"
 Found: "Architecture Decision Records" database
 
 ### 3. Fetch Schema
+
 ```
 Notion:notion-fetch
 ```
@@ -42,6 +48,7 @@ Notion:notion-fetch
 Got properties: Decision (title), Date, Status, Domain, Impact, Deciders, Stakeholders
 
 ### 4. Create Decision Record
+
 ```
 Notion:notion-create-pages
 parent: { data_source_id: "decision-log-collection-id" }
@@ -130,9 +137,11 @@ Migrate customer-facing API from REST to GraphQL while maintaining REST for inte
 ```
 
 ### 5. Make Discoverable
+
 Added link from Architecture Wiki and notified team in Slack.
 
 ## Key Success Factors
+
 - Captured decision while context fresh
 - Documented alternatives considered
 - Included both pros and cons

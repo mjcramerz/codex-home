@@ -1,5 +1,7 @@
 # Cloudflare Cron Triggers
 
+Consult this reference when cloudflare cron triggers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Schedule Workers execution using cron expressions. Runs on Cloudflare's global network during underutilized periods.
 
 ## Key Features
@@ -40,6 +42,7 @@ Schedule Workers execution using cron expressions. Runs on Cloudflare's global n
 ## Quick Start
 
 **wrangler.jsonc:**
+
 ```jsonc
 {
   "name": "my-cron-worker",
@@ -50,6 +53,7 @@ Schedule Workers execution using cron expressions. Runs on Cloudflare's global n
 ```
 
 **Handler:**
+
 ```typescript
 export default {
   async scheduled(
@@ -66,6 +70,7 @@ export default {
 ```
 
 **Test locally:**
+
 ```bash
 npx wrangler dev
 curl "http://localhost:8787/__scheduled?cron=*/5+*+*+*+*"
@@ -82,18 +87,20 @@ curl "http://localhost:8787/__scheduled?cron=*/5+*+*+*+*"
 
 **New to cron triggers?** Start here:
 1. This README - Overview and quick start
-2. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/configuration.md) - Set up your first cron trigger
-3. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/api.md) - Understand the handler API
-4. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/patterns.md) - Common use cases and examples
+2. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/configuration.md) - Set up your first cron trigger
+3. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/api.md) - Understand the handler API
+4. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/patterns.md) - Common use cases and examples
 
-**Troubleshooting?** Jump to [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/gotchas.md)
+**Troubleshooting?** Jump to [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/gotchas.md)
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/configuration.md) - wrangler config, env-specific schedules, Green Compute
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/api.md) - ScheduledController, noRetry(), waitUntil, testing patterns
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/patterns.md) - Use cases, monitoring, queue integration, Durable Objects
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cron-triggers/gotchas.md) - Timezone issues, idempotency, security, testing
+
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/configuration.md) - wrangler config, env-specific schedules, Green Compute
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/api.md) - ScheduledController, noRetry(), waitUntil, testing patterns
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/patterns.md) - Use cases, monitoring, queue integration, Durable Objects
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cron-triggers/gotchas.md) - Timezone issues, idempotency, security, testing
 
 ## See Also
-- [workflows]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/) - Alternative for long-running scheduled tasks
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Worker runtime documentation
+
+- [workflows]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/) - Alternative for long-running scheduled tasks
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Worker runtime documentation

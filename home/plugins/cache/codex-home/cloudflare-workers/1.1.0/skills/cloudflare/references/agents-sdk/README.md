@@ -1,11 +1,15 @@
 # Cloudflare Agents SDK
 
+Consult this reference when cloudflare agents sdk is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Cloudflare Agents SDK enables building AI-powered agents on Durable Objects with state, WebSockets, SQL, scheduling, and AI integration.
 
 ## Core Value
+
 Build stateful, globally distributed AI agents with persistent memory, real-time connections, scheduled tasks, and async workflows.
 
 ## When to Use
+
 - Persistent state + memory required
 - Real-time WebSocket connections
 - Long-running workflows (minutes/hours)
@@ -26,6 +30,7 @@ Build stateful, globally distributed AI agents with persistent memory, real-time
 ## Quick Start
 
 **AI Chat Agent:**
+
 ```typescript
 import { AIChatAgent } from "agents";
 import { openai } from "@ai-sdk/openai";
@@ -42,6 +47,7 @@ export class ChatAgent extends AIChatAgent<Env> {
 ```
 
 **Base Agent:**
+
 ```typescript
 import { Agent } from "agents";
 
@@ -77,12 +83,14 @@ export class MyAgent extends Agent<Env> {
 | `agents/ai-react` | `useAgentChat()` hook for AI chat UIs |
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/agents-sdk/configuration.md) - SDK setup, wrangler config, routing
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/agents-sdk/api.md) - Agent classes, lifecycle, client hooks
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/agents-sdk/patterns.md) - Common workflows, best practices
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/agents-sdk/gotchas.md) - Common issues, limits
+
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/agents-sdk/configuration.md) - SDK setup, wrangler config, routing
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/agents-sdk/api.md) - Agent classes, lifecycle, client hooks
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/agents-sdk/patterns.md) - Common workflows, best practices
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/agents-sdk/gotchas.md) - Common issues, limits
 
 ## See Also
+
 - durable-objects - Agent infrastructure
 - d1 - External database integration
 - workers-ai - AI model integration

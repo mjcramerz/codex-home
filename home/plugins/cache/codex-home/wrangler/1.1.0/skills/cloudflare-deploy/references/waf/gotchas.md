@@ -1,5 +1,7 @@
 # Gotchas & Troubleshooting
 
+Consult this reference when gotchas & troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Execution Order
 
 **Problem:** Rules execute in unexpected order
@@ -133,6 +135,7 @@ console.log(ruleset.rules.map(r => ({ id: r.id, description: r.description })));
 **Solution:**
 
 Add more characteristics: User-Agent, session cookie, or authorization header
+
 ```typescript
 {
   action: 'block',

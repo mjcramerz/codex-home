@@ -1,30 +1,27 @@
 # Go
-Purpose: tell the Codex coding agent how to use `docs/lang/go.md` as a runtime-pack surface and when to stop browsing.
-Guidance for Go module structure and operational defaults.
 
+Use this guide when you change Go packages, modules, CLIs or services. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/lang/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+## Apply these practices
 
+**1.** Read go.mod, go.sum and workspace settings, then trace the affected API and callers. Keep module paths, public interfaces and supported Go versions stable unless the task changes them.
 
-## Baseline practices
-- You must use modules (`go.mod`) and keep dependencies minimal.
-- You must prefer `cmd/<app>` for binaries and `internal/` for private packages.
-- You must add context/timeouts to network calls.
+**2.** Propagate context for cancellation and deadlines. Close response bodies and files, stop tickers, and ensure every goroutine has a termination path.
 
-## Testing
-- You must keep unit tests fast and deterministic.
-- You must use `go test ./...` in CI with `-race` where feasible.
+**3.** Return wrapped errors with useful context; distinguish cancellation, not-found and invalid input. Avoid panic for expected external failures.
 
-See also:
-- `overview.md`
-- `../style/go.md`
+**4.** Use structured logging without credentials, bound network and parser inputs, and protect shared state with clear ownership or synchronization.
+
+**5.** Use existing gofmt, go vet and focused go test commands; run the race detector when relevant and available. Report coverage limitations for external dependencies and unsupported platforms.
+
+## Select related guidance
+
+- `$CODEX_HOME/docs/lang/overview.md`
+- `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/OVERVIEW.md`
 - `$CODEX_HOME/templates/go/cli-app/`
 - `$CODEX_HOME/snippets/go/main.go`
-- You must use skill lang-go.
 - `$CODEX_HOME/index/domains/lang/languages.md`
 - `$CODEX_HOME/index/domains/lang/go.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

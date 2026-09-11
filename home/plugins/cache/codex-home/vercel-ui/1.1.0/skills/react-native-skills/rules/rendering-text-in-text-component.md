@@ -5,6 +5,10 @@ impactDescription: prevents runtime crash
 tags: rendering, text, core
 ---
 
+# rendering text in text component
+
+Apply the following rendering text in text component guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Wrap Strings in Text Components
 
 Strings must be rendered inside `<Text>`. React Native crashes if a string is a

@@ -5,6 +5,8 @@ description: Work safely in the disk-manager Go repository across CLI, internal 
 
 # Disk Manager repository workflow
 
+Apply this skill to the matching task described in its metadata. Inspect the relevant inputs and active tool contracts before following the procedure. Use only the resources needed for the current step; a bundled tool reference does not prove that tool is available or authorized.
+
 ## Start
 
 1. Resolve the current Git root; do not assume a machine-local clone path.

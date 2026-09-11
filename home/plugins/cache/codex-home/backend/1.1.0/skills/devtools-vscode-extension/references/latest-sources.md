@@ -13,15 +13,20 @@ tags:
 - web
 updated: '2026-02-20'
 ---
+
 # devtools-vscode-extension reference bundle
+
+Consult this reference when devtools-vscode-extension reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Develop VS Code extensions with secure defaults, packaging, and tests.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Agent orchestration
@@ -30,10 +35,12 @@ Develop VS Code extensions with secure defaults, packaging, and tests.
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/devtools-vscode-extension/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/devtools-vscode-extension/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/backend/skills/devtools-vscode-extension/SKILL.md`
+- `$CODEX_HOME/plugins/backend/skills/devtools-vscode-extension/agents/openai.yaml`
 
 ## External references
+
 - [FastAPI documentation](https://fastapi.tiangolo.com/) - API scaffolding and validation patterns.
 - [Axum crate documentation](https://docs.rs/axum/latest/axum/) - Rust web service composition patterns.
 - [React docs](https://react.dev/) - UI component architecture and state patterns.
@@ -42,6 +49,6 @@ Develop VS Code extensions with secure defaults, packaging, and tests.
 - [VSCE tool](https://github.com/microsoft/vscode-vsce) - CLI tooling for extension packaging.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `devtools-vscode-extension` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `devtools-vscode-extension` before finalizing changes.
-

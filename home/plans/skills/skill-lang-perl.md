@@ -1,9 +1,11 @@
-# Plan
-Purpose: tell the Codex coding agent how to use `plans/skills/skill-lang-perl.md` as a runtime-pack surface and when to stop browsing.
+# Lang perl plan
 
-You must use this plan when applying or updating the `lang-perl` skill.
+Use this plan when you applying or updating the `lang-perl` skill. Fill in the concrete scope, evidence, ordered actions and completion criteria before executing dependent steps. Keep deployment and new test files out of scope unless the task authorizes them.
+
+Use this plan when applying or updating the `lang-perl` skill.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/plans/skills/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -11,15 +13,18 @@ You must use this plan when applying or updating the `lang-perl` skill.
 <!-- END:nav -->
 
 ## Inputs
-- You must use skill `lang-perl`.
+
+- Read the `lang-perl` skill only when its trigger matches this task and the skill is available.
 - Any referenced scripts, assets, or references in the skill.
 
 ## Scope
+
 - In: tasks covered by the `lang-perl` skill and its resources.
 - Out: tasks outside the skill’s domain.
 
 ## Action items
-[ ] Use skill `lang-perl` and linked resources.
-[ ] Collect required inputs (paths, constraints, desired output).
-[ ] Execute the skill workflow and produce outputs.
-[ ] Validate outputs and update links/backlinks if applicable.
+
+- [ ] Use skill `lang-perl` and linked resources.
+- [ ] Collect required inputs (paths, constraints, desired output).
+- [ ] Execute the skill workflow and produce outputs.
+- [ ] Validate outputs and update links/backlinks if applicable.

@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-03-11'
 ---
+
 # DB PSQL Framework
+
+Apply the following db psql framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `psql`
 - Source of truth: `$CODEX_SKILLS/psql/SKILL.md`

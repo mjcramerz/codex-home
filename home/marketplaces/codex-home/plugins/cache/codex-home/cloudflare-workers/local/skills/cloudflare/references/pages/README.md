@@ -1,5 +1,7 @@
 # Cloudflare Pages
 
+Consult this reference when cloudflare pages is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 JAMstack platform for full-stack apps on Cloudflare's global network.
 
 ## Key Features
@@ -14,15 +16,18 @@ JAMstack platform for full-stack apps on Cloudflare's global network.
 ## Deployment Methods
 
 ### 1. Git Integration (Production)
+
 Dashboard → Workers & Pages → Create → Connect to Git → Configure build
 
 ### 2. Direct Upload
+
 ```bash
 npx wrangler pages deploy ./dist --project-name=my-project
 npx wrangler pages deploy ./dist --project-name=my-project --branch=staging
 ```
 
 ### 3. C3 CLI
+
 ```bash
 npm create cloudflare@latest my-app
 # Select framework → auto-setup + deploy
@@ -67,22 +72,22 @@ npx wrangler pages deployment tail --project-name=my-project
 
 **New to Pages?** Start here:
 1. README.md (you are here) - Overview & quick start
-2. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/configuration.md) - Project setup, wrangler.jsonc, bindings
-3. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/api.md) - Functions API, routing, context
-4. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/patterns.md) - Common implementations
-5. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/gotchas.md) - Troubleshooting & pitfalls
+2. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/configuration.md) - Project setup, wrangler.jsonc, bindings
+3. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/api.md) - Functions API, routing, context
+4. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/patterns.md) - Common implementations
+5. [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/gotchas.md) - Troubleshooting & pitfalls
 
 **Quick reference?** Jump to relevant file above.
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/configuration.md) - wrangler.jsonc, build, env vars, Smart Placement
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/api.md) - Functions API, bindings, context, advanced mode
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/patterns.md) - Full-stack patterns, framework integration
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/gotchas.md) - Build issues, limits, debugging, framework warnings
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/configuration.md) - wrangler.jsonc, build, env vars, Smart Placement
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/api.md) - Functions API, bindings, context, advanced mode
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/patterns.md) - Full-stack patterns, framework integration
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/gotchas.md) - Build issues, limits, debugging, framework warnings
 
 ## See Also
 
-- [pages-functions]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/) - File-based routing, middleware
-- [d1]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/d1/) - SQL database for Pages Functions
-- [kv]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/kv/) - Key-value storage for caching/state
+- [pages-functions]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/) - File-based routing, middleware
+- [d1]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/d1/) - SQL database for Pages Functions
+- [kv]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/kv/) - Key-value storage for caching/state

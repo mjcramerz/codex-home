@@ -1,5 +1,7 @@
 # R2 SQL Gotchas
 
+Consult this reference when r2 sql gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Limitations, troubleshooting, and common pitfalls for R2 SQL.
 
 ## Critical Limitations
@@ -73,10 +75,12 @@ Check partition spec: `DESCRIBE namespace.table_name`
 ## Common Errors
 
 ### "Column not found"
-**Cause:** Typo, column doesn't exist, or case mismatch  
+
+**Cause:** Typo, column doesn't exist, or case mismatch
 **Solution:** `DESCRIBE namespace.table_name` to check schema
 
 ### "Type mismatch"
+
 ```sql
 -- ❌ Wrong types
 WHERE status = '200'              -- string instead of integer
@@ -88,10 +92,12 @@ WHERE timestamp > '2025-01-01T00:00:00Z'
 ```
 
 ### "ORDER BY column not in partition key"
-**Cause:** Ordering by non-partition column  
+
+**Cause:** Ordering by non-partition column
 **Solution:** Use partition key, aggregation, or remove ORDER BY. Check: `DESCRIBE table`
 
 ### "Token authentication failed"
+
 ```bash
 # Check/set token
 echo $WRANGLER_R2_SQL_AUTH_TOKEN
@@ -102,6 +108,7 @@ echo "WRANGLER_R2_SQL_AUTH_TOKEN=<your-token>" > .env
 ```
 
 ### "Table not found"
+
 ```sql
 -- Verify catalog and tables
 SHOW DATABASES;
@@ -111,9 +118,11 @@ SHOW TABLES IN namespace_name;
 Enable catalog: `npx wrangler r2 bucket catalog enable <bucket>`
 
 ### "LIMIT exceeds maximum"
+
 Max LIMIT is 10,000. For pagination, use WHERE filters with partition keys.
 
 ### "No data returned" (unexpected)
+
 **Debug steps:**
 1. `SELECT COUNT(*) FROM table` - verify data exists
 2. Remove WHERE filters incrementally
@@ -163,6 +172,7 @@ GROUP BY status;
 ## Best Practices
 
 ### Partitioning
+
 - **Time-series:** Partition by day/hour on timestamp
 - **Avoid:** High-cardinality keys (user_id), >10,000 partitions
 
@@ -174,6 +184,7 @@ PartitionSpec(PartitionField(source_id=1, field_id=1000, transform=DayTransform(
 ```
 
 ### Query Writing
+
 - **Always use LIMIT** for early termination
 - **Filter on partition keys first** for pruning
 - **Combine filters with AND** for more pruning
@@ -184,11 +195,13 @@ WHERE timestamp >= '2025-01-15T00:00:00Z' AND status = 404 AND method = 'GET' LI
 ```
 
 ### Type Safety
+
 - Quote strings: `'GET'` not `GET`
 - RFC3339 timestamps: `'2025-01-01T00:00:00Z'` not `'2025-01-01'`
 - ISO dates: `'2025-01-15'` not `'01/15/2025'`
 
 ### Data Organization
+
 - **Pipelines:** Dev `roll_file_time: 10`, Prod `roll_file_time: 300+`
 - **Compression:** Use `zstd`
 - **Maintenance:** Compaction for small files, expire old snapshots

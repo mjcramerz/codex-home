@@ -1,5 +1,7 @@
 # Cache Reserve API
 
+Consult this reference when cache reserve api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Workers Integration
 
 ```
@@ -188,7 +190,7 @@ query CacheReserveAnalytics($zoneTag: string, $since: string, $until: string) {
 
 ## See Also
 
-- [README]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/README.md) - Overview and core concepts
-- [Configuration]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/configuration.md) - Setup and Cache Rules
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/patterns.md) - Best practices and optimization
-- [Gotchas]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) - Common issues and troubleshooting
+- [README]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/README.md) - Overview and core concepts
+- [Configuration]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/configuration.md) - Setup and Cache Rules
+- [Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/patterns.md) - Best practices and optimization
+- [Gotchas]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) - Common issues and troubleshooting

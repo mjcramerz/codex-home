@@ -1,5 +1,7 @@
 # Cloudflare Zaraz
 
+Consult this reference when cloudflare zaraz is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for Cloudflare Zaraz - server-side tag manager for loading third-party tools at the edge.
 
 ## What is Zaraz?
@@ -49,10 +51,10 @@ zaraz.set('userId', 'user_123');
 
 | File | Purpose | When to Read |
 |------|---------|--------------|
-| [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/zaraz/api.md) | Web API, zaraz object, consent methods | Implementing tracking calls |
-| [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/zaraz/configuration.md) | Dashboard setup, triggers, tools | Initial setup, adding tools |
-| [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/zaraz/patterns.md) | SPA, e-commerce, Worker integration | Best practices, common scenarios |
-| [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/zaraz/gotchas.md) | Troubleshooting, limits, pitfalls | Debugging issues |
+| [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/zaraz/api.md) | Web API, zaraz object, consent methods | Implementing tracking calls |
+| [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/zaraz/configuration.md) | Dashboard setup, triggers, tools | Initial setup, adding tools |
+| [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/zaraz/patterns.md) | SPA, e-commerce, Worker integration | Best practices, common scenarios |
+| [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/zaraz/gotchas.md) | Troubleshooting, limits, pitfalls | Debugging issues |
 
 ## Reading Order by Task
 

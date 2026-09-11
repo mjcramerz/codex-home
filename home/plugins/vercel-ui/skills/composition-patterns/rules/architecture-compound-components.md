@@ -5,6 +5,10 @@ impactDescription: enables flexible composition without prop drilling
 tags: composition, compound-components, architecture
 ---
 
+# architecture compound components
+
+Apply the following architecture compound components guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Compound Components
 
 Structure complex components as compound components with a shared context. Each

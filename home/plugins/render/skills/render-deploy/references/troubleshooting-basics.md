@@ -1,5 +1,7 @@
 # Basic troubleshooting (deploy-time and startup)
 
+Consult this reference when basic troubleshooting (deploy-time and startup) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use this when a deploy fails, the service crashes on start, or health checks time out.
 Keep fixes minimal and redeploy after each change.
 

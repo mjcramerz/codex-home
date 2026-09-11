@@ -1,10 +1,9 @@
 interface:
-  display_name: "SHELL-Bash"
-  short_description: "Write production-grade Bash: strict mode, safe subprocess usage, portability, robust error handling, and security hardening"
-  icon_small: "./assets/icon-32.png"
-  icon_large: "./assets/icon-128.png"
-  brand_color: "#CC32AD"
-  default_prompt: "Use $shell-bash. Act as the \"SHELL-Bash\" specialist for \"Write production-grade Bash: strict mode, safe subprocess usage, portability, robust error handling, and security hardening\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
-
+  display_name: SHELL-Bash
+  short_description: 'Use this skill for write production-grade Bash: strict mode, safe subprocess usage, portab'
+  icon_small: ./assets/icon-32.png
+  icon_large: ./assets/icon-128.png
+  brand_color: '#CC32AD'
+  default_prompt: Use $shell-bash for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

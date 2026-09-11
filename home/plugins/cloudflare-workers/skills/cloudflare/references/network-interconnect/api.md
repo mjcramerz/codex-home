@@ -1,5 +1,7 @@
 # CNI API Reference
 
+Consult this reference when cni api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 See [README.md](README.md) for overview.
 
 ## Base
@@ -12,6 +14,7 @@ Auth: Authorization: Bearer <token>
 ## SDK Namespaces
 
 **Primary (recommended):**
+
 ```typescript
 client.networkInterconnects.interconnects.*
 client.networkInterconnects.cnis.*
@@ -19,6 +22,7 @@ client.networkInterconnects.slots.*
 ```
 
 **Alternate (deprecated):**
+
 ```typescript
 client.magicTransit.cfInterconnects.*
 ```
@@ -36,10 +40,11 @@ GET    /accounts/{account_id}/cni/interconnects/{icon}/loa   # Returns PDF
 DELETE /accounts/{account_id}/cni/interconnects/{icon}
 ```
 
-**Create Body:** `account`, `slot_id`, `type`, `facility`, `speed`, `name`, `description`  
+**Create Body:** `account`, `slot_id`, `type`, `facility`, `speed`, `name`, `description`
 **Status Values:** `active` | `healthy` | `unhealthy` | `pending` | `down`
 
 **Response Example:**
+
 ```json
 {"result": [{"id": "icon_abc", "name": "prod", "type": "direct", "facility": "EWR1", "speed": "10G", "status": "active"}]}
 ```

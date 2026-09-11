@@ -5,6 +5,10 @@ impactDescription: avoids unnecessary subscriptions
 tags: rerender, searchParams, localStorage, optimization
 ---
 
+# rerender defer reads
+
+Apply the following rerender defer reads guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Defer State Reads to Usage Point
 
 Don't subscribe to dynamic state (searchParams, localStorage) if you only read it inside callbacks.

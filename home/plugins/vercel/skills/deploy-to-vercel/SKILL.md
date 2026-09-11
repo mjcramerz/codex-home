@@ -3,7 +3,7 @@ name: deploy-to-vercel
 description: Deploy applications and websites to Vercel. Use when the user requests deployment actions like "deploy my app", "deploy and give me the link", "push this live", or "create a preview deployment".
 metadata:
   author: vercel
-  version: "3.0.0"
+  version: 3.0.0
 ---
 
 # Deploy to Vercel
@@ -57,12 +57,14 @@ Either file means the project is linked. Check for both.
 This is the ideal state. The project is linked and has git integration.
 
 1. **Ask the user before pushing.** Never push without explicit approval:
+
    ```
    This project is connected to Vercel via git. I can commit and push to
    trigger a deployment. Want me to proceed?
    ```
 
 2. **Commit and push:**
+
    ```bash
    git add .
    git commit -m "deploy: <description of changes>"
@@ -71,6 +73,7 @@ This is the ideal state. The project is linked and has git integration.
    Vercel automatically builds from the push. Non-production branches get preview deployments; the production branch (usually `main`) gets a production deployment.
 
 3. **Retrieve the preview URL.** If the CLI is authenticated:
+
    ```bash
    sleep 5
    vercel ls --format json
@@ -96,6 +99,7 @@ vercel inspect <deployment-url>
 ```
 
 For production deploys (only if user explicitly asks):
+
 ```bash
 vercel deploy [path] --prod -y --no-wait
 ```
@@ -109,18 +113,21 @@ The CLI is working but the project isn't linked yet. This is the opportunity to 
 1. **Ask the user which team to deploy to.** Present the team slugs from Step 1 as a bulleted list. If there's only one team (or just a personal account), skip this step.
 
 2. **Once a team is selected, proceed directly to linking.** Tell the user what will happen but do not ask for separate confirmation:
+
    ```
    Linking this project to <team name> on Vercel. This will create a Vercel
    project to deploy to and enable automatic deployments on future git pushes.
    ```
 
 3. **If a git remote exists**, use repo-based linking with the selected team scope:
+
    ```bash
    vercel link --repo --scope <team-slug>
    ```
    This reads the git remote URL and matches it to existing Vercel projects that deploy from that repo. It creates `.vercel/repo.json`. This is much more reliable than `vercel link` (without `--repo`), which tries to match by directory name and often fails when the local folder and Vercel project are named differently.
 
    **If there is no git remote**, fall back to standard linking:
+
    ```bash
    vercel link --scope <team-slug>
    ```
@@ -137,11 +144,13 @@ The CLI is working but the project isn't linked yet. This is the opportunity to 
 The Vercel CLI isn't set up at all.
 
 1. **Install the CLI (if not already installed):**
+
    ```bash
    npm install -g vercel
    ```
 
 2. **Authenticate:**
+
    ```bash
    vercel login
    ```
@@ -150,6 +159,7 @@ The Vercel CLI isn't set up at all.
 3. **Ask which team to deploy to** — present team slugs from `vercel teams list --format json` as a bulleted list. If only one team / personal account, skip. Once selected, proceed immediately.
 
 4. **Link the project** with the selected team scope (use `--repo` if a git remote exists, plain `vercel link` otherwise):
+
    ```bash
    vercel link --repo --scope <team-slug>   # if git remote exists
    vercel link --scope <team-slug>          # if no git remote
@@ -171,6 +181,7 @@ bash /mnt/skills/user/deploy-to-vercel/resources/deploy.sh [path]
 - `path` - Directory to deploy, or a `.tgz` file (defaults to current directory)
 
 **Examples:**
+
 ```bash
 # Deploy current directory
 bash /mnt/skills/user/deploy-to-vercel/resources/deploy.sh
@@ -193,16 +204,19 @@ The script auto-detects the framework from `package.json`, packages the project 
 **When to use:** In the Codex sandbox where the CLI may not be authenticated. Codex runs in a sandboxed environment by default — try the CLI first, and fall back to the deploy script if auth fails.
 
 1. **Check whether the Vercel CLI is installed** (no escalation needed for this check):
+
    ```bash
    command -v vercel
    ```
 
 2. **If `vercel` is installed**, try deploying with the CLI:
+
    ```bash
    vercel deploy [path] -y --no-wait
    ```
 
 3. **If `vercel` is not installed, or the CLI fails with "No existing credentials found"**, use the fallback script:
+
    ```bash
    skill_dir="<path-to-skill>"
 
@@ -231,9 +245,11 @@ The script handles framework detection, packaging, and deployment. It waits for 
 You have full shell access. Do NOT use the `/mnt/skills/` path. Follow the decision flow above using the CLI directly.
 
 For the no-auth fallback, run the deploy script from the skill's installed location:
+
 ```bash
 bash ~/.claude/skills/deploy-to-vercel/resources/deploy.sh [path]
 ```
+
 The path may vary depending on where the user installed the skill.
 
 ### Sandboxed environments (claude.ai)
@@ -253,6 +269,7 @@ Always show the user the deployment URL.
 - **Git push:** Use `vercel ls --format json` to find the preview URL. If the CLI isn't authenticated, tell the user to check the Vercel dashboard or commit status checks.
 - **CLI deploy:** Show the URL returned by `vercel deploy --no-wait`. Use `vercel inspect <url>` to check build status and report it to the user.
 - **No-auth fallback:** Show both the preview URL and the claim URL:
+
   ```
   Deployment successful!
 
@@ -286,6 +303,7 @@ Deployment failed due to network restrictions. To fix this:
 If deployment fails due to network issues (timeouts, DNS errors, connection resets) in a sandboxed environment, rerun with escalated permissions (`sandbox_permissions=require_escalated`). Do not escalate the initial CLI availability check — only escalate the actual deploy command.
 
 Example guidance to the user:
+
 ```
 The deploy needs escalated network access to deploy to Vercel. I can rerun
 the command with escalated permissions — want me to proceed?

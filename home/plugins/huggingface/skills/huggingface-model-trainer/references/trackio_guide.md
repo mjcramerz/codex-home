@@ -1,5 +1,7 @@
 # Trackio Integration for TRL Training
 
+Consult this reference when trackio integration for trl training is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **Trackio** is an experiment tracking library that provides real-time metrics visualization for remote training on Hugging Face Jobs infrastructure.
 
 ⚠️ **IMPORTANT**: For Jobs training (remote cloud GPUs):
@@ -11,6 +13,7 @@
 ## Setting Up Trackio for Jobs
 
 **Step 1: Add trackio dependency**
+
 ```python
 # /// script
 # dependencies = [
@@ -31,6 +34,7 @@ Pass a `space_id` to `trackio.init()` and Trackio will automatically create the 
 - OR use command: `huggingface-cli repo create my-trackio-dashboard --type space --space_sdk gradio`
 
 **Step 3: Initialize Trackio with space_id**
+
 ```python
 import trackio
 
@@ -46,6 +50,7 @@ trackio.init(
 ```
 
 **Step 4: Configure TRL to use Trackio**
+
 ```python
 SFTConfig(
     report_to="trackio",
@@ -54,6 +59,7 @@ SFTConfig(
 ```
 
 **Step 5: Finish tracking**
+
 ```python
 trainer.train()
 trackio.finish()  # Ensures final metrics are synced
@@ -128,10 +134,9 @@ trackio.init(project="hyperparam-sweep", run_name="lr-0.01-run", group="lr_0.01"
 
 You can configure trackio using environment variables instead of passing parameters to `trackio.init()`. This is useful for managing configuration across multiple jobs.
 
-
-
 **`HF_TOKEN`**
 Required for creating Spaces and writing to datasets (passed via `secrets`):
+
 ```python
 hf_jobs("uv", {
     "script": "...",

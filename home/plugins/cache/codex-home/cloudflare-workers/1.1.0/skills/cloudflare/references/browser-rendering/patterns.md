@@ -1,5 +1,7 @@
 # Browser Rendering Patterns
 
+Consult this reference when browser rendering patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Basic Worker
 
 ```typescript
@@ -22,6 +24,7 @@ export default {
 ## Session Reuse
 
 Keep sessions alive for performance:
+
 ```typescript
 let sessionId = await env.SESSION_KV.get("browser-session");
 if (sessionId) {
@@ -64,6 +67,7 @@ await page.getByTestId("submit-button").click();
 ## Incognito Contexts
 
 Isolated sessions without multiple browsers:
+
 ```typescript
 const ctx1 = await browser.createIncognitoBrowserContext();
 const ctx2 = await browser.createIncognitoBrowserContext();

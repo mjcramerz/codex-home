@@ -1,6 +1,6 @@
 interface:
-  display_name: "Jupyter Notebooks"
-  short_description: "Create Jupyter notebooks for experiments and tutorials"
-  icon_small: "./assets/jupyter-small.svg"
-  icon_large: "./assets/jupyter.png"
-  default_prompt: "Use $jupyter-notebook. Create a Jupyter notebook for this task with clear sections, runnable cells, and concise takeaways."
+  display_name: Jupyter Notebooks
+  short_description: Create Jupyter notebooks for experiments and tutorials
+  icon_small: ./assets/jupyter-small.svg
+  icon_large: ./assets/jupyter.png
+  default_prompt: Use $jupyter-notebook for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.

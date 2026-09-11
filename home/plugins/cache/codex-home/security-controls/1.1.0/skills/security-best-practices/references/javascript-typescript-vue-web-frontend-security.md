@@ -1,5 +1,7 @@
 # Vue.js Web Security Spec (Vue 3.x, TypeScript/JavaScript, common tooling: Vite)
 
+Consult this reference when vue.js web security spec (vue 3.x, typescript/javascript, common tooling: vite) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
 
 1. **Secure-by-default code generation** for new Vue code.

@@ -9,6 +9,10 @@ sources:
   - https://github.com/microsoft/WindowsAppSDK-Samples
 ---
 
+# windows app sdk lifecycle notifications and deployment
+
+Consult this reference when windows app sdk lifecycle notifications and deployment is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when the user needs lifecycle, activation, notification, packaged vs unpackaged, or runtime initialization guidance that goes beyond plain XAML UI work.

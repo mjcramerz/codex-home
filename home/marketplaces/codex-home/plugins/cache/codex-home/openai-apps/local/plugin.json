@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "openai-apps",
   "version": "1.1.0",
-  "description": "OpenAI platform application scaffolding and documentation workflows.",
+  "description": "Use this plugin for openAI platform application scaffolding and documentation workflows.",
   "author": {
     "name": "OpenAI"
   },

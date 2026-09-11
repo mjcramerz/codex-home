@@ -1,15 +1,14 @@
 # Terraform (entrypoint)
-Purpose: stable link to Terraform guidance, workflows, and templates for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
 
+Use this route when you need terraform. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/domains/infra/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
-
 
 Canonical content: `$CODEX_HOME/docs/infra/terraform.md`
 
@@ -22,5 +21,5 @@ Related:
 - `$CODEX_HOME/docs/workflows/terraform.md`
 - `$CODEX_HOME/templates/infra/terraform-module-skeleton`
 - `$CODEX_HOME/snippets/terraform`
-- You must use skill `iac-terraform`.
+- Read the `iac-terraform` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

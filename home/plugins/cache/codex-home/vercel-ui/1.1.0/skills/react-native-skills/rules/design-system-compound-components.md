@@ -5,6 +5,10 @@ impactDescription: flexible composition, clearer API
 tags: design-system, components, composition
 ---
 
+# design system compound components
+
+Apply the following design system compound components guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Compound Components Over Polymorphic Children
 
 Don't create components that can accept a string if they aren't a text node. If

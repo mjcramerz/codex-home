@@ -1,5 +1,7 @@
 # API & Data Sources
 
+Consult this reference when api & data sources is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Outputs and Exports
 
 Export resource identifiers:
@@ -97,6 +99,7 @@ const migration = new D1Migration("migration", {
 ## Data Sources
 
 **Get Zone:**
+
 ```typescript
 const zone = cloudflare.getZone({name: "example.com"});
 const zoneId = zone.then(z => z.id);
@@ -141,6 +144,7 @@ const worker = new cloudflare.WorkerScript("worker", {
 ```
 
 Store secrets:
+
 ```bash
 pulumi config set --secret apiKey "secret-value"
 ```
@@ -171,12 +175,14 @@ function createBucket(name: string, args: BucketArgs) {
 ## v6.x Worker Versioning Resources
 
 **Worker** - Container for versions:
+
 ```typescript
 const worker = new cloudflare.Worker("api", {accountId, name: "api-worker"});
 export const workerId = worker.id;
 ```
 
 **WorkerVersion** - Immutable code + config:
+
 ```typescript
 const version = new cloudflare.WorkerVersion("v1", {
     accountId, workerId: worker.id,
@@ -187,6 +193,7 @@ export const versionId = version.id;
 ```
 
 **WorkersDeployment** - Active deployment with bindings:
+
 ```typescript
 const deployment = new cloudflare.WorkersDeployment("prod", {
     accountId, workerId: worker.id, versionId: version.id,
@@ -197,4 +204,4 @@ const deployment = new cloudflare.WorkersDeployment("prod", {
 **Use:** Advanced deployments (canary, blue-green). Most apps should use `WorkerScript` (auto-versioning).
 
 ---
-See: [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/README.md), [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/configuration.md), [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/patterns.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/gotchas.md)
+See: [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/README.md), [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/configuration.md), [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/patterns.md), [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/gotchas.md)

@@ -1,5 +1,7 @@
 # C3 Generated Configuration
 
+Consult this reference when c3 generated configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Output Structure
 
 ```
@@ -34,12 +36,14 @@ C3 generates **placeholder IDs** that must be replaced before deploy:
 ```
 
 **Replace with real IDs:**
+
 ```bash
 npx wrangler kv namespace create MY_KV   # Returns real ID
 npx wrangler d1 create my-database       # Returns real database_id
 ```
 
 **Deployment error if not replaced:**
+
 ```
 Error: Invalid KV namespace ID "placeholder_kv_id"
 ```
@@ -59,11 +63,13 @@ Error: Invalid KV namespace ID "placeholder_kv_id"
 ## Type Generation
 
 Run after adding bindings:
+
 ```bash
 npm run cf-typegen
 ```
 
 Generates `.wrangler/types/runtime.d.ts`:
+
 ```typescript
 interface Env {
   MY_KV: KVNamespace;

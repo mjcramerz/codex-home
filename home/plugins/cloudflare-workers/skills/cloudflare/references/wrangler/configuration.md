@@ -1,5 +1,7 @@
 # Wrangler Configuration
 
+Consult this reference when wrangler configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Configuration reference for wrangler.jsonc (recommended).
 
 ## Config Format
@@ -123,6 +125,7 @@ Recommended for serving static files (replaces old `site` config).
 ```
 
 Access in Worker:
+
 ```typescript
 export default {
   async fetch(request, env) {
@@ -191,7 +194,7 @@ After deploy, ID is added to config automatically.
 
 ## See Also
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/README.md) - Overview and commands
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/api.md) - Programmatic API
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/patterns.md) - Workflows
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/gotchas.md) - Common issues
+- [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/README.md) - Overview and commands
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/api.md) - Programmatic API
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/patterns.md) - Workflows
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/gotchas.md) - Common issues

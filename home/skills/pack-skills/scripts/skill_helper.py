@@ -18,32 +18,7 @@ SKILL_NAME = 'pack-skills'
 SKILL_CATEGORY = 'PACK'
 SKILL_DESCRIPTION = "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations."
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'About Skills',
-    'What Skills Provide',
-    'Core Principles',
-    'Concise is Key',
-    'Set Appropriate Degrees of Freedom',
-    'Anatomy of a Skill',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References (`references/`)',
-    'Progressive Disclosure Design Principle',
-    'Quick start',
-    'Advanced features',
-    'Creating documents',
-    'Editing documents',
-    'Skill Creation Process',
-    'Skill Naming',
-    'Step 1: Understanding the Skill with Concrete Examples',
-    'Step 2: Planning the Reusable Skill Contents',
-    'Step 3: Initializing the Skill',
-    'Step 4: Edit the Skill',
-    'Step 5: Packaging a Skill',
-    'Step 6: Iterate'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'YAML 1.2 specification', 'url': 'https://yaml.org/spec/1.2.2/', 'note': 'Manifest syntax and deterministic formatting rules.'},
     {'title': 'OpenAI prompt engineering guide', 'url': 'https://developers.openai.com/docs/guides/prompt-engineering', 'note': 'Skill prompt composition and instruction quality.'}

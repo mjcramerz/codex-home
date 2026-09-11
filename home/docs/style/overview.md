@@ -1,8 +1,11 @@
 # Style guides
-Purpose: tell the Codex coding agent how to use `docs/style/overview.md` as a runtime-pack surface and when to stop browsing.
+
+Use this guide when the task concerns style guides. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 Follow repository-local conventions first. Use this pack as the default when a repo has no explicit style guide.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/docs/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -10,6 +13,7 @@ Follow repository-local conventions first. Use this pack as the default when a r
 <!-- END:nav -->
 
 ## Contents
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/docs/style/shell-runtime.md` — Shell execution and session guidance
 - `$CODEX_HOME/docs/style/bash.md` — Bash style guide
@@ -22,9 +26,11 @@ Follow repository-local conventions first. Use this pack as the default when a r
 <!-- END:contents -->
 
 ## Session guides
+
 - Canonical shell runtime guidance: `$CODEX_HOME/docs/style/shell-runtime.md`
 
 ## Language guides
+
 - Bash: `bash.md`
 - POSIX sh: `sh.md`
 - Perl: `perl.md`
@@ -34,8 +40,9 @@ Follow repository-local conventions first. Use this pack as the default when a r
 - TypeScript: `typescript.md`
 
 ## Cross-language rules
-- You must prefer small, cohesive diffs; avoid drive-by refactors.
-- You must keep I/O at the edges; keep core logic testable and deterministic.
+
+- Prefer small, cohesive diffs; avoid drive-by refactors.
+- Keep I/O at the edges; keep core logic testable and deterministic.
 - Never log secrets. Prefer structured logs to stderr.
 - Bound all I/O and resource usage.
-- You must treat external inputs as hostile.
+- Treat external inputs as hostile.

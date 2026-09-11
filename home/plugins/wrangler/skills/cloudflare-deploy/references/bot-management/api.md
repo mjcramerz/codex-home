@@ -1,5 +1,7 @@
 # Bot Management API
 
+Consult this reference when bot management api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Workers: BotManagement Interface
 
 ```typescript
@@ -104,17 +106,19 @@ export default {
 
 ## Common Patterns
 
-See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/bot-management/patterns.md) for Workers examples: mobile app allowlisting, corporate proxy exemption, datacenter detection, conditional delay, and more.
+See [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/bot-management/patterns.md) for Workers examples: mobile app allowlisting, corporate proxy exemption, datacenter detection, conditional delay, and more.
 
 ## Bot Analytics
 
 ### Access Locations
+
 - Dashboard: Security > Bots (old) or Security > Analytics > Bot analysis (new)
 - GraphQL API for programmatic access
 - Security Events & Security Analytics
 - Logpush/Logpull
 
 ### Available Data
+
 - **Enterprise BM**: Bot scores (1-99), bot score source, distribution
 - **Pro/Business**: Bot groupings (automated, likely automated, likely human)
 - Top attributes: IPs, paths, user agents, countries
@@ -122,6 +126,7 @@ See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/clo
 - Verified bot categories
 
 ### Time Ranges
+
 - **Enterprise BM**: Up to 1 week at a time, 30 days history
 - **Pro/Business**: Up to 72 hours at a time, 30 days history
 - Real-time in most cases, adaptive sampling (1-10% depending on volume)
@@ -158,6 +163,7 @@ Miniflare provides mock botManagement data for local development:
 - `detectionIds: []`
 
 **Override in tests:**
+
 ```typescript
 import { getPlatformProxy } from 'wrangler';
 

@@ -23,3 +23,5 @@ home/plugins/cache/openai-bundled/
 home/sqlite/
 home/vendor_imports/
 home/skills/.*
+home/app-server-control/
+home/packages

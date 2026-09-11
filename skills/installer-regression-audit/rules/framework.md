@@ -8,7 +8,10 @@ tags:
 - framework
 updated: '2026-03-12'
 ---
+
 # installer-regression-audit framework
+
+Apply the following installer-regression-audit framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `installer-regression-audit`
 - Category: `AUDIT`

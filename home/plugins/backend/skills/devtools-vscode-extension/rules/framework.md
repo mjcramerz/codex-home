@@ -13,9 +13,12 @@ tags:
 - web
 updated: '2026-02-20'
 ---
+
 # Devtools Vscode Extension Framework
 
+Apply the following devtools vscode extension framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `devtools-vscode-extension`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/devtools-vscode-extension/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/devtools-vscode-extension/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/devtools-vscode-extension/references/`
+- Source of truth: `$CODEX_HOME/plugins/backend/skills/devtools-vscode-extension/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/backend/skills/devtools-vscode-extension/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/backend/skills/devtools-vscode-extension/references/`

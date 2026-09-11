@@ -1,5 +1,7 @@
 # GraphQL Analytics API Gotchas & Troubleshooting
 
+Consult this reference when graphql analytics api gotchas & troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Rate Limits
 
 | Limit | Value |

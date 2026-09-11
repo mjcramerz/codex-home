@@ -12,7 +12,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Meeting Intelligence Skill Evaluations (overview)
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Evaluation scenarios for testing the Meeting Intelligence skill across different Codex models.
 
@@ -28,6 +31,7 @@ These evaluations ensure the Meeting Intelligence skill:
 ## Evaluation Files
 
 ### decision-meeting-prep.json
+
 Tests preparation for a decision-making meeting.
 
 **Scenario**: Prep for database migration decision meeting
@@ -41,6 +45,7 @@ Tests preparation for a decision-making meeting.
 - Cross-links both documents
 
 ### status-meeting-prep.json
+
 Tests preparation for a status update or review meeting.
 
 **Scenario**: Prep for project status review
@@ -67,24 +72,28 @@ Tests preparation for a status update or review meeting.
 Meeting Intelligence evaluations should verify:
 
 ### Notion Context Gathering
+
 - Searches workspace for relevant context first
 - Fetches specific pages (not generic)
 - Extracts key information from Notion content
 - Cites sources using mention-page tags
 
 ### Codex Research Integration
+
 - Adds industry context, frameworks, or best practices
 - Enrichment is relevant and valuable (not filler)
 - Clearly distinguishes Notion facts from Codex insights
 - Research complements (doesn't replace) Notion content
 
 ### Two-Document Creation
+
 - **Internal Pre-Read**: Comprehensive, includes strategy, recommendations, detailed pros/cons
 - **External Agenda**: Professional, focused on meeting flow, no internal strategy
 - Both documents are clearly labeled
 - Documents are cross-linked
 
 ### Document Quality
+
 - Pre-read follows structure: Overview → Background → Current Status → Context & Insights → Discussion Points
 - Agenda follows structure: Details → Objective → Agenda Items (with times) → Decisions → Actions → Resources
 - Titles include date or meeting context

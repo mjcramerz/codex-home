@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "security-controls",
   "version": "1.1.0",
-  "description": "Application, host, and supply-chain security control workflows.",
+  "description": "Use this plugin for application, host, and supply-chain security control workflows.",
   "author": {
     "name": "Codex Setup"
   },

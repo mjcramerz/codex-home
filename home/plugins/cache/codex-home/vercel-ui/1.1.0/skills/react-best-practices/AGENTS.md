@@ -1,13 +1,15 @@
 # React Best Practices
 
-**Version 1.0.0**  
-Vercel Engineering  
+Use this guide when the task concerns react best practices. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
+**Version 1.0.0**
+Vercel Engineering
 January 2026
 
-> **Note:**  
-> This document is mainly for agents and LLMs to follow when maintaining,  
-> generating, or refactoring React and Next.js codebases. Humans  
-> may also find it useful, but guidance here is optimized for automation  
+> **Note:**
+> This document is mainly for agents and LLMs to follow when maintaining,
+> generating, or refactoring React and Next.js codebases. Humans
+> may also find it useful, but guidance here is optimized for automation
 > and consistency by AI-assisted workflows.
 
 ---
@@ -981,7 +983,7 @@ getUser(params)  // Query runs
 getUser(params)  // Cache hit (same reference)
 ```
 
-If you must pass objects, pass the same reference:
+If pass objects, pass the same reference:
 
 **Next.js-Specific Note:**
 

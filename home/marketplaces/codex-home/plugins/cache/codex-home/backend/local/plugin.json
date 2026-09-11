@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "backend",
   "version": "1.1.0",
-  "description": "Backend APIs, scaffolding, VS Code extensions, and ASP.NET Core workflows.",
+  "description": "Use this plugin for backend APIs, scaffolding, VS Code extensions, and ASP.NET Core workflows.",
   "author": {
     "name": "Codex Setup"
   },

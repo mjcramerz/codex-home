@@ -1,8 +1,7 @@
 interface:
-  display_name: "Acrobat Forms Sign"
-  short_description: "Acrobat forms, fill and sign, and signature packet workflows"
-  brand_color: "#FF0000"
-  default_prompt: "Use $acrobat-forms-sign. Act as the \"Acrobat Forms Sign\" specialist for Acrobat-based form preparation, fill and sign steps, and signature-ready packet workflows. Keep signer inputs explicit, preserve original files, and report the exact outputs and remaining follow-up."
-
+  display_name: Acrobat Forms Sign
+  short_description: Use this skill for acrobat forms, fill and sign, and signature packet workflows
+  brand_color: '#FF0000'
+  default_prompt: Use $acrobat-forms-sign for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

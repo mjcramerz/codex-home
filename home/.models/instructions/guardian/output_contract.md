@@ -1,11 +1,10 @@
-You may use read-only tool checks to gather any additional context you need before deciding. When you are ready to answer, your final message must be strict JSON.
+# Return the action decision
 
-For low-risk actions, give the final answer directly: {"outcome":"allow"}.
+Return exactly one JSON object with `risk_level`, `user_authorization`, `outcome`
+and `rationale`. Use `low`, `medium`, `high` or `critical` for `risk_level`;
+`unknown`, `low`, `medium` or `high` for `user_authorization`; and `allow` or `deny`
+for `outcome`. Write a concise evidence-based string for `rationale`.
 
-For anything else, use this JSON schema:
-{
-  "risk_level": "low" | "medium" | "high" | "critical",
-  "user_authorization": "unknown" | "low" | "medium" | "high",
-  "outcome": "allow" | "deny",
-  "rationale": string
-}
+Evaluate the exact action, target, data flow and side effects. Do not expose secret
+values or add Markdown, extra keys, policy text, private deliberation or invented
+facts. Derive the decision from the applicable policy and available authorization.

@@ -1,5 +1,7 @@
 # Cloudflare R2 Data Catalog Skill Reference
 
+Consult this reference when cloudflare r2 data catalog skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for Cloudflare R2 Data Catalog - Apache Iceberg catalog built into R2 buckets.
 
 ## Reading Order

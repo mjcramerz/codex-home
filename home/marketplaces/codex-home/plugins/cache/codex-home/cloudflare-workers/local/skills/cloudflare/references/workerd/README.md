@@ -1,8 +1,11 @@
 # Workerd Runtime
 
+Consult this reference when workerd runtime is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 V8-based JS/Wasm runtime powering Cloudflare Workers. Use as app server, dev tool, or HTTP proxy.
 
 ## ⚠️ IMPORTANT SECURITY NOTICE
+
 **workerd is NOT a hardened sandbox.** Do not run untrusted code. It's designed for deploying YOUR code locally/self-hosted, not multi-tenant SaaS. Cloudflare production adds security layers not present in open-source workerd.
 
 ## Decision Tree: When to Use What
@@ -24,12 +27,14 @@ V8-based JS/Wasm runtime powering Cloudflare Workers. Use as app server, dev too
 - Production without additional security layers
 
 ## Key Features
+
 - **Standards-based**: Fetch API, Web Crypto, Streams, WebSocket
 - **Nanoservices**: Service bindings with local call performance
 - **Capability security**: Explicit bindings prevent SSRF
 - **Backwards compatible**: Version = max compat date supported
 
 ## Architecture
+
 ```
 Config (workerd.capnp)
 ├── Services (workers/endpoints)
@@ -38,6 +43,7 @@ Config (workerd.capnp)
 ```
 
 ## Quick Start
+
 ```bash
 workerd serve config.capnp
 workerd compile config.capnp myConfig -o binary
@@ -56,6 +62,7 @@ workerd test config.capnp
 workerd is in **active development**. Breaking changes possible. Pin versions in production.
 
 ## Core Concepts
+
 - **Service**: Named endpoint (worker/network/disk/external)
 - **Binding**: Capability-based resource access (KV/DO/R2/services)
 - **Compatibility date**: Feature gate (always set!)
@@ -65,14 +72,15 @@ workerd is in **active development**. Breaking changes possible. Pin versions in
 
 **Start here:**
 1. This README (overview, decision tree)
-2. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workerd/patterns.md) - Common workflows, framework examples
+2. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workerd/patterns.md) - Common workflows, framework examples
 
 **When you need details:**
-3. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workerd/configuration.md) - Config format, services, bindings
-4. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workerd/api.md) - Runtime APIs, TypeScript types
-5. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workerd/gotchas.md) - Common errors, debugging
+3. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workerd/configuration.md) - Config format, services, bindings
+4. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workerd/api.md) - Runtime APIs, TypeScript types
+5. [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workerd/gotchas.md) - Common errors, debugging
 
 ## Related References
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Workers runtime API documentation
-- [miniflare]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/miniflare/) - Testing tool built on workerd
-- [wrangler]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/) - CLI that uses workerd for local dev
+
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Workers runtime API documentation
+- [miniflare]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/miniflare/) - Testing tool built on workerd
+- [wrangler]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/) - CLI that uses workerd for local dev

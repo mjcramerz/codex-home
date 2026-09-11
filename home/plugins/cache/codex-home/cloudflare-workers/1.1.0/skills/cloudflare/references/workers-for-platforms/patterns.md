@@ -1,5 +1,7 @@
 # Multi-Tenant Patterns
 
+Consult this reference when multi-tenant patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Billing by Plan
 
 ```typescript
@@ -44,6 +46,7 @@ const bindings = [{
 ## Hostname Routing
 
 ### Wildcard Route (Recommended)
+
 Configure `*/*` route on SaaS domain → dispatch Worker
 
 **Benefits:**
@@ -76,6 +79,7 @@ export default {
 ```
 
 ### Subdomain-Only
+
 1. Wildcard DNS: `*.saas.com` → origin
 2. Route: `*.saas.com/*` → dispatch Worker
 3. Extract subdomain for routing
@@ -99,14 +103,17 @@ For Cloudflare for SaaS: Store worker name in custom hostname `custom_metadata`,
 ## Observability
 
 ### Logpush
+
 - Enable on dispatch Worker → captures all user Worker logs
 - Filter by `Outcome` or `Script Name`
 
 ### Tail Workers
+
 - Real-time logs with custom formatting
 - Receives HTTP status, `console.log()`, exceptions, diagnostics
 
 ### Analytics Engine
+
 ```typescript
 // Track violations
 env.ANALYTICS.writeDataPoint({
@@ -116,6 +123,7 @@ env.ANALYTICS.writeDataPoint({
 ```
 
 ### GraphQL
+
 ```graphql
 query {
   viewer {
@@ -131,6 +139,7 @@ query {
 ## Use Case Implementations
 
 ### AI Code Execution
+
 ```typescript
 async function deployGeneratedCode(name: string, code: string) {
   const file = new File([code], `${name}.mjs`, { type: "application/javascript+module" });
@@ -150,6 +159,7 @@ const userWorker = env.DISPATCHER.get(sessionId, {}, { limits: { cpuMs: 5, subRe
 Reference: [AI Vibe Coding Platform Architecture](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
 
 ### Edge Functions Platform
+
 ```typescript
 // Route: /customer-id/function-name
 const [customerId, functionName] = new URL(request.url).pathname.split("/").filter(Boolean);
@@ -158,6 +168,7 @@ const userWorker = env.DISPATCHER.get(workerName);
 ```
 
 ### Website Builder
+
 - Deploy static assets + Worker code
 - See [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/api.md#static-assets) for full implementation
 - Salt hashes for asset isolation
@@ -165,24 +176,28 @@ const userWorker = env.DISPATCHER.get(workerName);
 ## Best Practices
 
 ### Architecture
+
 - One namespace per environment (production, staging)
 - Platform logic in dispatch Worker (auth, rate limiting, validation)
 - Isolation automatic (no shared cache, untrusted mode)
 
 ### Routing
+
 - Use `*/*` wildcard routes
 - Store mappings in KV
 - Handle missing Workers gracefully
 
 ### Limits & Security
+
 - Set custom limits by plan
 - Track violations with Analytics Engine
 - Use outbound Workers for egress control
 - Sanitize responses
 
 ### Tags
+
 - Tag all Workers: customer ID, plan, environment
 - Enable bulk operations
 - Filter efficiently
 
-See [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/README.md), [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/configuration.md), [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/api.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/gotchas.md)
+See [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/README.md), [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/configuration.md), [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/api.md), [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/gotchas.md)

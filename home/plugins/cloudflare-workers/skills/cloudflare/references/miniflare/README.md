@@ -1,5 +1,7 @@
 # Miniflare
 
+Consult this reference when miniflare is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Local simulator for Cloudflare Workers development/testing. Runs Workers in workerd sandbox implementing runtime APIs - no internet required.
 
 ## Features
@@ -60,6 +62,7 @@ npm i -D miniflare
 ```
 
 Requires ES modules in `package.json`:
+
 ```json
 {"type": "module"}
 ```
@@ -90,16 +93,17 @@ await mf.dispose();
 **New to Miniflare?** Start here:
 1. [Quick Start](#quick-start) - Running in 2 minutes
 2. [When to Use](#when-to-use) - Choose your testing approach
-3. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/miniflare/patterns.md) - Testing patterns (getPlatformProxy, Vitest, node:test)
-4. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/miniflare/configuration.md) - Configure bindings, storage, multiple workers
+3. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/miniflare/patterns.md) - Testing patterns (getPlatformProxy, Vitest, node:test)
+4. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/miniflare/configuration.md) - Configure bindings, storage, multiple workers
 
 **Troubleshooting:**
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/miniflare/gotchas.md) - Common errors and debugging
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/miniflare/gotchas.md) - Common errors and debugging
 
 **API reference:**
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/miniflare/api.md) - Complete method reference
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/miniflare/api.md) - Complete method reference
 
 ## See Also
-- [wrangler]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/wrangler/) - CLI tool that embeds Miniflare for `wrangler dev`
-- [workerd]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workerd/) - Runtime that powers Miniflare
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Workers runtime API documentation
+
+- [wrangler]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/wrangler/) - CLI tool that embeds Miniflare for `wrangler dev`
+- [workerd]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workerd/) - Runtime that powers Miniflare
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Workers runtime API documentation

@@ -1,5 +1,7 @@
 # Zaraz Gotchas
 
+Consult this reference when zaraz gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Events Not Firing
 
 **Check:**
@@ -9,6 +11,7 @@
 4. Tool credentials correct (GA4: `G-XXXXXXXXXX`, FB: numeric only)
 
 **Debug:**
+
 ```javascript
 zaraz.debug = true;
 console.log('Tools:', zaraz.tools);
@@ -18,6 +21,7 @@ console.log('Consent:', zaraz.consent.getAll());
 ## Consent Issues
 
 **Modal not showing:**
+
 ```javascript
 // Clear consent cookie
 document.cookie = 'zaraz-consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
@@ -31,6 +35,7 @@ location.reload();
 **Route changes not tracked:**
 1. Configure History Change trigger in dashboard
 2. Hash routing (`#/path`) requires manual tracking:
+
 ```javascript
 window.addEventListener('hashchange', () => {
   zaraz.track('pageview', { page_path: location.pathname + location.hash });
@@ -38,6 +43,7 @@ window.addEventListener('hashchange', () => {
 ```
 
 **React fix:**
+
 ```javascript
 const location = useLocation();
 useEffect(() => {

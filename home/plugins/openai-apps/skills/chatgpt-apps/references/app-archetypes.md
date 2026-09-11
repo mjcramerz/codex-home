@@ -1,5 +1,7 @@
 # App Archetypes
 
+Consult this reference when app archetypes is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Load this reference before choosing a starting point for a new ChatGPT app. The goal is to keep the skill inside a small number of supported app shapes instead of inventing a custom structure for every prompt.
 
 ## Rule
@@ -92,7 +94,7 @@ Default shape:
 
 Best starting point:
 
-- Official OpenAI examples plus `$CODEX_HOME/plugins/cache/codex-home/openai-apps/1.0.0/skills/chatgpt-apps/references/interactive-state-sync-patterns.md`
+- Official OpenAI examples plus `$CODEX_HOME/plugins/openai-apps/skills/chatgpt-apps/references/interactive-state-sync-patterns.md`
 
 Validation emphasis:
 

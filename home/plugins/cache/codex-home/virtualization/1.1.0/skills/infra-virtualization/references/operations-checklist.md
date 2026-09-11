@@ -13,22 +13,29 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Operations checklist for infra-virtualization
 
+Consult this reference when operations checklist for infra-virtualization is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Objective
+
 Keep infra virtualization work deterministic, reversible, and security-aware.
 
 ## Pre-change
+
 - Confirm target environment, scope boundaries, and maintenance window.
 - Record current state and rollback entry points before applying changes.
 - Validate input shape/ranges and expected failure handling.
 
 ## Change execution
+
 - Apply one coherent change unit at a time.
 - Keep commands explicit (no hidden defaults) and capture evidence.
 - Stop on first critical regression and execute rollback immediately.
 
 ## Post-change validation
+
 - Verify functional behavior, security controls, and performance guardrails.
 - Run negative-path checks for the highest-risk boundary.
 - Document residual risk and next actions.

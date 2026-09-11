@@ -1,26 +1,35 @@
 # PR description template
-Purpose: tell the Codex coding agent how to use `snippets/docs/pr_description.md` as a runtime-pack surface and when to stop browsing.
+
+Use this guide when the task concerns pr description template. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 ## Summary
+
 -
 
 ## Motivation
+
 -
 
 ## Implementation notes
+
 -
 
 ## Security considerations
+
 -
 
 ## Performance considerations
+
 -
 
 ## Test plan
+
 - `command`
 
 ## Rollout / migration
+
 -
 
 ## Backout / rollback
+
 -

@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## getSandbox Options
 
 ```typescript
@@ -31,6 +33,7 @@ wrangler.jsonc `instance_type`:
 ## Dockerfile Patterns
 
 **Basic**:
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:latest
 RUN pip3 install --no-cache-dir pandas numpy
@@ -38,6 +41,7 @@ EXPOSE 8080  # Required for wrangler dev
 ```
 
 **Scientific**:
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:latest
 RUN pip3 install --no-cache-dir \
@@ -46,6 +50,7 @@ RUN pip3 install --no-cache-dir \
 ```
 
 **Node.js**:
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:latest
 RUN npm install -g typescript ts-node
@@ -67,6 +72,7 @@ wrangler secret put KEY         # Set secret
 ## Environment & Secrets
 
 **wrangler.jsonc**:
+
 ```jsonc
 {
   "vars": {
@@ -81,6 +87,7 @@ wrangler secret put KEY         # Set secret
 ```
 
 **Usage**:
+
 ```typescript
 const token = env.GITHUB_TOKEN;  // From wrangler secret
 await sandbox.exec('git clone ...', {
@@ -118,6 +125,7 @@ export default {
 ## Logging Configuration
 
 **wrangler.jsonc**:
+
 ```jsonc
 {
   "vars": {

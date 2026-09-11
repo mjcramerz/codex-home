@@ -5,6 +5,10 @@ impactDescription: prevents unnecessary re-renders of memoized list items
 tags: lists, performance, flatlist, virtualization, memo
 ---
 
+# list performance inline objects
+
+Apply the following list performance inline objects guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Avoid Inline Objects in renderItem
 
 Don't create new objects inside `renderItem` to pass as props. Inline objects

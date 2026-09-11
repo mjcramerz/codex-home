@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Quick Brief Template
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Use for fast turnaround requests or simple topics. See [quick-brief-format.md](quick-brief-format.md) for when to use this format.
 
@@ -37,4 +40,3 @@ Use for fast turnaround requests or simple topics. See [quick-brief-format.md](q
 ## Sources
 [Brief list of pages consulted]
 ```
-

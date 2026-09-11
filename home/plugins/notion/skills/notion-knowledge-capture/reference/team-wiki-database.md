@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Team Wiki Database
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **Purpose**: Centralized team knowledge and resources.
 
@@ -39,4 +42,3 @@ Use for team-specific documentation that doesn't fit other databases.
 3. **Control visibility**: Set appropriate access levels
 4. **Link extensively**: Connect related pages
 5. **Keep current**: Regular reviews to remove outdated content
-

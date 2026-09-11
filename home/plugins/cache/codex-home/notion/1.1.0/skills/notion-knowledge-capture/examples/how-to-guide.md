@@ -13,13 +13,17 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: How-To Guide from Discussion
+
+Use this reference when you capture verified discussion content, decisions or procedures in an authorized Notion destination. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **User Request**: "Save our discussion about deploying to production as a how-to guide"
 
 ## Workflow
 
 ### 1. Extract Content from Chat
+
 From conversation, identified:
 - Deployment prerequisites
 - Step-by-step procedure
@@ -27,6 +31,7 @@ From conversation, identified:
 - Best practices and tips
 
 ### 2. Structure as How-To
+
 Organized into:
 - Overview & prerequisites
 - Numbered deployment steps
@@ -35,13 +40,16 @@ Organized into:
 - Related resources
 
 ### 3. Find Location
+
 ```
 Notion:notion-search
 query: "deployment documentation"
 ```
+
 Found: Engineering Wiki → Deployment section
 
 ### 4. Create Guide
+
 ```
 Notion:notion-create-pages
 parent: { page_id: "deployment-section-id" }
@@ -49,7 +57,7 @@ parent: { page_id: "deployment-section-id" }
 
 ## Output
 
-```markdown
+````markdown
 # How to Deploy to Production
 
 ## Overview
@@ -67,12 +75,14 @@ Production deployment using GitHub Actions with zero-downtime rolling updates.
 1. **Verify main branch is ready**
    ```bash
    git checkout main && git pull
+
    ```
 
 2. **Tag release**
    ```bash
    git tag -a v1.2.3 -m "Release v1.2.3"
    git push origin v1.2.3
+
    ```
 
 3. **Trigger deployment**
@@ -115,17 +125,20 @@ Production deployment using GitHub Actions with zero-downtime rolling updates.
 ## Related Docs
 - <mention-page url="...">Rollback Procedure</mention-page>
 - <mention-page url="...">Database Migration Guide</mention-page>
-```
+````
 
 ### 5. Make Discoverable
+
 ```
 Notion:notion-update-page
 page_id: "engineering-wiki-homepage"
 command: "insert_content_after"
 ```
+
 Added link in Engineering Wiki → How-To Guides section
 
 ## Key Success Factors
+
 - Captured tribal knowledge from discussion
 - Structured as actionable steps
 - Included troubleshooting from experience

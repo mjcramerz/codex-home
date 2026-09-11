@@ -5,6 +5,10 @@ impactDescription: avoids repeated file/network I/O per request
 tags: server, io, performance, next.js, route-handlers, og-image
 ---
 
+# server hoist static io
+
+Apply the following server hoist static io guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Hoist Static I/O to Module Level
 
 **Impact: HIGH (avoids repeated file/network I/O per request)**

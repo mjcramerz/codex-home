@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Rootless Docker/Podman checklist
+
+Consult this reference when rootless docker/podman checklist is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 - Use `docker context ls` and select the correct context (`rootless` vs `rootful`).
 - Prefer high ports (>=1024); avoid low port bindings.
 - Avoid `network_mode: host` for rootless daemons.

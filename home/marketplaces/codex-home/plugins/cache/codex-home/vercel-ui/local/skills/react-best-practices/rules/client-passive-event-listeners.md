@@ -5,6 +5,10 @@ impactDescription: eliminates scroll delay caused by event listeners
 tags: client, event-listeners, scrolling, performance, touch, wheel
 ---
 
+# client passive event listeners
+
+Apply the following client passive event listeners guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Passive Event Listeners for Scrolling Performance
 
 Add `{ passive: true }` to touch and wheel event listeners to enable immediate scrolling. Browsers normally wait for listeners to finish to check if `preventDefault()` is called, causing scroll delay.

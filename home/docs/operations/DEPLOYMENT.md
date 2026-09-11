@@ -1,37 +1,25 @@
-# Deployment workflow
+# Deploy the runtime home within the authorized scope
 
-Run from a freshly extracted source tree, not a live CODEX_HOME. Close clients
-before updating static assets. Review the full-access setting and `.env` first.
+Use this guide when you install or synchronize this pack. Treat `home/` as the contents of `$CODEX_HOME`; do not add an extra `home/` directory level inside the destination.
 
-```sh
-sudo make dependencies
-make generate verify-full
-make install-home
-sudo make install-config
-cd mcp
-sudo make dependencies
-sudo make preflight DESKTOP_USER="$(id -un)"
-sudo make deploy DESKTOP_USER="$(id -un)"
-sudo make credential NAME=postgres-dsn
-make smoke
-make smoke-ssh  # native desktop shell only, not the isolated wrapper
-sudo make toolchain-check
-sudo make doctor
-```
+## Establish the target
 
-The selected desktop account must already be configured by the supplied Debian
-preseed. `devops` remains a locked, no-login rootless Podman owner with passwd
-home `/nonexistent`, no linger record, and no user manager. MCP consumes the
-managed `/usr/local/bin/podman` client and `/run/podman-devops/podman.sock`; do
-not run a new rootful engine or change that account's identity or login shell.
-SSH uses a separate loopback
-listener and the desktop identity, not the host's denied devops login.
+Confirm the source checkout, destination, service identity and existing configuration. Read the actual deployment commands before running them. The supplied `/data/codex` layout is an input to verify, not evidence that any path or service exists on the current host.
 
-PostgreSQL needs a real credential. Optional credentials are provisioned individually
-through hidden input or a mode-0600 file using `codex-mcp-admin credential --file`.
-Never put values in Make arguments, .env, config.toml, logs or the distributed archive.
+Preserve existing authentication, credentials, memories, sessions, caches and unrelated local configuration. Do not recursively delete or replace a live home merely to synchronize documentation. Stage changes with private permissions, preserve executable modes, and use an atomic replacement where the existing deployment mechanism supports it.
 
-See the source tree's `mcp/docs/ACCEPTANCE.md` for live tests, failure drills and
-known platform limits. `mcp/build/mcp-servers*.toml` are generated import snippets,
-not a replacement for the full home config. Existing SSH keys are retained on
-idempotent reinstall; rotate them explicitly rather than destroying trust pins.
+## Preserve source ownership
+
+Keep source `instructions/`, `skills/` and `agents/` consistent with their required runtime mirrors when those paths are within the authorized task. Do not expand scope to `etc/`, `mcp/`, installer code or other roots merely because an older guide calls them mirrors.
+
+The current scoped revision leaves `etc/config.toml` unchanged. Inspect and reconcile its difference from `home/config.toml` only in a separately authorized deployment step. Do not run a guessed `make generate`, `make verify` or installer target: first establish whether the target exists and what it changes.
+
+## Activate only verified capabilities
+
+Confirm Python 3 and Perl entrypoints, deployed absolute instruction paths, MCP broker/socket locations, and any optional desktop file handler. A valid config does not install a binary, start a user service manager, authorize a cloud account or grant model entitlement.
+
+Register only the active `hooks.json` handlers. Keep hook scripts and modules owned by the intended identity and unavailable for untrusted repository modification. Keep state private; do not package local runtime state or credentials into a source distribution.
+
+## Report deployment evidence
+
+Separate staged files, installed files, accepted configuration, running services, authenticated MCP sessions and actual model calls. Record the exact changed paths and rollback source. Do not call a deployment successful because syntax checks or mocked commands passed.

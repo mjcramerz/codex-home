@@ -1,8 +1,9 @@
 # Cloudflare R2 (entrypoint)
-Purpose: stable link to Cloudflare R2 guidance for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this route when you need cloudflare r2. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/domains/infra/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -18,5 +19,5 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - $CODEX_HOME/docs/workflows/cloudflare-r2.md
-- You must use skill `cloudflare-r2`.
+- Read the `cloudflare-r2` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

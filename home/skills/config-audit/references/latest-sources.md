@@ -8,11 +8,16 @@ tags:
 - references
 updated: '2026-03-12'
 ---
+
 # config-audit reference bundle
 
+Consult this reference when config-audit reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Skill purpose
+
 Audit config fragments, merge order, placeholder materialization, and policy drift with concrete risk calls and validation follow-up. Use when the user asks to review config layout, runtime overlays, or managed configuration contracts.
 
 ## External references
+
 - [JSON Schema](https://json-schema.org/)
 - [TOML](https://toml.io/en/)

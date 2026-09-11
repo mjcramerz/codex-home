@@ -1,9 +1,10 @@
 ---
 name: shell-sh
-description: Write portable POSIX sh scripts that run correctly under `/bin/sh`,
-  `dash`, and BusyBox `ash`. Use when portability and minimal shell assumptions matter.
+description: Use this skill to write portable POSIX sh scripts that run correctly
+  under `/bin/sh`, `dash`, and BusyBox `ash`. Use when portability and minimal shell
+  assumptions matter.
 metadata:
-  version: "1.0"
+  version: '1.0'
   short-description: Write portable POSIX sh scripts with safe defaults
   tags:
   - sh
@@ -16,50 +17,37 @@ interface:
   short-description: Write portable POSIX sh scripts with safe defaults
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
-  brand-color: "#CC323D"
-  default-prompt: Act as the "SHELL-sh" specialist for "Write portable POSIX sh scripts with safe defaults". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
+  brand-color: '#CC323D'
+  default-prompt: Act as the "SHELL-sh" specialist for "Write portable POSIX sh scripts
+    with safe defaults". Deliver focused, deterministic results with minimal, reviewable
+    changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run
+    the narrowest relevant checks, and report concrete actions, evidence, and residual
+    risks.
 ---
 
-## When to use
-Use this skill whenever you need to:
-- write or modify `/bin/sh`, `dash`, or BusyBox `ash` scripts
-- harden portable installer, init, CI, or recovery scripts
-- remove bashisms from shared shell assets
-- confirm strict portability and minimal dependency expectations
-- use `$CODEX_HOME/UNIX.md` after `$CODEX_HOME/AGENTS.md` confirms sh-compatible work
-
-## Non-negotiables
-- Stay inside POSIX syntax unless the request explicitly targets a richer shell.
-- Prefer `set -eu`; only use `pipefail` after proving the target shell supports it.
-- Avoid arrays, `[[ ... ]]`, brace expansion, process substitution, and shell-specific flags.
-- Validate inputs, quote expansions, and keep subprocess usage deterministic.
-- Prefer simple external tools and portable flags; call out GNU/BSD differences when relevant.
+# Shell Sh
 
 ## Workflow
-1) Confirm the script must be portable and identify the target `/bin/sh` implementation.
-2) Inspect for bashisms, non-POSIX options, and unsafe subprocess patterns.
-3) Use the smallest portable construct that solves the problem.
-4) Validate with `dash -n` or `sh -n`, then run the narrowest behavioral check.
-5) Report compatibility assumptions, remaining portability risks, and follow-up checks.
 
-## Portability guidance
-- Prefer `command -v` over shell-specific lookup helpers.
-- Prefer `printf` over `echo` when formatting matters.
-- Use `mktemp` plus `trap` for temporary files when available; otherwise document the portability tradeoff.
-- Keep `find`, `xargs`, `sed`, `awk`, and `date` usage portable or explicitly guarded.
-- If the confirmed runtime is Bash or zsh, consider `shell-bash` or `shell-zsh` instead.
+1. Inspect the shebang and declared interpreter. Keep POSIX sh free of Bash or zsh extensions; select Bash explicitly when arrays or other Bash features are required.
 
-## Validation and testing
-- Validate critical inputs and bound external I/O before applying changes.
-- Run the narrowest relevant checks that prove behavior.
-- Prefer `dash -n path/to/script.sh` and `sh -n path/to/script.sh`.
-- Include a negative-path or edge-case check for parsing, quoting, or file handling.
+2. Quote expansions, use -- before untrusted operands where supported, prefer argument arrays in Bash, and never use eval to dispatch user input. Avoid parsing ls or splitting filenames on whitespace.
 
-## Outputs
-- POSIX-compliant shell scripts with minimal dependencies.
-- Clear runtime assumptions, failure modes, and portability notes.
+3. Check failures explicitly around expected fallible operations. Do not assume set -e, pipelines or subshells give uniform error propagation across shells; isolate deliberate nonzero statuses.
+
+4. Use private temporary directories and cleanup traps scoped to paths you created. Resolve and check destructive targets, reject empty paths, and preserve caller-owned files.
+
+5. Keep stdout machine-readable when required, send redacted diagnostics to stderr and bound command duration. Run the matching interpreter's syntax check and existing ShellCheck/tests where available.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- `$CODEX_HOME/UNIX.md`
+
+- `$CODEX_HOME/AGENTS.md`
 - `$CODEX_HOME/docs/style/sh.md`
 - `$CODEX_HOME/snippets/sh/`
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

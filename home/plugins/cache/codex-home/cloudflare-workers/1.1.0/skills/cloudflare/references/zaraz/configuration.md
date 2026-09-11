@@ -1,5 +1,7 @@
 # Zaraz Configuration
 
+Consult this reference when zaraz configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Dashboard Setup
 
 1. Domain → Zaraz → Start setup
@@ -40,18 +42,21 @@ Properties:
 ## Tool Configuration
 
 **GA4:**
+
 ```
 Measurement ID: G-XXXXXXXXXX
 Events: page_view, purchase, user_engagement
 ```
 
 **Facebook Pixel:**
+
 ```
 Pixel ID: 1234567890123456
 Events: PageView, Purchase, AddToCart
 ```
 
 **Google Ads:**
+
 ```
 Conversion ID: AW-XXXXXXXXX
 Conversion Label: YYYYYYYYYY
@@ -64,6 +69,7 @@ Conversion Label: YYYYYYYYYY
 3. Set behavior: "Do not load until consent granted"
 
 **Programmatic consent:**
+
 ```javascript
 zaraz.consent.setAll({ analytics: true, marketing: true });
 ```

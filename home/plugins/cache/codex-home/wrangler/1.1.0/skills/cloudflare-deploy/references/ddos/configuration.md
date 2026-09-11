@@ -1,5 +1,7 @@
 # DDoS Configuration
 
+Consult this reference when ddos configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Dashboard Setup
 
 1. Navigate to Security > DDoS
@@ -71,7 +73,7 @@ Individual Rule > Category > Global sensitivity/action
 
 ## Adaptive DDoS Profiles
 
-**Availability**: Enterprise, Enterprise Advanced  
+**Availability**: Enterprise, Enterprise Advanced
 **Learning period**: 7 days of traffic history required
 
 | Profile Type | Description | Detects |

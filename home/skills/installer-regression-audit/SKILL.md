@@ -1,6 +1,8 @@
 ---
 name: installer-regression-audit
-description: Review install, home-sync, admin, upgrade, and cleanup flows for regressions, permission boundaries, and preserved-state drift. Use when the user asks for installer audits or rollout safety reviews.
+description: Use this skill to review install, home-sync, admin, upgrade, and cleanup
+  flows for regressions, permission boundaries, and preserved-state drift. Use when
+  the user asks for installer audits or rollout safety reviews.
 metadata:
   version: '1.0'
   short-description: Audit installer flows for regressions and permission drift
@@ -15,28 +17,31 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#2563EB'
-  default-prompt: Act as the "AUDIT-Installer Regression" specialist for "Audit installer flows for regressions and permission drift". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "AUDIT-Installer Regression" specialist for "Audit installer
+    flows for regressions and permission drift". Deliver focused, deterministic results
+    with minimal, reviewable changes and explicit assumptions. Validate untrusted
+    inputs and bounded I/O, run the narrowest relevant checks, and report concrete
+    actions, evidence, and residual risks.
 ---
-## Use this skill when
-- the active task matches this skill's description and needs deterministic implementation guidance
+
+# Installer Regression Audit
 
 ## Workflow
-1) Trace install, home, admin, and upgrade paths separately.
-2) Verify runtime-only state never syncs back into source, and check preserved roots, backups, and destructive boundaries explicitly.
-3) Tie each concern to a narrow proof command such as py_compile, preflight, or verify.
 
-## Agent orchestration
-- Confirm ownership, validation scope, and whether another skill or plugin should be combined before editing.
-- Delegate only bounded scouting or independent verification work.
+1. Trace source-to-target copy ownership, preserved state, permissions and rollback behavior. Identify canonical inputs rather than editing installed state by accident.
 
-## Validation and testing
-- Run the narrowest syntax, parser, or unit checks that prove the change.
-- Explicitly call out skipped checks and why they remain out of scope.
+2. Inspect path normalization, symlink handling, temporary files, atomic replacement and ownership transitions. Flag traversal or recursive deletion risks.
 
-## Outputs
-- Minimal, reviewable edits aligned to the skill contract.
-- Concrete validation commands and residual risks.
+3. Exercise the narrow existing staging or dry-run path only after checking its real side effects. Distinguish mocked service/engine calls from live deployment.
+
+4. Report regressions with the affected path, transition, evidence and smallest corrective change; preserve credentials and session state.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final)
-- [The Twelve-Factor App](https://12factor.net/)
+
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

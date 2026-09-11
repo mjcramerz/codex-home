@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Shell sh Framework
+
+Apply the following shell sh framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `shell-sh`
 - Source of truth: `$CODEX_SKILLS/shell-sh/SKILL.md`

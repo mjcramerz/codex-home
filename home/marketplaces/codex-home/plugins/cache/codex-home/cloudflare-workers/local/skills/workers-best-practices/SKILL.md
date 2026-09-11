@@ -1,6 +1,6 @@
 ---
 name: workers-best-practices
-description: Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-patterns (streaming, floating promises, global state, secrets, bindings, observability). Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
+description: Use this skill for reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-patterns (streaming, floating promises, global state, secrets, bindings, observability). Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
 ---
 
 Your knowledge of Cloudflare Workers APIs, types, and configuration may be outdated. **Prefer retrieval over pre-training** for any Workers code task — writing or reviewing.
@@ -22,6 +22,8 @@ Before reviewing or writing Workers code, retrieve the current best practices pa
 
 ```bash
 # Fetch latest workers types
+
+Apply this skill to the matching task described in its metadata. Inspect the relevant inputs and active tool contracts before following the procedure. Use only the resources needed for the current step; a bundled tool reference does not prove that tool is available or authorized.
 mkdir -p /tmp/workers-types-latest && \
   npm pack @cloudflare/workers-types --pack-destination /tmp/workers-types-latest && \
   tar -xzf /tmp/workers-types-latest/cloudflare-workers-types-*.tgz -C /tmp/workers-types-latest

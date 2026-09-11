@@ -1,5 +1,7 @@
 # Cloudflare Stream
 
+Consult this reference when cloudflare stream is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Serverless live and on-demand video streaming platform with one API.
 
 ## Overview
@@ -7,6 +9,7 @@ Serverless live and on-demand video streaming platform with one API.
 Cloudflare Stream provides video upload, storage, encoding, and delivery without managing infrastructure. Runs on Cloudflare's global network.
 
 ### Key Features
+
 - **On-demand video**: Upload, encode, store, deliver
 - **Live streaming**: RTMPS/SRT ingestion with ABR
 - **Direct creator uploads**: End users upload without API keys
@@ -20,22 +23,26 @@ Cloudflare Stream provides video upload, storage, encoding, and delivery without
 ## Core Concepts
 
 ### Video Upload Methods
+
 1. **API Upload (TUS protocol)**: Direct server upload
 2. **Upload from URL**: Import from external source
 3. **Direct Creator Uploads**: User-generated content (recommended)
 
 ### Playback Options
+
 1. **Stream Player (iframe)**: Built-in, optimized player
 2. **Custom Player (HLS/DASH)**: Video.js, HLS.js integration
 3. **Thumbnails**: Static or animated previews
 
 ### Access Control
+
 - **Public**: No restrictions
 - **requireSignedURLs**: Token-based access
 - **allowedOrigins**: Domain restrictions
 - **Access Rules**: Geo/IP restrictions in tokens
 
 ### Live Streaming
+
 - RTMPS/SRT ingest from OBS, FFmpeg
 - Automatic recording to on-demand
 - Simulcast to YouTube, Twitch, etc.
@@ -44,6 +51,7 @@ Cloudflare Stream provides video upload, storage, encoding, and delivery without
 ## Quick Start
 
 **Upload video via API**
+
 ```bash
 curl -X POST \
   "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy" \
@@ -53,6 +61,7 @@ curl -X POST \
 ```
 
 **Embed player**
+
 ```html
 <iframe
   src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/iframe"
@@ -64,6 +73,7 @@ curl -X POST \
 ```
 
 **Create live input**
+
 ```bash
 curl -X POST \
   "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs" \
@@ -93,22 +103,22 @@ curl -X POST \
 
 | Order | File | Purpose | When to Use |
 |-------|------|---------|-------------|
-| 1 | [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/configuration.md) | Setup SDKs, env vars, signing keys | Starting new project |
-| 2 | [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api.md) | On-demand video APIs | Implementing uploads/playback |
-| 3 | [api-live.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api-live.md) | Live streaming APIs | Building live streaming |
-| 4 | [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/patterns.md) | Full-stack flows, TUS, JWT signing | Implementing workflows |
-| 5 | [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/gotchas.md) | Errors, limits, troubleshooting | Debugging issues |
+| 1 | [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/configuration.md) | Setup SDKs, env vars, signing keys | Starting new project |
+| 2 | [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api.md) | On-demand video APIs | Implementing uploads/playback |
+| 3 | [api-live.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api-live.md) | Live streaming APIs | Building live streaming |
+| 4 | [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/patterns.md) | Full-stack flows, TUS, JWT signing | Implementing workflows |
+| 5 | [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/gotchas.md) | Errors, limits, troubleshooting | Debugging issues |
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/configuration.md) - Setup, environment variables, wrangler config
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api.md) - On-demand video upload, playback, management APIs
-- [api-live.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming (RTMPS/SRT/WebRTC), simulcast
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, state management, best practices
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting, limits
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/configuration.md) - Setup, environment variables, wrangler config
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api.md) - On-demand video upload, playback, management APIs
+- [api-live.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming (RTMPS/SRT/WebRTC), simulcast
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/patterns.md) - Full-stack flows, state management, best practices
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting, limits
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs in Workers
-- [pages]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pages/) - Integrate Stream with Pages
-- [workers-ai]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers-ai/) - AI-generate captions
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs in Workers
+- [pages]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pages/) - Integrate Stream with Pages
+- [workers-ai]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers-ai/) - AI-generate captions

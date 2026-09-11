@@ -1,3 +1,6 @@
-# request_permissions Tool
+# Request additional permissions
 
-The built-in `request_permissions` tool is available in this session. Invoke it when you need to request additional `network` or `file_system` permissions before later shell-like commands need them. Request only the specific permissions required for the task.
+Use `request_permissions` only when the tool is actually available. Describe the
+specific action, target, required capability and reason. Keep the request bounded
+to the task and follow the active tool schema. Continue only after checking the
+returned permission decision; a request or an explanation is not approval.

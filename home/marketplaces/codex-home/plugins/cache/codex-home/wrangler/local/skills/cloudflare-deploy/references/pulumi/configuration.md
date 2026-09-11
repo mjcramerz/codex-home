@@ -1,5 +1,7 @@
 # Resource Configuration
 
+Consult this reference when resource configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Workers (cloudflare.WorkerScript)
 
 ```typescript
@@ -191,8 +193,8 @@ const deployment = new cloudflare.WorkersDeployment("prod", {
 });
 ```
 
-**When to use:** Blue-green deployments, canary releases, gradual rollouts  
+**When to use:** Blue-green deployments, canary releases, gradual rollouts
 **When NOT to use:** Simple single-version deployments (use WorkerScript)
 
 ---
-See: [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/README.md), [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/api.md), [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/patterns.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/gotchas.md)
+See: [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/README.md), [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/api.md), [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/patterns.md), [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/gotchas.md)

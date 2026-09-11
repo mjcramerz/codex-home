@@ -1,5 +1,7 @@
 # Cron Triggers Patterns
 
+Consult this reference when cron triggers patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## API Data Sync
 
 ```typescript
@@ -148,6 +150,7 @@ class Default(WorkerEntrypoint):
 ## Testing Patterns
 
 **Local testing with /__scheduled:**
+
 ```bash
 # Start dev server
 npx wrangler dev
@@ -160,6 +163,7 @@ curl "http://localhost:8787/__scheduled?cron=0+2+*+*+*&scheduledTime=17040672000
 ```
 
 **Unit tests:**
+
 ```typescript
 // test/scheduled.test.ts
 import { describe, it, expect, vi } from "vitest";
@@ -185,6 +189,6 @@ describe("Scheduled Handler", () => {
 
 ## See Also
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cron-triggers/README.md) - Overview
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cron-triggers/api.md) - Handler implementation
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cron-triggers/gotchas.md) - Troubleshooting
+- [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cron-triggers/README.md) - Overview
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cron-triggers/api.md) - Handler implementation
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cron-triggers/gotchas.md) - Troubleshooting

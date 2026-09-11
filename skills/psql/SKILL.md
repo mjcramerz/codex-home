@@ -1,10 +1,10 @@
 ---
 name: psql
-description: Inspect, query, and maintain PostgreSQL databases safely with the
-  `psql` CLI. Use when the task involves schema inspection, bounded reporting,
+description: Use this skill to inspect, query, and maintain PostgreSQL databases safely
+  with the `psql` CLI. Use when the task involves schema inspection, bounded reporting,
   transaction-safe migrations, or planner analysis.
 metadata:
-  version: "1.0"
+  version: '1.0'
   short-description: Operate PostgreSQL safely from the psql CLI
   tags:
   - postgres
@@ -17,49 +17,32 @@ interface:
   short-description: Operate PostgreSQL safely from the psql CLI
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
-  brand-color: "#2563EB"
-  default-prompt: Act as the "DB-PSQL" specialist for "Operate PostgreSQL safely from the psql CLI". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks.
+  brand-color: '#2563EB'
+  default-prompt: Act as the "DB-PSQL" specialist for "Operate PostgreSQL safely from
+    the psql CLI". Deliver focused, deterministic results with minimal, reviewable
+    changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run
+    the narrowest relevant checks, and report concrete actions, evidence, and residual
+    risks.
 ---
 
-## Use this skill when
-- inspecting PostgreSQL schemas, relations, indexes, roles, or extensions from the CLI
-- running bounded ad hoc queries or exports against a live or staging database
-- reviewing migrations, DDL changes, locking behavior, or planner regressions
-- preparing transaction-safe remediation steps for data fixes or maintenance tasks
-- validating session-level safety controls such as `statement_timeout` or `lock_timeout`
-
-## Inputs
-- connection target (`DATABASE_URL`, service name, socket, or explicit host/db/user values)
-- whether production safeguards require read-only or rollback-only work
-- target schemas, tables, or migration objective
-- acceptable runtime budget for `EXPLAIN`, counts, or verification queries
-
-## Scope and boundaries
-- Prefer `psql -X` so local startup files do not change behavior.
-- Default to read-oriented inspection first; stage exploratory writes inside `BEGIN` / `ROLLBACK`.
-- Set `ON_ERROR_STOP` for scripted runs and apply `statement_timeout` / `lock_timeout` when appropriate.
-- Avoid `VACUUM FULL`, `REINDEX DATABASE`, role changes, or cluster-wide commands without explicit user intent.
-- Bound large reads with selective predicates, sampling, or `LIMIT` before returning data.
+# Psql
 
 ## Workflow
-1) Confirm the target connection, role, and environment risk level before opening a session.
-2) Inspect context with `\conninfo`, relation metadata (`\dn`, `\dt+`, `\d+`), and session settings.
-3) Reproduce the question with the smallest deterministic `SELECT`, `\copy`, or migration statement.
-4) Use `EXPLAIN` or `EXPLAIN ANALYZE` only when the query cost and environment allow it.
-5) If writes are required, apply explicit transactions, safe timeouts, and post-change verification queries.
 
-## Validation and testing
-- Run `SELECT current_database(), current_user;` or `\conninfo` to confirm the target before mutating anything.
-- Use `psql -X -v ON_ERROR_STOP=1` for non-interactive commands and checked SQL files.
-- Verify row counts, constraints, and search-path assumptions before and after change sets.
-- Record the exact command, timeout settings, and transaction scope so the workflow is reproducible.
+1. Confirm host, database, role, schema and read/write authorization without printing connection secrets. Start with read-only metadata queries.
 
-## Outputs
-- Safe `psql` commands or `.sql` scripts with connection and timeout assumptions called out.
-- Schema, relation, and planner notes tied to the investigated tables or migrations.
-- Rollback-aware steps for any write or DDL operation.
+2. Use parameterized SQL or safely quoted psql variables; set statement and lock timeouts appropriate to the operation.
+
+3. Review transaction scope, locks, row counts and rollback for writes. EXPLAIN ANALYZE executes the statement; do not treat it as a harmless plan.
+
+4. Limit result size and redact personal data. Report actual query outcomes and stop before unrelated maintenance or destructive SQL.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- `$CODEX_HOME/UNIX.md`
-- `$CODEX_SKILLS/psql/references/latest-sources.md`
-- `$CODEX_SKILLS/psql/references/command-catalog.md`
+
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

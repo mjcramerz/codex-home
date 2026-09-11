@@ -1,5 +1,7 @@
 # ASP.NET Core Source Map
 
+Consult this reference when asp.net core source map is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This skill is synthesized from the official ASP.NET Core documentation tree and overview pages. Use this file to map a task to the corresponding Microsoft Learn area before opening deeper docs.
 
 Core sources:

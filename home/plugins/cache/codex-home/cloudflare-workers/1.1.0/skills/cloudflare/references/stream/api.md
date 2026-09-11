@@ -1,5 +1,7 @@
 # Stream API Reference
 
+Consult this reference when stream api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Upload, playback, live streaming, and management APIs.
 
 ## Upload APIs
@@ -7,6 +9,7 @@ Upload, playback, live streaming, and management APIs.
 ### Direct Creator Upload (Recommended)
 
 **Backend: Create upload URL (SDK)**
+
 ```typescript
 import Cloudflare from 'cloudflare';
 
@@ -22,6 +25,7 @@ const uploadData = await client.stream.directUpload.create({
 ```
 
 **Frontend: Upload file**
+
 ```typescript
 async function uploadVideo(file: File, uploadURL: string) {
   const formData = new FormData();
@@ -188,12 +192,12 @@ await client.stream.videos.delete(videoId, {
 
 ## In This Reference
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/stream/README.md) - Overview and quick start
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/stream/configuration.md) - Setup and config
-- [api-live.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/stream/api-live.md) - Live streaming APIs (RTMPS/SRT/WebRTC)
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/stream/patterns.md) - Full-stack flows, best practices
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/stream/gotchas.md) - Error codes, troubleshooting
+- [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/stream/README.md) - Overview and quick start
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/stream/configuration.md) - Setup and config
+- [api-live.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/stream/api-live.md) - Live streaming APIs (RTMPS/SRT/WebRTC)
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/stream/patterns.md) - Full-stack flows, best practices
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/stream/gotchas.md) - Error codes, troubleshooting
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Deploy Stream APIs in Workers
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Deploy Stream APIs in Workers

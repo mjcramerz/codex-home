@@ -1,5 +1,7 @@
 # Agent Troubleshooting
 
+Consult this reference when agent troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common issues and solutions for Cloudflare Agents.
 
 ## Connection Issues
@@ -11,12 +13,14 @@ Common issues and solutions for Cloudflare Agents.
 **Causes & Solutions:**
 
 1. **Worker not deployed**
+
    ```bash
    wrangler deployments list
    wrangler deploy  # If not deployed
    ```
 
 2. **Wrong URL path**
+
    ```javascript
    // Ensure your routing handles the agent path
    // Client:
@@ -35,11 +39,13 @@ Common issues and solutions for Cloudflare Agents.
 ### "Connection closed unexpectedly"
 
 1. **Agent threw an error**
+
    ```bash
    wrangler tail  # Check for exceptions
    ```
 
 2. **Message handler crashed**
+
    ```typescript
    async onMessage(connection: Connection, message: string) {
      try {
@@ -61,6 +67,7 @@ Common issues and solutions for Cloudflare Agents.
 **Causes:**
 
 1. **Didn't call `setState()`**
+
    ```typescript
    // Wrong - direct mutation doesn't persist
    this.state.messages.push(newMessage);
@@ -83,6 +90,7 @@ Common issues and solutions for Cloudflare Agents.
 `setState()` automatically syncs to all connected clients via `onStateUpdate()`. If sync isn't working:
 
 1. **Check `onStateUpdate` is implemented**
+
    ```typescript
    onStateUpdate(state: State, source: string) {
      // This fires when state changes from any source
@@ -91,6 +99,7 @@ Common issues and solutions for Cloudflare Agents.
    ```
 
 2. **Client not listening for state updates**
+
    ```typescript
    // React hook handles this automatically
    const { state } = useAgent({ agent: "my-agent", name: id });
@@ -162,6 +171,7 @@ await this.sql`SELECT * FROM users WHERE id = ${userId}`;
 3. **Query conditions don't match**
 
 Debug:
+
 ```typescript
 const tables = await this.sql`
   SELECT name FROM sqlite_master WHERE type='table'
@@ -177,6 +187,7 @@ console.log("Message count:", count);
 ### "Task never fires"
 
 1. **Method name mismatch**
+
    ```typescript
    // Schedule references method that must exist
    await this.schedule(60, "sendReminder", { ... });
@@ -188,6 +199,7 @@ console.log("Message count:", count);
    ```
 
 2. **Cron syntax error**
+
    ```typescript
    // Invalid cron
    await this.schedule("every 5 minutes", "task", {});  // Wrong
@@ -197,6 +209,7 @@ console.log("Message count:", count);
    ```
 
 3. **Task was cancelled**
+
    ```typescript
    const schedules = await this.getSchedules();
    console.log("Active schedules:", schedules);
@@ -330,6 +343,7 @@ export class MyAgent extends Agent<Env, State> {
 ```
 
 View logs:
+
 ```bash
 wrangler tail --format pretty
 ```

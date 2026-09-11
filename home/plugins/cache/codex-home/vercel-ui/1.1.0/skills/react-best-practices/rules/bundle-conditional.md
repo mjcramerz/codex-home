@@ -5,6 +5,10 @@ impactDescription: loads large data only when needed
 tags: bundle, conditional-loading, lazy-loading
 ---
 
+# bundle conditional
+
+Apply the following bundle conditional guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Conditional Module Loading
 
 Load large data or modules only when a feature is activated.

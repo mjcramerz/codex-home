@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "huggingface",
   "version": "1.1.0",
-  "description": "Hugging Face Hub datasets, evaluation, jobs, training, and tooling workflows.",
+  "description": "Use this plugin for hugging Face Hub datasets, evaluation, jobs, training, and tooling workflows.",
   "author": {
     "name": "Hugging Face"
   },

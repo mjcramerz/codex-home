@@ -11,10 +11,14 @@ tags:
 - productivity
 updated: '2026-03-12'
 ---
+
 # Acrobat Reader Rules
 
+Apply the following acrobat reader rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/adobe-acrobat/1.0.0/skills/acrobat-reader/SKILL.md`.
+
+- Follow the workflow in `$CODEX_HOME/plugins/adobe-acrobat/skills/acrobat-reader/SKILL.md`.
 - Preserve source files until the final export is verified.
 - Keep filenames, page order, and output expectations explicit.
-- Use `$CODEX_HOME/plugins/cache/codex-home/adobe-acrobat/1.0.0/skills/acrobat-reader/references/` for task-specific Acrobat workflow guidance.
+- Use `$CODEX_HOME/plugins/adobe-acrobat/skills/acrobat-reader/references/` for task-specific Acrobat workflow guidance.

@@ -8,12 +8,17 @@ tags:
 - references
 updated: '2026-03-12'
 ---
+
 # test-strategy reference bundle
 
+Consult this reference when test-strategy reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Skill purpose
+
 Choose narrow, risk-based verification plans and turn code changes into targeted tests, sanity checks, and regression coverage. Use when the task is ambiguous, high-impact, or needs a concrete validation plan before editing.
 
 ## External references
+
 - [pytest docs](https://docs.pytest.org/)
 - [unittest](https://docs.python.org/3/library/unittest.html)
 - [cargo test](https://doc.rust-lang.org/cargo/commands/cargo-test.html)

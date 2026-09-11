@@ -1,5 +1,7 @@
 # Architecture Patterns
 
+Consult this reference when architecture patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Component Resources
 
 ```typescript
@@ -188,4 +190,4 @@ const worker = new cloudflare.WorkerScript("worker", {
 ```
 
 ---
-See: [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/README.md), [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/configuration.md), [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/api.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/gotchas.md)
+See: [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/README.md), [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/configuration.md), [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/api.md), [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/gotchas.md)

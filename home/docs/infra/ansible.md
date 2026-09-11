@@ -1,36 +1,28 @@
 # Ansible
-Purpose: tell the Codex coding agent how to use `docs/infra/ansible.md` as a runtime-pack surface and when to stop browsing.
-Guidance for idempotent, reviewable configuration automation.
 
+Use this guide when you change Ansible inventories, roles, playbooks or collection dependencies. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/infra/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+## Apply these practices
 
+**1.** Inspect the inventory, selected hosts, collection versions, role defaults and variable precedence before editing. State the exact host limit and required privilege escalation.
 
-## Baseline practices
-- You must prefer modules over raw shell.
-- You must use `check` mode for dry runs when possible.
-- You must keep secrets in Ansible Vault or external secret managers.
-- Structure reusable logic into roles.
+**2.** Prefer idempotent modules, fully qualified collection names, explicit ownership and modes, and handlers triggered only by actual changes. Use command or shell only where a module cannot express the operation; define changed_when and failed_when from real outcomes.
 
-## Inventory & roles
-- You must keep inventory explicit and scoped.
-- You must use group vars and role defaults for safe defaults.
+**3.** Keep secrets in the approved secret store or Vault. Apply no_log to secret-bearing tasks and disable diff where it could reveal sensitive values. Never embed credentials in inventory, example files or logs.
 
-## Safety
-- Avoid running on broad host globs without confirmation.
-- You must add `serial` or `max_fail_percentage` for safer rollouts.
+**4.** Run syntax and lint checks with the repository's declared toolchain. Treat check mode as partial evidence: module support varies, and lookups or delegated actions may still have side effects.
 
-See also:
-- `overview.md`
-- `../workflows/ansible.md`
+**5.** Apply only to an authorized canary host set, review health and changed/failed/unreachable results, and expand batches only after the canary meets the acceptance criteria. Re-running for idempotence is a live change, not a harmless inspection.
+
+## Select related guidance
+
+- `$CODEX_HOME/docs/infra/overview.md`
+- `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/OVERVIEW.md`
 - `$CODEX_HOME/templates/infra/ansible-role-skeleton/`
 - `$CODEX_HOME/snippets/ansible/playbook.yml`
 - `$CODEX_HOME/snippets/ansible/ansible.cfg`
-- You must use skill iac-ansible.
 - `$CODEX_HOME/index/domains/infra/tooling.md`
 - `$CODEX_HOME/index/domains/infra/ansible.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

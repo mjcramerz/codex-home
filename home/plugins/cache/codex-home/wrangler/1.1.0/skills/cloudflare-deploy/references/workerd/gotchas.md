@@ -1,11 +1,15 @@
 # Workerd Gotchas
 
+Consult this reference when workerd gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "Missing compatibility date"
+
 **Cause:** Compatibility date not set
 **Solution:**
 ❌ Wrong:
+
 ```capnp
 const worker :Workerd.Worker = (
   serviceWorkerScript = embed "worker.js"
@@ -13,6 +17,7 @@ const worker :Workerd.Worker = (
 ```
 
 ✅ Correct:
+
 ```capnp
 const worker :Workerd.Worker = (
   serviceWorkerScript = embed "worker.js",
@@ -21,16 +26,19 @@ const worker :Workerd.Worker = (
 ```
 
 ### Wrong Binding Type
+
 **Problem:** JSON not parsed
 **Cause:** Using `text = '{"key":"value"}'` instead of `json`
 **Solution:** Use `json = '{"key":"value"}'` for parsed objects
 
 ### Service vs Namespace
+
 **Problem:** Cannot create DO instance
 **Cause:** Using `service = "room-service"` for Durable Object
 **Solution:** Use `durableObjectNamespace = "Room"` for DO bindings
 
 ### Module Name Mismatch
+
 **Problem:** Import fails
 **Cause:** Module name includes path: `name = "src/index.js"`
 **Solution:** Use simple names: `name = "index.js"`, embed with path
@@ -40,29 +48,35 @@ const worker :Workerd.Worker = (
 **Problem:** Fetch fails with network error
 **Cause:** No network service configured (workerd has no global fetch)
 **Solution:** Add network service binding:
+
 ```capnp
 services = [(name = "internet", network = (allow = ["public"]))]
 bindings = [(name = "NET", service = "internet")]
 ```
 
 Or external service:
+
 ```capnp
 bindings = [(name = "API", service = (external = (address = "api.com:443", http = (style = tls))))]
 ```
 
 ### "Worker not responding"
+
 **Cause:** Socket misconfigured, no fetch handler, or port unavailable
 **Solution:** Verify socket `address` matches, worker exports `fetch()`, port available
 
 ### "Binding not found"
+
 **Cause:** Name mismatch or service doesn't exist
 **Solution:** Check binding name in config matches code (`env.BINDING` for ES modules)
 
 ### "Module not found"
+
 **Cause:** Module name doesn't match import or bad embed path
 **Solution:** Module `name` must match import path exactly, verify `embed` path
 
 ### "Compatibility error"
+
 **Cause:** Date not set or API unavailable on that date
 **Solution:** Set `compatibilityDate`, verify API available on that date
 
@@ -136,4 +150,4 @@ bindings = [(name = "API", service = (external = (address = "api.com:443", http 
 6. **Isolate issue**: Minimal repro config
 7. **Review schema**: [workerd.capnp](https://github.com/cloudflare/workerd/blob/main/src/workerd/server/workerd.capnp)
 
-See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/configuration.md) for config details, [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/patterns.md) for working examples, [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/api.md) for runtime APIs.
+See [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/configuration.md) for config details, [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/patterns.md) for working examples, [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/api.md) for runtime APIs.

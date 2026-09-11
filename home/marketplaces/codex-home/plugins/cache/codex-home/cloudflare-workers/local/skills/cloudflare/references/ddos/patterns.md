@@ -1,5 +1,7 @@
 # DDoS Protection Patterns
 
+Consult this reference when ddos protection patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Allowlist Trusted IPs
 
 ```typescript
@@ -171,4 +173,4 @@ await client.zones.rulesets.phases.entrypoint.update("http_request_cache_setting
 
 **Rationale**: Attackers randomize query strings (`?random=123456`) to bypass cache. Excluding query params ensures cache hits absorb attack traffic.
 
-See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/ddos/configuration.md) for rule structure details.
+See [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/ddos/configuration.md) for rule structure details.

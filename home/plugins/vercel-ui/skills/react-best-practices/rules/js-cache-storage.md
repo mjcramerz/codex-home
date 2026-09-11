@@ -5,6 +5,10 @@ impactDescription: reduces expensive I/O
 tags: javascript, localStorage, storage, caching, performance
 ---
 
+# js cache storage
+
+Apply the following js cache storage guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Cache Storage API Calls
 
 `localStorage`, `sessionStorage`, and `document.cookie` are synchronous and expensive. Cache reads in memory.

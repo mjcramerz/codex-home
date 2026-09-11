@@ -1,5 +1,7 @@
 # MCP Server Troubleshooting
 
+Consult this reference when mcp server troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common errors and solutions for MCP servers on Cloudflare.
 
 ## Connection Issues
@@ -11,6 +13,7 @@ Common errors and solutions for MCP servers on Cloudflare.
 **Causes & Solutions:**
 
 1. **Wrong URL path**
+
    ```
    # Wrong
    https://my-server.workers.dev/
@@ -20,6 +23,7 @@ Common errors and solutions for MCP servers on Cloudflare.
    ```
 
 2. **Worker not deployed**
+
    ```bash
    wrangler deployments list
    # If empty, deploy first:
@@ -27,6 +31,7 @@ Common errors and solutions for MCP servers on Cloudflare.
    ```
 
 3. **Worker crashed on startup**
+
    ```bash
    wrangler tail
    # Check for initialization errors
@@ -152,12 +157,14 @@ OAuth token missing or expired.
 
 1. **Check client is handling OAuth flow**
 2. **Verify secrets are set:**
+
    ```bash
    wrangler secret list
    # Should show GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
    ```
 
 3. **Check KV namespace exists:**
+
    ```bash
    wrangler kv namespace list
    # Should show OAUTH_KV
@@ -181,6 +188,7 @@ State parameter validation failed.
 
 1. **Clear browser cookies and retry**
 2. **Check KV is storing state:**
+
    ```typescript
    // In your auth handler
    console.log("Storing state:", state);
@@ -290,6 +298,7 @@ export class MyMCP extends McpAgent {
 ```
 
 View logs:
+
 ```bash
 wrangler tail --format pretty
 ```

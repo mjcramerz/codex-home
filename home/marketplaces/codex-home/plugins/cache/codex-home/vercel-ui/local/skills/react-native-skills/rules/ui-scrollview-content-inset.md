@@ -5,6 +5,10 @@ impactDescription: smoother updates, no layout recalculation
 tags: scrollview, layout, contentInset, performance
 ---
 
+# ui scrollview content inset
+
+Apply the following ui scrollview content inset guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use contentInset for Dynamic ScrollView Spacing
 
 When adding space to the top or bottom of a ScrollView that may change

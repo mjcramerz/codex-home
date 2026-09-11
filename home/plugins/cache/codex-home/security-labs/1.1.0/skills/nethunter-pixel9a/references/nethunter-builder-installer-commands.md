@@ -13,15 +13,20 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # NetHunter builder and installer command baselines
 
+Consult this reference when nethunter builder and installer command baselines is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Upstream repositories
+
 - Kernel builder:
   - https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel-builder
 - Installer builder:
   - https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer
 
 ## Clone and prepare
+
 ```bash
 export NH_KERNEL_BUILDER_REPO_URL="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel-builder.git"
 export NH_INSTALLER_REPO_URL="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git"
@@ -39,6 +44,7 @@ cd ../kali-nethunter-installer
 ```
 
 ## Build and evidence checklist
+
 - Builder commit ID (`git -C <builder> rev-parse HEAD`)
 - Installer commit ID (`git -C <installer> rev-parse HEAD`)
 - `local.config` hash (`sha256sum`)

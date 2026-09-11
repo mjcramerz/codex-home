@@ -13,18 +13,24 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Wireless lab defense
 
+Consult this reference when wireless lab defense is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Objective
+
 Assess wireless security posture and detection controls in documented RF boundaries.
 
 ## Defensive checks
+
 - inventory of APs, channels, and encryption mode
 - rogue AP detection and incident runbook readiness
 - suspicious deauth/auth burst detection coverage
 - segmentation between lab and production wireless networks
 
 ## Reference sources
+
 - https://csrc.nist.gov/publications/detail/sp/800-153/final
 - https://www.wi-fi.org/discover-wi-fi/security
 - https://attack.mitre.org/

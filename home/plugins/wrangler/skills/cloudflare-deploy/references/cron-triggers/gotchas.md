@@ -1,11 +1,13 @@
 # Cron Triggers Gotchas
 
+Consult this reference when cron triggers gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "Timezone Issues"
 
-**Problem:** Cron runs at wrong time relative to local timezone  
-**Cause:** All crons execute in UTC, no local timezone support  
+**Problem:** Cron runs at wrong time relative to local timezone
+**Cause:** All crons execute in UTC, no local timezone support
 **Solution:** Convert local time to UTC manually
 
 **Conversion formula:** `utcHour = (localHour - utcOffset + 24) % 24`
@@ -19,26 +21,27 @@
 
 ### "Cron Not Executing"
 
-**Cause:** Missing `scheduled()` export, invalid syntax, propagation delay (<15min), or plan limits  
+**Cause:** Missing `scheduled()` export, invalid syntax, propagation delay (<15min), or plan limits
 **Solution:** Verify export exists, validate at crontab.guru, wait 15+ min after deploy, check plan limits
 
 ### "Duplicate Executions"
 
-**Cause:** At-least-once delivery  
+**Cause:** At-least-once delivery
 **Solution:** Track execution IDs in KV - see idempotency pattern below
 
 ### "Execution Failures"
 
-**Cause:** CPU exceeded, unhandled exceptions, network timeouts, binding errors  
+**Cause:** CPU exceeded, unhandled exceptions, network timeouts, binding errors
 **Solution:** Use try-catch, AbortController timeouts, `ctx.waitUntil()` for long ops, or Workflows for heavy tasks
 
 ### "Local Testing Not Working"
 
-**Problem:** `/__scheduled` endpoint returns 404 or doesn't trigger handler  
-**Cause:** Missing `scheduled()` export, wrangler not running, or incorrect endpoint format  
+**Problem:** `/__scheduled` endpoint returns 404 or doesn't trigger handler
+**Cause:** Missing `scheduled()` export, wrangler not running, or incorrect endpoint format
 **Solution:**
 
 1. Verify `scheduled()` is exported:
+
 ```typescript
 export default {
   async scheduled(controller, env, ctx) {
@@ -48,11 +51,13 @@ export default {
 ```
 
 2. Start dev server:
+
 ```bash
 npx wrangler dev
 ```
 
 3. Use correct endpoint format (URL-encode spaces as `+`):
+
 ```bash
 # Correct
 curl "http://localhost:8787/__scheduled?cron=*/5+*+*+*+*"
@@ -62,14 +67,15 @@ curl "http://localhost:8787/__scheduled?cron=*/5 * * * *"
 ```
 
 4. Update Wrangler if outdated:
+
 ```bash
 npm install -g wrangler@latest
 ```
 
 ### "waitUntil() Tasks Not Completing"
 
-**Problem:** Background tasks in `ctx.waitUntil()` fail silently or don't execute  
-**Cause:** Promises rejected without error handling, or handler returns before promise settles  
+**Problem:** Background tasks in `ctx.waitUntil()` fail silently or don't execute
+**Cause:** Promises rejected without error handling, or handler returns before promise settles
 **Solution:** Always await or handle errors in waitUntil promises:
 
 ```typescript
@@ -91,8 +97,8 @@ export default {
 
 ### "Idempotency Issues"
 
-**Problem:** At-least-once delivery causes duplicate side effects (double charges, duplicate emails)  
-**Cause:** No deduplication mechanism  
+**Problem:** At-least-once delivery causes duplicate side effects (double charges, duplicate emails)
+**Cause:** No deduplication mechanism
 **Solution:** Use KV to track execution IDs:
 
 ```typescript
@@ -115,8 +121,8 @@ export default {
 
 ### "Security Concerns"
 
-**Problem:** `__scheduled` endpoint exposed in production allows unauthorized cron triggering  
-**Cause:** Testing endpoint available in deployed Workers  
+**Problem:** `__scheduled` endpoint exposed in production allows unauthorized cron triggering
+**Cause:** Testing endpoint available in deployed Workers
 **Solution:** Block `__scheduled` in production:
 
 ```typescript
@@ -141,6 +147,7 @@ export default {
 **Also:** Use `env.API_KEY` for secrets (never hardcode)
 
 **Alternative:** Add middleware to verify request origin:
+
 ```typescript
 export default {
   async fetch(request, env, ctx) {

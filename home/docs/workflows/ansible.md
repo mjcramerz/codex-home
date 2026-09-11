@@ -1,55 +1,39 @@
-# Ansible workflow
+# Apply a scoped Ansible change
 
-You must start with `$CODEX_HOME/plans/workflows/workflow-ansible.md` before executing this workflow.
-Purpose: apply configuration changes safely and repeatably for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+Use this workflow when you change playbooks, roles or inventory and need a safe
+path from local edits to an explicitly authorized rollout. Read
+`$CODEX_HOME/docs/infra/ansible.md`; use the linked plan only for a multi-step change.
 
+## Inspect and edit
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/workflows/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+Identify the inventory, exact host subset, connection identity, privilege boundary,
+variable precedence and collection lock/pin policy. Read affected tasks, handlers
+and role defaults. Prefer idempotent modules and make changed/failed conditions
+explicit where command execution is unavoidable. Preserve unrelated hosts and roles.
 
+## Check without overstating evidence
 
-## Plan
-- Start from the linked workflow plan template above, then tailor scope, constraints, and validation commands before editing.
-- You must keep the plan updated as execution progresses, including risk and rollback notes for any sensitive change.
+Use the repository's syntax and lint commands. Check mode is not a complete safety
+or idempotence proof; modules and plugins differ, and some operations can still run.
+Use `--diff` only when output cannot reveal secrets. Do not invoke an inventory
+plugin or external lookup without understanding its access and side effects.
 
-## You must follow this workflow
-1) **Scope**: hosts, inventory, roles, credentials.
-2) **Check**: run lint and `--check` where possible.
-3) **Apply**: run playbooks with limited batch size.
-4) **Verify**: validate service health and idempotence.
+## Apply only within authorization
 
-## Safety rules
-- Avoid broad host globs without confirmation.
-- You must prefer idempotent modules over shell commands.
+Confirm the canary host set, backup or rollback method and acceptance criteria.
+Apply to the explicit limit, inspect failed/unreachable/changed results and service
+health, and expand only through the approved batch plan. Reapplying to establish
+idempotence is a live operation and requires the same authority as the first run.
 
-## Security checkpoints
-- You must confirm inventory boundaries, vault secret sources, and `become` scope before execution.
-- Reject ad-hoc shell-heavy tasks unless a module cannot meet the requirement.
-- Pin role/collection versions and verify trusted upstream sources.
+## Handoff and stop
 
-## Testing checkpoints
-- You must run `ansible-lint` and syntax validation for every changed playbook or role.
-- You must run `--check --diff` on a canary inventory slice and review task-level drift.
-- You must re-run apply on the same slice to confirm idempotence expectations.
+Report the changed files, selected inventory/limit without credentials, commands,
+observed host outcomes and remaining drift. Do not claim a rollout from lint output
+or open unrelated tasks. Stop when the authorized scope is complete.
 
-## Deployment checkpoints
-- You must use staged rollout controls (`serial`, `--limit`) with health checks between batches.
-- You must keep rollback playbook or config backup references per changed service.
-- You must record final host set, failed hosts, and accepted drift exceptions.
+## Optional resources
 
-## Multi-agent handoff
-- Coordinator passes inventory subset, credential path, and rollout batch plan.
-- Executor provides exact commands, host outcomes, and remediation actions taken.
-- Receiver validates post-run idempotence and opens follow-up tasks for unresolved hosts.
-See also:
-- `overview.md`
-- `../infra/ansible.md`
-- `$CODEX_HOME/templates/infra/ansible-role-skeleton/`
-- `$CODEX_HOME/snippets/ansible/playbook.yml`
-- You must use skill `iac-ansible`.
-- `$CODEX_HOME/index/pack/workflows.md`
+Read `$CODEX_HOME/plans/workflows/workflow-ansible.md` for a larger rollout plan.
+Adapt `$CODEX_HOME/templates/infra/ansible-role-skeleton/` or
+`$CODEX_HOME/snippets/ansible/playbook.yml` only when a new artifact is requested.
+Discover the available Ansible plugin skill before invoking it.

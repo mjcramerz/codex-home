@@ -1,13 +1,12 @@
 interface:
-  display_name: "ASP.NET Core"
-  short_description: "[Windows only] Build and review ASP.NET Core web apps"
-  icon_large: "./assets/dotnet-logo.png"
-  default_prompt: "Create a new $aspnet-core website for me."
-
+  display_name: ASP.NET Core
+  short_description: Use this skill for [Windows only] Build and review ASP.NET Core web apps
+  icon_large: ./assets/dotnet-logo.png
+  default_prompt: Use $aspnet-core for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "microsoft-learn"
-      description: "microsoft-learn MCP server"
-      transport: "streamable_http"
-      url: "https://learn.microsoft.com/api/mcp"
+  - type: mcp
+    value: microsoft-learn
+    description: microsoft-learn MCP server
+    transport: streamable_http
+    url: https://learn.microsoft.com/api/mcp

@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Dev container checklist
+
+Consult this reference when dev container checklist is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 - Choose engine and mode (Docker rootless/rootful, Podman rootless/rootful).
 - Default to non-root container user; provide a root override for required tasks.
 - Install common tooling (git, build tools, Python, Node, Go, Rust, jq, ripgrep).

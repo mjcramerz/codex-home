@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Advanced Search Techniques
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## Search Filtering
 
@@ -114,6 +117,7 @@ data_source_url: "collection://data-source-uuid"
 4. Fetch detailed content from top results
 
 **Example**:
+
 ```
 Search 1: query="API integration" → 50 results across workspace
 Search 2: query="API integration", teamspace_id="engineering" → 12 results
@@ -224,4 +228,3 @@ When citing results from connected sources:
 - Note the source type in documentation
 - Use appropriate mention format
 - Verify user has access to the source system
-

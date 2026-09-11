@@ -1,5 +1,7 @@
 # KV API Reference
 
+Consult this reference when kv api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Read Operations
 
 ```typescript
@@ -157,4 +159,4 @@ const [user, settings, cache] = await Promise.all([
 - **Rate limit (429):** Retry with exponential backoff (see gotchas.md)
 - **Response too large (413):** Values >25MB fail with 413 error
 
-See [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/kv/gotchas.md) for detailed error patterns and solutions.
+See [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/kv/gotchas.md) for detailed error patterns and solutions.

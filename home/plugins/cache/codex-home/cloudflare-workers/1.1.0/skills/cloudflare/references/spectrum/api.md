@@ -103,6 +103,8 @@ from cloudflare import Cloudflare
 client = Cloudflare(api_token="your-api-token")
 
 # Create
+
+Consult this reference when create is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 app = client.spectrum.apps.create(
     zone_id="your-zone-id",
     protocol="tcp/22",
@@ -170,6 +172,7 @@ _ = api.DeleteSpectrumApplication(ctx, "zone-id", app.ID)
 - `ipVersion` - IPv4 or IPv6
 
 **Example:**
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/aggregate/current?metrics=bytesIngress,bytesEgress,count&dimensions=appID" \
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"

@@ -1,10 +1,13 @@
 # Tunnel API
 
+Consult this reference when tunnel api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Cloudflare API Access
 
 **Base URL**: `https://api.cloudflare.com/client/v4`
 
 **Authentication**:
+
 ```bash
 Authorization: Bearer ${CF_API_TOKEN}
 ```
@@ -26,6 +29,7 @@ const accountId = process.env.CF_ACCOUNT_ID;
 ## Create Tunnel
 
 ### cURL
+
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/tunnels" \
   -H "Authorization: Bearer ${CF_API_TOKEN}" \
@@ -37,6 +41,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/tunnels
 ```
 
 ### TypeScript
+
 ```typescript
 const tunnel = await cf.zeroTrust.tunnels.create({
   account_id: accountId,
@@ -50,12 +55,14 @@ console.log(`Tunnel ID: ${tunnel.id}`);
 ## List Tunnels
 
 ### cURL
+
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/tunnels" \
   -H "Authorization: Bearer ${CF_API_TOKEN}"
 ```
 
 ### TypeScript
+
 ```typescript
 const tunnels = await cf.zeroTrust.tunnels.list({
   account_id: accountId,
@@ -69,12 +76,14 @@ for (const tunnel of tunnels.result) {
 ## Get Tunnel Info
 
 ### cURL
+
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/tunnels/{tunnel_id}" \
   -H "Authorization: Bearer ${CF_API_TOKEN}"
 ```
 
 ### TypeScript
+
 ```typescript
 const tunnel = await cf.zeroTrust.tunnels.get(tunnelId, {
   account_id: accountId,
@@ -87,6 +96,7 @@ console.log(`Connections: ${tunnel.connections?.length || 0}`);
 ## Update Tunnel Config
 
 ### cURL
+
 ```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/tunnels/{tunnel_id}/configurations" \
   -H "Authorization: Bearer ${CF_API_TOKEN}" \
@@ -102,6 +112,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/tunnels/
 ```
 
 ### TypeScript
+
 ```typescript
 const config = await cf.zeroTrust.tunnels.configurations.update(
   tunnelId,
@@ -120,12 +131,14 @@ const config = await cf.zeroTrust.tunnels.configurations.update(
 ## Delete Tunnel
 
 ### cURL
+
 ```bash
 curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/{account_id}/tunnels/{tunnel_id}" \
   -H "Authorization: Bearer ${CF_API_TOKEN}"
 ```
 
 ### TypeScript
+
 ```typescript
 await cf.zeroTrust.tunnels.delete(tunnelId, {
   account_id: accountId,
@@ -137,16 +150,19 @@ await cf.zeroTrust.tunnels.delete(tunnelId, {
 Token-based tunnels store config in Cloudflare dashboard instead of local files.
 
 ### Via Dashboard
+
 1. **Zero Trust** > **Networks** > **Tunnels**
 2. **Create a tunnel** > **Cloudflared**
 3. Configure routes in dashboard
 4. Copy token
 5. Run on origin:
+
 ```bash
 cloudflared service install <TOKEN>
 ```
 
 ### Via Token
+
 ```bash
 # Run with token (no config file needed)
 cloudflared tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
@@ -156,6 +172,7 @@ docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token ${TU
 ```
 
 ### Get Tunnel Token (TypeScript)
+
 ```typescript
 // Get tunnel to retrieve token
 const tunnel = await cf.zeroTrust.tunnels.get(tunnelId, {

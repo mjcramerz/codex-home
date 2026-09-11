@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 How to enable R2 Data Catalog and configure authentication.
 
 ## Prerequisites
@@ -19,6 +21,7 @@ npx wrangler r2 bucket catalog enable <BUCKET_NAME>
 ```
 
 **Output:**
+
 ```
 ✅ Data Catalog enabled for bucket 'my-bucket'
    Catalog URI: https://<account-id>.r2.cloudflarestorage.com/iceberg/my-bucket
@@ -45,6 +48,7 @@ curl -X POST \
 ```
 
 **Response:**
+
 ```json
 {
   "result": {
@@ -62,6 +66,7 @@ npx wrangler r2 bucket catalog status <BUCKET_NAME>
 ```
 
 **Output:**
+
 ```
 Catalog Status: enabled
 Catalog URI: https://<account-id>.r2.cloudflarestorage.com/iceberg/my-bucket
@@ -114,6 +119,7 @@ catalog = RestCatalog(
 ```
 
 **Full example with credentials:**
+
 ```python
 import os
 from pyiceberg.catalog.rest import RestCatalog

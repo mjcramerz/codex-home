@@ -1,5 +1,7 @@
 # Durable Objects Rules & Best Practices
 
+Consult this reference when durable objects rules & best practices is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Design & Sharding
 
 ### Model Around Coordination Atoms
@@ -48,11 +50,13 @@ Available hints: `wnam`, `enam`, `sam`, `weur`, `eeur`, `apac`, `oc`, `afr`, `me
 ### SQLite (Recommended)
 
 Configure in wrangler:
+
 ```jsonc
 { "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyDO"] }] }
 ```
 
 SQL API is synchronous:
+
 ```typescript
 // Write
 this.ctx.storage.sql.exec(

@@ -5,6 +5,10 @@ impactDescription: Fewer re-renders and faster lists
 tags: tag1, tag2
 ---
 
+# list performance callbacks
+
+Apply the following list performance callbacks guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## List performance callbacks
 
 **Impact: HIGH (Fewer re-renders and faster lists)**

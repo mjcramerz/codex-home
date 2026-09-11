@@ -1,10 +1,9 @@
 interface:
-  display_name: "HEALTH-ADHD & CBT"
-  short_description: "ADHD + CBT daily planning PDF templates"
-  icon_small: "./assets/icon-32.png"
-  icon_large: "./assets/icon-128.png"
-  brand_color: "#4F32CC"
-  default_prompt: "Use $health-adhd-cbt. Act as the \"HEALTH-ADHD & CBT\" specialist for \"ADHD + CBT daily planning PDF templates\". Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report concrete actions, evidence, and residual risks."
-
+  display_name: HEALTH-ADHD & CBT
+  short_description: Use this skill for aDHD + CBT daily planning PDF templates
+  icon_small: ./assets/icon-32.png
+  icon_large: ./assets/icon-128.png
+  brand_color: '#4F32CC'
+  default_prompt: Use $health-adhd-cbt for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

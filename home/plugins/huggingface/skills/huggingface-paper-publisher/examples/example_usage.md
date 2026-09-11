@@ -1,5 +1,7 @@
 # Example Usage: HF Paper Publisher Skill
 
+Use this guide when you change POSIX shell, Bash or zsh scripts and repository automation. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 This document demonstrates common workflows for publishing research papers on Hugging Face Hub.
 
 ## Example 1: Index an Existing arXiv Paper
@@ -18,6 +20,7 @@ python scripts/paper_manager.py info --arxiv-id "2301.12345"
 ```
 
 Expected output:
+
 ```json
 {
   "exists": true,
@@ -102,6 +105,7 @@ python scripts/paper_manager.py citation \
 ```
 
 Output:
+
 ```bibtex
 @article{arxiv2301_12345,
   title={Efficient Fine-Tuning of Large Language Models},

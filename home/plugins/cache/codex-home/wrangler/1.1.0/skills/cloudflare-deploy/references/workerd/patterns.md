@@ -1,6 +1,9 @@
 # Workerd Patterns
 
+Consult this reference when workerd patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Multi-Service Architecture
+
 ```capnp
 const config :Workerd.Config = (
   services = [
@@ -22,6 +25,7 @@ const config :Workerd.Config = (
 ```
 
 ## Durable Objects
+
 ```capnp
 const worker :Workerd.Worker = (
   modules = [(name = "index.js", esModule = embed "index.js"), (name = "room.js", esModule = embed "room.js")],
@@ -33,6 +37,7 @@ const worker :Workerd.Worker = (
 ```
 
 ## Dev vs Prod Configs
+
 ```capnp
 # Use parameter bindings for env-specific config
 const baseWorker :Workerd.Worker = (
@@ -48,6 +53,7 @@ const prodWorker :Workerd.Worker = (
 ```
 
 ## HTTP Reverse Proxy
+
 ```capnp
 services = [
   (name = "proxy", worker = (serviceWorkerScript = embed "proxy.js", compatibilityDate = "2024-01-15", bindings = [(name = "BACKEND", service = "backend")])),
@@ -58,21 +64,25 @@ services = [
 ## Local Development
 
 **Recommended:** Use Wrangler
+
 ```bash
 wrangler dev  # Uses workerd internally
 ```
 
 **Direct workerd:**
+
 ```bash
 workerd serve config.capnp --socket-addr http=*:3000 --verbose
 ```
 
 **Environment variables:**
+
 ```capnp
 bindings = [(name = "DATABASE_URL", fromEnvironment = "DATABASE_URL")]
 ```
 
 ## Testing
+
 ```bash
 workerd test config.capnp
 workerd test config.capnp --test-only=test.js
@@ -83,12 +93,14 @@ Test files must be included in `modules = [...]` config.
 ## Production Deployment
 
 ### Compiled Binary (Recommended)
+
 ```bash
 workerd compile config.capnp myConfig -o production-server
 ./production-server
 ```
 
 ### Docker
+
 ```dockerfile
 FROM debian:bookworm-slim
 RUN apt-get update && apt-get install -y ca-certificates
@@ -100,6 +112,7 @@ CMD ["workerd", "serve", "/etc/workerd/config.capnp"]
 ```
 
 ### Systemd
+
 ```ini
 # /etc/systemd/system/workerd.service
 [Service]
@@ -113,6 +126,7 @@ See systemd socket activation docs for complete setup.
 ## Framework Integration
 
 ### Hono
+
 ```javascript
 import { Hono } from 'hono';
 
@@ -129,6 +143,7 @@ export default app;
 ```
 
 ### itty-router
+
 ```javascript
 import { Router } from 'itty-router';
 
@@ -160,6 +175,7 @@ export default {
 ## Common Patterns
 
 ### Error Handling
+
 ```javascript
 export default {
   async fetch(request, env, ctx) {
@@ -174,6 +190,7 @@ export default {
 ```
 
 ### Background Tasks
+
 ```javascript
 export default {
   async fetch(request, env, ctx) {
@@ -189,4 +206,4 @@ export default {
 };
 ```
 
-See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/configuration.md) for config syntax, [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/api.md) for runtime APIs, [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workerd/gotchas.md) for common errors.
+See [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/configuration.md) for config syntax, [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/api.md) for runtime APIs, [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workerd/gotchas.md) for common errors.

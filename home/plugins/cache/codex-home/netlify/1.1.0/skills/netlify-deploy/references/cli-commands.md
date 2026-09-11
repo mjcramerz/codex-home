@@ -1,5 +1,7 @@
 # Netlify CLI Commands Reference
 
+Consult this reference when netlify cli commands reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Quick reference for common Netlify CLI commands used in deployments.
 
 ## Authentication

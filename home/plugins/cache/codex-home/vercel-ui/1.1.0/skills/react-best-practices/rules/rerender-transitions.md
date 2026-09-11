@@ -5,6 +5,10 @@ impactDescription: maintains UI responsiveness
 tags: rerender, transitions, startTransition, performance
 ---
 
+# rerender transitions
+
+Apply the following rerender transitions guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Transitions for Non-Urgent Updates
 
 Mark frequent, non-urgent state updates as transitions to maintain UI responsiveness.

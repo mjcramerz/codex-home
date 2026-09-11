@@ -5,6 +5,10 @@ impactDescription: O(n) to O(1)
 tags: javascript, set, map, data-structures, performance
 ---
 
+# js set map lookups
+
+Apply the following js set map lookups guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Set/Map for O(1) Lookups
 
 Convert arrays to Set/Map for repeated membership checks.

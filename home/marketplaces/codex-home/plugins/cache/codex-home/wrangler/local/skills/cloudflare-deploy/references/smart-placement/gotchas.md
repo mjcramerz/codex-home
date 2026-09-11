@@ -1,5 +1,7 @@
 # Smart Placement Gotchas
 
+Consult this reference when smart placement gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "INSUFFICIENT_INVOCATIONS"
@@ -47,6 +49,7 @@
 **Cause:** Smart Placement routes ALL requests (including static assets like HTML, CSS, JS, images) to remote locations. Static content should ALWAYS be served from edge closest to user.
 
 **Solution:** Split into separate Workers OR disable Smart Placement:
+
 ```jsonc
 // ❌ BAD - Assets routed away from user
 {
@@ -79,6 +82,7 @@ This is one of the most common and impactful Smart Placement misconfigurations.
 **Cause:** Smart Placement optimizes for backend latency but increases user-facing response time.
 
 **Solution:** Split into two Workers:
+
 ```jsonc
 // frontend/wrangler.jsonc
 {

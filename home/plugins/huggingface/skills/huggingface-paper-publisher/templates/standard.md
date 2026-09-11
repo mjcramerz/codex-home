@@ -1,12 +1,14 @@
 ---
-title: {{TITLE}}
-authors: {{AUTHORS}}
-date: {{DATE}}
+title: "{{TITLE}}"
+authors: "{{AUTHORS}}"
+date: "{{DATE}}"
 arxiv:
 tags: [machine-learning, deep-learning]
 ---
 
 # {{TITLE}}
+
+Use this template when you prepare a research paper in the selected publication style. Replace every placeholder with verified content. Serialize resolved frontmatter values as YAML strings, escaping quotes and newlines; do not publish placeholders, invented results or unsupported citations.
 
 **{{AUTHORS}}**
 

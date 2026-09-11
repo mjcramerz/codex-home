@@ -5,6 +5,10 @@ impactDescription: cleaner logic, easier debugging, single source of truth
 tags: state, derived-state, reanimated, hooks
 ---
 
+# state ground truth
+
+Apply the following state ground truth guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## State Must Represent Ground Truth
 
 State variables—both React `useState` and Reanimated shared values—should

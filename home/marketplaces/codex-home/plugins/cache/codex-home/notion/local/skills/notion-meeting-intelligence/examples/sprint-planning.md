@@ -13,13 +13,17 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Sprint Planning Meeting Prep
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **User Request**: "Prepare for tomorrow's sprint planning meeting"
 
 ## Workflow
 
 ### 1. Search for Context
+
 ```
 Notion:notion-search
 query: "sprint planning" + "product backlog"
@@ -33,6 +37,7 @@ Found:
 - Team capacity notes
 
 ### 2. Fetch Details
+
 ```
 Notion:notion-fetch (4 pages)
 ```
@@ -44,6 +49,7 @@ Notion:notion-fetch (4 pages)
 - **Top Backlog Items**: User auth improvements, API performance, mobile responsive fixes
 
 ### 3. Query Current Sprint Tasks
+
 ```
 Notion:notion-query-data-sources
 query: "SELECT * FROM tasks WHERE Sprint = 'Sprint 24' AND Status != 'Done'"
@@ -52,6 +58,7 @@ query: "SELECT * FROM tasks WHERE Sprint = 'Sprint 24' AND Status != 'Done'"
 3 tasks carrying over (technical debt items)
 
 ### 4. Create Pre-Read (Internal)
+
 ```
 Notion:notion-create-pages
 title: "Sprint 25 Planning - Pre-Read (Internal)"
@@ -65,6 +72,7 @@ title: "Sprint 25 Planning - Pre-Read (Internal)"
 - Risk items (auth changes need QA time)
 
 ### 5. Create Agenda
+
 ```
 Notion:notion-create-pages
 title: "Sprint 25 Planning - Agenda"
@@ -79,6 +87,7 @@ title: "Sprint 25 Planning - Agenda"
 - Confirm commitments (10 min)
 
 ### 6. Link Documents
+
 Cross-linked pre-read and agenda, referenced last retro and backlog.
 
 ## Output Summary
@@ -88,6 +97,7 @@ Cross-linked pre-read and agenda, referenced last retro and backlog.
 **Both saved to Notion** and linked to project pages
 
 ## Key Success Factors
+
 - Gathered sprint history for velocity trends
 - Calculated realistic capacity (account for PTO)
 - Identified carryover items upfront

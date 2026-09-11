@@ -1,5 +1,7 @@
 # Workers AI Gotchas
 
+Consult this reference when workers ai gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Critical: @cloudflare/ai is DEPRECATED
 
 ```typescript
@@ -17,6 +19,7 @@ export default {
 ## Development
 
 ### "AI inference doesn't work locally"
+
 ```bash
 # ❌ Local AI doesn't work
 wrangler dev
@@ -25,7 +28,9 @@ wrangler dev --remote
 ```
 
 ### "env.AI is undefined"
+
 Add binding to wrangler.jsonc:
+
 ```jsonc
 { "ai": { "binding": "AI" } }
 ```
@@ -33,12 +38,14 @@ Add binding to wrangler.jsonc:
 ## API Responses
 
 ### Embedding response shape varies
+
 ```typescript
 // @cf/baai/bge-base-en-v1.5 returns: { data: [[0.1, 0.2, ...]] }
 const embedding = response.data[0]; // Get first element
 ```
 
 ### Stream returns ReadableStream
+
 ```typescript
 const stream = await env.AI.run(model, { messages: [...], stream: true });
 for await (const chunk of stream) { console.log(chunk.response); }
@@ -65,15 +72,19 @@ await env.AI.run('@cf/meta/llama-3.1-8b-instruct', ...);
 ## Model-Specific
 
 ### Function calling
+
 Only `@cf/meta/llama-3.1-*` and `mistral-7b-instruct-v0.2` support tools.
 
 ### Empty response
+
 Check context limits (2K-8K tokens). Validate input structure.
 
 ### Inconsistent responses
+
 Set `temperature: 0` for deterministic outputs.
 
 ### Cold start latency
+
 First request: 1-3s. Use AI Gateway caching for frequent prompts.
 
 ## TypeScript
@@ -90,9 +101,11 @@ interface EmbeddingResponse { data: number[][]; shape: number[]; }
 ## Common Errors
 
 ### 7502: Model not found
+
 Check exact model name at developers.cloudflare.com/workers-ai/models/
 
 ### 7504: Input validation failed
+
 ```typescript
 // Text gen requires messages array
 await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {

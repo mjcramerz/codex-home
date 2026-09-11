@@ -1,5 +1,7 @@
 # Cache Reserve Configuration
 
+Consult this reference when cache reserve configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Dashboard Setup
 
 **Minimum steps to enable:**
@@ -163,7 +165,7 @@ Cache Reserve works automatically with Workers deployed via Wrangler. No special
 
 ## See Also
 
-- [README]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/README.md) - Overview and core concepts
-- [API Reference]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/api.md) - Purging and monitoring APIs
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/patterns.md) - Best practices and optimization
-- [Gotchas]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/cache-reserve/gotchas.md) - Common issues and troubleshooting
+- [README]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/README.md) - Overview and core concepts
+- [API Reference]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/api.md) - Purging and monitoring APIs
+- [Patterns]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/patterns.md) - Best practices and optimization
+- [Gotchas]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/cache-reserve/gotchas.md) - Common issues and troubleshooting

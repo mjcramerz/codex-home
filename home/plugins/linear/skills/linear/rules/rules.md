@@ -12,9 +12,13 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # PM-Linear Issues Rules
 
+Apply the following pm-linear issues rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/linear/1.0.0/skills/linear/SKILL.md`.
-- Prefer deterministic scripts in `$CODEX_HOME/plugins/cache/codex-home/linear/1.0.0/skills/linear/scripts/`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/linear/1.0.0/skills/linear/references/` for factual guidance.
+
+- Follow the workflow in `$CODEX_HOME/plugins/linear/skills/linear/SKILL.md`.
+- Prefer deterministic scripts in `$CODEX_HOME/plugins/linear/skills/linear/scripts/`.
+- Use references in `$CODEX_HOME/plugins/linear/skills/linear/references/` for factual guidance.

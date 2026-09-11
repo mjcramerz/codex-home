@@ -13,9 +13,13 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Obsidian Meeting Note Reference
 
+Consult this reference when obsidian meeting note reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Recommended sections
+
 - Agenda
 - Context / Pre-read
 - Decisions
@@ -23,6 +27,7 @@ updated: '2026-02-20'
 - Risks / Open questions
 
 ## Action item format
+
 - `Owner` (required)
 - `Due date` (recommended)
 - `Status` (open | in-progress | done)

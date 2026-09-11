@@ -1,32 +1,23 @@
-# Shell runtime guidance
-Purpose: define the common shell execution rules for shell-sensitive work in the runtime pack for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+# Shell runtime boundaries
 
-## Choose the matching shell
-- You must use `zsh` for zsh-sensitive commands and zsh assets.
-- You must use `bash` for Bash-sensitive commands and Bash assets.
-- You must use `sh`/`dash` for POSIX-portable assets.
-- You must validate shell-specific files with the shell they claim to support.
-- You must prefer `bash -c` over `bash -lc` for Bash execution unless login-shell startup files are the explicit subject of the work.
+Use this guide when you change POSIX shell, Bash or zsh scripts and repository automation. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Deterministic execution defaults
-- You must prefer `LC_ALL=C` and `TZ=UTC` for reproducible command output.
-- You must prefer machine-readable flags (`--json`, `--porcelain`, `--null`, `--color=never`) when available.
-- You must prefer read-only discovery first, then the smallest deterministic change.
-- Avoid interactive flows and fuzzy parsing.
+## Apply these practices
 
-## Safe command shape
-- Refuse destructive operations on empty paths, `/`, or ambiguous globs.
-- You must use `--` before untrusted positionals where supported.
-- You must prefer explicit arrays or direct argv execution over shell-string construction.
-- Avoid `eval`, avoid command strings built from untrusted fragments, and do not reach for login shells just to make commands work.
-- Reparse structured files after mutation.
+**1.** Inspect the shebang and declared interpreter. Keep POSIX sh free of Bash or zsh extensions; select Bash explicitly when arrays or other Bash features are required.
 
-## Documentation scope
-- You must keep shell guidance focused on shell choice, reproducibility, validation, and command safety.
-- You must route plugin, skill, and workflow ownership questions through the matching pack entrypoints instead of shell guidance.
+**2.** Quote expansions, use -- before untrusted operands where supported, prefer argument arrays in Bash, and never use eval to dispatch user input. Avoid parsing ls or splitting filenames on whitespace.
 
-## After that, you must check related files
+**3.** Check failures explicitly around expected fallible operations. Do not assume set -e, pipelines or subshells give uniform error propagation across shells; isolate deliberate nonzero statuses.
+
+**4.** Use private temporary directories and cleanup traps scoped to paths you created. Resolve and check destructive targets, reject empty paths, and preserve caller-owned files.
+
+**5.** Keep stdout machine-readable when required, send redacted diagnostics to stderr and bound command duration. Run the matching interpreter's syntax check and existing ShellCheck/tests where available.
+
+## Select related guidance
+
 - `$CODEX_HOME/docs/style/bash.md`
 - `$CODEX_HOME/docs/style/sh.md`
 - `$CODEX_HOME/index/style/overview.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

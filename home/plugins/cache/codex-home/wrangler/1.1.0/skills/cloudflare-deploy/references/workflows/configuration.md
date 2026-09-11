@@ -1,5 +1,7 @@
 # Workflow Configuration
 
+Consult this reference when workflow configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## wrangler.jsonc Setup
 
 ```jsonc
@@ -46,6 +48,7 @@ await step.do('api call', {
 ```
 
 ### Parallel Steps
+
 ```typescript
 const [user, settings] = await Promise.all([
   step.do('fetch user', async () => this.env.KV.get(`user:${id}`)),
@@ -54,6 +57,7 @@ const [user, settings] = await Promise.all([
 ```
 
 ### Conditional Steps
+
 ```typescript
 const config = await step.do('fetch config', async () => 
   this.env.KV.get('flags', { type: 'json' })
@@ -69,6 +73,7 @@ if (Date.now() > deadline) { /* BAD */ }
 ```
 
 ### Dynamic Steps (Loops)
+
 ```typescript
 const files = await step.do('list files', async () => 
   this.env.BUCKET.list()
@@ -148,4 +153,4 @@ export const onRequest: PagesFunction<Env> = async ({ env, request }) => {
 
 Configure in wrangler.jsonc under `service_bindings`.
 
-See: [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workflows/api.md), [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workflows/patterns.md)
+See: [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workflows/api.md), [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workflows/patterns.md)

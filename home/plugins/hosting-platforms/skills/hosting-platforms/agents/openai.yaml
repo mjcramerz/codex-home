@@ -1,20 +1,18 @@
 interface:
-  display_name: "Hosting Platforms"
-  short_description: "Route deployments across Vercel, Render, and Netlify"
-  default_prompt: "Use $hosting-platforms. Use the Hosting Platforms skill to choose and coordinate Vercel, Render, or Netlify deployment workflows."
-
+  display_name: Hosting Platforms
+  short_description: Use this skill for route deployments across Vercel, Render, and Netlify
+  default_prompt: Use $hosting-platforms for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "vercel"
-      description: "vercel MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.vercel.com"
-    - type: "mcp"
-      value: "render"
-      description: "render MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.render.com/mcp"
-
+  - type: mcp
+    value: vercel
+    description: vercel MCP server
+    transport: streamable_http
+    url: https://mcp.vercel.com
+  - type: mcp
+    value: render
+    description: render MCP server
+    transport: streamable_http
+    url: https://mcp.render.com/mcp
 policy:
   allow_implicit_invocation: true

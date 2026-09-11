@@ -1,5 +1,7 @@
 # Unsloth: Fast Fine-Tuning with Memory Optimization
 
+Consult this reference when unsloth: fast fine-tuning with memory optimization is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **Unsloth** is a fine-tuning library that provides ~2x faster training and ~60% less VRAM usage for LLM training. It's particularly useful when working with limited GPU memory or when speed is critical.
 
 - **GitHub**: [unslothai/unsloth](https://github.com/unslothai/unsloth)
@@ -23,6 +25,7 @@ Unsloth supports many popular models including:
 - **Vision LLMs**: Qwen3-VL, Gemma 3, Llama 3.2 Vision, Pixtral
 
 Use Unsloth's pre-optimized model variants when available:
+
 ```python
 # Unsloth-optimized models load faster and use less memory
 model_id = "unsloth/LFM2.5-1.2B-Instruct"      # 4-bit quantized
@@ -94,6 +97,7 @@ trainer.train()
 For LFM2.5 inference, use these recommended generation parameters:
 
 **Instruct models:**
+
 ```python
 temperature = 0.1
 top_k = 50
@@ -102,6 +106,7 @@ repetition_penalty = 1.05
 ```
 
 **Thinking models:**
+
 ```python
 temperature = 0.05
 top_k = 50
@@ -255,6 +260,7 @@ model.save_pretrained_gguf("./gguf", tokenizer, quantization_method="q4_k_m")
 For Qwen3-VL models, use these recommended settings:
 
 **Instruct models:**
+
 ```python
 temperature = 0.7
 top_p = 0.8
@@ -262,6 +268,7 @@ presence_penalty = 1.5
 ```
 
 **Thinking models:**
+
 ```python
 temperature = 1.0
 top_p = 0.95
@@ -279,7 +286,7 @@ presence_penalty = 0.0
 
 ## Example: Full VLM Training Script
 
-See `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/unsloth_sft_example.py` for a complete production-ready example that includes:
+See `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/unsloth_sft_example.py` for a complete production-ready example that includes:
 - Unsloth VLM setup
 - Streaming dataset support
 - Trackio monitoring
@@ -287,14 +294,16 @@ See `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-m
 - CLI arguments
 
 Run locally:
+
 ```bash
-uv run $CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/unsloth_sft_example.py \
+uv run $CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/unsloth_sft_example.py \
     --dataset trl-lib/Capybara \
     --max-steps 500 \
     --output-repo username/my-model
 ```
 
 Run on HF Jobs:
+
 ```python
 hf_jobs("uv", {
     "script": "<script content>",
@@ -306,7 +315,7 @@ hf_jobs("uv", {
 
 ## See Also
 
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-model-trainer/scripts/unsloth_sft_example.py` - Complete text LLM training example
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-model-trainer/scripts/unsloth_sft_example.py` - Complete text LLM training example
 - [Unsloth Documentation](https://unsloth.ai/docs)
 - [LFM2.5 Guide](https://unsloth.ai/docs/models/tutorials/lfm2.5)
 - [Qwen3-VL Guide](https://unsloth.ai/docs/models/qwen3-vl-how-to-run-and-fine-tune)

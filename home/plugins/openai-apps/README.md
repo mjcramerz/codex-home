@@ -1,5 +1,16 @@
-# OpenAI Apps
+# OpenAI Apps task routing
 
-OpenAI platform application scaffolding and documentation workflows.
+Read this plugin only when its listed skills match the current task. Discover the actual client tools, account access and permission requirements before invoking anything. Treat this directory as bundled source, not proof of an installed or authenticated integration.
 
-This is retained local plugin source, not an app-owned installed cache. Install and trust it through the client marketplace UI before use. Review the included skill instructions against tools available in the current session. Historical browser instructions referring to js_repl do not make that removed Codex tool available; use the deployed browser MCP tools instead. This local package is not an assertion of vendor endorsement or account access.
+## Select one entrypoint
+
+| Skill | Apply it to |
+| --- | --- |
+| [chatgpt-apps](skills/chatgpt-apps/SKILL.md) | Use this skill for build, scaffold, refactor, and troubleshoot ChatGPT Apps SDK applications that combine an MCP server and widget UI |
+| [openai-docs](skills/openai-docs/SKILL.md) | Use this skill for reference official OpenAI developer documentation and cite current guidance for APIs and platform features |
+
+## Preserve the integration boundary
+
+Read only the references required by the selected skill. Inspect bundled scripts before execution; retain their argument and output contracts. Keep credentials and private payloads out of examples, logs and ambient hook context.
+
+Do not install, enable, trust, publish or update a remote integration merely because you edit these files. Keep canonical and authorized bundled mirrors coherent, preserve existing resource paths and license notices, and report the checks you actually performed. Local packaging does not assert vendor endorsement.

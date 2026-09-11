@@ -110,6 +110,8 @@ Exclude files from upload using `.assetsignore` (same syntax as `.gitignore`):
 
 ```
 # .assetsignore
+
+Consult this reference when .assetsignore is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 _worker.js
 *.map
 *.md

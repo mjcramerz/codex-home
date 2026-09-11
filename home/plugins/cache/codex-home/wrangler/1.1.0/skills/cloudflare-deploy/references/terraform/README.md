@@ -1,5 +1,7 @@
 # Cloudflare Terraform Provider
 
+Consult this reference when cloudflare terraform provider is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **Expert guidance for Cloudflare Terraform Provider - infrastructure as code for Cloudflare resources.**
 
 ## Core Principles
@@ -45,13 +47,11 @@ provider "cloudflare" {
 1. **API Token** (RECOMMENDED): `api_token` or `CLOUDFLARE_API_TOKEN`
    - Create: Dashboard → My Profile → API Tokens
    - Scope to specific accounts/zones for security
-   
+
 2. **Global API Key** (LEGACY): `api_key` + `api_email` or `CLOUDFLARE_API_KEY` + `CLOUDFLARE_EMAIL`
    - Less secure, use tokens instead
-   
+
 3. **User Service Key**: `user_service_key` for Origin CA certificates
-
-
 
 ## Quick Reference: Common Commands
 
@@ -84,19 +84,21 @@ cf-terraforming import --resource-type cloudflare_dns_record --zone <zone-id>
 
 ## Reading Order
 
-1. Start with [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/README.md) for provider setup and authentication
-2. Review [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/configuration.md) for resource configurations
-3. Check [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/api.md) for data sources and existing resource queries
-4. See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/patterns.md) for multi-environment and CI/CD patterns
-5. Read [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/gotchas.md) for state drift, v5 breaking changes, and troubleshooting
+1. Start with [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/README.md) for provider setup and authentication
+2. Review [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/configuration.md) for resource configurations
+3. Check [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/api.md) for data sources and existing resource queries
+4. See [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/patterns.md) for multi-environment and CI/CD patterns
+5. Read [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/gotchas.md) for state drift, v5 breaking changes, and troubleshooting
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/configuration.md) - Resources for zones, DNS, workers, KV, R2, D1, Pages, rulesets
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/api.md) - Data sources for existing resources
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/patterns.md) - Architecture patterns, multi-env setup, CI/CD integration
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/gotchas.md) - Common issues, security, best practices
+
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/configuration.md) - Resources for zones, DNS, workers, KV, R2, D1, Pages, rulesets
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/api.md) - Data sources for existing resources
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/patterns.md) - Architecture patterns, multi-env setup, CI/CD integration
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/gotchas.md) - Common issues, security, best practices
 
 ## See Also
-- [pulumi]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/) - Alternative IaC tool for Cloudflare
-- [wrangler]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/wrangler/) - CLI deployment alternative
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker runtime documentation
+
+- [pulumi]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/) - Alternative IaC tool for Cloudflare
+- [wrangler]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/wrangler/) - CLI deployment alternative
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker runtime documentation

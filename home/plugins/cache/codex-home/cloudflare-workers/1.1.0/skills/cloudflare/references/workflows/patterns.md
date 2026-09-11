@@ -1,5 +1,7 @@
 # Workflow Patterns
 
+Consult this reference when workflow patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Image Processing Pipeline
 
 ```typescript
@@ -141,18 +143,21 @@ await introspector.modify(async (m) => {
 ## Orchestration Patterns
 
 ### Fan-Out (Parallel Processing)
+
 ```typescript
 const files = await step.do('list', async () => this.env.BUCKET.list());
 await Promise.all(files.objects.map((file, i) => step.do(`process ${i}`, async () => processFile(await (await this.env.BUCKET.get(file.key)).arrayBuffer()))));
 ```
 
 ### Parent-Child Workflows
+
 ```typescript
 const child = await step.do('start child', async () => await this.env.CHILD_WORKFLOW.create({id: `child-${event.instanceId}`, params: { data: result.data }}));
 await step.do('other work', async () => console.log(`Child started: ${child.id}`));
 ```
 
 ### Race Pattern
+
 ```typescript
 const winner = await Promise.race([
   step.do('option A', async () => slowOperation()),
@@ -161,6 +166,7 @@ const winner = await Promise.race([
 ```
 
 ### Scheduled Workflow Chain
+
 ```typescript
 export default { async scheduled(event, env) { await env.DAILY_WORKFLOW.create({id: `daily-${event.scheduledTime}`, params: { timestamp: event.scheduledTime }}); }};
 export class DailyWorkflow extends WorkflowEntrypoint<Env, Params> {
@@ -172,4 +178,4 @@ export class DailyWorkflow extends WorkflowEntrypoint<Env, Params> {
 }
 ```
 
-See: [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/configuration.md), [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/api.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workflows/gotchas.md)
+See: [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/configuration.md), [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/api.md), [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workflows/gotchas.md)

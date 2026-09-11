@@ -8,6 +8,10 @@ sources:
   - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-unpackaged-apps
 ---
 
+# build run and launch verification
+
+Consult this reference when build run and launch verification is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when the task involves building, running, launch failures, startup crashes, or final verification that a WinUI app actually opens on the current machine.

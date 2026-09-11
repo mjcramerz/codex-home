@@ -5,6 +5,10 @@ impactDescription: synchronous measurement, avoid unnecessary re-renders
 tags: layout, measurement, onLayout, useLayoutEffect
 ---
 
+# ui measure views
+
+Apply the following ui measure views guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Measuring View Dimensions
 
 Use both `useLayoutEffect` (synchronous) and `onLayout` (for updates). The sync

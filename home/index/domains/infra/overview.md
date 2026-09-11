@@ -1,9 +1,9 @@
 # Infra (domain router, overview)
-Purpose: quick navigation for this domain’s entrypoints for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
 
+Use this route when you need infra (domain guidance, overview). Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Contents
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/index/domains/infra/ansible.md` — Ansible (entrypoint)
 - `$CODEX_HOME/index/domains/infra/aptly.md` — Aptly (entrypoint)
@@ -20,8 +20,8 @@ You must read only the smallest section that resolves the current task, follow t
 - `$CODEX_HOME/index/domains/infra/virtualization.md` — Virtualization workflow (entrypoint)
 <!-- END:contents -->
 
-
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/domains/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`

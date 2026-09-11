@@ -1,5 +1,7 @@
 # Smart Placement Configuration
 
+Consult this reference when smart placement configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## wrangler.jsonc Setup
 
 ```jsonc
@@ -62,6 +64,7 @@
 ## Requirements & Limitations
 
 ### Requirements
+
 - **Wrangler version:** 2.20.0+
 - **Analysis time:** Up to 15 minutes
 - **Traffic requirements:** Consistent multi-location traffic
@@ -74,13 +77,14 @@
 Smart Placement is fundamentally limited to Workers with default `fetch` handlers. This is a key architectural constraint.
 
 - ✅ **Affects:** `fetch` event handlers ONLY (the default export's fetch method)
-- ❌ **Does NOT affect:** 
+- ❌ **Does NOT affect:**
   - RPC methods (Service Bindings with `WorkerEntrypoint` - see example below)
   - Named entrypoints (exports other than `default`)
   - Workers without `fetch` handlers
   - Queue consumers, scheduled handlers, or other event types
 
 **Example - Smart Placement ONLY affects `fetch`:**
+
 ```typescript
 // ✅ Smart Placement affects this:
 export default {
@@ -105,11 +109,12 @@ export async function scheduled(event: ScheduledEvent, env: Env) {
 }
 ```
 
-**Consequence:** If your backend logic uses RPC methods (`WorkerEntrypoint`), Smart Placement cannot optimize those calls. You must use fetch-based patterns for Smart Placement to work.
+**Consequence:** If your backend logic uses RPC methods (`WorkerEntrypoint`), Smart Placement cannot optimize those calls. Use fetch-based patterns for Smart Placement to work.
 
 **Solution:** Convert RPC methods to fetch endpoints, or use a wrapper Worker with `fetch` handler that calls your backend RPC (though this adds latency).
 
 ### Baseline Traffic
+
 Smart Placement automatically routes 1% of requests WITHOUT optimization as baseline for performance comparison.
 
 ### Validation Rules

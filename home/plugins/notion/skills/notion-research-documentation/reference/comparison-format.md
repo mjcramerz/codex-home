@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Comparison Format
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **When to use**:
 - Evaluating multiple options
@@ -49,4 +52,3 @@ See [comparison-template.md](comparison-template.md) for the full template.
 - "What are the pros and cons of each deployment approach?"
 - "Compare the vendor proposals"
 - "Evaluate the different authentication methods we've documented"
-

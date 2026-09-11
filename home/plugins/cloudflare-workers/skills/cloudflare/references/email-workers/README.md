@@ -1,5 +1,7 @@
 # Cloudflare Email Workers
 
+Consult this reference when cloudflare email workers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Process incoming emails programmatically using Cloudflare Workers runtime.
 
 ## Overview
@@ -55,10 +57,10 @@ For comprehensive understanding, read files in this order:
 
 | File | Description | Key Topics |
 |------|-------------|------------|
-| [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/email-workers/api.md) | Complete API reference | ForwardableEmailMessage, SendEmail bindings, reply() method, postal-mime/mimetext APIs |
-| [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/email-workers/configuration.md) | Setup and configuration | wrangler.jsonc, bindings, deployment, dependencies |
-| [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/email-workers/patterns.md) | Real-world examples | Allowlists from KV, auto-reply with threading, attachment extraction, webhook notifications |
-| [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/email-workers/gotchas.md) | Pitfalls and debugging | Stream consumption, ctx.waitUntil errors, security, limits |
+| [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/email-workers/api.md) | Complete API reference | ForwardableEmailMessage, SendEmail bindings, reply() method, postal-mime/mimetext APIs |
+| [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/email-workers/configuration.md) | Setup and configuration | wrangler.jsonc, bindings, deployment, dependencies |
+| [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/email-workers/patterns.md) | Real-world examples | Allowlists from KV, auto-reply with threading, attachment extraction, webhook notifications |
+| [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/email-workers/gotchas.md) | Pitfalls and debugging | Stream consumption, ctx.waitUntil errors, security, limits |
 
 ## Architecture
 
@@ -136,7 +138,7 @@ Before deploying Email Workers:
 3. **Configure DMARC/SPF** for sending domains (required for replies)
 4. **Set up wrangler.jsonc** with SendEmail binding
 
-See [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/email-workers/configuration.md) for detailed setup.
+See [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/email-workers/configuration.md) for detailed setup.
 
 ## Service Worker Syntax (Deprecated)
 

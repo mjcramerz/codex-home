@@ -1,5 +1,7 @@
 # Workers Best Practices — Rules
 
+Consult this reference when workers best practices — rules is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Each rule has an imperative summary, what to check, the correct pattern, and an anti-pattern where applicable. Code examples are plain TypeScript — no MDX components.
 
 When a rule involves config fields or API signatures that may evolve, a **Retrieve** callout reminds you to check the latest docs or types before flagging. All doc paths are relative to `https://developers.cloudflare.com`.
@@ -53,6 +55,7 @@ export default {
 ```
 
 Anti-pattern:
+
 ```ts
 // Hand-written Env that drifts from actual bindings
 interface Env {
@@ -76,6 +79,7 @@ Secrets must never appear in wrangler config or source code. Use `wrangler secre
 ```
 
 Anti-pattern:
+
 ```jsonc
 {
   "vars": {
@@ -101,6 +105,7 @@ Workers have a 128 MB memory limit. Buffering entire bodies with `await response
 **Check**: any `await response.text()`, `await response.json()`, or `await response.arrayBuffer()` on data that could be large or unbounded. Small, bounded payloads (known-size JSON, config files) are fine to buffer.
 
 Correct — stream through:
+
 ```ts
 async fetch(request: Request, env: Env): Promise<Response> {
   const response = await fetch("https://api.example.com/large-dataset");
@@ -109,6 +114,7 @@ async fetch(request: Request, env: Env): Promise<Response> {
 ```
 
 Correct — concatenate multiple streams:
+
 ```ts
 async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const urls = ["https://api.example.com/part-1", "https://api.example.com/part-2"];
@@ -132,6 +138,7 @@ async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response
 ```
 
 Anti-pattern:
+
 ```ts
 // Buffers entire body — crashes on large payloads
 const response = await fetch("https://api.example.com/large-dataset");
@@ -159,6 +166,7 @@ async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response
 ```
 
 Anti-pattern:
+
 ```ts
 // Destructuring ctx loses the this binding
 const { waitUntil } = ctx;  // "Illegal invocation" at runtime
@@ -181,6 +189,7 @@ const object = await env.MY_BUCKET.get("my-file");
 ```
 
 Anti-pattern:
+
 ```ts
 // REST API from inside a Worker — unnecessary overhead
 const response = await fetch(
@@ -290,6 +299,7 @@ console.error(JSON.stringify({ message: "request failed", error: e instanceof Er
 ```
 
 Anti-pattern:
+
 ```ts
 // Unstructured string logs — hard to query
 console.log("Got a request to " + url.pathname);
@@ -318,6 +328,7 @@ export default {
 ```
 
 Anti-pattern:
+
 ```ts
 // Module-level mutable state — leaks between requests
 let currentUser: string | null = null;
@@ -353,6 +364,7 @@ ctx.waitUntil(fetch("https://api.example.com/webhook", { method: "POST", body: J
 ```
 
 Anti-pattern:
+
 ```ts
 // Floating promise — result dropped, error swallowed
 fetch("https://api.example.com/webhook", { method: "POST", body: JSON.stringify(data) });
@@ -401,6 +413,7 @@ async function verifyToken(provided: string, expected: string): Promise<boolean>
 ```
 
 Anti-pattern:
+
 ```ts
 // Predictable — not cryptographically secure
 const token = Math.random().toString(36).substring(2);

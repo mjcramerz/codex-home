@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Research Summary Format
+
+Use this reference when you research connected Notion sources and produce an attributed summary or comparison. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **When to use**: General research requests, most common format
 
@@ -45,4 +48,3 @@ See [research-summary-template.md](research-summary-template.md) for the full te
 - "What does our project documentation say about the API redesign?"
 - "Summarize the team's discussion about mobile strategy"
 - "Compile information about our deployment process"
-

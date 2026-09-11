@@ -5,6 +5,10 @@ impactDescription: reduces network payload by avoiding duplicate serialization
 tags: server, rsc, serialization, props, client-components
 ---
 
+# server dedup props
+
+Apply the following server dedup props guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Avoid Duplicate Serialization in RSC Props
 
 **Impact: LOW (reduces network payload by avoiding duplicate serialization)**

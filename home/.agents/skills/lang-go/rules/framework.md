@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Lang Go Framework
+
+Apply the following lang go framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `lang-go`
 - Source of truth: `$CODEX_SKILLS/lang-go/SKILL.md`

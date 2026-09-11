@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Tuning rollback matrix
+
+Consult this reference when tuning rollback matrix is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 | Tuning domain | Change example | Risk | Rollback command | Validation after rollback |
 | --- | --- | --- | --- | --- |

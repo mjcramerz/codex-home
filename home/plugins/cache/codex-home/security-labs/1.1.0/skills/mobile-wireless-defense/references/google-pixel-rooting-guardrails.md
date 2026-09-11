@@ -13,12 +13,17 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Google Pixel rooting guardrails
 
+Consult this reference when google pixel rooting guardrails is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Objective
+
 Manage risk when preparing authorized lab devices for mobile security testing.
 
 ## Guardrails
+
 - Use dedicated lab devices only.
 - Record device ownership, serial, and scope ID.
 - Keep signed rollback images and restore instructions.

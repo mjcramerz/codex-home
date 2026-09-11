@@ -5,6 +5,10 @@ impactDescription: enables hardware acceleration
 tags: rendering, svg, css, animation, performance
 ---
 
+# rendering animate svg wrapper
+
+Apply the following rendering animate svg wrapper guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Animate SVG Wrapper Instead of SVG Element
 
 Many browsers don't have hardware acceleration for CSS3 animations on SVG elements. Wrap SVG in a `<div>` and animate the wrapper instead.

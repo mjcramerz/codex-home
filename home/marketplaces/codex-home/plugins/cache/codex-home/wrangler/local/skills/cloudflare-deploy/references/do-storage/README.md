@@ -1,5 +1,7 @@
 # Cloudflare Durable Objects Storage
 
+Consult this reference when cloudflare durable objects storage is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Persistent storage API for Durable Objects with SQLite and KV backends, PITR, and automatic concurrency control.
 
 ## Overview
@@ -55,21 +57,21 @@ export class Counter extends DurableObject {
 
 ## Reading Order
 
-**New to DO storage:** configuration.md → api.md → patterns.md → gotchas.md  
-**Building features:** patterns.md → api.md → gotchas.md  
-**Debugging issues:** gotchas.md → api.md  
+**New to DO storage:** configuration.md → api.md → patterns.md → gotchas.md
+**Building features:** patterns.md → api.md → gotchas.md
+**Debugging issues:** gotchas.md → api.md
 **Writing tests:** testing.md
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/configuration.md) - wrangler.jsonc migrations, SQLite vs KV setup, RPC binding
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/api.md) - SQL exec/cursors, KV methods, storage options, transactions, alarms, PITR
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/patterns.md) - Schema migrations, caching, rate limiting, batch processing, parent-child coordination
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/gotchas.md) - Concurrency gates, INTEGER precision, transaction rules, SQL limits
-- [testing.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/testing.md) - vitest-pool-workers setup, testing DOs with SQL/alarms/PITR
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/configuration.md) - wrangler.jsonc migrations, SQLite vs KV setup, RPC binding
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/api.md) - SQL exec/cursors, KV methods, storage options, transactions, alarms, PITR
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/patterns.md) - Schema migrations, caching, rate limiting, batch processing, parent-child coordination
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/gotchas.md) - Concurrency gates, INTEGER precision, transaction rules, SQL limits
+- [testing.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/testing.md) - vitest-pool-workers setup, testing DOs with SQL/alarms/PITR
 
 ## See Also
 
-- [durable-objects]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/) - DO fundamentals and coordination patterns
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker runtime for DO stubs
-- [d1]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/) - Shared database alternative to per-DO storage
+- [durable-objects]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/) - DO fundamentals and coordination patterns
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker runtime for DO stubs
+- [d1]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/) - Shared database alternative to per-DO storage

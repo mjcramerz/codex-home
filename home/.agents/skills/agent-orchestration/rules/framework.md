@@ -8,7 +8,10 @@ tags:
 - framework
 updated: '2026-03-12'
 ---
+
 # agent-orchestration framework
+
+Apply the following agent-orchestration framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `agent-orchestration`
 - Category: `COMMON`

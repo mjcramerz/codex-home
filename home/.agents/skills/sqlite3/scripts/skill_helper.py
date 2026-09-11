@@ -18,7 +18,7 @@ SKILL_NAME = 'sqlite3'
 SKILL_CATEGORY = 'DB'
 SKILL_DESCRIPTION = 'Inspect, query, and maintain SQLite databases safely with the sqlite3 CLI.'
 LAST_REFRESH_UTC = '2026-03-11'
-COVERAGE_HEADINGS = ['Use this skill when', 'Inputs', 'Scope and boundaries', 'Workflow', 'Validation and testing', 'Outputs', 'References']
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [{'title': 'SQLite Command Line Shell', 'url': 'https://sqlite.org/cli.html', 'note': 'sqlite3 shell flags, dot commands, and scripting patterns.'}, {'title': 'SQLite Pragmas', 'url': 'https://sqlite.org/pragma.html', 'note': 'Integrity checks, journaling, and schema/runtime inspection.'}, {'title': 'EXPLAIN QUERY PLAN', 'url': 'https://sqlite.org/eqp.html', 'note': 'Query-plan inspection for performance troubleshooting.'}]
 
 

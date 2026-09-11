@@ -1,10 +1,9 @@
 interface:
-  display_name: "Acrobat Reader"
-  short_description: "Acrobat PDF review and organization workflow"
-  icon_small: "./assets/app-icon.png"
-  icon_large: "./assets/app-icon.png"
-  brand_color: "#FA0F00"
-  default_prompt: "Use $acrobat-reader. Act as the Acrobat Reader specialist. Use Adobe Acrobat for reading, organizing, annotating, and exporting PDFs, keep assumptions explicit, and hand off clearly when local document tooling is the better fit."
-
+  display_name: Acrobat Reader
+  short_description: Use this skill for acrobat PDF review and organization workflow
+  icon_small: ./assets/app-icon.png
+  icon_large: ./assets/app-icon.png
+  brand_color: '#FA0F00'
+  default_prompt: Use $acrobat-reader for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

@@ -14,21 +14,37 @@ metadata:
 
 # Acrobat Review
 
+## Execute the scoped task
+
+1. Identify the actual source assets, requested output, editable format and constraints. Confirm that any named attachment or design exists; do not invent a missing input.
+
+2. Read the selected tool or script contract and establish access to the relevant document, project or account. Keep sensitive source content out of logs and unrelated services.
+
+3. Work on a copy or reversible revision where supported. Preserve required dimensions, metadata, accessibility, editable elements and source fidelity; inspect rendered output rather than relying on file creation alone.
+
+4. Return only artifacts you actually created or changed. Distinguish visual inspection, automated checks and unsupported application-specific behavior; retain required source attribution and licenses.
+
+## Task-specific details and resources
+
 ## Use this skill when
+
 - the task is about comment review, redlines, or comparing PDF revisions
 - the user needs a review packet, comment summary, or collaborator handoff
 - Acrobat is the right tool for side-by-side comparison or annotation consolidation
 
 ## Workflow
-1) Identify the baseline PDF, the updated PDF, and the review objective.
-2) Use the `adobe-acrobat` app to compare revisions, inspect comments, and consolidate markup.
-3) Summarize material differences, open questions, and required follow-up actions.
-4) Export the reviewed artifact and package a concise review handoff for the next owner.
+
+1. Identify the baseline PDF, the updated PDF, and the review objective.
+2. Use the `adobe-acrobat` app to compare revisions, inspect comments, and consolidate markup.
+3. Summarize material differences, open questions, and required follow-up actions.
+4. Export the reviewed artifact and package a concise review handoff for the next owner.
 
 ## Outputs
+
 - Reviewed PDF comparison or markup summary
 - Collaborator handoff with action items and unresolved comments
 
 ## References
+
 - `references/review-checklist.md`
 - `references/collaboration-handoff.md`

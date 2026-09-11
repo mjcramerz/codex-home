@@ -1,3 +1,7 @@
+# gotchas
+
+Consult this reference when gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Best Practices Summary
 
 **Smart Shield Note:** Argo Smart Routing evolving into Smart Shield. Best practices below remain applicable; monitor Cloudflare changelog for Smart Shield updates.
@@ -49,6 +53,7 @@
 **Cause:** Zone-level restrictions from billing, plan, or permissions
 
 **Solution Pattern:**
+
 ```typescript
 const status = await client.argo.smartRouting.get({ zone_id: zoneId });
 
@@ -72,6 +77,7 @@ await client.argo.smartRouting.edit({ zone_id: zoneId, value: 'on' });
 **Cause:** Exceeded API rate limits (typically 1200 requests per 5 minutes)
 
 **Solution:**
+
 ```typescript
 import { RateLimitError } from 'cloudflare';
 

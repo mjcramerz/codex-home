@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Milestone Summary Template
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 Use this when completing major phases or milestones.
 
@@ -39,4 +42,3 @@ Use this when completing major phases or milestones.
 ### Next Phase
 Starting [Phase name] on [Date]
 ```
-

@@ -1,5 +1,7 @@
 # Playwright CLI Reference
 
+Consult this reference when playwright cli reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use the wrapper script unless the CLI is already installed globally:
 
 ```bash

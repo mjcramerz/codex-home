@@ -5,6 +5,10 @@ impactDescription: single listener for N components
 tags: client, swr, event-listeners, subscription
 ---
 
+# client event listeners
+
+Apply the following client event listeners guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Deduplicate Global Event Listeners
 
 Use `useSWRSubscription()` to share global event listeners across component instances.

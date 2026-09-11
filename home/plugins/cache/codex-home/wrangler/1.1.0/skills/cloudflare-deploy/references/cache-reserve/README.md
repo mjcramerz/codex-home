@@ -1,5 +1,7 @@
 # Cloudflare Cache Reserve
 
+Consult this reference when cloudflare cache reserve is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **Persistent cache storage built on R2 for long-term content retention**
 
 ## Smart Shield Integration
@@ -130,18 +132,19 @@ curl -I https://example.com/asset.jpg | grep -i cache
 | Task | Files |
 |------|-------|
 | Evaluate if Cache Reserve fits your use case | README.md (this file) |
-| Enable Cache Reserve for your zone | README.md + [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/configuration.md) |
-| Use with Workers (understand limitations) | [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/api.md) |
-| Setup via SDKs or IaC (TypeScript, Python, Terraform) | [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/configuration.md) |
-| Optimize costs and debug issues | [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/patterns.md) + [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) |
-| Understand eligibility and troubleshoot | [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) → [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/patterns.md) |
+| Enable Cache Reserve for your zone | README.md + [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/configuration.md) |
+| Use with Workers (understand limitations) | [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/api.md) |
+| Setup via SDKs or IaC (TypeScript, Python, Terraform) | [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/configuration.md) |
+| Optimize costs and debug issues | [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/patterns.md) + [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) |
+| Understand eligibility and troubleshoot | [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) → [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/patterns.md) |
 
 **Files:**
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/configuration.md) - Setup, API, SDKs, and Cache Rules
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/api.md) - Purging, monitoring, Workers integration
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/patterns.md) - Best practices, cost optimization, debugging
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) - Common issues, limitations, troubleshooting
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/configuration.md) - Setup, API, SDKs, and Cache Rules
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/api.md) - Purging, monitoring, Workers integration
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/patterns.md) - Best practices, cost optimization, debugging
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cache-reserve/gotchas.md) - Common issues, limitations, troubleshooting
 
 ## See Also
-- [r2]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/) - Cache Reserve built on R2 storage
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Workers integration with Cache API
+
+- [r2]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/) - Cache Reserve built on R2 storage
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Workers integration with Cache API

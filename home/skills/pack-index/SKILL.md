@@ -1,8 +1,9 @@
 ---
 name: pack-index
-description: Maintain and update the pack routing index, including $CODEX_HOME/index/manifest.yml,
-  $CODEX_HOME/index/ entrypoints, and generated $CODEX_HOME/INDEX.md. Use when adding/removing
-  entrypoints, updating related links, or regenerating index artifacts.
+description: Use this skill to maintain and update the pack routing index, including
+  $CODEX_HOME/index/manifest.yml, $CODEX_HOME/index/ entrypoints, and generated $CODEX_HOME/INDEX.md.
+  Use when adding/removing entrypoints, updating related links, or regenerating index
+  artifacts.
 metadata:
   version: '1.0'
   short-description: Maintain pack index and routing
@@ -17,47 +18,33 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#7032CC'
-  default-prompt: Act as the "PACK-Index" specialist for "Maintain pack index and routing".
-    Deliver focused, deterministic results with minimal, reviewable changes and explicit assumptions.
-    Validate untrusted inputs and bounded I/O, run the narrowest relevant checks, and report
-    concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "PACK-Index" specialist for "Maintain pack index and
+    routing". Deliver focused, deterministic results with minimal, reviewable changes
+    and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest
+    relevant checks, and report concrete actions, evidence, and residual risks.
 ---
 
-# PACK-Index
-
-## Use this skill when
-- adding or updating entrypoints in `$CODEX_HOME/index/manifest.yml`
-- regenerating `$CODEX_HOME/INDEX.md` or domain routers
-- fixing related link blocks in `$CODEX_HOME/index/` entrypoints
-
-## Inputs
-- target entrypoints and intended routing behavior
-- canonical destination docs/paths for each entrypoint
-- whether related lists/navigation blocks must be regenerated
-
-## Scope and boundaries
-- Treat `$CODEX_HOME/index/manifest.yml` as source of truth for routing generation.
-- Do not hand-edit generated blocks that tooling will overwrite.
-- Keep entrypoint links deterministic and one-hop where possible.
-- Use runtime-relative paths or repo-relative paths; never hardcode workstation-specific checkout locations.
+# Pack Index
 
 ## Workflow
-1) Update `$CODEX_HOME/index/manifest.yml` (entrypoints, canonical paths, related links, metadata).
-2) Ensure every entrypoint file has a `<!-- BEGIN:related -->` block.
-3) Spot-check key entrypoints for broken links.
 
-## Agent orchestration
-- Delegate read-only inventory checks (entrypoints, related-link drift) only.
-- Keep one owner for manifest edits and generation commands.
+1. Identify the canonical routing indexes and manifests, their consumers and generated/runtime mirrors. Inspect the current request before selecting files.
 
-## Validation and testing
+2. Write routing indexes and manifests directly to the coding assistant with an explicit trigger, bounded procedure and stop condition. Preserve valid examples, placeholders and format contracts.
 
-## Outputs
-- Minimal routing/index diffs with clear intent per entrypoint.
-- Verification evidence from index generation/validation commands.
-- Residual follow-ups when downstream docs still need linking updates.
+3. Resolve every changed local reference and tool dependency. Do not invent commands, imply tool availability from a manifest or inject full schemas as general context.
+
+4. Keep related mirrors synchronized, reparse affected structured metadata and inspect rendered Markdown structure. Do not modify unrelated assets or create general tests outside scope.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
+
 - `$CODEX_HOME/index/manifest.yml`
-- `$CODEX_HOME/index/`
 - `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/`
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

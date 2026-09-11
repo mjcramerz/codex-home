@@ -11,6 +11,10 @@ sources:
   - https://github.com/microsoft/WindowsAppSDK-Samples/tree/main/Samples/Mica
 ---
 
+# styling theming materials and icons
+
+Consult this reference when styling theming materials and icons is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file for Fluent styling choices, theme resources, Mica or Acrylic usage, custom title bar visuals, typography, and iconography.

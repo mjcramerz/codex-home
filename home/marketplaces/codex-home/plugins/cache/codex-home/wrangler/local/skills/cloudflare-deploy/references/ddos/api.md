@@ -1,5 +1,7 @@
 # DDoS API
 
+Consult this reference when ddos api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Endpoints
 
 ### HTTP DDoS (L7)
@@ -161,4 +163,4 @@ const adaptiveOverride: RuleOverride = {
 };
 ```
 
-See [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/ddos/patterns.md) for complete implementation patterns.
+See [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/ddos/patterns.md) for complete implementation patterns.

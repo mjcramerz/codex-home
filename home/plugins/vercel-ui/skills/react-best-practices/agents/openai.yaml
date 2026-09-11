@@ -1,7 +1,6 @@
 interface:
-  display_name: "Vercel React Best Practices"
-  short_description: "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, r"
-  default_prompt: "Use $react-best-practices. Use the Vercel React Best Practices skill when the task matches this scope: React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements."
-
+  display_name: Vercel React Best Practices
+  short_description: Use this skill for react and Next.js performance optimization guidelines from Vercel Engin
+  default_prompt: Use $vercel-react-best-practices for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

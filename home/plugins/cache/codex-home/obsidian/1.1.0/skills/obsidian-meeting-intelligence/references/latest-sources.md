@@ -13,15 +13,20 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # obsidian-meeting-intelligence reference bundle
+
+Consult this reference when obsidian-meeting-intelligence reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Prepare meeting materials and capture outcomes in Obsidian. Use when drafting agendas, pre-reads, decision logs, or follow-up tasks inside an Obsidian vault.
 
 ## SKILL.md coverage checklist
+
 - Overview
 - Workflow
 - Agent orchestration
@@ -31,14 +36,16 @@ Prepare meeting materials and capture outcomes in Obsidian. Use when drafting ag
 - Resources
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/obsidian/1.0.0/skills/obsidian-meeting-intelligence/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/obsidian/1.0.0/skills/obsidian-meeting-intelligence/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/obsidian/skills/obsidian-meeting-intelligence/SKILL.md`
+- `$CODEX_HOME/plugins/obsidian/skills/obsidian-meeting-intelligence/agents/openai.yaml`
 
 ## External references
+
 - [Obsidian help](https://help.obsidian.md/) - Obsidian Markdown and vault workflow references.
 - [Obsidian daily notes](https://help.obsidian.md/plugins/daily-notes) - Recurring meeting cadence workflows.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `obsidian-meeting-intelligence` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `obsidian-meeting-intelligence` before finalizing changes.
-

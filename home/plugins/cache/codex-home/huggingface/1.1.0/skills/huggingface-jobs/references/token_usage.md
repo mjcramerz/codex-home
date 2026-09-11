@@ -1,5 +1,7 @@
 # Token Usage Guide for Hugging Face Jobs
 
+Consult this reference when token usage guide for hugging face jobs is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **⚠️ CRITICAL:** Proper token usage is essential for any job that interacts with the Hugging Face Hub.
 
 ## Overview
@@ -14,17 +16,20 @@ Hugging Face tokens are authentication credentials that allow your jobs to inter
 ## Token Types
 
 ### Read Token
+
 - **Permissions:** Download models/datasets, read private repos
 - **Use case:** Jobs that only need to download/read content
 - **Creation:** https://huggingface.co/settings/tokens
 
 ### Write Token
+
 - **Permissions:** Push models/datasets, create repos, modify content
 - **Use case:** Jobs that need to upload results (most common)
 - **Creation:** https://huggingface.co/settings/tokens
 - **⚠️ Required for:** Pushing models, datasets, or any uploads
 
 ### Organization Token
+
 - **Permissions:** Act on behalf of an organization
 - **Use case:** Jobs running under organization namespace
 - **Creation:** Organization settings → Tokens
@@ -115,6 +120,7 @@ if not token:
 ### Using with Hugging Face Hub
 
 **Option 1: Explicit token parameter**
+
 ```python
 from huggingface_hub import HfApi
 
@@ -123,6 +129,7 @@ api.upload_file(...)
 ```
 
 **Option 2: Auto-detection (Recommended)**
+
 ```python
 from huggingface_hub import HfApi
 
@@ -132,6 +139,7 @@ api.upload_file(...)
 ```
 
 **Option 3: With transformers/datasets**
+
 ```python
 from transformers import AutoModel
 from datasets import load_dataset
@@ -215,6 +223,7 @@ except Exception as e:
 ### Error: 401 Unauthorized
 
 **Symptoms:**
+
 ```
 401 Client Error: Unauthorized for url: https://huggingface.co/api/...
 ```
@@ -231,6 +240,7 @@ except Exception as e:
 4. Check token hasn't expired
 
 **Verification:**
+
 ```python
 # In your script
 import os
@@ -240,6 +250,7 @@ assert "HF_TOKEN" in os.environ, "HF_TOKEN missing!"
 ### Error: 403 Forbidden
 
 **Symptoms:**
+
 ```
 403 Client Error: Forbidden for url: https://huggingface.co/api/...
 ```
@@ -256,6 +267,7 @@ assert "HF_TOKEN" in os.environ, "HF_TOKEN missing!"
 4. Use organization token if needed
 
 **Check token permissions:**
+
 ```python
 from huggingface_hub import whoami
 
@@ -267,6 +279,7 @@ print(f"Type: {user_info.get('type', 'user')}")
 ### Error: Token not found in environment
 
 **Symptoms:**
+
 ```
 KeyError: 'HF_TOKEN'
 ValueError: HF_TOKEN not found
@@ -283,6 +296,7 @@ ValueError: HF_TOKEN not found
 3. Check job config syntax
 
 **Correct configuration:**
+
 ```python
 # ✅ Correct
 hf_jobs("uv", {
@@ -306,6 +320,7 @@ hf_jobs("uv", {
 ### Error: Repository access denied
 
 **Symptoms:**
+
 ```
 403 Client Error: Forbidden
 Repository not found or access denied
@@ -323,6 +338,7 @@ Repository not found or access denied
 4. Create repo first if needed
 
 **Check repository access:**
+
 ```python
 from huggingface_hub import HfApi
 
@@ -339,6 +355,7 @@ except Exception as e:
 ### 1. Never Commit Tokens
 
 **❌ Bad:**
+
 ```python
 # Never do this!
 token = "hf_abc123xyz..."
@@ -346,6 +363,7 @@ api = HfApi(token=token)
 ```
 
 **✅ Good:**
+
 ```python
 # Use environment variable
 token = os.environ.get("HF_TOKEN")
@@ -355,6 +373,7 @@ api = HfApi(token=token)
 ### 2. Use Secrets, Not Environment Variables
 
 **❌ Bad:**
+
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -363,6 +382,7 @@ hf_jobs("uv", {
 ```
 
 **✅ Good:**
+
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -373,6 +393,7 @@ hf_jobs("uv", {
 ### 3. Use Automatic Token Replacement
 
 **❌ Bad:**
+
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -381,6 +402,7 @@ hf_jobs("uv", {
 ```
 
 **✅ Good:**
+
 ```python
 hf_jobs("uv", {
     "script": "...",
@@ -516,12 +538,14 @@ Before submitting a job that uses Hub:
 ### Common Patterns
 
 **Pattern 1: Auto-detect token**
+
 ```python
 from huggingface_hub import HfApi
 api = HfApi()  # Uses HF_TOKEN from environment
 ```
 
 **Pattern 2: Explicit token**
+
 ```python
 import os
 from huggingface_hub import HfApi
@@ -529,6 +553,7 @@ api = HfApi(token=os.environ.get("HF_TOKEN"))
 ```
 
 **Pattern 3: Verify token**
+
 ```python
 import os
 assert "HF_TOKEN" in os.environ, "HF_TOKEN required!"
@@ -543,4 +568,3 @@ assert "HF_TOKEN" in os.environ, "HF_TOKEN required!"
 5. **Check permissions** - ensure token has required access
 6. **Monitor token usage** - review activity regularly
 7. **Rotate tokens** - generate new tokens periodically
-

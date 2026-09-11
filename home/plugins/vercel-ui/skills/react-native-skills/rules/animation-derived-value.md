@@ -5,6 +5,10 @@ impactDescription: cleaner code, automatic dependency tracking
 tags: animation, reanimated, derived-value
 ---
 
+# animation derived value
+
+Apply the following animation derived value guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Prefer useDerivedValue Over useAnimatedReaction
 
 When deriving a shared value from another, use `useDerivedValue` instead of

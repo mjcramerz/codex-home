@@ -5,6 +5,10 @@ impactDescription: avoids expensive operations when lengths differ
 tags: javascript, arrays, performance, optimization, comparison
 ---
 
+# js length check first
+
+Apply the following js length check first guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Early Length Check for Array Comparisons
 
 When comparing arrays with expensive operations (sorting, deep equality, serialization), check lengths first. If lengths differ, the arrays cannot be equal.

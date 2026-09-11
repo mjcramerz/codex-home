@@ -1,5 +1,7 @@
 # Cloudflare Pages Functions
 
+Consult this reference when cloudflare pages functions is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Serverless functions on Cloudflare Pages using Workers runtime. Full-stack dev with file-based routing.
 
 ## Quick Navigation
@@ -7,12 +9,12 @@ Serverless functions on Cloudflare Pages using Workers runtime. Full-stack dev w
 **Need to...**
 | Task | Go to |
 |------|-------|
-| Set up TypeScript types | [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md) - TypeScript Setup |
-| Configure bindings (KV, D1, R2) | [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md) - wrangler.jsonc |
-| Access request/env/params | [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/api.md) - EventContext |
-| Add middleware or auth | [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/patterns.md) - Middleware, Auth |
-| Background tasks (waitUntil) | [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/patterns.md) - Background Tasks |
-| Debug errors or check limits | [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/gotchas.md) - Common Errors, Limits |
+| Set up TypeScript types | [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md) - TypeScript Setup |
+| Configure bindings (KV, D1, R2) | [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md) - wrangler.jsonc |
+| Access request/env/params | [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/api.md) - EventContext |
+| Add middleware or auth | [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/patterns.md) - Middleware, Auth |
+| Background tasks (waitUntil) | [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/patterns.md) - Background Tasks |
+| Debug errors or check limits | [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/gotchas.md) - Common Errors, Limits |
 
 ## Decision Tree: Is This Pages Functions?
 
@@ -53,6 +55,7 @@ Framework-based?
 ## Dynamic Routes
 
 **Single segment** `[param]` → string:
+
 ```js
 // /functions/users/[user].js
 export function onRequest(context) {
@@ -62,6 +65,7 @@ export function onRequest(context) {
 ```
 
 **Multi-segment** `[[param]]` → array:
+
 ```js
 // /functions/users/[[catchall]].js
 export function onRequest(context) {
@@ -81,18 +85,19 @@ export function onRequest(context) {
 ## Reading Order
 
 **New to Pages Functions?** Start here:
-1. [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/README.md) - Overview, routing, decision tree (you are here)
-2. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md) - TypeScript setup, wrangler.jsonc, bindings
-3. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/api.md) - EventContext, handlers, bindings reference
-4. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/patterns.md) - Middleware, auth, CORS, rate limiting, caching
-5. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/gotchas.md) - Common errors, debugging, limits
+1. [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/README.md) - Overview, routing, decision tree (you are here)
+2. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md) - TypeScript setup, wrangler.jsonc, bindings
+3. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/api.md) - EventContext, handlers, bindings reference
+4. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/patterns.md) - Middleware, auth, CORS, rate limiting, caching
+5. [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/gotchas.md) - Common errors, debugging, limits
 
 **Quick reference lookup:**
-- Bindings table → [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/api.md)
-- Error diagnosis → [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/gotchas.md)
-- TypeScript setup → [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages-functions/configuration.md)
+- Bindings table → [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/api.md)
+- Error diagnosis → [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/gotchas.md)
+- TypeScript setup → [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages-functions/configuration.md)
 
 ## See Also
-- [pages]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/pages/) - Pages platform overview and static site deployment
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Workers runtime API reference
-- [d1]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/d1/) - D1 database integration with Pages Functions
+
+- [pages]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/pages/) - Pages platform overview and static site deployment
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Workers runtime API reference
+- [d1]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/d1/) - D1 database integration with Pages Functions

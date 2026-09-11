@@ -1,5 +1,7 @@
 # Common Patterns
 
+Consult this reference when common patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Background Tasks (waitUntil)
 
 Non-blocking tasks after response sent (analytics, cleanup, webhooks):
@@ -99,6 +101,7 @@ export async function onRequest(ctx) {
 ## Testing
 
 **Unit tests** (Vitest + cloudflare:test):
+
 ```typescript
 import { env } from 'cloudflare:test';
 import { it, expect } from 'vitest';
@@ -134,4 +137,4 @@ export default {
 
 **When:** Existing Worker, framework-generated (Next.js/SvelteKit), custom routing logic
 
-**See also:** [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pages-functions/api.md) for `env.ASSETS.fetch()` | [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pages-functions/gotchas.md) for debugging
+**See also:** [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pages-functions/api.md) for `env.ASSETS.fetch()` | [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pages-functions/gotchas.md) for debugging

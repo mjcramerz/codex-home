@@ -12,9 +12,13 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Obs Kibana Rules
 
+Apply the following obs kibana rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-kibana/SKILL.md`.
-- Prefer deterministic scripts in `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-kibana/scripts/`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-kibana/references/` for factual guidance.
+
+- Follow the workflow in `$CODEX_HOME/plugins/observability/skills/obs-kibana/SKILL.md`.
+- Prefer deterministic scripts in `$CODEX_HOME/plugins/observability/skills/obs-kibana/scripts/`.
+- Use references in `$CODEX_HOME/plugins/observability/skills/obs-kibana/references/` for factual guidance.

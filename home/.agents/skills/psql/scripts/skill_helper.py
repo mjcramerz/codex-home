@@ -18,7 +18,7 @@ SKILL_NAME = 'psql'
 SKILL_CATEGORY = 'DB'
 SKILL_DESCRIPTION = 'Inspect, query, and maintain PostgreSQL databases safely with the psql CLI.'
 LAST_REFRESH_UTC = '2026-03-11'
-COVERAGE_HEADINGS = ['Use this skill when', 'Inputs', 'Scope and boundaries', 'Workflow', 'Validation and testing', 'Outputs', 'References']
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [{'title': 'psql documentation', 'url': 'https://www.postgresql.org/docs/current/app-psql.html', 'note': 'psql flags, meta-commands, variables, and safe non-interactive usage.'}, {'title': 'EXPLAIN documentation', 'url': 'https://www.postgresql.org/docs/current/sql-explain.html', 'note': 'Planner and execution analysis for expensive PostgreSQL statements.'}, {'title': 'Client runtime settings', 'url': 'https://www.postgresql.org/docs/current/runtime-config-client.html', 'note': 'statement_timeout, lock_timeout, and safe session-level controls.'}]
 
 

@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "design-ui",
   "version": "1.1.0",
-  "description": "Generic UI review, accessibility, and design-quality workflows.",
+  "description": "Use this plugin for generic UI review, accessibility, and design-quality workflows.",
   "author": {
     "name": "Codex Setup"
   },

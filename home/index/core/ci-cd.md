@@ -1,15 +1,14 @@
 # CI/CD workflow (entrypoint)
-Purpose: stable link to CI/CD guidance and templates for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
 
+Use this route when you need ci/cd workflow. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/core/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
-
 
 Canonical content: `$CODEX_HOME/docs/workflows/ci-cd.md`
 
@@ -32,14 +31,14 @@ Related:
 - `$CODEX_HOME/templates/ci/github-actions`
 - `$CODEX_HOME/templates/ci/gitlab-ci`
 - `$CODEX_HOME/snippets/ci/gitlab_delivery_vars.env`
-- You must use skill `ci-github-actions`.
-- You must use skill `ci-github-actions-fix`.
-- You must use skill `ci-gitlab-cicd`.
-- You must use skill `gitlab-cicd`.
-- You must use skill `gitlab-runner`.
-- You must use skill `aptly`.
-- You must use skill `bazel`.
-- You must use skill `buildbuddy`.
-- You must use skill `gitops`.
-- You must use skill `repo-ops`.
+- Read the `ci-github-actions` skill only when its trigger matches this task and the skill is available.
+- Read the `ci-github-actions-fix` skill only when its trigger matches this task and the skill is available.
+- Read the `ci-gitlab-cicd` skill only when its trigger matches this task and the skill is available.
+- Read the `gitlab-cicd` skill only when its trigger matches this task and the skill is available.
+- Read the `gitlab-runner` skill only when its trigger matches this task and the skill is available.
+- Read the `aptly` skill only when its trigger matches this task and the skill is available.
+- Read the `bazel` skill only when its trigger matches this task and the skill is available.
+- Read the `buildbuddy` skill only when its trigger matches this task and the skill is available.
+- Read the `gitops` skill only when its trigger matches this task and the skill is available.
+- Read the `repo-ops` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

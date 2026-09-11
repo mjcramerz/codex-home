@@ -1,5 +1,7 @@
 # Gradio End-to-End Examples
 
+Use this guide when the task concerns gradio end-to-end examples. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 Complete working Gradio apps for reference.
 
 ## Blocks Essay Simple

@@ -1,15 +1,13 @@
 interface:
-  display_name: "Hugging Face Model Trainer"
-  short_description: "This skill should be used when users want to train or fine-tune language models using TRL (Transformer Reinforcement Lea"
-  default_prompt: "Use $huggingface-model-trainer. Use the Hugging Face Model Trainer skill when the task matches this scope: This skill should be used when users want to train or fine-tune language models using TRL (Transformer Reinforcement Learning) on Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, and model persistence. Should be invoked for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup."
-
+  display_name: Hugging Face Model Trainer
+  short_description: Use this skill when users want to train or fine-tune language models using TRL (Transforme
+  default_prompt: Use $huggingface-model-trainer for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "huggingface"
-      description: "huggingface MCP server"
-      transport: "streamable_http"
-      url: "https://huggingface.co/mcp?login"
-
+  - type: mcp
+    value: huggingface
+    description: huggingface MCP server
+    transport: streamable_http
+    url: https://huggingface.co/mcp?login
 policy:
   allow_implicit_invocation: true

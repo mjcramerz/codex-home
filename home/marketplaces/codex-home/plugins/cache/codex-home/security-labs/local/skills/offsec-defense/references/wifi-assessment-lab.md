@@ -13,28 +13,36 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Wi-Fi security assessment (documented RF boundaries)
 
+Consult this reference when wi-fi security assessment (documented rf boundaries) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Objective
+
 Assess wireless posture and detection readiness in documented test areas.
 
 ## Scope controls
+
 - Use only organization-owned APs, clients, and frequencies.
 - Document physical boundary and test window.
 - Coordinate with operations to avoid production disruption.
 
 ## Assessment focus
+
 - Encryption posture (WPA2/WPA3, transition mode risk).
 - Weak management/configuration controls.
 - Rogue AP detection and containment workflow.
 - Monitoring coverage for anomalous auth/deauth activity.
 
 ## Defensive outcomes
+
 - Harden AP configurations and disable insecure compatibility modes.
 - Improve NAC policy for unknown wireless clients.
 - Add alert rules for suspicious wireless events.
 - Practice IR runbook for rogue AP and credential abuse scenarios.
 
 ## References
+
 - NIST wireless security guidance: https://csrc.nist.gov/publications/detail/sp/800-153/final
 - Wi-Fi Alliance security: https://www.wi-fi.org/discover-wi-fi/security

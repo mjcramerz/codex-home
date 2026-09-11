@@ -1,5 +1,7 @@
 # Testing Durable Objects
 
+Consult this reference when testing durable objects is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Use `@cloudflare/vitest-pool-workers` to test DOs inside the Workers runtime.
 
 ## Setup
@@ -191,6 +193,7 @@ describe("DO alarms", () => {
 ```
 
 Example alarm handler:
+
 ```typescript
 async alarm(): Promise<void> {
   this.ctx.storage.sql.exec("DELETE FROM counters");
@@ -255,6 +258,7 @@ npx vitest run    # Single run
 ```
 
 package.json:
+
 ```json
 {
   "scripts": {

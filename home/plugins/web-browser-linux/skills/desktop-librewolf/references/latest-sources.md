@@ -13,15 +13,20 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # desktop-librewolf reference bundle
+
+Consult this reference when desktop-librewolf reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Configure LibreWolf with hardened defaults.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Agent orchestration
@@ -30,16 +35,18 @@ Configure LibreWolf with hardened defaults.
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-librewolf/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-librewolf/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-librewolf/SKILL.md`
+- `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-librewolf/agents/openai.yaml`
 
 ## External references
+
 - [Freedesktop Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/) - Desktop launcher schema and semantics.
 - [Wayland project](https://wayland.freedesktop.org/) - Wayland protocol and compositor context.
 - [Mozilla Policy Templates](https://mozilla.github.io/policy-templates/) - Browser enterprise hardening policy options.
 - [LibreWolf docs](https://librewolf.net/docs/settings) - LibreWolf configuration and policy guidance.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `desktop-librewolf` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `desktop-librewolf` before finalizing changes.
-

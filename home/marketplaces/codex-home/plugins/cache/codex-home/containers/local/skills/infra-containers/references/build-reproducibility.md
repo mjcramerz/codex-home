@@ -13,15 +13,20 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Build reproducibility
 
+Consult this reference when build reproducibility is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Pinning checklist
+
 - Use immutable image references (digest or pinned version tags).
 - Pin language and package manager versions.
 - Keep lockfiles in version control and fail builds when lockfiles drift.
 - Record build arguments that affect output artifacts.
 
 ## Deterministic build commands
+
 ```bash
 docker build --pull=false --build-arg BUILDKIT_INLINE_CACHE=1 -t app:local .
 docker buildx bake --print
@@ -29,6 +34,7 @@ podman build --pull-never -t app:local .
 ```
 
 ## Verification
+
 - Compare resulting image digest across two local builds with unchanged sources.
 - Diff SBOM output before/after dependency updates.
 - Verify runtime UID/GID behavior against bind mounts.

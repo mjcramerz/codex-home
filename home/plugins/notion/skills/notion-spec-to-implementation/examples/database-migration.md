@@ -13,13 +13,17 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Database Migration Implementation
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **User Request**: "Plan and implement the database migration for user preferences schema"
 
 ## Workflow
 
 ### 1. Find & Fetch Spec
+
 ```
 Notion:notion-search → Found "User Preferences Schema Migration Spec"
 Notion:notion-fetch → Extracted requirements
@@ -28,12 +32,14 @@ Notion:notion-fetch → Extracted requirements
 **Spec Summary**: Migrate from JSON blob to structured schema for better performance and data integrity.
 
 ### 2. Parse Requirements
+
 - **Current**: JSONB preferences column
 - **Target**: Separate `user_preferences` and `notification_preferences` tables
 - **Must maintain**: Backward compatibility during migration
 - **Performance**: Support 1M+ users with zero downtime
 
 ### 3. Create Implementation Plan
+
 ```
 Notion:notion-create-pages
 pages: [{
@@ -52,6 +58,7 @@ pages: [{
 - **Phase 5**: Drop old JSONB column
 
 ### 4. Find Task Database & Create Tasks
+
 ```
 Notion:notion-search → Found "Engineering Tasks" database
 Notion:notion-fetch → Got schema (Task, Status, Priority, Assignee, etc.)
@@ -80,6 +87,7 @@ pages: [
 5. Rollback plan & monitoring
 
 ### 5. Track Progress
+
 Regular updates to implementation plan with status, blockers, and completion notes.
 
 ## Key Outputs
@@ -89,6 +97,7 @@ Regular updates to implementation plan with status, blockers, and completion not
 **Progress Tracking** (updated as work progresses)
 
 ## Success Factors
+
 - Broke down complex migration into clear phases
 - Created tasks with specific acceptance criteria
 - Established dependencies (Phase 1 → 2 → 3 → 4 → 5)

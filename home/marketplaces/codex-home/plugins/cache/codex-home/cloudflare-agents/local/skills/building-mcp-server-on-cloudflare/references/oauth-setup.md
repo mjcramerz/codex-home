@@ -1,5 +1,7 @@
 # Securing MCP Servers
 
+Consult this reference when securing mcp servers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 MCP servers require authentication to ensure only trusted users can access them. The MCP specification uses OAuth 2.1 for authentication between clients and servers.
 
 Cloudflare's `workers-oauth-provider` handles token management, client registration, and access token validation automatically.
@@ -312,6 +314,7 @@ Data attributes store user-controlled data separately from executable code. Nonc
 1. Create OAuth App at github.com/settings/developers
 2. Set callback URL: `https://[worker].workers.dev/callback`
 3. Store secrets:
+
    ```bash
    wrangler secret put GITHUB_CLIENT_ID
    wrangler secret put GITHUB_CLIENT_SECRET

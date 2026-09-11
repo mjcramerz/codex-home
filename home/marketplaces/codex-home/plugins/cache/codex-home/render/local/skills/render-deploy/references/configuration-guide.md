@@ -1,5 +1,7 @@
 # Render Configuration Guide
 
+Consult this reference when render configuration guide is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common configuration patterns, best practices, and troubleshooting for Render deployments.
 
 ## Environment Variables
@@ -11,6 +13,7 @@ Common configuration patterns, best practices, and troubleshooting for Render de
 **Three categories:**
 
 1. **Configuration values** (hardcoded):
+
 ```yaml
 envVars:
   - key: NODE_ENV
@@ -22,6 +25,7 @@ envVars:
 ```
 
 2. **Secrets** (user provides):
+
 ```yaml
 envVars:
   - key: JWT_SECRET
@@ -33,6 +37,7 @@ envVars:
 ```
 
 3. **Auto-generated** (Render provides):
+
 ```yaml
 envVars:
   - key: SESSION_SECRET
@@ -44,6 +49,7 @@ envVars:
 ### Database Connection Patterns
 
 **PostgreSQL:**
+
 ```yaml
 envVars:
   - key: DATABASE_URL
@@ -53,6 +59,7 @@ envVars:
 ```
 
 **Redis:**
+
 ```yaml
 envVars:
   - key: REDIS_URL
@@ -62,6 +69,7 @@ envVars:
 ```
 
 **Multiple databases:**
+
 ```yaml
 envVars:
   - key: PRIMARY_DB_URL
@@ -152,6 +160,7 @@ services:
 ### Code Examples by Language
 
 **Node.js / Express:**
+
 ```javascript
 const express = require('express');
 const app = express();
@@ -164,6 +173,7 @@ app.listen(PORT, '0.0.0.0', () => {
 ```
 
 **Python / Flask:**
+
 ```python
 import os
 from flask import Flask
@@ -178,17 +188,20 @@ if __name__ == '__main__':
 **Python / Django:**
 
 In `settings.py`:
+
 ```python
 # Django runs on port specified by environment
 ALLOWED_HOSTS = ['*']
 ```
 
 Start command in render.yaml:
+
 ```yaml
 startCommand: gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
 ```
 
 **Python / FastAPI:**
+
 ```python
 import os
 import uvicorn
@@ -202,11 +215,13 @@ if __name__ == "__main__":
 ```
 
 Start command:
+
 ```yaml
 startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
 ```
 
 **Go:**
+
 ```go
 package main
 
@@ -231,12 +246,14 @@ func main() {
 **Ruby / Rails:**
 
 In `config/puma.rb`:
+
 ```ruby
 port ENV.fetch("PORT") { 3000 }
 bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
 ```
 
 **Rust / Actix:**
+
 ```rust
 use actix_web::{App, HttpServer};
 use std::env;
@@ -262,24 +279,28 @@ async fn main() -> std::io::Result<()> {
 **Always use non-interactive flags** to prevent builds from hanging waiting for input.
 
 **npm (Node.js):**
+
 ```yaml
 buildCommand: npm ci
 # NOT: npm install
 ```
 
 **pip (Python):**
+
 ```yaml
 buildCommand: pip install -r requirements.txt
 # Already non-interactive
 ```
 
 **apt (System packages):**
+
 ```yaml
 buildCommand: apt-get update && apt-get install -y libpq-dev
 # Use -y flag to auto-confirm
 ```
 
 **bundler (Ruby):**
+
 ```yaml
 buildCommand: bundle install --jobs=4 --retry=3
 ```
@@ -287,16 +308,19 @@ buildCommand: bundle install --jobs=4 --retry=3
 ### Build with Additional Steps
 
 **Node.js with build step:**
+
 ```yaml
 buildCommand: npm ci && npm run build
 ```
 
 **Python Django with static files:**
+
 ```yaml
 buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-input
 ```
 
 **Ruby Rails with assets:**
+
 ```yaml
 buildCommand: bundle install && bundle exec rails assets:precompile
 ```
@@ -340,6 +364,7 @@ This provides: `postgresql://user:pass@postgres.render-internal.com:5432/db`
 ### Connection Pooling
 
 **Node.js / PostgreSQL:**
+
 ```javascript
 const { Pool } = require('pg');
 
@@ -353,6 +378,7 @@ const pool = new Pool({
 ```
 
 **Python / PostgreSQL:**
+
 ```python
 import psycopg2.pool
 
@@ -364,6 +390,7 @@ pool = psycopg2.pool.SimpleConnectionPool(
 ```
 
 **Django Settings:**
+
 ```python
 DATABASES = {
     'default': {
@@ -379,16 +406,19 @@ DATABASES = {
 **Run migrations during build:**
 
 **Django:**
+
 ```yaml
 buildCommand: pip install -r requirements.txt && python manage.py migrate
 ```
 
 **Rails:**
+
 ```yaml
 buildCommand: bundle install && bundle exec rails db:migrate
 ```
 
 **Node.js / Prisma:**
+
 ```yaml
 buildCommand: npm ci && npx prisma migrate deploy
 ```
@@ -440,6 +470,7 @@ buildCommand: npm ci && npx prisma migrate deploy
 ### Adding Health Check Endpoints
 
 **Node.js / Express:**
+
 ```javascript
 app.get('/health', (req, res) => {
   res.status(200).json({
@@ -450,6 +481,7 @@ app.get('/health', (req, res) => {
 ```
 
 **Python / Flask:**
+
 ```python
 @app.route('/health')
 def health():
@@ -457,6 +489,7 @@ def health():
 ```
 
 **Python / FastAPI:**
+
 ```python
 @app.get("/health")
 async def health():
@@ -464,6 +497,7 @@ async def health():
 ```
 
 **Go:**
+
 ```go
 http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
     w.WriteHeader(http.StatusOK)
@@ -495,6 +529,7 @@ services:
 **Symptom:** Service crashes with "undefined variable" errors
 
 **Solution:** Add all required env vars to render.yaml:
+
 ```yaml
 envVars:
   - key: DATABASE_URL
@@ -510,6 +545,7 @@ envVars:
 **Symptom:** `EADDRINUSE` or health check timeout errors
 
 **Solution:** Ensure app binds to `0.0.0.0:$PORT`:
+
 ```javascript
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0');
@@ -520,6 +556,7 @@ app.listen(PORT, '0.0.0.0');
 **Symptom:** Build times out after 15 minutes
 
 **Solution:** Use non-interactive build commands:
+
 ```yaml
 buildCommand: npm ci  # NOT npm install
 ```
@@ -538,6 +575,7 @@ buildCommand: npm ci  # NOT npm install
 **Symptom:** Client-side routes return 404
 
 **Solution:** Add SPA rewrite rules:
+
 ```yaml
 routes:
   - type: rewrite

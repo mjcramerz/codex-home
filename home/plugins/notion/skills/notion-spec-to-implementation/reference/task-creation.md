@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Task Creation from Specs
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 ## Finding the Task Database
 
@@ -317,22 +320,26 @@ Phase 3 (Polish):
 ## Priority Assignment
 
 ### P0/Critical
+
 - Blocks everything else
 - Core functionality
 - Security requirements
 - Data integrity
 
 ### P1/High
+
 - Important features
 - User-facing functionality
 - Performance requirements
 
 ### P2/Medium
+
 - Nice-to-have features
 - Optimizations
 - Minor improvements
 
 ### P3/Low
+
 - Future enhancements
 - Edge case handling
 - Cosmetic improvements
@@ -453,4 +460,3 @@ Before finalizing tasks:
 ☐ Linked to spec/plan
 ☐ Proper sequencing
 ☐ Resources noted
-

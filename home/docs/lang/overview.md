@@ -1,8 +1,9 @@
 # Languages overview
-Purpose: map language-specific guidance to the right document without duplicating the style guides for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this guide when the task concerns languages. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/docs/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -10,6 +11,7 @@ You must read only the smallest section that resolves the current task, follow t
 <!-- END:nav -->
 
 ## Contents
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/docs/lang/go.md` — Go
 - `$CODEX_HOME/docs/lang/html.md` — HTML
@@ -22,6 +24,7 @@ You must read only the smallest section that resolves the current task, follow t
 <!-- END:contents -->
 
 ## Quick map
+
 - Perl: hook runtime, install helpers, and deterministic CLI scripts
 - Rust: overall toolchain, release validation, and source-pack parity work
 - Cargo: workspace manifests, lockfiles, and command contracts
@@ -31,7 +34,8 @@ You must read only the smallest section that resolves the current task, follow t
 - TypeScript: tooling and web surfaces
 - HTML: static documents and semantic structure
 
-## After that, you must check related files
+## After that, check related files
+
 - `$CODEX_HOME/docs/style/overview.md`
 - `$CODEX_HOME/index/domains/lang/overview.md`
 - `$CODEX_HOME/templates/`

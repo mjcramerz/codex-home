@@ -5,6 +5,10 @@ impactDescription: GPU-accelerated animations, no layout recalculation
 tags: animation, performance, reanimated, transform, opacity
 ---
 
+# animation gpu properties
+
+Apply the following animation gpu properties guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Animate Transform and Opacity Instead of Layout Properties
 
 Avoid animating `width`, `height`, `top`, `left`, `margin`, or `padding`. These trigger layout recalculation on every frame. Instead, use `transform` (scale, translate) and `opacity` which run on the GPU without triggering layout.

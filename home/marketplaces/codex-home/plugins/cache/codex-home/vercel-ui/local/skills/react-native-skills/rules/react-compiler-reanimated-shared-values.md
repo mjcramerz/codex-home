@@ -5,6 +5,10 @@ impactDescription: required for React Compiler compatibility
 tags: reanimated, react-compiler, shared-values
 ---
 
+# react compiler reanimated shared values
+
+Apply the following react compiler reanimated shared values guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use .get() and .set() for Shared Values with React Compiler
 
 With React Compiler enabled, use `.get()` and `.set()` instead of reading or

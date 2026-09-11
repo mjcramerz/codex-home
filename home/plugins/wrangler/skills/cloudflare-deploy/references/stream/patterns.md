@@ -1,5 +1,7 @@
 # Stream Patterns
 
+Consult this reference when stream patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common workflows, full-stack flows, and best practices.
 
 ## React Stream Player
@@ -17,6 +19,7 @@ export function VideoPlayer({ videoId, token }: { videoId: string; token?: strin
 ## Full-Stack Upload Flow
 
 **Backend API (Workers/Pages)**
+
 ```typescript
 import Cloudflare from 'cloudflare';
 
@@ -36,6 +39,7 @@ export default {
 ```
 
 **Frontend component**
+
 ```tsx
 import { useState } from 'react';
 
@@ -172,13 +176,13 @@ const payloadWithRules = {
 
 ## In This Reference
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/configuration.md) - Setup and config
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
-- [api-live.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming APIs
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting
+- [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/README.md) - Overview and quick start
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/configuration.md) - Setup and config
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api.md) - On-demand video APIs
+- [api-live.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/api-live.md) - Live streaming APIs
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/stream/gotchas.md) - Error codes, troubleshooting
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs in Workers
-- [pages]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pages/) - Integrate Stream with Pages
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Deploy Stream APIs in Workers
+- [pages]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pages/) - Integrate Stream with Pages

@@ -1,34 +1,27 @@
-# TypeScript style guide
-Purpose: tell the Codex coding agent how to use `docs/style/typescript.md` as a runtime-pack surface and when to stop browsing.
-Canonical TypeScript guidance for this pack. Follow repo-specific conventions first.
+# Typescript
 
+Use this guide when you change TypeScript or JavaScript applications, tooling or packages. Inspect the project's declared versions and existing conventions before selecting a command or API.
 
-## Navigation
-<!-- BEGIN:nav -->
-- Parent: `$CODEX_HOME/docs/style/overview.md`
-- Pack index: `$CODEX_HOME/INDEX.md`
-- Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
-<!-- END:nav -->
+## Apply these practices
 
+**1.** Inspect package.json, the single authoritative lockfile, tsconfig, runtime versions and actual script definitions. Use the existing package manager and avoid unrelated dependency refreshes.
 
-## Baseline
-- Enable `strict` mode and avoid `any`.
-- You must prefer `unknown` over `any` for untrusted data.
-- You must keep `tsconfig.json` explicit and minimal.
-- Enable `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes` when feasible.
+**2.** Keep strict types at module boundaries; treat network, JSON and environment values as unknown until validated. Do not replace a type error with any or an unchecked assertion.
 
-## Structure
-- Separate runtime code from type-only modules.
-- You must prefer composable utilities over large helpers.
-- You must keep ESM/CJS boundaries explicit and avoid ambiguous package exports.
+**3.** Handle rejected promises, cancellation and cleanup. Bound requests and retries, and avoid event-listener leaks or unbounded concurrency.
 
-## Web-stack notes
-- React/Next.js/HTMX projects should share strict TypeScript defaults and CI typechecks.
-- Enforce stable frontend build commands (`lint`, `typecheck`, `test`, `build`) in one documented path per project.
+**4.** Keep server credentials out of client bundles and logs. Validate URLs and output contexts, and preserve CSP, authentication and authorization boundaries.
 
-## References
-- `overview.md`
-- Snippets: `$CODEX_HOME/snippets/typescript/`
-- Template: `$CODEX_HOME/templates/typescript/ts-lib/`
+**5.** Use the existing typecheck, lint, unit and build scripts after reading their commands. A script name is only a candidate until its side effects and prerequisites are understood.
+
+## Select related guidance
+
+- `$CODEX_HOME/docs/style/overview.md`
+- `$CODEX_HOME/INDEX.md`
+- `$CODEX_HOME/index/OVERVIEW.md`
+- `$CODEX_HOME/snippets/typescript/`
+- `$CODEX_HOME/templates/typescript/ts-lib/`
 - `$CODEX_HOME/index/pack/style.md`
 - `$CODEX_HOME/index/style/typescript.md`
+
+Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

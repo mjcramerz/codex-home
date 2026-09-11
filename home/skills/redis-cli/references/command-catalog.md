@@ -9,9 +9,13 @@ tags:
 - commands
 updated: '2026-03-11'
 ---
+
 # redis-cli command catalog
 
+Consult this reference when redis-cli command catalog is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Session-safe inspection
+
 ```bash
 redis-cli -u "$REDIS_URL" PING
 redis-cli -u "$REDIS_URL" INFO server
@@ -20,12 +24,14 @@ redis-cli -u "$REDIS_URL" DBSIZE
 ```
 
 ## Key discovery without KEYS *
+
 ```bash
 redis-cli -u "$REDIS_URL" --scan --pattern 'session:*'
 redis-cli -u "$REDIS_URL" --scan --pattern 'job:*' | head -n 50
 ```
 
 ## Key-type and TTL checks
+
 ```bash
 redis-cli -u "$REDIS_URL" TYPE session:123
 redis-cli -u "$REDIS_URL" TTL session:123
@@ -34,6 +40,7 @@ redis-cli -u "$REDIS_URL" HGETALL job:42
 ```
 
 ## Operational diagnostics
+
 ```bash
 redis-cli -u "$REDIS_URL" SLOWLOG GET 10
 redis-cli -u "$REDIS_URL" LATENCY LATEST
@@ -41,6 +48,7 @@ redis-cli -u "$REDIS_URL" INFO persistence
 ```
 
 ## Targeted write template
+
 ```bash
 redis-cli -u "$REDIS_URL" <<'EOF'
 MULTI

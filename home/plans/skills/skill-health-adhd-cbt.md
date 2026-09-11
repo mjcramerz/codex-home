@@ -1,9 +1,11 @@
-# Plan
-Purpose: tell the Codex coding agent how to use `plans/skills/skill-health-adhd-cbt.md` as a runtime-pack surface and when to stop browsing.
+# Health adhd cbt plan
 
-You must use this plan when applying or updating the `health-adhd-cbt` skill.
+Use this plan when you applying or updating the `health-adhd-cbt` skill. Fill in the concrete scope, evidence, ordered actions and completion criteria before executing dependent steps. Keep deployment and new test files out of scope unless the task authorizes them.
+
+Use this plan when applying or updating the `health-adhd-cbt` skill.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/plans/skills/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -11,56 +13,67 @@ You must use this plan when applying or updating the `health-adhd-cbt` skill.
 <!-- END:nav -->
 
 ## Inputs
-- You must use skill health-adhd-cbt.
+
+- Read the `health-adhd-cbt` skill only when its trigger matches this task and the skill is available.
 - health-adhd-cbt skill asset `assets/templates/`
 - health-adhd-cbt skill asset `assets/styles/pdf.css`
 - health-adhd-cbt skill asset `assets/data/pack-config.json`
 
 ## Scope
+
 - In: generating ADHD/CBT printable templates, PDF packs, or updating the health-adhd-cbt skill assets/scripts.
 - Out: unrelated mental health guidance or medical advice.
 
 - For API/protocol surfaces, define contract versioning, timeout/retry ceilings, and idempotency/error-model expectations.
 
 ## Action items
-[ ] Use skill health-adhd-cbt and linked references.
-[ ] Confirm whether the user means CBT or CBD when ambiguous.
-[ ] Select templates and data sources (JSON or inline).
-[ ] Render HTML/PDF using `render_template.py` or `build_pack.py`.
-[ ] Review layout/spacing and adjust CSS if needed.
+
+- [ ] Use skill health-adhd-cbt and linked references.
+- [ ] Confirm whether the user means CBT or CBD when ambiguous.
+- [ ] Select templates and data sources (JSON or inline).
+- [ ] Render HTML/PDF using `render_template.py` or `build_pack.py`.
+- [ ] Review layout/spacing and adjust CSS if needed.
 
 ## Testing and validation
-- You must run a sample render to HTML to confirm placeholders fill as expected.
+
+- Run a sample render to HTML to confirm placeholders fill as expected.
 - If available, generate a PDF with wkhtmltopdf/weasyprint/pandoc.
 
 ## Security checkpoints
-- You must confirm trust boundaries, credentials, and least-privilege assumptions before execution.
-- You must validate input bounds, timeout/retry limits, and failure behavior for risky operations.
-- You must record any approved exception, owner, and expiry before proceeding.
+
+- Confirm trust boundaries, credentials, and least-privilege assumptions before execution.
+- Validate input bounds, timeout/retry limits, and failure behavior for risky operations.
+- Record any approved exception, owner, and expiry before proceeding.
 
 ## Testing checkpoints
-- You must define fast-path and deep validation commands before making changes.
-- You must capture expected outcomes and acceptance criteria for each validation step.
-- You must re-run impacted checks after major changes and before final handoff.
+
+- Define fast-path and deep validation commands before making changes.
+- Capture expected outcomes and acceptance criteria for each validation step.
+- Re-run impacted checks after major changes and before final handoff.
 
 ## Deployment checkpoints
-- You must document rollout order, blast-radius controls, and rollback conditions.
-- You must confirm migration/backfill or feature-flag sequencing when applicable.
-- You must record post-deploy verification owners and evidence.
+
+- Document rollout order, blast-radius controls, and rollback conditions.
+- Confirm migration/backfill or feature-flag sequencing when applicable.
+- Record post-deploy verification owners and evidence.
 
 ## Multi-agent handoff
-- Coordinator hands off scope, constraints, and stop condition with the target entrypoint.
-- Executor reports touched files, commands run, evidence, blockers, and next action.
-- Receiving agent acknowledges handoff completeness before continuing execution.
+
+- When coordinating, hand off scope, constraints, and stop condition with the target entrypoint.
+- When executing, report touched files, commands run, evidence, blockers, and next action.
+- When receiving work, acknowledge handoff completeness before continuing execution.
 
 ## Risks and edge cases
+
 - Missing PDF engine (fallback to HTML).
 - Oversized data/JSON causing output truncation.
 - Misinterpretation of "CBD" vs "CBT".
 
 ## Examples
+
 - Example objective: "Generate a 5-day ADHD daily pack with a weekly plan page."
-- Example validation: `python3 "$CODEX_HOME/plugins/cache/<marketplace>/health-planning/<version>/skills/health-adhd-cbt/scripts/build_pack.py" --config "$CODEX_HOME/plugins/cache/<marketplace>/health-planning/<version>/skills/health-adhd-cbt/assets/data/pack-config.json" --out "${TMPDIR:-/tmp}/adhd-pack.html"`
+- Select an existing repository check that exercises the changed contract; do not copy an example command without confirming that its target, dependencies and side effects match this repository.
 
 ## Open questions
+
 - None.

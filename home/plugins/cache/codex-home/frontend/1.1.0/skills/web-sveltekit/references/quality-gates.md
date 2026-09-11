@@ -13,29 +13,37 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web SvelteKit Quality Gates
 
+Consult this reference when web sveltekit quality gates is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Mandatory checks
+
 - `pnpm lint`
 - `pnpm check`
 - `pnpm test`
 - `pnpm build`
 
 ## Security checks
+
 - Server routes/actions validate schema and enforce authz.
 - Private env vars remain server-only.
 - Outbound requests use bounded timeout/retry settings.
 
 ## Behavior checks
+
 - Route errors and redirects are deterministic and covered by tests for expected status flows.
 - Form actions handle success/validation-error/server-error paths with and without `use:enhance`.
 - SSR/prerender mode matches route expectations.
 
 ## UX and accessibility checks
+
 - Focus restoration works on navigation and action responses.
 - Keyboard flow and semantic structure are intact.
 - Form errors are linked to controls and announced appropriately.
 
 ## Performance checks
+
 - Avoid duplicated fetches across nested loads.
 - Monitor payload size and hydration cost on changed routes.

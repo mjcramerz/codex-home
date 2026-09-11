@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Shell Bash Framework
+
+Apply the following shell bash framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `shell-bash`
 - Source of truth: `$CODEX_SKILLS/shell-bash/SKILL.md`

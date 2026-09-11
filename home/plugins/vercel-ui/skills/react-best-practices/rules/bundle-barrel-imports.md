@@ -5,6 +5,10 @@ impactDescription: 200-800ms import cost, slow builds
 tags: bundle, imports, tree-shaking, barrel-files, performance
 ---
 
+# bundle barrel imports
+
+Apply the following bundle barrel imports guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Avoid Barrel File Imports
 
 Import directly from source files instead of barrel files to avoid loading thousands of unused modules. **Barrel files** are entry points that re-export multiple modules (e.g., `index.js` that does `export * from './module'`).

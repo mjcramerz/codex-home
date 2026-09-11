@@ -1,5 +1,7 @@
 # Gotchas & Best Practices
 
+Consult this reference when gotchas & best practices is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 ### "Container running indefinitely"
@@ -116,6 +118,7 @@ getSandbox(env.Sandbox, 'id', { keepAlive: true });
 ## Security Best Practices
 
 ### Sandbox Isolation
+
 - Each sandbox = isolated container (filesystem, network, processes)
 - Use unique sandbox IDs per tenant for multi-tenant apps
 - Sandboxes cannot communicate directly
@@ -156,10 +159,13 @@ const result = await sandbox.exec('git clone ...', {
 ```
 
 ### Preview URL Security
+
 Preview URLs include auto-generated tokens:
+
 ```
 https://8080-sandbox-abc123def456.yourdomain.com
 ```
+
 Token changes on each expose operation, preventing unauthorized access.
 
 ## Limits

@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Rollback checklist (infra-virtualization)
+
+Use this guide when the task concerns rollback checklist (infra-virtualization). Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 - Confirm rollback trigger and decision owner.
 - Capture diagnostics before reverting.

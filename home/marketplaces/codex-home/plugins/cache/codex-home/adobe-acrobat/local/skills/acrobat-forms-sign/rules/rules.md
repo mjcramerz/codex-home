@@ -11,10 +11,14 @@ tags:
 - productivity
 updated: '2026-03-12'
 ---
+
 # Acrobat Forms Sign Rules
 
+Apply the following acrobat forms sign rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/adobe-acrobat/1.0.0/skills/acrobat-forms-sign/SKILL.md`.
+
+- Follow the workflow in `$CODEX_HOME/plugins/adobe-acrobat/skills/acrobat-forms-sign/SKILL.md`.
 - Preserve the original form before field edits or flattening.
 - Keep signer order, required fields, and output filenames explicit.
-- Use `$CODEX_HOME/plugins/cache/codex-home/adobe-acrobat/1.0.0/skills/acrobat-forms-sign/references/` for forms and delivery-specific workflow details.
+- Use `$CODEX_HOME/plugins/adobe-acrobat/skills/acrobat-forms-sign/references/` for forms and delivery-specific workflow details.

@@ -1,8 +1,11 @@
 # Elastic Stack (compose) skeleton (overview)
-Purpose: tell the Codex coding agent how to use `templates/observability/elastic-stack-compose/overview.md` as a runtime-pack surface and when to stop browsing.
+
+Use this template when you need elastic stack (compose) skeleton (overview) in the authorized project. Replace placeholders, adapt the examples to the detected toolchain, and preserve the requested output contract. Do not treat sample values or commands as verified deployment settings.
+
 Compose-based development stack for Elasticsearch, Kibana, and Logstash.
 
 ## Outputs
+
 - `Makefile`
 - `compose.yml`
 - `compose.podman.override.yml`
@@ -10,11 +13,12 @@ Compose-based development stack for Elasticsearch, Kibana, and Logstash.
 - `rootless_env.sh`
 
 ## Usage
-1) Copy into your repo.
-2) Set versions in `.env`.
-3) Start with `docker compose up`.
-4) For Podman, use `podman compose -f compose.yml -f compose.podman.override.yml up`.
-5) Or use Make:
+
+1. Copy into your repo.
+2. Set versions in `.env`.
+3. Start with `docker compose up`.
+4. For Podman, use `podman compose -f compose.yml -f compose.podman.override.yml up`.
+5. Or use Make:
    - `make build`
    - `make up`
    - `make env`
@@ -32,11 +36,13 @@ Notes:
 - If you add a build section, set `build.dockerfile: Dockerfile` for Docker/Podman parity.
 
 ## Inputs
+
 - Destination repository path for this template.
 - Exact runtime/toolchain versions and pinning policy.
 - Repository-specific values for placeholders, secrets, and host paths.
 
 ## Next steps
-1) Copy files into deterministic repository paths.
-2) Replace placeholders and pin versions/images before first commit.
-3) Run the narrowest relevant checks (lint/test/build or dry-run) before commit.
+
+1. Copy files into deterministic repository paths.
+2. Replace placeholders and pin versions/images before first commit.
+3. Run the narrowest relevant checks (lint/test/build or dry-run) before commit.

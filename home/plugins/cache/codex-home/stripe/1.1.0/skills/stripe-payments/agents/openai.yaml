@@ -1,16 +1,14 @@
 interface:
-  display_name: "Stripe Payments"
-  short_description: "Stripe payment flows, checkout, subscriptions, and webhooks"
-  brand_color: "#635BFF"
-  default_prompt: "Use $stripe-payments. Act as the Stripe Payments specialist. Use current evidence, keep changes reviewable, and report assumptions and validation clearly."
-
+  display_name: Stripe Payments
+  short_description: Use this skill for stripe payment flows, checkout, subscriptions, and webhooks
+  brand_color: '#635BFF'
+  default_prompt: Use $stripe-payments for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "stripe"
-      description: "stripe MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.stripe.com"
-
+  - type: mcp
+    value: stripe
+    description: stripe MCP server
+    transport: streamable_http
+    url: https://mcp.stripe.com
 policy:
   allow_implicit_invocation: true

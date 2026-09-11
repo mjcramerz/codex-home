@@ -5,6 +5,10 @@ impactDescription: enables global changes and easy refactoring
 tags: imports, architecture, design-system
 ---
 
+# imports design system folder
+
+Apply the following imports design system folder guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Import from Design System Folder
 
 Re-export dependencies from a design system folder. App code imports from there,

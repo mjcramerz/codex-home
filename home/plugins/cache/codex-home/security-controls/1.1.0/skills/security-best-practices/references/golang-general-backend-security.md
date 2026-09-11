@@ -1,8 +1,10 @@
 # Go (Golang) Security Spec (Go 1.25.x, Standard Library, net/http)
 
+Consult this reference when go (golang) security spec (go 1.25.x, standard library, net/http) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
-1) **Secure-by-default code generation** for new Go code.
-2) **Security review / vulnerability hunting** in existing Go code (passive “notice issues while working” and active “scan the repo and report findings”).
+1. **Secure-by-default code generation** for new Go code.
+2. **Security review / vulnerability hunting** in existing Go code (passive “notice issues while working” and active “scan the repo and report findings”).
 
 It is intentionally written as a set of **normative requirements** (“MUST/SHOULD/MAY”) plus **audit rules** (what bad patterns look like, how to detect them, and how to fix/mitigate them).
 
@@ -21,6 +23,7 @@ It is intentionally written as a set of **normative requirements** (“MUST/SHOU
 ## 1) Operating modes
 
 ### 1.1 Generation mode (default)
+
 When asked to write new Go code or modify existing code:
 - MUST follow every **MUST** requirement in this spec.
 - SHOULD follow every **SHOULD** requirement unless the user explicitly says otherwise.
@@ -28,35 +31,38 @@ When asked to write new Go code or modify existing code:
 - MUST avoid introducing new risky sinks (shell execution, dynamic template execution, serving user files as HTML, unsafe redirects, weak crypto, unbounded parsing, etc.).
 
 ### 1.2 Passive review mode (always on while editing)
+
 While working anywhere in a Go repo (even if the user did not ask for a security scan):
 - MUST “notice” violations of this spec in touched/nearby code.
 - SHOULD mention issues as they come up, with a brief explanation + safe fix.
 
 ### 1.3 Active audit mode (explicit scan request)
+
 When the user asks to “scan”, “audit”, or “hunt for vulns”:
 - MUST systematically search the codebase for violations of this spec.
 - MUST output findings in a structured format (see §2.3).
 
 Recommended audit order:
-1) Build/deploy entrypoints: `main.go`, `cmd/*`, Dockerfiles, Kubernetes manifests, systemd units, CI workflows.
-2) Go toolchain & dependency policy: Go version, modules, `go.mod/go.sum`, proxy/sumdb settings, govulncheck usage.
-3) Secret management and config loading (env, files, secret stores) + logging patterns.
-4) HTTP server configuration (timeouts, body limits, proxy trust, security headers).
-5) AuthN/AuthZ boundaries, session/cookie settings, token validation.
-6) CSRF protections for cookie-authenticated state-changing endpoints.
-7) Template usage and output encoding (XSS), and any “render template from string” behavior (SSTI).
-8) File handling (uploads/downloads/path traversal/temp files), static file serving.
-9) Injection sinks: SQL, OS command execution, SSRF/outbound fetch, open redirects.
-10) Concurrency/resource exhaustion (unbounded goroutines/queues, missing timeouts/contexts).
-11) Use of `unsafe` / `cgo` / `reflect` in security-sensitive paths.
-12) Debug/diagnostic endpoints (pprof/expvar/metrics) exposure.
-13) Cryptography usage (randomness, password hashing).
+1. Build/deploy entrypoints: `main.go`, `cmd/*`, Dockerfiles, Kubernetes manifests, systemd units, CI workflows.
+2. Go toolchain & dependency policy: Go version, modules, `go.mod/go.sum`, proxy/sumdb settings, govulncheck usage.
+3. Secret management and config loading (env, files, secret stores) + logging patterns.
+4. HTTP server configuration (timeouts, body limits, proxy trust, security headers).
+5. AuthN/AuthZ boundaries, session/cookie settings, token validation.
+6. CSRF protections for cookie-authenticated state-changing endpoints.
+7. Template usage and output encoding (XSS), and any “render template from string” behavior (SSTI).
+8. File handling (uploads/downloads/path traversal/temp files), static file serving.
+9. Injection sinks: SQL, OS command execution, SSRF/outbound fetch, open redirects.
+10. Concurrency/resource exhaustion (unbounded goroutines/queues, missing timeouts/contexts).
+11. Use of `unsafe` / `cgo` / `reflect` in security-sensitive paths.
+12. Debug/diagnostic endpoints (pprof/expvar/metrics) exposure.
+13. Cryptography usage (randomness, password hashing).
 
 --------------------------------------------------------------------
 
 ## 2) Definitions and review guidance
 
 ### 2.1 Untrusted input (treat as attacker-controlled unless proven otherwise)
+
 Examples include:
 - `*http.Request` fields: `r.URL.Path`, `r.URL.RawQuery`, `r.Form`, `r.PostForm`, headers, cookies, `r.Body`
 - Path parameters from routers (including values extracted from URL paths)
@@ -66,9 +72,11 @@ Examples include:
 - Configuration values that might be attacker-influenced in some deployments (headers set by upstream proxies, environment variables in multi-tenant systems)
 
 ### 2.2 State-changing request
+
 A request is state-changing if it can create/update/delete data, change auth/session state, trigger side effects (purchase, email send, webhook send), or initiate privileged actions.
 
 ### 2.3 Required audit finding format
+
 For each issue found, output:
 
 - Rule ID:
@@ -87,6 +95,7 @@ For each issue found, output:
 This is the smallest “production baseline” that prevents common Go misconfigurations.
 
 ### 3.1 Toolchain, patching, and dependency hygiene (MUST)
+
 - MUST run a supported Go major version and keep to the latest patch releases.
 - MUST treat Go standard library patch releases as security-relevant (many security fixes land in stdlib components like `net/http`, `crypto/*`, parsing packages).
 - MUST use Go modules with committed `go.mod` and `go.sum`.
@@ -94,6 +103,7 @@ This is the smallest “production baseline” that prevents common Go misconfig
 - MUST run `govulncheck` (source scan and/or binary scan) in CI and address findings.
 
 ### 3.2 HTTP server baseline (MUST for network-facing services)
+
 If the program serves HTTP (directly or via a framework built on `net/http`):
 - MUST configure an `http.Server` with explicit timeouts and header limits.
 - MUST set request body size limits (global and per-route as needed).
@@ -113,6 +123,7 @@ Illustrative baseline skeleton (adjust to your project):
 Each rule contains: required practice, insecure patterns, detection hints, and remediation.
 
 ### GO-DEPLOY-001: Keep the Go toolchain and standard library updated (security releases)
+
 Severity: Medium
 
 NOTE: Upgrading dependencies and the core Go version can break projects in unexpected ways. Focus on only security-critical dependencies and if noticed, let the user know rather than upgrading automatically.
@@ -141,6 +152,7 @@ Notes:
 ---
 
 ### GO-SUPPLY-001: Go module authenticity MUST NOT be disabled for public dependencies
+
 Severity: High
 
 Required:
@@ -171,6 +183,7 @@ Notes:
 ---
 
 ### GO-CONFIG-001: Secrets must be externalized and never logged or committed
+
 Severity: High (Critical if credentials are committed)
 
 Required:
@@ -197,6 +210,7 @@ Fix:
 ---
 
 ### GO-HTTP-001: HTTP servers MUST set timeouts and MaxHeaderBytes
+
 Severity: High (DoS risk)
 
 Required:
@@ -223,6 +237,7 @@ Notes:
 ---
 
 ### GO-HTTP-002: Request body and multipart parsing MUST be size-bounded
+
 Severity: Medium (DoS risk; can be High for upload-heavy apps)
 
 Required:
@@ -252,6 +267,7 @@ Notes:
 ---
 
 ### GO-DEPLOY-002: Diagnostic endpoints (pprof/expvar/metrics) MUST NOT be publicly exposed
+
 Severity: High
 
 NOTE: This only applies to production configurations. These endpoints are often used for debug or dev endpoints. If found, confirm that it would be reachable from the actual production deployment.
@@ -281,6 +297,7 @@ Notes:
 ---
 
 ### GO-HTTP-003: Reverse proxy and forwarded header trust MUST be explicit
+
 Severity: High (auth, URL generation, logging/auditing correctness)
 
 Required:
@@ -306,6 +323,7 @@ Fix:
 ---
 
 ### GO-HTTP-004: Security headers SHOULD be set (in app or at the edge)
+
 Severity: Medium
 
 Required (typical web app serving browsers):
@@ -334,6 +352,7 @@ Fix:
 ---
 
 ### GO-HTTP-005: Cookies MUST use secure attributes in production
+
 Severity: Medium
 
 Required (production, HTTPS):
@@ -360,6 +379,7 @@ Notes:
 ---
 
 ### GO-HTTP-006: Cookie-authenticated state-changing endpoints MUST be CSRF-protected
+
 Severity: High
 
 - IMPORTANT NOTE: If cookies are not used for auth (e.g., pure bearer token in Authorization header with no ambient cookies), CSRF is not a risk for those endpoints.
@@ -370,7 +390,6 @@ Required:
 - MAY use additional defenses (Origin/Referer checks, Fetch Metadata, SameSite cookies), but tokens remain the primary defense for cookie-authenticated apps.
 If tokens are impractical, or for small applications:
 * MUST at a minimum require a custom header to be set and set the session cookie SESSION_COOKIE_SAMESITE=lax, as this is the strongest method besides requiring a form token, and may be much easier to implement.
-
 
 Insecure patterns:
 - Cookie-authenticated JSON endpoints that mutate state with no CSRF checks.
@@ -387,6 +406,7 @@ Fix:
 ---
 
 ### GO-HTTP-007: CORS must be explicit and least-privilege
+
 Severity: Medium (High if misconfigured with credentials)
 
 Required:
@@ -411,6 +431,7 @@ Fix:
 ---
 
 ### GO-XSS-001: Use html/template and avoid bypassing auto-escaping with untrusted data
+
 Severity: High
 
 Required:
@@ -430,11 +451,12 @@ Detection hints:
 
 Fix:
 - Use `html/template` and pass untrusted data as data, not markup.
-- If you must allow limited HTML, use a vetted HTML sanitizer and still be careful with attributes/URLs.
+- If allow limited HTML, use a vetted HTML sanitizer and still be careful with attributes/URLs.
 
 ---
 
 ### GO-SSTI-001: Never parse/execute templates from untrusted input (SSTI)
+
 Severity: Critical
 
 Required:
@@ -458,6 +480,7 @@ Fix:
 ---
 
 ### GO-PATH-001: Prevent path traversal and unsafe file serving
+
 Severity: High
 
 Required:
@@ -483,6 +506,7 @@ Fix:
 ---
 
 ### GO-UPLOAD-001: File uploads must be validated, stored safely, and served safely
+
 Severity: High
 
 Required:
@@ -508,6 +532,7 @@ Fix:
 ---
 
 ### GO-INJECT-001: Prevent SQL injection (parameterized queries / ORM)
+
 Severity: High
 
 Required:
@@ -529,6 +554,7 @@ Fix:
 ---
 
 ### GO-INJECT-002: Prevent OS command injection; avoid shelling out with untrusted input
+
 Severity: Critical to High (depends on exposure)
 
 Required:
@@ -559,6 +585,7 @@ Notes:
 ---
 
 ### GO-SSRF-001: Prevent SSRF in outbound HTTP requests
+
 Severity: Medium (High in cloud/LAN environments)
 
 - Note: For small stand alone projects this is less important. It is most important when deploying into an LAN or with other services listening on the same server.
@@ -586,6 +613,7 @@ Fix:
 ---
 
 ### GO-HTTPCLIENT-001: Outbound HTTP clients MUST set timeouts and close bodies
+
 Severity: High (DoS and resource exhaustion)
 
 Required:
@@ -614,6 +642,7 @@ Notes:
 ---
 
 ### GO-REDIRECT-001: Prevent open redirects
+
 Severity: Medium (can be High with auth flows)
 
 Required:
@@ -634,6 +663,7 @@ Fix:
 ---
 
 ### GO-CRYPTO-001: Cryptographic randomness MUST come from crypto/rand
+
 Severity: High (Critical if used for auth/session tokens or keys)
 
 Required:
@@ -661,6 +691,7 @@ Notes:
 ---
 
 ### GO-AUTH-001: Password storage MUST use adaptive hashing (bcrypt/argon2id) and safe comparisons
+
 Severity: High
 
 Required:
@@ -689,6 +720,7 @@ Notes:
 ---
 
 ### GO-CONC-001: Data races and concurrency hazards MUST be treated as security-relevant
+
 Severity: Medium to High (depends on what races affect)
 
 Required:
@@ -716,6 +748,7 @@ Notes:
 ---
 
 ### GO-UNSAFE-001: Use of unsafe/cgo MUST be minimized and audited like memory-unsafe code
+
 Severity: High (Critical in high-risk code paths)
 
 Required:

@@ -1,5 +1,7 @@
 # Example Evaluation Table Formats
 
+Use this guide when the task concerns example evaluation table formats. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 This file shows various formats of evaluation tables that can be extracted from model README files.
 
 ## Format 1: Benchmarks as Rows (Most Common)

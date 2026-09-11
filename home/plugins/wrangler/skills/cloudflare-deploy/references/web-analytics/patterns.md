@@ -1,5 +1,7 @@
 # Web Analytics Patterns
 
+Consult this reference when web analytics patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Core Web Vitals Debugging
 
 Dashboard → Core Web Vitals → Click metric → Debug View shows top 5 problematic elements.
@@ -75,7 +77,7 @@ const token = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN;
 
 Dashboard → Filters → "Exclude Bot Traffic"
 
-Filters: Search crawlers, monitoring services, known bots.  
+Filters: Search crawlers, monitoring services, known bots.
 Not filtered: Headless browsers (Playwright/Puppeteer).
 
 ## Ad-Blocker Impact

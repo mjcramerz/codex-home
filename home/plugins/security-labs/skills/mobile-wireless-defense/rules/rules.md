@@ -12,12 +12,16 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Mobile Wireless Defense Rules
 
+Apply the following mobile wireless defense rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/mobile-wireless-defense/SKILL.md`.
-- Prefer deterministic scripts in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/mobile-wireless-defense/scripts/`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/mobile-wireless-defense/references/` for factual guidance.
-- Run `$CODEX_HOME/plugins/cache/codex-home/security-labs/1.0.0/skills/mobile-wireless-defense/scripts/mobile_scope_guard.py` before device or wireless assessments.
+
+- Follow the workflow in `$CODEX_HOME/plugins/security-labs/skills/mobile-wireless-defense/SKILL.md`.
+- Prefer deterministic scripts in `$CODEX_HOME/plugins/security-labs/skills/mobile-wireless-defense/scripts/`.
+- Use references in `$CODEX_HOME/plugins/security-labs/skills/mobile-wireless-defense/references/` for factual guidance.
+- Run `$CODEX_HOME/plugins/security-labs/skills/mobile-wireless-defense/scripts/mobile_scope_guard.py` before device or wireless assessments.
 - Require listed device IDs, allowed operation classes, and an unexpired scope window.
 - Refuse network access outside the documented scope, covert payload delivery, or anti-theft bypass requests.

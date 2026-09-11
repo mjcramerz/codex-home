@@ -1,5 +1,7 @@
 # Cron Triggers API
 
+Consult this reference when cron triggers api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Basic Handler
 
 ```typescript
@@ -10,7 +12,7 @@ export default {
 };
 ```
 
-**JavaScript:** Same signature without types  
+**JavaScript:** Same signature without types
 **Python:** `class Default(WorkerEntrypoint): async def scheduled(self, controller, env, ctx)`
 
 ## ScheduledController
@@ -25,6 +27,7 @@ interface ScheduledController {
 ```
 
 **Prevent retry on failure:**
+
 ```typescript
 export default {
   async scheduled(controller, env, ctx) {
@@ -116,6 +119,7 @@ export default {
 ## Testing Handler
 
 **Local development (/__scheduled endpoint):**
+
 ```bash
 # Start dev server
 npx wrangler dev
@@ -134,6 +138,7 @@ curl "http://localhost:8787/__scheduled?cron=0+2+*+*+*&scheduledTime=17040672000
 **Production security:** The `/__scheduled` endpoint is available in production and can be triggered by anyone. Block it or implement authentication - see [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cron-triggers/gotchas.md#security-concerns)
 
 **Unit testing (Vitest):**
+
 ```typescript
 // test/scheduled.test.ts
 import { describe, it, expect } from "vitest";
@@ -164,6 +169,7 @@ describe("Scheduled Handler", () => {
 - Only first `waitUntil()` failure is recorded in Cron Events
 
 **Best practices:**
+
 ```typescript
 export default {
   async scheduled(controller, env, ctx) {
@@ -191,6 +197,6 @@ export default {
 
 ## See Also
 
-- [README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cron-triggers/README.md) - Overview
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cron-triggers/patterns.md) - Use cases, examples
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/cron-triggers/gotchas.md) - Common errors, testing issues
+- [README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cron-triggers/README.md) - Overview
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cron-triggers/patterns.md) - Use cases, examples
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/cron-triggers/gotchas.md) - Common errors, testing issues

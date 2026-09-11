@@ -1,5 +1,7 @@
 # Streaming Chat with AIChatAgent
 
+Consult this reference when streaming chat with aichatagent is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Fetch `docs/resumable-streaming.md` and `docs/client-sdk.md` from `https://github.com/cloudflare/agents/tree/main/docs` for complete documentation.
 
 `AIChatAgent` provides streaming chat with automatic message persistence and resumable streams.

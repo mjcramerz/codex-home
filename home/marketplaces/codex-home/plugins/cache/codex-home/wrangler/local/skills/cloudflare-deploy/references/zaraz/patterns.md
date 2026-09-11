@@ -1,10 +1,13 @@
 # Zaraz Patterns
 
+Consult this reference when zaraz patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## SPA Tracking
 
 **History Change Trigger (Recommended):** Configure in dashboard - no code needed, Zaraz auto-detects route changes.
 
 **Manual tracking (React/Vue/Next.js):**
+
 ```javascript
 // On route change
 zaraz.track('pageview', { page_path: pathname, page_title: document.title });
@@ -42,6 +45,7 @@ zaraz.track('experiment_conversion', { experiment_id, variant, value });
 ## Worker Integration
 
 **Context Enricher** - Modify context before tools execute:
+
 ```typescript
 export default {
   async fetch(request, env) {
@@ -51,6 +55,7 @@ export default {
   }
 };
 ```
+
 Configure: Zaraz > Settings > Context Enrichers
 
 **Worker Variables** - Compute dynamic values server-side, use as `{{worker.variable_name}}`.

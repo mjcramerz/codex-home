@@ -1,8 +1,11 @@
 # Wayland / Labwc stack
-Purpose: tell the Codex coding agent how to use `docs/desktop/wayland.md` as a runtime-pack surface and when to stop browsing.
-Guidance for a lean Wayland desktop with Labwc and companion session services.
+
+Use this guide when the task concerns wayland / labwc stack. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
+Apply the following practices to a lean Wayland desktop with Labwc and companion session services.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/docs/desktop/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -10,6 +13,7 @@ Guidance for a lean Wayland desktop with Labwc and companion session services.
 <!-- END:nav -->
 
 ## Core components
+
 - **labwc**: compositor and session control
 - **waybar**: status bar
 - **wofi**: launcher
@@ -21,17 +25,20 @@ Guidance for a lean Wayland desktop with Labwc and companion session services.
 - **wlroots utilities** such as `wlr-randr`: output control and diagnostics
 
 ## Baseline practices
+
 - Keep configs in `~/.config/` and version them.
 - Prefer Wayland flags for browsers/apps (`--ozone-platform=wayland`).
 - Use minimal autostart entries; prefer dedicated helpers over long shell scripts.
 - Record which component owns restart logic so Waybar, Wofi, docks, and lock helpers do not fight each other.
 
 ## Quick map
+
 - Labwc compositor/session policy: `labwc.md`
 - Waybar modules and restart behavior: `waybar.md`
 - Wofi launcher configuration and command safety: `wofi.md`
 
 ## Config locations (typical)
+
 - Labwc: `~/.config/labwc/`
 - Waybar: `~/.config/waybar/`
 - Kanshi: `~/.config/kanshi/config`
@@ -40,6 +47,7 @@ Guidance for a lean Wayland desktop with Labwc and companion session services.
 - Greetd: `/etc/greetd/config.toml`
 
 ## Safety notes
+
 - Ensure the greeter runs with minimal privileges.
 - Avoid storing secrets in desktop configs.
 - Test new configs with a fallback TTY login available.
@@ -54,6 +62,6 @@ See also:
 - `$CODEX_HOME/templates/desktop/wayland-skeleton/`
 - `$CODEX_HOME/snippets/desktop/`
 - `../workflows/desktop-wayland.md`
-- You must use skill `desktop-wayland`.
+- Read the `desktop-wayland` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/desktop/stack.md`
 - `$CODEX_HOME/index/domains/desktop/wayland.md`

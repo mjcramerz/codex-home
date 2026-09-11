@@ -5,6 +5,10 @@ impactDescription: loads after hydration
 tags: bundle, third-party, analytics, defer
 ---
 
+# bundle defer third party
+
+Apply the following bundle defer third party guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Defer Non-Critical Third-Party Libraries
 
 Analytics, logging, and error tracking don't block user interaction. Load them after hydration.

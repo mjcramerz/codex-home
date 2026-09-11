@@ -1,8 +1,11 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Dispatch Namespace Binding
 
 ### wrangler.jsonc
+
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -38,8 +41,8 @@ curl -X PUT \
 
 **When to use:** Internal platforms, A/B testing platforms, need geolocation data
 
-
 ### With Outbound Worker
+
 ```jsonc
 {
   "dispatch_namespaces": [{
@@ -81,6 +84,7 @@ const userWorker = env.DISPATCHER.get(
 ```
 
 Handle limit violations:
+
 ```typescript
 try {
   return await userWorker.fetch(request);
@@ -97,6 +101,7 @@ try {
 Deploy HTML/CSS/images with Workers. See [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/api.md#static-assets) for upload process.
 
 ### Wrangler
+
 ```jsonc
 {
   "name": "customer-site",
@@ -120,7 +125,7 @@ Alternative to CLI:
 2. Add `--dispatch-namespace` flag: `wrangler deploy --dispatch-namespace production`
 3. Or configure in wrangler.jsonc under `dispatch_namespaces`
 
-See [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/api.md) for programmatic deployment via REST API or SDK.
+See [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/api.md) for programmatic deployment via REST API or SDK.
 
 ## Tags
 
@@ -144,6 +149,7 @@ Common patterns: `customer-123`, `free|pro|enterprise`, `production|staging`
 **Supported binding types:** 29 total including KV, D1, R2, Durable Objects, Analytics Engine, Service, Assets, Queue, Vectorize, Hyperdrive, Workflow, AI, Browser, and more.
 
 Add via API metadata (see [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/api.md#deploy-with-bindings)):
+
 ```json
 {
   "bindings": [
@@ -155,6 +161,7 @@ Add via API metadata (see [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudfla
 ```
 
 Preserve existing bindings:
+
 ```json
 {
   "bindings": [{"type": "r2_bucket", "name": "STORAGE", "bucket_name": "new"}],
@@ -162,6 +169,6 @@ Preserve existing bindings:
 }
 ```
 
-For complete binding type reference, see [bindings]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/bindings/) documentation
+For complete binding type reference, see [bindings]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/bindings/) documentation
 
-See [README.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/README.md), [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/api.md), [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/patterns.md), [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers-for-platforms/gotchas.md)
+See [README.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/README.md), [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/api.md), [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/patterns.md), [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers-for-platforms/gotchas.md)

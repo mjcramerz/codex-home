@@ -1,5 +1,7 @@
 # Authentication
 
+Consult this reference when authentication is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Authenticate with Cloudflare before deploying Workers or Pages.
 
 ## Quick Decision Tree
@@ -69,5 +71,5 @@ Non-zero exit code means not authenticated.
 
 ## See Also
 
-- [terraform/README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/README.md) - Terraform provider auth
-- [pulumi/README.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/pulumi/README.md) - Pulumi provider auth
+- [terraform/README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/README.md) - Terraform provider auth
+- [pulumi/README.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/pulumi/README.md) - Pulumi provider auth

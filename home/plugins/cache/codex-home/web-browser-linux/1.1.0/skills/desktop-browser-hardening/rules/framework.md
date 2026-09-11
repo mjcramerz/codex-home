@@ -13,9 +13,12 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Desktop Browser Hardening Framework
 
+Apply the following desktop browser hardening framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `desktop-browser-hardening`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-browser-hardening/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-browser-hardening/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/web-browser-linux/1.0.0/skills/desktop-browser-hardening/references/`
+- Source of truth: `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-browser-hardening/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-browser-hardening/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/web-browser-linux/skills/desktop-browser-hardening/references/`

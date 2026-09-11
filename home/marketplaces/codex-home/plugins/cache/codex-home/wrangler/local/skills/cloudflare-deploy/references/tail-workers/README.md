@@ -1,5 +1,7 @@
 # Cloudflare Tail Workers
 
+Consult this reference when cloudflare tail workers is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Specialized Workers that consume execution events from producer Workers for logging, debugging, analytics, and observability.
 
 ## When to Use This Reference

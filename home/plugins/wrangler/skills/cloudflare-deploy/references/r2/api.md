@@ -1,5 +1,7 @@
 # R2 API Reference
 
+Consult this reference when r2 api reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## PUT (Upload)
 
 ```typescript
@@ -49,6 +51,7 @@ const object = await env.MY_BUCKET.head(key); // Returns R2Object without body
 await env.MY_BUCKET.delete(key);
 await env.MY_BUCKET.delete([key1, key2, key3]); // Batch (max 1000)
 ```
+
 ## LIST
 
 ```typescript

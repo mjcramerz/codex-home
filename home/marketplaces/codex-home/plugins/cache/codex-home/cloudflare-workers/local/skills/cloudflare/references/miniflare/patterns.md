@@ -1,5 +1,7 @@
 # Testing Patterns
 
+Consult this reference when testing patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Choosing a Testing Approach
 
 | Approach | Use Case | Speed | Setup | Runtime |
@@ -34,7 +36,7 @@ describe("Business logic", () => {
 });
 ```
 
-**Pros:** Fast, simple  
+**Pros:** Fast, simple
 **Cons:** No full runtime, can't test fetch handler
 
 ## vitest-pool-workers
@@ -66,7 +68,7 @@ it("handles fetch", async () => {
 });
 ```
 
-**Pros:** Full runtime, uses wrangler.toml  
+**Pros:** Full runtime, uses wrangler.toml
 **Cons:** Requires Wrangler config
 
 ## Miniflare API (node:test)
@@ -178,4 +180,4 @@ new Miniflare({ kvNamespaces: ["TEST"] }); // No persist = in-memory
 await mf.dispatchFetch("http://localhost/");
 ```
 
-See [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/miniflare/gotchas.md) for troubleshooting.
+See [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/miniflare/gotchas.md) for troubleshooting.

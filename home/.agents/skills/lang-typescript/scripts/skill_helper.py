@@ -18,14 +18,7 @@ SKILL_NAME = 'lang-typescript'
 SKILL_CATEGORY = 'LANG'
 SKILL_DESCRIPTION = 'Configure TypeScript projects with strict defaults.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'TypeScript handbook', 'url': 'https://www.typescriptlang.org/docs/', 'note': 'Type-system and project configuration guidance.'},
     {'title': 'TypeScript tsconfig reference', 'url': 'https://www.typescriptlang.org/tsconfig', 'note': 'Compiler options and strictness settings.'}

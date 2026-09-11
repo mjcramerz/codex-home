@@ -1,5 +1,7 @@
 # Configuration & Deployment
 
+Consult this reference when configuration & deployment is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Dashboard Setup
 
 1. Navigate to https://dash.cloudflare.com/?to=/:account/calls
@@ -13,11 +15,13 @@
 **Backend (Workers):** Built-in fetch API, no additional packages required
 
 **Client (PartyTracks):**
+
 ```bash
 npm install partytracks @cloudflare/calls
 ```
 
 **Client (React + PartyTracks):**
+
 ```bash
 npm install partytracks @cloudflare/calls observable-hooks
 # Observable hooks: useObservableAsValue, useValueAsObservable

@@ -5,6 +5,10 @@ impactDescription: faster response times
 tags: server, async, logging, analytics, side-effects
 ---
 
+# server after nonblocking
+
+Apply the following server after nonblocking guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use after() for Non-Blocking Operations
 
 Use Next.js's `after()` to schedule work that should execute after a response is sent. This prevents logging, analytics, and other side effects from blocking the response.

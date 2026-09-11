@@ -1,5 +1,7 @@
 # FastAPI (Python) Web Security Spec (FastAPI 0.128.x, Python 3.x) ([PyPI][1])
 
+Consult this reference when fastapi (python) web security spec (fastapi 0.128.x, python 3.x) ([pypi][1]) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
 
 1. **Secure-by-default code generation** for new FastAPI code.

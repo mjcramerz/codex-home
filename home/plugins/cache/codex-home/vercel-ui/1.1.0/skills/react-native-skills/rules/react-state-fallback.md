@@ -5,6 +5,10 @@ impactDescription: reactive fallbacks without syncing
 tags: state, hooks, derived-state, props, initialState
 ---
 
+# react state fallback
+
+Apply the following react state fallback guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use fallback state instead of initialState
 
 Use `undefined` as initial state and nullish coalescing (`??`) to fall back to

@@ -5,6 +5,10 @@ impactDescription: cleaner component definitions and context usage
 tags: react19, refs, context, hooks
 ---
 
+# react19 no forwardref
+
+Apply the following react19 no forwardref guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## React 19 API Changes
 
 > **⚠️ React 19+ only.** Skip this if you're on React 18 or earlier.

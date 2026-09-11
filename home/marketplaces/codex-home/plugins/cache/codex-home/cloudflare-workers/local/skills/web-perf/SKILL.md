@@ -1,6 +1,6 @@
 ---
 name: web-perf
-description: Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (FCP, LCP, TBT, CLS, Speed Index), identifies render-blocking resources, network dependency chains, layout shifts, caching issues, and accessibility gaps. Use when asked to audit, profile, debug, or optimize page load performance, Lighthouse scores, or site speed. Biases towards retrieval from current documentation over pre-trained knowledge.
+description: Use this skill for analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (FCP, LCP, TBT, CLS, Speed Index), identifies render-blocking resources, network dependency chains, layout shifts, caching issues, and accessibility gaps. Use when asked to audit, profile, debug, or optimize page load performance, Lighthouse scores, or site speed. Biases towards retrieval from current documentation over pre-trained knowledge.
 ---
 
 # Web Performance Audit
@@ -64,11 +64,13 @@ Audit Progress:
 ### Phase 1: Performance Trace
 
 1. Navigate to the target URL:
+
    ```
    navigate_page(url: "<target-url>")
    ```
 
 2. Start a performance trace with reload to capture cold-load metrics:
+
    ```
    performance_start_trace(autoStop: true, reload: true)
    ```
@@ -96,6 +98,7 @@ Common insight names:
 | Network Dependencies | `NetworkRequestsDepGraph` | Request chains delaying critical resources |
 
 Example:
+
 ```
 performance_analyze_insight(insightSetId: "<id-from-trace>", insightName: "LCPBreakdown")
 ```
@@ -112,6 +115,7 @@ performance_analyze_insight(insightSetId: "<id-from-trace>", insightName: "LCPBr
 ### Phase 3: Network Analysis
 
 List all network requests to identify optimization opportunities:
+
 ```
 list_network_requests(resourceTypes: ["Script", "Stylesheet", "Document", "Font", "Image"])
 ```
@@ -126,6 +130,7 @@ list_network_requests(resourceTypes: ["Script", "Stylesheet", "Document", "Font"
 6. **Unused preconnects**: If flagged, verify by checking if ANY requests went to that origin. If zero requests, it's definitively unused—recommend removal. If requests exist but loaded late, the preconnect may still be valuable.
 
 For detailed request info:
+
 ```
 get_network_request(reqid: <id>)
 ```
@@ -133,6 +138,7 @@ get_network_request(reqid: <id>)
 ### Phase 4: Accessibility Snapshot
 
 Take an accessibility tree snapshot:
+
 ```
 take_snapshot(verbose: true)
 ```

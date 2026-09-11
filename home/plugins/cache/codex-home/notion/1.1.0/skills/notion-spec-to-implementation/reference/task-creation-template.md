@@ -13,7 +13,10 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Task Creation Template
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 When creating tasks from spec.
 
@@ -46,4 +49,3 @@ Implementation plan: <mention-page url="...">Implementation Plan</mention-page>
 ## Progress
 [To be updated during implementation]
 ```
-

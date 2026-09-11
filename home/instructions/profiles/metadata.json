@@ -4,7 +4,7 @@
     {
       "name": "profiles",
       "enabled": true,
-      "short_description": "Profile-specific instruction overrides for CODEX_HOME/*.config.toml.",
+      "short_description": "Read this entry for profile-specific instruction overrides for CODEX_HOME/*.config.toml.",
       "entries": [
         {
           "name": "agents_model_catalog",
@@ -13,7 +13,7 @@
           "file": "default_catalog.json",
           "source_group": "models",
           "enabled": false,
-          "short_description": "Agents profile model catalog asset path.",
+          "short_description": "Read this entry for agents profile model catalog asset path.",
           "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
         },
         {
@@ -23,7 +23,7 @@
           "file": "base.md",
           "source_group": "agents/models",
           "enabled": true,
-          "short_description": "Agents profile model instructions.",
+          "short_description": "Read this entry for agents profile model instructions.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/agents/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -34,7 +34,7 @@
           "file": "base.md",
           "source_group": "agents/models",
           "enabled": true,
-          "short_description": "Agents profile base model instruction override.",
+          "short_description": "Read this entry for agents profile base model instruction override.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/agents/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -45,7 +45,7 @@
           "file": "cyber_catalog.json",
           "source_group": "models",
           "enabled": false,
-          "short_description": "Cyber profile model catalog asset path.",
+          "short_description": "Read this entry for cyber profile model catalog asset path.",
           "default_disable_path": "$CODEX_HOME/.models/cyber_catalog.json"
         },
         {
@@ -55,7 +55,7 @@
           "file": "base.md",
           "source_group": "profiles/cyber/models",
           "enabled": true,
-          "short_description": "Cyber profile model instructions.",
+          "short_description": "Read this entry for cyber profile model instructions.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/cyber/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -66,7 +66,7 @@
           "file": "base.md",
           "source_group": "profiles/cyber/models",
           "enabled": true,
-          "short_description": "Cyber profile base model instruction override.",
+          "short_description": "Read this entry for cyber profile base model instruction override.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/cyber/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -109,7 +109,7 @@
           "file": "default_catalog.json",
           "source_group": "models",
           "enabled": false,
-          "short_description": "Default profile model catalog asset path.",
+          "short_description": "Read this entry for default profile model catalog asset path.",
           "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
         },
         {
@@ -119,7 +119,7 @@
           "file": "base.md",
           "source_group": "default/models",
           "enabled": true,
-          "short_description": "Default profile model instructions.",
+          "short_description": "Read this entry for default profile model instructions.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -130,7 +130,7 @@
           "file": "base.md",
           "source_group": "default/models",
           "enabled": true,
-          "short_description": "Default profile base model instruction override.",
+          "short_description": "Read this entry for default profile base model instruction override.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -141,7 +141,7 @@
           "file": "default_catalog.json",
           "source_group": "models",
           "enabled": false,
-          "short_description": "Fast profile model catalog asset path.",
+          "short_description": "Read this entry for fast profile model catalog asset path.",
           "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
         },
         {
@@ -151,7 +151,7 @@
           "file": "base.md",
           "source_group": "profiles/fast/models",
           "enabled": true,
-          "short_description": "Fast profile model instructions.",
+          "short_description": "Read this entry for fast profile model instructions.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -162,7 +162,7 @@
           "file": "base.md",
           "source_group": "profiles/fast/models",
           "enabled": true,
-          "short_description": "Fast profile base model instruction override.",
+          "short_description": "Read this entry for fast profile base model instruction override.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -205,7 +205,7 @@
           "file": "default_catalog.json",
           "source_group": "models",
           "enabled": false,
-          "short_description": "Astra profile model catalog asset path.",
+          "short_description": "Read this entry for astra profile model catalog asset path.",
           "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
         },
         {
@@ -215,7 +215,7 @@
           "file": "base.md",
           "source_group": "default/models",
           "enabled": true,
-          "short_description": "Astra profile model instructions.",
+          "short_description": "Read this entry for astra profile model instructions.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
@@ -226,7 +226,7 @@
           "file": "base.md",
           "source_group": "default/models",
           "enabled": true,
-          "short_description": "Astra profile base model instruction override.",
+          "short_description": "Read this entry for astra profile base model instruction override.",
           "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },

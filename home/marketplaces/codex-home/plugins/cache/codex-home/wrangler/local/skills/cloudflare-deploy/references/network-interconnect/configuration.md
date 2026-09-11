@@ -1,5 +1,7 @@
 # CNI Configuration
 
+Consult this reference when cni configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 See [README.md](README.md) for overview.
 
 ## Workflow (2-4 weeks)
@@ -28,6 +30,7 @@ See [README.md](README.md) for overview.
 **BGP over CNI (Dec 2024):** Magic WAN/Transit can now peer BGP directly over CNI v2 (no GRE tunnel required).
 
 **Example v1 BGP:**
+
 ```
 Router ID: 192.0.2.1
 Peer IP: 192.0.2.0
@@ -80,14 +83,17 @@ VLAN: 100
 **Alerts:**
 
 **CNI Connection Maintenance** (Magic Networking only):
+
 ```
 Dashboard → Notifications → Add
 Product: Cloudflare Network Interconnect
 Type: Connection Maintenance Alert
 ```
+
 Warnings up to 2 weeks advance. 6hr delay for new additions.
 
 **Cloudflare Status Maintenance** (entire PoP):
+
 ```
 Dashboard → Notifications → Add
 Product: Cloudflare Status
@@ -95,6 +101,7 @@ Filter PoPs: gru,fra,lhr
 ```
 
 **Find PoP code:**
+
 ```
 Dashboard → Magic Transit/WAN → Configuration → Interconnects
 Select CNI → Note Data Center (e.g., "gru-b")
@@ -111,4 +118,4 @@ Use first 3 letters: "gru"
 - Enable maintenance notifications immediately after activation
 - Monitor status programmatically via API
 
-For design patterns, HA architecture, and security best practices, see [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/network-interconnect/patterns.md).
+For design patterns, HA architecture, and security best practices, see [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/network-interconnect/patterns.md).

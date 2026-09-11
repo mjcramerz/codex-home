@@ -1,5 +1,7 @@
 # Browser Rendering Gotchas
 
+Consult this reference when browser rendering gotchas is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Tier Limits
 
 | Limit | Free | Paid |
@@ -12,6 +14,7 @@
 *Subject to fair-use policy.
 
 **Check quota:**
+
 ```typescript
 const limits = await puppeteer.limits(env.MYBROWSER);
 // { remaining: 540000, total: 600000, concurrent: 2 }
@@ -74,6 +77,7 @@ await page.evaluate((sel) => document.querySelector(sel)?.textContent, selector)
 3. `networkidle0` - no network for 500ms
 
 **Block unnecessary resources:**
+
 ```typescript
 await page.setRequestInterception(true);
 page.on("request", (req) => {

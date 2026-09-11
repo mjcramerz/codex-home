@@ -12,15 +12,20 @@ tags:
 - admin
 updated: '2026-02-25'
 ---
+
 # repo-bash-ops reference bundle
+
+Consult this reference when repo-bash-ops reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-25 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Repo operations automation in Bash: safe git workflows, CI scripting, release hygiene, and low-risk automation primitives.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Inputs
 - Scope and boundaries
@@ -31,10 +36,12 @@ Repo operations automation in Bash: safe git workflows, CI scripting, release hy
 - References
 
 ## Local implementation anchors
+
 - `$CODEX_SKILLS/repo-bash-ops/SKILL.md`
 - `$CODEX_SKILLS/repo-bash-ops/agents/openai.yaml`
 
 ## External references
+
 - [Git documentation](https://git-scm.com/doc) - Core git behavior and safe workflows.
 - [GitHub Actions docs](https://docs.github.com/actions) - Workflow syntax and security hardening.
 - [GitLab CI/CD docs](https://docs.gitlab.com/ci/) - Pipeline orchestration and variables.
@@ -42,5 +49,6 @@ Repo operations automation in Bash: safe git workflows, CI scripting, release hy
 - [Git push documentation](https://git-scm.com/docs/git-push) - Branch/tag push safety and protected workflow considerations.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `repo-bash-ops` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `repo-bash-ops` before finalizing changes.

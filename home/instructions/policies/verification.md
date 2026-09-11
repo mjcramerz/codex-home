@@ -1,4 +1,3 @@
-# Verification contract
-Run focused tests for the changed behavior and relevant broader checks. Test malformed input, permission failures, unavailable dependencies, timeouts, cancellation, concurrent access and cleanup where they matter. For packaging, inspect the actual archive and verify executable modes, expected files and checksums.
+# Establish the relevant evidence
 
-Record commands, exit status and results. State which checks used mocks, which ran against real services, and which were not run. For deployment work, validate rendered systemd units and client configuration before activation, then perform live initialize/tools-list and functional probes. A failed check remains a failure until fixed or explicitly documented; never silently skip a required server or credential.
+Choose the narrowest permitted existing check for the changed contract. Inspect Makefile recipes and package scripts before execution and do not invent targets. Separate syntax checks, mocks and live integration; report skipped checks without implying success. Honor restrictions on creating validation files.

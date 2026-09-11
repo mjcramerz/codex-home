@@ -18,32 +18,7 @@ SKILL_NAME = 'workflow-plans'
 SKILL_CATEGORY = 'WORKSPACE'
 SKILL_DESCRIPTION = 'Generate a plan for how an agent should accomplish a complex coding task. Use when a user asks for a plan, and optionally when they want to save a plan under $CODEX_HOME/plans.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Overview',
-    'Core rules',
-    'Decide the task',
-    'Plan discovery',
-    'Plan creation workflow',
-    'Plan update workflow',
-    'Scripts (low-freedom helpers)',
-    'Plan file format',
-    'Implementation plan body template',
-    'Requirements',
-    'Scope',
-    'Files and entry points',
-    'Data model / API changes',
-    'Action items',
-    'Testing and validation',
-    'Risks and edge cases',
-    'Open questions',
-    'Overview plan body template',
-    'Diagrams',
-    'Key file references',
-    'Auth / routing / behavior notes',
-    'Current status',
-    'Writing guidance',
-    'Agent orchestration'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'Project management lifecycle overview', 'url': 'https://www.atlassian.com/work-management/project-management/project-life-cycle', 'note': 'Planning phases and execution checkpoints.'},
     {'title': 'DORA metrics overview', 'url': 'https://cloud.google.com/architecture/devops/devops-tech-foundations', 'note': 'Delivery metrics for workflow quality checks.'}

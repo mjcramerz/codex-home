@@ -12,9 +12,13 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # Desktop Entries Rules
 
+Apply the following desktop entries rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/desktop-entries/SKILL.md`.
-- Prefer deterministic scripts in `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/desktop-entries/scripts/`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/desktop-entries/references/` for factual guidance.
+
+- Follow the workflow in `$CODEX_HOME/plugins/desktop-wayland/skills/desktop-entries/SKILL.md`.
+- Prefer deterministic scripts in `$CODEX_HOME/plugins/desktop-wayland/skills/desktop-entries/scripts/`.
+- Use references in `$CODEX_HOME/plugins/desktop-wayland/skills/desktop-entries/references/` for factual guidance.

@@ -18,14 +18,7 @@ SKILL_NAME = 'lang-go'
 SKILL_CATEGORY = 'LANG'
 SKILL_DESCRIPTION = 'Build Go modules with safe defaults and testing guidance.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'Go documentation', 'url': 'https://go.dev/doc/', 'note': 'Go language and toolchain references.'},
     {'title': 'Go module reference', 'url': 'https://go.dev/ref/mod', 'note': 'Module dependency and version behavior.'}

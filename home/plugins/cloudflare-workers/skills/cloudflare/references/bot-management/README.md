@@ -1,5 +1,7 @@
 # Cloudflare Bot Management
 
+Consult this reference when cloudflare bot management is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Enterprise-grade bot detection, protection, and mitigation using ML/heuristics, bot scores, JavaScript detections, and verified bot handling.
 
 ## Overview
@@ -82,13 +84,13 @@ export default {
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/bot-management/configuration.md) - Product tiers, WAF rule setup, JavaScript Detections, ML auto-updates
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/bot-management/api.md) - Workers BotManagement interface, WAF fields, JA4 Signals
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/bot-management/patterns.md) - E-commerce, API protection, mobile app allowlisting, SEO-friendly handling
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/bot-management/gotchas.md) - False positives/negatives, score=0 issues, JSD limitations, CSP requirements
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/bot-management/configuration.md) - Product tiers, WAF rule setup, JavaScript Detections, ML auto-updates
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/bot-management/api.md) - Workers BotManagement interface, WAF fields, JA4 Signals
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/bot-management/patterns.md) - E-commerce, API protection, mobile app allowlisting, SEO-friendly handling
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/bot-management/gotchas.md) - False positives/negatives, score=0 issues, JSD limitations, CSP requirements
 
 ## See Also
 
-- [waf]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/waf/) - WAF custom rules for bot enforcement
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Workers request.cf.botManagement API
-- [api-shield]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/api-shield/) - API-specific bot protection
+- [waf]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/waf/) - WAF custom rules for bot enforcement
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Workers request.cf.botManagement API
+- [api-shield]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/api-shield/) - API-specific bot protection

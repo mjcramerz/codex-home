@@ -13,17 +13,23 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web HTMX Implementation Playbook
 
+Consult this reference when web htmx implementation playbook is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Scope and intent
+
 Use this playbook for server-rendered interfaces where HTMX progressively enhances links/forms with partial swaps.
 
 ## Intake checklist
+
 - Enumerate each interaction: trigger element, endpoint, method, target, and swap strategy.
 - Confirm fallback behavior when JavaScript/HTMX is unavailable.
 - Confirm mutation safety requirements (authz, CSRF, idempotency, retry policy).
 
 ## Delivery sequence
+
 1. Define fragment contracts in `endpoint-contracts.md`.
 2. Implement server responses for success, empty, validation-error, and server-error states.
 3. Attach HTMX attributes only after baseline forms/links are functional.
@@ -32,6 +38,7 @@ Use this playbook for server-rendered interfaces where HTMX progressively enhanc
 6. Return endpoint-to-fragment matrix and follow-up risks.
 
 ## Decision rules
+
 - Keep fragments small and deterministic.
 - Favor idempotent GET interactions for read-only updates.
 - Use POST/PUT/PATCH/DELETE only with CSRF and authz checks.

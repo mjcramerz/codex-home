@@ -5,6 +5,10 @@ impactDescription: prevents unmaintainable component variants
 tags: composition, props, architecture
 ---
 
+# architecture avoid boolean props
+
+Apply the following architecture avoid boolean props guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Avoid Boolean Prop Proliferation
 
 Don't add boolean props like `isThread`, `isEditing`, `isDMThread` to customize

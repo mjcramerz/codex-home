@@ -1,5 +1,7 @@
 # Durable Objects Configuration
 
+Consult this reference when durable objects configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Basic Setup
 
 ```jsonc
@@ -114,7 +116,7 @@ Deploy: `npx wrangler deploy --env production`
 }
 ```
 
-See [Gotchas]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/gotchas.md) for complete limits table.
+See [Gotchas]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/gotchas.md) for complete limits table.
 
 ## Types
 
@@ -155,6 +157,6 @@ npx wrangler durable-objects delete <namespace> <id>   # Delete DO (destroys dat
 
 ## See Also
 
-- **[API]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/api.md)** - DurableObjectState and lifecycle handlers
-- **[Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/patterns.md)** - Multi-environment patterns
-- **[Gotchas]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/gotchas.md)** - Migration caveats, limits
+- **[API]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/api.md)** - DurableObjectState and lifecycle handlers
+- **[Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/patterns.md)** - Multi-environment patterns
+- **[Gotchas]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/gotchas.md)** - Migration caveats, limits

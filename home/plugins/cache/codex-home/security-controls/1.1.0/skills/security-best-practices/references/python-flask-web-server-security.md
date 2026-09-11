@@ -1,8 +1,10 @@
 # Flask (Python) Web Security Spec (Flask 3.1.x, Python 3.x)
 
+Consult this reference when flask (python) web security spec (flask 3.1.x, python 3.x) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
-1) **Secure-by-default code generation** for new Flask code.
-2) **Security review / vulnerability hunting** in existing Flask code (passive “notice issues while working” and active “scan the repo and report findings”).
+1. **Secure-by-default code generation** for new Flask code.
+2. **Security review / vulnerability hunting** in existing Flask code (passive “notice issues while working” and active “scan the repo and report findings”).
 
 It is intentionally written as a set of **normative requirements** (“MUST/SHOULD/MAY”) plus **audit rules** (what bad patterns look like, how to detect them, and how to fix/mitigate them).
 
@@ -20,6 +22,7 @@ It is intentionally written as a set of **normative requirements** (“MUST/SHOU
 ## 1) Operating modes
 
 ### 1.1 Generation mode (default)
+
 When asked to write new Flask code or modify existing code:
 - MUST follow every **MUST** requirement in this spec.
 - SHOULD follow every **SHOULD** requirement unless the user explicitly says otherwise.
@@ -27,32 +30,35 @@ When asked to write new Flask code or modify existing code:
 - MUST avoid introducing new risky sinks (template rendering from strings, shell execution, dynamic imports, unsafe redirects, serving user files as HTML, etc.).
 
 ### 1.2 Passive review mode (always on while editing)
+
 While working anywhere in a Flask repo (even if the user did not ask for a security scan):
 - MUST “notice” violations of this spec in touched/nearby code.
 - SHOULD mention issues as they come up, with a brief explanation + safe fix.
 
 ### 1.3 Active audit mode (explicit scan request)
+
 When the user asks to “scan”, “audit”, or “hunt for vulns”:
 - MUST systematically search the codebase for violations of this spec.
 - MUST output findings in a structured format (see §2.3).
 
 Recommended audit order:
-1) App entrypoints / deployment scripts / Dockerfiles / Procfiles.
-2) Flask configuration and environment handling.
-3) Auth + sessions + cookies.
-4) CSRF protections and state-changing routes.
-5) Template rendering and XSS/SSTI.
-6) File handling (uploads + downloads) and path traversal.
-7) Injection classes (SQL, command execution, unsafe deserialization).
-8) Outbound requests (SSRF).
-9) Redirect handling (open redirects).
-10) CORS and security headers.
+1. App entrypoints / deployment scripts / Dockerfiles / Procfiles.
+2. Flask configuration and environment handling.
+3. Auth + sessions + cookies.
+4. CSRF protections and state-changing routes.
+5. Template rendering and XSS/SSTI.
+6. File handling (uploads + downloads) and path traversal.
+7. Injection classes (SQL, command execution, unsafe deserialization).
+8. Outbound requests (SSRF).
+9. Redirect handling (open redirects).
+10. CORS and security headers.
 
 --------------------------------------------------------------------
 
 ## 2) Definitions and review guidance
 
 ### 2.1 Untrusted input (treat as attacker-controlled unless proven otherwise)
+
 Examples include:
 - `request.args`, `request.form`, `request.values`
 - `request.get_json()`, `request.json`, `request.data`
@@ -62,9 +68,11 @@ Examples include:
 - Any persisted user content (DB rows) that originated from users
 
 ### 2.2 State-changing request
+
 A request is state-changing if it can create/update/delete data, change auth/session state, trigger side effects (purchase, email send, webhook send), or initiate privileged actions.
 
 ### 2.3 Required audit finding format
+
 For each issue found, output:
 
 - Rule ID:
@@ -83,6 +91,7 @@ For each issue found, output:
 This is the smallest “production baseline” that prevents common Flask misconfigurations.
 
 ### 3.1 App initialization pattern (SHOULD)
+
 SHOULD use an app factory and environment-based config so production config is not hard-coded.
 
 Example skeleton (illustrative; adjust to your project):
@@ -104,6 +113,7 @@ Key baseline config targets:
 Each rule contains: required practice, insecure patterns, detection hints, and remediation.
 
 ### FLASK-DEPLOY-001: Do not use Flask’s development server in production
+
 Severity: High (if production)
 
 Required:
@@ -128,6 +138,7 @@ Note:
 ---
 
 ### FLASK-DEPLOY-002: Debug mode MUST be disabled in production
+
 Severity: Critical
 
 Required:
@@ -153,6 +164,7 @@ Note:
 ---
 
 ### FLASK-CONFIG-001: SECRET_KEY must be strong, secret, and rotated safely
+
 Severity: High (Critical if missing in production with sessions or signing)
 
 Required:
@@ -183,6 +195,7 @@ Notes:
 ---
 
 ### FLASK-SESS-001: Session cookies must use secure attributes in production
+
 Severity: Medium
 
 Required (production, HTTPS):
@@ -210,6 +223,7 @@ Notes:
 ---
 
 ### FLASK-SESS-002: Sessions must be bounded and resistant to fixation/replay
+
 Severity: Medium
 
 Required:
@@ -235,6 +249,7 @@ Fix:
 ---
 
 ### FLASK-CSRF-001: State-changing requests using cookie auth MUST be CSRF-protected
+
 Severity: High
 
 - IMPORTANT NOTE: If cookies are not being used for auth (ie auth is via Authentication header or other passed token), then there is no CSRF risk.
@@ -265,6 +280,7 @@ Notes:
 ---
 
 ### FLASK-XSS-001: Prevent reflected/stored XSS in templates and HTML generation
+
 Severity: High
 
 Required:
@@ -295,6 +311,7 @@ Fix:
 ---
 
 ### FLASK-SSTI-001: Never render untrusted templates (Server-Side Template Injection)
+
 Severity: Critical
 
 Required:
@@ -321,6 +338,7 @@ Fix:
 ---
 
 ### FLASK-HEADERS-001: Set essential security headers (in app or at the edge)
+
 Severity: Medium
 
 Required (typical web app):
@@ -348,6 +366,7 @@ Fix:
 ---
 
 ### FLASK-LIMITS-001: Request size and form parsing limits MUST be set appropriately
+
 Severity: Low (Medium if file uploads / large bodies are possible)
 
 Required:
@@ -372,6 +391,7 @@ Fix:
 ---
 
 ### FLASK-HOST-001: Host header must be validated in production
+
 Severity: Low (depends on app’s use of external URLs)
 
 Required:
@@ -393,6 +413,7 @@ Fix:
 ---
 
 ### FLASK-PROXY-001: Reverse proxy trust must be configured correctly
+
 Severity: Medium (High if relying on IPs for auth)
 
 Required:
@@ -414,6 +435,7 @@ Fix:
 ---
 
 ### FLASK-PATH-001: Prevent path traversal and unsafe file serving
+
 Severity: High
 
 Required:
@@ -444,6 +466,7 @@ Note: `safe_join` is imported from `werkzeug.security`
 ---
 
 ### FLASK-UPLOAD-001: File uploads must be validated, stored safely, and served safely
+
 Severity: High
 
 Required:
@@ -470,6 +493,7 @@ Fix:
 ---
 
 ### FLASK-INJECT-001: Prevent SQL injection (use parameterized queries / ORM)
+
 Severity: High
 
 Required:
@@ -491,6 +515,7 @@ Fix:
 ---
 
 ### FLASK-INJECT-002: Prevent OS command injection
+
 Severity: Critical to High (depends on exposure)
 
 Required:
@@ -518,6 +543,7 @@ Fix:
 ---
 
 ### FLASK-SSRF-001: Prevent server-side request forgery (SSRF) in outbound HTTP
+
 Severity: Medium
 
 - Note: For small stand alone projects this is less important. It is most important when deploying into an LAN or with other services listening on the same server.
@@ -530,8 +556,6 @@ Required:
   - cloud metadata endpoints
 - MUST NOT allow non http/https protocols (ie file: etc)
 - SHOULD set timeouts and restrict redirects.
-
-
 
 Insecure patterns:
 - `requests.get(request.args["url"])`
@@ -549,6 +573,7 @@ Fix:
 ---
 
 ### FLASK-REDIRECT-001: Prevent open redirects
+
 Severity: Low
 
 Required:
@@ -569,6 +594,7 @@ Fix:
 ---
 
 ### FLASK-HTTP-001: Use HTTP methods safely; do not change state via GET; avoid secrets in URLs
+
 Severity: Medium
 
 Required:
@@ -591,6 +617,7 @@ Fix:
 ---
 
 ### FLASK-CORS-001: CORS must be explicit and least-privilege
+
 Severity: Medium (High if misconfigured with credentials)
 
 Required:
@@ -616,6 +643,7 @@ Fix:
 ---
 
 ### FLASK-SUPPLY-001: Dependency and patch hygiene (focus on security-relevant deps)
+
 Severity: Low
 
 Required:

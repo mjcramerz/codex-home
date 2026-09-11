@@ -13,20 +13,26 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: UI Component Implementation
+
+Use this reference when you convert an authorized Notion specification into scoped implementation tasks and evidence-backed progress updates. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **User Request**: "Implement the new search component from the design spec"
 
 ## Workflow
 
 ### 1. Find Spec
+
 ```
 Notion:notion-search
 query: "search component design spec"
 ```
+
 Found: "Global Search Redesign Spec"
 
 ### 2. Fetch & Parse Spec
+
 ```
 Notion:notion-fetch
 ```
@@ -40,6 +46,7 @@ Notion:notion-fetch
 - Accessibility (ARIA labels, screen reader)
 
 ### 3. Create Implementation Plan
+
 ```
 Notion:notion-create-pages
 ```
@@ -52,6 +59,7 @@ Notion:notion-create-pages
 - Phase 5: Polish & accessibility
 
 ### 4. Create Tasks
+
 ```
 Notion:notion-create-pages (7 tasks)
 ```
@@ -66,6 +74,7 @@ Notion:notion-create-pages (7 tasks)
 7. Mobile responsive styling
 
 ### 5. Implement & Track
+
 As each task completed, updated status and added progress notes with screenshots and implementation details.
 
 ## Key Outputs
@@ -75,6 +84,7 @@ As each task completed, updated status and added progress notes with screenshots
 **Progress Updates** (with code snippets and demo links)
 
 ## Success Factors
+
 - Clear component breakdown
 - Separated concerns (logic, UI, accessibility)
 - Each task had acceptance criteria

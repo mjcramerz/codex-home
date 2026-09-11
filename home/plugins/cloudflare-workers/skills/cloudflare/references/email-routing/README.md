@@ -1,5 +1,7 @@
 # Cloudflare Email Routing Skill Reference
 
+Consult this reference when cloudflare email routing skill reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Overview
 
 Cloudflare Email Routing enables custom email addresses for your domain that route to verified destination addresses. It's free, privacy-focused (no storage/access), and includes Email Workers for programmatic email processing.

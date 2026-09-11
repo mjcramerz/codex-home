@@ -5,6 +5,10 @@ impactDescription: O(n) instead of O(n log n)
 tags: javascript, arrays, performance, sorting, algorithms
 ---
 
+# js min max loop
+
+Apply the following js min max loop guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Loop for Min/Max Instead of Sort
 
 Finding the smallest or largest element only requires a single pass through the array. Sorting is wasteful and slower.

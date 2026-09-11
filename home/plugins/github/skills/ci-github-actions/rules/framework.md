@@ -13,9 +13,12 @@ tags:
 - web
 updated: '2026-02-20'
 ---
+
 # Ci Github Actions Framework
 
+Apply the following ci github actions framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `ci-github-actions`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/github/1.0.0/skills/ci-github-actions/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/github/1.0.0/skills/ci-github-actions/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/github/1.0.0/skills/ci-github-actions/references/`
+- Source of truth: `$CODEX_HOME/plugins/github/skills/ci-github-actions/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/github/skills/ci-github-actions/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/github/skills/ci-github-actions/references/`

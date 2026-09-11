@@ -1,5 +1,7 @@
 # Notebook Structure
 
+Consult this reference when notebook structure is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Jupyter notebooks are JSON documents with this high-level shape:
 
 - `nbformat` and `nbformat_minor`

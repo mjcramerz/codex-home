@@ -1,5 +1,7 @@
 # Smart Placement Patterns
 
+Consult this reference when smart placement patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Backend Worker with Database Access
 
 ```typescript
@@ -164,7 +166,7 @@ export default {
 }
 ```
 
-**When this helps:** 
+**When this helps:**
 - Worker's `fetch` handler runs closer to DO regions, reducing network latency for multiple DO calls
 - Most beneficial when DOs are geographically concentrated or in specific jurisdictions
 - Helps when coordinator makes many sequential or parallel DO calls

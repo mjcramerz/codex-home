@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "vercel",
   "version": "1.1.0",
-  "description": "Vercel deployment workflows for claimable and direct deployment paths.",
+  "description": "Use this plugin for vercel deployment workflows for claimable and direct deployment paths.",
   "author": {
     "name": "Vercel",
     "url": "https://vercel.com/"

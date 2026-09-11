@@ -1,5 +1,7 @@
 # CNI Patterns
 
+Consult this reference when cni patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 See [README.md](README.md) for overview.
 
 ## High Availability
@@ -13,6 +15,7 @@ See [README.md](README.md) for overview.
 - Regular failover testing
 
 **Architecture:**
+
 ```
 Your Network A ──10G CNI v2──> CF CCR Device 1
                                      │
@@ -53,6 +56,7 @@ const status = await pollUntilActive(id, ic.id);
 **Use Case:** AWS/GCP workloads with Cloudflare.
 
 **AWS Direct Connect:**
+
 ```typescript
 // 1. Order Direct Connect in AWS Console
 // 2. Get LOA + VLAN from AWS
@@ -66,6 +70,7 @@ await configureStaticRoutes(id, {
 ```
 
 **GCP Cloud Interconnect:**
+
 ```
 1. Get VLAN attachment pairing key from GCP Console
 2. Create via Dashboard: Interconnects → Create → Cloud Interconnect → Google

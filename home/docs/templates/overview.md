@@ -1,8 +1,11 @@
 # Templates overview
-Purpose: tell the Codex coding agent how to use `docs/templates/overview.md` as a runtime-pack surface and when to stop browsing.
-Guidance for choosing and applying templates in this pack.
+
+Use this template when you need templates overview in the authorized project. Replace placeholders, adapt the examples to the detected toolchain, and preserve the requested output contract. Do not treat sample values or commands as verified deployment settings.
+
+Apply the following practices to choosing and applying templates in this pack.
 
 ## Contents
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/docs/templates/daily-note.md` — Daily Note
 - `$CODEX_HOME/docs/templates/note.md` — Note Template
@@ -10,6 +13,7 @@ Guidance for choosing and applying templates in this pack.
 <!-- END:contents -->
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/docs/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -17,16 +21,19 @@ Guidance for choosing and applying templates in this pack.
 <!-- END:nav -->
 
 ## Inputs
+
 - Scope to scaffold (app, CI, infra, observability, system, desktop, or hook/runtime helper).
 - Runtime/toolchain version policy (pin versions/digests; avoid `latest`).
 - Delivery model (standard CI, Cloudflare + GitLab delivery, or release-asset publishing).
 
 ## Outputs
+
 - A selected template path from `$CODEX_HOME/templates/`.
 - A deterministic apply checklist from `using-templates.md`.
 - Template-specific Inputs/Outputs/Next steps from the chosen `overview.md`.
 
 ## Quick map
+
 - Template catalog: `$CODEX_HOME/templates/OVERVIEW.md`
 - Usage guide: `using-templates.md`
 - Build workflow: `../workflows/build-an-app.md`
@@ -34,6 +41,7 @@ Guidance for choosing and applying templates in this pack.
 - Template plan: `$CODEX_HOME/plans/templates-library.md`
 
 ## Categories
+
 - Common repo hygiene: `$CODEX_HOME/templates/common/`
 - CI: `$CODEX_HOME/templates/ci/`
 - Infrastructure: `$CODEX_HOME/templates/infra/`
@@ -48,6 +56,7 @@ Guidance for choosing and applying templates in this pack.
 - Desktop: `$CODEX_HOME/templates/desktop/`
 
 ## Next steps
-1) Choose a template path from `$CODEX_HOME/templates/OVERVIEW.md`.
-2) Apply it with the deterministic flow in `using-templates.md`.
-3) Run the template's local verification commands before commit.
+
+1. Choose a template path from `$CODEX_HOME/templates/OVERVIEW.md`.
+2. Apply it with the deterministic flow in `using-templates.md`.
+3. Run the template's local verification commands before commit.

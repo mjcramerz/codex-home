@@ -1,5 +1,7 @@
 # Configuration
 
+Consult this reference when configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Setup and configuration for TCP Sockets in Cloudflare Workers.
 
 ## Wrangler Configuration
@@ -83,7 +85,7 @@ const socket = connect(
 );
 ```
 
-For detailed Tunnel setup, see [Tunnel configuration reference]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/tunnel/configuration.md).
+For detailed Tunnel setup, see [Tunnel configuration reference]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/tunnel/configuration.md).
 
 ## Smart Placement Integration
 
@@ -93,7 +95,7 @@ Reduce latency by auto-placing Workers near backends:
 { "placement": { "mode": "smart" } }
 ```
 
-Workers automatically relocate closer to TCP socket destinations after observing connection latency. See [Smart Placement reference]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/).
+Workers automatically relocate closer to TCP socket destinations after observing connection latency. See [Smart Placement reference]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/).
 
 ## Secrets Management
 
@@ -134,7 +136,7 @@ For PostgreSQL/MySQL, prefer Hyperdrive over raw TCP sockets (includes connectio
 { "hyperdrive": [{ "binding": "DB", "id": "<HYPERDRIVE_ID>" }] }
 ```
 
-See [Hyperdrive reference]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/) for complete setup.
+See [Hyperdrive reference]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/) for complete setup.
 
 ## Compatibility
 
@@ -142,6 +144,6 @@ TCP Sockets available in all modern Workers. Use current date: `"compatibility_d
 
 ## Related Configuration
 
-- **[Tunnel Configuration]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/tunnel/configuration.md)** - Detailed cloudflared setup
-- **[Smart Placement]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/configuration.md)** - Placement mode options
-- **[Hyperdrive]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/hyperdrive/configuration.md)** - Database connection pooling setup
+- **[Tunnel Configuration]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/tunnel/configuration.md)** - Detailed cloudflared setup
+- **[Smart Placement]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/configuration.md)** - Placement mode options
+- **[Hyperdrive]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/hyperdrive/configuration.md)** - Database connection pooling setup

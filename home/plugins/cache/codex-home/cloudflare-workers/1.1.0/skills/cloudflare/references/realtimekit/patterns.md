@@ -1,5 +1,7 @@
 # RealtimeKit Patterns
 
+Consult this reference when realtimekit patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## UI Kit (Minimal Code)
 
 ```tsx
@@ -22,18 +24,21 @@ export class AppComponent { authToken = '<token>'; onLeave(event: unknown) {} }
 RealtimeKit provides 133+ pre-built Stencil.js Web Components with framework wrappers:
 
 ### Layout Components
+
 - `<RtkMeeting>` - Full meeting UI (all-in-one)
 - `<RtkHeader>`, `<RtkStage>`, `<RtkControlbar>` - Layout sections
 - `<RtkSidebar>` - Chat/participants sidebar
 - `<RtkGrid>` - Adaptive video grid
 
-### Control Components  
+### Control Components
+
 - `<RtkMicToggle>`, `<RtkCameraToggle>` - Media controls
 - `<RtkScreenShareToggle>` - Screen sharing
 - `<RtkLeaveButton>` - Leave meeting
 - `<RtkSettingsModal>` - Device settings
 
 ### Grid Variants
+
 - `<RtkSpotlightGrid>` - Active speaker focus
 - `<RtkAudioGrid>` - Audio-only mode
 - `<RtkPaginatedGrid>` - Paginated layout
@@ -43,6 +48,7 @@ RealtimeKit provides 133+ pre-built Stencil.js Web Components with framework wra
 ## Core SDK Patterns
 
 ### Basic Setup
+
 ```typescript
 import RealtimeKitClient from '@cloudflare/realtimekit';
 
@@ -53,6 +59,7 @@ await meeting.join();
 ```
 
 ### Video Grid & Device Selection
+
 ```typescript
 // Video grid
 function VideoGrid({ meeting }) {
@@ -173,6 +180,7 @@ await meeting.plugins.deactivate();
 ## Backend Integration
 
 ### Token Generation (Workers)
+
 ```typescript
 export interface Env { CLOUDFLARE_API_TOKEN: string; CLOUDFLARE_ACCOUNT_ID: string; REALTIMEKIT_APP_ID: string; }
 
@@ -202,21 +210,25 @@ export default {
 ## Best Practices
 
 ### Security
+
 1. **Never expose API tokens client-side** - Generate participant tokens server-side only
 2. **Don't reuse participant tokens** - Generate fresh token per session, use refresh endpoint if expired
 3. **Use custom participant IDs** - Map to your user system for cross-session tracking
 
 ### Performance
+
 1. **Event-driven updates** - Listen to events, don't poll. Use `toArray()` only when needed
 2. **Media quality constraints** - Set appropriate resolution/bitrate limits based on network conditions
 3. **Device management** - Enable `autoSwitchAudioDevice` for better UX, handle device list updates
 
 ### Architecture
+
 1. **Separate Apps for environments** - staging vs production to prevent data mixing
 2. **Preset strategy** - Create presets at App level, reuse across meetings
 3. **Token management** - Backend generates tokens, frontend receives via authenticated endpoint
 
 ## In This Reference
+
 - [README.md](README.md) - Overview, core concepts, quick start
 - [configuration.md](configuration.md) - SDK config, presets, wrangler setup
 - [api.md](api.md) - Client SDK APIs, REST endpoints

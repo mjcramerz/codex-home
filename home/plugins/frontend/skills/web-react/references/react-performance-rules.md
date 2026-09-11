@@ -13,13 +13,17 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # React Performance Rules (Adapted Catalog)
+
+Consult this reference when react performance rules (adapted catalog) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 This catalog adapts the rule set from:
 
 Use this order when triaging performance work.
 
 ## 1) Eliminate waterfalls (critical)
+
 - `async-defer-await`
 - `async-parallel`
 - `async-dependencies`
@@ -27,6 +31,7 @@ Use this order when triaging performance work.
 - `async-suspense-boundaries`
 
 ## 2) Reduce bundle pressure (critical)
+
 - `bundle-barrel-imports`
 - `bundle-conditional`
 - `bundle-defer-third-party`
@@ -34,6 +39,7 @@ Use this order when triaging performance work.
 - `bundle-preload`
 
 ## 3) Optimize server-side boundaries (high)
+
 - `server-auth-actions`
 - `server-cache-react`
 - `server-cache-lru`
@@ -43,12 +49,14 @@ Use this order when triaging performance work.
 - `server-after-nonblocking`
 
 ## 4) Improve client data flow (medium-high)
+
 - `client-swr-dedup`
 - `client-event-listeners`
 - `client-passive-event-listeners`
 - `client-localstorage-schema`
 
 ## 5) Reduce rerender churn (medium)
+
 - `rerender-defer-reads`
 - `rerender-dependencies`
 - `rerender-derived-state`
@@ -63,6 +71,7 @@ Use this order when triaging performance work.
 - `rerender-use-ref-transient-values`
 
 ## 6) Improve rendering behavior (medium)
+
 - `rendering-activity`
 - `rendering-animate-svg-wrapper`
 - `rendering-conditional-render`
@@ -74,6 +83,7 @@ Use this order when triaging performance work.
 - `rendering-usetransition-loading`
 
 ## 7) Apply JS hot-path optimizations (low-medium)
+
 - `js-batch-dom-css`
 - `js-cache-function-results`
 - `js-cache-property-access`
@@ -88,17 +98,20 @@ Use this order when triaging performance work.
 - `js-tosorted-immutable`
 
 ## 8) Use advanced patterns selectively (low)
+
 - `advanced-event-handler-refs`
 - `advanced-init-once`
 - `advanced-use-latest`
 
 ## Recommended adoption pattern
+
 1. Fix waterfall and bundle issues first.
 2. Address server/client data duplication.
 3. Tackle rerender/rendering hotspots with profiler evidence.
 4. Apply JS micro-optimizations only in measured hot paths.
 
 ## Evidence format
+
 - Rule name
 - Affected component(s)
 - Before/after metric

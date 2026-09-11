@@ -1,8 +1,9 @@
 # Plans hub (entrypoint)
-Purpose: route to plan templates and planning rules for runtime-pack and implementation work for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this route when you need plans hub. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/pack/overview.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -11,12 +12,14 @@ You must read only the smallest section that resolves the current task, follow t
 
 Canonical content: `$CODEX_HOME/plans/OVERVIEW.md`
 
-## You must use this file when
+## Use this file when
+
 - you need a framework, workflow, or skill plan template
 - the task is large enough to require explicit sequencing and validation
 - you are maintaining plan templates or planning guidance
 
-## After that, you must check related files
+## After that, check related files
+
 <!-- BEGIN:related -->
 - `$CODEX_HOME/docs/workflows/planning.md`
 - `$CODEX_HOME/index/core/plan.md`
@@ -25,5 +28,5 @@ Canonical content: `$CODEX_HOME/plans/OVERVIEW.md`
 - `$CODEX_HOME/plans/workflows`
 - `$CODEX_HOME/plans/skills`
 - `$CODEX_HOME/plans/prompts-library.md`
-- You must use skill `workflow-plans`.
+- Read the `workflow-plans` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

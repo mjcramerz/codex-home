@@ -19,17 +19,7 @@ SKILL_CATEGORY = 'PACK'
 SKILL_DESCRIPTION = 'Create or update execpolicy rules and guidance under $CODEX_HOME/rules/. Use when adding new rule files, adjusting ordering, or updating execpolicy documentation and index links.'
 LAST_REFRESH_UTC = '2026-02-11'
 REQUIRED_MCP_TOOLS = {'filesystem'}
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Inputs',
-    'Scope and boundaries',
-    'Workflow',
-    'Rule safety checklist',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'YAML 1.2 specification', 'url': 'https://yaml.org/spec/1.2.2/', 'note': 'Manifest syntax and deterministic formatting rules.'},
     {'title': 'OPA policy language docs', 'url': 'https://www.openpolicyagent.org/docs/latest/policy-language/', 'note': 'Rule authoring patterns and guardrails.'}

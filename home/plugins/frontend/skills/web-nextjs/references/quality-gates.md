@@ -13,30 +13,38 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web Next.js Quality Gates
 
+Consult this reference when web next.js quality gates is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Mandatory checks
+
 - `npm run lint`
 - `npm run typecheck`
 - `npm test`
 - `npm run build`
 
 ## Route security checks
+
 - Server actions and route handlers validate schema, authn, and authz.
 - Middleware enforces access policies without leaking sensitive route data.
 - No secrets or server-only modules appear in client bundles.
 
 ## Caching and data checks
+
 - Route caching policy is explicit and documented.
 - Invalidation strategy (`revalidatePath`/`revalidateTag(tag, "max")`) is tested.
 - Error and empty states are deterministic under cache misses/timeouts, and dynamic rendering triggers are intentional.
 
 ## UX and accessibility checks
+
 - Keyboard and focus behavior survives route transitions.
 - Form errors are announced and associated with fields.
 - Streaming and suspense fallbacks are meaningful and non-blocking.
 
 ## Performance checks
+
 - Bundle delta for changed routes/components.
 - Core Web Vitals/Lighthouse spot-check on impacted pages.
 - React profiler or flamegraph evidence for rerender-heavy views.

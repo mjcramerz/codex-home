@@ -5,6 +5,10 @@ impactDescription: faster load times, less memory
 tags: lists, images, performance, optimization
 ---
 
+# list performance images
+
+Apply the following list performance images guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Compressed Images in Lists
 
 Always load compressed, appropriately-sized images in lists. Full-resolution

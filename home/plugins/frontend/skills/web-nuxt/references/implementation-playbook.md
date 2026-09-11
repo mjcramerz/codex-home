@@ -13,18 +13,24 @@ tags:
 - web
 updated: '2026-02-25'
 ---
+
 # Web Nuxt Implementation Playbook
 
+Consult this reference when web nuxt implementation playbook is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Scope and intent
+
 Use this playbook for Nuxt 4 projects requiring explicit rendering strategy, secure runtime configuration, and predictable Nitro server behavior.
 
 ## Intake checklist
+
 - Identify route types (public, authenticated, admin, API/Nitro).
 - Confirm deployment target and runtime constraints.
 - Confirm expected freshness model for data and pages.
 - Confirm environment variable handling and secret boundaries.
 
 ## Delivery sequence
+
 1. Define route rendering mode and caching behavior.
 2. Configure `runtimeConfig` and isolate secrets from `public` config.
 3. Implement data-fetching with bounded retries/timeouts.
@@ -33,6 +39,7 @@ Use this playbook for Nuxt 4 projects requiring explicit rendering strategy, sec
 6. Return route/runtime decision summary and evidence.
 
 ## Decision rules
+
 - Prefer server-side data fetching for sensitive or SEO-critical routes.
 - Keep payloads minimal to reduce hydration cost.
 - Use route rules intentionally; avoid defaulting everything to dynamic SSR.

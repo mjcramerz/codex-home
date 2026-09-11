@@ -5,6 +5,10 @@ impactDescription: enables state sharing outside component boundaries
 tags: composition, state, context, providers
 ---
 
+# state lift state
+
+Apply the following state lift state guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Lift State into Provider Components
 
 Move state management into dedicated provider components. This allows sibling

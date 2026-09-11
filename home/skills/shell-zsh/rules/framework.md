@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-06-03'
 ---
+
 # Shell Zsh Framework
+
+Apply the following shell zsh framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `shell-zsh`
 - Source of truth: `$CODEX_SKILLS/shell-zsh/SKILL.md`

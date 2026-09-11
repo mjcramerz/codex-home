@@ -1,5 +1,7 @@
 # Render Runtime Options
 
+Consult this reference when render runtime options is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Complete guide to available runtimes on Render, including versions, configuration, and best practices for each language.
 
 ## Native Language Runtimes
@@ -12,6 +14,7 @@ Complete guide to available runtimes on Render, including versions, configuratio
 **Version Specification:**
 
 Specify Node version in `package.json`:
+
 ```json
 {
   "engines": {
@@ -26,6 +29,7 @@ Specify Node version in `package.json`:
 - **pnpm**: Auto-detected if `pnpm-lock.yaml` exists
 
 **Common Build Commands:**
+
 ```bash
 npm ci                          # Recommended (faster, reproducible)
 npm ci && npm run build         # Build step included
@@ -34,6 +38,7 @@ pnpm install --frozen-lockfile  # pnpm equivalent
 ```
 
 **Common Start Commands:**
+
 ```bash
 npm start                       # Uses "start" script in package.json
 node server.js                  # Direct file execution
@@ -48,6 +53,7 @@ node dist/main.js               # Built output
 - Nuxt.js (full-stack Vue)
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: node-app
@@ -66,11 +72,13 @@ startCommand: npm start
 **Version Specification:**
 
 Option 1 - `runtime.txt`:
+
 ```
 python-3.11.5
 ```
 
 Option 2 - `Pipfile`:
+
 ```toml
 [requires]
 python_version = "3.11"
@@ -82,6 +90,7 @@ python_version = "3.11"
 - **Pipenv**: Auto-detected if `Pipfile` exists
 
 **Common Build Commands:**
+
 ```bash
 pip install -r requirements.txt
 pip install -r requirements.txt && python manage.py collectstatic --no-input
@@ -90,6 +99,7 @@ pipenv install --deploy
 ```
 
 **Common Start Commands:**
+
 ```bash
 gunicorn app:app                                    # Flask
 gunicorn config.wsgi:application                    # Django
@@ -104,6 +114,7 @@ celery -A tasks worker                              # Celery worker
 - Celery (task queue)
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: python-app
@@ -122,6 +133,7 @@ startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
 **Version Specification:**
 
 Specify in `go.mod`:
+
 ```go
 module myapp
 
@@ -131,6 +143,7 @@ go 1.22
 **Build System:** Uses Go modules
 
 **Common Build Commands:**
+
 ```bash
 go build -o bin/app .
 go build -o bin/app cmd/server/main.go
@@ -138,6 +151,7 @@ go build -tags netgo -ldflags '-s -w' -o bin/app
 ```
 
 **Common Start Commands:**
+
 ```bash
 ./bin/app
 ./bin/server
@@ -152,6 +166,7 @@ go build -tags netgo -ldflags '-s -w' -o bin/app
 - Gorilla Mux (powerful router)
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: go-app
@@ -170,11 +185,13 @@ startCommand: ./bin/app
 **Version Specification:**
 
 Option 1 - `.ruby-version`:
+
 ```
 3.3.0
 ```
 
 Option 2 - `Gemfile`:
+
 ```ruby
 ruby '3.3.0'
 ```
@@ -182,12 +199,14 @@ ruby '3.3.0'
 **Package Manager:** Bundler (uses `Gemfile` and `Gemfile.lock`)
 
 **Common Build Commands:**
+
 ```bash
 bundle install --jobs=4 --retry=3
 bundle install && bundle exec rails assets:precompile
 ```
 
 **Common Start Commands:**
+
 ```bash
 bundle exec rails server -b 0.0.0.0 -p $PORT
 bundle exec puma -C config/puma.rb
@@ -201,6 +220,7 @@ bundle exec sidekiq                                  # Worker
 - Sidekiq (background jobs)
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: rails-app
@@ -219,12 +239,14 @@ startCommand: bundle exec puma -C config/puma.rb
 **Build System:** Cargo
 
 **Common Build Commands:**
+
 ```bash
 cargo build --release
 cargo build --release --locked
 ```
 
 **Common Start Commands:**
+
 ```bash
 ./target/release/myapp
 ```
@@ -236,6 +258,7 @@ cargo build --release --locked
 - Warp (composable web framework)
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: rust-app
@@ -254,6 +277,7 @@ startCommand: ./target/release/myapp
 **Build System:** Mix
 
 **Common Build Commands:**
+
 ```bash
 mix deps.get --only prod
 mix deps.get && mix compile
@@ -261,6 +285,7 @@ mix do deps.get, compile, assets.deploy
 ```
 
 **Common Start Commands:**
+
 ```bash
 mix phx.server
 elixir --name myapp -S mix phx.server
@@ -271,6 +296,7 @@ elixir --name myapp -S mix phx.server
 - Phoenix LiveView (real-time applications)
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: elixir-app
@@ -292,6 +318,7 @@ Build your application from a Dockerfile in your repository.
 - `dockerContext`: Build context directory (default: `.`)
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: docker-app
@@ -301,6 +328,7 @@ dockerContext: .
 ```
 
 **Multi-stage Dockerfile Example:**
+
 ```dockerfile
 # Build stage
 FROM node:20-alpine AS builder
@@ -338,6 +366,7 @@ Deploy pre-built Docker images from a container registry.
 - `registryCredential`: Credentials for private registries
 
 **Example with Public Image:**
+
 ```yaml
 type: web
 name: prebuilt-app
@@ -346,6 +375,7 @@ image: ghcr.io/myorg/myapp:v1.2.3
 ```
 
 **Example with Private Registry:**
+
 ```yaml
 type: web
 name: private-app
@@ -375,36 +405,42 @@ Serve pre-built static files without a backend runtime. Files are served via CDN
 **Common Build Commands by Framework:**
 
 **React (Create React App):**
+
 ```bash
 npm ci && npm run build
 # Outputs to: ./build
 ```
 
 **Vue:**
+
 ```bash
 npm ci && npm run build
 # Outputs to: ./dist
 ```
 
 **Next.js (Static Export):**
+
 ```bash
 npm ci && npm run build && npm run export
 # Outputs to: ./out
 ```
 
 **Gatsby:**
+
 ```bash
 npm ci && npm run build
 # Outputs to: ./public
 ```
 
 **Vite:**
+
 ```bash
 npm ci && npm run build
 # Outputs to: ./dist
 ```
 
 **Example Configuration:**
+
 ```yaml
 type: web
 name: react-app

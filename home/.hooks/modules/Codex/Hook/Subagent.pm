@@ -2,22 +2,13 @@ package Codex::Hook::Subagent;
 
 use strict;
 use warnings;
-
 use Exporter qw(import);
+our @EXPORT_OK = qw(start_context);
 
-our @EXPORT_OK = qw(
-  start_context
-);
+# Use hooks.json and runner.py for lifecycle dispatch. Keep this compatibility
+# surface free of schema injection, transcript replay and repository execution.
 
-sub start_context {
-    my (%args) = @_;
-    my $agent_type = $args{agent_type} // 'subagent';
-    my $role_context = $args{role_context};
-
-    my @sections = ("Subagent start for `$agent_type`:");
-    push @sections, $role_context if defined $role_context && length $role_context;
-    push @sections, '- Hand off commands, touched files, evidence, and residual risks explicitly.';
-    return join("\n", @sections);
-}
+# Avoid a second role-instruction stream beside runner.py.
+sub start_context { return undef; }
 
 1;

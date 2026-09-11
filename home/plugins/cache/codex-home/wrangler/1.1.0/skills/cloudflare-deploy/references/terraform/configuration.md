@@ -1,5 +1,7 @@
 # Terraform Configuration Reference
 
+Consult this reference when terraform configuration reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Complete resource configurations for Cloudflare infrastructure.
 
 ## Zone & DNS
@@ -191,7 +193,7 @@ resource "cloudflare_access_identity_provider" "github" {
 
 ## See Also
 
-- [README]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/README.md) - Provider setup
-- [API]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/api.md) - Data sources
-- [Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/patterns.md) - Use cases
-- [Troubleshooting]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/terraform/gotchas.md) - Issues
+- [README]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/README.md) - Provider setup
+- [API]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/api.md) - Data sources
+- [Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/patterns.md) - Use cases
+- [Troubleshooting]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/terraform/gotchas.md) - Issues

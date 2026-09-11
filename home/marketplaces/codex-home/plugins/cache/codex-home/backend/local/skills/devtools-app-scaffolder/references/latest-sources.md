@@ -13,15 +13,20 @@ tags:
 - web
 updated: '2026-02-20'
 ---
+
 # devtools-app-scaffolder reference bundle
+
+Consult this reference when devtools-app-scaffolder reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Scaffold full-fledged apps using the provided templates; wire up config, logging, tests, and CI with secure defaults.
 
 ## SKILL.md coverage checklist
+
 - Use this skill when
 - Workflow
 - Non-negotiables
@@ -33,10 +38,12 @@ Scaffold full-fledged apps using the provided templates; wire up config, logging
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/devtools-app-scaffolder/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/backend/1.0.0/skills/devtools-app-scaffolder/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/backend/skills/devtools-app-scaffolder/SKILL.md`
+- `$CODEX_HOME/plugins/backend/skills/devtools-app-scaffolder/agents/openai.yaml`
 
 ## External references
+
 - [FastAPI documentation](https://fastapi.tiangolo.com/) - API scaffolding and validation patterns.
 - [Axum crate documentation](https://docs.rs/axum/latest/axum/) - Rust web service composition patterns.
 - [React docs](https://react.dev/) - UI component architecture and state patterns.
@@ -45,6 +52,6 @@ Scaffold full-fledged apps using the provided templates; wire up config, logging
 - [Cargo book](https://doc.rust-lang.org/cargo/) - Rust workspace and build orchestration details.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `devtools-app-scaffolder` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `devtools-app-scaffolder` before finalizing changes.
-

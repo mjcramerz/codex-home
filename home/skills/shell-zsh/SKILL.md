@@ -1,10 +1,10 @@
 ---
 name: shell-zsh
-description: Write and review zsh-specific shell code, wrappers, and runtime integrations.
-  Use when the confirmed runtime is zsh or when wrapper semantics, completion behavior,
-  globbing, or zsh startup files matter.
+description: Use this skill to write and review zsh-specific shell code, wrappers,
+  and runtime integrations. Use when the confirmed runtime is zsh or when wrapper
+  semantics, completion behavior, globbing, or zsh startup files matter.
 metadata:
-  version: "1.0"
+  version: '1.0'
   short-description: Write robust zsh scripts, wrappers, and shell integrations
   tags:
   - zsh
@@ -18,59 +18,36 @@ interface:
   icon-small: assets/icon-32.png
   icon-large: assets/icon-128.png
   brand-color: '#6F32CC'
-  default-prompt: Act as the "SHELL-Zsh" specialist for "Write robust zsh scripts, wrappers,
-    and shell integrations". Deliver focused, deterministic results with minimal, reviewable
-    changes and explicit assumptions. Validate untrusted inputs and bounded I/O, run the narrowest
-    relevant checks, and report concrete actions, evidence, and residual risks.
+  default-prompt: Act as the "SHELL-Zsh" specialist for "Write robust zsh scripts,
+    wrappers, and shell integrations". Deliver focused, deterministic results with
+    minimal, reviewable changes and explicit assumptions. Validate untrusted inputs
+    and bounded I/O, run the narrowest relevant checks, and report concrete actions,
+    evidence, and residual risks.
 ---
 
-# SHELL-Zsh
-
-## When to use
-Use this skill whenever you need to:
-- write or modify zsh scripts, startup files, aliases, functions, or wrappers
-- debug zsh runtime behavior, option handling, completion flows, or prompt hooks
-- reason about zsh-vs-bash differences before changing shared shell assets
-- validate login-vs-non-login behavior for zsh-specific execution paths
-- confirm the runtime first with `$CODEX_HOME/AGENTS.md` and then use `$CODEX_HOME/UNIX.md`
-
-## Non-negotiables
-- Invoke `zsh` explicitly for zsh-sensitive validation and reproduction.
-- Keep zsh assumptions explicit; do not rely on bash-compatible behavior by accident.
-- Prefer deterministic commands, bounded output, and minimal reproductions.
-- Avoid mutating user startup files unless the request explicitly requires it.
-- Validate shared shell assets in every claimed runtime before finalizing.
+# Shell Zsh
 
 ## Workflow
-1) Confirm the runtime is actually zsh and identify whether login semantics matter.
-2) Inspect wrapper boundaries, shell options, and process invocation shape before editing.
-3) Localize option changes with `emulate -L zsh` or careful `setopt` scoping when appropriate.
-4) Validate word splitting, globbing, arrays, and completion behavior explicitly.
-5) Run the narrowest relevant checks and report any runtime-specific caveats.
 
-## Zsh-specific guidance
-- Prefer `[[ ... ]]` for tests and `typeset`/`local` for scoped variables.
-- Be explicit about `setopt` / `unsetopt`; do not assume inherited shell options.
-- Treat glob qualifiers and extended glob syntax as zsh-only.
-- Do not assume bash array semantics, completion loading, or startup file order.
-- Prefer `zsh -n path/to/file.zsh` for syntax validation.
+1. Inspect the shebang and declared interpreter. Keep POSIX sh free of Bash or zsh extensions; select Bash explicitly when arrays or other Bash features are required.
 
-## Shared-shell safety
-- If the asset must work in Bash too, validate both `zsh -n` and `bash -n`.
-- If the asset must work in `/bin/sh`, stop and switch to `shell-sh`.
-- Keep login-shell usage intentional; prefer non-login execution for deterministic subprocesses.
+2. Quote expansions, use -- before untrusted operands where supported, prefer argument arrays in Bash, and never use eval to dispatch user input. Avoid parsing ls or splitting filenames on whitespace.
 
-## Validation and testing
-- Validate critical inputs and bound external I/O before applying changes.
-- Run the narrowest relevant checks that prove behavior.
-- Include edge-case validation for shell options, globbing, and wrapper arguments.
-- Report exact validation commands and any remaining zsh-specific risks.
+3. Check failures explicitly around expected fallible operations. Do not assume set -e, pipelines or subshells give uniform error propagation across shells; isolate deliberate nonzero statuses.
 
-## Outputs
-- Robust zsh scripts and wrappers with explicit runtime assumptions.
-- Clear notes about zsh-only behavior, compatibility boundaries, and validation coverage.
+4. Use private temporary directories and cleanup traps scoped to paths you created. Resolve and check destructive targets, reject empty paths, and preserve caller-owned files.
+
+5. Keep stdout machine-readable when required, send redacted diagnostics to stderr and bound command duration. Run the matching interpreter's syntax check and existing ShellCheck/tests where available.
+
+## Boundaries and completion
+
+Follow the active instruction hierarchy, preserve unrelated work and use only tools actually available in this session. Read the selected reference only when it resolves a concrete question. Keep secrets out of prompts, logs and artifacts. Finish with the requested result, changed paths, checks actually run and unresolved risks; do not claim live success from static evidence.
 
 ## References
-- `$CODEX_HOME/UNIX.md`
+
+- `$CODEX_HOME/AGENTS.md`
 - `$CODEX_HOME/docs/style/bash.md`
 - `$CODEX_HOME/docs/style/sh.md`
+- `references/latest-sources.md`
+- `rules/rules.md`
+- `rules/framework.md`

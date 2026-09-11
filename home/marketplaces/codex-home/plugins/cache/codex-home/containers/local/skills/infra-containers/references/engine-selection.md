@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Engine selection guide
+
+Consult this reference when engine selection guide is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 - Docker rootless: good default for local dev; lower host risk.
 - Docker rootful: only when you need system-level integration or privileged workloads.
 - Podman rootless: default for Podman; strong option for dev and CI.

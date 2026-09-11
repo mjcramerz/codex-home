@@ -1,15 +1,13 @@
 interface:
-  display_name: "Hugging Face Tool Builder"
-  short_description: "Use this skill when the user wants to build tool/scripts or achieve a task where using data from the Hugging Face API wo"
-  default_prompt: "Use $huggingface-tool-builder. Use the Hugging Face Tool Builder skill when the task matches this scope: Use this skill when the user wants to build tool/scripts or achieve a task where using data from the Hugging Face API would help. This is especially useful when chaining or combining API calls or the task will be repeated/automated. This Skill creates a reusable script to fetch, enrich or process data."
-
+  display_name: Hugging Face Tool Builder
+  short_description: Use this skill when the user wants to build tool/scripts or achieve a task where using dat
+  default_prompt: Use $huggingface-tool-builder for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "huggingface"
-      description: "huggingface MCP server"
-      transport: "streamable_http"
-      url: "https://huggingface.co/mcp?login"
-
+  - type: mcp
+    value: huggingface
+    description: huggingface MCP server
+    transport: streamable_http
+    url: https://huggingface.co/mcp?login
 policy:
   allow_implicit_invocation: true

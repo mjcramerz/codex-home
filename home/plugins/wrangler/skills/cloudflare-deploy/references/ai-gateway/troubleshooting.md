@@ -1,5 +1,7 @@
 # AI Gateway Troubleshooting
 
+Consult this reference when ai gateway troubleshooting is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Common Errors
 
 | Error | Cause | Fix |

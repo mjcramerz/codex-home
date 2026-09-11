@@ -3,7 +3,8 @@ package Codex::Hook::Schema;
 use strict;
 use warnings;
 
-use Cwd qw(getcwd);
+use Cwd qw(abs_path);
+use File::Basename qw(dirname);
 use Exporter qw(import);
 use File::Spec;
 use JSON::PP qw(decode_json);
@@ -25,41 +26,10 @@ sub _event_basename {
 }
 
 sub _candidate_schema_dirs {
-    my (%args) = @_;
-    my @bases;
-    for my $raw ($args{repo_root}, $args{cwd}, getcwd()) {
-        next if !defined $raw || !length $raw;
-        push @bases, $raw;
-    }
-
-    my @relative_candidates = (
-        [qw(codex-rs hooks schema generated)],
-        [qw(hooks schema generated)],
-        ['..', 'codex', 'codex-rs', 'hooks', 'schema', 'generated'],
-        ['..', '..', 'codex', 'codex-rs', 'hooks', 'schema', 'generated'],
-    );
-
-    my @dirs;
-    if (defined $ENV{CODEX_HOOK_SCHEMA_DIR} && length $ENV{CODEX_HOOK_SCHEMA_DIR}) {
-        push @dirs, $ENV{CODEX_HOOK_SCHEMA_DIR};
-    }
-    # The installed runtime carries the exact reviewed hook schemas.
-    if (defined $ENV{CODEX_HOME} && length $ENV{CODEX_HOME}) {
-        push @dirs, File::Spec->catdir($ENV{CODEX_HOME}, '.hooks', 'schemas');
-    }
-    for my $base (@bases) {
-        for my $parts (@relative_candidates) {
-            push @dirs, File::Spec->catdir($base, @{$parts});
-        }
-    }
-
-    my @unique;
-    my %seen;
-    for my $dir (@dirs) {
-        next if $seen{$dir}++;
-        push @unique, $dir;
-    }
-    return @unique;
+    # Validate wire data locally only. Never emit schemas as model context.
+    my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..', '..', '..'));
+    return () if !defined $root;
+    return File::Spec->catdir($root, 'schemas');
 }
 
 sub _schema_dir {

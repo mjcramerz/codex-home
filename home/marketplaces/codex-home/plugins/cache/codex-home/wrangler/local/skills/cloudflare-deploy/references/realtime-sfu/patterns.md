@@ -1,5 +1,7 @@
 # Patterns & Use Cases
 
+Consult this reference when patterns & use cases is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Architecture
 
 ```
@@ -13,6 +15,7 @@ Client (WebRTC) <---> CF Edge <---> Backend (HTTP)
 Anycast: Last-mile <50ms (95%), no region select, NACK shield, distributed consensus
 
 Cascading trees auto-scale to millions:
+
 ```
 Publisher -> Edge A -> Edge B -> Sub1
                     \-> Edge C -> Sub2,3
@@ -70,6 +73,7 @@ await pt.publishTrack(screen, {trackName: 'my-screen'});
 ## Backend
 
 Express:
+
 ```js
 app.post('/api/new-session', async (req, res) => {
   const r = await fetch(`${CALLS_API}/apps/${process.env.CALLS_APP_ID}/sessions/new`,
@@ -143,6 +147,7 @@ function updateStage(topSpeakers: string[]) {
 ## Advanced
 
 Bandwidth mgmt:
+
 ```ts
 const s = pc.getSenders().find(s => s.track?.kind === 'video');
 const p = s.getParameters();
@@ -152,6 +157,7 @@ await s.setParameters(p);
 ```
 
 Simulcast (CF auto-forwards best layer):
+
 ```ts
 pc.addTransceiver('video', {direction: 'sendonly', sendEncodings: [
   {rid: 'high', maxBitrate: 1200000},
@@ -161,6 +167,7 @@ pc.addTransceiver('video', {direction: 'sendonly', sendEncodings: [
 ```
 
 DataChannel:
+
 ```ts
 const dc = pc.createDataChannel('chat', {ordered: true, maxRetransmits: 3});
 dc.onopen = () => dc.send(JSON.stringify({type: 'chat', text: 'Hi'}));

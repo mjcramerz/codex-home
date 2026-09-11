@@ -1,5 +1,7 @@
 # Durable Objects API
 
+Consult this reference when durable objects api is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Class Structure
 
 ```typescript
@@ -59,7 +61,7 @@ this.ctx.storage.kv      // Sync KV API (SQLite DOs only)
 this.ctx.storage         // Async KV API (legacy/KV-only DOs)
 ```
 
-See **[DO Storage]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/README.md)** for complete storage API reference.
+See **[DO Storage]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/README.md)** for complete storage API reference.
 
 ### WebSocket Management
 
@@ -77,11 +79,11 @@ await this.ctx.storage.getAlarm(): number | null           // Get next alarm tim
 await this.ctx.storage.deleteAlarm(): void                 // Cancel alarm
 ```
 
-**Limit:** 1 alarm per DO. Use queue pattern for multiple events (see [Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/patterns.md)).
+**Limit:** 1 alarm per DO. Use queue pattern for multiple events (see [Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/patterns.md)).
 
 ## Storage APIs
 
-For detailed storage documentation including SQLite queries, KV operations, transactions, and Point-in-Time Recovery, see **[DO Storage]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/README.md)**.
+For detailed storage documentation including SQLite queries, KV operations, transactions, and Point-in-Time Recovery, see **[DO Storage]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/README.md)**.
 
 Quick reference:
 
@@ -122,7 +124,7 @@ async alarm() {
 **Limitations:**
 - 1 alarm per DO maximum
 - Overwrites previous alarm when set
-- Use queue pattern for multiple scheduled events (see [Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/patterns.md))
+- Use queue pattern for multiple scheduled events (see [Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/patterns.md))
 
 **Reliability:**
 - Alarms survive DO eviction/restart
@@ -172,6 +174,7 @@ async webSocketError(ws: WebSocket, error: unknown) {
 - `webSocketError`: Called on connection error (optional - implement for error handling)
 
 **Metadata persistence:**
+
 ```typescript
 // Store connection metadata (survives hibernation)
 ws.serializeAttachment({ userId: "abc", room: "lobby" })
@@ -182,6 +185,6 @@ const { userId, room } = ws.deserializeAttachment()
 
 ## See Also
 
-- **[DO Storage]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/do-storage/README.md)** - Complete storage API reference
-- **[Patterns]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/patterns.md)** - Real-world usage patterns
-- **[Gotchas]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/durable-objects/gotchas.md)** - Hibernation caveats and limits
+- **[DO Storage]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/do-storage/README.md)** - Complete storage API reference
+- **[Patterns]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/patterns.md)** - Real-world usage patterns
+- **[Gotchas]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/durable-objects/gotchas.md)** - Hibernation caveats and limits

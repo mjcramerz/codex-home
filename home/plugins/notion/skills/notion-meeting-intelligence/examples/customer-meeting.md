@@ -13,13 +13,17 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # Example: Customer Meeting Prep
+
+Use this reference when you prepare meeting material from the relevant connected sources without inventing decisions, attendees or outcomes. Read the actual source and destination schema before writing; treat example page IDs, tool calls, dates and outcomes as illustrative rather than live evidence.
 
 **User Request**: "Prep for sales meeting with Acme Corp on Thursday"
 
 ## Workflow
 
 ### 1. Search Customer Info
+
 ```
 Notion:notion-search
 query: "Acme Corp"
@@ -32,6 +36,7 @@ Found:
 - Competitor analysis
 
 ### 2. Fetch Details
+
 ```
 Notion:notion-fetch (4 pages)
 ```
@@ -45,12 +50,14 @@ Notion:notion-fetch (4 pages)
 - **Competition**: Evaluating us vs. Competitor A and Competitor B
 
 ### 3. Add Research Context
+
 Codex research added:
 - Fintech industry compliance requirements
 - Common integration needs for financial products
 - Typical procurement processes for Series B companies
 
 ### 4. Create Internal Pre-Read
+
 ```
 Notion:notion-create-pages
 pages: [{
@@ -84,6 +91,7 @@ Recommend: $60K/year (mid-range of their budget)
 ```
 
 ### 5. Create Meeting Agenda
+
 ```
 Notion:notion-create-pages
 pages: [{
@@ -122,6 +130,7 @@ Demonstrate how our platform solves Acme's workflow automation and integration c
 ```
 
 ### 6. Link Resources
+
 Connected agenda to CRM page, pricing sheet, and technical integration docs.
 
 ## Outputs
@@ -131,6 +140,7 @@ Connected agenda to CRM page, pricing sheet, and technical integration docs.
 **Both in Notion** with links to supporting materials
 
 ## Key Success Factors
+
 - Understood customer's specific pain points
 - Researched industry context (fintech compliance)
 - Mapped features to their needs

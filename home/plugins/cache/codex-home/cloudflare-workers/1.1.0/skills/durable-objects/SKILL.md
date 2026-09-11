@@ -1,11 +1,11 @@
 ---
 name: durable-objects
-description: Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or reviewing DO code for best practices. Covers Workers integration, wrangler config, and testing with Vitest. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
+description: Use Durable Objects for stateful coordination, RPC, SQLite storage, alarms, WebSockets, migrations and review. Check the installed toolchain and retrieve the relevant official API contract before implementation.
 ---
 
 # Durable Objects
 
-Build stateful, coordinated applications on Cloudflare's edge using Durable Objects.
+Use Durable Objects when the assigned application needs per-entity state or coordination. Confirm the installed Workers and Wrangler versions, namespace bindings, storage backend and migration history before changing code. Keep tenant identity, authorization, concurrency and idempotence explicit.
 
 ## Retrieval Sources
 
@@ -31,9 +31,9 @@ Fetch the relevant doc page when implementing features.
 
 ## Reference Documentation
 
-- `$CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/durable-objects/references/rules.md` - Core rules, storage, concurrency, RPC, alarms
-- `$CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/durable-objects/references/testing.md` - Vitest setup, unit/integration tests, alarm testing
-- `$CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/durable-objects/references/workers.md` - Workers handlers, types, wrangler config, observability
+- `$CODEX_HOME/plugins/cloudflare-workers/skills/durable-objects/references/rules.md` - Core rules, storage, concurrency, RPC, alarms
+- `$CODEX_HOME/plugins/cloudflare-workers/skills/durable-objects/references/testing.md` - Vitest setup, unit/integration tests, alarm testing
+- `$CODEX_HOME/plugins/cloudflare-workers/skills/durable-objects/references/workers.md` - Workers handlers, types, wrangler config, observability
 
 Search: `blockConcurrencyWhile`, `idFromName`, `getByName`, `setAlarm`, `sql.exec`
 

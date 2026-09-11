@@ -8,9 +8,13 @@ tags:
 - rules
 updated: '2026-06-28'
 ---
+
 # Wofi Rules
 
+Apply the following wofi rules guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Required checks
-- Follow the workflow in `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/wofi/SKILL.md`.
-- Use references in `$CODEX_HOME/plugins/cache/codex-home/desktop-wayland/1.0.0/skills/wofi/references/` for factual guidance.
+
+- Follow the workflow in `$CODEX_HOME/plugins/desktop-wayland/skills/wofi/SKILL.md`.
+- Use references in `$CODEX_HOME/plugins/desktop-wayland/skills/wofi/references/` for factual guidance.
 - Keep inputs bounded, secrets out of tracked files, and validation scoped to the touched contract.

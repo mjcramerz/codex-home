@@ -1,5 +1,7 @@
 # Cloudflare R2 Object Storage
 
+Consult this reference when cloudflare r2 object storage is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 S3-compatible object storage with zero egress fees, optimized for large file storage and delivery.
 
 ## Overview
@@ -72,7 +74,7 @@ async queue(batch: MessageBatch, env: Env) {
 
 ## Reading Order
 
-**First-time users:** README → configuration.md → api.md → patterns.md  
+**First-time users:** README → configuration.md → api.md → patterns.md
 **Specific tasks:**
 - Setup: configuration.md
 - Client uploads: patterns.md (presigned URLs)
@@ -82,14 +84,14 @@ async queue(batch: MessageBatch, env: Env) {
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/configuration.md) - Bindings, S3 SDK, CORS, lifecycles, token scopes
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/api.md) - Workers API, multipart, conditional requests, presigned URLs
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/patterns.md) - Streaming, caching, client uploads, public buckets
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/r2/gotchas.md) - List truncation, etag format, stream length, S3 SDK region
+- [configuration.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/configuration.md) - Bindings, S3 SDK, CORS, lifecycles, token scopes
+- [api.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/api.md) - Workers API, multipart, conditional requests, presigned URLs
+- [patterns.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/patterns.md) - Streaming, caching, client uploads, public buckets
+- [gotchas.md]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/r2/gotchas.md) - List truncation, etag format, stream length, S3 SDK region
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/workers/) - Worker runtime and fetch handlers
-- [kv]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/kv/) - Metadata storage for R2 objects
-- [d1]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/d1/) - Store R2 URLs in relational database
-- [queues]($CODEX_HOME/plugins/cache/codex-home/wrangler/1.0.0/skills/cloudflare-deploy/references/queues/) - Process R2 uploads asynchronously
+- [workers]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/workers/) - Worker runtime and fetch handlers
+- [kv]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/kv/) - Metadata storage for R2 objects
+- [d1]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/d1/) - Store R2 URLs in relational database
+- [queues]($CODEX_HOME/plugins/wrangler/skills/cloudflare-deploy/references/queues/) - Process R2 uploads asynchronously

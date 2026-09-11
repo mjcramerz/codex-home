@@ -13,18 +13,24 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # BadUSB and Rubber Ducky defense
 
+Consult this reference when badusb and rubber ducky defense is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Objective
+
 Reduce USB device emulation risk and validate endpoint control effectiveness.
 
 ## Defensive checks
+
 - USB device allowlist policy coverage
 - endpoint alerting for sudden HID injection behavior
 - physical control policy for removable media in sensitive zones
 - incident response drill for suspected USB keystroke injection
 
 ## Reference sources
+
 - https://www.cisa.gov/resources-tools/resources/mobile-security-best-practices
 - https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
 - https://www.usb.org/document-library/device-class-definition-hid-111

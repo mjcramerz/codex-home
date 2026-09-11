@@ -1,5 +1,7 @@
 # Cloudflare Workers Analytics Engine Reference
 
+Consult this reference when cloudflare workers analytics engine reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Expert guidance for implementing unlimited-cardinality analytics at scale using Cloudflare Workers Analytics Engine.
 
 ## What is Analytics Engine?
@@ -53,6 +55,7 @@ Alternative scenarios:
 ## Quick Start
 
 1. Add binding to `wrangler.jsonc`:
+
 ```jsonc
 {
   "analytics_engine_datasets": [
@@ -62,6 +65,7 @@ Alternative scenarios:
 ```
 
 2. Write data points (fire-and-forget, no await):
+
 ```typescript
 env.ANALYTICS.writeDataPoint({
   blobs: ["/api/users", "GET", "200"],
@@ -71,6 +75,7 @@ env.ANALYTICS.writeDataPoint({
 ```
 
 3. Query via SQL API (HTTP):
+
 ```sql
 SELECT blob1, SUM(double2) AS total_requests
 FROM my_events

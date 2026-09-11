@@ -13,12 +13,17 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Runtime security matrix
 
+Consult this reference when runtime security matrix is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Objective
+
 Map container runtime choices to privilege and network exposure risk so deployment reviews stay deterministic.
 
 ## Matrix
+
 | Runtime mode | Primary use case | Risk profile | Required controls | Verify with |
 | --- | --- | --- | --- | --- |
 | Docker rootless | Developer workstation and CI sandboxes | Low-to-medium | Non-root container user, explicit published ports, pinned image digest | `docker info`, `id`, `docker inspect` |
@@ -26,6 +31,7 @@ Map container runtime choices to privilege and network exposure risk so deployme
 | Podman rootless | Daemonless workflows and constrained hosts | Low-to-medium | `userns=keep-id`, read-only rootfs where possible, cgroup limits | `podman info`, `podman inspect` |
 
 ## Gate checklist
+
 - Confirm why rootless is not feasible before allowing rootful runtime.
 - Record required capabilities and why each is needed.
 - Ensure host path mounts are least-privilege and writable only when needed.

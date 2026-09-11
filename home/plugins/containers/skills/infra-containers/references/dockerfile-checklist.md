@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Dockerfile checklist
+
+Consult this reference when dockerfile checklist is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 - Base image pinned (version or digest) — avoid `:latest`.
 - Non-root runtime user (`USER` set; numeric UID/GID OK).
 - If bind-mounting host paths, align UID/GID to the engine user or document the mapping (use `rootless_env.sh --dotenv > .env` in compose-based flows).

@@ -13,9 +13,12 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Obs Elasticsearch Framework
 
+Apply the following obs elasticsearch framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 - Skill: `obs-elasticsearch`
-- Source of truth: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-elasticsearch/SKILL.md`
-- Runtime agent config: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-elasticsearch/agents/openai.yaml`
-- Supporting docs: `$CODEX_HOME/plugins/cache/codex-home/observability/1.0.0/skills/obs-elasticsearch/references/`
+- Source of truth: `$CODEX_HOME/plugins/observability/skills/obs-elasticsearch/SKILL.md`
+- Runtime agent config: `$CODEX_HOME/plugins/observability/skills/obs-elasticsearch/agents/openai.yaml`
+- Supporting docs: `$CODEX_HOME/plugins/observability/skills/obs-elasticsearch/references/`

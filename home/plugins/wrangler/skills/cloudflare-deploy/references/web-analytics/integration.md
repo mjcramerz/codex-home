@@ -1,5 +1,7 @@
 # Framework Integration
 
+Consult this reference when framework integration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **Web Analytics is dashboard-only** - no programmatic API. This covers beacon integration.
 
 ## Basic HTML

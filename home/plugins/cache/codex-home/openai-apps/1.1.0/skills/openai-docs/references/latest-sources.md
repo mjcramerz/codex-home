@@ -13,15 +13,20 @@ tags:
 - chatgpt
 updated: '2026-02-20'
 ---
+
 # openai-docs reference bundle
+
+Consult this reference when openai-docs reference bundle is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 - Last refreshed: 2026-02-11 (UTC)
 - Freshness method: web.run lookups against primary vendor/project documentation roots.
 
 ## Skill purpose
+
 Use when the user asks how to build with OpenAI products or APIs and needs up-to-date official documentation with citations (for example: Codex, Responses API, Chat Completions, Apps SDK, Agents SDK, Realtime, model capabilities or limits); prioritize OpenAI docs MCP tools and restrict any fallback browsing to official OpenAI domains.
 
 ## SKILL.md coverage checklist
+
 - Overview
 - Quick start
 - OpenAI product snapshots
@@ -35,15 +40,17 @@ Use when the user asks how to build with OpenAI products or APIs and needs up-to
 - References
 
 ## Local implementation anchors
-- `$CODEX_HOME/plugins/cache/codex-home/openai-apps/1.0.0/skills/openai-docs/SKILL.md`
-- `$CODEX_HOME/plugins/cache/codex-home/openai-apps/1.0.0/skills/openai-docs/agents/openai.yaml`
+
+- `$CODEX_HOME/plugins/openai-apps/skills/openai-docs/SKILL.md`
+- `$CODEX_HOME/plugins/openai-apps/skills/openai-docs/agents/openai.yaml`
 
 ## External references
+
 - [OpenAI docs home](https://developers.openai.com/docs) - Official OpenAI platform documentation.
 - [OpenAI API reference](https://developers.openai.com/docs/api-reference) - Endpoints and payload schemas.
 - [OpenAI MCP guide](https://developers.openai.com/docs/mcp) - MCP usage in OpenAI ecosystem.
 
 ## Proof-of-concept prompts
+
 - Build a minimum viable runbook for `openai-docs` using the checklist above, then validate inputs, timeouts, and rollback notes.
 - Produce one positive-path and one negative-path test scenario aligned to `openai-docs` before finalizing changes.
-

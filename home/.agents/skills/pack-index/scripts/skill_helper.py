@@ -18,14 +18,7 @@ SKILL_NAME = 'pack-index'
 SKILL_CATEGORY = 'PACK'
 SKILL_DESCRIPTION = 'Maintain and update the pack routing index, including $CODEX_HOME/index/manifest.yml, $CODEX_HOME/index/ entrypoints, and generated $CODEX_HOME/INDEX.md. Use when adding/removing entrypoints, updating related links, or regenerating index artifacts.'
 LAST_REFRESH_UTC = '2026-02-11'
-COVERAGE_HEADINGS = [
-    'Use this skill when',
-    'Workflow',
-    'Agent orchestration',
-    'Validation and testing',
-    'Outputs',
-    'References'
-]
+COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [
     {'title': 'YAML 1.2 specification', 'url': 'https://yaml.org/spec/1.2.2/', 'note': 'Manifest syntax and deterministic formatting rules.'},
     {'title': 'JSON Schema draft 2020-12', 'url': 'https://json-schema.org/draft/2020-12', 'note': 'Schema versioning and validation conventions.'}

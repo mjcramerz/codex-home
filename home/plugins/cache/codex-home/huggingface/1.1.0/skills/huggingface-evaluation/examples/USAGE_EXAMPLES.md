@@ -1,8 +1,11 @@
 # Usage Examples
 
+Use this guide when the task concerns usage examples. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
+
 This document provides practical examples for both methods of adding evaluations to HuggingFace model cards.
 
 ## Table of Contents
+
 1. [Setup](#setup)
 2. [Method 1: Extract from README](#method-1-extract-from-readme)
 3. [Method 2: Import from Artificial Analysis](#method-2-import-from-artificial-analysis)
@@ -26,6 +29,7 @@ cp examples/.env.example .env
 ```
 
 Your `.env` file should contain:
+
 ```env
 HF_TOKEN=hf_your_write_token_here
 AA_API_KEY=aa_your_api_key_here  # Optional for AA imports
@@ -148,6 +152,7 @@ Common examples:
 ## Standalone vs Integrated
 
 ### Standalone Script Features
+
 - ✓ Simple, single-purpose
 - ✓ Can run via `uv run` from URL
 - ✓ Minimal dependencies
@@ -158,6 +163,7 @@ Common examples:
 **Use when:** You only need AA imports and want a simple script.
 
 ### Integrated Script Features
+
 - ✓ Both README extraction AND AA import
 - ✓ Validation and show commands
 - ✓ Dry-run preview mode
@@ -320,6 +326,7 @@ python3 scripts/evaluation_manager.py validate \
 ### View in HuggingFace UI
 
 After updating, visit:
+
 ```
 https://huggingface.co/your-username/your-model
 ```
@@ -377,6 +384,6 @@ python3 scripts/evaluation_manager.py import-aa --help
 ```
 
 For issues or questions, consult:
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-evaluation/SKILL.md` - Complete documentation
-- `$CODEX_HOME/plugins/cache/codex-home/huggingface/1.0.0/skills/huggingface-evaluation/SKILL.md` - Main workflow and troubleshooting guide
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-evaluation/SKILL.md` - Complete documentation
+- `$CODEX_HOME/plugins/huggingface/skills/huggingface-evaluation/SKILL.md` - Main workflow and troubleshooting guide
 - `example_readme_tables.md` - Example markdown tables for extraction tests

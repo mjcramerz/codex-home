@@ -1,5 +1,7 @@
 # R2 Patterns & Best Practices
 
+Consult this reference when r2 patterns & best practices is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Streaming Large Files
 
 ```typescript
@@ -187,7 +189,7 @@ export default {
 
 ## r2.dev Public URLs
 
-Enable r2.dev in dashboard for simple public access: `https://pub-${hashId}.r2.dev/${key}`  
+Enable r2.dev in dashboard for simple public access: `https://pub-${hashId}.r2.dev/${key}`
 Or add custom domain via dashboard: `https://files.example.com/${key}`
 
 **Limitations:** No auth, bucket-level CORS, no cache override.

@@ -1,7 +1,6 @@
 interface:
-  display_name: "Vercel React Native Skills"
-  short_description: "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, opt"
-  default_prompt: "Use $react-native-skills. Use the Vercel React Native Skills skill when the task matches this scope: React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs."
-
+  display_name: Vercel React Native Skills
+  short_description: Use this skill for react Native and Expo best practices for building performant mobile app
+  default_prompt: Use $vercel-react-native-skills for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 policy:
   allow_implicit_invocation: true

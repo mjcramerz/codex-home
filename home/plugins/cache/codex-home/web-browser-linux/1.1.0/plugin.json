@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "web-browser-linux",
   "version": "1.1.0",
-  "description": "Linux browser hardening and browser-specific desktop workflows.",
+  "description": "Use this plugin for linux browser hardening and browser-specific desktop workflows.",
   "author": {
     "name": "Codex Setup"
   },

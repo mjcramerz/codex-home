@@ -1,10 +1,15 @@
 ---
 name: runtime-sandbox
-description: Review Bubblewrap-backed Codex runtime isolation and ephemeral session state
+description: Review Bubblewrap-backed Codex runtime isolation and ephemeral session state.
 metadata:
-  version: "1.0"
+  version: '1.0'
   short-description: Bubblewrap runtime isolation
-  tags: [plugin, runtime, sandbox, bubblewrap, codex]
+  tags:
+  - plugin
+  - runtime
+  - sandbox
+  - bubblewrap
+  - codex
 interface:
   display-name: Runtime Sandbox
   short-description: Bubblewrap runtime isolation
@@ -12,6 +17,18 @@ interface:
 ---
 
 # Runtime Sandbox
+
+## Execute the scoped task
+
+1. Identify the selected permission profile, command proxy mode, managed requirements and requested operation. Separate local filesystem access, network connectivity, approval routing and user authorization.
+
+2. Do not combine default_permissions with sandbox_mode or sandbox_workspace_write. Check the actual target release before migrating either mechanism.
+
+3. When the command proxy is disabled, do not claim profile domain rules enforce restrictions. Keep network listeners on loopback, retain scoped socket permissions, and never disable TLS verification to resolve connectivity.
+
+4. Use a bounded fixture or authorized command to check the specific permission boundary. Do not widen host or remote-service access beyond the requested policy change.
+
+## Task-specific details and resources
 
 Use this skill for Bubblewrap, launch-wrapper, identity-isolation, or ephemeral-runtime work in managed Codex installations.
 

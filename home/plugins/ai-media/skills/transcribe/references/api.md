@@ -1,5 +1,7 @@
 # gpt-4o-transcribe-diarize quick reference
 
+Consult this reference when gpt-4o-transcribe-diarize quick reference is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 - Input formats: mp3, mp4, mpeg, mpga, m4a, wav, webm.
 - Max file size: 25 MB per request.
 - response_format options: text, json, diarized_json.

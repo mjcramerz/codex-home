@@ -1,5 +1,7 @@
 # Bot Management Configuration
 
+Consult this reference when bot management configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Product Tiers
 
 **Note:** Dashboard paths differ between old and new UI:
@@ -23,10 +25,12 @@ Pro/Business users see bot score groupings instead of granular 1-99 scores:
 Enterprise plans get granular 1-99 scores for custom thresholds.
 
 ### Bot Fight Mode (Free)
+
 - Auto-blocks definite bots (score=1), excludes verified bots by default
 - JavaScript Detections always enabled, no configuration options
 
 ### Super Bot Fight Mode (Pro/Business)
+
 ```txt
 Dashboard: Security > Bots > Configure
 - Definitely automated: Block/Challenge
@@ -37,6 +41,7 @@ Dashboard: Security > Bots > Configure
 ```
 
 ### Bot Management for Enterprise
+
 ```txt
 Dashboard: Security > Bots > Configure > Auto-updates: ON (recommended)
 
@@ -52,6 +57,7 @@ Action: Managed Challenge
 ## JavaScript Detections Setup
 
 ### Enable via Dashboard
+
 ```txt
 Security > Bots > Configure Bot Management > JS Detections: ON
 
@@ -59,6 +65,7 @@ Update CSP: script-src 'self' /cdn-cgi/challenge-platform/;
 ```
 
 ### Manual JS Injection (API)
+
 ```html
 <script>
 function jsdOnload() {
@@ -68,10 +75,11 @@ function jsdOnload() {
 <script src="/cdn-cgi/challenge-platform/scripts/jsd/api.js?onload=jsdOnload" async></script>
 ```
 
-**Use API for**: Selective deployment on specific pages  
+**Use API for**: Selective deployment on specific pages
 **Don't combine**: Zone-wide toggle + manual injection
 
 ### WAF Rules for JSD
+
 ```txt
 # NEVER use on first page visit (needs HTML page first)
 (not cf.bot_management.js_detection.passed and http.request.uri.path eq "/api/user/create" and http.request.method eq "POST" and not cf.bot_management.verified_bot)
@@ -79,6 +87,7 @@ Action: Managed Challenge (always use Managed Challenge, not Block)
 ```
 
 ### Limitations
+
 - First request won't have JSD data (needs HTML page first)
 - Strips ETags from HTML responses
 - Not supported with CSP via `<meta>` tags
@@ -100,7 +109,7 @@ Bot scores for repeat visitors consider session history via this cookie.
 
 ## Static Resource Protection
 
-**File Extensions**: ico, jpg, png, jpeg, gif, css, js, tif, tiff, bmp, pict, webp, svg, svgz, class, jar, txt, csv, doc, docx, xls, xlsx, pdf, ps, pls, ppt, pptx, ttf, otf, woff, woff2, eot, eps, ejs, swf, torrent, midi, mid, m3u8, m4a, mp3, ogg, ts  
+**File Extensions**: ico, jpg, png, jpeg, gif, css, js, tif, tiff, bmp, pict, webp, svg, svgz, class, jar, txt, csv, doc, docx, xls, xlsx, pdf, ps, pls, ppt, pptx, ttf, otf, woff, woff2, eot, eps, ejs, swf, torrent, midi, mid, m3u8, m4a, mp3, ogg, ts
 **Plus**: `/.well-known/` path (all files)
 
 ```txt

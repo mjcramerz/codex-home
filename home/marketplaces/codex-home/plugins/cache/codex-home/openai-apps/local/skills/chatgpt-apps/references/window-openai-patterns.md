@@ -1,5 +1,7 @@
 # Window.openai Patterns
 
+Consult this reference when window.openai patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Load this reference when a task needs ChatGPT-only widget features, when translating older examples that use an `app` wrapper, or when a React widget should read host globals safely.
 
 ## Core Rule

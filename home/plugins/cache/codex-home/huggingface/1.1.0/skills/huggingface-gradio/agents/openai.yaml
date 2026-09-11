@@ -1,15 +1,13 @@
 interface:
-  display_name: "Gradio"
-  short_description: "Build Gradio web UIs and demos in Python. Use when creating or editing Gradio apps, components, event listeners, layouts"
-  default_prompt: "Use $huggingface-gradio. Use the Gradio skill when the task matches this scope: Build Gradio web UIs and demos in Python. Use when creating or editing Gradio apps, components, event listeners, layouts, or chatbots."
-
+  display_name: Gradio
+  short_description: Build Gradio web UIs and demos in Python. Use when creating or editing Gradio apps, compon
+  default_prompt: Use $gradio for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "huggingface"
-      description: "huggingface MCP server"
-      transport: "streamable_http"
-      url: "https://huggingface.co/mcp?login"
-
+  - type: mcp
+    value: huggingface
+    description: huggingface MCP server
+    transport: streamable_http
+    url: https://huggingface.co/mcp?login
 policy:
   allow_implicit_invocation: true

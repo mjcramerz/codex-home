@@ -5,6 +5,10 @@ impactDescription: native performance, platform-appropriate UI
 tags: navigation, react-navigation, expo-router, native-stack, tabs
 ---
 
+# navigation native navigators
+
+Apply the following navigation native navigators guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
+
 ## Use Native Navigators for Navigation
 
 Always use native navigators instead of JS-based ones. Native navigators use

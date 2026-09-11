@@ -1,5 +1,7 @@
 # Retrieving Metrics with Trackio CLI
 
+Consult this reference when retrieving metrics with trackio cli is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 The `trackio` CLI provides direct terminal access to query Trackio experiment tracking data locally without needing to start the MCP server.
 
 ## Quick Command Reference
@@ -200,16 +202,19 @@ All errors exit with non-zero status code and write to stderr.
 ## JSON Output Structure
 
 ### List Projects
+
 ```json
 {"projects": ["project1", "project2"]}
 ```
 
 ### List Runs
+
 ```json
 {"project": "my-project", "runs": ["run1", "run2"]}
 ```
 
 ### Project Summary
+
 ```json
 {
   "project": "my-project",
@@ -220,6 +225,7 @@ All errors exit with non-zero status code and write to stderr.
 ```
 
 ### Run Summary
+
 ```json
 {
   "project": "my-project",
@@ -232,6 +238,7 @@ All errors exit with non-zero status code and write to stderr.
 ```
 
 ### Metric Values
+
 ```json
 {
   "project": "my-project",
@@ -248,4 +255,3 @@ All errors exit with non-zero status code and write to stderr.
 
 - **Complete CLI documentation**: See [docs/source/cli_commands.md](docs/source/cli_commands.md)
 - **API and MCP Server**: See [docs/source/api_mcp_server.md](docs/source/api_mcp_server.md)
-

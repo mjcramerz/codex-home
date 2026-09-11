@@ -1,5 +1,7 @@
 # Cloudflare Network Interconnect (CNI)
 
+Consult this reference when cloudflare network interconnect (cni) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Private, high-performance connectivity to Cloudflare's network. **Enterprise-only**.
 
 ## Connection Types
@@ -53,10 +55,11 @@ Private, high-performance connectivity to Cloudflare's network. **Enterprise-onl
 2-4 weeks typical. Steps: request → config review → order connection → configure → test → enable health checks → activate → monitor.
 
 ## In This Reference
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/network-interconnect/configuration.md) - BGP, routing, setup
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/network-interconnect/api.md) - API endpoints, SDKs
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/network-interconnect/patterns.md) - HA, hybrid cloud, failover
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/network-interconnect/gotchas.md) - Troubleshooting, limits
+
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/network-interconnect/configuration.md) - BGP, routing, setup
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/network-interconnect/api.md) - API endpoints, SDKs
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/network-interconnect/patterns.md) - HA, hybrid cloud, failover
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/network-interconnect/gotchas.md) - Troubleshooting, limits
 
 ## Reading Order by Task
 
@@ -95,5 +98,6 @@ Private, high-performance connectivity to Cloudflare's network. **Enterprise-onl
 - Maintenance window coordination
 
 ## See Also
-- [tunnel]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/tunnel/) - Alternative for private network connectivity
-- [spectrum]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/spectrum/) - Layer 4 proxy for TCP/UDP traffic
+
+- [tunnel]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/tunnel/) - Alternative for private network connectivity
+- [spectrum]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/spectrum/) - Layer 4 proxy for TCP/UDP traffic

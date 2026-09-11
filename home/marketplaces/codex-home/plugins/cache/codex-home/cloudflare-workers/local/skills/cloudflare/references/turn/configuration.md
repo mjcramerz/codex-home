@@ -1,5 +1,7 @@
 # TURN Configuration
 
+Consult this reference when turn configuration is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Setup and configuration for Cloudflare TURN service in Workers and applications.
 
 ## Environment Variables
@@ -51,6 +53,7 @@ export const config = envSchema.parse(process.env);
 ```
 
 **Store secrets separately**:
+
 ```bash
 wrangler secret put TURN_KEY_SECRET
 ```
@@ -157,16 +160,19 @@ Clients can connect via IPv6, but relayed traffic uses IPv4 addresses.
 ## TLS Configuration
 
 ### Supported TLS Versions
+
 - TLS 1.1
 - TLS 1.2
 - TLS 1.3
 
 ### Recommended Ciphers (TLS 1.3)
+
 - AEAD-AES128-GCM-SHA256
 - AEAD-AES256-GCM-SHA384
 - AEAD-CHACHA20-POLY1305-SHA256
 
 ### Recommended Ciphers (TLS 1.2)
+
 - ECDHE-ECDSA-AES128-GCM-SHA256
 - ECDHE-RSA-AES128-GCM-SHA256
 - ECDHE-RSA-AES128-SHA (also TLS 1.1)
@@ -174,6 +180,6 @@ Clients can connect via IPv6, but relayed traffic uses IPv4 addresses.
 
 ## See Also
 
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/api.md) - TURN key creation, credential generation API
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/patterns.md) - Full Worker implementation patterns
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/turn/gotchas.md) - Security best practices, troubleshooting
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/api.md) - TURN key creation, credential generation API
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/patterns.md) - Full Worker implementation patterns
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/turn/gotchas.md) - Security best practices, troubleshooting

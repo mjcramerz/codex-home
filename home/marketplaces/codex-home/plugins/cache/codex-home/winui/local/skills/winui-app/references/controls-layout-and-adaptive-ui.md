@@ -8,6 +8,10 @@ sources:
   - https://github.com/microsoft/WinUI-Gallery
 ---
 
+# controls layout and adaptive ui
+
+Consult this reference when controls layout and adaptive ui is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## What This Reference Is For
 
 Use this file when choosing controls, composing pages, or making a WinUI layout adapt well to different window sizes and input modes.

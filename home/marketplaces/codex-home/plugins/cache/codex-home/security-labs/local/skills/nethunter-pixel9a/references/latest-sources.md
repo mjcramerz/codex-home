@@ -13,11 +13,15 @@ tags:
 - security-labs
 updated: '2026-02-20'
 ---
+
 # Latest sources for nethunter-pixel9a
+
+Consult this reference when latest sources for nethunter-pixel9a is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
 
 Retrieved and reviewed on 2026-02-13 (UTC) using Context7 + web lookups.
 
 ## Retrieval notes
+
 - Context7 source used: `/websites/source_android_core` (bootloader/fastbootd/GKI topics).
 - Web lookup source used for Kali and Android page freshness checks.
 - Fetch MCP attempts in this runtime failed with:
@@ -25,6 +29,7 @@ Retrieved and reviewed on 2026-02-13 (UTC) using Context7 + web lookups.
   - Until resolved, use Context7 + web lookups as fallback.
 
 ## Freshness markers captured on 2026-02-13 (UTC)
+
 - Kali NetHunter `building-nethunter` and `porting-nethunter-kernel-builder` pages:
   - Updated on `2025-Jun-18`.
 - Android bootloader lock/unlock and fastbootd pages:
@@ -36,6 +41,7 @@ Retrieved and reviewed on 2026-02-13 (UTC) using Context7 + web lookups.
   - Last updated `2026-01-14 UTC`.
 
 ## Kali NetHunter
+
 - https://www.kali.org/docs/nethunter/building-nethunter/
 - https://www.kali.org/docs/nethunter/porting-nethunter-kernel-builder/
 - https://www.kali.org/docs/nethunter/porting-nethunter/
@@ -44,6 +50,7 @@ Retrieved and reviewed on 2026-02-13 (UTC) using Context7 + web lookups.
 - https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer
 
 ## Android platform
+
 - https://source.android.com/docs/core/architecture/bootloader/locking_unlocking
 - https://source.android.com/docs/core/architecture/bootloader/fastbootd
 - https://source.android.com/docs/core/architecture/kernel/gki-releases
@@ -51,6 +58,7 @@ Retrieved and reviewed on 2026-02-13 (UTC) using Context7 + web lookups.
 - https://developer.android.com/tools/releases/platform-tools
 
 ## Defensive baseline
+
 - https://attack.mitre.org/
 - https://csrc.nist.gov/publications/detail/sp/800-115/final
 - https://www.cisa.gov/resources-tools/resources/mobile-security-best-practices

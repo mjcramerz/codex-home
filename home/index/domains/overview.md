@@ -1,9 +1,11 @@
 # Domain router
-Purpose: choose one platform or tooling router for domain-specific work for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this route when you need domain guidance. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
+
 Use this router when the task is mainly tied to one platform, toolchain, or operating surface.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -11,6 +13,7 @@ Use this router when the task is mainly tied to one platform, toolchain, or oper
 <!-- END:nav -->
 
 ## Choose one domain
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/index/domains/desktop/overview.md` — Desktop (domain router, overview)
 - `$CODEX_HOME/index/domains/infra/overview.md` — Infra (domain router, overview)
@@ -22,6 +25,7 @@ Use this router when the task is mainly tied to one platform, toolchain, or oper
 <!-- END:contents -->
 
 ## Quick mapping
+
 - Host services, filesystems, kernel, GRUB, sysctl, USBGuard -> system
 - Containers, virtualization, Kubernetes, IaC -> infra
 - Elasticsearch, log pipelines, auditd, AIDE, CrowdSec -> observability
@@ -30,6 +34,7 @@ Use this router when the task is mainly tied to one platform, toolchain, or oper
 - Go, TypeScript, HTML, shell-adjacent language guidance -> lang
 - VS Code profiles, settings, or extensions -> vscode
 
-## You must stop when
+## Stop when
+
 - Pick one domain router and then one entrypoint from it.
 - If the task is mainly about execution process rather than platform specifics, route back to `$CODEX_HOME/index/core/overview.md`.

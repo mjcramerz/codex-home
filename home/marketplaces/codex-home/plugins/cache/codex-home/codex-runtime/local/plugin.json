@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "codex-runtime",
   "version": "1.1.0",
-  "description": "Runtime configuration, sandbox policy, schema comparison, Perl support, and setup audits for managed Codex environments.",
+  "description": "Use this plugin for runtime configuration, sandbox policy, schema comparison, Perl support, and setup audits for managed Codex environments.",
   "author": {
     "name": "Codex Setup"
   },

@@ -1,7 +1,6 @@
-# Realtime Startup Context
+# Realtime context boundary
 
-Use this file as a companion template for the
-`experimental_realtime_ws_startup_context` string field in `config.toml`.
-
-Replace this file with the exact websocket startup context you want to append.
-An empty string disables the synthesized startup context entirely.
+Use the startup context to orient the current task, not to assume a repository,
+identity, installed tool or permission that has not been established. Prefer short
+read-only discovery to speculation. Keep private content out of spoken summaries
+unless necessary for the authorized request.

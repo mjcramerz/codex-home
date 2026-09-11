@@ -1,5 +1,7 @@
 # Saving Training Results to Hugging Face Hub
 
+Consult this reference when saving training results to hugging face hub is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 **⚠️ CRITICAL:** Training environments are ephemeral. ALL results are lost when a job completes unless pushed to the Hub.
 
 ## Why Hub Push is Required
@@ -279,6 +281,7 @@ hf_jobs("logs", {"job_id": "your-job-id"})
 ```
 
 **Look for:**
+
 ```
 Pushing model to username/model-name...
 Upload file pytorch_model.bin: 100%

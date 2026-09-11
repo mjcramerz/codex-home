@@ -1,10 +1,12 @@
 # Pack maintenance router
-Purpose: choose one pack-maintenance hub for runtime-pack source work for the Codex coding agent.
-You must read only the smallest section that resolves the current task, follow the first matching route, and stop broad browsing once the next concrete file or command is clear.
+
+Use this route when you need pack maintenance guidance. Select the closest matching destination below, read only what the next action requires, and stop discovery when the implementation or check is clear.
+
 Use this router when maintaining the runtime pack itself: docs, plans, skills,
 templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 
 ## Navigation
+
 <!-- BEGIN:nav -->
 - Parent: `$CODEX_HOME/index/OVERVIEW.md`
 - Pack index: `$CODEX_HOME/INDEX.md`
@@ -12,6 +14,7 @@ templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 <!-- END:nav -->
 
 ## Required runtime surfaces for pack work
+
 - `$CODEX_HOME/index/manifest.yml` for routing metadata
 - `$CODEX_HOME/memories/` when runtime memory already exists for the active workspace
 - `$CODEX_HOME/docs/**` for runtime docs and workflows
@@ -23,12 +26,14 @@ templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 - `$CODEX_HOME/plugins/cache/**` plus `$CODEX_HOME/.agents/plugins/marketplace.json` for plugin bundles and marketplace wiring
 
 ## Pack scope
+
 - Pack content stops at docs, plans, templates, skills, rules, snippets,
   routing metadata, and plugins. Runtime memory is generated later by Codex.
-- You must keep installed-path references coherent across `$CODEX_HOME/**`, `$CODEX_AGENTS/**`, and `$CODEX_HOME/.agents/skills/**`.
-- You must treat `$CODEX_HOME/memories/` and the mirrored memory instruction assets as pack source when the task is memory-related.
+- Keep installed-path references coherent across `$CODEX_HOME/**`, `$CODEX_AGENTS/**`, and `$CODEX_HOME/.agents/skills/**`.
+- Treat `$CODEX_HOME/memories/` and the mirrored memory instruction assets as pack source when the task is memory-related.
 
 ## Choose one hub
+
 <!-- BEGIN:contents -->
 - `$CODEX_HOME/index/pack/config.md` — Pack configuration (entrypoint)
 - `$CODEX_HOME/index/pack/docs.md` — Docs index (entrypoint)
@@ -43,6 +48,7 @@ templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 <!-- END:contents -->
 
 ## Recommended progression
+
 1. Classify the work as configuration, catalogs, docs, plans, or
    another pack surface.
 2. Open the matching hub and one workflow/plan when the work is non-trivial.

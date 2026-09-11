@@ -13,7 +13,10 @@ tags:
 - default
 updated: '2026-02-20'
 ---
+
 # PACK-Prompts Framework
+
+Apply the following pack-prompts framework guidance to the code or configuration you are changing. Check the stated preconditions and preserve behavior outside the authorized scope.
 
 - Skill: `pack-prompts`
 - Source of truth: `$CODEX_SKILLS/pack-prompts/SKILL.md`

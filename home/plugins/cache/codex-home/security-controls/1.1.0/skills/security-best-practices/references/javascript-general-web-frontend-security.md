@@ -1,5 +1,7 @@
 # Frontend JavaScript/TypeScript Web Security Spec (Vanilla Browser JS/TS, Modern Browsers)
 
+Consult this reference when frontend javascript/typescript web security spec (vanilla browser js/ts, modern browsers) is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 This document is designed as a **security spec** that supports:
 
 1. **Secure-by-default code generation** for new frontend JavaScript/TypeScript (no specific framework assumed).
@@ -139,7 +141,6 @@ Each rule contains: required practice, insecure patterns, detection hints, and r
 
 Severity: Critical if you can prove attacker-controlled input can reach these APIs; otherwise Medium
 
-
 Required:
 
 * MUST treat `innerHTML`, `outerHTML`, and `insertAdjacentHTML` as dangerous sinks when their input can contain untrusted data. ([OWASP Cheat Sheet Series][2])
@@ -182,7 +183,7 @@ False positive notes:
 
 ### JS-XSS-002: Avoid `document.write` / `document.writeln` (XSS + document clobbering hazards)
 
-Severity: Critical if you can prove attacker-controlled input can reach these APIs; otherwise Medium 
+Severity: Critical if you can prove attacker-controlled input can reach these APIs; otherwise Medium
 
 Required:
 
@@ -669,7 +670,6 @@ When actively scanning, use these high-signal patterns:
 
   * `<script src="https://...">` without `integrity=`
   * Tag manager snippets and dynamic script injection code paths ([MDN Web Docs][12])
-
 
 * DOM clobbering gadgets:
 

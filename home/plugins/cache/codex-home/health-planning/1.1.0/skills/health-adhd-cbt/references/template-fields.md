@@ -12,19 +12,25 @@ tags:
 - admin
 updated: '2026-02-20'
 ---
+
 # ADHD + CBT template fields
 
+Consult this reference when adhd + cbt template fields is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 ## Source
-- Canonical PDF reference: `$CODEX_HOME/plugins/cache/codex-home/health-planning/1.0.0/skills/health-adhd-cbt/assets/source/Concise_ADHD_CBT_Daily_Templates_A4_FINAL_COMPLETE_v2.pdf`
-- HTML templates: `$CODEX_HOME/plugins/cache/codex-home/health-planning/1.0.0/skills/health-adhd-cbt/assets/templates/`
-- CSS: `$CODEX_HOME/plugins/cache/codex-home/health-planning/1.0.0/skills/health-adhd-cbt/assets/styles/pdf.css`
+
+- Canonical PDF reference: `$CODEX_HOME/plugins/health-planning/skills/health-adhd-cbt/assets/source/Concise_ADHD_CBT_Daily_Templates_A4_FINAL_COMPLETE_v2.pdf`
+- HTML templates: `$CODEX_HOME/plugins/health-planning/skills/health-adhd-cbt/assets/templates/`
+- CSS: `$CODEX_HOME/plugins/health-planning/skills/health-adhd-cbt/assets/styles/pdf.css`
 
 ## Rendering safety notes
+
 - Placeholder keys must use identifier-style names (`[A-Za-z_][A-Za-z0-9_]*`).
 - Placeholder values are rendered as escaped text (not raw HTML) to avoid script/style injection.
 - Very large payloads are rejected by renderer size limits.
 
 ## Templates included
+
 - `daily-flow.html` - daily launch, top outcomes, midday reset, shutdown, micro habits
 - `daily-focus.html` - focus sprint planning and distraction supports
 - `decisions-impulses.html` - shiny object parking lot, decision filter, email helper
@@ -40,10 +46,12 @@ updated: '2026-02-20'
 ## Placeholders (by template)
 
 ### Shared
+
 - `day`
 - `date`
 
 ### daily-flow.html
+
 - `energy_am`
 - `direction_am`
 - `done_definition`
@@ -70,6 +78,7 @@ updated: '2026-02-20'
 - `shutdown_notes`
 
 ### decisions-impulses.html
+
 - `idea`
 - `trigger`
 - `exciting_reason`
@@ -99,6 +108,7 @@ updated: '2026-02-20'
 - `email_draft`
 
 ### daily-focus.html
+
 - `focus_goal`
 - `focus_done`
 - `focus_start`
@@ -115,6 +125,7 @@ updated: '2026-02-20'
 - `wrap_notes`
 
 ### emotions-self-management.html
+
 - `situation`
 - `emotion_intensity`
 - `automatic_thought`
@@ -136,6 +147,7 @@ updated: '2026-02-20'
 - `wind_down_notes`
 
 ### weekly-plan.html
+
 - `week_of`
 - `weekly_theme`
 - `weekly_top_1`
@@ -153,6 +165,7 @@ updated: '2026-02-20'
 - `next_week_seed`
 
 ### task-breakdown.html
+
 - `task_name`
 - `task_done`
 - `task_why`
@@ -170,6 +183,7 @@ updated: '2026-02-20'
 - `next_action`
 
 ### habit-tracker.html
+
 - `week_of`
 - `focus_habit`
 - `habit_1`
@@ -179,6 +193,7 @@ updated: '2026-02-20'
 - `habit_notes`
 
 ### monthly-review.html
+
 - `month_of`
 - `review_date`
 - `win_1`
@@ -213,6 +228,7 @@ updated: '2026-02-20'
 - `monthly_notes`
 
 ### appointment-prep.html
+
 - `appointment_type`
 - `provider_name`
 - `appointment_date`
@@ -238,6 +254,7 @@ updated: '2026-02-20'
 - `follow_up_date`
 
 ### sensory-reset.html
+
 - `day`
 - `date`
 - `overwhelm_level`
@@ -257,5 +274,6 @@ updated: '2026-02-20'
 - `sensory_notes`
 
 ## Notes
+
 - All placeholders are optional. Missing keys are rendered as blank lines.
 - The templates are designed for printing and handwriting, but can be prefilled via JSON.

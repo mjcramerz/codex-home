@@ -1,26 +1,24 @@
 interface:
-  display_name: "API Reference Research"
-  short_description: "Translate API docs into concrete integration checklists"
-  brand_color: "#0284C7"
-  default_prompt: "Use $api-reference-research. Act as the API Reference Research specialist. Use current evidence, keep changes reviewable, and report assumptions and validation clearly."
-
+  display_name: API Reference Research
+  short_description: Use this skill for translate API docs into concrete integration checklists
+  brand_color: '#0284C7'
+  default_prompt: Use $api-reference-research for the current matching task. Read its entrypoint and only the resources needed for the next action. Follow the active tool contract, preserve user scope and unrelated work, protect secrets, and report actual results and limitations.
 dependencies:
   tools:
-    - type: "mcp"
-      value: "openaiDeveloperDocs"
-      description: "openaiDeveloperDocs MCP server"
-      transport: "streamable_http"
-      url: "https://developers.openai.com/mcp"
-    - type: "mcp"
-      value: "microsoft-learn"
-      description: "microsoft-learn MCP server"
-      transport: "streamable_http"
-      url: "https://learn.microsoft.com/api/mcp"
-    - type: "mcp"
-      value: "jina-ai"
-      description: "jina-ai MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.jina.ai/v1"
-
+  - type: mcp
+    value: openaiDeveloperDocs
+    description: openaiDeveloperDocs MCP server
+    transport: streamable_http
+    url: https://developers.openai.com/mcp
+  - type: mcp
+    value: microsoft-learn
+    description: microsoft-learn MCP server
+    transport: streamable_http
+    url: https://learn.microsoft.com/api/mcp
+  - type: mcp
+    value: jina-ai
+    description: jina-ai MCP server
+    transport: streamable_http
+    url: https://mcp.jina.ai/v1
 policy:
   allow_implicit_invocation: true

@@ -1,5 +1,7 @@
 # Netlify Deployment Patterns
 
+Consult this reference when netlify deployment patterns is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Common deployment scenarios and best practices for the Netlify skill.
 
 ## Deployment Decision Tree
@@ -32,6 +34,7 @@ Is user authenticated?
 5. Deploy to production: `npx netlify deploy --prod`
 
 **Example**:
+
 ```bash
 npx netlify status
 # Not linked to a site
@@ -58,6 +61,7 @@ npx netlify deploy --prod
 5. If found, linked. If not, run `netlify init`
 
 **Example**:
+
 ```bash
 git remote show origin
 # * remote origin
@@ -79,6 +83,7 @@ npx netlify link --git-remote-url https://github.com/user/my-app.git
 5. If approved, deploy to prod: `npx netlify deploy --prod`
 
 **Example**:
+
 ```bash
 # Make changes to code
 
@@ -130,6 +135,7 @@ npx netlify deploy --dir=. --prod
 **Steps**:
 1. Navigate to project subdirectory: `cd packages/frontend`
 2. Or set base in netlify.toml:
+
    ```toml
    [build]
      base = "packages/frontend"
@@ -145,6 +151,7 @@ npx netlify deploy --dir=. --prod
 **Steps**:
 1. Never commit secrets to Git
 2. Set in Netlify dashboard or CLI:
+
    ```bash
    npx netlify env:set API_KEY "secret_value"
    npx netlify env:set NODE_ENV "production"
@@ -159,6 +166,7 @@ npx netlify deploy --dir=. --prod
 **Steps**:
 1. Deploy site first: `npx netlify deploy --prod`
 2. Add domain via dashboard or CLI:
+
    ```bash
    npx netlify open:admin
    # Navigate to Domain settings
@@ -257,6 +265,7 @@ npx netlify deploy --prod --message="Fix login bug"
 **Cause**: Authentication token expired or missing.
 
 **Fix**:
+
 ```bash
 npx netlify logout
 npx netlify login
@@ -267,6 +276,7 @@ npx netlify login
 **Cause**: Project not connected to a Netlify site.
 
 **Fix**:
+
 ```bash
 # Try linking to existing site
 npx netlify link
@@ -278,6 +288,7 @@ npx netlify init
 ## Performance Tips
 
 1. **Enable processing** in netlify.toml for auto-optimization:
+
    ```toml
    [build.processing.css]
      bundle = true
@@ -285,6 +296,7 @@ npx netlify init
    ```
 
 2. **Use caching headers** for static assets:
+
    ```toml
    [[headers]]
      for = "/assets/*"

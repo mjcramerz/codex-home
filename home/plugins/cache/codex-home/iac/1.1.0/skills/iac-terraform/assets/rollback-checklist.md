@@ -13,7 +13,10 @@ tags:
 - infra
 updated: '2026-02-20'
 ---
+
 # Rollback checklist (iac-terraform)
+
+Use this guide when you change Terraform modules, providers, state or infrastructure plans. Apply the relevant steps to the current repository, preserve unrelated work, and stop when the requested outcome and checks are complete.
 
 - Confirm rollback trigger and decision owner.
 - Capture diagnostics before reverting.

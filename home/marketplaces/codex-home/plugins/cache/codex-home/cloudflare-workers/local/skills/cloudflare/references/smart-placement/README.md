@@ -1,5 +1,7 @@
 # Cloudflare Workers Smart Placement
 
+Consult this reference when cloudflare workers smart placement is relevant to the selected task. Extract the specific constraint or example you need, verify version-sensitive behavior against the active toolchain, and return to the task rather than loading unrelated references.
+
 Automatic workload placement optimization to minimize latency by running Workers closer to backend infrastructure rather than end users.
 
 ## Core Concept
@@ -51,6 +53,7 @@ Does your Worker have a fetch handler?
 ### Key Architecture Pattern
 
 **Recommended:** Split full-stack applications into separate Workers:
+
 ```
 User → Frontend Worker (at edge, close to user)
          ↓ Service Binding
@@ -112,27 +115,27 @@ wrangler tail your-worker-name --header cf-placement
 
 **First time?** Start here:
 1. This README - understand core concepts and when to use Smart Placement
-2. [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/configuration.md) - set up wrangler.jsonc and understand limitations
-3. [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/patterns.md) - see practical examples for your use case
-4. [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/api.md) - monitor and verify Smart Placement is working
-5. [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/gotchas.md) - troubleshoot common issues
+2. [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/configuration.md) - set up wrangler.jsonc and understand limitations
+3. [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/patterns.md) - see practical examples for your use case
+4. [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/api.md) - monitor and verify Smart Placement is working
+5. [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/gotchas.md) - troubleshoot common issues
 
 **Quick lookup:**
 - "Should I enable Smart Placement?" → See "When to Use" above
-- "How do I configure it?" → [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/configuration.md)
-- "How do I split frontend/backend?" → [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/patterns.md)
-- "Why isn't it working?" → [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/gotchas.md)
+- "How do I configure it?" → [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/configuration.md)
+- "How do I split frontend/backend?" → [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/patterns.md)
+- "Why isn't it working?" → [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/gotchas.md)
 
 ## In This Reference
 
-- [configuration.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/configuration.md) - wrangler.jsonc setup, mode values, validation rules
-- [api.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/api.md) - Placement Status API, cf-placement header, monitoring
-- [patterns.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/patterns.md) - Frontend/backend split, database workers, SSR patterns
-- [gotchas.md]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/smart-placement/gotchas.md) - Troubleshooting INSUFFICIENT_INVOCATIONS, performance issues
+- [configuration.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/configuration.md) - wrangler.jsonc setup, mode values, validation rules
+- [api.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/api.md) - Placement Status API, cf-placement header, monitoring
+- [patterns.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/patterns.md) - Frontend/backend split, database workers, SSR patterns
+- [gotchas.md]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/smart-placement/gotchas.md) - Troubleshooting INSUFFICIENT_INVOCATIONS, performance issues
 
 ## See Also
 
-- [workers]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/workers/) - Worker runtime and fetch handlers
-- [d1]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/d1/) - D1 database that benefits from Smart Placement
-- [durable-objects]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/durable-objects/) - Durable Objects with backend logic
-- [bindings]($CODEX_HOME/plugins/cache/codex-home/cloudflare-workers/1.0.0/skills/cloudflare/references/bindings/) - Service bindings for frontend/backend split
+- [workers]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/workers/) - Worker runtime and fetch handlers
+- [d1]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/d1/) - D1 database that benefits from Smart Placement
+- [durable-objects]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/durable-objects/) - Durable Objects with backend logic
+- [bindings]($CODEX_HOME/plugins/cloudflare-workers/skills/cloudflare/references/bindings/) - Service bindings for frontend/backend split
