@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gitops",
+  "version": "1.1.0",
+  "description": "Repository-specific workflow for the GitOps command suite, installer scripts, Git aliases, and protected branch operations.",
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "git",
+    "gitops",
+    "branches",
+    "mirrors",
+    "release",
+    "shell"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "GitOps Repository",
+        "shortDescription": "GitOps repository workflow and safety",
+        "longDescription": "Use this plugin for GitOps source changes with shell syntax validation and explicit safeguards around global Git configuration, branch promotion, mirrors, tags, repositories, and destructive cleanup.",
+        "developerName": "Codex Setup",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the GitOps Repository plugin for a non-destructive source change."
+        ],
+        "brandColor": "#F97316"
+      }
+    }
+  }
+}

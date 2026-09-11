@@ -2,7 +2,7 @@
 
 ## Authorities
 
-The existing desktop membership in the `devops` group gives access to the existing Podman engine socket. A group member can control the devops engine. The MCP broker narrows the normal application interface but cannot revoke engine authority that the preseed already grants. Do not use this arrangement between mutually untrusted desktop users. Root, the host devops account and engine administrators can read authorized server data and credentials.
+The existing desktop membership in the `devops` group gives access to the existing `/run/podman-devops/podman.sock` engine socket. A group member can control the devops engine. The MCP broker narrows the normal application interface but cannot revoke engine authority that the preseed already grants. Do not use this arrangement between mutually untrusted desktop users. Root, the host devops account and engine administrators can read authorized server data and credentials.
 
 The broker grants only the selected desktop account and devops access at the peer-credential check, in addition to socket permissions. Containers never receive an engine socket, host SSH agent, desktop bus, entire desktop home, host root or privileged/device mounts. No host network, `--privileged`, recursive `:U` ownership rewrite or unconfined seccomp is used. Rootless user mappings preserve the devops identity for writable host storage.
 

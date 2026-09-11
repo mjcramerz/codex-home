@@ -1,6 +1,6 @@
 {
   "name": "atlassian",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Atlassian cloud, Jira, and Confluence workflow research and implementation guidance.",
   "skills": "./skills",
   "interface": {

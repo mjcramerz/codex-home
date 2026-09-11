@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "disk-manager",
+  "version": "1.1.0",
+  "description": "Repository-specific workflow for disk-manager Go code, configuration, scripts, and non-destructive validation.",
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "disk",
+    "storage",
+    "filesystem",
+    "luks",
+    "nvme",
+    "go"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Disk Manager Repository",
+        "shortDescription": "Disk manager repository workflow",
+        "longDescription": "Use this plugin for disk-manager source changes while keeping block-device, filesystem, LUKS, NVMe, installation, and host-mutation operations outside routine validation.",
+        "developerName": "Codex Setup",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Disk Manager Repository plugin without touching real block devices."
+        ],
+        "brandColor": "#0F766E"
+      }
+    }
+  }
+}

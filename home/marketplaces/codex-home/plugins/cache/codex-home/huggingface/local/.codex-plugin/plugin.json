@@ -1,12 +1,12 @@
 {
   "name": "huggingface",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Hugging Face Hub datasets, evaluation, jobs, training, and tooling workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Hugging Face",
     "shortDescription": "Hugging Face ML workflows",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

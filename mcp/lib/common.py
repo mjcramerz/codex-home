@@ -39,6 +39,11 @@ INT_RANGES = {
 PATH_KEYS = {'PODMAN_HOME','PODMAN_SOCKET','PODMAN_BINARY','WORKSPACE',
              'MCP_SOCKET','MCP_STATE_ROOT','MCP_RUNTIME_ROOT','MCP_CONFIG_DIR',
              'MCP_INSTALL_ROOT','TOOLCHAIN_PROFILE','HOST_NODE'}
+PODMAN_SERVICE_HOME = '/nonexistent'
+PODMAN_RUNTIME_ROOT = '/run/podman-devops'
+PODMAN_ENGINE_SOCKET = PODMAN_RUNTIME_ROOT + '/podman.sock'
+CODEX_SOCKET_ROOT = '/data/codex/sockets'
+CODEX_MCP_SOCKET = CODEX_SOCKET_ROOT + '/codex-mcp.sock'
 
 class ConfigError(ValueError):
     """Invalid or unsafe deployment input."""
@@ -92,13 +97,16 @@ def load_env(path: Path) -> dict[str, Any]:
         if raw[k]=='auto' and k in {'WORKSPACE','MCP_RUNTIME_ROOT'}: continue
         absolute_path(raw[k],k)
     absolute_path(raw['BROWSER_SECCOMP_BASE'],'BROWSER_SECCOMP_BASE')
-    if raw['PODMAN_USER']!='devops' or raw['PODMAN_HOME']!='/data/accounts/devops':
-        raise ConfigError('this deployment requires the preseed devops identity and home')
-    if raw['PODMAN_SOCKET']!='/data/accounts/devops/run/podman.sock':
+    if raw['PODMAN_USER']!='devops' or raw['PODMAN_HOME']!=PODMAN_SERVICE_HOME:
+        raise ConfigError('this deployment requires the locked preseed devops identity with no home')
+    if raw['PODMAN_SOCKET']!=PODMAN_ENGINE_SOCKET:
         raise ConfigError('use the preseed devops engine socket, not a rootful or alternate engine')
+    if raw['MCP_SOCKET']!=CODEX_MCP_SOCKET:
+        raise ConfigError('use the private preseed Codex socket namespace for the MCP broker')
     if raw['MCP_STATE_ROOT']!='/pool/podman/mcp':
         raise ConfigError('state is scoped to /pool/podman/mcp in this deployment')
-    if raw['PODMAN_BINARY']!='/usr/bin/podman': raise ConfigError('use the native /usr/bin/podman remote client')
+    if raw['PODMAN_BINARY']!='/usr/local/bin/podman':
+        raise ConfigError('use the preseed managed Podman client wrapper')
     if raw['MCP_CONFIG_DIR']!='/etc/codex/mcp' or raw['MCP_INSTALL_ROOT']!='/usr/local/libexec/codex-mcp':
         raise ConfigError('root-managed install paths are fixed; update the source contract to relocate them')
     if raw['DESKTOP_USER']!='auto' and not re.fullmatch(r'[a-z_][a-z0-9_-]{0,31}',raw['DESKTOP_USER']):
@@ -140,8 +148,10 @@ def resolve_accounts(cfg: dict[str,Any], desktop: str | None = None) -> dict[str
     import grp
     if grp.getgrnam('devops').gr_gid != service.pw_gid:
         raise ConfigError('devops must use the devops primary group')
-    if account.pw_uid<1000 or service.pw_dir!=cfg['PODMAN_HOME']:
-        raise ConfigError('unexpected desktop UID or devops home')
+    if account.pw_uid<1000 or service.pw_uid>=1000 or service.pw_dir!=cfg['PODMAN_HOME']:
+        raise ConfigError('unexpected desktop UID or locked devops service identity')
+    if set(os.getgrouplist('devops',service.pw_gid))!={service.pw_gid}:
+        raise ConfigError('devops must not have supplementary groups')
     if service.pw_shell not in ('/usr/sbin/nologin','/sbin/nologin','/bin/false'):
         raise ConfigError('devops must remain a no-login service account')
     home=absolute_path(account.pw_dir,'desktop HOME')
@@ -151,11 +161,9 @@ def resolve_accounts(cfg: dict[str,Any], desktop: str | None = None) -> dict[str
     cfg.update(DESKTOP_USER=user,DESKTOP_UID=account.pw_uid,DESKTOP_GID=account.pw_gid,
                DESKTOP_HOME=home,DEVOPS_UID=service.pw_uid,DEVOPS_GID=service.pw_gid,
                WORKSPACE=workspace)
-    if cfg['MCP_RUNTIME_ROOT']=='auto':cfg['MCP_RUNTIME_ROOT']=f'/run/user/{service.pw_uid}/codex-mcp'
-    if cfg['MCP_RUNTIME_ROOT']!=f'/run/user/{service.pw_uid}/codex-mcp':
-        raise ConfigError('staged credentials must be under the devops volatile runtime directory')
-    if not cfg['MCP_SOCKET'].startswith(cfg['PODMAN_HOME']+'/run/'):
-        raise ConfigError('MCP_SOCKET must remain visible on the preseed /data mount')
+    if cfg['MCP_RUNTIME_ROOT']=='auto':cfg['MCP_RUNTIME_ROOT']=PODMAN_RUNTIME_ROOT+'/codex-mcp'
+    if cfg['MCP_RUNTIME_ROOT']!=PODMAN_RUNTIME_ROOT+'/codex-mcp':
+        raise ConfigError('staged credentials must be under the managed Podman volatile runtime')
     return cfg
 
 
@@ -205,13 +213,19 @@ def locked(path: Path, *, blocking: bool = False) -> Iterator[int]:
 
 
 def podman(cfg: dict[str,Any]) -> list[str]:
-    return [cfg['PODMAN_BINARY'],'--remote','--url=unix://'+cfg['PODMAN_SOCKET']]
+    # The managed wrapper fixes and validates the remote endpoint. Passing
+    # --url/--remote here would be rejected and would bypass its policy intent.
+    return [cfg['PODMAN_BINARY']]
 
 
 def clean_env(cfg: dict[str,Any]) -> dict[str,str]:
     return {'PATH':'/usr/sbin:/usr/bin:/sbin:/bin','HOME':cfg['PODMAN_HOME'],
             'USER':'devops','LOGNAME':'devops','LANG':'C.UTF-8','LC_ALL':'C.UTF-8',
-            'XDG_RUNTIME_DIR':f"/run/user/{cfg['DEVOPS_UID']}",
+            'XDG_RUNTIME_DIR':PODMAN_RUNTIME_ROOT,
+            'XDG_CONFIG_HOME':PODMAN_RUNTIME_ROOT+'/config',
+            'XDG_DATA_HOME':'/pool/podman/xdg-data',
+            'XDG_CACHE_HOME':'/pool/podman/xdg-cache',
+            'TMPDIR':'/pool/podman/tmp',
             'CONTAINERS_CONF':'/etc/podman-devops/client.conf'}
 
 

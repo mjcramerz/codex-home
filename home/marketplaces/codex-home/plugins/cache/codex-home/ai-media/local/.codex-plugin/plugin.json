@@ -1,12 +1,12 @@
 {
   "name": "ai-media",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Image, video, speech, and transcription workflows for generated media.",
   "skills": "./skills",
   "interface": {
     "displayName": "AI Media",
     "shortDescription": "Image, video, speech, audio",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

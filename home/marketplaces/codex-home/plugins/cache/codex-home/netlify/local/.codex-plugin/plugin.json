@@ -1,12 +1,13 @@
 {
   "name": "netlify",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Netlify deployment and site-linking workflows.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Netlify",
     "shortDescription": "Netlify deployment workflows",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Interactive",
       "Read",
@@ -37,6 +38,5 @@
     "deploy",
     "hosting",
     "site"
-  ],
-  "apps": "./.app.json"
+  ]
 }

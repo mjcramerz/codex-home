@@ -1,12 +1,13 @@
 {
   "name": "vercel",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Vercel deployment workflows for claimable and direct deployment paths.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Vercel",
     "shortDescription": "Vercel deployment workflows",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Interactive",
       "Read",
@@ -37,6 +38,5 @@
     "development",
     "deploy",
     "to"
-  ],
-  "apps": "./.app.json"
+  ]
 }

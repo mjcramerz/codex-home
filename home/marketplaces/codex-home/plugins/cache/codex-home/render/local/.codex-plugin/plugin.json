@@ -1,12 +1,12 @@
 {
   "name": "render",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Render deployment and blueprint workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Render",
     "shortDescription": "Render deployment workflows",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

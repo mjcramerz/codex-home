@@ -1,12 +1,12 @@
 {
   "name": "cloudflare-workers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Cloudflare Workers platform, R2 publication, Durable Objects, sandboxing, and Workers best-practice workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Cloudflare Workers",
     "shortDescription": "Workers, storage, and edge",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

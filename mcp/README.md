@@ -1,6 +1,6 @@
 # Thirteen MCP modes, one pinned base, isolated rootless sessions
 
-The desktop client speaks MCP over stdio to `/usr/local/bin/codex-mcp`. The wrapper reaches a credential-bearing systemd service through a protected Unix socket. Each accepted connection launches one uniquely named container through the existing **devops** rootless Podman engine. Inside the image the nonroot user is also **devops**, UID/GID 1000 by default. There is no common writable stdio stream and no published MCP TCP port.
+The desktop client speaks MCP over stdio to `/usr/local/bin/codex-mcp`. The wrapper reaches a credential-bearing systemd service through the desktop-owned `/data/codex/sockets/codex-mcp.sock`. Each accepted connection launches one uniquely named container through the installed `/usr/local/bin/podman` client and `/run/podman-devops/podman.sock`. The locked host **devops** account has no home or user manager; inside the image the nonroot user is also **devops**, UID/GID 1000 by default. There is no common writable stdio stream and no published MCP TCP port.
 
 ## Deployment
 

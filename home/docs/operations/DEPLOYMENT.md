@@ -20,8 +20,11 @@ sudo make doctor
 ```
 
 The selected desktop account must already be configured by the supplied Debian
-preseed. `devops` remains the no-login rootless Podman owner. Do not run a new
-rootful engine or change that account's login shell. SSH uses a separate loopback
+preseed. `devops` remains a locked, no-login rootless Podman owner with passwd
+home `/nonexistent`, no linger record, and no user manager. MCP consumes the
+managed `/usr/local/bin/podman` client and `/run/podman-devops/podman.sock`; do
+not run a new rootful engine or change that account's identity or login shell.
+SSH uses a separate loopback
 listener and the desktop identity, not the host's denied devops login.
 
 PostgreSQL needs a real credential. Optional credentials are provisioned individually

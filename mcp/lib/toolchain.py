@@ -25,8 +25,9 @@ USER_ROOTS = (
 # at private scratch trees, not at PGDATA, pgpass, cloud credentials or HOME.
 
 
-def profile_environment(cfg: dict[str,Any]) -> tuple[dict[str,str],list[str]]:
-    text=(SOURCE_ROOT/'integration/71-devops-de.sh.reference').read_text()
+def profile_environment(cfg: dict[str,Any], source: Path | None = None) -> tuple[dict[str,str],list[str]]:
+    path=source or SOURCE_ROOT/'integration/71-devops-de.sh.reference'
+    text=path.read_text(encoding='utf-8')
     user=cfg['DESKTOP_USER']
     variables={
         'USER':user,'HOME':'/home/devops','XDG_CONFIG_HOME':'/home/devops/.config',

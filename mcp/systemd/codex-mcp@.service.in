@@ -9,8 +9,8 @@ User=devops
 Group=devops
 UMask=0077
 Environment=PYTHONDONTWRITEBYTECODE=1
-Environment=HOME=/data/accounts/devops
-Environment=XDG_RUNTIME_DIR=/run/user/@DEVOPS_UID@
+Environment=HOME=/nonexistent
+Environment=XDG_RUNTIME_DIR=/run/podman-devops
 ExecStart=@CURRENT@/bin/broker serve %i
 ExecStopPost=@CURRENT@/bin/broker gc %i
 StandardInput=socket

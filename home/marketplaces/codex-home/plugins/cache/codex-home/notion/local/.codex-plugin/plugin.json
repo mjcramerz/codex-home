@@ -1,8 +1,9 @@
 {
   "name": "notion",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Notion capture, meeting, research, and implementation-planning workflows.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Notion",
     "shortDescription": "Notion planning and capture",
@@ -35,6 +36,5 @@
     "intelligence",
     "research",
     "documentation"
-  ],
-  "apps": "./.app.json"
+  ]
 }

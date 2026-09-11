@@ -1,12 +1,12 @@
 {
   "name": "virtualization",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Virtualization workflows for Proxmox, libvirt, and VM lifecycle operations.",
   "skills": "./skills",
   "interface": {
     "displayName": "Virtualization",
     "shortDescription": "Proxmox and libvirt VMs",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

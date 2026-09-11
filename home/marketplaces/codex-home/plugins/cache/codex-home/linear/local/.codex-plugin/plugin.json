@@ -1,8 +1,9 @@
 {
   "name": "linear",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Linear issue and workflow management.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Linear",
     "shortDescription": "Linear issue management",
@@ -35,6 +36,5 @@
   "keywords": [
     "linear",
     "productivity"
-  ],
-  "apps": "./.app.json"
+  ]
 }

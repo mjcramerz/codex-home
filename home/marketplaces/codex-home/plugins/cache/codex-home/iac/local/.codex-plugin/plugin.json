@@ -1,12 +1,12 @@
 {
   "name": "iac",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Infrastructure-as-code workflows for Ansible and Terraform automation.",
   "skills": "./skills",
   "interface": {
     "displayName": "IaC",
     "shortDescription": "Ansible and Terraform",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

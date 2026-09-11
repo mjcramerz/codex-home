@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kubernetes",
+  "version": "1.1.0",
+  "description": "Kubernetes workload, manifest, and cluster-operation workflows.",
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://kubernetes.io/docs/",
+  "keywords": [
+    "kubernetes",
+    "infrastructure",
+    "infra"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Kubernetes",
+        "shortDescription": "Kubernetes operations",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Kubernetes plugin for k8s manifests, workloads, and cluster operations."
+        ],
+        "longDescription": "Use this plugin for Kubernetes manifests, workload design, deployment troubleshooting, and cluster operation patterns.",
+        "developerName": "Codex Setup",
+        "brandColor": "#1D4ED8",
+        "websiteURL": "https://kubernetes.io/docs/",
+        "composerIcon": "./skills/infra-kubernetes/assets/icon-32.png",
+        "logo": "./skills/infra-kubernetes/assets/icon-128.png",
+        "screenshots": []
+      }
+    }
+  }
+}

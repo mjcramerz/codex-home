@@ -1349,7 +1349,7 @@ allow_local_binding = true
 "100.100.100.200" = "deny"
 
 [permissions.full.network.unix_sockets]
-"/data/accounts/devops/run/codex-mcp.sock" = "allow"
+"/data/codex/sockets/codex-mcp.sock" = "allow"
 
 [permissions.workspace]
 description = "Workspace-scoped write access with controlled runtime and memory paths."
@@ -1459,7 +1459,7 @@ allow_local_binding = true
 "100.100.100.200" = "deny"
 
 [permissions.workspace.network.unix_sockets]
-"/data/accounts/devops/run/codex-mcp.sock" = "allow"
+"/data/codex/sockets/codex-mcp.sock" = "allow"
 
 [permissions.readonly]
 description = "Read-only project and runtime access with network disabled by default."
@@ -1569,7 +1569,7 @@ allow_local_binding = false
 "100.100.100.200" = "deny"
 
 [permissions.readonly.network.unix_sockets]
-"/data/accounts/devops/run/codex-mcp.sock" = "allow"
+"/data/codex/sockets/codex-mcp.sock" = "allow"
 
 # App-owned preferences are preserved recursively during installation.
 [desktop]

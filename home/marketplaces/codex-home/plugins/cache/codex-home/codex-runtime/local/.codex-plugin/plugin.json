@@ -1,12 +1,12 @@
 {
   "name": "codex-runtime",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Runtime configuration, sandbox policy, schema comparison, Perl support, and setup audits for managed Codex environments.",
   "skills": "./skills",
   "interface": {
     "displayName": "Codex Runtime",
     "shortDescription": "Runtime config, sandbox, and schema audit",
-    "category": "Operations",
+    "category": "Business & Operations",
     "capabilities": [
       "Read",
       "Write"

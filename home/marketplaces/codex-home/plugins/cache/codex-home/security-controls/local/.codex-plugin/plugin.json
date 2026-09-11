@@ -1,6 +1,6 @@
 {
   "name": "security-controls",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Application, host, and supply-chain security control workflows.",
   "skills": "./skills",
   "interface": {

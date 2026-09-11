@@ -1,12 +1,13 @@
 {
   "name": "figma",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Figma design handoff and implementation workflows.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Figma",
     "shortDescription": "Figma design implementation",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Interactive",
       "Read",
@@ -38,6 +39,5 @@
     "handoff",
     "implementation",
     "mcp"
-  ],
-  "apps": "./.app.json"
+  ]
 }

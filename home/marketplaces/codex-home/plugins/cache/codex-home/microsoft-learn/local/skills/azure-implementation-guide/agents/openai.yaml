@@ -1,51 +1,16 @@
----
 interface:
-  display_name: Azure Implementation Guide
-  short_description: >-
-    Turn Azure docs and architectures into implementation plans and verification steps.
-  brand_color: '#2563EB'
-  default_prompt: >-
-    Act as the Azure Implementation Guide specialist. Use current
-    evidence, keep changes reviewable, and report assumptions and
-    validation clearly.
+  display_name: "Azure Implementation Guide"
+  short_description: "Turn Azure docs and architectures into implementation plans and verification steps."
+  brand_color: "#2563EB"
+  default_prompt: "Use $azure-implementation-guide. Act as the Azure Implementation Guide specialist. Use current evidence, keep changes reviewable, and report assumptions and validation clearly."
 
 dependencies:
   tools:
-  - type: mcp
-    value: context7
-    description: context7 MCP server
-    transport: stdio
-    command: /data/codex/mcp/wrappers/mcp-context7-wrapper.sh
-  - type: mcp
-    value: fetch
-    description: fetch MCP server
-    transport: stdio
-    command: /data/codex/mcp/wrappers/mcp-fetch-wrapper.sh
-  - type: mcp
-    value: filesystem
-    description: filesystem MCP server
-    transport: stdio
-    command: /data/codex/mcp/wrappers/mcp-filesystem-wrapper.sh
-  - type: mcp
-    value: git
-    description: git MCP server
-    transport: stdio
-    command: /data/codex/mcp/wrappers/mcp-git-wrapper.sh
-  - type: mcp
-    value: linear
-    description: linear MCP server
-    transport: streamable_http
-    url: https://mcp.linear.app/mcp
-  - type: mcp
-    value: sequential_thinking
-    description: sequential_thinking MCP server
-    transport: stdio
-    command: /data/codex/mcp/wrappers/mcp-sequential-thinking-wrapper.sh
-  - type: mcp
-    value: microsoft-learn
-    description: microsoft-learn MCP server
-    transport: streamable_http
-    url: https://learn.microsoft.com/api/mcp
+    - type: "mcp"
+      value: "microsoft-learn"
+      description: "microsoft-learn MCP server"
+      transport: "streamable_http"
+      url: "https://learn.microsoft.com/api/mcp"
 
 policy:
   allow_implicit_invocation: true

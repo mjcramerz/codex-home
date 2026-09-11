@@ -1,12 +1,13 @@
 {
   "name": "github",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GitHub review, PR-comment, and Actions workflow plugins.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "GitHub",
     "shortDescription": "GitHub review and Actions",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Interactive",
       "Read",
@@ -35,6 +36,5 @@
     "ci",
     "actions",
     "fix"
-  ],
-  "apps": "./.app.json"
+  ]
 }

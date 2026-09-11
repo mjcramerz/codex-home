@@ -1,12 +1,12 @@
 {
   "name": "microsoft-learn",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Microsoft Learn and Azure implementation research workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Microsoft Learn",
     "shortDescription": "Azure implementation guidance",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

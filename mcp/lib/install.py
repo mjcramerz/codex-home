@@ -11,11 +11,12 @@ import stat
 import subprocess
 import tempfile
 from typing import Any
-from common import (SOURCE_ROOT,CREDENTIALS,ConfigError,atomic_write,clean_env,
-                    digest_tree,load_env,locked,podman,resolve_accounts,run)
+from common import (CODEX_SOCKET_ROOT,PODMAN_RUNTIME_ROOT,SOURCE_ROOT,CREDENTIALS,
+                    ConfigError,atomic_write,clean_env,digest_tree,load_env,locked,
+                    podman,resolve_accounts,run)
 import toolchain
 
-DEPENDENCIES = ('python3','podman','systemctl','loginctl','setfacl','getfacl',
+DEPENDENCIES = ('python3','podman','systemctl','setfacl','getfacl',
                 'runuser','ssh-keygen','sshd','apparmor_parser')
 
 
@@ -46,6 +47,35 @@ def owned_directory(path: Path, uid: int, gid: int, mode: int) -> None:
     os.chown(path,uid,gid); os.chmod(path,mode)
 
 
+def exact_directory(path: Path, uid: int, gid: int, mode: int, label: str) -> None:
+    """Require one direct directory with the installer-owned identity and mode."""
+    st=path.lstat()
+    if (path.is_symlink() or path.resolve()!=path or not stat.S_ISDIR(st.st_mode) or
+            (st.st_uid,st.st_gid,stat.S_IMODE(st.st_mode))!=(uid,gid,mode)):
+        raise ConfigError(label+' has unsafe ancestry, ownership, type, or permissions')
+
+
+def validate_codex_runtime_layout(cfg: dict[str,Any]) -> None:
+    """Validate the preseed-owned Podman, Codex socket, and app-server lock roots."""
+    exact_directory(Path(PODMAN_RUNTIME_ROOT),cfg['DEVOPS_UID'],cfg['DEVOPS_GID'],0o710,
+                    'preseed Podman runtime directory')
+    exact_directory(Path(CODEX_SOCKET_ROOT),cfg['DESKTOP_UID'],cfg['DEVOPS_GID'],0o700,
+                    'preseed Codex socket directory')
+    control=Path('/data/codex/usr/home/app-server-control')
+    exact_directory(control,cfg['DESKTOP_UID'],cfg['DEVOPS_GID'],0o700,
+                    'Codex app-server control directory')
+    startup_lock=control/'app-server-startup.lock'
+    st=startup_lock.lstat()
+    if (not stat.S_ISREG(st.st_mode) or
+            (st.st_uid,st.st_gid,stat.S_IMODE(st.st_mode)) !=
+            (cfg['DESKTOP_UID'],cfg['DEVOPS_GID'],0o600)):
+        raise ConfigError('Codex app-server startup lock has unsafe ownership/type/permissions')
+    control_link=control/'app-server-control.sock'
+    if (not control_link.is_symlink() or
+            os.readlink(control_link)!='/data/codex/sockets/app-server-control.sock'):
+        raise ConfigError('Codex app-server control socket link does not match the preseed layout')
+
+
 def preflight(cfg: dict[str,Any], *, need_engine: bool = True) -> list[str]:
     errors: list[str] = []
     for command in DEPENDENCIES:
@@ -70,12 +100,26 @@ def preflight(cfg: dict[str,Any], *, need_engine: bool = True) -> list[str]:
             errors.append('desktop account is not in the trusted devops group')
     except OSError:
         errors.append('cannot resolve desktop groups')
+    if Path(cfg['PODMAN_HOME']).exists() or Path(cfg['PODMAN_HOME']).is_symlink():
+        errors.append('the locked devops account home sentinel must remain absent')
+    binary=Path(cfg['PODMAN_BINARY'])
+    try:
+        st=binary.lstat()
+        if (not stat.S_ISREG(st.st_mode) or st.st_uid!=0 or st.st_mode&0o022 or
+                not st.st_mode&0o111):
+            raise ValueError()
+    except (OSError,ValueError):
+        errors.append('preseed managed Podman client wrapper is unavailable or unsafe')
     profile = Path(cfg['TOOLCHAIN_PROFILE'])
-    if not profile.is_file():
-        errors.append('installed devops profile is missing')
-    elif hashlib.sha256(profile.read_bytes()).digest() != hashlib.sha256(
-            (SOURCE_ROOT/'integration/71-devops-de.sh.reference').read_bytes()).digest():
-        errors.append('installed devops profile differs from audited reference; review/rebase integration first')
+    try:
+        st=profile.lstat()
+        if (profile.is_symlink() or not stat.S_ISREG(st.st_mode) or st.st_uid!=0 or
+                st.st_mode&0o022):
+            raise ValueError()
+        if toolchain.profile_environment(cfg,profile)!=toolchain.profile_environment(cfg):
+            errors.append('installed devops toolchain projection differs from audited reference')
+    except (OSError,UnicodeError,ValueError,ConfigError):
+        errors.append('installed devops profile is missing, unsafe, or cannot be parsed')
     seccomp=Path(cfg['BROWSER_SECCOMP_BASE'])
     try:
         st=seccomp.lstat()
@@ -93,10 +137,16 @@ def preflight(cfg: dict[str,Any], *, need_engine: bool = True) -> list[str]:
     workspace = Path(cfg['WORKSPACE'])
     if workspace.is_symlink() or (workspace.exists() and workspace.resolve()!=workspace):
         errors.append('Workspace must be a direct directory, not a symlink')
+    try:
+        validate_codex_runtime_layout(cfg)
+    except (OSError,ConfigError) as exc:
+        errors.append(str(exc))
     socket_path = Path(cfg['PODMAN_SOCKET'])
     try:
         st = socket_path.lstat()
-        if not stat.S_ISSOCK(st.st_mode) or st.st_uid!=cfg['DEVOPS_UID'] or st.st_gid!=cfg['DEVOPS_GID'] or st.st_mode&0o007:
+        if (not stat.S_ISSOCK(st.st_mode) or
+                (st.st_uid,st.st_gid,stat.S_IMODE(st.st_mode)) !=
+                (cfg['DEVOPS_UID'],cfg['DEVOPS_GID'],0o660)):
             errors.append('Podman socket identity/mode does not match the preseed boundary')
     except OSError:
         errors.append('preseed devops engine socket is unavailable')
@@ -127,10 +177,10 @@ def as_devops(cfg: dict[str,Any], args: list[str], *, timeout: int = 60,
 def prepare(cfg: dict[str,Any]) -> None:
     root_required()
     uid,gid = cfg['DEVOPS_UID'],cfg['DEVOPS_GID']
-    parent = Path('/run/user')/str(uid)
-    st = parent.lstat()
-    if not stat.S_ISDIR(st.st_mode) or st.st_uid != uid or stat.S_IMODE(st.st_mode)!=0o700:
-        raise ConfigError('devops user runtime must be created by logind and mode 0700')
+    validate_codex_runtime_layout(cfg)
+    parent = Path(PODMAN_RUNTIME_ROOT)
+    if Path(cfg['MCP_RUNTIME_ROOT']).parent != parent:
+        raise ConfigError('MCP runtime must remain below the preseed Podman runtime directory')
     # Do not chmod/chown through service-writable runtime ancestry as root.
     # Only the root-owned state parent is used for a privileged creation.
     state = Path(cfg['MCP_STATE_ROOT'])

@@ -1,12 +1,12 @@
 {
   "name": "wrangler",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Wrangler CLI, Cloudflare deployment, and build workflow automation.",
   "skills": "./skills",
   "interface": {
     "displayName": "Wrangler",
     "shortDescription": "Wrangler deployment workflows",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

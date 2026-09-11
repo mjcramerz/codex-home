@@ -9,6 +9,8 @@ Type=oneshot
 User=devops
 Group=devops
 UMask=0077
+Environment=HOME=/nonexistent
+Environment=XDG_RUNTIME_DIR=/run/podman-devops
 ExecStart=@CURRENT@/bin/broker gc
 StandardOutput=journal
 StandardError=journal

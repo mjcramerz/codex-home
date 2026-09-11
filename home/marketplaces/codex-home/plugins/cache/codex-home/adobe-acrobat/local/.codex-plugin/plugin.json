@@ -1,8 +1,9 @@
 {
   "name": "adobe-acrobat",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Adobe Acrobat workflows for PDF reading, forms, signing, reviews, and document handoffs.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Adobe Acrobat",
     "shortDescription": "PDF forms, signing, and review",
@@ -37,6 +38,5 @@
     "signing",
     "review",
     "documents"
-  ],
-  "apps": "./.app.json"
+  ]
 }

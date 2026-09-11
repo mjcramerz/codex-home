@@ -1,12 +1,12 @@
 {
   "name": "web-browser-linux",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Linux browser hardening and browser-specific desktop workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Web Browser Linux",
     "shortDescription": "Linux browser hardening",
-    "category": "Desktop",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

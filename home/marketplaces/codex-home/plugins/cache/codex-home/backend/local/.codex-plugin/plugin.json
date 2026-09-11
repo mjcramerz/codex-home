@@ -1,12 +1,12 @@
 {
   "name": "backend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Backend APIs, scaffolding, VS Code extensions, and ASP.NET Core workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Backend",
     "shortDescription": "Backend APIs and scaffolding",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

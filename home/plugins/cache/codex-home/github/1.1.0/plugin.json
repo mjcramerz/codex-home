@@ -1,0 +1,44 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github",
+  "version": "1.1.0",
+  "description": "GitHub review, PR-comment, and Actions workflow plugins.",
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://github.com/",
+  "keywords": [
+    "github",
+    "development",
+    "pr",
+    "comments",
+    "ci",
+    "actions",
+    "fix"
+  ],
+  "extensions": {
+    "com.openai": {
+      "apps": "./.app.json",
+      "interface": {
+        "displayName": "GitHub",
+        "shortDescription": "GitHub review and Actions",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Interactive",
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the GitHub plugin for GitHub review, PR-comment, and GitHub Actions workflows."
+        ],
+        "longDescription": "Use this plugin for GitHub PR comments, review response work, and GitHub Actions authoring or repair.",
+        "developerName": "Codex Setup",
+        "brandColor": "#24292F",
+        "websiteURL": "https://github.com/",
+        "composerIcon": "./skills/github-pr-comments/assets/icon-32.png",
+        "logo": "./skills/github-pr-comments/assets/icon-128.png",
+        "screenshots": []
+      }
+    }
+  }
+}

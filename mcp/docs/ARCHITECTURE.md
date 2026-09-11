@@ -2,7 +2,7 @@
 
 ## Request boundary
 
-`Codex stdio -> codex-mcp client -> /data/accounts/devops/run/codex-mcp.sock -> systemd Accept=yes service (devops) -> remote Podman client -> rootless container (devops) -> fixed MCP executable`.
+`Codex stdio -> codex-mcp client -> /data/codex/sockets/codex-mcp.sock -> systemd Accept=yes service (devops) -> /usr/local/bin/podman -> /run/podman-devops/podman.sock -> rootless container (devops) -> fixed MCP executable`.
 
 The broker checks Linux `SO_PEERCRED` against the selected desktop UID or devops UID, then accepts one bounded, versioned JSON selector. The selector is an exact allowlisted server name; it is not a shell command. Clients cannot supply container arguments, mounts, images, arbitrary executable paths or credentials. Following that handshake, the relay transports raw bytes without rewriting JSON-RPC or assuming that request boundaries equal read boundaries.
 
@@ -10,7 +10,7 @@ Each connection gets a random ownership ID, service instance, metadata file, lif
 
 ## Credential projection
 
-Nine root-owned mode-0600 master files live under `/etc/codex/mcp/credentials/`. Empty files stand for optional credentials not provisioned yet. Each service uses `LoadCredential` to obtain a systemd-managed snapshot. Since the separate Podman engine cannot see the service's private credential mount, the broker copies only the selected server's credential subset into `/run/user/<devops UID>/codex-mcp/session-<ID>/credentials/`. Directories are mode 0700, files 0600 and the in-container mount is read-only. A missing required credential fails before container creation.
+Nine root-owned mode-0600 master files live under `/etc/codex/mcp/credentials/`. Empty files stand for optional credentials not provisioned yet. Each service uses `LoadCredential` to obtain a systemd-managed snapshot. Since the separate Podman engine cannot see the service's private credential mount, the broker copies only the selected server's credential subset into `/run/podman-devops/codex-mcp/session-<ID>/credentials/`. Directories are mode 0700, files 0600 and the in-container mount is read-only. A missing required credential fails before container creation.
 
 The container entrypoint converts selected files into the upstream server's process environment or private temporary DBHub configuration. Secret values are not Podman arguments, Podman environment options, image environment metadata, unit text or TOML client configuration. They necessarily exist inside the authorized server process and can be read by a compromised server or an administrator controlling the engine. All services run under one trusted host UID; this is not a multi-tenant secret-isolation design.
 
@@ -20,7 +20,7 @@ The selector relay has bounded input/output buffers, backpressure, half-close ha
 
 On disconnect or termination, stop the local Podman client, verify managed labels, remove the matching container, then remove credential staging. Do not equate an engine API error with a missing container. Ambiguous cleanup leaves a pending directory and credentials until removal is confirmed. The service's stop hook and periodic GC reconcile inactive sessions. A reboot loses volatile metadata; GC additionally checks exact labels and name patterns for orphaned containers. It does not run a global prune or delete another deployment's containers.
 
-The root installation uses one management lock shared by install/build/credential/lifecycle/backup/restore operations, same-directory temporary files, fsync and atomic replacements, plus content-verified versioned code directories and an atomic `current` link. Installation stops the target first. This is not an all-system transaction: a mid-install failure requires checking the recorded backups, release and configuration before restarting.
+The root installation uses `/etc/codex/mcp/admin.lock` for install/build/credential/lifecycle/backup/restore serialization, while per-session, capacity, exclusive-server, and GC locks stay below `/run/podman-devops/codex-mcp`. The app server independently retains its canonical startup lock below `$CODEX_HOME/app-server-control`. Installation uses same-directory temporary files, fsync and atomic replacements, plus content-verified versioned code directories and an atomic `current` link. Installation stops the target first. This is not an all-system transaction: a mid-install failure requires checking the recorded backups, release and configuration before restarting.
 
 ## Resource model
 

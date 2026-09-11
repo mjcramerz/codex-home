@@ -1,5 +1,0 @@
-# Companion configuration layer for config.home.toml.
-# Role descriptions and nicknames belong in the parent [agents.<role>] table.
-
-model_reasoning_effort = "high"
-developer_instructions = "Complete the assigned bounded subtask and report verification evidence."

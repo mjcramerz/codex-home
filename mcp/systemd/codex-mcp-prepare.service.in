@@ -1,7 +1,8 @@
 [Unit]
 Description=Prepare private Codex MCP runtime and persistent state
-Requires=podman-devops-bootstrap.service user@@DEVOPS_UID@.service
-After=podman-devops-bootstrap.service user@@DEVOPS_UID@.service
+Requires=podman-devops-bootstrap.service
+After=podman-devops-bootstrap.service
+RequiresMountsFor=/run/podman-devops /pool/podman /data/codex/sockets
 PartOf=codex-mcp.target
 
 [Service]

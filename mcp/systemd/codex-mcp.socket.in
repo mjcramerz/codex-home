@@ -2,15 +2,15 @@
 Description=Codex MCP Unix stdio session listener
 Requires=codex-mcp-prepare.service
 After=codex-mcp-prepare.service
+RequiresMountsFor=/data/codex/sockets
 PartOf=codex-mcp.target
 
 [Socket]
 ListenStream=@MCP_SOCKET@
 Accept=yes
-SocketUser=devops
+SocketUser=@DESKTOP_USER@
 SocketGroup=devops
-SocketMode=0660
-DirectoryMode=0710
+SocketMode=0600
 RemoveOnStop=yes
 MaxConnections=@MAX_SESSIONS@
 Backlog=32

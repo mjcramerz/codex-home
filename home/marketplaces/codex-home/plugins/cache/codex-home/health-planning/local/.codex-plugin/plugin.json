@@ -1,6 +1,6 @@
 {
   "name": "health-planning",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ADHD and CBT planning packs with printable workflow support.",
   "skills": "./skills",
   "interface": {

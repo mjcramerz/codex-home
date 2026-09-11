@@ -111,8 +111,12 @@ Authentication, histories and session state are not erased by the asset installe
 The supplied Debian layout uses `/data/codex/usr/home` for CODEX_HOME and sibling
 `agents`, `skills` and `instructions` directories. The shell environment is written
 as `[shell_environment_policy.set]`, and skill entries use `[[skills.config]]`.
-The local MCP registrations call `/usr/local/bin/codex-mcp` via stdio. All thirteen
-image-backed modes remain enabled; systemd loads their credentials separately.
+The local MCP registrations call `/usr/local/bin/codex-mcp` via stdio. Permission
+profiles allow only `/data/codex/sockets/codex-mcp.sock`; they do not expose the
+rootless engine at `/run/podman-devops/podman.sock`. MCP session and credential
+staging stays below `/run/podman-devops/codex-mcp`, while the app-server startup
+lock remains below `$CODEX_HOME/app-server-control`. All thirteen image-backed
+modes remain enabled; systemd loads their credentials separately.
 
 `[mcp_servers.node_repl.env]` contains the explicit bundled Node and REPL launcher
 paths. `bin/codex-node-repl` verifies those resources before execution. Host `NODE`

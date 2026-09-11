@@ -1,0 +1,43 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gitlab",
+  "version": "1.1.0",
+  "description": "GitLab CI/CD, runner, GitOps, and build-infrastructure workflows.",
+  "author": {
+    "name": "Codex Setup"
+  },
+  "homepage": "https://docs.gitlab.com/ee/ci/",
+  "keywords": [
+    "gitlab",
+    "development",
+    "ci",
+    "cicd",
+    "runner",
+    "gitops",
+    "bazel",
+    "buildbuddy"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "GitLab",
+        "shortDescription": "GitLab CI and runner workflows",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the GitLab plugin for GitLab CI/CD, runner, GitOps, and build-infrastructure workflow changes."
+        ],
+        "longDescription": "Use this plugin for GitLab CI/CD pipeline authoring, shared include contracts, runner service policy, GitOps promotion, and Bazel or BuildBuddy-backed build workflow changes.",
+        "developerName": "Codex Setup",
+        "brandColor": "#FC6D26",
+        "websiteURL": "https://docs.gitlab.com/ee/ci/",
+        "composerIcon": "./skills/ci-gitlab-cicd/assets/icon-32.png",
+        "logo": "./skills/ci-gitlab-cicd/assets/icon-128.png",
+        "screenshots": []
+      }
+    }
+  }
+}

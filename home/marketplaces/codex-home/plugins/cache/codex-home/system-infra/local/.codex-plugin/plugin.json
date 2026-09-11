@@ -1,12 +1,12 @@
 {
   "name": "system-infra",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Host infrastructure workflows for boot, installer, storage, package publication, tuning, logging, and base system automation.",
   "skills": "./skills",
   "interface": {
     "displayName": "System Infra",
     "shortDescription": "Debian system infrastructure",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

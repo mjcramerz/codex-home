@@ -1,12 +1,13 @@
 {
   "name": "stripe",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Stripe payment, billing, and webhook implementation workflows.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Stripe",
     "shortDescription": "Stripe payments and billing",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Interactive",
       "Read",
@@ -36,6 +37,5 @@
     "billing",
     "webhooks",
     "subscriptions"
-  ],
-  "apps": "./.app.json"
+  ]
 }

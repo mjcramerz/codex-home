@@ -1,12 +1,12 @@
 {
   "name": "obsidian",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Obsidian documentation, capture, research, and planning workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Obsidian",
     "shortDescription": "Obsidian docs and planning",
-    "category": "Knowledge",
+    "category": "Education & Research",
     "capabilities": [
       "Read",
       "Write"

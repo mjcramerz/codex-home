@@ -1,8 +1,9 @@
 {
   "name": "adobe-express",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Adobe Express workflows for quick visual design, social assets, and campaign-ready exports.",
   "skills": "./skills",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Adobe Express",
     "shortDescription": "Quick campaign design assets",
@@ -38,6 +39,5 @@
     "design",
     "social",
     "marketing"
-  ],
-  "apps": "./.app.json"
+  ]
 }

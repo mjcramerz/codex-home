@@ -1,12 +1,12 @@
 {
   "name": "kubernetes",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Kubernetes workload, manifest, and cluster-operation workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Kubernetes",
     "shortDescription": "Kubernetes operations",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

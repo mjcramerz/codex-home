@@ -1,12 +1,12 @@
 {
   "name": "containers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Container build, runtime, and compose workflows for Docker and Podman.",
   "skills": "./skills",
   "interface": {
     "displayName": "Containers",
     "shortDescription": "Docker and Podman workflows",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

@@ -2,9 +2,9 @@
 
 ## Existing identities and services
 
-The reviewed preseed has a locked, no-login `devops:devops` account at `/data/accounts/devops`, subordinate IDs, lingering user manager and `podman-devops-bootstrap.service`. The rootless socket is `/data/accounts/devops/run/podman.sock`, devops:devops mode 0660. The desktop is a trusted devops-group member. This project consumes those definitions; it does not create a competing rootful engine or change the main SSH policy.
+The reviewed preseed has a locked, no-login `devops:devops` system account whose passwd home is the absent `/nonexistent` sentinel. It has subordinate IDs, no linger record, no user manager, and no user runtime directory. PID 1 owns `podman-devops-bootstrap.service`; the rootless API socket is `/run/podman-devops/podman.sock`, devops:devops mode 0660. The desktop is a trusted devops-group member. This project uses the installed `/usr/local/bin/podman` policy wrapper and that fixed socket; it does not create a competing rootful engine or change the main SSH policy.
 
-The preflight checks the existing engine is rootless, reports Podman >=5.8.6, and has cgroup v2, expected account identities, protected socket, required executables and the audited profile. A changed profile fails closed because automatically sourcing arbitrary shell code or silently expanding mounts is not acceptable. Re-review `integration/71-devops-de.sh.reference` and the mapping before accepting an upstream preseed change.
+The preflight checks the existing engine is rootless, reports Podman >=5.8.6, and has cgroup v2, expected account identities, protected socket/runtime directories, required executables and the audited profile. It also validates the private `/data/codex/sockets` directory and the app-server control directory, startup lock, and control-socket symlink created by the preseed. A changed profile fails closed because automatically sourcing arbitrary shell code or silently expanding mounts is not acceptable. Re-review `integration/71-devops-de.sh.reference` and the mapping before accepting an upstream preseed change.
 
 ## Profile paths
 
@@ -18,9 +18,9 @@ Visibility is not ABI compatibility. The supplied image is Trixie-based while th
 
 ## Codex wrapper and AppArmor
 
-The supplied Codex wrapper uses Bubblewrap plus a separate slirp network namespace, and masks `/run` while exposing `/data`. Therefore the broker socket is placed under `/data/accounts/devops/run/`, not only under `/run/user/`. The wrapper retains the actual desktop UID, so Unix peer authorization still works despite synthetic environment identity variables.
+The supplied Codex wrapper uses Bubblewrap plus a separate slirp network namespace, masks `/run`, and exposes the private `/data/codex` tree. The broker listener therefore uses `/data/codex/sockets/codex-mcp.sock`, beside but distinct from `app-server-control.sock` and `app-server-backend.sock`. The app-server startup lock remains `/data/codex/usr/home/app-server-control/app-server-startup.lock`; MCP session, capacity, and GC locks are volatile below `/run/podman-devops/codex-mcp`. Neither subsystem reuses or removes the other subsystem's socket or lock. The wrapper retains the actual desktop UID, so Unix peer authorization still works despite synthetic environment identity variables.
 
-The installer adds the `codex-mcp-client` abstraction to the existing `managed-codex-runtime` abstraction and reloads `managed-desktop-wrappers` and `chatgpt` when present. It permits the exact client socket, protected client release, known_hosts and desktop automation key. It does not grant the Podman engine socket to the app. Missing shared abstraction is a preflight/integration error, not a reason to disable AppArmor. The real host parser and confined client launch remain acceptance tests.
+The installer adds the `codex-mcp-client` abstraction to the existing `managed-codex-runtime` abstraction and reloads `managed-desktop-wrappers` and `chatgpt` when present. It permits the exact MCP client socket, protected client release, known_hosts and desktop automation key. It does not grant `/run/podman-devops/podman.sock` to the app. Missing shared abstraction is a preflight/integration error, not a reason to disable AppArmor. The real host parser and confined client launch remain acceptance tests.
 
 `home/config.toml` covers supported local Codex engine settings used by the CLI and covered desktop capabilities. It is not a universal ChatGPT cloud configuration, does not register a cloud-accessible stdio service, and cannot grant workspace features, account seats, app logins or private desktop preferences. Check the actual desktop-embedded engine independently from the CLI version.
 

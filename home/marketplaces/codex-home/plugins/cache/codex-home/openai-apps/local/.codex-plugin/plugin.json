@@ -1,12 +1,12 @@
 {
   "name": "openai-apps",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "OpenAI platform application scaffolding and documentation workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "OpenAI Apps",
     "shortDescription": "OpenAI docs and ChatGPT apps",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

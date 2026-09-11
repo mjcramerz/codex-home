@@ -1,12 +1,12 @@
 {
   "name": "hosting-platforms",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Cross-platform hosting and deployment routing across Vercel, Render, and Netlify workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Hosting Platforms",
     "shortDescription": "Multi-platform deployments",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

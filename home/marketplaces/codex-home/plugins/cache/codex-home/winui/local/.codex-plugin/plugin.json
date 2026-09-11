@@ -1,12 +1,12 @@
 {
   "name": "winui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Microsoft WinUI and Windows App SDK desktop application workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "WinUI",
     "shortDescription": "WinUI desktop applications",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

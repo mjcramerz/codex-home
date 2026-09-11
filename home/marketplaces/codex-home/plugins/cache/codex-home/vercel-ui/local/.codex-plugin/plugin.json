@@ -1,12 +1,12 @@
 {
   "name": "vercel-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Vercel-authored React and component-architecture guidance workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Vercel UI",
     "shortDescription": "Vercel React and UI patterns",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

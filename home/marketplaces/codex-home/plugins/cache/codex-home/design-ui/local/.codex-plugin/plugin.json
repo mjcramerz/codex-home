@@ -1,12 +1,12 @@
 {
   "name": "design-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generic UI review, accessibility, and design-quality workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Design UI",
     "shortDescription": "UI review and design quality",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

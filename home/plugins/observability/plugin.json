@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "observability",
+  "version": "1.1.0",
+  "description": "Observability and logging workflows across Elasticsearch, Kibana, Logstash, and Sentry.",
+  "author": {
+    "name": "Codex Setup"
+  },
+  "keywords": [
+    "observability",
+    "obs",
+    "elasticsearch",
+    "kibana",
+    "logstash"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Observability",
+        "shortDescription": "Elastic and Sentry workflows",
+        "category": "Data & Analytics",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Observability plugin for Elastic stack and Sentry workflows."
+        ],
+        "longDescription": "Use this plugin for observability and logging workflows across the Elastic stack and Sentry.",
+        "developerName": "Codex Setup",
+        "brandColor": "#EAB308",
+        "composerIcon": "./skills/obs-elasticsearch/assets/icon-32.png",
+        "logo": "./skills/obs-elasticsearch/assets/icon-128.png",
+        "screenshots": []
+      }
+    }
+  }
+}

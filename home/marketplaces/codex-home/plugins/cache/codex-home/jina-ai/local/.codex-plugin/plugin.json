@@ -1,12 +1,12 @@
 {
   "name": "jina-ai",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Jina AI search, reader, and grounding workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Jina AI",
     "shortDescription": "Jina search and grounding",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

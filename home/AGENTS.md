@@ -25,10 +25,22 @@ The installed paths are `/data/codex/usr/{home,agents,skills,instructions}`.
 The host toolchain Node is `/usr/local/lib/node-26/bin/node`; the desktop REPL uses
 its explicitly configured bundled Node. Do not add removed `js_repl` keys.
 Local MCP calls use `/usr/local/bin/codex-mcp connect SERVER`. The desktop identity
-connects to a broker running as `devops`; each session has its own rootless container.
+connects through `/data/codex/sockets/codex-mcp.sock` to a broker running as
+`devops`; each session has its own rootless container. The locked service account
+has no home or user manager. Its Podman API is fixed at
+`/run/podman-devops/podman.sock`, and MCP's volatile locks and staged credentials
+stay below `/run/podman-devops/codex-mcp`.
 Only registered servers receive their selected credentials. Only selected mounts
 are visible; filesystem MCP can write the desktop user's `HOME/Workspace`.
 MCP access is not constrained by Codex's shell sandbox: respect both boundaries.
+
+## Plugin and skill sources
+Portable Agent Plugins use canonical root `plugin.json` manifests with OpenAI fields
+below `extensions.com.openai`. Treat `.codex-plugin/plugin.json`, marketplace-local
+copies, versioned caches, and the managed marketplace as generated compatibility or
+runtime mirrors. `home/plugins/<plugin>/` owns codex-home bundles; repo-local `local/`
+bundles own their sources; repository `skills/` owns both core skill mirrors. Run
+`make generate` and the plugin catalog validator after changing any of these assets.
 
 ## Verification and handoff
 Test the changed contract first, then relevant regressions. Never call a mocked

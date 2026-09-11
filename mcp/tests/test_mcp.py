@@ -12,7 +12,8 @@ import time
 import unittest
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'lib'))
-from common import (SOURCE_ROOT,ConfigError,SERVER_NAMES,load_env,parse_env,atomic_write,locked)
+from common import (SOURCE_ROOT,ConfigError,SERVER_NAMES,atomic_write,clean_env,
+                    load_env,locked,parse_env,podman)
 import runtime
 from broker import read_header
 from relay import bridge,shutdown_write,RelayError
@@ -42,7 +43,16 @@ class EnvironmentTests(Base):
         text=re.sub(r'^'+key+r'=.*$',lambda m:key+'='+value,text,flags=re.M)
         path=self.root/'env';path.write_text(text);return path
     def test_defaults(self):
-        self.assertEqual(load_env(SOURCE_ROOT/'.env')['PODMAN_USER'],'devops')
+        cfg=load_env(SOURCE_ROOT/'.env')
+        self.assertEqual(cfg['PODMAN_USER'],'devops')
+        self.assertEqual(cfg['PODMAN_HOME'],'/nonexistent')
+        self.assertEqual(cfg['PODMAN_SOCKET'],'/run/podman-devops/podman.sock')
+        self.assertEqual(cfg['PODMAN_BINARY'],'/usr/local/bin/podman')
+        self.assertEqual(cfg['MCP_SOCKET'],'/data/codex/sockets/codex-mcp.sock')
+        self.assertEqual(podman(cfg),['/usr/local/bin/podman'])
+        env=clean_env(dict(cfg,DEVOPS_UID=999))
+        self.assertEqual(env['HOME'],'/nonexistent')
+        self.assertEqual(env['XDG_RUNTIME_DIR'],'/run/podman-devops')
     def test_no_shell_expansion(self):
         for value in ('$(id)','`id`','${HOME}','/tmp\\path'):
             with self.subTest(value=value), self.assertRaises(ConfigError):
@@ -279,9 +289,19 @@ class IntegrationContractTests(Base):
         import re
         for name,text in render_units(self.cfg).items():
             self.assertFalse(re.search(r'@[A-Z_]+@',text),name)
-        service=render_units(self.cfg)['codex-mcp@.service']
+        units=render_units(self.cfg)
+        service=units['codex-mcp@.service']
         self.assertIn('User=devops',service);self.assertIn('StandardInput=socket',service)
+        self.assertIn('Environment=HOME=/nonexistent',service)
+        self.assertIn('Environment=XDG_RUNTIME_DIR=/run/podman-devops',service)
         self.assertEqual(service.count('LoadCredential='),9)
+        socket_unit=units['codex-mcp.socket']
+        self.assertIn('ListenStream=/data/codex/sockets/codex-mcp.sock',socket_unit)
+        self.assertIn('SocketUser=desktop',socket_unit)
+        self.assertIn('SocketMode=0600',socket_unit)
+        prepare=units['codex-mcp-prepare.service']
+        self.assertNotIn('user@',prepare)
+        self.assertIn('RequiresMountsFor=/run/podman-devops /pool/podman /data/codex/sockets',prepare)
     def test_all_profile_paths_are_covered(self):
         env,paths=toolchain.profile_environment(self.cfg)
         roots=[x['target'] for x in toolchain.host_roots(self.cfg)]
@@ -290,6 +310,18 @@ class IntegrationContractTests(Base):
             self.assertTrue(any(path==r or path.startswith(r+'/') for r in roots+scratch),path)
         self.assertEqual(env['NODE'],'/usr/local/lib/node-26/bin/node')
         self.assertEqual(env['HOME'],'/home/devops')
+    def test_profile_comparison_ignores_non_toolchain_metadata(self):
+        source=SOURCE_ROOT/'integration/71-devops-de.sh.reference'
+        text=source.read_text().replace('PODMAN_SERVICE_HOME=/nonexistent',
+                                        'PODMAN_SERVICE_HOME=/ignored-metadata')
+        alternate=self.root/'profile';alternate.write_text(text)
+        self.assertEqual(toolchain.profile_environment(self.cfg,alternate),
+                         toolchain.profile_environment(self.cfg))
+        alternate.write_text(text.replace('/usr/local/lib/node-26/bin',
+                                          '/usr/local/lib/node-other/bin'))
+        self.assertNotEqual(toolchain.profile_environment(self.cfg,alternate),
+                            toolchain.profile_environment(self.cfg))
+
     def test_tool_roots_do_not_share_live_databases_or_home(self):
         paths=[x['source'] for x in toolchain.host_roots(self.cfg)]
         self.assertFalse(any('/postgresql' in x or '/.ssh' in x or x=='/home/desktop' for x in paths))
@@ -335,6 +367,8 @@ class RecoveryTests(Base):
         import inspect,install
         source=inspect.getsource(install.prepare)
         self.assertIn("'/usr/sbin/runuser','-u','devops'",source)
+        self.assertIn('Path(PODMAN_RUNTIME_ROOT)',source)
+        self.assertNotIn("Path('/run/user')",source)
         self.assertNotIn("owned_directory(Path(cfg['MCP_RUNTIME_ROOT'])",source)
 
 class BrowserSecurityTests(Base):

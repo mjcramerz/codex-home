@@ -1,0 +1,40 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wrangler",
+  "version": "1.1.0",
+  "description": "Wrangler CLI, Cloudflare deployment, and build workflow automation.",
+  "author": {
+    "name": "Cloudflare"
+  },
+  "homepage": "https://developers.cloudflare.com/workers/wrangler/",
+  "keywords": [
+    "wrangler",
+    "cloudflare",
+    "deploy",
+    "workers",
+    "cli"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Wrangler",
+        "shortDescription": "Wrangler deployment workflows",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Wrangler plugin for Wrangler CLI, deployment, and build workflows on Cloudflare."
+        ],
+        "longDescription": "Use this plugin for Wrangler CLI usage, deployment configuration, build pipelines, and Cloudflare release automation.",
+        "developerName": "Cloudflare",
+        "brandColor": "#F97316",
+        "websiteURL": "https://developers.cloudflare.com/workers/wrangler/",
+        "composerIcon": "./skills/cloudflare-deploy/assets/cloudflare-small.svg",
+        "logo": "./skills/cloudflare-deploy/assets/cloudflare.png",
+        "screenshots": []
+      }
+    }
+  }
+}

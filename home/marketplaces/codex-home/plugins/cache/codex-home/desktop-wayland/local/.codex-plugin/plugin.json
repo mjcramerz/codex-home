@@ -1,12 +1,12 @@
 {
   "name": "desktop-wayland",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Debian Wayland desktop workflows for Labwc, Waybar, Wofi, Crystal Dock, and desktop launcher integration.",
   "skills": "./skills",
   "interface": {
     "displayName": "Desktop Wayland",
     "shortDescription": "Debian Wayland desktop setup",
-    "category": "Desktop",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

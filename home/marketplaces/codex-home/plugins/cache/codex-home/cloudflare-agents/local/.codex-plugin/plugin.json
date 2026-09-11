@@ -1,12 +1,12 @@
 {
   "name": "cloudflare-agents",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Cloudflare Agents SDK, agent-building, and MCP-on-Workers workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Cloudflare Agents",
     "shortDescription": "Cloudflare Agents and MCP",
-    "category": "Infrastructure",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

@@ -1,12 +1,12 @@
 {
   "name": "frontend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Frontend framework implementation and interactive web UI workflows.",
   "skills": "./skills",
   "interface": {
     "displayName": "Frontend",
     "shortDescription": "Frontend web app workflows",
-    "category": "Development",
+    "category": "Developer Tools",
     "capabilities": [
       "Read",
       "Write"

@@ -1,4 +1,0 @@
-perl -MMoo -MMooX::HandlesVia -MMooX::StrictConstructor -MTypes::Standard -e 'exit 0'
-Can't locate Moo.pm in @INC (you may need to install the Moo module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl).
-BEGIN failed--compilation aborted.
-make: *** [Makefile:23: test-hooks] Error 2

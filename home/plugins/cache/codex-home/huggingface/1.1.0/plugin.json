@@ -1,0 +1,41 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "huggingface",
+  "version": "1.1.0",
+  "description": "Hugging Face Hub datasets, evaluation, jobs, training, and tooling workflows.",
+  "author": {
+    "name": "Hugging Face"
+  },
+  "homepage": "https://huggingface.co/docs",
+  "keywords": [
+    "huggingface",
+    "development",
+    "hf",
+    "cli",
+    "hugging",
+    "face",
+    "dataset",
+    "viewer"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Hugging Face",
+        "shortDescription": "Hugging Face ML workflows",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Use the Hugging Face plugin for Hub datasets, evaluation, jobs, training, Trackio, Gradio, and CLI workflows."
+        ],
+        "longDescription": "Use this plugin for Hugging Face Hub datasets, evaluation, jobs, training, Trackio, Gradio, and CLI workflows.",
+        "developerName": "Hugging Face",
+        "brandColor": "#FF9D00",
+        "websiteURL": "https://huggingface.co/docs",
+        "screenshots": []
+      }
+    }
+  }
+}
