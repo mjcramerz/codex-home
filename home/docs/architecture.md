@@ -28,8 +28,13 @@ You must read only the smallest section that resolves the current task, follow t
 
 - Managed default, agent, and profile instruction assets live under
   `/data/codex/usr/instructions/**`.
-- `$CODEX_HOME/.models/**` contains runtime-home catalog and compatibility
-  instruction assets.
+- Authoritative custom catalogs live only at
+  `/data/codex/usr/instructions/models/{default,cyber,review}_catalog.json`.
+- `$CODEX_HOME/.models/{default,cyber,review}_catalog.json` are generated,
+  byte-identical runtime-home mirrors. No profile-local or nested catalog copies
+  are part of the installed contract.
+- Other `$CODEX_HOME/.models/instructions/**` paths remain compatibility mirrors
+  for instruction assets; they are not catalog sources.
 - `$CODEX_HOME/config.toml` identifies the active rendered catalog and
   instruction files. A `model_catalog_json` setting replaces, rather than
   extends, the bundled model catalog.

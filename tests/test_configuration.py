@@ -26,8 +26,10 @@ class ConfigurationTests(unittest.TestCase):
     def test_all_config_layers_and_assets(self):
         report = validate.validate(ROOT, write=False)
         self.assertEqual(report['active_configuration_files'], 26)
-        self.assertEqual(report['original_files_present'], 6802)
-        self.assertGreaterEqual(report['instruction_files'], 491)
+        self.assertEqual(report['original_files_present'], 6789)
+        self.assertEqual(report['original_files_intentionally_removed'], 13)
+        self.assertEqual(report['original_files_accounted_for'], 6802)
+        self.assertGreaterEqual(report['instruction_files'], 482)
         self.assertGreater(report['authority_reviewed_templates'], 100)
 
     def test_exact_supplied_schema_pin(self):
@@ -78,6 +80,32 @@ class ConfigurationTests(unittest.TestCase):
 
     def test_full_system_mirror_not_reduced_subset(self):
         self.assertEqual((ROOT / 'home/config.toml').read_bytes(), (ROOT / 'etc/config.toml').read_bytes())
+
+    def test_model_catalogs_are_complete_canonical_replacements(self):
+        catalogs = validate.validate_model_catalogs(ROOT)
+        self.assertEqual(set(catalogs), set(validate.CATALOG_NAMES))
+        self.assertEqual(catalogs['default_catalog.json'][0], 'gpt-6-astra')
+        self.assertIn('gpt-5.6-cyber', catalogs['cyber_catalog.json'])
+        self.assertIn('codex-auto-review', catalogs['review_catalog.json'])
+        self.assertFalse(validate.RETIRED_MODELS.intersection(
+            slug for models in catalogs.values() for slug in models
+        ))
+        models = json.loads((ROOT / 'instructions/models/default_catalog.json').read_text())['models']
+        astra = next(model for model in models if model['slug'] == 'gpt-6-astra')
+        self.assertEqual(astra['minimal_client_version'], '0.147.0')
+        self.assertEqual([item['effort'] for item in astra['supported_reasoning_levels']],
+                         ['low', 'medium', 'high', 'xhigh', 'max', 'ultra'])
+        self.assertEqual(astra['experimental_supported_tools'], ['send_user_message_async', 'clock'])
+        self.assertTrue(astra['supports_experimental_context'])
+        self.assertTrue(astra['prefer_websockets'])
+        self.assertEqual(astra['multi_agent_version'], 'v2')
+        self.assertEqual(astra['multi_agent_reasoning_effort'], 'xhigh')
+
+    def test_current_model_profiles_do_not_disable_catalog_capabilities(self):
+        for name in ('astra.config.toml', 'review.config.toml', 'fast.config.toml', 'cyber.config.toml'):
+            with self.subTest(profile=name):
+                profile = tomllib.loads((ROOT / 'home' / name).read_text())
+                self.assertNotIn('features', profile)
 
     def test_invalid_open_permission_map_internals_rejected(self):
         import jsonschema
@@ -159,6 +187,17 @@ class ConfigurationTests(unittest.TestCase):
         self.assertNotIn('config = [{', text)
         self.assertEqual(HOME['shell_environment_policy']['set']['CODEX_HOME'], '/data/codex/usr/home')
 
+    def test_tui_keymap_only_overrides_conflict_free_defaults(self):
+        self.assertEqual(HOME['tui']['keymap'], {
+            'global': {
+                'toggle_fast_mode': 'f9',
+                'toggle_vim_mode': 'f8',
+            },
+            'editor': {
+                'kill_whole_line': 'ctrl-shift-u',
+            },
+        })
+
     def test_generator_rejects_reference_comment_before_writing(self):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)
@@ -197,6 +236,18 @@ class ConfigurationTests(unittest.TestCase):
         self.assertEqual(clean_loads(merged)['desktop']['opaque'], 'preserve')
         self.assertNotIn('schema-entry', merged)
         self.assertNotIn('SUPPORTED-KEY REFERENCE', merged)
+
+    def test_installer_backs_up_and_removes_retired_assets(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name);dest = root/'dest';backup = root/'backup'
+            target = dest/'home/spark.config.toml'
+            target.parent.mkdir(parents=True);target.write_bytes(b'legacy\n')
+            backup.mkdir();records=[]
+            install_assets.retire_assets(dest,backup,records,{'home/spark.config.toml'})
+            self.assertFalse(target.exists())
+            self.assertEqual((backup/'home/spark.config.toml').read_bytes(),b'legacy\n')
+            self.assertEqual(records[0]['file'],'home/spark.config.toml')
+            self.assertTrue(records[0]['removed'])
 
     def test_atomic_write_refuses_symlink(self):
         with tempfile.TemporaryDirectory() as name:

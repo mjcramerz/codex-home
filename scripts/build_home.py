@@ -44,14 +44,25 @@ def generate() -> int:
     policy=json.loads((ROOT/'generate/feature-policy.json').read_text())
     if hashlib.sha256(schema_bytes).hexdigest()!=policy['schema_sha256']:
         raise ValueError('custom schema changed; review and update the explicit schema pin first')
-    from validate import validate_data
+    from validate import CATALOG_NAMES, validate_data
     validate_data(data, schema, policy, 'home/config.toml')
     count=0
     count+=atomic(ROOT/'generate/schemas/supplied-config.schema.json',schema_bytes)
     count+=atomic(ROOT/'etc/config.toml',(ROOT/'home/config.toml').read_bytes())
+    catalog_source_dir=ROOT/'instructions/models'
+    if catalog_source_dir.exists():
+        for name in CATALOG_NAMES:
+            source=catalog_source_dir/name
+            if source.is_symlink() or not source.is_file():
+                raise ValueError(f'missing regular catalog source: {source}')
+            payload=source.read_bytes()
+            parsed=json.loads(payload)
+            if set(parsed)!={'models'} or not isinstance(parsed['models'],list) or not parsed['models']:
+                raise ValueError(f'invalid model catalog source: {source}')
+            count+=atomic(ROOT/'home/.models'/name,payload)
     for source in sorted((ROOT/'instructions').rglob('*')):
         if source.is_symlink():raise ValueError(f'source symlink: {source}')
-        if source.is_file():
+        if source.is_file() and source.name not in CATALOG_NAMES:
             count+=atomic(ROOT/'home/instructions'/source.relative_to(ROOT/'instructions'),source.read_bytes())
     for source in sorted((ROOT/'generate/schemas').glob('*.command.*.schema.json')):
         count+=atomic(ROOT/'home/.hooks/schemas'/source.name,source.read_bytes())

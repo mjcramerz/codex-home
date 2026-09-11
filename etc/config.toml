@@ -298,137 +298,11 @@ vim_mode_default = false
 [tui.keymap]
 
 [tui.keymap.global]
-clear_terminal = "ctrl-l"
-copy = "ctrl-o"
-open_external_editor = "ctrl-g"
-open_transcript = "ctrl-t"
-queue = "tab"
-submit = "enter"
 toggle_fast_mode = "f9"
-toggle_raw_output = "alt-r"
-toggle_shortcuts = ["?", "shift-?"]
-toggle_side_conversation = ["ctrl-/", "ctrl-7"]
 toggle_vim_mode = "f8"
 
-[tui.keymap.chat]
-decrease_reasoning_effort = ["alt-,", "shift-down"]
-edit_queued_message = ["alt-up", "shift-left"]
-increase_reasoning_effort = ["alt-.", "shift-up"]
-interrupt_turn = "esc"
-
-[tui.keymap.composer]
-history_search_next = "ctrl-s"
-history_search_previous = "ctrl-r"
-queue = "tab"
-submit = "enter"
-toggle_shortcuts = ["?", "shift-?"]
-
 [tui.keymap.editor]
-delete_backward = ["backspace", "shift-backspace", "ctrl-h"]
-delete_backward_word = ["alt-backspace", "ctrl-backspace", "ctrl-shift-backspace", "ctrl-w", "ctrl-alt-h"]
-delete_forward = ["delete", "shift-delete", "ctrl-d"]
-delete_forward_word = ["alt-delete", "ctrl-delete", "ctrl-shift-delete", "alt-d"]
-insert_newline = ["ctrl-j", "ctrl-m", "shift-enter", "alt-enter"]
-kill_line_end = "ctrl-k"
-kill_line_start = "ctrl-u"
 kill_whole_line = "ctrl-shift-u"
-move_down = ["down", "ctrl-n"]
-move_left = ["left", "ctrl-b"]
-move_line_end = ["end", "ctrl-e"]
-move_line_start = ["home", "ctrl-a"]
-move_right = ["right", "ctrl-f"]
-move_up = ["up", "ctrl-p"]
-move_word_left = ["alt-b", "alt-left", "ctrl-left"]
-move_word_right = ["alt-f", "alt-right", "ctrl-right"]
-yank = "ctrl-y"
-
-[tui.keymap.list]
-accept = "enter"
-cancel = "esc"
-jump_bottom = "end"
-jump_top = "home"
-move_down = ["down", "ctrl-n", "ctrl-j", "j"]
-move_left = ["left", "ctrl-h"]
-move_right = ["right", "ctrl-l"]
-move_up = ["up", "ctrl-p", "ctrl-k", "k"]
-page_down = ["page-down", "ctrl-f"]
-page_up = ["page-up", "ctrl-b"]
-
-[tui.keymap.pager]
-close = ["q", "ctrl-c"]
-close_transcript = "ctrl-t"
-half_page_down = "ctrl-d"
-half_page_up = "ctrl-u"
-jump_bottom = "end"
-jump_top = "home"
-page_down = ["page-down", "space", "ctrl-f"]
-page_up = ["page-up", "shift-space", "ctrl-b"]
-scroll_down = ["down", "j"]
-scroll_up = ["up", "k"]
-
-[tui.keymap.approval]
-approve = "y"
-approve_for_prefix = "p"
-approve_for_session = "a"
-cancel = "c"
-decline = ["esc", "n"]
-deny = "d"
-open_fullscreen = ["ctrl-a", "ctrl-shift-a"]
-open_thread = "o"
-
-[tui.keymap.vim_normal]
-append_after_cursor = "a"
-append_line_end = ["shift-a", "A"]
-cancel_operator = "esc"
-change_to_line_end = ["shift-c", "C"]
-delete_char = "x"
-delete_to_line_end = ["shift-d", "D"]
-enter_insert = "i"
-insert_line_start = ["shift-i", "I"]
-move_down = ["j", "down"]
-move_left = ["h", "left"]
-move_line_end = ["$", "shift-$"]
-move_line_start = "0"
-move_right = ["l", "right"]
-move_up = ["k", "up"]
-move_word_backward = "b"
-move_word_end = "e"
-move_word_forward = "w"
-open_line_above = ["shift-o", "O"]
-open_line_below = "o"
-paste_after = "p"
-start_change_operator = "c"
-start_delete_operator = "d"
-start_yank_operator = "y"
-substitute_char = "s"
-yank_line = ["shift-y", "Y"]
-
-[tui.keymap.vim_operator]
-cancel = "esc"
-delete_line = "d"
-motion_down = "j"
-motion_left = "h"
-motion_line_end = ["$", "shift-$"]
-motion_line_start = "0"
-motion_right = "l"
-motion_up = "k"
-motion_word_backward = "b"
-motion_word_end = "e"
-motion_word_forward = "w"
-select_around_text_object = "a"
-select_inner_text_object = "i"
-yank_line = "y"
-
-[tui.keymap.vim_text_object]
-backtick = "`"
-big_word = ["shift-w", "W"]
-braces = ["{", "shift-{", "}", "shift-}", "shift-b", "B"]
-brackets = ["[", "]"]
-cancel = "esc"
-double_quote = ["\"", "shift-\""]
-parentheses = ["(", "shift-(", ")", "shift-)", "b"]
-single_quote = "'"
-word = "w"
 
 [audio]
 microphone = "default"
@@ -469,7 +343,7 @@ enabled = false
 [feedback]
 enabled = false
 
-# Live user-config feature keys for the pinned client; retired aliases are excluded.
+# Live user-config feature keys for the supplied schema baseline; newer clients may add model-gated capabilities.
 [features]
 apply_patch_preserve_line_endings = false
 apply_patch_streaming_events = true

@@ -68,8 +68,27 @@ def merge_desktop(source: bytes, existing: bytes) -> bytes:
     Draft7Validator(schema).validate(tomllib.loads(result.decode('utf-8')))
     return result
 
+def retire_assets(dest: Path,backup: Path,records: list[dict],relative_paths) -> None:
+    resolved_dest=dest.resolve()
+    for relative in sorted(map(Path,relative_paths)):
+        if relative.is_absolute() or '..' in relative.parts:
+            raise ValueError('unsafe retired asset path: '+str(relative))
+        target=dest/relative
+        if not target.exists() and not target.is_symlink():continue
+        if target.is_symlink() or not target.is_file():
+            raise ValueError('retired asset is not a regular file: '+str(target))
+        if not target.parent.resolve().is_relative_to(resolved_dest):
+            raise ValueError('retired asset escapes destination: '+str(target))
+        previous=target.read_bytes();saved=backup/relative
+        directory(saved.parent);atomic(saved,previous,0o600)
+        target.unlink()
+        parent_fd=os.open(target.parent,os.O_RDONLY|os.O_DIRECTORY)
+        try:os.fsync(parent_fd)
+        finally:os.close(parent_fd)
+        records.append({'file':str(relative),'removed':True,'sha256':hashlib.sha256(previous).hexdigest()})
+
 def install(mode: str) -> dict:
-    from validate import validate
+    from validate import RETIRED_RUNTIME_ASSETS, validate
     validate(ROOT, write=False)
     if mode=='home':
         if os.geteuid()==0:raise ValueError('run install-home as the desktop user, without sudo')
@@ -107,6 +126,7 @@ def install(mode: str) -> dict:
                 atomic(saved,previous,0o600)
             atomic(target,payload,0o755 if source.stat().st_mode&0o111 else 0o644)
             records.append({'file':str(relative),'sha256':hashlib.sha256(payload).hexdigest()})
+        if mode=='home':retire_assets(dest,backup,records,RETIRED_RUNTIME_ASSETS)
         atomic(backup/'changes.json',json.dumps(records,indent=2).encode()+b'\n',0o600)
     return {'mode':mode,'updated':len(records),'backup':str(backup),
             'note':'Close clients before installation. Auth, sessions and app caches are not removed. Existing opaque desktop preferences are preserved and backed up. Reviewed explicit desktop values override matching keys.'}

@@ -199,35 +199,35 @@
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
         {
-          "name": "spark_model_catalog",
-          "config_file": "spark.config.toml",
+          "name": "astra_model_catalog",
+          "config_file": "astra.config.toml",
           "config_key": "model_catalog_json",
           "file": "default_catalog.json",
           "source_group": "models",
           "enabled": false,
-          "short_description": "Spark profile model catalog asset path.",
+          "short_description": "Astra profile model catalog asset path.",
           "default_disable_path": "$CODEX_HOME/.models/default_catalog.json"
         },
         {
-          "name": "spark_model_instructions",
-          "config_file": "spark.config.toml",
+          "name": "astra_model_instructions",
+          "config_file": "astra.config.toml",
           "config_key": "model_instructions_file",
           "file": "base.md",
-          "source_group": "profiles/fast/models",
+          "source_group": "default/models",
           "enabled": true,
-          "short_description": "Spark profile model instructions.",
-          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
+          "short_description": "Astra profile model instructions.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
         {
-          "name": "spark_base_instructions",
-          "config_file": "spark.config.toml",
+          "name": "astra_base_instructions",
+          "config_file": "astra.config.toml",
           "config_key": "instruction_overrides.models.base_instructions_file",
           "file": "base.md",
-          "source_group": "profiles/fast/models",
+          "source_group": "default/models",
           "enabled": true,
-          "short_description": "Spark profile base model instruction override.",
-          "default_enable_path": "$CODEX_USER_DIR/instructions/profiles/fast/models/base.md",
+          "short_description": "Astra profile base model instruction override.",
+          "default_enable_path": "$CODEX_USER_DIR/instructions/default/models/base.md",
           "default_disable_path": "$CODEX_HOME/.models/instructions/models/base.md"
         },
         {

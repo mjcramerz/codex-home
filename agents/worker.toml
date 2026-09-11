@@ -1,5 +1,5 @@
-model = "gpt-5.4-mini"
-review_model = "gpt-5.4"
+model = "gpt-5.6-luna"
+review_model = "gpt-5.6-terra"
 personality = "friendly"
 model_reasoning_effort = "medium"
 model_reasoning_summary = "concise"

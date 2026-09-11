@@ -180,7 +180,12 @@ pack:
     entrypoint: $CODEX_HOME/index/pack/config.md
     canonical: $CODEX_HOME/config.toml
     related:
+      - /data/codex/usr/instructions/models/default_catalog.json
+      - /data/codex/usr/instructions/models/cyber_catalog.json
+      - /data/codex/usr/instructions/models/review_catalog.json
       - $CODEX_HOME/.models/default_catalog.json
+      - $CODEX_HOME/.models/cyber_catalog.json
+      - $CODEX_HOME/.models/review_catalog.json
       - $CODEX_HOME/.models/instructions/models/base.md
       - $CODEX_HOME/.models/instructions/compact/prompt.md
       - $CODEX_HOME/index/pack/docs.md

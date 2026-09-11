@@ -1,10 +1,10 @@
 {
-  "target": "custom Codex based on 0.147.0",
+  "target": "custom Codex with 0.147.0 minimum compatibility and current model metadata",
   "schema_used": "generate/schemas/config.schema.json",
   "schema_sha256": "30c625df04c94d5e71129945a930ef092827f03c85e14848399346fa328577af",
   "schema_provenance": "schema embedded in uploaded codex-home archive; byte-identical pin, no upstream substitution",
   "active_configuration_files": 26,
-  "main_config_lines": 1576,
+  "main_config_lines": 1450,
   "toml_files_without_schema_metadata": 47,
   "runtime_root_settings": 76,
   "configuration_schema_location": "build-time only: generate/schemas/",
@@ -17,17 +17,61 @@
     "requirements_only": 6
   },
   "instruction_catalog_agent_references": 115,
-  "original_instruction_files_unchanged": 43,
-  "instruction_files": 520,
+  "original_instruction_files_unchanged": 30,
+  "instruction_files": 511,
   "authority_reviewed_templates": 448,
+  "model_catalog_files": 6,
+  "model_catalog_members": {
+    "default_catalog.json": [
+      "gpt-6-astra",
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "gpt-5.6-luna",
+      "gpt-5.6-cyber",
+      "gpt-daybreak-blue-latest",
+      "gpt-daybreak-red-latest",
+      "codex-auto-review"
+    ],
+    "cyber_catalog.json": [
+      "gpt-5.6-cyber",
+      "gpt-daybreak-blue-latest",
+      "gpt-daybreak-red-latest",
+      "gpt-5.6-sol",
+      "codex-auto-review"
+    ],
+    "review_catalog.json": [
+      "gpt-6-astra",
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "codex-auto-review"
+    ]
+  },
+  "model_catalog_metadata_source_version": "0.154.0",
   "mcp_registrations": 30,
   "podman_mcp_servers": 13,
   "plugins_configured": 54,
   "hook_events": 11,
   "hook_handlers": 97,
   "original_files": 6802,
-  "original_files_present": 6802,
-  "original_files_unchanged": 6328,
+  "original_files_present": 6789,
+  "original_files_accounted_for": 6802,
+  "original_files_intentionally_removed": 13,
+  "intentionally_removed_original_files": [
+    "home/.models/instructions/models/cyber_catalog.json",
+    "home/.models/instructions/models/default_catalog.json",
+    "home/.models/instructions/models/review_catalog.json",
+    "home/spark.config.toml",
+    "instructions/agents/models/default_catalog.json",
+    "instructions/default/models/default_catalog.json",
+    "instructions/profiles/cyber/models/cyber_catalog.json",
+    "instructions/profiles/cyber/models/default_catalog.json",
+    "instructions/profiles/debug/models/default_catalog.json",
+    "instructions/profiles/fast/models/default_catalog.json",
+    "instructions/profiles/review/models/default_catalog.json",
+    "instructions/profiles/review/models/review_catalog.json",
+    "instructions/profiles/test/models/default_catalog.json"
+  ],
+  "original_files_unchanged": 6302,
   "original_files_modified": [
     "agents/analyst.toml",
     "agents/coder.toml",
@@ -51,10 +95,19 @@
     "generate/scripts/plugin_catalog_coverage.py",
     "home/.hooks/modules/Codex/Hook/Schema.pm",
     "home/.hooks/scripts/hook_driver.pl",
+    "home/.models/cyber_catalog.json",
+    "home/.models/default_catalog.json",
+    "home/.models/review_catalog.json",
     "home/AGENTS.md",
     "home/INDEX.md",
     "home/config.toml",
+    "home/cyber.config.toml",
+    "home/docs/architecture.md",
+    "home/fast.config.toml",
     "home/hooks.json",
+    "home/index/manifest.yml",
+    "home/index/pack/config.md",
+    "home/review.config.toml",
     "instructions/agents/agents/hierarchical.md",
     "instructions/agents/auto_review/policy.md",
     "instructions/agents/compact/prompt.md",
@@ -183,6 +236,9 @@
     "instructions/default/tools/search.md",
     "instructions/default/tui/init.md",
     "instructions/default/web-search/web_run_description.md",
+    "instructions/models/cyber_catalog.json",
+    "instructions/models/default_catalog.json",
+    "instructions/models/review_catalog.json",
     "instructions/profiles/cyber/agents/hierarchical.md",
     "instructions/profiles/cyber/auto_review/policy.md",
     "instructions/profiles/cyber/compact/prompt.md",
@@ -375,6 +431,7 @@
     "instructions/profiles/fast/tools/search.md",
     "instructions/profiles/fast/tui/init.md",
     "instructions/profiles/fast/web-search/web_run_description.md",
+    "instructions/profiles/metadata.json",
     "instructions/profiles/review/agents/hierarchical.md",
     "instructions/profiles/review/auto_review/policy.md",
     "instructions/profiles/review/compact/prompt.md",
@@ -512,6 +569,11 @@
       "ok": true
     },
     {
+      "file": "home/astra.config.toml",
+      "schema": "exact supplied Draft-07",
+      "ok": true
+    },
+    {
       "file": "home/config.toml",
       "schema": "exact supplied Draft-07",
       "ok": true
@@ -548,11 +610,6 @@
     },
     {
       "file": "home/review.config.toml",
-      "schema": "exact supplied Draft-07",
-      "ok": true
-    },
-    {
-      "file": "home/spark.config.toml",
       "schema": "exact supplied Draft-07",
       "ok": true
     },

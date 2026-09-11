@@ -18,6 +18,24 @@
     "source": "instructions/agents/models/base.md"
   },
   {
+    "config": "home/astra.config.toml",
+    "key": "model_catalog_json",
+    "installed_path": "/data/codex/usr/home/.models/default_catalog.json",
+    "source": "home/.models/default_catalog.json"
+  },
+  {
+    "config": "home/astra.config.toml",
+    "key": "model_instructions_file",
+    "installed_path": "/data/codex/usr/instructions/default/models/base.md",
+    "source": "instructions/default/models/base.md"
+  },
+  {
+    "config": "home/astra.config.toml",
+    "key": "instruction_overrides.models.base_instructions_file",
+    "installed_path": "/data/codex/usr/instructions/default/models/base.md",
+    "source": "instructions/default/models/base.md"
+  },
+  {
     "config": "home/config.toml",
     "key": "model_catalog_json",
     "installed_path": "/data/codex/usr/instructions/models/default_catalog.json",
@@ -388,24 +406,6 @@
     "key": "instruction_overrides.models.base_instructions_file",
     "installed_path": "/data/codex/usr/instructions/profiles/review/models/base.md",
     "source": "instructions/profiles/review/models/base.md"
-  },
-  {
-    "config": "home/spark.config.toml",
-    "key": "model_catalog_json",
-    "installed_path": "/data/codex/usr/home/.models/default_catalog.json",
-    "source": "home/.models/default_catalog.json"
-  },
-  {
-    "config": "home/spark.config.toml",
-    "key": "model_instructions_file",
-    "installed_path": "/data/codex/usr/instructions/profiles/fast/models/base.md",
-    "source": "instructions/profiles/fast/models/base.md"
-  },
-  {
-    "config": "home/spark.config.toml",
-    "key": "instruction_overrides.models.base_instructions_file",
-    "installed_path": "/data/codex/usr/instructions/profiles/fast/models/base.md",
-    "source": "instructions/profiles/fast/models/base.md"
   },
   {
     "config": "home/test.config.toml",

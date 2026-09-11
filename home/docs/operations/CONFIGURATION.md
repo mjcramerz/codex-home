@@ -10,9 +10,10 @@ in either file.
 ## Editing and generation
 
 Edit `home/config.toml` in the source checkout. `make generate` validates it and
-atomically synchronizes its system mirror, instructions and runtime hook assets.
-It does not rewrite the authoritative configuration and cannot append a reference.
-`make verify` rejects schema/coverage metadata in every TOML file in this tree.
+atomically synchronizes its system mirror, instructions, model-catalog mirrors and
+runtime hook assets. It does not rewrite the authoritative configuration and
+cannot append a reference. `make verify` rejects schema/coverage metadata in every
+TOML file in this tree.
 
 The exact supplied client schema is kept in `generate/schemas/` for build-time
 validation, outside `$CODEX_HOME` and `/etc/codex`. `make examples` writes separate,
@@ -22,9 +23,65 @@ The examples convert supported configuration properties into actual TOML keys an
 tables. Alternative compaction and sandbox settings are kept in separate files.
 Do not copy an entire placeholder example over deployment configuration.
 
-The archive targets the supplied custom client based on Codex 0.147.0. The private
-binary was not provided. The schema is pinned rather than silently replaced with
-an unrelated upstream version. Check the installed client before changing that pin.
+The checked-in configuration schema is the supplied Codex 0.147.0 compatibility
+baseline, not a runtime-version ceiling. The installed client may be newer and the
+model catalogs intentionally carry current model capability fields that older
+clients ignore. Keep the supplied schema byte pin until an explicit schema refresh,
+but never use that baseline to strip capabilities from newer model metadata.
+
+## TUI keymap policy
+
+Codex 0.147.0 supplies tested built-in bindings for omitted keymap actions. Do not
+copy the complete built-in keymap into `home/config.toml`: app, chat, composer,
+editor, list and approval contexts overlap at runtime, so copied defaults can
+shadow one another and prevent startup. Keep only intentional, conflict-free
+overrides under `[tui.keymap.*]`:
+
+| Context | Action | Override |
+| --- | --- | --- |
+| `global` | `toggle_fast_mode` | `f9` |
+| `global` | `toggle_vim_mode` | `f8` |
+| `editor` | `kill_whole_line` | `ctrl-shift-u` |
+
+Every other action inherits the client default. Validate any future override
+against all focused-input contexts in which it can be active, not only against
+the table in which it is written.
+
+## Model catalog source and compatibility
+
+Each custom catalog has one authoritative source and one generated runtime-home
+mirror. Per-profile and nested instruction copies are retired and must not be
+reintroduced:
+
+| Catalog | Authoritative source | Generated runtime mirror |
+| --- | --- | --- |
+| Default | `instructions/models/default_catalog.json` | `home/.models/default_catalog.json` |
+| Cyber | `instructions/models/cyber_catalog.json` | `home/.models/cyber_catalog.json` |
+| Review | `instructions/models/review_catalog.json` | `home/.models/review_catalog.json` |
+
+The source files install under `/data/codex/usr/instructions/models/`; the mirrors
+install under `$CODEX_HOME/.models/`. `make generate` copies source bytes to each
+mirror and deliberately excludes catalog names from the general
+`instructions/` -> `home/instructions/` mirror.
+
+`model_catalog_json` is a complete replacement for the client catalog, not an
+overlay. Each catalog therefore includes every user-facing and hidden support
+model required by its enabled workflows, including `codex-auto-review` where
+review support is expected. Model metadata is synchronized from public Codex
+0.154.0 while retaining the older compatibility fields needed for Codex 0.147.0
+to deserialize the same records. `minimal_client_version` expresses only the
+minimum client; it does not suppress capabilities in newer clients.
+
+The Astra record includes current system prompts, `max` and `ultra` reasoning,
+async user messaging, clock access, WebSocket preference for steering,
+experimental context, fast-tier metadata, Responses Lite, Node REPL auto-review,
+Code Mode-only tooling and multi-agent v2 delegation. Sol, Terra, Luna, Daybreak
+and auto-review records likewise retain their current reasoning, service-tier,
+search, Code Mode and multi-agent metadata. The Astra, review, fast and cyber
+profiles do not override these features off; they inherit the enabled global
+Code Mode, host execution, interruption, unified-exec and multi-agent settings.
+Catalog presence still does not grant organization or project entitlement to a
+restricted model or service tier.
 
 ## Permissions, features and desktop settings
 

@@ -1,4 +1,4 @@
-model = "gpt-5.4-mini"
+model = "gpt-5.6-luna"
 model_catalog_json = "/data/codex/usr/home/.models/default_catalog.json"
 model_instructions_file = "/data/codex/usr/instructions/profiles/fast/models/base.md"
 model_reasoning_effort = "low"
@@ -7,11 +7,3 @@ model_verbosity = "low"
 
 [instruction_overrides.models]
 base_instructions_file = "/data/codex/usr/instructions/profiles/fast/models/base.md"
-
-# GPT-5.4 Mini does not advertise Code Mode in the bundled model metadata.
-[features]
-code_mode = false
-code_mode_only = false
-code_mode_buffered_exec = false
-code_mode_host = false
-code_mode_interrupt = false
