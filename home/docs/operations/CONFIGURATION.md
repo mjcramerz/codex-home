@@ -31,21 +31,28 @@ but never use that baseline to strip capabilities from newer model metadata.
 
 ## TUI keymap policy
 
-Codex 0.147.0 supplies tested built-in bindings for omitted keymap actions. Do not
-copy the complete built-in keymap into `home/config.toml`: app, chat, composer,
-editor, list and approval contexts overlap at runtime, so copied defaults can
-shadow one another and prevent startup. Keep only intentional, conflict-free
-overrides under `[tui.keymap.*]`:
+`home/config.toml` explicitly configures every action exposed by the supplied TUI
+keymap schema: 10 contexts and 113 actions. No action relies on a built-in fallback.
+Each action has exactly one normalized lowercase binding, and every binding is
+unique across the complete `[tui.keymap.*]` tree, including contexts that do not
+normally overlap.
 
-| Context | Action | Override |
-| --- | --- | --- |
-| `global` | `toggle_fast_mode` | `f9` |
-| `global` | `toggle_vim_mode` | `f8` |
-| `editor` | `kill_whole_line` | `ctrl-shift-u` |
+| Context | Binding strategy |
+| --- | --- |
+| `global` | Existing global control keys, `f8`, and `f9` |
+| `chat` | Alt punctuation/navigation plus `esc` |
+| `composer` | Dedicated Ctrl keys plus `f1` |
+| `editor` | Conventional editing, cursor, and word-motion keys |
+| `list` | `f2`-`f5`, Alt-Shift arrows, and page keys |
+| `pager` | Dedicated Ctrl/Shift navigation keys |
+| `approval` | Dedicated Alt-letter decisions |
+| `vim_normal` | Conventional unmodified and Shift Vim keys |
+| `vim_operator` | Dedicated Ctrl-Alt letter motions/operators |
+| `vim_text_object` | Dedicated symbols and modified text-object keys |
 
-Every other action inherits the client default. Validate any future override
-against all focused-input contexts in which it can be active, not only against
-the table in which it is written.
+Do not add aliases or arrays of alternate bindings. The schema-derived regression
+must reject a missing context, missing action, unknown action, non-string binding,
+uppercase alias, or any binding reused by another action anywhere in the keymap.
 
 ## Model catalog source and compatibility
 

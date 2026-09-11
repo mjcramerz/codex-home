@@ -178,12 +178,49 @@ def validate_model_catalogs(root: Path=ROOT) -> dict[str,tuple[str,...]]:
               'GPT-6 Astra current persistent system instructions are missing')
     return catalogs
 
+def resolve_schema_node(schema: dict,node: dict) -> dict:
+    while True:
+        if '$ref' in node:
+            ref=node['$ref'];assert_ok(ref.startswith('#/definitions/'),f'unsupported schema reference: {ref}')
+            node=schema['definitions'][ref.rsplit('/',1)[1]];continue
+        if 'allOf' in node and len(node['allOf'])==1:
+            node=node['allOf'][0];continue
+        return node
+
+def validate_tui_keymap(data: dict,schema: dict,label: str) -> int:
+    tui=data.get('tui')
+    if not isinstance(tui,dict) or 'keymap' not in tui:return 0
+    keymap=tui['keymap'];assert_ok(isinstance(keymap,dict),f'{label}: tui.keymap must be a table')
+    tui_schema=resolve_schema_node(schema,schema['properties']['tui'])
+    keymap_schema=resolve_schema_node(schema,tui_schema['properties']['keymap'])
+    expected={
+        context:set(resolve_schema_node(schema,spec)['properties'])
+        for context,spec in keymap_schema['properties'].items()
+    }
+    assert_ok(set(keymap)==set(expected),
+              f'{label}: keymap contexts must match schema; missing={sorted(set(expected)-set(keymap))}, extra={sorted(set(keymap)-set(expected))}')
+    seen={}
+    for context,actions in keymap.items():
+        assert_ok(isinstance(actions,dict),f'{label}: tui.keymap.{context} must be a table')
+        assert_ok(set(actions)==expected[context],
+                  f'{label}: keymap actions for {context} must match schema; missing={sorted(expected[context]-set(actions))}, extra={sorted(set(actions)-expected[context])}')
+        for action,binding in actions.items():
+            location=f'tui.keymap.{context}.{action}'
+            assert_ok(isinstance(binding,str) and binding and binding==binding.lower(),
+                      f'{label}: {location} must be one normalized lowercase hotkey string')
+            assert_ok(binding not in seen,
+                      f'{label}: hotkey {binding!r} is reused by {seen.get(binding)} and {location}')
+            seen[binding]=location
+    assert_ok(len(seen)==sum(map(len,expected.values())),f'{label}: incomplete TUI keymap')
+    return len(seen)
+
 def validate_data(data: dict,schema: dict,policy: dict,label: str) -> None:
     import jsonschema
     validator=jsonschema.Draft7Validator(schema)
     errors=list(validator.iter_errors(data))
     if errors:
         raise ValueError(label+': '+ '; '.join('/'.join(map(str,e.path))+': '+e.message for e in errors))
+    validate_tui_keymap(data,schema,label)
     forbidden=set(policy['removed'])|set(policy['deprecated'])|set(policy['aliases'])|set(policy.get('requirements_only',[]))
     for where,o in objects(data):
         if where and where[-1]=='features':
@@ -300,6 +337,7 @@ def validate(root: Path=ROOT,write: bool=True) -> dict:
         'toml_files_without_schema_metadata':len(toml_files),'runtime_root_settings':len(home),
         'configuration_schema_location':'build-time only: generate/schemas/',
         'schema_feature_keys':len(schema['properties']['features']['properties']),'active_feature_keys':len(expected),
+        'tui_keymap_contexts':len(home['tui']['keymap']),'tui_keymap_unique_bindings':validate_tui_keymap(home,schema,'home/config.toml'),
         'feature_dispositions':{'removed':len(policy['removed']),'deprecated':len(policy['deprecated']),'legacy_aliases':len(policy['aliases']),'requirements_only':len(policy.get('requirements_only',[]))},
         'instruction_catalog_agent_references':len(refs),'original_instruction_files_unchanged':sum(x in same for x in original_instructions),'instruction_files':instruction_count,'authority_reviewed_templates':len(authority_files),
         'model_catalog_files':len(CANONICAL_CATALOG_PATHS),'model_catalog_members':catalogs,

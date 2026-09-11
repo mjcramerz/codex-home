@@ -44,6 +44,6 @@ catalog, so preserve required support models, current model capability metadata
 and the minimum-client compatibility fields. Do not empty model-advertised tools
 or add profile overrides that disable current model-gated features.
 
-For keymaps, omit unchanged actions and inherit Codex built-ins. The only reviewed
-overrides are global `f9` for fast mode, global `f8` for Vim mode and editor
-`ctrl-shift-u` for whole-line kill.
+For keymaps, explicitly configure every schema-defined action. Use exactly one
+normalized lowercase binding per action and keep each binding globally unique
+across all `[tui.keymap.*]` contexts; do not rely on built-in fallbacks or aliases.

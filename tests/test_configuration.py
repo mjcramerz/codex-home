@@ -187,16 +187,42 @@ class ConfigurationTests(unittest.TestCase):
         self.assertNotIn('config = [{', text)
         self.assertEqual(HOME['shell_environment_policy']['set']['CODEX_HOME'], '/data/codex/usr/home')
 
-    def test_tui_keymap_only_overrides_conflict_free_defaults(self):
-        self.assertEqual(HOME['tui']['keymap'], {
-            'global': {
-                'toggle_fast_mode': 'f9',
-                'toggle_vim_mode': 'f8',
-            },
-            'editor': {
-                'kill_whole_line': 'ctrl-shift-u',
-            },
-        })
+    def test_tui_keymap_is_complete_and_globally_unique(self):
+        def resolve(node):
+            while True:
+                if isinstance(node, dict) and set(node) == {'$ref'}:
+                    node = SCHEMA['definitions'][node['$ref'].rsplit('/', 1)[1]]
+                    continue
+                if isinstance(node, dict) and 'allOf' in node and len(node['allOf']) == 1:
+                    node = node['allOf'][0]
+                    continue
+                return node
+
+        tui = resolve(SCHEMA['properties']['tui'])
+        keymap_schema = resolve(tui['properties']['keymap'])
+        expected = {
+            context: set(resolve(spec)['properties'])
+            for context, spec in keymap_schema['properties'].items()
+        }
+        actual = HOME['tui']['keymap']
+        self.assertEqual(set(actual), set(expected))
+        bindings = []
+        for context, actions in actual.items():
+            with self.subTest(context=context):
+                self.assertEqual(set(actions), expected[context])
+            for action, binding in actions.items():
+                with self.subTest(context=context, action=action):
+                    self.assertIsInstance(binding, str)
+                    self.assertTrue(binding)
+                    self.assertEqual(binding, binding.lower())
+                bindings.append(binding)
+        self.assertEqual(len(bindings), 113)
+        self.assertEqual(len(bindings), len(set(bindings)))
+
+        duplicate = copy.deepcopy(HOME)
+        duplicate['tui']['keymap']['composer']['submit'] = duplicate['tui']['keymap']['global']['submit']
+        with self.assertRaisesRegex(ValueError, 'hotkey .* is reused'):
+            validate.validate_tui_keymap(duplicate, SCHEMA, 'duplicate-test')
 
     def test_generator_rejects_reference_comment_before_writing(self):
         with tempfile.TemporaryDirectory() as name:
