@@ -295,18 +295,12 @@ toggle_raw_output = "alt-r"
 toggle_shortcuts = "?"
 toggle_side_conversation = "ctrl-/"
 toggle_vim_mode = "f8"
-open_agents = "ctrl-alt-a"
 
 [tui.keymap.chat]
 decrease_reasoning_effort = "alt-,"
 edit_queued_message = "alt-up"
 increase_reasoning_effort = "alt-."
 interrupt_turn = "esc"
-next_permission_mode = "alt-shift-right"
-previous_permission_mode = "alt-shift-left"
-prompt_stack_back = "alt-esc"
-skip_question = "ctrl-alt-s"
-toggle_voice_mute = "ctrl-alt-m"
 
 [tui.keymap.composer]
 history_search_next = "ctrl-s"
@@ -439,19 +433,6 @@ parentheses = "("
 single_quote = "'"
 word = "alt-w"
 
-[tui.keymap.agents]
-new_task = "n"
-rename = "r"
-resume = "enter"
-search = "/"
-stop = "s"
-toggle_grouping = "g"
-
-[tui.keymap.vim_search]
-backward = "?"
-forward = "/"
-next = "n"
-previous = "shift-n"
 [audio]
 microphone = "default"
 speaker = "default"
@@ -506,6 +487,7 @@ code_mode_buffered_exec = false
 code_mode_interrupt = true
 code_mode_only = false
 concurrent_reasoning_summaries = false
+context_management = false
 default_mode_request_user_input = true
 deferred_executor = false
 deferred_tool_world_state = false
@@ -521,6 +503,7 @@ guardian_approval = false
 guardian_enhanced_node_repl_transcripts = false
 guardian_node_repl_transcript_images = false
 guardian_reuse_parent_compaction = false
+guardianv2 = false
 hooks = true
 image_generation = true
 image_resize_notice = true
@@ -531,6 +514,7 @@ mcp_2026_07_28 = false
 memories = true
 mentions_v2 = true
 multi_agent = true
+network_proxy = false
 personality = true
 plugin_sharing = true
 plugins = true
@@ -550,8 +534,10 @@ shell_tool = true
 shell_zsh_fork = false
 skill_mcp_dependency_install = true
 skill_search = true
+sleep_tool = true
 standalone_web_search = true
 terminal_visualization_instructions = true
+token_budget = true
 tool_call_mcp_elicitation = true
 tool_suggest = true
 unbounded_connection_retries = false
@@ -598,32 +584,6 @@ clock_source = "system"
 delivery_mode = "after_user_or_tool_output"
 sleep_tool = true
 
-[features.guardianv2]
-enabled = false
-classifier_instructions = "Review proposed actions for authorization, security, privacy, data-loss, and exfiltration risk. Prefer least privilege and deny actions that exceed explicit user intent."
-max_action_tokens = 8000
-max_classifier_instruction_tokens = 4000
-max_parent_compaction_tokens = 20000
-max_tool_call_lag = 8
-reasoning_effort = "high"
-review_threshold = 0.8
-free_guardian = false
-persist_scores = false
-reuse_parent_compaction = false
-thread_context = false
-
-[features.guardianv2.transcript]
-include_images = true
-max_message_entry_tokens = 4000
-max_message_transcript_tokens = 16000
-max_recent_non_user_entries = 40
-max_tool_entry_tokens = 4000
-max_tool_transcript_tokens = 16000
-sources = ["tool_calls", "tool_outputs", "reasoning"]
-
-[features.guardianv2.review_scope]
-computer_use_only = false
-sandboxed_exec_commands = true
 [features.multi_agent_v2]
 enabled = true
 default_wait_timeout_ms = 30000
@@ -641,28 +601,6 @@ tool_namespace = "agents"
 usage_hint_text = "Use agents for independent work; keep one coordinator responsible for integration."
 wait_agent_enabled = true
 
-[features.network_proxy]
-enabled = false
-proxy_url = "http://127.0.0.1:8080"
-enable_socks5 = true
-socks_url = "socks5://127.0.0.1:1080"
-enable_socks5_udp = false
-allow_upstream_proxy = true
-dangerously_allow_non_loopback_proxy = false
-dangerously_allow_all_unix_sockets = false
-mode = "full"
-allow_local_binding = true
-credential_broker = false
-
-[features.network_proxy.domains]
-"*" = "allow"
-
-[features.network_proxy.unix_sockets]
-
-# Keep the Codex command proxy disabled for direct outbound networking.
-# With enabled=false, profile domains and metadata-deny rules are NOT enforced by this proxy.
-# Enable the proxy only when explicitly selecting mediated traffic; keep loopback listeners.
-# Host firewalls, DNS, credentials, managed requirements and upstream proxy policy still apply.
 [features.non_prefixed_mcp_tool_names]
 enabled = false
 server_names = []
@@ -674,26 +612,10 @@ prefill_token_weight = 1.0
 sampling_token_weight = 1.0
 reminder_at_remaining_tokens = [200000, 100000, 50000]
 
-[features.token_budget]
-enabled = true
-auto_compact_fallback_buffer_tokens = 25000
-auto_compact_fallback_prompt = "Context is approaching automatic compaction. Preserve critical decisions, constraints, unfinished work, and exact validation evidence before rollover."
-guidance_message = "Track remaining context, keep tool output bounded, and preserve the critical path before automatic compaction."
-reminder_message_template = "Approximately {n_remaining} tokens remain before automatic compaction. Consolidate decisions, evidence, and the next concrete action."
-reminder_threshold_tokens = 100000
-use_history_notes_extension = false
-
 [features.tool_registry]
 error_on_tool_collisions = true
 turn_metadata_includes_tool_info = true
 
-[features.context_management]
-experimental_mode = false
-# Leave experimental context replacement off unless the selected client explicitly requires it.
-
-[features.sleep_tool]
-enabled = true
-mode = "model_driven"
 # Use canonical names for new settings. Existing removed names are retained for this supplied client.
 # Do not infer that an enabled flag supplies an installed tool or backend capability.
 # The desktop requirements-only gates belong to managed requirements, not effective user feature overrides.
