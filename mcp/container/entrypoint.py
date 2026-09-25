@@ -99,8 +99,13 @@ def command(server: str) -> tuple[list[str],dict[str,str]]:
         repo=env.get('MCP_GIT_REPOSITORY','')
         if repo:
             path=(Path('/workspace')/repo).resolve(strict=True)
-            if not path.is_relative_to('/workspace'):raise ValueError('Git repository escapes Workspace')
-            args+=['--repository',str(path)]
+            if not path.is_relative_to('/workspace') or not path.is_dir():
+                raise ValueError('Git repository escapes Workspace or is not a directory')
+        else:
+            path=Path('/workspace')
+        # The supplied image's entrypoint always supplies --repository, even
+        # when the selected repository is the Workspace root.
+        args+=['--repository',str(path)]
         if credential('github-token'):
             env['GIT_ASKPASS']='/opt/codex-mcp/git-askpass.py'
             env['GIT_TERMINAL_PROMPT']='0'

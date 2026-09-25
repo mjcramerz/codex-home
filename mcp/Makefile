@@ -20,7 +20,7 @@ dependencies:
 	apt-get install --no-install-recommends python3 python3-jsonschema podman uidmap acl openssh-client openssh-server apparmor-utils make
 preflight install pull build up down restart status logs doctor toolchain-check uninstall:
 	$(ADMIN) $@
-deploy:
+deploy: check
 	$(ADMIN) install
 	$(ADMIN) build
 	$(ADMIN) up

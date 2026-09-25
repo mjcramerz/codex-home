@@ -278,9 +278,9 @@ def uninstall(cfg: dict) -> None:
         path = Path('/usr/local/bin')/name
         if path.is_symlink() and str(path.readlink()).startswith(cfg['MCP_INSTALL_ROOT']+'/'):
             path.unlink()
-    base = Path('/etc/apparmor.d/abstractions/managed-codex-runtime')
+    base = Path('/etc/apparmor.d/abstractions/codex-runtime')
     if base.exists():
-        text = base.read_text().replace('\n# codex-mcp managed include\n  #include if exists <abstractions/codex-mcp-client>\n','')
+        text = base.read_text().replace('\n# codex-mcp managed include\n#include <abstractions/codex-mcp-client>\n','')
         atomic_write(base,text,0o644)
     Path('/etc/apparmor.d/abstractions/codex-mcp-client').unlink(missing_ok=True)
     for name in ('managed-desktop-wrappers','chatgpt'):

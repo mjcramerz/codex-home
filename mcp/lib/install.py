@@ -10,9 +10,10 @@ import shutil
 import stat
 import subprocess
 import tempfile
+import tomllib
 from typing import Any
 from common import (CODEX_SOCKET_ROOT,PODMAN_RUNTIME_ROOT,SOURCE_ROOT,CREDENTIALS,
-                    ConfigError,atomic_write,clean_env,digest_tree,load_env,locked,
+                    SERVER_NAMES,ConfigError,atomic_write,clean_env,digest_tree,load_env,locked,
                     podman,resolve_accounts,run)
 import toolchain
 
@@ -25,6 +26,12 @@ def root_required() -> None:
         raise ConfigError('this operation requires root; use sudo make <target>')
 
 
+def preseed_pool_ancestor(meta: os.stat_result, devops_gid: int) -> bool:
+    """Accept only the preseed's sticky, root-owned shared pool parent."""
+    return (stat.S_ISDIR(meta.st_mode) and meta.st_uid == 0 and
+            meta.st_gid == devops_gid and stat.S_IMODE(meta.st_mode) == 0o3775)
+
+
 def protected_directory(path: Path, mode: int = 0o755) -> None:
     """Reject symlink/non-root-writable ancestry before writing privileged files."""
     for parent in reversed([path,*path.parents]):
@@ -33,6 +40,12 @@ def protected_directory(path: Path, mode: int = 0o755) -> None:
         if not parent.exists():
             parent.mkdir(mode=mode if parent == path else 0o755)
         st = parent.lstat()
+        if parent == Path('/pool') and parent != path:
+            # The preseed owns this sticky shared root. Its root-owned child
+            # /pool/podman cannot be renamed by the devops group.
+            if not preseed_pool_ancestor(st, grp.getgrnam('devops').gr_gid):
+                raise ConfigError('unsafe preseed pool directory: '+str(parent))
+            continue
         if not stat.S_ISDIR(st.st_mode) or st.st_uid != 0 or st.st_mode & 0o022:
             raise ConfigError('unsafe root-managed directory: '+str(parent))
     os.chmod(path,mode)
@@ -74,6 +87,32 @@ def validate_codex_runtime_layout(cfg: dict[str,Any]) -> None:
     if (not control_link.is_symlink() or
             os.readlink(control_link)!='/data/codex/sockets/app-server-control.sock'):
         raise ConfigError('Codex app-server control socket link does not match the preseed layout')
+
+
+def validate_codex_mcp_config(path: Path, uid: int, gid: int | None = None) -> None:
+    """Require Codex's installed config to point at the protected local client."""
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC)
+    with os.fdopen(fd, 'rb') as stream:
+        meta = os.fstat(stream.fileno())
+        if (not stat.S_ISREG(meta.st_mode) or meta.st_nlink != 1 or
+                meta.st_uid != uid or (gid is not None and meta.st_gid != gid) or
+                meta.st_mode & 0o002 or meta.st_size > 2 * 1024 * 1024):
+            raise ConfigError('unsafe installed Codex configuration: '+str(path))
+        data = stream.read(2 * 1024 * 1024 + 1)
+        if len(data) > 2 * 1024 * 1024:
+            raise ConfigError('installed Codex configuration is too large: '+str(path))
+        settings = tomllib.loads(data.decode('utf-8'))
+    servers = settings.get('mcp_servers', {})
+    if not isinstance(servers, dict):
+        raise ConfigError('invalid installed Codex MCP server table: '+str(path))
+    for name in SERVER_NAMES:
+        key = 'sequential_thinking' if name == 'sequential-thinking' else name
+        spec = servers.get(key)
+        if (not isinstance(spec, dict) or
+                spec.get('command') != '/usr/local/bin/codex-mcp' or
+                spec.get('args') != ['connect', name] or
+                spec.get('enabled') is not True):
+            raise ConfigError(f'{path}: local MCP registration {key} must use the installed client')
 
 
 def preflight(cfg: dict[str,Any], *, need_engine: bool = True) -> list[str]:
@@ -141,6 +180,20 @@ def preflight(cfg: dict[str,Any], *, need_engine: bool = True) -> list[str]:
         validate_codex_runtime_layout(cfg)
     except (OSError,ConfigError) as exc:
         errors.append(str(exc))
+    for path, owner, group in (
+            (Path('/data/codex/usr/home/config.toml'), cfg['DESKTOP_UID'], cfg['DEVOPS_GID']),
+            (Path('/etc/codex/config.toml'), 0, None)):
+        try:
+            validate_codex_mcp_config(path, owner, group)
+        except (OSError, UnicodeError, ValueError) as exc:
+            errors.append('Codex MCP registration check failed: '+str(exc))
+    abstraction = Path('/etc/apparmor.d/abstractions/codex-runtime')
+    try:
+        meta = abstraction.lstat()
+        if not stat.S_ISREG(meta.st_mode) or meta.st_uid != 0 or meta.st_mode & 0o022:
+            raise ConfigError('Codex AppArmor abstraction has unsafe ownership or permissions')
+    except (OSError, ConfigError) as exc:
+        errors.append('Codex AppArmor preflight failed: '+str(exc))
     socket_path = Path(cfg['PODMAN_SOCKET'])
     try:
         st = socket_path.lstat()
@@ -385,13 +438,13 @@ LogLevel VERBOSE
 
 
 def apparmor(cfg: dict[str,Any]) -> None:
-    base = Path('/etc/apparmor.d/abstractions/managed-codex-runtime')
+    base = Path('/etc/apparmor.d/abstractions/codex-runtime')
     if not base.is_file():
         raise ConfigError('preseed AppArmor abstraction is missing; do not silently disable confinement')
-    include = '  #include if exists <abstractions/codex-mcp-client>\n'
+    include = '#include <abstractions/codex-mcp-client>\n'
     text = base.read_text()
     marker = '# codex-mcp managed include'
-    backup = Path(cfg['MCP_CONFIG_DIR'])/'managed-codex-runtime.before-mcp'
+    backup = Path(cfg['MCP_CONFIG_DIR'])/'codex-runtime.before-mcp'
     if not backup.exists():
         atomic_write(backup,text,0o600)
     fragment = f'''# Client-only access; deliberately no podman.sock access.
@@ -407,6 +460,8 @@ unix (connect, send, receive, shutdown) type=stream peer=(addr="{cfg['MCP_SOCKET
     atomic_write(Path('/etc/apparmor.d/abstractions/codex-mcp-client'),fragment,0o644)
     if marker not in text:
         atomic_write(base,text+'\n'+marker+'\n'+include,0o644)
+    elif include not in text:
+        raise ConfigError('Codex AppArmor include marker exists without its client rules')
     for name in ('managed-desktop-wrappers','chatgpt'):
         path = Path('/etc/apparmor.d')/name
         if path.exists():

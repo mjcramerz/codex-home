@@ -25,3 +25,6 @@ home/vendor_imports/
 home/skills/.*
 home/app-server-control/
 home/packages
+mcp/build/
+**/__pycache__/
+*.pyc

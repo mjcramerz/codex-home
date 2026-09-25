@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import signal
 import socket
+import stat
 import subprocess
 import tempfile
 import time
@@ -16,12 +17,56 @@ from test_mcp import Base,SOURCE_ROOT,ConfigError,load_env
 import admin
 import broker
 import client
+import install
 import runtime
 from common import digest_tree
 import struct
 from relay import bridge
 
 class HardeningTests(Base):
+    def test_codex_keymaps_keep_navigation_and_chatgpt_login(self):
+        for source in ('home/config.toml', 'etc/config.toml'):
+            settings = tomllib.loads((SOURCE_ROOT.parent/source).read_text())
+            self.assertEqual(settings['model_provider'], 'openai')
+            self.assertEqual(settings['forced_login_method'], 'chatgpt')
+            keys = settings['tui']['keymap']
+            self.assertEqual(keys['composer']['submit'], 'enter')
+            for context, up, down in (('editor','move_up','move_down'),
+                                      ('list','move_up','move_down'),
+                                      ('pager','scroll_up','scroll_down')):
+                self.assertEqual(keys[context][up], 'up')
+                self.assertEqual(keys[context][down], 'down')
+            self.assertEqual(keys['list']['accept'], 'enter')
+            self.assertEqual(keys['list']['cancel'], 'esc')
+
+    def test_both_codex_configs_register_every_local_server(self):
+        for source in ('home/config.toml', 'etc/config.toml'):
+            path = SOURCE_ROOT.parent/source
+            install.validate_codex_mcp_config(path, os.getuid())
+
+    def test_codex_config_rejects_missing_client_and_symlink(self):
+        source = SOURCE_ROOT.parent/'home/config.toml'
+        path = self.root/'config.toml'
+        text = source.read_text()
+        path.write_text(text.replace('args = ["connect", "filesystem"]',
+                                     'args = ["connect", "other"]', 1))
+        with self.assertRaisesRegex(ConfigError, 'filesystem'):
+            install.validate_codex_mcp_config(path, os.getuid())
+        path.unlink()
+        path.symlink_to(source)
+        with self.assertRaises(OSError):
+            install.validate_codex_mcp_config(path, os.getuid())
+
+    def test_preseed_pool_parent_requires_exact_sticky_root_identity(self):
+        def meta(mode, uid=0, gid=966):
+            return os.stat_result((stat.S_IFDIR | mode, 0, 0, 0, uid, gid, 0, 0, 0, 0))
+        self.assertTrue(install.preseed_pool_ancestor(meta(0o3775), 966))
+        for candidate in (meta(0o2775), meta(0o0775), meta(0o3777),
+                          meta(0o3775, uid=966), meta(0o3775, gid=0)):
+            self.assertFalse(install.preseed_pool_ancestor(candidate, 966))
+        self.assertFalse(install.preseed_pool_ancestor(
+            os.stat_result((stat.S_IFREG | 0o3775, 0, 0, 0, 0, 966, 0, 0, 0, 0)), 966))
+
     def test_duplicate_header_keys_rejected(self):
         a,b=socket.socketpair()
         try:

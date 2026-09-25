@@ -52,6 +52,11 @@ class EntryTests(unittest.TestCase):
         args,_=entry.command('time');self.assertEqual(args[-1],'UTC')
     def test_no_root_paths_for_memory(self):
         args,env=entry.command('memory');self.assertEqual(env['MEMORY_FILE_PATH'],'/state/memory.jsonl')
+    def test_git_defaults_to_workspace_and_rejects_escape(self):
+        args,_=entry.command('git')
+        self.assertEqual(args[-2:],['--repository','/workspace'])
+        os.environ['MCP_GIT_REPOSITORY']='../etc'
+        with self.assertRaises(ValueError):entry.command('git')
     def db(self,server):
         real=Path
         with patch.object(entry,'Path',side_effect=lambda x:self.root/'dbhub.toml' if str(x)=='/tmp/dbhub.toml' else real(x)):

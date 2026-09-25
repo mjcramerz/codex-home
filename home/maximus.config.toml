@@ -1,7 +1,7 @@
 model = "gpt-5.6-sol"
 review_model = "gpt-5.6-terra"
-model_provider = "openai-custom"
-model_catalog_json = "/data/codex/usr/home/.models/default_catalog.json"
+model_provider = "openai"
+model_catalog_json = "/data/codex/usr/instructions/models/default_catalog.json"
 model_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
 service_tier = "default"
 

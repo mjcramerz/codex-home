@@ -60,5 +60,6 @@ for database grants. The named network allows egress and is not an SSRF allowlis
 restrict destinations outside the container where untrusted content is involved.
 
 Record exact commands, exit statuses, host versions, elapsed time, image IDs and
-sanitized diagnostics. `make verify-full` must pass on the host, including the real
-Perl hook modules. Never replace a failed security check with a blanket sandbox bypass.
+sanitized diagnostics. Run `make check test` before deployment, then run the
+target acceptance commands above. Never replace a failed security check with
+a blanket sandbox bypass.

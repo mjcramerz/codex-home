@@ -1,5 +1,5 @@
 # Codex and ChatGPT desktop runtime configuration.
-# Install home/ as $CODEX_HOME; etc/config.toml is its complete source mirror.
+# Install home/ as $CODEX_HOME; this file supplies system defaults.
 # Deployment paths match the supplied Debian preseed.
 # Full host permissions and automatic local MCP tool approval are intentional.
 
@@ -55,7 +55,7 @@ chatgpt_base_url = "https://chatgpt.com/backend-api"
 # Preserve the model/provider identifiers required by the supplied custom client.
 model = "gpt-5.6-sol"
 review_model = "gpt-5.6-terra"
-model_provider = "openai-custom"
+model_provider = "openai"
 personality = "pragmatic"
 service_tier = "default"
 model_context_window = 1050000
@@ -102,55 +102,13 @@ model_catalog_json = "/data/codex/usr/instructions/models/default_catalog.json"
 model_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
 # This file is the compaction source; do not also set compact_prompt.
 experimental_compact_prompt_file = "/data/codex/usr/instructions/default/compact/prompt.md"
-openai_base_url = "https://api.openai.com/v1"
+# openai_base_url = "https://api.openai.com/v1"  # API-key route is disabled.
 apps_mcp_product_sku = "codex"
 
 [goals]
 max_goal_token_budget = 1000000
 
-[model_providers]
-
-[model_providers.openai-custom]
-name = "OpenAI (Custom)"
-base_url = "https://chatgpt.com/backend-api/codex"
-env_key = "OPENAI_API_KEY"
-env_key_instructions = "Use ChatGPT login or set OPENAI_API_KEY for API-key authentication."
-requires_openai_auth = true
-wire_api = "responses"
-request_max_retries = 4
-stream_max_retries = 3
-stream_idle_timeout_ms = 40000
-supports_standalone_web_search = true
-supports_websockets = true
-websocket_connect_timeout_ms = 120000
-
-[model_providers.openai-custom.http_headers]
-
-[model_providers.openai-custom.env_http_headers]
-OpenAI-Organization = "OPENAI_ORGANIZATION"
-OpenAI-Project = "OPENAI_PROJECT"
-
-[model_providers.openai-custom.query_params]
-
-[model_providers.cloudflare-ai-embedding]
-name = "Cloudflare Workers AI embedding"
-base_url = "https://api.cloudflare.com/client/v4/accounts/45f7447eb2692c6351ecbb3757e1192c/ai/v1"
-env_key = "CLOUDFLARE_API_TOKEN"
-env_key_instructions = "Set CLOUDFLARE_API_TOKEN to a token allowed to invoke Workers AI."
-requires_openai_auth = false
-wire_api = "responses"
-request_max_retries = 2
-stream_max_retries = 0
-stream_idle_timeout_ms = 30000
-supports_standalone_web_search = false
-supports_websockets = false
-websocket_connect_timeout_ms = 120000
-
-[model_providers.cloudflare-ai-embedding.http_headers]
-
-[model_providers.cloudflare-ai-embedding.env_http_headers]
-
-[model_providers.cloudflare-ai-embedding.query_params]
+# ChatGPT sign-in uses the built-in OpenAI provider. No API-key provider is configured.
 
 [notice]
 fast_default_opt_out = false
@@ -293,9 +251,7 @@ terminal_title = ["activity", "project"]
 theme = "1337"
 vim_mode_default = false
 
-[tui.model_availability_nux]
-
-[tui.keymap]
+# Explicit, terminal-friendly bindings. Arrow keys navigate lists and pagers.
 
 [tui.keymap.global]
 clear_terminal = "ctrl-l"
@@ -319,8 +275,8 @@ interrupt_turn = "esc"
 [tui.keymap.composer]
 history_search_next = "ctrl-s"
 history_search_previous = "ctrl-r"
-queue = "ctrl-q"
-submit = "ctrl-enter"
+queue = "tab"
+submit = "enter"
 toggle_shortcuts = "f1"
 
 [tui.keymap.editor]
@@ -343,38 +299,38 @@ move_word_right = "alt-right"
 yank = "ctrl-y"
 
 [tui.keymap.list]
-accept = "f2"
-cancel = "f3"
-jump_bottom = "f4"
-jump_top = "f5"
-move_down = "alt-shift-down"
-move_left = "alt-shift-left"
-move_right = "alt-shift-right"
-move_up = "alt-shift-up"
+accept = "enter"
+cancel = "esc"
+jump_bottom = "end"
+jump_top = "home"
+move_down = "down"
+move_left = "left"
+move_right = "right"
+move_up = "up"
 page_down = "page-down"
 page_up = "page-up"
 
 [tui.keymap.pager]
-close = "q"
+close = ["esc", "q"]
 close_transcript = "ctrl-shift-t"
 half_page_down = "ctrl-d"
 half_page_up = "ctrl-b"
-jump_bottom = "shift-end"
-jump_top = "shift-home"
-page_down = "space"
-page_up = "shift-space"
-scroll_down = "ctrl-down"
-scroll_up = "ctrl-up"
+jump_bottom = "end"
+jump_top = "home"
+page_down = ["page-down", "space"]
+page_up = ["page-up", "shift-space"]
+scroll_down = "down"
+scroll_up = "up"
 
 [tui.keymap.approval]
-approve = "alt-y"
-approve_for_prefix = "alt-p"
-approve_for_session = "alt-a"
-cancel = "alt-c"
-decline = "alt-n"
-deny = "alt-d"
-open_fullscreen = "alt-v"
-open_thread = "alt-o"
+approve = "y"
+approve_for_prefix = "p"
+approve_for_session = "a"
+cancel = "esc"
+decline = "d"
+deny = "n"
+open_fullscreen = "v"
+open_thread = "o"
 
 [tui.keymap.vim_normal]
 append_after_cursor = "a"
@@ -402,33 +358,51 @@ start_delete_operator = "d"
 start_yank_operator = "y"
 substitute_char = "s"
 yank_line = "shift-y"
+enter_replace_mode = "shift-r"
+find_backward = "shift-f"
+find_forward = "f"
+jump_bottom = "shift-g"
+jump_top = "g"
+redo = "ctrl-r"
+repeat_last_change = "."
+replace_char = "r"
+till_backward = "shift-t"
+till_forward = "t"
+undo = "u"
 
 [tui.keymap.vim_operator]
-cancel = "ctrl-alt-c"
-delete_line = "ctrl-alt-d"
-motion_down = "ctrl-alt-j"
-motion_left = "ctrl-alt-h"
-motion_line_end = "ctrl-alt-e"
-motion_line_start = "ctrl-alt-a"
-motion_right = "ctrl-alt-l"
-motion_up = "ctrl-alt-k"
-motion_word_backward = "ctrl-alt-b"
-motion_word_end = "ctrl-alt-n"
-motion_word_forward = "ctrl-alt-f"
-select_around_text_object = "ctrl-alt-r"
-select_inner_text_object = "ctrl-alt-i"
-yank_line = "ctrl-alt-y"
+cancel = "esc"
+delete_line = "d"
+motion_down = "j"
+motion_left = "h"
+motion_line_end = "$"
+motion_line_start = "0"
+motion_right = "l"
+motion_up = "k"
+motion_word_backward = "b"
+motion_word_end = "e"
+motion_word_forward = "w"
+select_around_text_object = "a"
+select_inner_text_object = "i"
+yank_line = "y"
+motion_find_backward = "shift-f"
+motion_find_forward = "f"
+motion_jump_bottom = "shift-g"
+motion_jump_top = "g"
+motion_till_backward = "shift-t"
+motion_till_forward = "t"
 
 [tui.keymap.vim_text_object]
 backtick = "`"
 big_word = "shift-w"
 braces = "{"
 brackets = "["
-cancel = "ctrl-shift-x"
+cancel = "esc"
 double_quote = "\""
 parentheses = "("
 single_quote = "'"
-word = "alt-w"
+word = "w"
+
 [audio]
 microphone = "default"
 speaker = "default"
@@ -1242,7 +1216,7 @@ CODEX_HOOK_SCHEMA_DIR = "/data/codex/usr/home/.hooks/schemas"
 "^AWS_.*" = "exclude"
 "^AZURE_.*" = "exclude"
 "^GCP_.*" = "exclude"
-"^OPENAI_.*" = "exclude"
+# "^OPENAI_.*" = "exclude"  # API-specific entry; generic key/token/secret rules remain active.
 "^ANTHROPIC_.*" = "exclude"
 "^GITHUB_.*" = "exclude"
 "^GITLAB_.*" = "exclude"
@@ -1277,7 +1251,7 @@ dangerously_allow_all_unix_sockets = false
 allow_local_binding = true
 
 [permissions.full.network.domains]
-"api.openai.com" = "allow"
+# "api.openai.com" = "allow"  # API-key endpoint disabled for ChatGPT sign-in.
 "chatgpt.com" = "allow"
 "developers.openai.com" = "allow"
 "platform.openai.com" = "allow"
@@ -1387,7 +1361,7 @@ dangerously_allow_all_unix_sockets = false
 allow_local_binding = true
 
 [permissions.workspace.network.domains]
-"api.openai.com" = "allow"
+# "api.openai.com" = "allow"  # API-key endpoint disabled for ChatGPT sign-in.
 "chatgpt.com" = "allow"
 "developers.openai.com" = "allow"
 "platform.openai.com" = "allow"
@@ -1497,7 +1471,7 @@ dangerously_allow_all_unix_sockets = false
 allow_local_binding = false
 
 [permissions.readonly.network.domains]
-"api.openai.com" = "allow"
+# "api.openai.com" = "allow"  # API-key endpoint disabled for ChatGPT sign-in.
 "chatgpt.com" = "allow"
 "developers.openai.com" = "allow"
 "platform.openai.com" = "allow"
