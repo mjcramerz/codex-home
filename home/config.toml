@@ -104,9 +104,12 @@ model_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
 experimental_compact_prompt_file = "/data/codex/usr/instructions/default/compact/prompt.md"
 # openai_base_url = "https://api.openai.com/v1"  # API-key route is disabled.
 apps_mcp_product_sku = "codex"
-allow_symlinked_codex_home = false
-mcp_optional_startup_grace_ms = 1000
-thread_unload_delay_secs = 60
+# not supported by Codex 0.147.0; retained inactive below.
+# allow_symlinked_codex_home = false
+# not supported by Codex 0.147.0; retained inactive below.
+# mcp_optional_startup_grace_ms = 1000
+# not supported by Codex 0.147.0; retained inactive below.
+# thread_unload_delay_secs = 60
 oss_provider = "ollama"
 
 # Optional root settings: activate only one compatible mechanism after checking the target release.
@@ -120,8 +123,9 @@ oss_provider = "ollama"
 # Keep upstream 'experimental / do not use' endpoints unset unless the custom client requires them.
 # Do not add sandbox_mode or sandbox_workspace_write alongside active default_permissions.
 
-[goals]
-max_goal_token_budget = 1000000
+# not supported by Codex 0.147.0; retained inactive below.
+# [goals]
+# max_goal_token_budget = 1000000
 
 # ChatGPT sign-in uses the built-in OpenAI provider. No API-key provider is configured.
 
@@ -131,7 +135,8 @@ hide_full_access_warning = true
 "hide_gpt-5.1-codex-max_migration_prompt" = true
 hide_gpt5_1_migration_prompt = true
 hide_rate_limit_model_nudge = true
-hide_world_writable_warning = true
+# Windows-only world-writable directory notice.
+# hide_world_writable_warning = true
 
 [notice.model_migrations]
 
@@ -150,50 +155,59 @@ policy = "Assess the proposed action against the current request, native permiss
 persistence = "save-all"
 max_bytes = 100000000
 
-[instruction_overrides]
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides]
 
-[instruction_overrides.agents]
-hierarchical_instructions_file = "/data/codex/usr/instructions/default/agents/hierarchical.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.agents]
+# hierarchical_instructions_file = "/data/codex/usr/instructions/default/agents/hierarchical.md"
 
-[instruction_overrides.models]
-base_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.models]
+# base_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
 
-[instruction_overrides.modes]
-default_instructions_file = "/data/codex/usr/instructions/default/modes/default.md"
-plan_instructions_file = "/data/codex/usr/instructions/default/modes/plan.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.modes]
+# default_instructions_file = "/data/codex/usr/instructions/default/modes/default.md"
+# plan_instructions_file = "/data/codex/usr/instructions/default/modes/plan.md"
 
-[instruction_overrides.permissions]
-approval_policy_never_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/never.md"
-approval_policy_on_failure_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/on_failure.md"
-approval_policy_on_request_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/on_request.md"
-approval_policy_on_request_rule_request_permission_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/on_request_rule_request_permission.md"
-approval_policy_unless_trusted_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/unless_trusted.md"
-auto_review_approval_suffix_instructions_file = "/data/codex/usr/instructions/default/permissions/auto_review_suffix.md"
-granular_intro_instructions_file = "/data/codex/usr/instructions/default/permissions/granular_intro.md"
-request_permissions_tool_instructions_file = "/data/codex/usr/instructions/default/permissions/request_permissions_tool.md"
-sandbox_mode_danger_full_access_instructions_file = "/data/codex/usr/instructions/default/permissions/sandbox_mode/danger_full_access.md"
-sandbox_mode_read_only_instructions_file = "/data/codex/usr/instructions/default/permissions/sandbox_mode/read_only.md"
-sandbox_mode_workspace_write_instructions_file = "/data/codex/usr/instructions/default/permissions/sandbox_mode/workspace_write.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.permissions]
+# approval_policy_never_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/never.md"
+# approval_policy_on_failure_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/on_failure.md"
+# approval_policy_on_request_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/on_request.md"
+# approval_policy_on_request_rule_request_permission_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/on_request_rule_request_permission.md"
+# approval_policy_unless_trusted_instructions_file = "/data/codex/usr/instructions/default/permissions/approval_policy/unless_trusted.md"
+# auto_review_approval_suffix_instructions_file = "/data/codex/usr/instructions/default/permissions/auto_review_suffix.md"
+# granular_intro_instructions_file = "/data/codex/usr/instructions/default/permissions/granular_intro.md"
+# request_permissions_tool_instructions_file = "/data/codex/usr/instructions/default/permissions/request_permissions_tool.md"
+# sandbox_mode_danger_full_access_instructions_file = "/data/codex/usr/instructions/default/permissions/sandbox_mode/danger_full_access.md"
+# sandbox_mode_read_only_instructions_file = "/data/codex/usr/instructions/default/permissions/sandbox_mode/read_only.md"
+# sandbox_mode_workspace_write_instructions_file = "/data/codex/usr/instructions/default/permissions/sandbox_mode/workspace_write.md"
 
-[instruction_overrides.personality]
-custom_instructions_file = "/data/codex/usr/instructions/default/personality/custom.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.personality]
+# custom_instructions_file = "/data/codex/usr/instructions/default/personality/custom.md"
 
-[instruction_overrides.review]
-base_branch_instructions_file = "/data/codex/usr/instructions/default/review/base_branch.md"
-base_branch_backup_instructions_file = "/data/codex/usr/instructions/default/review/base_branch_backup.md"
-commit_instructions_file = "/data/codex/usr/instructions/default/review/commit.md"
-commit_with_title_instructions_file = "/data/codex/usr/instructions/default/review/commit_with_title.md"
-exit_interrupted_instructions_file = "/data/codex/usr/instructions/default/review/exit_interrupted.xml"
-exit_success_instructions_file = "/data/codex/usr/instructions/default/review/exit_success.xml"
-rubric_instructions_file = "/data/codex/usr/instructions/default/review/rubric.md"
-uncommitted_instructions_file = "/data/codex/usr/instructions/default/review/uncommitted.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.review]
+# base_branch_instructions_file = "/data/codex/usr/instructions/default/review/base_branch.md"
+# base_branch_backup_instructions_file = "/data/codex/usr/instructions/default/review/base_branch_backup.md"
+# commit_instructions_file = "/data/codex/usr/instructions/default/review/commit.md"
+# commit_with_title_instructions_file = "/data/codex/usr/instructions/default/review/commit_with_title.md"
+# exit_interrupted_instructions_file = "/data/codex/usr/instructions/default/review/exit_interrupted.xml"
+# exit_success_instructions_file = "/data/codex/usr/instructions/default/review/exit_success.xml"
+# rubric_instructions_file = "/data/codex/usr/instructions/default/review/rubric.md"
+# uncommitted_instructions_file = "/data/codex/usr/instructions/default/review/uncommitted.md"
 
-[instruction_overrides.tools]
-request_user_input_instructions_file = "/data/codex/usr/instructions/default/tools/request_user_input.md"
-search_instructions_file = "/data/codex/usr/instructions/default/tools/search.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.tools]
+# request_user_input_instructions_file = "/data/codex/usr/instructions/default/tools/request_user_input.md"
+# search_instructions_file = "/data/codex/usr/instructions/default/tools/search.md"
 
-[instruction_overrides.tui]
-init_instructions_file = "/data/codex/usr/instructions/default/tui/init.md"
+# not supported by Codex 0.147.0; retained inactive below.
+# [instruction_overrides.tui]
+# init_instructions_file = "/data/codex/usr/instructions/default/tui/init.md"
 
 [realtime]
 version = "v3"
@@ -201,9 +215,10 @@ type = "conversational"
 transport = "websocket"
 voice = "sol"
 
-[windows]
-sandbox = "unelevated"
-sandbox_private_desktop = true
+# Windows-only setting; retained inactive below.
+# [windows]
+# sandbox = "unelevated"
+# sandbox_private_desktop = true
 
 [tui]
 alternate_screen = "auto"
@@ -223,10 +238,14 @@ terminal_resize_reflow_max_rows = 20000
 terminal_title = ["activity", "project"]
 theme = "1337"
 vim_mode_default = false
-auto_recap = true
-disable_paste_burst = true
-question_esc_back = true
-whimsy = true
+# not supported by Codex 0.147.0; retained inactive below.
+# auto_recap = true
+# not supported by Codex 0.147.0; retained inactive below.
+# disable_paste_burst = true
+# not supported by Codex 0.147.0; retained inactive below.
+# question_esc_back = true
+# not supported by Codex 0.147.0; retained inactive below.
+# whimsy = true
 
 # Explicit, terminal-friendly bindings. Arrow keys navigate lists and pagers.
 
@@ -288,7 +307,8 @@ page_down = "page-down"
 page_up = "page-up"
 
 [tui.keymap.pager]
-close = ["esc", "q"]
+# Esc is reserved for transcript editing, not pager close.
+close = "q"
 close_transcript = "ctrl-shift-t"
 half_page_down = "ctrl-d"
 half_page_up = "ctrl-b"
@@ -303,7 +323,8 @@ scroll_up = "up"
 approve = "y"
 approve_for_prefix = "p"
 approve_for_session = "a"
-cancel = "esc"
+# Keep distinct from list.cancel (Esc) in the approval overlay.
+cancel = "ctrl-c"
 decline = "d"
 deny = "n"
 open_fullscreen = "v"
@@ -335,17 +356,28 @@ start_delete_operator = "d"
 start_yank_operator = "y"
 substitute_char = "s"
 yank_line = "shift-y"
-enter_replace_mode = "shift-r"
-find_backward = "shift-f"
-find_forward = "f"
-jump_bottom = "shift-g"
-jump_top = "g"
-redo = "ctrl-r"
-repeat_last_change = "."
-replace_char = "r"
-till_backward = "shift-t"
-till_forward = "t"
-undo = "u"
+# not supported by Codex 0.147.0; retained inactive below.
+# enter_replace_mode = "shift-r"
+# not supported by Codex 0.147.0; retained inactive below.
+# find_backward = "shift-f"
+# not supported by Codex 0.147.0; retained inactive below.
+# find_forward = "f"
+# not supported by Codex 0.147.0; retained inactive below.
+# jump_bottom = "shift-g"
+# not supported by Codex 0.147.0; retained inactive below.
+# jump_top = "g"
+# not supported by Codex 0.147.0; retained inactive below.
+# redo = "ctrl-r"
+# not supported by Codex 0.147.0; retained inactive below.
+# repeat_last_change = "."
+# not supported by Codex 0.147.0; retained inactive below.
+# replace_char = "r"
+# not supported by Codex 0.147.0; retained inactive below.
+# till_backward = "shift-t"
+# not supported by Codex 0.147.0; retained inactive below.
+# till_forward = "t"
+# not supported by Codex 0.147.0; retained inactive below.
+# undo = "u"
 
 [tui.keymap.vim_operator]
 cancel = "esc"
@@ -362,12 +394,18 @@ motion_word_forward = "w"
 select_around_text_object = "a"
 select_inner_text_object = "i"
 yank_line = "y"
-motion_find_backward = "shift-f"
-motion_find_forward = "f"
-motion_jump_bottom = "shift-g"
-motion_jump_top = "g"
-motion_till_backward = "shift-t"
-motion_till_forward = "t"
+# not supported by Codex 0.147.0; retained inactive below.
+# motion_find_backward = "shift-f"
+# not supported by Codex 0.147.0; retained inactive below.
+# motion_find_forward = "f"
+# not supported by Codex 0.147.0; retained inactive below.
+# motion_jump_bottom = "shift-g"
+# not supported by Codex 0.147.0; retained inactive below.
+# motion_jump_top = "g"
+# not supported by Codex 0.147.0; retained inactive below.
+# motion_till_backward = "shift-t"
+# not supported by Codex 0.147.0; retained inactive below.
+# motion_till_forward = "t"
 
 [tui.keymap.vim_text_object]
 backtick = "`"
@@ -413,8 +451,9 @@ trace_exporter = "none"
 
 [otel.tracestate]
 
-[otel.tool_result]
-max_bytes = 0
+# not supported by Codex 0.147.0; retained inactive below.
+# [otel.tool_result]
+# max_bytes = 0
 # Do not duplicate tool-response bodies into telemetry. This does not alter model-visible tool output.
 [analytics]
 enabled = false
@@ -424,17 +463,21 @@ enabled = false
 
 # Live user-config feature keys for the supplied schema baseline; newer clients may add model-gated capabilities.
 [features]
-apply_patch_preserve_line_endings = false
+# not supported by Codex 0.147.0; retained inactive below.
+# apply_patch_preserve_line_endings = false
 apply_patch_streaming_events = true
 apps = true
 auth_elicitation = false
-background_paginated_rollout_migration = false
+# not supported by Codex 0.147.0; retained inactive below.
+# background_paginated_rollout_migration = false
 chronicle = false
 code_mode_buffered_exec = false
-code_mode_interrupt = true
+# not supported by Codex 0.147.0; retained inactive below.
+# code_mode_interrupt = true
 code_mode_only = false
 concurrent_reasoning_summaries = false
-context_management = false
+# not supported by Codex 0.147.0; retained inactive below.
+# context_management = false
 default_mode_request_user_input = true
 deferred_executor = false
 deferred_tool_world_state = false
@@ -447,15 +490,20 @@ external_agent_memory_import = false
 fast_mode = false
 goals = true
 guardian_approval = false
-guardian_enhanced_node_repl_transcripts = false
-guardian_node_repl_transcript_images = false
-guardian_reuse_parent_compaction = false
+# not supported by Codex 0.147.0; retained inactive below.
+# guardian_enhanced_node_repl_transcripts = false
+# not supported by Codex 0.147.0; retained inactive below.
+# guardian_node_repl_transcript_images = false
+# not supported by Codex 0.147.0; retained inactive below.
+# guardian_reuse_parent_compaction = false
 guardianv2 = false
 hooks = true
 image_generation = true
 image_resize_notice = true
-in_app_chat = true
-in_app_dictation = true
+# not supported by Codex 0.147.0; retained inactive below.
+# in_app_chat = true
+# not supported by Codex 0.147.0; retained inactive below.
+# in_app_dictation = true
 local_thread_store_compression = false
 mcp_2026_07_28 = false
 memories = true
@@ -466,14 +514,16 @@ personality = true
 plugin_sharing = true
 plugins = true
 prevent_idle_sleep = true
-psp = false
+# not supported by Codex 0.147.0; retained inactive below.
+# psp = false
 realtime_conversation = true
 recommended_plugins = true
 remote_compaction_v2 = true
 remote_plugin = true
 request_permissions_tool = true
 respect_system_proxy = true
-retain_client_developer_messages = false
+# not supported by Codex 0.147.0; retained inactive below.
+# retain_client_developer_messages = false
 runtime_metrics = false
 secret_auth_storage = true
 shell_snapshot = true
@@ -481,42 +531,66 @@ shell_tool = true
 shell_zsh_fork = false
 skill_mcp_dependency_install = true
 skill_search = true
-sleep_tool = true
+# not supported by Codex 0.147.0; retained inactive below.
+# sleep_tool = true
 standalone_web_search = true
 terminal_visualization_instructions = true
 token_budget = true
 tool_call_mcp_elicitation = true
 tool_suggest = true
-unbounded_connection_retries = false
+# not supported by Codex 0.147.0; retained inactive below.
+# unbounded_connection_retries = false
 unified_exec = true
 unified_exec_zsh_fork = true
-unified_image_budget = true
-use_agent_identity = true
+# not supported by Codex 0.147.0; retained inactive below.
+# unified_image_budget = true
+# Use normal account authentication, not optional agent registration.
+use_agent_identity = false
 view_image = true
 workspace_dependencies = false
-transcript_v2 = false
-unified_exec_tty = true
-powershell_shell_version = false
-shell_snapshot_v2 = false
-cwd_relative_turn_diffs = false
-content_item_kinds = true
-code_mode_prewarm = false
-write_stdin_approval = false
-windows_sandbox_service = false
-worktrees = false
-mcp_oauth_refresh_coordination = false
-skip_host_skill_discovery = false
-omit_app_server_notification_media = false
-guardian_ext = false
-reasoning_effort_override = false
-bedrock_setup_wizard = false
-artifact = false
-step_model_switching = false
-compaction_image_budget = true
+# not supported by Codex 0.147.0; retained inactive below.
+# transcript_v2 = false
+# not supported by Codex 0.147.0; retained inactive below.
+# unified_exec_tty = true
+# Windows-only setting; retained inactive below.
+# powershell_shell_version = false
+# not supported by Codex 0.147.0; retained inactive below.
+# shell_snapshot_v2 = false
+# not supported by Codex 0.147.0; retained inactive below.
+# cwd_relative_turn_diffs = false
+# not supported by Codex 0.147.0; retained inactive below.
+# content_item_kinds = true
+# not supported by Codex 0.147.0; retained inactive below.
+# code_mode_prewarm = false
+# not supported by Codex 0.147.0; retained inactive below.
+# write_stdin_approval = false
+# Windows-only setting; retained inactive below.
+# windows_sandbox_service = false
+# not supported by Codex 0.147.0; retained inactive below.
+# worktrees = false
+# not supported by Codex 0.147.0; retained inactive below.
+# mcp_oauth_refresh_coordination = false
+# not supported by Codex 0.147.0; retained inactive below.
+# skip_host_skill_discovery = false
+# not supported by Codex 0.147.0; retained inactive below.
+# omit_app_server_notification_media = false
+# not supported by Codex 0.147.0; retained inactive below.
+# guardian_ext = false
+# not supported by Codex 0.147.0; retained inactive below.
+# reasoning_effort_override = false
+# not supported by Codex 0.147.0; retained inactive below.
+# bedrock_setup_wizard = false
+# not supported by Codex 0.147.0; retained inactive below.
+# artifact = false
+# not supported by Codex 0.147.0; retained inactive below.
+# step_model_switching = false
+# not supported by Codex 0.147.0; retained inactive below.
+# compaction_image_budget = true
 
 [features.code_mode]
 enabled = true
-default_exec_yield_time_ms = 10000
+# not supported by Codex 0.147.0; retained inactive below.
+# default_exec_yield_time_ms = 10000
 direct_only_tool_namespaces = []
 excluded_tool_namespaces = []
 
@@ -561,7 +635,8 @@ reminder_at_remaining_tokens = [200000, 100000, 50000]
 
 [features.tool_registry]
 error_on_tool_collisions = true
-turn_metadata_includes_tool_info = true
+# not supported by Codex 0.147.0; retained inactive below.
+# turn_metadata_includes_tool_info = true
 
 # Use canonical names for new settings. Existing removed names are retained for this supplied client.
 # Do not infer that an enabled flag supplies an installed tool or backend capability.
@@ -592,7 +667,8 @@ open_world_enabled = true
 
 [skills]
 include_instructions = true
-max_context_tokens = 10000
+# not supported by Codex 0.147.0; retained inactive below.
+# max_context_tokens = 10000
 
 [[skills.config]]
 enabled = true
@@ -726,8 +802,9 @@ enabled = true
 [plugins."vercel-ui@codex-home"]
 enabled = true
 
-[plugins."winui@codex-home"]
-enabled = true
+# Windows-only plugin; retained inactive below.
+# [plugins."winui@codex-home"]
+# enabled = true
 
 [plugins."render@codex-home"]
 enabled = true
@@ -1456,6 +1533,7 @@ dangerously_allow_all_unix_sockets = false
 allow_local_binding = true
 
 [permissions.full.network.domains]
+"auth.openai.com" = "allow"
 # "api.openai.com" = "allow"  # API-key endpoint disabled for ChatGPT sign-in.
 "chatgpt.com" = "allow"
 "developers.openai.com" = "allow"
@@ -2264,6 +2342,7 @@ dangerously_allow_all_unix_sockets = false
 allow_local_binding = true
 
 [permissions.workspace.network.domains]
+"auth.openai.com" = "allow"
 # "api.openai.com" = "allow"  # API-key endpoint disabled for ChatGPT sign-in.
 "chatgpt.com" = "allow"
 "developers.openai.com" = "allow"
@@ -3072,6 +3151,7 @@ dangerously_allow_all_unix_sockets = false
 allow_local_binding = false
 
 [permissions.readonly.network.domains]
+"auth.openai.com" = "allow"
 # "api.openai.com" = "allow"  # API-key endpoint disabled for ChatGPT sign-in.
 "chatgpt.com" = "allow"
 "developers.openai.com" = "allow"
@@ -3857,26 +3937,33 @@ supports_ssh = false
 # Verify the app supports custom_file_handlers and the executable/icon exist on the target host.
 # Do not infer that the desktop app itself supports Debian from this optional handler declaration.
 
-[browser_use]
-allow_history_access = false
+# not supported by Codex 0.147.0; retained inactive below.
+# [browser_use]
+# allow_history_access = false
 
-[browser_use.default_origin_policy]
-access = "allow"
-downloads = "allow"
-uploads = "allow"
-full_cdp_access = "deny"
+# not supported by Codex 0.147.0; retained inactive below.
+# [browser_use.default_origin_policy]
+# access = "allow"
+# downloads = "allow"
+# uploads = "allow"
+# full_cdp_access = "deny"
 
-[browser_use.origins]
+# not supported by Codex 0.147.0; retained inactive below.
+# [browser_use.origins]
 
-[computer_use]
-default_app_access = "deny"
+# not supported by Codex 0.147.0; retained inactive below.
+# [computer_use]
+# default_app_access = "deny"
 
-[computer_use.macos.bundle_ids]
+# not supported by Codex 0.147.0; retained inactive below.
+# [computer_use.macos.bundle_ids]
 
-[computer_use.windows]
-exes = []
+# not supported by Codex 0.147.0; retained inactive below.
+# [computer_use.windows]
+# exes = []
 
-[computer_use.windows.aumids]
+# not supported by Codex 0.147.0; retained inactive below.
+# [computer_use.windows.aumids]
 # Do not grant desktop-control authority merely to make a table nonempty.
 # Select actual app rules only for an authorized computer-use task; Linux CLI access is independent.
 
@@ -3885,7 +3972,8 @@ discoverables = []
 disabled_tools = []
 
 [hooks]
-Interrupt = []
+# not supported by Codex 0.147.0; retained inactive below.
+# Interrupt = []
 PermissionRequest = []
 PostCompact = []
 PostToolUse = []
@@ -3906,7 +3994,8 @@ UserPromptSubmit = []
 [projects]
 # Add only a verified absolute project path and its explicit trust_level. Do not trust / or an arbitrary checkout.
 
-[responses_api_metadata]
+# not supported by Codex 0.147.0; retained inactive below.
+# [responses_api_metadata]
 # Keep product-owned metadata empty unless the target client supplies an explicit non-secret contract.
 
 [profiles]
