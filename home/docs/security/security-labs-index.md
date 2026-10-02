@@ -45,9 +45,9 @@ This is the central knowledge index for reusable security operations, cyber defe
 
 ## Security templates
 
-- `$CODEX_HOME/templates/system/offsec-defense-kit/overview.md`
-- `$CODEX_HOME/templates/system/mobile-wireless-defense-kit/overview.md`
-- `$CODEX_HOME/templates/system/nethunter-pixel9a-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/offsec-defense-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/mobile-wireless-defense-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/nethunter-pixel9a-kit/overview.md`
 
 ## Security snippets
 

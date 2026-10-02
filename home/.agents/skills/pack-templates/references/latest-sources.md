@@ -23,7 +23,7 @@ Use this template when you need pack-templates reference bundle in the authorize
 
 ## Skill purpose
 
-Create or update pack templates under $CODEX_HOME/templates/. Use when adding scaffolds, adjusting template READMEs, or wiring template references into docs and indexes.
+Create or update pack templates under /data/codex/usr/examples/templates/. Use when adding scaffolds, adjusting template READMEs, or wiring template references into docs and indexes.
 
 ## SKILL.md coverage checklist
 

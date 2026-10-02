@@ -1,0 +1,14 @@
+[otel]
+
+[otel.exporter]
+
+[otel.exporter.otlp-grpc]
+endpoint = "https://example.invalid"
+
+[otel.exporter.otlp-grpc.headers]
+example = "example"
+
+[otel.exporter.otlp-grpc.tls]
+ca-certificate = "example"
+client-certificate = "example"
+client-private-key = "example"

@@ -1,0 +1,23 @@
+[mcp_servers]
+
+[mcp_servers.example_http]
+enabled = false
+required = false
+url = "https://example.invalid/mcp"
+auth = "oauth"
+oauth_resource = "https://example.invalid/mcp"
+scopes = ["example:read"]
+environment_id = "example"
+
+[mcp_servers.example_http.oauth]
+authorization_server_issuer = "https://example.invalid"
+callback_port = 8088
+callback_url = "http://127.0.0.1:8088/callback"
+client_id = "example-public-client"
+client_secret = "REPLACE_ME_PRIVATE_CLIENT_SECRET"
+
+[mcp_servers.example_http.http_headers]
+X-Example = "read-only"
+
+[mcp_servers.example_http.env_http_headers]
+X-Example-Context = "EXAMPLE_CONTEXT"

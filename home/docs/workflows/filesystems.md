@@ -69,7 +69,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-filesystems.md` before executin
 - `../filesystems/partitioning.md`
 - `../filesystems/fstab.md`
 - `../filesystems/filesystem-types.md`
-- `$CODEX_HOME/templates/filesystems/ops-scripts/`
+- `/data/codex/usr/examples/templates/filesystems/ops-scripts/`
 - `$CODEX_HOME/snippets/bash/fs_probe.sh`
 - `$CODEX_HOME/snippets/bash/fstab_update.sh`
 - Read the `storage-filesystems` skill only when its trigger matches this task and the skill is available.

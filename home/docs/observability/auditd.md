@@ -34,7 +34,7 @@ Apply the following practices to Linux auditd rules and safe logging.
 
 See also:
 - `overview.md`
-- `$CODEX_HOME/templates/observability/auditd-rules-skeleton/`
+- `/data/codex/usr/examples/templates/observability/auditd-rules-skeleton/`
 - `$CODEX_HOME/snippets/auditd/audit.rules`
 - `../workflows/auditd.md`
 - Read the `secops-auditd` skill only when its trigger matches this task and the skill is available.

@@ -71,5 +71,5 @@ interface:
 - `$CODEX_HOME/index/domains/system/sysctl.md`
 - `$CODEX_HOME/docs/system/sysctl.md`
 - `$CODEX_HOME/docs/workflows/sysctl.md`
-- `$CODEX_HOME/templates/system/sysctl-baseline/`
+- `/data/codex/usr/examples/templates/system/sysctl-baseline/`
 - `$CODEX_HOME/snippets/system/sysctl.conf`

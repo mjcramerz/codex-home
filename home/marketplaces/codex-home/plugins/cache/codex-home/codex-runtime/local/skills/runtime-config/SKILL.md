@@ -23,6 +23,6 @@ metadata:
 
 ## Task-specific details and resources
 
-- Start with the installed runtime surfaces `$CODEX_HOME/config.toml`, `$CODEX_USER_DIR/instructions/metadata.json`, and the active runtime hook/config compiler behavior.
+- Start with the installed runtime surfaces `$CODEX_HOME/config.toml`, `$CODEX_USER_DIR/instructions/manifest.json`, and the active runtime hook/config compiler behavior.
 - Reconcile checked-in intent against rendered runtime paths before suggesting changes.
 - Call out placeholder expansion, overlay append order, and config drift explicitly.

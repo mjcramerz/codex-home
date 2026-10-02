@@ -74,14 +74,14 @@ interface:
 
 ## Templates
 
-- Containers: `$CODEX_HOME/templates/containers/`
-- Dockerfile skeleton: `$CODEX_HOME/templates/containers/dockerfile-skeleton/`
-- Compose skeleton: `$CODEX_HOME/templates/containers/docker-compose-skeleton/`
-- Dev container skeleton: `$CODEX_HOME/templates/containers/devlab-codelab-skeleton/`
-- VM skeleton: `$CODEX_HOME/templates/virtualization/vagrant-libvirt-skeleton/`
+- Containers: `/data/codex/usr/examples/templates/containers/`
+- Dockerfile skeleton: `/data/codex/usr/examples/templates/containers/dockerfile-skeleton/`
+- Compose skeleton: `/data/codex/usr/examples/templates/containers/docker-compose-skeleton/`
+- Dev container skeleton: `/data/codex/usr/examples/templates/containers/devlab-codelab-skeleton/`
+- VM skeleton: `/data/codex/usr/examples/templates/virtualization/vagrant-libvirt-skeleton/`
 - App templates with compose included:
-  - `$CODEX_HOME/templates/python/fastapi-app/`
-  - `$CODEX_HOME/templates/rust/axum-api/`
+  - `/data/codex/usr/examples/templates/python/fastapi-app/`
+  - `/data/codex/usr/examples/templates/rust/axum-api/`
 
 ## Assets
 

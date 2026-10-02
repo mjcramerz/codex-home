@@ -10,15 +10,17 @@ Preserve existing authentication, credentials, memories, sessions, caches and un
 
 ## Preserve source ownership
 
-Keep source `instructions/`, `skills/` and `agents/` consistent with their required runtime mirrors when those paths are within the authorized task. Do not expand scope to `etc/`, `mcp/`, installer code or other roots merely because an older guide calls them mirrors.
+Keep source `instructions/`, `skills/` and `agents/` consistent with their required runtime mirrors. Their configured deployment paths are siblings of `$CODEX_HOME`. Install repository-root `examples/` at `/data/codex/usr/examples/` when retaining the relocated project skeletons and configuration references. The complete model catalog belongs at `$CODEX_HOME/models_catalog.json`. Do not expand a narrow future maintenance task into unrelated installer or broker changes.
 
-The current scoped revision leaves `etc/config.toml` unchanged. Inspect and reconcile its difference from `home/config.toml` only in a separately authorized deployment step. Do not run a guessed `make generate`, `make verify` or installer target: first establish whether the target exists and what it changes.
+Deploy `etc/config.toml` to `/etc/codex/config.toml` and `etc/requirements.toml` to `/etc/codex/requirements.toml` as root:root mode 0644 in protected root-owned directories. Deploy `home/config.toml` as desktop:devops mode 0600, retaining the actual desktop account selected by the preseed. The system file supplies shared defaults and local broker registrations; the home file supplies user preferences and optional remote registrations. Install both together; they are not identical mirrors.
+
+Preserve the existing installer for `mcp/`: it checks effective system/user registrations and never installs the Codex home or administrator policy for you. PostgreSQL remains disabled until the scoped DSN is provisioned through the broker credential command, after which enable its inherited registration explicitly. Review optional native Node REPL resources before enabling that registration. There is no root configuration generator or schema-refresh script to run; inspect each existing target and its effects before deployment.
 
 ## Activate only verified capabilities
 
-Confirm Python 3 and Perl entrypoints, deployed absolute instruction paths, MCP broker/socket locations, and any optional desktop file handler. A valid config does not install a binary, start a user service manager, authorize a cloud account or grant model entitlement.
+Confirm Python 3.11 or newer, Perl compatibility entrypoints, deployed instruction and agent paths, MCP broker/socket locations, and any optional desktop file handler. Compare the installed Codex binary's contract with the pinned supplied schema. The separately attached schema adds `instruction_overrides`, but the supplied Rust ZIP lacks its loader; choose a matching binary before relying on those fields. A valid config does not install a binary, start a user manager, authenticate an account or grant model entitlement. The interactive administrator policy excludes the `never` approval policy used by the supplied headless `codex exec`; enable unattended work only through a separately reviewed administrator policy.
 
-Register only the active `hooks.json` handlers. Keep hook scripts and modules owned by the intended identity and unavailable for untrusted repository modification. Keep state private; do not package local runtime state or credentials into a source distribution.
+Register only the active `hooks.json` handlers, with executable entrypoints preserved, and review native hook trust. Keep scripts and schema files unavailable for untrusted project writes. Permit the runtime identity to create private `.hooks/state`; do not package local state or credentials. Start with the default offline `workspace` permission profile; `online` and `full-access` are explicit alternatives described in [configuration guidance](CONFIGURATION.md).
 
 ## Report deployment evidence
 

@@ -1,0 +1,1 @@
+Create a channel where all agents in this collaboration can read and post messages. You are subscribed to new top-level posts by default.

@@ -68,7 +68,7 @@ interface:
 ## References
 
 - `$CODEX_HOME/docs/lang/html.md`
-- `$CODEX_HOME/templates/web/html-static/`
+- `/data/codex/usr/examples/templates/web/html-static/`
 - `$CODEX_HOME/snippets/web/html/index.html`
 - `references/implementation-playbook.md`
 - `references/semantic-and-a11y-patterns.md`

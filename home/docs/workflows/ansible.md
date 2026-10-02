@@ -34,6 +34,6 @@ or open unrelated tasks. Stop when the authorized scope is complete.
 ## Optional resources
 
 Read `$CODEX_HOME/plans/workflows/workflow-ansible.md` for a larger rollout plan.
-Adapt `$CODEX_HOME/templates/infra/ansible-role-skeleton/` or
+Adapt `/data/codex/usr/examples/templates/infra/ansible-role-skeleton/` or
 `$CODEX_HOME/snippets/ansible/playbook.yml` only when a new artifact is requested.
 Discover the available Ansible plugin skill before invoking it.

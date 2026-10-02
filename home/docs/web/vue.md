@@ -21,7 +21,7 @@ Apply the following practices to Vue applications with Composition API defaults.
 See also:
 - `overview.md`
 - `nuxt.md`
-- `$CODEX_HOME/templates/web/vue-app/`
+- `/data/codex/usr/examples/templates/web/vue-app/`
 - Read the `web-vue` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/web/frameworks.md`
 - `$CODEX_HOME/index/domains/web/vue.md`

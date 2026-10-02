@@ -19,6 +19,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/lang/typescript.md`
-- `$CODEX_HOME/templates/typescript`
+- `/data/codex/usr/examples/templates/typescript`
 - Read the `lang-typescript` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

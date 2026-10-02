@@ -16,14 +16,18 @@ def render(cfg: dict, transport: str) -> str:
     lines=['# Generated local MCP registrations only. Merge by server ID, do not append duplicate tables.',
            '# No API values are stored here. The broker reads systemd credentials.',
            '# "configured" follows /etc/codex/mcp/client.json; explicit variants override it.','']
-    for server in catalog():
+    for server, spec in catalog().items():
         key='sequential_thinking' if server=='sequential-thinking' else server
         args=['connect',server]
         if transport!='configured':args+=['--transport',transport]
+        approval = 'prompt' if spec.get('browser') else ('auto' if server in {'time','sequential-thinking','context7'} else 'writes')
         lines += ['[mcp_servers.'+json.dumps(key)+']','command = "/usr/local/bin/codex-mcp"',
-                  'args = '+json.dumps(args),'enabled = true','required = false',
+                  'args = '+json.dumps(args),'enabled = '+('false' if server=='postgres' else 'true'),'required = false',
                   'startup_timeout_sec = '+str(cfg['STARTUP_TIMEOUT_SECONDS']+cfg['CONNECT_TIMEOUT_SECONDS']+15),
-                  'tool_timeout_sec = '+str(cfg['TOOL_TIMEOUT_SECONDS']),'']
+                  'tool_timeout_sec = '+str(cfg['TOOL_TIMEOUT_SECONDS']),
+                  'startup_readiness = "connection"','supports_parallel_tool_calls = false',
+                  'tool_input_schema_max_bytes = 16000','env_vars = []',
+                  'default_tools_approval_mode = '+json.dumps(approval),'']
     text='\n'.join(lines)
     assert len(tomllib.loads(text)['mcp_servers'])==13
     return text

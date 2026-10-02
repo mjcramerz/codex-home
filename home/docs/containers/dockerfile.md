@@ -41,7 +41,7 @@ How to write Dockerfiles that are rootless-friendly, reproducible, and secure by
 
 ## Template (recommended start)
 
-- Template: `$CODEX_HOME/templates/containers/dockerfile-skeleton/`
+- Template: `/data/codex/usr/examples/templates/containers/dockerfile-skeleton/`
 - Snippets: `$CODEX_HOME/snippets/containers/`
 
 ## Build/run example
@@ -65,4 +65,4 @@ See also:
 - `docker-compose.md`
 - `rootless-docker.md`
 - `../workflows/containers.md`
-- `$CODEX_HOME/templates/containers/docker-compose-skeleton/`
+- `/data/codex/usr/examples/templates/containers/docker-compose-skeleton/`

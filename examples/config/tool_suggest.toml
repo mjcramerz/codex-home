@@ -1,0 +1,3 @@
+[tool_suggest]
+disabled_tools = [{ id = "example", type = "connector" }]
+discoverables = [{ id = "example", type = "connector" }]

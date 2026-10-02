@@ -1,23 +1,16 @@
-# Local requirements for the supplied custom Codex build based on 0.147.0.
-# Requirements and runtime defaults use separate configuration formats.
-# The original full defaults, providers, profiles, Apps and all MCP registrations
-# live in the companion /etc/codex/config.toml (a mirror of home/config.toml).
-#
-# Omitted allowlists leave choices UNCONSTRAINED. In particular, do not introduce
-# empty MCP/app/plugin/marketplace tables: absence and an empty deny-all allowlist
-# are not interchangeable. All 30 configured servers, all plugins and future
-# additions remain eligible; authentication and actual tool permissions still apply.
-# No approval-policy, reviewer, residency, permission-profile or web-search limit
-# is imposed locally. Organization/cloud/OS policy is not overridden by this file.
-# The original full/workspace/readonly profiles remain selectable.
+allowed_login_methods = ["chatgpt"]
+model_provider = "openai"
+allowed_approval_policies = ["on-request", { granular = { sandbox_approval = true, rules = true, skill_approval = true, mcp_elicitations = true, request_permissions = true } }]
+allowed_approvals_reviewers = ["user"]
 allow_managed_hooks_only = false
+allow_browser_and_computer_use = true
+allow_remote_control = false
+allow_appshots = false
 
-# These are requirements-owned desktop capability gates in the 0.147.0 base.
-# Normal feature toggles remain in config.toml so profile overrides still work.
 [features]
-browser_use = true
-browser_use_external = true
-browser_use_full_cdp_access = true
-computer_use = true
-in_app_browser = true
-in_app_updates = true
+use_agent_identity = false
+chronicle = false
+external_agent_memory_import = false
+
+[feedback]
+enabled = false

@@ -71,7 +71,7 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
 - `$CODEX_HOME/docs/web/nextjs.md`
-- `$CODEX_HOME/templates/web/nextjs-app/`
+- `/data/codex/usr/examples/templates/web/nextjs-app/`
 - `references/implementation-playbook.md`
 - `references/route-runtime-matrix.md`
 - `references/react-performance-rules.md`

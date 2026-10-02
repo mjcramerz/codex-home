@@ -30,7 +30,7 @@ Apply the following practices to creating and maintaining slash-command prompt a
 - Workflow plan: `$CODEX_HOME/plans/workflows/workflow-prompts-library.md`
 - Library plan: `$CODEX_HOME/plans/prompts-library.md`
 - Skill: `pack-prompts`
-- Template: `$CODEX_HOME/templates/prompts/slash-command-maintenance/`
+- Template: `/data/codex/usr/examples/templates/prompts/slash-command-maintenance/`
 - Snippet: `$CODEX_HOME/snippets/docs/prompt_contract.md`
 
 ## Maintenance flow

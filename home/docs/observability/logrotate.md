@@ -32,7 +32,7 @@ Apply the following practices to reliable log rotation and retention.
 
 See also:
 - `overview.md`
-- `$CODEX_HOME/templates/observability/logrotate-skeleton/`
+- `/data/codex/usr/examples/templates/observability/logrotate-skeleton/`
 - `$CODEX_HOME/snippets/logrotate/app.logrotate`
 - `../workflows/logrotate.md`
 - Read the `ops-logrotate` skill only when its trigger matches this task and the skill is available.

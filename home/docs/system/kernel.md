@@ -37,7 +37,7 @@ Apply the following practices to building and configuring a custom kernel.
 See also:
 - `overview.md`
 - `../workflows/kernel-build.md`
-- `$CODEX_HOME/templates/system/kernel-build-skeleton/`
+- `/data/codex/usr/examples/templates/system/kernel-build-skeleton/`
 - `$CODEX_HOME/snippets/system/kernel-config.fragment`
 - Read the `infra-kernel` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/system/hardening.md`

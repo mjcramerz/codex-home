@@ -35,9 +35,9 @@ Templates are scaffolds you can copy into a repository.
 
 ## CI and delivery guardrails
 
-- GitHub Actions baseline: `$CODEX_HOME/templates/ci/github-actions/`.
-- GitLab CI baseline: `$CODEX_HOME/templates/ci/gitlab-ci/`.
-- Perl runtime/hook baseline: `$CODEX_HOME/templates/perl/codex-hook-module/`.
+- GitHub Actions baseline: `/data/codex/usr/examples/templates/ci/github-actions/`.
+- GitLab CI baseline: `/data/codex/usr/examples/templates/ci/gitlab-ci/`.
+- Perl runtime/hook baseline: `/data/codex/usr/examples/templates/perl/codex-hook-module/`.
 - For Cloudflare R2 publication, route through
   `$CODEX_HOME/docs/workflows/cloudflare-r2.md` before editing storage or
   publication scaffolds.
@@ -47,6 +47,6 @@ Templates are scaffolds you can copy into a repository.
 
 ## Next steps
 
-1. Add repo hygiene files from `$CODEX_HOME/templates/common/` (`SECURITY.md`, `CONTRIBUTING.md`, `CODEOWNERS`).
+1. Add repo hygiene files from `/data/codex/usr/examples/templates/common/` (`SECURITY.md`, `CONTRIBUTING.md`, `CODEOWNERS`).
 2. Add domain templates you need (`infra/`, `containers/`, `observability/`, `systemd/`, `system/`, `desktop/`).
 3. Keep only the sections/files your repo actually uses; remove scaffolding you do not adopt.

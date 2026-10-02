@@ -56,7 +56,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-sysctl.md` before executing thi
 See also:
 - `overview.md`
 - `../system/sysctl.md`
-- `$CODEX_HOME/templates/system/sysctl-baseline/`
+- `/data/codex/usr/examples/templates/system/sysctl-baseline/`
 - `$CODEX_HOME/snippets/system/sysctl.conf`
 - Read the `infra-sysctl` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

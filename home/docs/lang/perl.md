@@ -17,7 +17,7 @@ Use this guide when you implement or review Perl modules, command-line helpers o
 ## Select related guidance
 
 - `$CODEX_HOME/docs/style/perl.md`
-- `$CODEX_HOME/templates/perl/codex-hook-module/`
+- `/data/codex/usr/examples/templates/perl/codex-hook-module/`
 - `$CODEX_HOME/index/domains/lang/perl.md`
 
 Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

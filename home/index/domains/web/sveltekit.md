@@ -19,6 +19,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
-- `$CODEX_HOME/templates/web/sveltekit-app`
+- `/data/codex/usr/examples/templates/web/sveltekit-app`
 - Read the `web-sveltekit` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

@@ -65,7 +65,7 @@ interface:
 
 ## References
 
-- `$CODEX_HOME/templates/rust/axum-api`
+- `/data/codex/usr/examples/templates/rust/axum-api`
 - `$CODEX_HOME/docs/style/rust.md`
 - `$CODEX_HOME/docs/perf/rust-perf.md`
 - `$CODEX_HOME/snippets/rust/axum_timeout_layer.rs`

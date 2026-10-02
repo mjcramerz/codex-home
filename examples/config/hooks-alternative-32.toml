@@ -1,0 +1,2 @@
+[hooks]
+SubagentStop = [{ hooks = [{ input = {  }, server = "example", tool = "example", type = "mcp_tool" }] }]

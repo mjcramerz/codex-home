@@ -56,7 +56,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-kubernetes.md` before executing
 See also:
 - `overview.md`
 - `../infra/kubernetes.md`
-- `$CODEX_HOME/templates/infra/kubernetes-app-skeleton/`
+- `/data/codex/usr/examples/templates/infra/kubernetes-app-skeleton/`
 - `$CODEX_HOME/snippets/kubernetes/deployment.yaml`
 - Read the `infra-kubernetes` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

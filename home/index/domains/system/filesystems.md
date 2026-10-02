@@ -20,6 +20,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/filesystems.md`
-- `$CODEX_HOME/templates/filesystems`
+- `/data/codex/usr/examples/templates/filesystems`
 - Read the `storage-filesystems` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

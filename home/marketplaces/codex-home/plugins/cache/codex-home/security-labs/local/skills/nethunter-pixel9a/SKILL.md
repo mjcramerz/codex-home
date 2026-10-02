@@ -89,6 +89,6 @@ interface:
 - `$CODEX_HOME/docs/workflows/nethunter-pixel9a.md`
 - `$CODEX_HOME/docs/security/nethunter-pixel9a.md`
 - `$CODEX_HOME/docs/security/security-labs-index.md`
-- `$CODEX_HOME/templates/system/nethunter-pixel9a-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/nethunter-pixel9a-kit/overview.md`
 - `$CODEX_HOME/snippets/bash/nethunter_pixel9a_preflight.sh`
 - `$CODEX_HOME/snippets/bash/nethunter_pixel9a_root_sequence.sh`

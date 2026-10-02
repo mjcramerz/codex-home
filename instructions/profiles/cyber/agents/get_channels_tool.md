@@ -1,0 +1,1 @@
+List channels, most recently active first, or search by a case-insensitive part of the name. Creating a channel or posting in it counts as activity.

@@ -19,6 +19,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/snippets/OVERVIEW.md`
-- `$CODEX_HOME/templates/OVERVIEW.md`
+- `/data/codex/usr/examples/templates/OVERVIEW.md`
 - `$CODEX_HOME/index/pack/skills.md`
 <!-- END:related -->

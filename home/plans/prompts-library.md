@@ -29,7 +29,7 @@ Use this plan when adding, updating, or removing prompt assets in the pack sourc
 - `$CODEX_HOME/docs/workflows/prompts-library.md`
 - `$CODEX_HOME/plans/workflows/workflow-prompts-library.md`
 - `$CODEX_HOME/docs/create-prompts.md`
-- `$CODEX_HOME/templates/prompts/slash-command-maintenance/`
+- `/data/codex/usr/examples/templates/prompts/slash-command-maintenance/`
 - `$CODEX_HOME/snippets/docs/prompt_contract.md`
 - Read the `pack-prompts` skill only when its trigger matches this task and the skill is available.
 

@@ -19,7 +19,7 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/virsh.md`
-- `$CODEX_HOME/templates/virtualization/virsh-vm-skeleton`
+- `/data/codex/usr/examples/templates/virtualization/virsh-vm-skeleton`
 - `$CODEX_HOME/snippets/virsh`
 - Read the `infra-virsh` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

@@ -4,4 +4,4 @@ Use [the active configuration contract](operations/CONFIGURATION.md) when you ed
 
 Use [the hook contract](operations/HOOKS.md) for lifecycle context, [deployment guidance](operations/DEPLOYMENT.md) for installation, and [MCP guidance](MCP.md) for actual server/tool availability.
 
-Do not load configuration schemas, authentication files, complete model catalogues or all profiles into an ordinary coding task. Preserve existing settings and distinguish source files from the installed effective configuration.
+Do not load configuration schemas, authentication files, complete model catalogues or all profiles into an ordinary coding task. Preserve valid preferences and distinguish shared defaults, enforced requirements, user overrides and the installed effective configuration.

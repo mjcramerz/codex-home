@@ -62,7 +62,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-desktop-wayland.md` before exec
 - `$CODEX_HOME/docs/desktop/waybar.md`
 - `$CODEX_HOME/docs/desktop/wofi.md`
 - `$CODEX_HOME/docs/desktop/crystal-dock.md`
-- `$CODEX_HOME/templates/desktop/wayland-skeleton/`
+- `/data/codex/usr/examples/templates/desktop/wayland-skeleton/`
 - `$CODEX_HOME/snippets/desktop/`
 - Read the `desktop-wayland` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

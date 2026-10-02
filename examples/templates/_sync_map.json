@@ -1,0 +1,33 @@
+{
+  "entries": [
+    {
+      "canonical": "$CODEX_HOME/snippets/containers/rootless_env.sh",
+      "targets": [
+        "/data/codex/usr/examples/templates/containers/devlab-codelab-skeleton/rootless_env.sh",
+        "/data/codex/usr/examples/templates/containers/docker-compose-skeleton/rootless_env.sh",
+        "/data/codex/usr/examples/templates/containers/dockerfile-skeleton/rootless_env.sh",
+        "/data/codex/usr/examples/templates/observability/elastic-stack-compose/rootless_env.sh",
+        "/data/codex/usr/examples/templates/python/fastapi-app/rootless_env.sh",
+        "/data/codex/usr/examples/templates/rust/axum-api/rootless_env.sh"
+      ]
+    },
+    {
+      "canonical": "$CODEX_HOME/snippets/python/bump_version.py",
+      "targets": [
+        "/data/codex/usr/examples/templates/common/repo-delivery-layout/scripts/release/bump_version.py"
+      ]
+    },
+    {
+      "canonical": "$CODEX_HOME/snippets/python/get_version.py",
+      "targets": [
+        "/data/codex/usr/examples/templates/common/repo-delivery-layout/scripts/release/get_version.py"
+      ]
+    },
+    {
+      "canonical": "$CODEX_HOME/snippets/sh/script_skeleton.sh",
+      "targets": [
+        "/data/codex/usr/examples/templates/common/posix-sh-script/script.sh"
+      ]
+    }
+  ]
+}

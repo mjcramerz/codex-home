@@ -1,0 +1,1 @@
+These approval categories are automatically rejected instead of prompting the user:

@@ -1,0 +1,18 @@
+[plugins]
+
+[plugins.example]
+enabled = false
+
+[plugins.example.mcp_servers]
+
+[plugins.example.mcp_servers.example]
+default_tools_approval_mode = "auto"
+disabled_tools = ["example"]
+enabled = false
+enabled_tools = ["example"]
+
+[plugins.example.mcp_servers.example.tools]
+
+[plugins.example.mcp_servers.example.tools.example]
+approval_mode = "auto"
+output_token_limit = 1

@@ -28,8 +28,8 @@ Related:
 - `$CODEX_HOME/docs/workflows/cloudflare-r2.md`
 - `$CODEX_HOME/docs/workflows/gitops.md`
 - `$CODEX_HOME/docs/workflows/release.md`
-- `$CODEX_HOME/templates/ci/github-actions`
-- `$CODEX_HOME/templates/ci/gitlab-ci`
+- `/data/codex/usr/examples/templates/ci/github-actions`
+- `/data/codex/usr/examples/templates/ci/gitlab-ci`
 - `$CODEX_HOME/snippets/ci/gitlab_delivery_vars.env`
 - Read the `ci-github-actions` skill only when its trigger matches this task and the skill is available.
 - Read the `ci-github-actions-fix` skill only when its trigger matches this task and the skill is available.

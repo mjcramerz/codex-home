@@ -1,0 +1,2 @@
+[hooks]
+Interrupt = [{ hooks = [{ input = {  }, server = "example", tool = "example", type = "mcp_tool" }] }]

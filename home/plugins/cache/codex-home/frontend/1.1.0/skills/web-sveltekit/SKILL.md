@@ -69,7 +69,7 @@ interface:
 ## References
 
 - `$CODEX_HOME/docs/web/sveltekit.md`
-- `$CODEX_HOME/templates/web/sveltekit-app/`
+- `/data/codex/usr/examples/templates/web/sveltekit-app/`
 - `references/implementation-playbook.md`
 - `references/route-load-action-patterns.md`
 - `references/quality-gates.md`

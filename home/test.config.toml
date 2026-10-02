@@ -1,10 +1,123 @@
-model = "gpt-5.6-luna"
-model_catalog_json = "/data/codex/usr/home/.models/default_catalog.json"
+model = "gpt-6-luna"
 model_instructions_file = "/data/codex/usr/instructions/profiles/test/models/base.md"
 model_reasoning_effort = "high"
 model_reasoning_summary = "concise"
 model_verbosity = "medium"
+experimental_compact_prompt_file = "/data/codex/usr/instructions/profiles/test/compact/prompt.md"
 
-# not supported by Codex 0.147.0; retained inactive below.
-# [instruction_overrides.models]
-# base_instructions_file = "/data/codex/usr/instructions/profiles/test/models/base.md"
+[instruction_overrides]
+compact_instructions_file = "/data/codex/usr/instructions/profiles/test/compact/prompt.md"
+content_filter_guidance_instructions_file = "/data/codex/usr/instructions/profiles/test/content_filter_guidance.md"
+developer_instructions_file = "/data/codex/usr/instructions/profiles/test/developer.md"
+operator_instructions_file = "/data/codex/usr/instructions/profiles/test/operator.md"
+persistent_instructions_file = "/data/codex/usr/instructions/profiles/test/persistent.md"
+system_instructions_file = "/data/codex/usr/instructions/profiles/test/system.md"
+
+[instruction_overrides.agents]
+create_channel_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/create_channel_tool.md"
+explicit_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/explicit.md"
+followup_task_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/followup_task_tool.md"
+get_channels_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/get_channels_tool.md"
+hierarchical_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/hierarchical.md"
+hint_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/hint.md"
+interrupt_agent_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/interrupt_agent_tool.md"
+list_agents_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/list_agents_tool.md"
+list_threads_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/list_threads_tool.md"
+post_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/post_tool.md"
+proactive_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/proactive.md"
+read_post_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/read_post_tool.md"
+read_thread_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/read_thread_tool.md"
+root_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/root.md"
+search_posts_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/search_posts_tool.md"
+send_message_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/send_message_tool.md"
+spawn_agent_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/spawn_agent_tool.md"
+subagent_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/subagent.md"
+subscribe_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/subscribe_tool.md"
+unsubscribe_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/unsubscribe_tool.md"
+wait_agent_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/wait_agent_tool.md"
+
+[instruction_overrides.confirmation]
+browser_use_instructions_file = "/data/codex/usr/instructions/profiles/test/confirmation/browser_use.md"
+computer_use_instructions_file = "/data/codex/usr/instructions/profiles/test/confirmation/computer_use.md"
+
+[instruction_overrides.goals]
+budget_limit_instructions_file = "/data/codex/usr/instructions/profiles/test/goals/budget_limit.md"
+continuation_instructions_file = "/data/codex/usr/instructions/profiles/test/goals/continuation.md"
+objective_updated_instructions_file = "/data/codex/usr/instructions/profiles/test/goals/objective_updated.md"
+
+[instruction_overrides.guardian]
+classifier_instructions_file = "/data/codex/usr/instructions/profiles/test/guardian/classifier.md"
+node_repl_policy_instructions_file = "/data/codex/usr/instructions/profiles/test/guardian/node_repl_policy.md"
+policy_instructions_file = "/data/codex/usr/instructions/profiles/test/guardian/policy.md"
+policy_template_instructions_file = "/data/codex/usr/instructions/profiles/test/guardian/policy_template.md"
+rejection_instructions_file = "/data/codex/usr/instructions/profiles/test/guardian/rejection.md"
+timeout_instructions_file = "/data/codex/usr/instructions/profiles/test/guardian/timeout.md"
+
+[instruction_overrides.memory]
+consolidation_instructions_file = "/data/codex/usr/instructions/profiles/test/memory/consolidation.md"
+consolidation_v2_instructions_file = "/data/codex/usr/instructions/profiles/test/memory/consolidation_v2.md"
+read_path_instructions_file = "/data/codex/usr/instructions/profiles/test/memory/read_path.md"
+read_path_v2_instructions_file = "/data/codex/usr/instructions/profiles/test/memory/read_path_v2.md"
+stage_one_system_instructions_file = "/data/codex/usr/instructions/profiles/test/memory/stage_one_system.md"
+stage_one_system_v2_instructions_file = "/data/codex/usr/instructions/profiles/test/memory/stage_one_system_v2.md"
+
+[instruction_overrides.models]
+base_instructions_file = "/data/codex/usr/instructions/profiles/test/models/base.md"
+
+[instruction_overrides.modes]
+default_instructions_file = "/data/codex/usr/instructions/profiles/test/modes/default.md"
+plan_instructions_file = "/data/codex/usr/instructions/profiles/test/modes/plan.md"
+
+[instruction_overrides.permissions]
+approval_policy_never_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/approval_policy_never.md"
+approval_policy_on_request_auto_review_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/approval_policy_on_request_auto_review.md"
+approval_policy_on_request_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/approval_policy_on_request.md"
+approval_policy_on_request_rule_request_permission_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/approval_policy_on_request_rule_request_permission.md"
+approval_policy_unless_trusted_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/approval_policy_unless_trusted.md"
+approved_prefixes_intro_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/approved_prefixes_intro.md"
+auto_review_approval_suffix_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/auto_review_approval_suffix.md"
+granular_intro_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/granular_intro.md"
+granular_prompted_categories_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/granular_prompted_categories.md"
+granular_rejected_categories_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/granular_rejected_categories.md"
+request_permissions_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/request_permissions_tool.md"
+sandbox_mode_danger_full_access_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/sandbox_mode_danger_full_access.md"
+sandbox_mode_read_only_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/sandbox_mode_read_only.md"
+sandbox_mode_workspace_write_instructions_file = "/data/codex/usr/instructions/profiles/test/permissions/sandbox_mode_workspace_write.md"
+
+[instruction_overrides.personality]
+custom_instructions_file = "/data/codex/usr/instructions/profiles/test/personality/custom.md"
+
+[instruction_overrides.realtime]
+backend_instructions_file = "/data/codex/usr/instructions/profiles/test/realtime/backend.md"
+start_instructions_file = "/data/codex/usr/instructions/profiles/test/realtime/start.md"
+startup_context_instructions_file = "/data/codex/usr/instructions/profiles/test/realtime/startup_context.md"
+
+[instruction_overrides.review]
+base_branch_backup_instructions_file = "/data/codex/usr/instructions/profiles/test/review/base_branch_backup.md"
+base_branch_instructions_file = "/data/codex/usr/instructions/profiles/test/review/base_branch.md"
+commit_instructions_file = "/data/codex/usr/instructions/profiles/test/review/commit.md"
+commit_with_title_instructions_file = "/data/codex/usr/instructions/profiles/test/review/commit_with_title.md"
+rubric_instructions_file = "/data/codex/usr/instructions/profiles/test/review/rubric.md"
+uncommitted_instructions_file = "/data/codex/usr/instructions/profiles/test/review/uncommitted.md"
+
+[instruction_overrides.token_budget]
+auto_compact_fallback_instructions_file = "/data/codex/usr/instructions/profiles/test/token_budget/auto_compact_fallback.md"
+guidance_instructions_file = "/data/codex/usr/instructions/profiles/test/token_budget/guidance.md"
+reminder_instructions_file = "/data/codex/usr/instructions/profiles/test/token_budget/reminder.md"
+
+[instruction_overrides.tools]
+code_mode_deferred_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/code_mode_deferred.md"
+code_mode_exec_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/code_mode_exec.md"
+code_mode_wait_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/code_mode_wait.md"
+list_mcp_resource_templates_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/list_mcp_resource_templates.md"
+list_mcp_resources_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/list_mcp_resources.md"
+read_mcp_resource_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/read_mcp_resource.md"
+request_user_input_async_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/request_user_input_async.md"
+request_user_input_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/request_user_input.md"
+search_instructions_file = "/data/codex/usr/instructions/profiles/test/tools/search.md"
+
+[instruction_overrides.tools.descriptions]
+"functions.apply_patch" = "/data/codex/usr/instructions/profiles/test/tools/descriptions/functions.apply_patch.md"
+
+[instruction_overrides.tui]
+init_instructions_file = "/data/codex/usr/instructions/profiles/test/tui/init.md"

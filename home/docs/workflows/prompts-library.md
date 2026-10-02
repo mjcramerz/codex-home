@@ -31,7 +31,7 @@ Use `$CODEX_HOME/plans/prompts-library.md` for prompt-library maintenance scope 
 
 ## Validation sequence
 
-- `rg -n --sort path --color=never '\$ARGUMENTS' $CODEX_HOME/docs $CODEX_HOME/templates $CODEX_HOME/plans`
+- `rg -n --sort path --color=never '\$ARGUMENTS' $CODEX_HOME/docs /data/codex/usr/examples/templates $CODEX_HOME/plans`
 - Run the narrowest full validation command available for the active Codex worktree.
 
 ## Security checkpoints

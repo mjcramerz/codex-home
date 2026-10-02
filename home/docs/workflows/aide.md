@@ -56,7 +56,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-aide.md` before executing this 
 See also:
 - `overview.md`
 - `../observability/aide.md`
-- `$CODEX_HOME/templates/observability/aide-skeleton/`
+- `/data/codex/usr/examples/templates/observability/aide-skeleton/`
 - `$CODEX_HOME/snippets/aide/aide.conf`
 - Read the `secops-aide` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

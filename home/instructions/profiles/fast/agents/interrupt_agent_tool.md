@@ -1,0 +1,1 @@
+Interrupt an agent's current turn, if any, and return its previous status. The agent remains available for messages and follow-up tasks.

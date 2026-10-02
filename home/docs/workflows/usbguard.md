@@ -56,7 +56,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-usbguard.md` before executing t
 See also:
 - `overview.md`
 - `../system/usbguard.md`
-- `$CODEX_HOME/templates/system/usbguard-baseline/`
+- `/data/codex/usr/examples/templates/system/usbguard-baseline/`
 - `$CODEX_HOME/snippets/system/usbguard.rules`
 - Read the `secops-usbguard` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

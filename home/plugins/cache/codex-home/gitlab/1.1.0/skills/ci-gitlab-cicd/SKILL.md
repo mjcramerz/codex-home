@@ -76,5 +76,5 @@ interface:
 - `$CODEX_HOME/docs/workflows/gitlab-ci.md`
 - `$CODEX_HOME/docs/workflows/gitlab-runner.md`
 - `$CODEX_HOME/docs/workflows/release.md`
-- `$CODEX_HOME/templates/ci/gitlab-ci/`
+- `/data/codex/usr/examples/templates/ci/gitlab-ci/`
 - `$CODEX_HOME/snippets/ci/gitlab_delivery_vars.env`

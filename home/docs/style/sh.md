@@ -22,7 +22,7 @@ Use `dash -n` when dash is the target `/bin/sh`; avoid arrays, `[[ ]]`, process 
 - `$CODEX_HOME/INDEX.md`
 - `$CODEX_HOME/index/OVERVIEW.md`
 - `$CODEX_HOME/snippets/sh/`
-- `$CODEX_HOME/templates/sh/posix-sh-script/`
+- `/data/codex/usr/examples/templates/sh/posix-sh-script/`
 - `$CODEX_HOME/index/pack/style.md`
 - `$CODEX_HOME/index/style/sh.md`
 

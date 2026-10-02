@@ -109,8 +109,7 @@ write_bundle(
 my $context = plugin_catalog_context(
     prompt => 'Update the debian-preseed-di-new repo-debian-preseed-di installer repository.',
 );
-like($context, qr/Newest Correct Bundle/, 'uses the enabled marketplace and newest valid version');
-like($context, qr/newest correct marketplace bundle/, 'renders the selected manifest');
+is($context, undef, 'retired compatibility adapter emits no second context stream');
 unlike($context, qr/Wrong Marketplace/, 'ignores a stale duplicate in another marketplace');
 unlike($context, qr/Invalid Bundle/, 'ignores a cache directory whose manifest version does not match');
 unlike($context, qr/Legacy Local Runtime/, 'ignores a legacy local runtime cache directory');

@@ -25,10 +25,11 @@ from relay import bridge
 
 class HardeningTests(Base):
     def test_codex_keymaps_keep_navigation_and_chatgpt_login(self):
-        for source in ('home/config.toml', 'etc/config.toml'):
-            settings = tomllib.loads((SOURCE_ROOT.parent/source).read_text())
-            self.assertEqual(settings['model_provider'], 'openai')
-            self.assertEqual(settings['forced_login_method'], 'chatgpt')
+        system = tomllib.loads((SOURCE_ROOT.parent/'etc/config.toml').read_text())
+        user = tomllib.loads((SOURCE_ROOT.parent/'home/config.toml').read_text())
+        self.assertEqual(system['model_provider'], 'openai')
+        self.assertEqual(system['forced_login_method'], 'chatgpt')
+        for settings in (user,):
             keys = settings['tui']['keymap']
             self.assertEqual(keys['composer']['submit'], 'enter')
             for context, up, down in (('editor','move_up','move_down'),
@@ -39,13 +40,13 @@ class HardeningTests(Base):
             self.assertEqual(keys['list']['accept'], 'enter')
             self.assertEqual(keys['list']['cancel'], 'esc')
 
-    def test_both_codex_configs_register_every_local_server(self):
-        for source in ('home/config.toml', 'etc/config.toml'):
-            path = SOURCE_ROOT.parent/source
-            install.validate_codex_mcp_config(path, os.getuid())
+    def test_effective_codex_configs_register_every_local_server(self):
+        layers = [(SOURCE_ROOT.parent/source, os.getuid(), None)
+                  for source in ('etc/config.toml', 'home/config.toml')]
+        install.validate_codex_mcp_configs(layers)
 
     def test_codex_config_rejects_missing_client_and_symlink(self):
-        source = SOURCE_ROOT.parent/'home/config.toml'
+        source = SOURCE_ROOT.parent/'etc/config.toml'
         path = self.root/'config.toml'
         text = source.read_text()
         path.write_text(text.replace('args = ["connect", "filesystem"]',
@@ -56,6 +57,27 @@ class HardeningTests(Base):
         path.symlink_to(source)
         with self.assertRaises(OSError):
             install.validate_codex_mcp_config(path, os.getuid())
+
+    def test_user_can_disable_but_cannot_replace_broker_transport(self):
+        base = (SOURCE_ROOT.parent/'etc/config.toml', os.getuid(), None)
+        path = self.root/'config.toml'
+        path.write_text('[mcp_servers.filesystem]\nenabled = false\n')
+        install.validate_codex_mcp_configs([base, (path, os.getuid(), None)])
+        for extra in ('command = "/bin/sh"', 'url = "https://example.invalid/mcp"',
+                      'args = ["connect", "time"]', 'env = { LD_PRELOAD = "/bad.so" }',
+                      'env_vars = ["SECRET"]', 'env_vars = ""', 'env = []',
+                      'cwd = "/tmp"', 'auth = "oauth"', 'http_headers = {}',
+                      'bearer_token_env_var = "SECRET"'):
+            with self.subTest(extra=extra):
+                path.write_text('[mcp_servers.filesystem]\n'+extra+'\n')
+                with self.assertRaisesRegex(ConfigError, 'filesystem'):
+                    install.validate_codex_mcp_configs([base, (path, os.getuid(), None)])
+
+    def test_codex_config_rejects_fifo_without_blocking(self):
+        path = self.root/'fifo.toml'
+        os.mkfifo(path, 0o600)
+        with self.assertRaisesRegex(ConfigError, 'unsafe'):
+            install.read_codex_config(path, os.getuid())
 
     def test_preseed_pool_parent_requires_exact_sticky_root_identity(self):
         def meta(mode, uid=0, gid=966):
@@ -148,8 +170,11 @@ class HardeningTests(Base):
         for mode in ('configured','unix','ssh'):
             text=module.render(load_env(SOURCE_ROOT/'.env'),mode)
             servers=tomllib.loads(text)['mcp_servers'];self.assertEqual(len(servers),13)
-            for cfg in servers.values():
-                self.assertTrue(cfg['enabled']);self.assertNotIn('env',cfg)
+            for name,cfg in servers.items():
+                self.assertEqual(cfg['enabled'], name != 'postgres');self.assertNotIn('env',cfg)
+                self.assertEqual(cfg['startup_readiness'], 'connection')
+                self.assertFalse(cfg['supports_parallel_tool_calls'])
+                self.assertEqual(cfg['env_vars'], [])
                 if mode!='configured':self.assertEqual(cfg['args'][-2:],['--transport',mode])
 
 if __name__=='__main__':unittest.main()

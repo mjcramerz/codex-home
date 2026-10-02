@@ -1,0 +1,12 @@
+[computer_use]
+
+[computer_use.macos]
+
+[computer_use.macos.bundle_ids]
+example = "allow"
+
+[computer_use.windows]
+exes = [{ access = "allow", binary_name = "example", product_name = "example", publisher_name = "example" }]
+
+[computer_use.windows.aumids]
+example = "allow"

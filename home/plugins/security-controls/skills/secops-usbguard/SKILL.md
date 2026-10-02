@@ -68,5 +68,5 @@ interface:
 - `$CODEX_HOME/index/domains/system/usbguard.md`
 - `$CODEX_HOME/docs/system/usbguard.md`
 - `$CODEX_HOME/docs/workflows/usbguard.md`
-- `$CODEX_HOME/templates/system/usbguard-baseline/`
+- `/data/codex/usr/examples/templates/system/usbguard-baseline/`
 - `$CODEX_HOME/snippets/system/usbguard.rules`

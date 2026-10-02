@@ -33,7 +33,7 @@ Apply the following practices to safe kernel parameter tuning.
 See also:
 - `overview.md`
 - `../workflows/sysctl.md`
-- `$CODEX_HOME/templates/system/sysctl-baseline/`
+- `/data/codex/usr/examples/templates/system/sysctl-baseline/`
 - `$CODEX_HOME/snippets/system/sysctl.conf`
 - Read the `infra-sysctl` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/system/hardening.md`

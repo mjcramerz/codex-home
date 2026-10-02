@@ -19,7 +19,7 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/snippets/typescript`
-- `$CODEX_HOME/templates/typescript/ts-lib`
+- `/data/codex/usr/examples/templates/typescript/ts-lib`
 - `$CODEX_HOME/docs/style/overview.md`
 - Read the `lang-typescript` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

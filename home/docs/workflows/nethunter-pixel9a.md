@@ -80,7 +80,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-nethunter-pixel9a.md` before ex
 See also:
 - `../security/nethunter-pixel9a.md`
 - `../security/security-labs-index.md`
-- `$CODEX_HOME/templates/system/nethunter-pixel9a-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/nethunter-pixel9a-kit/overview.md`
 - `$CODEX_HOME/snippets/bash/nethunter_pixel9a_preflight.sh`
 - `$CODEX_HOME/snippets/bash/nethunter_pixel9a_root_sequence.sh`
 - Read the `nethunter-pixel9a` skill only when its trigger matches this task and the skill is available.

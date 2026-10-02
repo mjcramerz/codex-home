@@ -45,7 +45,7 @@ Follow the active instruction hierarchy, preserve unrelated work and use only to
 
 - `$CODEX_HOME/docs/lang/perl.md`
 - `$CODEX_HOME/docs/style/perl.md`
-- `$CODEX_HOME/templates/perl/codex-hook-module/`
+- `/data/codex/usr/examples/templates/perl/codex-hook-module/`
 - `references/latest-sources.md`
 - `rules/rules.md`
 - `rules/framework.md`

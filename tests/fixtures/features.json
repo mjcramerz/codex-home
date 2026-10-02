@@ -1,0 +1,626 @@
+{
+  "agent_message_board": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "analytics_plan_history": {
+    "default": false,
+    "stage": "Experimental"
+  },
+  "api_key_cyber_access_programs": {
+    "default": false,
+    "stage": "Stable"
+  },
+  "api_key_model_discovery": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "apply_patch_freeform": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "apply_patch_preserve_line_endings": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "apply_patch_streaming_events": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "apps": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "apps_mcp_path_override": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "artifact": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "auth_elicitation": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "background_paginated_rollout_migration": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "bedrock_setup_wizard": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "browser_use": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "browser_use_external": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "browser_use_full_cdp_access": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "chronicle": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "code_mode": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "code_mode_buffered_exec": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "code_mode_host": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "code_mode_interrupt": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "code_mode_only": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "code_mode_prewarm": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "codex_apps_mcp_2026_07_28": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "codex_git_commit": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "collaboration_modes": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "compaction_image_budget": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "computer_use": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "concurrent_reasoning_summaries": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "content_item_kinds": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "context_management": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "current_time_reminder": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "cwd_relative_turn_diffs": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "daemon_auto_start": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "default_mode_request_user_input": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "defer_mailbox_preemption": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "deferred_executor": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "deferred_tool_world_state": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "elevated_windows_sandbox": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "enable_fanout": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "enable_mcp_apps": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "enable_request_compression": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "exec_permission_approvals": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "executed_tool_call_metadata": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "executor_capability_discovery": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "experimental_windows_sandbox": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "external_agent_memory_import": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "external_migration": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "fast_mode": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "goals": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "guardian_approval": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "guardian_conversation_history_tools": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "guardian_enhanced_node_repl_transcripts": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "guardian_ext": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "guardian_node_repl_transcript_images": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "guardian_reuse_parent_compaction": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "guardian_root_handoff_context": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "guardianv2": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "guardianv2.thread_context": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "hooks": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "image_detail_original": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "image_generation": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "image_resize_notice": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "in_app_browser": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "in_app_chat": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "in_app_dictation": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "in_app_local_automation": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "in_app_updates": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "instant_interrupt": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "item_ids": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "js_repl": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "js_repl_tools_only": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "local_thread_store_compression": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "local_thread_store_shared_compression": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "login_shell_package_path": {
+    "default": false,
+    "stage": "Experimental"
+  },
+  "mcp_2026_07_28": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "mcp_oauth_refresh_coordination": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "memories": {
+    "default": false,
+    "stage": "Stable"
+  },
+  "mentions_v2": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "multi_agent": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "multi_agent_mode": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "multi_agent_v2": {
+    "default": false,
+    "stage": "Stable"
+  },
+  "network_proxy": {
+    "default": false,
+    "stage": "Experimental"
+  },
+  "non_prefixed_mcp_tool_names": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "nonfatal_clock_read_errors": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "omit_app_server_notification_media": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "personality": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "plugin_hooks": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "plugin_sharing": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "plugins": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "powershell_shell_version": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "prefer_mxc": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "prevent_idle_sleep": {
+    "stage": "Experimental",
+    "default": false
+  },
+  "psp": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "realtime_conversation": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "reasoning_effort_override": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "recommended_plugins": {
+    "default": false,
+    "stage": "Stable"
+  },
+  "remote_compaction_v2": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "remote_control": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "remote_models": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "remote_plugin": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "request_permissions_tool": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "request_rule": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "resize_all_images": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "respect_system_proxy": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "responses_websockets": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "responses_websockets_v2": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "retain_client_developer_messages": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "rollout_budget": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "runtime_metrics": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "search_tool": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "secret_auth_storage": {
+    "stage": "Stable",
+    "default": false
+  },
+  "send_async_message": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "send_message_to_user_async": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "shell_snapshot": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "shell_snapshot_v2": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "shell_tool": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "shell_zsh_fork": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "skill_env_var_dependency_prompt": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "skill_mcp_dependency_install": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "skill_search": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "skip_host_skill_discovery": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "sleep_tool": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "sqlite": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "standalone_web_search": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "steer": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "step_model_switching": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "system_proxy_fallback": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "terminal_resize_reflow": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "terminal_visualization_instructions": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "token_budget": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "tool_call_mcp_elicitation": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "tool_search": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "tool_search_always_defer_mcp_tools": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "tool_suggest": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "transcript_v2": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "tui_app_server": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "unavailable_dummy_tools": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "unbounded_connection_retries": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "undo": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "unified_exec": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "unified_exec_tty": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "unified_exec_zsh_fork": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "unified_image_budget": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "use_agent_identity": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "use_legacy_landlock": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "use_linux_sandbox_bwrap": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "use_xaa": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "view_image": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "web_search_cached": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "web_search_request": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "windows_sandbox_service": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "workspace_dependencies": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "workspace_owner_usage_nudge": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "worktrees": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "write_stdin_approval": {
+    "default": true,
+    "stage": "Stable"
+  }
+}

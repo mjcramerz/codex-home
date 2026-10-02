@@ -34,5 +34,5 @@ Use this guide when the task concerns react. Apply the relevant steps to the cur
 
 - `overview.md`
 - `nextjs.md`
-- `$CODEX_HOME/templates/web/react-vite-app/`
+- `/data/codex/usr/examples/templates/web/react-vite-app/`
 - Read the `web-react` skill only when its trigger matches this task and the skill is available.

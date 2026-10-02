@@ -1,0 +1,18 @@
+[notice]
+fast_default_opt_out = false
+"hide_gpt-5.1-codex-max_migration_prompt" = false
+hide_gpt5_1_migration_prompt = false
+hide_world_writable_warning = false
+
+[notice.external_config_migration_prompts]
+home = false
+home_last_prompted_at = 1
+
+[notice.external_config_migration_prompts.project_last_prompted_at]
+example = 1
+
+[notice.external_config_migration_prompts.projects]
+example = false
+
+[notice.model_migrations]
+example = "example"

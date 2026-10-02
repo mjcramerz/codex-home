@@ -1,4 +1,3 @@
-# Use this manifest to preserve compatibility entrypoints; hooks.json is the active registration.
 version = 1
 
 [singleton_events.SessionStart]
@@ -7,7 +6,7 @@ timeout = 5
 
 [singleton_events.SessionEnd]
 script = "session_end.pl"
-timeout = 3
+timeout = 2
 
 [singleton_events.UserPromptSubmit]
 script = "user_prompt_submit.pl"
@@ -47,4 +46,4 @@ timeout = 5
 
 [singleton_events.Interrupt]
 script = "interrupt.pl"
-timeout = 5
+timeout = 2

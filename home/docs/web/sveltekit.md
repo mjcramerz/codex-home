@@ -25,7 +25,7 @@ Apply the following practices to Svelte and SvelteKit applications.
 
 See also:
 - `overview.md`
-- `$CODEX_HOME/templates/web/sveltekit-app/`
+- `/data/codex/usr/examples/templates/web/sveltekit-app/`
 - Read the `web-sveltekit` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/web/frameworks.md`
 - `$CODEX_HOME/index/domains/web/sveltekit.md`

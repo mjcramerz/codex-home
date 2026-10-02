@@ -28,13 +28,13 @@ Apply the following practices to choosing and applying templates in this pack.
 
 ## Outputs
 
-- A selected template path from `$CODEX_HOME/templates/`.
+- A selected template path from `/data/codex/usr/examples/templates/`.
 - A deterministic apply checklist from `using-templates.md`.
 - Template-specific Inputs/Outputs/Next steps from the chosen `overview.md`.
 
 ## Quick map
 
-- Template catalog: `$CODEX_HOME/templates/OVERVIEW.md`
+- Template catalog: `/data/codex/usr/examples/templates/OVERVIEW.md`
 - Usage guide: `using-templates.md`
 - Build workflow: `../workflows/build-an-app.md`
 - Cloudflare R2 workflow: `../workflows/cloudflare-r2.md`
@@ -42,21 +42,21 @@ Apply the following practices to choosing and applying templates in this pack.
 
 ## Categories
 
-- Common repo hygiene: `$CODEX_HOME/templates/common/`
-- CI: `$CODEX_HOME/templates/ci/`
-- Infrastructure: `$CODEX_HOME/templates/infra/`
-- Observability: `$CODEX_HOME/templates/observability/`
-- Prompts: `$CODEX_HOME/templates/prompts/`
-- Containers: `$CODEX_HOME/templates/containers/`
-- systemd: `$CODEX_HOME/templates/systemd/`
-- Filesystems: `$CODEX_HOME/templates/filesystems/`
-- System hardening: `$CODEX_HOME/templates/system/`
-- Virtualization: `$CODEX_HOME/templates/virtualization/`
-- Languages: `$CODEX_HOME/templates/python/`, `$CODEX_HOME/templates/rust/`, `$CODEX_HOME/templates/go/`, `$CODEX_HOME/templates/typescript/`, `$CODEX_HOME/templates/perl/`
-- Desktop: `$CODEX_HOME/templates/desktop/`
+- Common repo hygiene: `/data/codex/usr/examples/templates/common/`
+- CI: `/data/codex/usr/examples/templates/ci/`
+- Infrastructure: `/data/codex/usr/examples/templates/infra/`
+- Observability: `/data/codex/usr/examples/templates/observability/`
+- Prompts: `/data/codex/usr/examples/templates/prompts/`
+- Containers: `/data/codex/usr/examples/templates/containers/`
+- systemd: `/data/codex/usr/examples/templates/systemd/`
+- Filesystems: `/data/codex/usr/examples/templates/filesystems/`
+- System hardening: `/data/codex/usr/examples/templates/system/`
+- Virtualization: `/data/codex/usr/examples/templates/virtualization/`
+- Languages: `/data/codex/usr/examples/templates/python/`, `/data/codex/usr/examples/templates/rust/`, `/data/codex/usr/examples/templates/go/`, `/data/codex/usr/examples/templates/typescript/`, `/data/codex/usr/examples/templates/perl/`
+- Desktop: `/data/codex/usr/examples/templates/desktop/`
 
 ## Next steps
 
-1. Choose a template path from `$CODEX_HOME/templates/OVERVIEW.md`.
+1. Choose a template path from `/data/codex/usr/examples/templates/OVERVIEW.md`.
 2. Apply it with the deterministic flow in `using-templates.md`.
 3. Run the template's local verification commands before commit.

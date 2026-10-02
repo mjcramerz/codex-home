@@ -65,7 +65,7 @@ interface:
 
 ## References
 
-- `$CODEX_HOME/templates/python/fastapi-app`
+- `/data/codex/usr/examples/templates/python/fastapi-app`
 - `$CODEX_HOME/docs/style/python.md`
 - `$CODEX_HOME/docs/security/web-hardening.md`
 - `$CODEX_HOME/snippets/python/fastapi_security_headers.py`

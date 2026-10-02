@@ -15,5 +15,5 @@ Canonical content: `$CODEX_HOME/docs/lang/perl.md`
 ## After that, check related files
 
 - `$CODEX_HOME/docs/style/perl.md`
-- `$CODEX_HOME/templates/perl/codex-hook-module/`
+- `/data/codex/usr/examples/templates/perl/codex-hook-module/`
 - Read the `perl` skill only when its trigger matches this task and the skill is available.

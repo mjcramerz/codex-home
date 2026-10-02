@@ -74,6 +74,6 @@ See also:
 - `../security/security-labs-index.md`
 - `../security/security-labs-repo-catalog.md`
 - `../security/security-labs-tool-guides.md`
-- `$CODEX_HOME/templates/system/offsec-defense-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/offsec-defense-kit/overview.md`
 - `$CODEX_HOME/snippets/bash/security_assessment_guardrails.sh`
 - Read the `offsec-defense` skill only when its trigger matches this task and the skill is available.

@@ -30,7 +30,7 @@ See also:
 - `logstash.md`
 - `../workflows/elastic-stack.md`
 - `$CODEX_HOME/snippets/elastic/elasticsearch.yml`
-- `$CODEX_HOME/templates/observability/elastic-stack-compose/`
+- `/data/codex/usr/examples/templates/observability/elastic-stack-compose/`
 - Read the `obs-elasticsearch` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/observability/stack.md`
 - `$CODEX_HOME/index/domains/observability/elasticsearch.md`

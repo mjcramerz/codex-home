@@ -19,6 +19,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
-- `$CODEX_HOME/templates/web/vue-app`
+- `/data/codex/usr/examples/templates/web/vue-app`
 - Read the `web-vue` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

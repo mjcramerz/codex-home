@@ -59,5 +59,5 @@ See also:
 - `../observability/elasticsearch.md`
 - `../observability/kibana.md`
 - `../observability/logstash.md`
-- `$CODEX_HOME/templates/observability/elastic-stack-compose/`
+- `/data/codex/usr/examples/templates/observability/elastic-stack-compose/`
 - `$CODEX_HOME/index/pack/workflows.md`

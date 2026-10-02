@@ -1,0 +1,53 @@
+[otel]
+log_agent_responses = false
+log_guardian_assessments = false
+
+[otel.exporter]
+
+[otel.exporter.otlp-http]
+endpoint = "https://example.invalid"
+protocol = "binary"
+
+[otel.exporter.otlp-http.headers]
+example = "example"
+
+[otel.exporter.otlp-http.tls]
+ca-certificate = "example"
+client-certificate = "example"
+client-private-key = "example"
+
+[otel.metrics_exporter]
+
+[otel.metrics_exporter.otlp-http]
+endpoint = "https://example.invalid"
+protocol = "binary"
+
+[otel.metrics_exporter.otlp-http.headers]
+example = "example"
+
+[otel.metrics_exporter.otlp-http.tls]
+ca-certificate = "example"
+client-certificate = "example"
+client-private-key = "example"
+
+[otel.span_attributes]
+example = "example"
+
+[otel.trace_exporter]
+
+[otel.trace_exporter.otlp-http]
+endpoint = "https://example.invalid"
+protocol = "binary"
+
+[otel.trace_exporter.otlp-http.headers]
+example = "example"
+
+[otel.trace_exporter.otlp-http.tls]
+ca-certificate = "example"
+client-certificate = "example"
+client-private-key = "example"
+
+[otel.tracestate]
+
+[otel.tracestate.example]
+example = "example"

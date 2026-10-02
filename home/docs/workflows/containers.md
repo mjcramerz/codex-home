@@ -63,9 +63,9 @@ See also:
 - `../containers/dockerfile.md`
 - `../containers/docker-compose.md`
 - `../containers/dev-containers.md`
-- `$CODEX_HOME/templates/containers/dockerfile-skeleton/`
-- `$CODEX_HOME/templates/containers/docker-compose-skeleton/`
-- `$CODEX_HOME/templates/containers/devlab-codelab-skeleton/`
+- `/data/codex/usr/examples/templates/containers/dockerfile-skeleton/`
+- `/data/codex/usr/examples/templates/containers/docker-compose-skeleton/`
+- `/data/codex/usr/examples/templates/containers/devlab-codelab-skeleton/`
 - `$CODEX_HOME/snippets/containers/`
 - Read the `infra-containers` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

@@ -73,5 +73,5 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/virsh.md`
 - `$CODEX_HOME/docs/virtualization/virsh.md`
-- `$CODEX_HOME/templates/virtualization/virsh-vm-skeleton/`
+- `/data/codex/usr/examples/templates/virtualization/virsh-vm-skeleton/`
 - `$CODEX_HOME/snippets/virsh/domain.xml`

@@ -67,5 +67,5 @@ interface:
 - `$CODEX_HOME/index/domains/desktop/desktop-entries.md`
 - `$CODEX_HOME/docs/desktop/desktop-entries.md`
 - `$CODEX_HOME/docs/workflows/desktop-entries.md`
-- `$CODEX_HOME/templates/desktop/desktop-entry/`
+- `/data/codex/usr/examples/templates/desktop/desktop-entry/`
 - `$CODEX_HOME/snippets/desktop/desktop-entry.desktop`

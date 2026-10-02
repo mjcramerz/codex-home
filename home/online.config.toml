@@ -1,0 +1,6 @@
+default_permissions = "workspace-online"
+
+[features]
+
+[features.network_proxy]
+enabled = true

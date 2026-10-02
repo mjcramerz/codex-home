@@ -1,0 +1,151 @@
+[features]
+apply_patch_freeform = false
+bedrock_setup_wizard = false
+code_mode_buffered_exec = false
+codex_git_commit = false
+codex_hooks = false
+collab = false
+collaboration_modes = false
+connectors = false
+elevated_windows_sandbox = false
+enable_experimental_windows_sandbox = false
+enable_fanout = false
+experimental_use_unified_exec_tool = false
+experimental_windows_sandbox = false
+external_migration = false
+guardian_ext = false
+image_detail_original = false
+imagegenext = false
+item_ids = false
+js_repl = false
+js_repl_tools_only = false
+local_thread_store_shared_compression = false
+memory_tool = false
+multi_agent_mode = false
+personality = false
+plugin_hooks = false
+powershell_shell_version = false
+remote_compaction_v2 = false
+remote_control = false
+remote_models = false
+request_permissions = false
+request_rule = false
+resize_all_images = false
+responses_websockets = false
+responses_websockets_v2 = false
+search_tool = false
+send_async_message = false
+skill_env_var_dependency_prompt = false
+sqlite = false
+steer = false
+telepathy = false
+terminal_resize_reflow = false
+tool_search = false
+tool_search_always_defer_mcp_tools = false
+transcript_v2 = false
+tui_app_server = false
+unavailable_dummy_tools = false
+undo = false
+unified_exec_zsh_fork = false
+use_legacy_landlock = false
+use_linux_sandbox_bwrap = false
+web_search = false
+web_search_cached = false
+web_search_request = false
+windows_sandbox_service = false
+workspace_owner_usage_nudge = false
+
+[features.apps_mcp_path_override]
+enabled = false
+path = "/data/codex/usr/examples/replace-me"
+
+[features.code_mode]
+direct_only_tool_namespaces = ["example"]
+enabled = false
+excluded_tool_namespaces = ["example"]
+
+[features.guardianv2]
+classifier_instructions = "example"
+enabled = false
+free_guardian = false
+max_action_tokens = 100
+max_classifier_instruction_tokens = 100
+max_parent_compaction_tokens = 100
+max_tool_call_lag = 1
+reasoning_effort = "high"
+reuse_parent_compaction = false
+review_threshold = 1.0
+thread_context = false
+
+[features.guardianv2.review_scope]
+computer_use_only = false
+sandboxed_exec_commands = false
+
+[features.guardianv2.transcript]
+include_images = false
+max_message_entry_tokens = 100
+max_message_transcript_tokens = 100
+max_recent_non_user_entries = 1
+max_tool_entry_tokens = 100
+max_tool_transcript_tokens = 100
+sources = ["tool_calls"]
+
+[features.multi_agent_v2]
+enabled = false
+subagent_developer_instructions = "example"
+usage_hint_enabled = false
+
+[features.multi_agent_v2.message_board_remote]
+bearer_token = "example"
+bearer_token_env_var = "example"
+url = "https://example.invalid"
+
+[features.network_proxy]
+allow_local_binding = false
+allow_upstream_proxy = false
+credential_broker = false
+dangerously_allow_all_unix_sockets = false
+dangerously_allow_non_loopback_proxy = false
+enable_socks5 = false
+enable_socks5_udp = false
+enabled = false
+mode = "limited"
+proxy_url = "https://example.invalid"
+socks_url = "https://example.invalid"
+
+[features.network_proxy.credentials]
+
+[features.network_proxy.credentials.example]
+auth = ["bearer"]
+env = ["example"]
+header = "example"
+patterns = ["example"]
+prefix = "example"
+url_prefix_from_env = "https://example.invalid"
+url_prefixes = ["example"]
+
+[features.network_proxy.domains]
+example = "allow"
+
+[features.network_proxy.unix_sockets]
+example = "allow"
+
+[features.non_prefixed_mcp_tool_names]
+enabled = false
+server_names = ["example"]
+
+[features.rollout_budget]
+enabled = false
+limit_tokens = 1
+prefill_token_weight = 1.0
+reminder_at_remaining_tokens = [1]
+sampling_token_weight = 1.0
+
+[features.token_budget]
+auto_compact_fallback_buffer_tokens = 1
+auto_compact_fallback_prompt = "example"
+enabled = false
+guidance_message = "example"
+reminder_message_template = "example"
+reminder_threshold_tokens = 1
+use_history_notes_extension = false

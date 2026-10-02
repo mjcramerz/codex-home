@@ -1,0 +1,220 @@
+{
+  "source": "codex-rs/config/src/config_requirements.rs",
+  "fields": {
+    "allowed_login_methods": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "allowed_chatgpt_workspaces": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "cli_auth_credentials_store": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "chatgpt_base_url": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "sqlite_home": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "log_dir": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "model_catalog_json": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "model_provider": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "model_providers": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "check_for_update_on_startup": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "allow_login_shell": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "feedback": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "allowed_approval_policies": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "allowed_approvals_reviewers": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "allowed_sandbox_modes": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "allowed_permission_profiles": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "default_permissions": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "remote_sandbox_config": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "allowed_web_search_modes": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "allow_managed_hooks_only": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "allow_browser_and_computer_use": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "allow_appshots": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "allow_remote_control": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "computer_use": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "browser_use": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "in_app_browser": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "windows": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "features": {
+      "status": "active",
+      "file": "etc/requirements.toml",
+      "reason": "Administrator-owned constraint."
+    },
+    "hooks": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "mcp_servers": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "plugins": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "marketplaces": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "apps": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "rules": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "enforce_residency": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "experimental_network": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "application": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "permissions": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "auto_review": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "models": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "additional_developer_instructions": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "guardian_policy_config": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    },
+    "guardian_extra_policy": {
+      "status": "inherit_native_default",
+      "file": null,
+      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+    }
+  }
+}

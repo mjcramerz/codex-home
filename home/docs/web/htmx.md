@@ -35,7 +35,7 @@ Apply the following practices to server-driven UI with minimal JavaScript.
 See also:
 - `overview.md`
 - `../lang/html.md`
-- `$CODEX_HOME/templates/web/htmx-app/`
+- `/data/codex/usr/examples/templates/web/htmx-app/`
 - `$CODEX_HOME/snippets/web/htmx/index.html`
 - Read the `web-htmx` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/web/frameworks.md`

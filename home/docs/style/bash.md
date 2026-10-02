@@ -26,7 +26,7 @@ Use arrays for argument construction and `[[ ]]` for Bash-specific conditions. T
 - `$CODEX_HOME/docs/style/shell-runtime.md`
 - `$CODEX_HOME/snippets/bash/logging.sh`
 - `$CODEX_HOME/snippets/bash/`
-- `$CODEX_HOME/templates/bash/script-skeleton/`
+- `/data/codex/usr/examples/templates/bash/script-skeleton/`
 - `$CODEX_HOME/index/pack/style.md`
 
 Read only the matching skill or workflow. Stop when the requested change and its narrowest permitted checks are complete.

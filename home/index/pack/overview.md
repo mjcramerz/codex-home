@@ -19,9 +19,9 @@ templates, snippets, rules, instructions, catalogs, config, or plugin metadata.
 - `$CODEX_HOME/memories/` when runtime memory already exists for the active workspace
 - `$CODEX_HOME/docs/**` for runtime docs and workflows
 - `$CODEX_HOME/plans/**` for plan templates
-- `$CODEX_HOME/templates/**` for reusable scaffolds
-- `$CODEX_HOME/.models/**` plus `/data/codex/usr/instructions/**` for model
-  catalogs and instruction assets
+- `/data/codex/usr/examples/templates/**` for reusable scaffolds
+- `$CODEX_HOME/models_catalog.json` plus `/data/codex/usr/instructions/**` for model
+  metadata and instruction assets
 - `$CODEX_HOME/.agents/skills/**` for the runtime skill catalog and skill assets
 - `$CODEX_HOME/plugins/cache/**` plus `$CODEX_HOME/.agents/plugins/marketplace.json` for plugin bundles and marketplace wiring
 

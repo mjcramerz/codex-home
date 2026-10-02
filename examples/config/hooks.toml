@@ -1,0 +1,19 @@
+[hooks]
+Interrupt = [{ hooks = [{ additionalContextLimit = 1, async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+PermissionRequest = [{ hooks = [{ additionalContextLimit = 1, async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }] }]
+PostCompact = [{ hooks = [{ additionalContextLimit = 1, async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+PostToolUse = [{ hooks = [{ async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }] }]
+PreCompact = [{ hooks = [{ additionalContextLimit = 1, async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+PreToolUse = [{ hooks = [{ async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }] }]
+SessionEnd = [{ hooks = [{ additionalContextLimit = 1, async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+SessionStart = [{ hooks = [{ async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }] }]
+Stop = [{ hooks = [{ additionalContextLimit = 1, async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+SubagentStart = [{ hooks = [{ async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+SubagentStop = [{ hooks = [{ additionalContextLimit = 1, async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+UserPromptSubmit = [{ hooks = [{ async = false, command = "/usr/bin/false", commandWindows = "example", type = "command" }], matcher = "example" }]
+
+[hooks.state]
+
+[hooks.state.example]
+enabled = false
+trusted_hash = "example"

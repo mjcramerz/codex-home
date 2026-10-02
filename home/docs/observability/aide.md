@@ -31,7 +31,7 @@ Apply the following practices to AIDE file‑integrity monitoring.
 
 See also:
 - `overview.md`
-- `$CODEX_HOME/templates/observability/aide-skeleton/`
+- `/data/codex/usr/examples/templates/observability/aide-skeleton/`
 - `$CODEX_HOME/snippets/aide/aide.conf`
 - `../workflows/aide.md`
 - Read the `secops-aide` skill only when its trigger matches this task and the skill is available.

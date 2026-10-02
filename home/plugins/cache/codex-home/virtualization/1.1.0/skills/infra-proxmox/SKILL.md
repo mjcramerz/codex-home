@@ -72,5 +72,5 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/proxmox.md`
 - `$CODEX_HOME/docs/virtualization/proxmox.md`
-- `$CODEX_HOME/templates/virtualization/proxmox-vm-skeleton/`
+- `/data/codex/usr/examples/templates/virtualization/proxmox-vm-skeleton/`
 - `$CODEX_HOME/snippets/proxmox/storage.cfg`

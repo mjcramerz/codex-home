@@ -25,7 +25,7 @@ Related:
 - `$CODEX_HOME/docs/web/vue.md`
 - `$CODEX_HOME/docs/web/nuxt.md`
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
-- `$CODEX_HOME/templates/web`
+- `/data/codex/usr/examples/templates/web`
 - Read the `web-react` skill only when its trigger matches this task and the skill is available.
 - Read the `web-nextjs` skill only when its trigger matches this task and the skill is available.
 - Read the `web-htmx` skill only when its trigger matches this task and the skill is available.

@@ -1,0 +1,1 @@
+Read a thread using its first post's message ID. Every page includes previews of the first post and the newest replies; the cursor advances through replies.

@@ -79,6 +79,6 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/github-actions.md`
 - `$CODEX_HOME/docs/workflows/ci-cd.md`
-- `$CODEX_HOME/templates/ci/github-actions/`
+- `/data/codex/usr/examples/templates/ci/github-actions/`
 - `$CODEX_HOME/snippets/ci/github_actions_min_permissions.yml`
 - `$CODEX_HOME/snippets/ci/github_release_vars.env`

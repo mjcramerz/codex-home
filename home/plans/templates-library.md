@@ -18,19 +18,19 @@ Use this plan when adding or updating templates.
 
 ## Scope
 
-- In: `$CODEX_HOME/templates/` and related runtime documentation and index entries.
+- In: `/data/codex/usr/examples/templates/` and related runtime documentation and index entries.
 - Out: unrelated pack changes.
 
 ## Files and entry points
 
-- `$CODEX_HOME/templates/OVERVIEW.md`
+- `/data/codex/usr/examples/templates/OVERVIEW.md`
 - `$CODEX_HOME/index/pack/templates.md`
 - `$CODEX_HOME/docs/templates/overview.md`
 
 ## Action items
 
 - [ ] Add or update template directories and overview files.
-- [ ] Update `$CODEX_HOME/templates/OVERVIEW.md` with new entries.
+- [ ] Update `/data/codex/usr/examples/templates/OVERVIEW.md` with new entries.
 
 ## Testing and validation
 

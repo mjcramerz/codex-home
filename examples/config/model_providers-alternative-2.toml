@@ -1,0 +1,14 @@
+[model_providers]
+
+[model_providers.example_command_auth]
+name = "Example command authentication"
+base_url = "https://example.invalid/v1"
+wire_api = "responses"
+requires_openai_auth = false
+
+[model_providers.example_command_auth.auth]
+command = "/usr/bin/false"
+args = ["--example"]
+cwd = "/data/codex/usr/examples"
+timeout_ms = 10000
+refresh_interval_ms = 600000

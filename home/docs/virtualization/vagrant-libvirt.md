@@ -37,5 +37,5 @@ When building hermetic environments, prefer NAT without port forwards, or fully 
 See also:
 - `overview.md`
 - `qemu-kvm-libvirt.md`
-- `$CODEX_HOME/templates/virtualization/vagrant-libvirt-skeleton/`
+- `/data/codex/usr/examples/templates/virtualization/vagrant-libvirt-skeleton/`
 - `$CODEX_HOME/index/domains/infra/virtualization.md`

@@ -20,6 +20,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/systemd.md`
-- `$CODEX_HOME/templates/systemd`
+- `/data/codex/usr/examples/templates/systemd`
 - Read the `infra-systemd` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

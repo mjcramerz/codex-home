@@ -50,9 +50,9 @@ interface:
    - structured logging (stderr) + correlation IDs (APIs)
    - error handling with redaction (no internal leaks)
 4. Run the narrowest checks (format/lint/unit tests) and fix issues immediately.
-5. Add CI workflows from `$CODEX_HOME/templates/ci/github-actions/` and ensure minimal permissions.
+5. Add CI workflows from `/data/codex/usr/examples/templates/ci/github-actions/` and ensure minimal permissions.
 6. Add supply-chain guardrails: lockfiles, audits, dependency review.
-7. Add container/compose scaffolds when requested (`$CODEX_HOME/templates/containers/`).
+7. Add container/compose scaffolds when requested (`/data/codex/usr/examples/templates/containers/`).
 8. Add a short README: run commands, env vars, tests, and any security notes.
 
 ## Agent orchestration
@@ -76,12 +76,12 @@ interface:
 
 ## Templates
 
-- Python: `$CODEX_HOME/templates/python/fastapi-app`
-- Python CLI: `$CODEX_HOME/templates/python/cli-app`
-- Rust: `$CODEX_HOME/templates/rust/axum-api`
-- Rust CLI: `$CODEX_HOME/templates/rust/cli-app`
-- Web: `$CODEX_HOME/templates/web/react-vite-app`
-- CI: `$CODEX_HOME/templates/ci/github-actions`
+- Python: `/data/codex/usr/examples/templates/python/fastapi-app`
+- Python CLI: `/data/codex/usr/examples/templates/python/cli-app`
+- Rust: `/data/codex/usr/examples/templates/rust/axum-api`
+- Rust CLI: `/data/codex/usr/examples/templates/rust/cli-app`
+- Web: `/data/codex/usr/examples/templates/web/react-vite-app`
+- CI: `/data/codex/usr/examples/templates/ci/github-actions`
 
 ## References
 

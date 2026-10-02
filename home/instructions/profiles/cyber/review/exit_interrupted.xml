@@ -1,5 +1,0 @@
-<user_action>
-  <context>The review was interrupted. Do not present it as complete. Explain the interruption and use the supported review command again only when the user requests continuation.</context>
-  <action>review</action>
-  <results>None.</results>
-</user_action>

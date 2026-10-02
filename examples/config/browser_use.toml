@@ -1,0 +1,9 @@
+[browser_use]
+
+[browser_use.origins]
+
+[browser_use.origins.example]
+access = "allow"
+downloads = "allow"
+full_cdp_access = "allow"
+uploads = "allow"

@@ -20,7 +20,7 @@ Use this guide when you change TypeScript or JavaScript applications, tooling or
 - `$CODEX_HOME/INDEX.md`
 - `$CODEX_HOME/index/OVERVIEW.md`
 - `$CODEX_HOME/snippets/typescript/`
-- `$CODEX_HOME/templates/typescript/ts-lib/`
+- `/data/codex/usr/examples/templates/typescript/ts-lib/`
 - `$CODEX_HOME/index/pack/style.md`
 - `$CODEX_HOME/index/style/typescript.md`
 

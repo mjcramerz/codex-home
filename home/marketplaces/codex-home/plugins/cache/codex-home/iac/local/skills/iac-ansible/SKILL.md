@@ -70,5 +70,5 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/ansible.md`
 - `$CODEX_HOME/docs/infra/ansible.md`
-- `$CODEX_HOME/templates/infra/ansible-role-skeleton/`
+- `/data/codex/usr/examples/templates/infra/ansible-role-skeleton/`
 - `$CODEX_HOME/snippets/ansible/playbook.yml`

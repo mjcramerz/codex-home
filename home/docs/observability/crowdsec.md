@@ -31,7 +31,7 @@ Apply the following practices to CrowdSec configuration and bouncer integration.
 
 See also:
 - `overview.md`
-- `$CODEX_HOME/templates/observability/crowdsec-skeleton/`
+- `/data/codex/usr/examples/templates/observability/crowdsec-skeleton/`
 - `$CODEX_HOME/snippets/crowdsec/acquis.yaml`
 - `../workflows/crowdsec.md`
 - Read the `secops-crowdsec` skill only when its trigger matches this task and the skill is available.

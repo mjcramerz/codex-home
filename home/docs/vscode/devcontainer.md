@@ -25,7 +25,7 @@ Use this guide when you change Docker, Podman, Compose or container build and ru
 
 ## Pack alignment
 
-- Use `$CODEX_HOME/templates/containers/devlab-codelab-skeleton/` when the devcontainer should mirror the broader local container workflow.
+- Use `/data/codex/usr/examples/templates/containers/devlab-codelab-skeleton/` when the devcontainer should mirror the broader local container workflow.
 - Keep Podman/Docker expectations aligned with `$CODEX_HOME/docs/containers/dev-containers.md`.
 
 ## After that, check related files

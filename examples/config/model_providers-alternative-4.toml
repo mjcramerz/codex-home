@@ -1,0 +1,15 @@
+[model_providers]
+
+[model_providers.example_aws_export]
+name = "Example SigV4 export"
+base_url = "https://example.invalid"
+wire_api = "responses"
+requires_openai_auth = false
+supports_websockets = false
+
+[model_providers.example_aws_export.aws]
+
+[model_providers.example_aws_export.aws.credential_export]
+command = "/usr/bin/false"
+args = ["--example"]
+timeout_ms = 10000

@@ -25,7 +25,7 @@ Related:
 - `$CODEX_HOME/docs/workflows/prompts-library.md`
 - `$CODEX_HOME/plans/prompts-library.md`
 - `$CODEX_HOME/plans/workflows/workflow-prompts-library.md`
-- `$CODEX_HOME/templates/prompts/slash-command-maintenance`
+- `/data/codex/usr/examples/templates/prompts/slash-command-maintenance`
 - `$CODEX_HOME/snippets/docs/prompt_contract.md`
 - Read the `pack-prompts` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

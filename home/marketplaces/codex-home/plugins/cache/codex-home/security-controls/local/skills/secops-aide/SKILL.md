@@ -69,5 +69,5 @@ interface:
 - `$CODEX_HOME/index/domains/observability/aide.md`
 - `$CODEX_HOME/docs/observability/aide.md`
 - `$CODEX_HOME/docs/workflows/aide.md`
-- `$CODEX_HOME/templates/observability/aide-skeleton/`
+- `/data/codex/usr/examples/templates/observability/aide-skeleton/`
 - `$CODEX_HOME/snippets/aide/aide.conf`

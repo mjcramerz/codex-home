@@ -46,5 +46,5 @@ Use this guide when the task concerns snippet catalog. Apply the relevant steps 
 
 - `$CODEX_HOME/index/pack/snippets.md`
 - `$CODEX_HOME/docs/OVERVIEW.md`
-- `$CODEX_HOME/templates/OVERVIEW.md`
+- `/data/codex/usr/examples/templates/OVERVIEW.md`
 - `$CODEX_HOME/plans/snippets-library.md`

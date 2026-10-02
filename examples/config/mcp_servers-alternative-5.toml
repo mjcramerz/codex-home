@@ -1,0 +1,8 @@
+[mcp_servers]
+
+[mcp_servers.example_timeout_ms]
+enabled = false
+required = false
+command = "/usr/bin/false"
+args = []
+startup_timeout_ms = 120000

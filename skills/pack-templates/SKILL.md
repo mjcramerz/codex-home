@@ -1,6 +1,6 @@
 ---
 name: pack-templates
-description: Use this skill to create or update pack templates under $CODEX_HOME/templates/.
+description: Use this skill to create or update pack templates under /data/codex/usr/examples/templates/.
   Use when adding scaffolds, adjusting template READMEs, or wiring template references
   into docs and indexes.
 metadata:
@@ -41,8 +41,8 @@ Follow the active instruction hierarchy, preserve unrelated work and use only to
 
 ## References
 
-- `$CODEX_HOME/templates/`
-- `$CODEX_HOME/templates/OVERVIEW.md`
+- `/data/codex/usr/examples/templates/`
+- `/data/codex/usr/examples/templates/OVERVIEW.md`
 - `$CODEX_HOME/docs/style/sh.md`
 - `$CODEX_HOME/index/pack/templates.md`
 - `$CODEX_HOME/docs/templates/overview.md`

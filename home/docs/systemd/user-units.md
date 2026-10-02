@@ -54,5 +54,5 @@ WantedBy=default.target
 - `hardening.md`
 - `../workflows/systemd.md`
 - `$CODEX_HOME/snippets/systemd/user-service.unit`
-- `$CODEX_HOME/templates/systemd/user-service-skeleton/`
+- `/data/codex/usr/examples/templates/systemd/user-service-skeleton/`
 - `$CODEX_HOME/index/domains/system/systemd.md`

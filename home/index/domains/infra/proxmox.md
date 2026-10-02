@@ -19,7 +19,7 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/proxmox.md`
-- `$CODEX_HOME/templates/virtualization/proxmox-vm-skeleton`
+- `/data/codex/usr/examples/templates/virtualization/proxmox-vm-skeleton`
 - `$CODEX_HOME/snippets/proxmox`
 - Read the `infra-proxmox` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

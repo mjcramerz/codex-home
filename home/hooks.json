@@ -6,10 +6,12 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event SessionStart --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Discover repository entrypoints",
+            "additionalContextLimit": 2000
           }
         ],
-        "matcher": "^(startup|resume|clear|compact)$"
+        "matcher": "^(startup|resume|clear|compact|fork)$"
       }
     ],
     "SessionEnd": [
@@ -18,7 +20,8 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event SessionEnd --timeout 1",
-            "timeout": 3
+            "timeout": 2,
+            "statusMessage": "Clear private hook state"
           }
         ]
       }
@@ -29,7 +32,9 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event UserPromptSubmit --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Refresh task-specific repository guidance",
+            "additionalContextLimit": 2000
           }
         ]
       }
@@ -40,7 +45,9 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event PreToolUse --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Check tool execution boundaries",
+            "additionalContextLimit": 600
           }
         ],
         "matcher": ".*"
@@ -52,7 +59,8 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event PermissionRequest --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Preserve native approval decisions"
           }
         ],
         "matcher": ".*"
@@ -64,7 +72,9 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event PostToolUse --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Observe tool status and changed contracts",
+            "additionalContextLimit": 600
           }
         ],
         "matcher": ".*"
@@ -76,7 +86,8 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event PreCompact --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Preserve verification and handoff context"
           }
         ]
       }
@@ -87,7 +98,8 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event PostCompact --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Refresh context after compaction"
           }
         ]
       }
@@ -98,7 +110,9 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event SubagentStart --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Scope the delegated task",
+            "additionalContextLimit": 2000
           }
         ]
       }
@@ -109,7 +123,8 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event SubagentStop --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Review delegated evidence"
           }
         ]
       }
@@ -120,7 +135,8 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event Stop --timeout 3",
-            "timeout": 5
+            "timeout": 5,
+            "statusMessage": "Account for edits and failed checks"
           }
         ]
       }
@@ -130,8 +146,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event Interrupt --timeout 3",
-            "timeout": 5
+            "command": "/usr/bin/python3 -I \"$CODEX_HOME/.hooks/runner.py\" --event Interrupt --timeout 1",
+            "timeout": 2,
+            "statusMessage": "Refresh context after interruption"
           }
         ]
       }

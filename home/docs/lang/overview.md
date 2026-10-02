@@ -38,4 +38,4 @@ Use this guide when the task concerns languages. Apply the relevant steps to the
 
 - `$CODEX_HOME/docs/style/overview.md`
 - `$CODEX_HOME/index/domains/lang/overview.md`
-- `$CODEX_HOME/templates/`
+- `/data/codex/usr/examples/templates/`

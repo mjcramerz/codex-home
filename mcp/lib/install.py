@@ -89,30 +89,64 @@ def validate_codex_runtime_layout(cfg: dict[str,Any]) -> None:
         raise ConfigError('Codex app-server control socket link does not match the preseed layout')
 
 
-def validate_codex_mcp_config(path: Path, uid: int, gid: int | None = None) -> None:
-    """Require Codex's installed config to point at the protected local client."""
-    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC)
+def read_codex_config(path: Path, uid: int, gid: int | None = None) -> dict:
+    """Read an owned, bounded regular configuration without following its leaf."""
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC | os.O_NONBLOCK)
     with os.fdopen(fd, 'rb') as stream:
         meta = os.fstat(stream.fileno())
         if (not stat.S_ISREG(meta.st_mode) or meta.st_nlink != 1 or
                 meta.st_uid != uid or (gid is not None and meta.st_gid != gid) or
-                meta.st_mode & 0o002 or meta.st_size > 2 * 1024 * 1024):
+                meta.st_mode & (0o022 if uid == 0 and gid is None else 0o002) or
+                meta.st_size > 2 * 1024 * 1024):
             raise ConfigError('unsafe installed Codex configuration: '+str(path))
         data = stream.read(2 * 1024 * 1024 + 1)
         if len(data) > 2 * 1024 * 1024:
             raise ConfigError('installed Codex configuration is too large: '+str(path))
-        settings = tomllib.loads(data.decode('utf-8'))
+        return tomllib.loads(data.decode('utf-8'))
+
+
+def validate_codex_mcp_registrations(settings: dict, source: str) -> None:
+    """Check transports even when an optional service is disabled by the user."""
     servers = settings.get('mcp_servers', {})
     if not isinstance(servers, dict):
-        raise ConfigError('invalid installed Codex MCP server table: '+str(path))
+        raise ConfigError('invalid installed Codex MCP server table: '+source)
     for name in SERVER_NAMES:
         key = 'sequential_thinking' if name == 'sequential-thinking' else name
         spec = servers.get(key)
         if (not isinstance(spec, dict) or
                 spec.get('command') != '/usr/local/bin/codex-mcp' or
-                spec.get('args') != ['connect', name] or
-                spec.get('enabled') is not True):
-            raise ConfigError(f'{path}: local MCP registration {key} must use the installed client')
+                spec.get('args') != ['connect', name] or 'url' in spec or
+                not isinstance(spec.get('enabled', True), bool) or
+                spec.get('env') not in (None, {}) or
+                spec.get('env_vars') not in (None, []) or 'cwd' in spec or
+                any(field in spec for field in ('bearer_token_env_var', 'bearer_token',
+                    'http_headers_helper', 'http_headers', 'env_http_headers',
+                    'oauth', 'oauth_resource', 'auth'))):
+            raise ConfigError(f'{source}: local MCP registration {key} must use the installed client without environment/transport overrides')
+
+
+def validate_codex_mcp_config(path: Path, uid: int, gid: int | None = None) -> None:
+    """Check a standalone/system layer that supplies every broker registration."""
+    validate_codex_mcp_registrations(read_codex_config(path, uid, gid), str(path))
+
+
+def validate_codex_mcp_configs(layers: list[tuple[Path, int, int | None]]) -> None:
+    """Check effective system/user registrations in Codex's low-to-high order.
+
+    Defaults belong to the system layer; a user can disable a server or tune its
+    timeouts. Recursive table merging follows the ordinary Codex TOML merge.
+    Trusted project/session overrides are still a client-time policy boundary.
+    """
+    def merge(target: dict, incoming: dict) -> None:
+        for key, value in incoming.items():
+            if isinstance(value, dict) and isinstance(target.get(key), dict):
+                merge(target[key], value)
+            else:
+                target[key] = value
+    effective: dict = {}
+    for path, uid, gid in layers:
+        merge(effective, read_codex_config(path, uid, gid))
+    validate_codex_mcp_registrations(effective, ', '.join(str(path) for path, _, _ in layers))
 
 
 def preflight(cfg: dict[str,Any], *, need_engine: bool = True) -> list[str]:
@@ -180,13 +214,12 @@ def preflight(cfg: dict[str,Any], *, need_engine: bool = True) -> list[str]:
         validate_codex_runtime_layout(cfg)
     except (OSError,ConfigError) as exc:
         errors.append(str(exc))
-    for path, owner, group in (
-            (Path('/data/codex/usr/home/config.toml'), cfg['DESKTOP_UID'], cfg['DEVOPS_GID']),
-            (Path('/etc/codex/config.toml'), 0, None)):
-        try:
-            validate_codex_mcp_config(path, owner, group)
-        except (OSError, UnicodeError, ValueError) as exc:
-            errors.append('Codex MCP registration check failed: '+str(exc))
+    try:
+        validate_codex_mcp_configs([
+            (Path('/etc/codex/config.toml'), 0, None),
+            (Path('/data/codex/usr/home/config.toml'), cfg['DESKTOP_UID'], cfg['DEVOPS_GID'])])
+    except (OSError, UnicodeError, ValueError) as exc:
+        errors.append('Codex MCP registration check failed: '+str(exc))
     abstraction = Path('/etc/apparmor.d/abstractions/codex-runtime')
     try:
         meta = abstraction.lstat()

@@ -32,7 +32,7 @@ Terraform guidance for safe, deterministic infrastructure changes.
 See also:
 - `overview.md`
 - `../workflows/terraform.md`
-- `$CODEX_HOME/templates/infra/terraform-module-skeleton/`
+- `/data/codex/usr/examples/templates/infra/terraform-module-skeleton/`
 - `$CODEX_HOME/snippets/terraform/versions.tf`
 - `$CODEX_HOME/snippets/terraform/backend_remote.tf`
 - Read the `iac-terraform` skill only when its trigger matches this task and the skill is available.

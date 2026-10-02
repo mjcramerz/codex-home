@@ -1,0 +1,2 @@
+[hooks]
+PreCompact = [{ hooks = [{ input = {  }, server = "example", tool = "example", type = "mcp_tool" }] }]

@@ -48,7 +48,7 @@ explicit confirmation before destructive steps (partitioning, formatting, fstab 
 - `proxmox.md`
 - `../workflows/filesystems.md`
 - `../systemd/overview.md`
-- `$CODEX_HOME/templates/filesystems/ops-scripts/`
+- `/data/codex/usr/examples/templates/filesystems/ops-scripts/`
 - `$CODEX_HOME/snippets/bash/fs_probe.sh`
 - `$CODEX_HOME/snippets/bash/fstab_update.sh`
 - `$CODEX_HOME/index/domains/system/filesystems.md`

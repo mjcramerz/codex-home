@@ -56,7 +56,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-logrotate.md` before executing 
 See also:
 - `overview.md`
 - `../observability/logrotate.md`
-- `$CODEX_HOME/templates/observability/logrotate-skeleton/`
+- `/data/codex/usr/examples/templates/observability/logrotate-skeleton/`
 - `$CODEX_HOME/snippets/logrotate/app.logrotate`
 - Read the `ops-logrotate` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

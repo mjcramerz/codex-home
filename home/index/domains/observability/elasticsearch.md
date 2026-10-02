@@ -19,7 +19,7 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/elastic-stack.md`
-- `$CODEX_HOME/templates/observability/elastic-stack-compose`
+- `/data/codex/usr/examples/templates/observability/elastic-stack-compose`
 - `$CODEX_HOME/snippets/elastic/elasticsearch.yml`
 - Read the `obs-elasticsearch` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

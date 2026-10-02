@@ -68,5 +68,5 @@ Start with `$CODEX_HOME/plans/workflows/workflow-web-frontend.md` before executi
 See also:
 - `overview.md`
 - `../web/overview.md`
-- `$CODEX_HOME/templates/web/`
+- `/data/codex/usr/examples/templates/web/`
 - `$CODEX_HOME/index/pack/workflows.md`

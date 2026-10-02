@@ -80,7 +80,7 @@ See also:
 - `rootless-docker.md`
 - `buildx.md`
 - `../workflows/containers.md`
-- `$CODEX_HOME/templates/containers/docker-compose-skeleton/`
-- `$CODEX_HOME/templates/containers/dockerfile-skeleton/`
+- `/data/codex/usr/examples/templates/containers/docker-compose-skeleton/`
+- `/data/codex/usr/examples/templates/containers/dockerfile-skeleton/`
 - `$CODEX_HOME/snippets/containers/`
 - `$CODEX_HOME/index/domains/infra/containers.md`

@@ -41,7 +41,7 @@ interface:
 
 1. Clarify OS target, virtualization stack, and network needs.
 2. Choose the scaffold:
-   - `$CODEX_HOME/templates/virtualization/vagrant-libvirt-skeleton/`
+   - `/data/codex/usr/examples/templates/virtualization/vagrant-libvirt-skeleton/`
    - or `$CODEX_HOME/docs/virtualization/qemu-kvm-libvirt.md`
 3. Define networking mode (NAT/bridged/isolated) and document it.
 4. Pin base images/boxes and record checksums when possible.
@@ -92,4 +92,4 @@ interface:
 - `$CODEX_HOME/docs/virtualization/qemu-kvm-libvirt.md`
 - `$CODEX_HOME/docs/virtualization/vagrant-libvirt.md`
 - `$CODEX_HOME/docs/workflows/debian-preseed.md`
-- `$CODEX_HOME/templates/virtualization/vagrant-libvirt-skeleton/`
+- `/data/codex/usr/examples/templates/virtualization/vagrant-libvirt-skeleton/`

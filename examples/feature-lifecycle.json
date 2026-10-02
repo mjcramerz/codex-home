@@ -1,0 +1,194 @@
+{
+  "apply_patch_freeform": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "apps_mcp_path_override": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "artifact": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "bedrock_setup_wizard": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "code_mode_buffered_exec": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "codex_git_commit": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "collaboration_modes": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "elevated_windows_sandbox": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "enable_fanout": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "experimental_windows_sandbox": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "external_migration": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "guardian_ext": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "guardianv2.thread_context": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "image_detail_original": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "item_ids": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "js_repl": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "js_repl_tools_only": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "local_thread_store_shared_compression": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "multi_agent_mode": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "personality": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "plugin_hooks": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "powershell_shell_version": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "remote_compaction_v2": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "remote_control": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "remote_models": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "request_rule": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "resize_all_images": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "responses_websockets": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "responses_websockets_v2": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "search_tool": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "send_async_message": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "skill_env_var_dependency_prompt": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "sqlite": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "steer": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "terminal_resize_reflow": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "tool_search": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "tool_search_always_defer_mcp_tools": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "transcript_v2": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "tui_app_server": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "unavailable_dummy_tools": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "undo": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "unified_exec_zsh_fork": {
+    "default": true,
+    "stage": "Removed"
+  },
+  "use_legacy_landlock": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "use_linux_sandbox_bwrap": {
+    "default": false,
+    "stage": "Removed"
+  },
+  "web_search_cached": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "web_search_request": {
+    "default": false,
+    "stage": "Deprecated"
+  },
+  "windows_sandbox_service": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
+  "workspace_owner_usage_nudge": {
+    "default": false,
+    "stage": "Removed"
+  }
+}

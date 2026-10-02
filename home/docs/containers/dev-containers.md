@@ -18,7 +18,7 @@ Use this guide when you change Docker, Podman, Compose or container build and ru
 
 ## Current template contract
 
-Use `$CODEX_HOME/templates/containers/devlab-codelab-skeleton/` as the primary scaffold.
+Use `/data/codex/usr/examples/templates/containers/devlab-codelab-skeleton/` as the primary scaffold.
 It already carries:
 - `compose.yml`
 - `compose.offline.override.yml`

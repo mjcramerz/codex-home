@@ -16,7 +16,7 @@ import yaml
 
 SKILL_NAME = 'pack-templates'
 SKILL_CATEGORY = 'PACK'
-SKILL_DESCRIPTION = 'Create or update pack templates under $CODEX_HOME/templates/. Use when adding scaffolds, adjusting template READMEs, or wiring template references into docs and indexes.'
+SKILL_DESCRIPTION = 'Create or update pack templates under /data/codex/usr/examples/templates/. Use when adding scaffolds, adjusting template READMEs, or wiring template references into docs and indexes.'
 LAST_REFRESH_UTC = '2026-02-11'
 COVERAGE_HEADINGS = ['Workflow', 'Boundaries and completion', 'References']
 REFERENCE_LINKS = [

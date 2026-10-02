@@ -35,7 +35,7 @@ Use this guide when you change Docker, Podman, Compose or container build and ru
 
 ## Template and snippet roots
 
-- Templates: `$CODEX_HOME/templates/containers/`
+- Templates: `/data/codex/usr/examples/templates/containers/`
 - Snippets: `$CODEX_HOME/snippets/containers/`
 - Workflow: `$CODEX_HOME/docs/workflows/containers.md`
 

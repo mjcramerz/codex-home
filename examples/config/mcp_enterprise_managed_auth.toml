@@ -1,0 +1,5 @@
+[mcp_enterprise_managed_auth]
+
+[mcp_enterprise_managed_auth.idp]
+client_id = "example"
+issuer = "example"

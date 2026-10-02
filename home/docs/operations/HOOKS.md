@@ -16,12 +16,16 @@ The legacy module names remain importable for compatibility. `Learning` and `Plu
 | `UserPromptSubmit` | Refresh matching routes using closed-vocabulary task hints; do not echo the prompt. |
 | `PreToolUse` | Add deduplicated command, edit or MCP guidance; do not auto-approve. |
 | `PermissionRequest` | Return an empty object for a valid event and leave the decision to Codex. |
-| `PostToolUse` | Emit a fixed reminder only when typed result fields explicitly report failure. |
+| `PostToolUse` | Record bounded edit/check/failure observations; emit a fixed reminder only when typed result fields explicitly report failure. |
 | `SubagentStart` | Add bounded role-specific scope and handoff instructions. |
-| `Stop`, `SubagentStop` | Return an empty object; do not invent passing checks or create stop loops. |
-| `PreCompact`, `PostCompact`, `Interrupt`, `SessionEnd` | Clear deduplication state; refresh context on the next context-capable event. |
+| `Stop`, `SubagentStop` | Emit deduplicated factual check/failure or handoff reminders; return empty during an active stop hook and never block completion. |
+| `PreCompact` | Remind the model to preserve scope, decisions, changed paths and observed checks; refresh context digests while retaining observation flags. |
+| `PostCompact`, `Interrupt` | Refresh context digests, retaining observations; return an empty object. |
+| `SessionEnd` | Remove private session state and return empty, including when its working directory was removed. |
 
-Do not emit `additionalContext` for events that do not support it. Do not emit generic `continue`/`stopReason` fields for permission-decision events. Malformed or timed-out policy events use the event's deny shape; other failures use a fixed diagnostic without payload contents. No hook grants authority beyond the active user request and native permission policy.
+Validate input and output against the supplied event schemas, including `Interrupt`. `permission_mode` contains hook protocol values such as `default` and `acceptEdits`, not permission-profile names. Reject duplicate JSON keys, non-finite numbers and mismatched event names. Do not emit `additionalContext` for events that do not support it or generic `continue`/`stopReason` fields for permission events. Malformed or timed-out policy events use the event's deny shape; other failures use a fixed diagnostic without payload contents. Session-end failure remains empty because that event has no output schema. No hook grants authority beyond the current task and native policy.
+
+`PreToolUse` emits a short reminder for each tool class; it does not rescan the repository on every call. Completion observations use explicit `isError` or integer exit-status fields, never guessed status from result text. Simple validation command recognition does not execute commands or claim success. Preserve earlier failed-check observations until session end and report whether they were resolved.
 
 ## Discover without executing the repository
 
@@ -39,10 +43,10 @@ Keep raw prompts, transcripts, schema contents, configuration bodies, tool outpu
 
 ## Preserve resource and privacy limits
 
-Bound input to 256 KiB, each inspected file to 64 KiB, package JSON to 32 KiB, directory discovery to 1,600 entries and depth three, pending directories to 180, and context to 7,200 characters. Use a three-second normal execution budget, at most four seconds internally, and a one-second session-end budget. Keep scan time within the smaller discovery deadline.
+Bound input to 256 KiB, each inspected file to 64 KiB, package JSON to 32 KiB, directory discovery to 1,600 entries and depth three, pending directories to 180, and context to 7,200 characters. Registration adds 2,000-token context limits at session/prompt/subagent boundaries and 600-token limits for tool events. Use a three-second normal budget, at most four seconds internally, and a one-second interrupt/session-end budget. Keep discovery within its smaller deadline.
 
-Deduplicate with SHA-256 values only, in owner-private state directories and regular single-link files. Never persist prompt, transcript, tool-response or repository-file contents. If state storage is unavailable, emit useful bounded guidance without claiming persistence. Cleanup is bounded and best-effort, not a guarantee of global disk-quota enforcement.
+Store only the latest SHA-256 digest per fixed context channel and fixed boolean observation flags, in private mode-0700 directories and mode-0600 single-link regular files. Use bounded reads and nonblocking locks; reject symlinks, special files and unsafe ownership or permissions. A context change followed by a return to earlier context emits again. Compaction/interruption clears digests while preserving observations. Never persist prompt, transcript, tool-response or repository-file contents. If storage is unavailable, emit bounded guidance without claiming persistence. Cleanup is bounded and best-effort, not global disk-quota enforcement.
 
 ## Validate only the changed boundary
 
-Use disposable fixtures outside the source tree to exercise affected event shapes, input bounds, static target discovery, symlink rejection, timeouts and non-replay behavior. Do not add a general test suite or execute repository Makefiles as a hook check. Report fixture outcomes separately from execution in the installed Codex client.
+Run `python3 -m unittest discover -s tests` and `prove home/.hooks/t` from the source checkout. Disposable fixtures exercise all twelve event contracts, malformed input, deadlines, static discovery, non-replay, compaction/interruption, completion reminders, private state, unsafe filesystem objects and retained Perl dispatch. Never execute a repository Makefile as a hook discovery check. Report fixtures separately from execution in the installed Codex client.

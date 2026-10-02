@@ -36,5 +36,5 @@ Use this guide when you change Debian packaging, APT configuration, installation
 ## After that, check related files
 
 - `$CODEX_HOME/docs/workflows/debian-preseed.md`
-- `$CODEX_HOME/templates/virtualization/debian-preseed/`
+- `/data/codex/usr/examples/templates/virtualization/debian-preseed/`
 - `$CODEX_HOME/snippets/preseed/include.preseed.cfg`

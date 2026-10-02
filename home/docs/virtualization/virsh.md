@@ -26,7 +26,7 @@ Apply the following practices to managing KVM/libvirt with `virsh`.
 See also:
 - `overview.md`
 - `qemu-kvm-libvirt.md`
-- `$CODEX_HOME/templates/virtualization/virsh-vm-skeleton/`
+- `/data/codex/usr/examples/templates/virtualization/virsh-vm-skeleton/`
 - `$CODEX_HOME/snippets/virsh/domain.xml`
 - Read the `infra-virsh` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/infra/virtualization.md`

@@ -1,0 +1,2 @@
+[shell_environment_policy]
+include_only = ["example"]

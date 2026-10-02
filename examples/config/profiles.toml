@@ -1,0 +1,350 @@
+[profiles]
+
+[profiles.example]
+approvals_reviewer = "user"
+chatgpt_base_url = "https://example.invalid"
+experimental_compact_prompt_file = "/data/codex/usr/examples/replace-me"
+experimental_use_unified_exec_tool = false
+include_apps_instructions = false
+include_collaboration_mode_instructions = false
+include_environment_context = false
+include_permissions_instructions = false
+model = "gpt-6.1-sol"
+model_catalog_json = "/data/codex/usr/examples/replace-me"
+model_instructions_file = "/data/codex/usr/examples/replace-me"
+model_provider = "example"
+model_reasoning_effort = "example"
+model_reasoning_summary = "auto"
+model_verbosity = "low"
+oss_provider = "example"
+personality = "none"
+plan_mode_reasoning_effort = "example"
+sandbox_mode = "read-only"
+service_tier = "example"
+web_search = "disabled"
+
+[profiles.example.analytics]
+enabled = false
+
+[profiles.example.approval_policy]
+
+[profiles.example.approval_policy.granular]
+mcp_elicitations = false
+request_permissions = false
+rules = false
+sandbox_approval = false
+skill_approval = false
+
+[profiles.example.features]
+agent_message_board = false
+analytics_plan_history = false
+api_key_cyber_access_programs = false
+api_key_model_discovery = false
+apply_patch_freeform = false
+apply_patch_preserve_line_endings = false
+apply_patch_streaming_events = false
+apps = false
+auth_elicitation = false
+background_paginated_rollout_migration = false
+bedrock_setup_wizard = false
+browser_use = false
+browser_use_external = false
+browser_use_full_cdp_access = false
+chronicle = false
+code_mode_buffered_exec = false
+code_mode_interrupt = false
+code_mode_only = false
+code_mode_prewarm = false
+codex_apps_mcp_2026_07_28 = false
+codex_git_commit = false
+codex_hooks = false
+collab = false
+collaboration_modes = false
+compaction_image_budget = false
+computer_use = false
+concurrent_reasoning_summaries = false
+connectors = false
+content_item_kinds = false
+cwd_relative_turn_diffs = false
+daemon_auto_start = false
+default_mode_request_user_input = false
+defer_mailbox_preemption = false
+deferred_executor = false
+deferred_tool_world_state = false
+elevated_windows_sandbox = false
+enable_experimental_windows_sandbox = false
+enable_fanout = false
+enable_mcp_apps = false
+enable_request_compression = false
+exec_permission_approvals = false
+executed_tool_call_metadata = false
+executor_capability_discovery = false
+experimental_use_unified_exec_tool = false
+experimental_windows_sandbox = false
+external_agent_memory_import = false
+external_migration = false
+fast_mode = false
+goals = false
+guardian_approval = false
+guardian_conversation_history_tools = false
+guardian_enhanced_node_repl_transcripts = false
+guardian_ext = false
+guardian_node_repl_transcript_images = false
+guardian_reuse_parent_compaction = false
+guardian_root_handoff_context = false
+hooks = false
+image_detail_original = false
+image_generation = false
+image_resize_notice = false
+imagegenext = false
+in_app_browser = false
+in_app_chat = false
+in_app_dictation = false
+in_app_local_automation = false
+in_app_updates = false
+instant_interrupt = false
+item_ids = false
+js_repl = false
+js_repl_tools_only = false
+local_thread_store_compression = false
+local_thread_store_shared_compression = false
+login_shell_package_path = false
+mcp_2026_07_28 = false
+mcp_oauth_refresh_coordination = false
+memories = false
+memory_tool = false
+mentions_v2 = false
+multi_agent = false
+multi_agent_mode = false
+nonfatal_clock_read_errors = false
+omit_app_server_notification_media = false
+personality = false
+plugin_hooks = false
+plugin_sharing = false
+plugins = false
+powershell_shell_version = false
+prefer_mxc = false
+prevent_idle_sleep = false
+psp = false
+realtime_conversation = false
+reasoning_effort_override = false
+recommended_plugins = false
+remote_compaction_v2 = false
+remote_control = false
+remote_models = false
+remote_plugin = false
+request_permissions = false
+request_permissions_tool = false
+request_rule = false
+resize_all_images = false
+respect_system_proxy = false
+responses_websockets = false
+responses_websockets_v2 = false
+retain_client_developer_messages = false
+runtime_metrics = false
+search_tool = false
+secret_auth_storage = false
+send_async_message = false
+send_message_to_user_async = false
+shell_snapshot = false
+shell_snapshot_v2 = false
+shell_tool = false
+shell_zsh_fork = false
+skill_env_var_dependency_prompt = false
+skill_mcp_dependency_install = false
+skill_search = false
+skip_host_skill_discovery = false
+sqlite = false
+standalone_web_search = false
+steer = false
+step_model_switching = false
+system_proxy_fallback = false
+telepathy = false
+terminal_resize_reflow = false
+terminal_visualization_instructions = false
+tool_call_mcp_elicitation = false
+tool_search = false
+tool_search_always_defer_mcp_tools = false
+tool_suggest = false
+transcript_v2 = false
+tui_app_server = false
+unavailable_dummy_tools = false
+unbounded_connection_retries = false
+undo = false
+unified_exec = false
+unified_exec_tty = false
+unified_exec_zsh_fork = false
+unified_image_budget = false
+use_agent_identity = false
+use_legacy_landlock = false
+use_linux_sandbox_bwrap = false
+use_xaa = false
+view_image = false
+web_search = false
+web_search_cached = false
+web_search_request = false
+windows_sandbox_service = false
+workspace_dependencies = false
+workspace_owner_usage_nudge = false
+worktrees = false
+write_stdin_approval = false
+
+[profiles.example.features.apps_mcp_path_override]
+enabled = false
+path = "/data/codex/usr/examples/replace-me"
+
+[profiles.example.features.code_mode]
+default_exec_yield_time_ms = 1
+direct_only_tool_namespaces = ["example"]
+enabled = false
+excluded_tool_namespaces = ["example"]
+experimental_show_cell_overhead = false
+tool_input_schema_max_bytes = 1
+
+[profiles.example.features.code_mode_host]
+disable_in_process_fallback = false
+enabled = false
+
+[profiles.example.features.context_management]
+experimental_mode = false
+
+[profiles.example.features.current_time_reminder]
+clock_source = "system"
+delivery_mode = "any_inference"
+enabled = false
+reminder_interval_seconds = 1
+sleep_tool = false
+
+[profiles.example.features.guardianv2]
+classifier_instructions = "example"
+enabled = false
+free_guardian = false
+max_action_tokens = 100
+max_classifier_instruction_tokens = 100
+max_parent_compaction_tokens = 100
+max_tool_call_lag = 1
+persist_scores = false
+reasoning_effort = "high"
+reuse_parent_compaction = false
+review_threshold = 1.0
+thread_context = false
+
+[profiles.example.features.guardianv2.review_scope]
+computer_use_only = false
+sandboxed_exec_commands = false
+
+[profiles.example.features.guardianv2.transcript]
+include_images = false
+max_message_entry_tokens = 100
+max_message_transcript_tokens = 100
+max_recent_non_user_entries = 1
+max_tool_entry_tokens = 100
+max_tool_transcript_tokens = 100
+sources = ["tool_calls"]
+
+[profiles.example.features.multi_agent_v2]
+default_wait_timeout_ms = 1
+disable_direct_message = false
+enabled = false
+expose_spawn_agent_model_overrides = false
+hide_spawn_agent_metadata = false
+max_concurrent_threads_per_session = 1
+max_wait_timeout_ms = 1
+message_board_in_memory = false
+min_wait_timeout_ms = 1
+multi_agent_mode_hint_text = "example"
+non_code_mode_only = false
+root_agent_usage_hint_text = "example"
+subagent_developer_instructions = "example"
+subagent_usage_hint_text = "example"
+tool_namespace = "example"
+usage_hint_enabled = false
+usage_hint_text = "example"
+wait_agent_enabled = false
+
+[profiles.example.features.multi_agent_v2.message_board_remote]
+bearer_token = "example"
+bearer_token_env_var = "example"
+url = "https://example.invalid"
+
+[profiles.example.features.network_proxy]
+allow_local_binding = false
+allow_upstream_proxy = false
+credential_broker = false
+dangerously_allow_all_unix_sockets = false
+dangerously_allow_non_loopback_proxy = false
+enable_socks5 = false
+enable_socks5_udp = false
+enabled = false
+mode = "limited"
+proxy_url = "https://example.invalid"
+socks_url = "https://example.invalid"
+
+[profiles.example.features.network_proxy.credentials]
+
+[profiles.example.features.network_proxy.credentials.example]
+auth = ["bearer"]
+env = ["example"]
+header = "example"
+patterns = ["example"]
+prefix = "example"
+url_prefix_from_env = "https://example.invalid"
+url_prefixes = ["example"]
+
+[profiles.example.features.network_proxy.domains]
+example = "allow"
+
+[profiles.example.features.network_proxy.unix_sockets]
+example = "allow"
+
+[profiles.example.features.non_prefixed_mcp_tool_names]
+enabled = false
+server_names = ["example"]
+
+[profiles.example.features.rollout_budget]
+enabled = false
+limit_tokens = 1
+prefill_token_weight = 1.0
+reminder_at_remaining_tokens = [1]
+sampling_token_weight = 1.0
+
+[profiles.example.features.sleep_tool]
+enabled = false
+mode = "model_driven"
+
+[profiles.example.features.token_budget]
+auto_compact_fallback_buffer_tokens = 1
+auto_compact_fallback_prompt = "example"
+enabled = false
+guidance_message = "example"
+reminder_message_template = "example"
+reminder_threshold_tokens = 1
+use_history_notes_extension = false
+
+[profiles.example.features.tool_registry]
+error_on_tool_collisions = false
+turn_metadata_includes_tool_info = false
+
+[profiles.example.tools]
+
+[profiles.example.tools.experimental_request_user_input]
+enabled = false
+
+[profiles.example.tools.update_plan]
+enabled = false
+
+[profiles.example.tools.web_search]
+allowed_domains = ["example"]
+context_size = "low"
+
+[profiles.example.tools.web_search.location]
+city = "example"
+country = "example"
+region = "example"
+timezone = "example"
+
+[profiles.example.tui]
+session_picker_view = "comfortable"
+
+[profiles.example.windows]
+sandbox = "elevated"

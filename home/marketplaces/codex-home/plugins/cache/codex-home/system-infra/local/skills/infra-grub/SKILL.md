@@ -71,5 +71,5 @@ interface:
 - `$CODEX_HOME/index/domains/system/grub.md`
 - `$CODEX_HOME/docs/system/grub.md`
 - `$CODEX_HOME/docs/workflows/grub.md`
-- `$CODEX_HOME/templates/system/grub-baseline/`
+- `/data/codex/usr/examples/templates/system/grub-baseline/`
 - `$CODEX_HOME/snippets/system/grub-default`

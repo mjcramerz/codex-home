@@ -56,7 +56,7 @@ See also:
 - `overview.md`
 - `../virtualization/proxmox.md`
 - `../filesystems/proxmox.md`
-- `$CODEX_HOME/templates/virtualization/proxmox-vm-skeleton/`
+- `/data/codex/usr/examples/templates/virtualization/proxmox-vm-skeleton/`
 - `$CODEX_HOME/snippets/proxmox/storage.cfg`
 - Read the `infra-proxmox` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

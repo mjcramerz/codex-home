@@ -69,7 +69,7 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
 - `$CODEX_HOME/docs/web/htmx.md`
-- `$CODEX_HOME/templates/web/htmx-app/`
+- `/data/codex/usr/examples/templates/web/htmx-app/`
 - `$CODEX_HOME/snippets/web/htmx/index.html`
 - `references/implementation-playbook.md`
 - `references/endpoint-contracts.md`

@@ -69,5 +69,5 @@ interface:
 - `$CODEX_HOME/index/domains/observability/auditd.md`
 - `$CODEX_HOME/docs/observability/auditd.md`
 - `$CODEX_HOME/docs/workflows/auditd.md`
-- `$CODEX_HOME/templates/observability/auditd-rules-skeleton/`
+- `/data/codex/usr/examples/templates/observability/auditd-rules-skeleton/`
 - `$CODEX_HOME/snippets/auditd/audit.rules`

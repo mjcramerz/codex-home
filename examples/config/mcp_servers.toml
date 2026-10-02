@@ -1,0 +1,19 @@
+[mcp_servers]
+
+[mcp_servers.example_stdio]
+enabled = false
+required = false
+enabled_tools = ["example_read"]
+disabled_tools = ["example_write"]
+omit_tools_from = ["code_mode"]
+name = "example"
+command = "/usr/bin/false"
+args = []
+cwd = "/data/codex/usr/examples"
+env_vars = ["EXAMPLE_TOKEN", { name = "EXAMPLE_CONTEXT", source = "EXAMPLE_CONTEXT" }]
+
+[mcp_servers.example_stdio.tools]
+
+[mcp_servers.example_stdio.tools.example]
+approval_mode = "auto"
+output_token_limit = 1

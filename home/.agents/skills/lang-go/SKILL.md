@@ -45,7 +45,7 @@ Follow the active instruction hierarchy, preserve unrelated work and use only to
 
 - `$CODEX_HOME/docs/lang/go.md`
 - `$CODEX_HOME/docs/style/go.md`
-- `$CODEX_HOME/templates/go/cli-app/`
+- `/data/codex/usr/examples/templates/go/cli-app/`
 - `$CODEX_HOME/snippets/go/main.go`
 - `$CODEX_HOME/docs/prompt-writing.md`
 - `references/latest-sources.md`

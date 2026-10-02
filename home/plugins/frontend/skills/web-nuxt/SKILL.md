@@ -69,7 +69,7 @@ interface:
 ## References
 
 - `$CODEX_HOME/docs/web/nuxt.md`
-- `$CODEX_HOME/templates/web/nuxt-app/`
+- `/data/codex/usr/examples/templates/web/nuxt-app/`
 - `references/implementation-playbook.md`
 - `references/runtime-and-data-patterns.md`
 - `references/quality-gates.md`

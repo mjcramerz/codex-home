@@ -52,5 +52,5 @@ Apply the following practices to building search/log pipelines with the Elastic 
 
 See also:
 - `../workflows/elastic-stack.md`
-- `$CODEX_HOME/templates/observability/elastic-stack-compose/`
+- `/data/codex/usr/examples/templates/observability/elastic-stack-compose/`
 - `$CODEX_HOME/index/domains/observability/stack.md`

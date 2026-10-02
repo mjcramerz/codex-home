@@ -21,6 +21,6 @@ Use when:
 Related:
 - `$CODEX_HOME/docs/workflows/virsh.md`
 - `$CODEX_HOME/docs/workflows/proxmox.md`
-- `$CODEX_HOME/templates/virtualization`
+- `/data/codex/usr/examples/templates/virtualization`
 - Read the `infra-virtualization` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

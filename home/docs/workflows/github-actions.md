@@ -64,7 +64,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-github-actions.md` before execu
 
 ## Templates
 
-- GitHub Actions templates: `$CODEX_HOME/templates/ci/github-actions/`
+- GitHub Actions templates: `/data/codex/usr/examples/templates/ci/github-actions/`
 - Minimal permissions snippet: `$CODEX_HOME/snippets/ci/github_actions_min_permissions.yml`
 - Release/wrapper variable contract snippet: `$CODEX_HOME/snippets/ci/github_release_vars.env`
 
@@ -104,8 +104,8 @@ See also:
 - `gitlab-ci.md`
 - `../security/secrets.md`
 - `../security/supply-chain-controls.md`
-- `$CODEX_HOME/templates/ci/github-actions/release-build.yml`
-- `$CODEX_HOME/templates/ci/github-actions/release-publish.yml`
+- `/data/codex/usr/examples/templates/ci/github-actions/release-build.yml`
+- `/data/codex/usr/examples/templates/ci/github-actions/release-publish.yml`
 - Read the `ci-github-actions` skill only when its trigger matches this task and the skill is available.
 - Read the `ci-github-actions-fix` skill only when its trigger matches this task and the skill is available.
 - Read the `repo-ops` skill only when its trigger matches this task and the skill is available.

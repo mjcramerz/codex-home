@@ -46,7 +46,7 @@ Follow the active instruction hierarchy, preserve unrelated work and use only to
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
 - `$CODEX_HOME/docs/lang/typescript.md`
 - `$CODEX_HOME/docs/style/typescript.md`
-- `$CODEX_HOME/templates/typescript/ts-lib/`
+- `/data/codex/usr/examples/templates/typescript/ts-lib/`
 - `$CODEX_HOME/snippets/typescript/tsconfig.json`
 - `$CODEX_HOME/docs/prompt-writing.md`
 - `references/latest-sources.md`

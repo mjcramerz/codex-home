@@ -56,7 +56,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-auditd.md` before executing thi
 See also:
 - `overview.md`
 - `../observability/auditd.md`
-- `$CODEX_HOME/templates/observability/auditd-rules-skeleton/`
+- `/data/codex/usr/examples/templates/observability/auditd-rules-skeleton/`
 - `$CODEX_HOME/snippets/auditd/audit.rules`
 - Read the `secops-auditd` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

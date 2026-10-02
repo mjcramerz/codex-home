@@ -27,4 +27,4 @@ Use this guide when you change Rust crates, workspaces, build tooling or async s
 - `$CODEX_HOME/docs/workflows/rust-toolchain.md`
 - `$CODEX_HOME/docs/lang/rust.md`
 - `$CODEX_HOME/index/domains/lang/cargo.md`
-- `$CODEX_HOME/templates/rust/cli-app/`
+- `/data/codex/usr/examples/templates/rust/cli-app/`

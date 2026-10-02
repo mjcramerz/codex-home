@@ -96,5 +96,5 @@ interface:
 - `$CODEX_HOME/docs/security/security-labs-index.md`
 - `$CODEX_HOME/docs/security/security-labs-repo-catalog.md`
 - `$CODEX_HOME/docs/security/security-labs-tool-guides.md`
-- `$CODEX_HOME/templates/system/offsec-defense-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/offsec-defense-kit/overview.md`
 - `$CODEX_HOME/snippets/bash/security_assessment_guardrails.sh`

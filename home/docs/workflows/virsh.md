@@ -55,7 +55,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-virsh.md` before executing this
 See also:
 - `overview.md`
 - `../virtualization/virsh.md`
-- `$CODEX_HOME/templates/virtualization/virsh-vm-skeleton/`
+- `/data/codex/usr/examples/templates/virtualization/virsh-vm-skeleton/`
 - `$CODEX_HOME/snippets/virsh/domain.xml`
 - Read the `infra-virsh` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

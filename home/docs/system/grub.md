@@ -33,7 +33,7 @@ Apply the following practices to editing GRUB defaults and kernel command line s
 See also:
 - `overview.md`
 - `../workflows/grub.md`
-- `$CODEX_HOME/templates/system/grub-baseline/`
+- `/data/codex/usr/examples/templates/system/grub-baseline/`
 - `$CODEX_HOME/snippets/system/grub-default`
 - Read the `infra-grub` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/system/hardening.md`

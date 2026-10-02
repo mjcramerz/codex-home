@@ -69,5 +69,5 @@ interface:
 - `$CODEX_HOME/index/domains/observability/logrotate.md`
 - `$CODEX_HOME/docs/observability/logrotate.md`
 - `$CODEX_HOME/docs/workflows/logrotate.md`
-- `$CODEX_HOME/templates/observability/logrotate-skeleton/`
+- `/data/codex/usr/examples/templates/observability/logrotate-skeleton/`
 - `$CODEX_HOME/snippets/logrotate/app.logrotate`

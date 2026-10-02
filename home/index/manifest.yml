@@ -29,8 +29,8 @@ core:
       - $CODEX_HOME/docs/workflows/github-actions.md
       - $CODEX_HOME/docs/workflows/gitlab-ci.md
       - $CODEX_HOME/docs/workflows/release.md
-      - $CODEX_HOME/templates/ci/github-actions/
-      - $CODEX_HOME/templates/ci/gitlab-ci/
+      - /data/codex/usr/examples/templates/ci/github-actions/
+      - /data/codex/usr/examples/templates/ci/gitlab-ci/
       - $CODEX_HOME/snippets/ci/gitlab_delivery_vars.env
       - skill:ci-github-actions
       - skill:ci-github-actions-fix
@@ -180,14 +180,10 @@ pack:
     entrypoint: $CODEX_HOME/index/pack/config.md
     canonical: $CODEX_HOME/config.toml
     related:
-      - /data/codex/usr/instructions/models/default_catalog.json
-      - /data/codex/usr/instructions/models/cyber_catalog.json
-      - /data/codex/usr/instructions/models/review_catalog.json
-      - $CODEX_HOME/.models/default_catalog.json
-      - $CODEX_HOME/.models/cyber_catalog.json
-      - $CODEX_HOME/.models/review_catalog.json
-      - $CODEX_HOME/.models/instructions/models/base.md
-      - $CODEX_HOME/.models/instructions/compact/prompt.md
+      - $CODEX_HOME/models_catalog.json
+      - /data/codex/usr/instructions/manifest.json
+      - $CODEX_HOME/docs/operations/CONFIGURATION.md
+      - /data/codex/usr/examples/config-coverage.json
       - $CODEX_HOME/index/pack/docs.md
     metadata:
       version: '1.0'
@@ -228,7 +224,7 @@ pack:
       - $CODEX_HOME/docs/workflows/prompts-library.md
       - $CODEX_HOME/plans/prompts-library.md
       - $CODEX_HOME/plans/workflows/workflow-prompts-library.md
-      - $CODEX_HOME/templates/prompts/slash-command-maintenance/
+      - /data/codex/usr/examples/templates/prompts/slash-command-maintenance/
       - $CODEX_HOME/snippets/docs/prompt_contract.md
       - skill:pack-prompts
     metadata:
@@ -328,7 +324,7 @@ pack:
     canonical: $CODEX_HOME/snippets/OVERVIEW.md
     related:
       - $CODEX_HOME/snippets/OVERVIEW.md
-      - $CODEX_HOME/templates/OVERVIEW.md
+      - /data/codex/usr/examples/templates/OVERVIEW.md
       - $CODEX_HOME/.agents/skills
     metadata:
       version: '1.0'
@@ -357,11 +353,11 @@ pack:
     kind: entrypoint
     description: stable index to the pack’s templates.
     entrypoint: $CODEX_HOME/index/pack/templates.md
-    canonical: $CODEX_HOME/templates/OVERVIEW.md
+    canonical: /data/codex/usr/examples/templates/OVERVIEW.md
     related:
-      - $CODEX_HOME/templates/OVERVIEW.md
-      - $CODEX_HOME/templates/common/
-      - $CODEX_HOME/templates/prompts/slash-command-maintenance/
+      - /data/codex/usr/examples/templates/OVERVIEW.md
+      - /data/codex/usr/examples/templates/common/
+      - /data/codex/usr/examples/templates/prompts/slash-command-maintenance/
       - $CODEX_HOME/snippets/OVERVIEW.md
       - $CODEX_HOME/.agents/skills
     metadata:
@@ -452,7 +448,7 @@ style:
     canonical: $CODEX_HOME/docs/style/go.md
     related:
       - $CODEX_HOME/snippets/go/
-      - $CODEX_HOME/templates/go/cli-app/
+      - /data/codex/usr/examples/templates/go/cli-app/
       - $CODEX_HOME/docs/style/overview.md
       - skill:lang-go
     metadata:
@@ -468,7 +464,7 @@ style:
     canonical: $CODEX_HOME/docs/style/perl.md
     related:
       - $CODEX_HOME/docs/lang/perl.md
-      - $CODEX_HOME/templates/perl/codex-hook-module/
+      - /data/codex/usr/examples/templates/perl/codex-hook-module/
       - $CODEX_HOME/docs/style/overview.md
       - skill:lang-perl
     metadata:
@@ -529,7 +525,7 @@ style:
     canonical: $CODEX_HOME/docs/style/typescript.md
     related:
       - $CODEX_HOME/snippets/typescript/
-      - $CODEX_HOME/templates/typescript/ts-lib/
+      - /data/codex/usr/examples/templates/typescript/ts-lib/
       - $CODEX_HOME/docs/style/overview.md
       - skill:lang-typescript
     metadata:
@@ -740,7 +736,7 @@ domains:
       canonical: $CODEX_HOME/docs/infra/ansible.md
       related:
         - $CODEX_HOME/docs/workflows/ansible.md
-        - $CODEX_HOME/templates/infra/ansible-role-skeleton/
+        - /data/codex/usr/examples/templates/infra/ansible-role-skeleton/
         - $CODEX_HOME/snippets/ansible/
         - skill:iac-ansible
       metadata:
@@ -820,9 +816,9 @@ domains:
         - $CODEX_HOME/docs/containers/podman.md
         - $CODEX_HOME/docs/containers/rootless-docker.md
         - $CODEX_HOME/docs/workflows/containers.md
-        - $CODEX_HOME/templates/containers/docker-compose-skeleton/
-        - $CODEX_HOME/templates/containers/dockerfile-skeleton/
-        - $CODEX_HOME/templates/containers/devlab-codelab-skeleton/
+        - /data/codex/usr/examples/templates/containers/docker-compose-skeleton/
+        - /data/codex/usr/examples/templates/containers/dockerfile-skeleton/
+        - /data/codex/usr/examples/templates/containers/devlab-codelab-skeleton/
         - $CODEX_HOME/snippets/containers/
         - skill:infra-containers
       metadata:
@@ -853,7 +849,7 @@ domains:
       canonical: $CODEX_HOME/docs/infra/kubernetes.md
       related:
         - $CODEX_HOME/docs/workflows/kubernetes.md
-        - $CODEX_HOME/templates/infra/kubernetes-app-skeleton/
+        - /data/codex/usr/examples/templates/infra/kubernetes-app-skeleton/
         - $CODEX_HOME/snippets/kubernetes/
         - skill:infra-kubernetes
       metadata:
@@ -869,7 +865,7 @@ domains:
       canonical: $CODEX_HOME/docs/virtualization/proxmox.md
       related:
         - $CODEX_HOME/docs/workflows/proxmox.md
-        - $CODEX_HOME/templates/virtualization/proxmox-vm-skeleton/
+        - /data/codex/usr/examples/templates/virtualization/proxmox-vm-skeleton/
         - $CODEX_HOME/snippets/proxmox/
         - skill:infra-proxmox
       metadata:
@@ -885,7 +881,7 @@ domains:
       canonical: $CODEX_HOME/docs/infra/terraform.md
       related:
         - $CODEX_HOME/docs/workflows/terraform.md
-        - $CODEX_HOME/templates/infra/terraform-module-skeleton/
+        - /data/codex/usr/examples/templates/infra/terraform-module-skeleton/
         - $CODEX_HOME/snippets/terraform/
         - skill:iac-terraform
       metadata:
@@ -901,7 +897,7 @@ domains:
       canonical: $CODEX_HOME/docs/virtualization/virsh.md
       related:
         - $CODEX_HOME/docs/workflows/virsh.md
-        - $CODEX_HOME/templates/virtualization/virsh-vm-skeleton/
+        - /data/codex/usr/examples/templates/virtualization/virsh-vm-skeleton/
         - $CODEX_HOME/snippets/virsh/
         - skill:infra-virsh
       metadata:
@@ -918,7 +914,7 @@ domains:
       related:
         - $CODEX_HOME/docs/workflows/virsh.md
         - $CODEX_HOME/docs/workflows/proxmox.md
-        - $CODEX_HOME/templates/virtualization/
+        - /data/codex/usr/examples/templates/virtualization/
         - skill:infra-virtualization
       metadata:
         version: '1.0'
@@ -952,7 +948,7 @@ domains:
       canonical: $CODEX_HOME/docs/lang/go.md
       related:
         - $CODEX_HOME/docs/lang/go.md
-        - $CODEX_HOME/templates/go/
+        - /data/codex/usr/examples/templates/go/
         - skill:lang-go
       metadata:
         version: '1.0'
@@ -983,7 +979,7 @@ domains:
       related:
         - $CODEX_HOME/docs/lang/perl.md
         - $CODEX_HOME/docs/style/perl.md
-        - $CODEX_HOME/templates/perl/codex-hook-module/
+        - /data/codex/usr/examples/templates/perl/codex-hook-module/
         - skill:lang-perl
         - skill:perl
       metadata:
@@ -1065,7 +1061,7 @@ domains:
       canonical: $CODEX_HOME/docs/lang/typescript.md
       related:
         - $CODEX_HOME/docs/lang/typescript.md
-        - $CODEX_HOME/templates/typescript/
+        - /data/codex/usr/examples/templates/typescript/
         - skill:lang-typescript
       metadata:
         version: '1.0'
@@ -1143,7 +1139,7 @@ domains:
       canonical: $CODEX_HOME/docs/observability/elasticsearch.md
       related:
         - $CODEX_HOME/docs/workflows/elastic-stack.md
-        - $CODEX_HOME/templates/observability/elastic-stack-compose/
+        - /data/codex/usr/examples/templates/observability/elastic-stack-compose/
         - $CODEX_HOME/snippets/elastic/elasticsearch.yml
         - skill:obs-elasticsearch
       metadata:
@@ -1159,7 +1155,7 @@ domains:
       canonical: $CODEX_HOME/docs/observability/kibana.md
       related:
         - $CODEX_HOME/docs/workflows/elastic-stack.md
-        - $CODEX_HOME/templates/observability/elastic-stack-compose/
+        - /data/codex/usr/examples/templates/observability/elastic-stack-compose/
         - $CODEX_HOME/snippets/elastic/kibana.yml
         - skill:obs-kibana
       metadata:
@@ -1190,7 +1186,7 @@ domains:
       canonical: $CODEX_HOME/docs/observability/logstash.md
       related:
         - $CODEX_HOME/docs/workflows/elastic-stack.md
-        - $CODEX_HOME/templates/observability/elastic-stack-compose/
+        - /data/codex/usr/examples/templates/observability/elastic-stack-compose/
         - $CODEX_HOME/snippets/elastic/logstash.conf
         - skill:obs-logstash
       metadata:
@@ -1247,7 +1243,7 @@ domains:
       related:
         - $CODEX_HOME/docs/workflows/debian-preseed.md
         - $CODEX_HOME/docs/virtualization/debian-preseed.md
-        - $CODEX_HOME/templates/virtualization/debian-preseed/
+        - /data/codex/usr/examples/templates/virtualization/debian-preseed/
         - $CODEX_HOME/snippets/preseed/include.preseed.cfg
         - skill:os-debian-preseed
         - skill:debian-preseed
@@ -1279,7 +1275,7 @@ domains:
       canonical: $CODEX_HOME/docs/filesystems/overview.md
       related:
         - $CODEX_HOME/docs/workflows/filesystems.md
-        - $CODEX_HOME/templates/filesystems/
+        - /data/codex/usr/examples/templates/filesystems/
         - skill:storage-filesystems
       metadata:
         version: '1.0'
@@ -1309,7 +1305,7 @@ domains:
       canonical: $CODEX_HOME/docs/system/kernel.md
       related:
         - $CODEX_HOME/docs/workflows/kernel-build.md
-        - $CODEX_HOME/templates/system/kernel-build-skeleton/
+        - /data/codex/usr/examples/templates/system/kernel-build-skeleton/
         - $CODEX_HOME/snippets/system/kernel-config.fragment
         - skill:infra-kernel
       metadata:
@@ -1356,7 +1352,7 @@ domains:
       canonical: $CODEX_HOME/docs/systemd/overview.md
       related:
         - $CODEX_HOME/docs/workflows/systemd.md
-        - $CODEX_HOME/templates/systemd/
+        - /data/codex/usr/examples/templates/systemd/
         - skill:infra-systemd
       metadata:
         version: '1.0'
@@ -1390,7 +1386,7 @@ domains:
         - $CODEX_HOME/docs/vscode/devcontainer.md
         - $CODEX_HOME/docs/vscode/settings.md
         - $CODEX_HOME/snippets/vscode/devcontainer.json
-        - $CODEX_HOME/templates/containers/devlab-codelab-skeleton/
+        - /data/codex/usr/examples/templates/containers/devlab-codelab-skeleton/
       metadata:
         version: '1.0'
         short-description: VS Code guidance
@@ -1425,7 +1421,7 @@ domains:
         - $CODEX_HOME/docs/web/vue.md
         - $CODEX_HOME/docs/web/nuxt.md
         - $CODEX_HOME/docs/workflows/web-frontend.md
-        - $CODEX_HOME/templates/web/
+        - /data/codex/usr/examples/templates/web/
         - skill:web-react
         - skill:web-nextjs
         - skill:web-htmx
@@ -1457,7 +1453,7 @@ domains:
       canonical: $CODEX_HOME/docs/web/nextjs.md
       related:
         - $CODEX_HOME/docs/workflows/web-frontend.md
-        - $CODEX_HOME/templates/web/nextjs-app/
+        - /data/codex/usr/examples/templates/web/nextjs-app/
         - skill:web-nextjs
       metadata:
         version: '1.0'
@@ -1472,7 +1468,7 @@ domains:
       canonical: $CODEX_HOME/docs/web/nuxt.md
       related:
         - $CODEX_HOME/docs/workflows/web-frontend.md
-        - $CODEX_HOME/templates/web/nuxt-app/
+        - /data/codex/usr/examples/templates/web/nuxt-app/
         - skill:web-nuxt
       metadata:
         version: '1.0'
@@ -1487,7 +1483,7 @@ domains:
       canonical: $CODEX_HOME/docs/web/react.md
       related:
         - $CODEX_HOME/docs/workflows/web-frontend.md
-        - $CODEX_HOME/templates/web/react-vite-app/
+        - /data/codex/usr/examples/templates/web/react-vite-app/
         - skill:web-react
       metadata:
         version: '1.0'
@@ -1502,7 +1498,7 @@ domains:
       canonical: $CODEX_HOME/docs/web/sveltekit.md
       related:
         - $CODEX_HOME/docs/workflows/web-frontend.md
-        - $CODEX_HOME/templates/web/sveltekit-app/
+        - /data/codex/usr/examples/templates/web/sveltekit-app/
         - skill:web-sveltekit
       metadata:
         version: '1.0'
@@ -1517,7 +1513,7 @@ domains:
       canonical: $CODEX_HOME/docs/web/vue.md
       related:
         - $CODEX_HOME/docs/workflows/web-frontend.md
-        - $CODEX_HOME/templates/web/vue-app/
+        - /data/codex/usr/examples/templates/web/vue-app/
         - skill:web-vue
       metadata:
         version: '1.0'

@@ -55,7 +55,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-grub.md` before executing this 
 See also:
 - `overview.md`
 - `../system/grub.md`
-- `$CODEX_HOME/templates/system/grub-baseline/`
+- `/data/codex/usr/examples/templates/system/grub-baseline/`
 - `$CODEX_HOME/snippets/system/grub-default`
 - Read the `infra-grub` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

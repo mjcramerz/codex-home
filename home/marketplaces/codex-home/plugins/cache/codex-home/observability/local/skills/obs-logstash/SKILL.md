@@ -65,5 +65,5 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/elastic-stack.md`
 - `$CODEX_HOME/docs/observability/logstash.md`
-- `$CODEX_HOME/templates/observability/elastic-stack-compose/`
+- `/data/codex/usr/examples/templates/observability/elastic-stack-compose/`
 - `$CODEX_HOME/snippets/elastic/logstash.conf`

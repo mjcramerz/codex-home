@@ -19,7 +19,7 @@ Use this guide when you change Go packages, modules, CLIs or services. Inspect t
 - `$CODEX_HOME/docs/lang/overview.md`
 - `$CODEX_HOME/INDEX.md`
 - `$CODEX_HOME/index/OVERVIEW.md`
-- `$CODEX_HOME/templates/go/cli-app/`
+- `/data/codex/usr/examples/templates/go/cli-app/`
 - `$CODEX_HOME/snippets/go/main.go`
 - `$CODEX_HOME/index/domains/lang/languages.md`
 - `$CODEX_HOME/index/domains/lang/go.md`

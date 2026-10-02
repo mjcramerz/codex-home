@@ -201,5 +201,5 @@ Recommended evidence layout:
 - `security-labs-tool-guides.md`
 - `security-labs-repo-catalog.md`
 - `../workflows/nethunter-pixel9a.md`
-- `$CODEX_HOME/templates/system/nethunter-pixel9a-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/nethunter-pixel9a-kit/overview.md`
 - Read the `nethunter-pixel9a` skill only when its trigger matches this task and the skill is available.

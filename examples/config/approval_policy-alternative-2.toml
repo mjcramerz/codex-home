@@ -1,0 +1,8 @@
+[approval_policy]
+
+[approval_policy.granular]
+mcp_elicitations = false
+request_permissions = false
+rules = false
+sandbox_approval = false
+skill_approval = false

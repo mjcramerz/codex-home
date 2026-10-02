@@ -56,7 +56,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-crowdsec.md` before executing t
 See also:
 - `overview.md`
 - `../observability/crowdsec.md`
-- `$CODEX_HOME/templates/observability/crowdsec-skeleton/`
+- `/data/codex/usr/examples/templates/observability/crowdsec-skeleton/`
 - `$CODEX_HOME/snippets/crowdsec/acquis.yaml`
 - Read the `secops-crowdsec` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

@@ -19,7 +19,7 @@ Use this guide when the task concerns memory runtime workflow (retired). Apply t
 ## Current guidance
 
 - For repo-aware memory context, use `$CODEX_HOME/memories/`.
-- For memory instruction-source changes, update both `$CODEX_USER_DIR/instructions/memories/` and `$CODEX_HOME/.models/instructions/memories/` together and keep the rendered `$CODEX_HOME/config.toml` memory overrides aligned.
+- For memory instruction-source changes, update both `$CODEX_USER_DIR/instructions/<selected-set>/memory/` and `$CODEX_HOME/instructions/<selected-set>/memory/` together and keep the rendered `$CODEX_HOME/config.toml` memory overrides aligned.
 - For repository operations related to memory state, use
   `$CODEX_HOME/docs/workflows/repo-ops.md`.
 

@@ -79,4 +79,4 @@ interface:
 
 - `$CODEX_HOME/docs/security/supply-chain.md`
 - `$CODEX_HOME/docs/security/supply-chain-controls.md`
-- `$CODEX_HOME/templates/ci/github-actions/`
+- `/data/codex/usr/examples/templates/ci/github-actions/`

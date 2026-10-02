@@ -74,4 +74,4 @@ interface:
 - `references/badusb-rubberducky-defense.md`
 - `references/latest-sources.md`
 - `$CODEX_HOME/docs/security/security-labs-tool-guides.md`
-- `$CODEX_HOME/templates/system/mobile-wireless-defense-kit/overview.md`
+- `/data/codex/usr/examples/templates/system/mobile-wireless-defense-kit/overview.md`

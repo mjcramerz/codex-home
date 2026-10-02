@@ -81,4 +81,4 @@ interface:
 - `$CODEX_HOME/snippets/systemd/service.unit`
 - `$CODEX_HOME/snippets/systemd/timer.unit`
 - `$CODEX_HOME/snippets/systemd/user-service.unit`
-- `$CODEX_HOME/templates/systemd/user-service-skeleton/`
+- `/data/codex/usr/examples/templates/systemd/user-service-skeleton/`

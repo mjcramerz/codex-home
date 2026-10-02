@@ -1,0 +1,1 @@
+Read a specific resource from an MCP server given the server name and resource URI.

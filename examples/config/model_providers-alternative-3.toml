@@ -1,0 +1,17 @@
+[model_providers]
+
+[model_providers.example_aws_profile]
+name = "Example SigV4 profile"
+base_url = "https://example.invalid"
+wire_api = "responses"
+requires_openai_auth = false
+supports_websockets = false
+
+[model_providers.example_aws_profile.aws]
+profile = "example"
+region = "us-east-1"
+
+[model_providers.example_aws_profile.aws.auth_refresh]
+command = "aws"
+args = ["sso", "login", "--profile", "example"]
+timeout_ms = 60000

@@ -58,7 +58,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-terraform.md` before executing 
 See also:
 - `overview.md`
 - `../infra/terraform.md`
-- `$CODEX_HOME/templates/infra/terraform-module-skeleton/`
+- `/data/codex/usr/examples/templates/infra/terraform-module-skeleton/`
 - `$CODEX_HOME/snippets/terraform/versions.tf`
 - Read the `iac-terraform` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/pack/workflows.md`

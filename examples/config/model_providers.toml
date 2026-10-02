@@ -1,0 +1,38 @@
+[model_providers]
+
+[model_providers.example_api]
+base_url = "https://example.invalid/v1"
+env_key = "EXAMPLE_API_KEY"
+env_key_instructions = "Provide a scoped API key through EXAMPLE_API_KEY."
+model_catalog_url = "https://example.invalid"
+name = "Example Responses API"
+request_max_retries = 2
+requires_openai_auth = false
+stream_idle_timeout_ms = 300000
+stream_max_retries = 2
+supports_standalone_web_search = false
+supports_websockets = false
+websocket_connect_timeout_ms = 10000
+wire_api = "responses"
+
+[model_providers.example_api.env_http_headers]
+X-Example-Context = "EXAMPLE_CONTEXT"
+
+[model_providers.example_api.gateway_oauth]
+authorization_url = "https://example.invalid/oauth/authorize"
+client_id = "example-public-client"
+redirect_port = 8089
+resource = "https://example.invalid/v1"
+scopes = ["example:read"]
+token_url = "https://example.invalid/oauth/token"
+
+[model_providers.example_api.gateway_oauth.delivery]
+kind = "header"
+name = "X-Gateway-Authorization"
+scheme = "Bearer"
+
+[model_providers.example_api.http_headers]
+X-Example = "read-only"
+
+[model_providers.example_api.query_params]
+example = "example"

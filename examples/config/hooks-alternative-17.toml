@@ -1,0 +1,2 @@
+[hooks]
+PreToolUse = [{ hooks = [{ input = {  }, server = "example", tool = "example", type = "mcp_tool" }] }]

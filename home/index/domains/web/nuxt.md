@@ -19,6 +19,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
-- `$CODEX_HOME/templates/web/nuxt-app`
+- `/data/codex/usr/examples/templates/web/nuxt-app`
 - Read the `web-nuxt` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

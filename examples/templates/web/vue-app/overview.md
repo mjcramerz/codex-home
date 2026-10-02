@@ -1,0 +1,33 @@
+# Vue app scaffold (overview)
+
+Use this template when you need vue app scaffold (overview) in the authorized project. Replace placeholders, adapt the examples to the detected toolchain, and preserve the requested output contract. Do not treat sample values or commands as verified deployment settings.
+
+Wrapper around the official Vue scaffold.
+
+## Recommended approach
+
+1. Pick a pinned Vue CLI version approved by your org.
+2. Run `npm create vue@<version>`.
+3. Add CI workflows from `/data/codex/usr/examples/templates/ci/github-actions/` or `/data/codex/usr/examples/templates/ci/gitlab-ci/`.
+
+## Notes
+
+- Pin Node.js and Vue versions.
+- Prefer Composition API.
+
+## Inputs
+
+- Destination repository path for this template.
+- Exact runtime/toolchain versions and pinning policy.
+- Repository-specific values for placeholders, secrets, and host paths.
+
+## Outputs
+
+- Files copied from this template directory.
+- No additional files are currently defined in this template directory.
+
+## Next steps
+
+1. Copy files into deterministic repository paths.
+2. Replace placeholders and pin versions/images before first commit.
+3. Run the narrowest relevant checks (lint/test/build or dry-run) before commit.

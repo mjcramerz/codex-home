@@ -19,7 +19,7 @@ Use this guide when you change Ansible inventories, roles, playbooks or collecti
 - `$CODEX_HOME/docs/infra/overview.md`
 - `$CODEX_HOME/INDEX.md`
 - `$CODEX_HOME/index/OVERVIEW.md`
-- `$CODEX_HOME/templates/infra/ansible-role-skeleton/`
+- `/data/codex/usr/examples/templates/infra/ansible-role-skeleton/`
 - `$CODEX_HOME/snippets/ansible/playbook.yml`
 - `$CODEX_HOME/snippets/ansible/ansible.cfg`
 - `$CODEX_HOME/index/domains/infra/tooling.md`

@@ -19,7 +19,7 @@ Use this guide when you change TypeScript or JavaScript applications, tooling or
 - `$CODEX_HOME/docs/lang/overview.md`
 - `$CODEX_HOME/INDEX.md`
 - `$CODEX_HOME/index/OVERVIEW.md`
-- `$CODEX_HOME/templates/typescript/ts-lib/`
+- `/data/codex/usr/examples/templates/typescript/ts-lib/`
 - `$CODEX_HOME/snippets/typescript/tsconfig.json`
 - `$CODEX_HOME/index/domains/lang/languages.md`
 - `$CODEX_HOME/index/domains/lang/typescript.md`

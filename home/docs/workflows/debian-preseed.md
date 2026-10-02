@@ -65,7 +65,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-debian-preseed.md` before execu
 
 ## Template
 
-- `$CODEX_HOME/templates/virtualization/debian-preseed/`
+- `/data/codex/usr/examples/templates/virtualization/debian-preseed/`
 
 ## Security checkpoints
 

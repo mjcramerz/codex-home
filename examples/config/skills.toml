@@ -1,0 +1,2 @@
+[skills]
+config = [{ enabled = false, name = "example", path = "/data/codex/usr/examples/replace-me" }]

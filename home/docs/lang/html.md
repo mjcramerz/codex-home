@@ -26,7 +26,7 @@ Apply the following practices to accessible, maintainable HTML.
 See also:
 - `overview.md`
 - `../web/htmx.md`
-- `$CODEX_HOME/templates/web/html-static/`
+- `/data/codex/usr/examples/templates/web/html-static/`
 - `$CODEX_HOME/snippets/web/html/index.html`
 - Read the `web-html` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/lang/languages.md`

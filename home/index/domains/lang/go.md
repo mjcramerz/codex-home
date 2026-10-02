@@ -19,6 +19,6 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/docs/lang/go.md`
-- `$CODEX_HOME/templates/go`
+- `/data/codex/usr/examples/templates/go`
 - Read the `lang-go` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

@@ -70,7 +70,7 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/web-frontend.md`
 - `$CODEX_HOME/docs/web/react.md`
-- `$CODEX_HOME/templates/web/react-vite-app/`
+- `/data/codex/usr/examples/templates/web/react-vite-app/`
 - `references/implementation-playbook.md`
 - `references/react-performance-rules.md`
 - `references/react-native-web-adaptations.md`

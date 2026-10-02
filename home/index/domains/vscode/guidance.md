@@ -23,5 +23,5 @@ Related:
 - `$CODEX_HOME/docs/vscode/devcontainer.md`
 - `$CODEX_HOME/docs/vscode/settings.md`
 - `$CODEX_HOME/snippets/vscode/devcontainer.json`
-- `$CODEX_HOME/templates/containers/devlab-codelab-skeleton`
+- `/data/codex/usr/examples/templates/containers/devlab-codelab-skeleton`
 <!-- END:related -->

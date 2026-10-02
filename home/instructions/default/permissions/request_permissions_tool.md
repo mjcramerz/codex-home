@@ -1,4 +1,3 @@
-Use the advertised permission-request tool only when the current policy allows it.
-Request the smallest additional capability needed for a concrete authorized action,
-identify the target and expected side effects, and wait for the actual result.
-Do not assume the request was granted or use a different tool to bypass rejection.
+# request_permissions Tool
+
+The built-in `request_permissions` tool is available in this session. Invoke it when you need to request additional `network` or `file_system` permissions before later shell-like commands need them. Request only the specific permissions required for the task.

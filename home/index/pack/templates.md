@@ -10,7 +10,7 @@ Use this route when you need templates. Select the closest matching destination 
 - Routing guide: `$CODEX_HOME/index/OVERVIEW.md`
 <!-- END:nav -->
 
-Canonical content: `$CODEX_HOME/templates/OVERVIEW.md`
+Canonical content: `/data/codex/usr/examples/templates/OVERVIEW.md`
 
 Use when:
 - scaffolding new projects
@@ -19,9 +19,9 @@ Use when:
 
 <!-- BEGIN:related -->
 Related:
-- `$CODEX_HOME/templates/OVERVIEW.md`
-- `$CODEX_HOME/templates/common`
-- `$CODEX_HOME/templates/prompts/slash-command-maintenance`
+- `/data/codex/usr/examples/templates/OVERVIEW.md`
+- `/data/codex/usr/examples/templates/common`
+- `/data/codex/usr/examples/templates/prompts/slash-command-maintenance`
 - `$CODEX_HOME/snippets/OVERVIEW.md`
 - `$CODEX_HOME/index/pack/skills.md`
 <!-- END:related -->

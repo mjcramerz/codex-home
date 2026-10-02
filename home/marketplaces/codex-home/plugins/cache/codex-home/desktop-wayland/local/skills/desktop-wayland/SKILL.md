@@ -58,5 +58,5 @@ interface:
 - `$CODEX_HOME/docs/desktop/wofi.md`
 - `$CODEX_HOME/docs/desktop/wayland.md`
 - `$CODEX_HOME/docs/workflows/desktop-wayland.md`
-- `$CODEX_HOME/templates/desktop/wayland-skeleton/`
+- `/data/codex/usr/examples/templates/desktop/wayland-skeleton/`
 - `$CODEX_HOME/snippets/desktop/`

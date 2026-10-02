@@ -21,7 +21,7 @@ Apply the following practices to Vue SSR/SSG apps using Nuxt.
 See also:
 - `overview.md`
 - `vue.md`
-- `$CODEX_HOME/templates/web/nuxt-app/`
+- `/data/codex/usr/examples/templates/web/nuxt-app/`
 - Read the `web-nuxt` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/web/frameworks.md`
 - `$CODEX_HOME/index/domains/web/nuxt.md`

@@ -1,0 +1,4 @@
+[ghost_snapshot]
+disable_warnings = false
+ignore_large_untracked_dirs = 1
+ignore_large_untracked_files = 1

@@ -1,0 +1,1 @@
+These approval categories may still prompt the user when needed:

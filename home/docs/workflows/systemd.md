@@ -65,8 +65,8 @@ Start with `$CODEX_HOME/plans/workflows/workflow-systemd.md` before executing th
 - `../systemd/timers.md`
 - `../systemd/hardening.md`
 - `../systemd/user-units.md`
-- `$CODEX_HOME/templates/systemd/service-skeleton/`
-- `$CODEX_HOME/templates/systemd/user-service-skeleton/`
+- `/data/codex/usr/examples/templates/systemd/service-skeleton/`
+- `/data/codex/usr/examples/templates/systemd/user-service-skeleton/`
 - `$CODEX_HOME/snippets/systemd/service.unit`
 - `$CODEX_HOME/snippets/systemd/timer.unit`
 - `$CODEX_HOME/snippets/systemd/user-service.unit`

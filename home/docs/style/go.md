@@ -20,7 +20,7 @@ Use this guide when you change Go packages, modules, CLIs or services. Inspect t
 - `$CODEX_HOME/INDEX.md`
 - `$CODEX_HOME/index/OVERVIEW.md`
 - `$CODEX_HOME/snippets/go/`
-- `$CODEX_HOME/templates/go/cli-app/`
+- `/data/codex/usr/examples/templates/go/cli-app/`
 - `$CODEX_HOME/index/pack/style.md`
 - `$CODEX_HOME/index/style/go.md`
 

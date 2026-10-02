@@ -31,7 +31,7 @@ Apply the following practices to creating `.desktop` files for application launc
 
 See also:
 - `overview.md`
-- `$CODEX_HOME/templates/desktop/desktop-entry/`
+- `/data/codex/usr/examples/templates/desktop/desktop-entry/`
 - `$CODEX_HOME/snippets/desktop/desktop-entry.desktop`
 - `../workflows/desktop-entries.md`
 - Read the `desktop-entries` skill only when its trigger matches this task and the skill is available.

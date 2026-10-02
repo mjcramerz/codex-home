@@ -26,11 +26,11 @@ Start with `$CODEX_HOME/plans/workflows/workflow-build-an-app.md` before executi
 
 ## 2) Select a template
 
-- Python API: `$CODEX_HOME/templates/python/fastapi-app`
-- Rust API: `$CODEX_HOME/templates/rust/axum-api`
-- Web app: `$CODEX_HOME/templates/web/react-vite-app`
-- CLI apps: `$CODEX_HOME/templates/python/cli-app`, `$CODEX_HOME/templates/rust/cli-app`
-- Containers/VMs: `$CODEX_HOME/templates/containers/`, `$CODEX_HOME/templates/virtualization/`
+- Python API: `/data/codex/usr/examples/templates/python/fastapi-app`
+- Rust API: `/data/codex/usr/examples/templates/rust/axum-api`
+- Web app: `/data/codex/usr/examples/templates/web/react-vite-app`
+- CLI apps: `/data/codex/usr/examples/templates/python/cli-app`, `/data/codex/usr/examples/templates/rust/cli-app`
+- Containers/VMs: `/data/codex/usr/examples/templates/containers/`, `/data/codex/usr/examples/templates/virtualization/`
 
 ## 3) Wire baseline (before features)
 
@@ -54,7 +54,7 @@ Start with `$CODEX_HOME/plans/workflows/workflow-build-an-app.md` before executi
 
 ## 6) CI/CD
 
-- Add workflows from `$CODEX_HOME/templates/ci/github-actions/` or `$CODEX_HOME/templates/ci/gitlab-ci/`.
+- Add workflows from `/data/codex/usr/examples/templates/ci/github-actions/` or `/data/codex/usr/examples/templates/ci/gitlab-ci/`.
 - Lint, test, and audit gates with minimal permissions.
 
 ## Branching & release flow
@@ -103,5 +103,5 @@ Start with `$CODEX_HOME/plans/workflows/workflow-build-an-app.md` before executi
 - Release owner confirms artifact version/digest and rollout status before final sign-off.
 See also:
 - `overview.md`
-- `$CODEX_HOME/templates/OVERVIEW.md`
+- `/data/codex/usr/examples/templates/OVERVIEW.md`
 - `$CODEX_HOME/index/pack/workflows.md`

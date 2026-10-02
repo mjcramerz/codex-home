@@ -35,7 +35,7 @@ Apply the following practices to SSR/ISR React apps with Next.js.
 See also:
 - `overview.md`
 - `react.md`
-- `$CODEX_HOME/templates/web/nextjs-app/`
+- `/data/codex/usr/examples/templates/web/nextjs-app/`
 - Read the `web-nextjs` skill only when its trigger matches this task and the skill is available.
 - `$CODEX_HOME/index/domains/web/frameworks.md`
 - `$CODEX_HOME/index/domains/web/nextjs.md`

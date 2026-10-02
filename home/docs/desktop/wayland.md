@@ -59,7 +59,7 @@ See also:
 - `wofi.md`
 - `crystal-dock.md`
 - `desktop-entries.md`
-- `$CODEX_HOME/templates/desktop/wayland-skeleton/`
+- `/data/codex/usr/examples/templates/desktop/wayland-skeleton/`
 - `$CODEX_HOME/snippets/desktop/`
 - `../workflows/desktop-wayland.md`
 - Read the `desktop-wayland` skill only when its trigger matches this task and the skill is available.

@@ -51,6 +51,6 @@ This pack treats systemd units as production interfaces. Prefer explicit units, 
 - `hardening.md`
 - `user-units.md`
 - `../workflows/systemd.md`
-- `$CODEX_HOME/templates/systemd/service-skeleton/`
+- `/data/codex/usr/examples/templates/systemd/service-skeleton/`
 - `$CODEX_HOME/snippets/systemd/service.unit`
 - `$CODEX_HOME/index/domains/system/systemd.md`

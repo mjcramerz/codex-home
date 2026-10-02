@@ -19,7 +19,7 @@ Use when:
 <!-- BEGIN:related -->
 Related:
 - `$CODEX_HOME/snippets/go`
-- `$CODEX_HOME/templates/go/cli-app`
+- `/data/codex/usr/examples/templates/go/cli-app`
 - `$CODEX_HOME/docs/style/overview.md`
 - Read the `lang-go` skill only when its trigger matches this task and the skill is available.
 <!-- END:related -->

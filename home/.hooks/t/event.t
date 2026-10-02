@@ -28,7 +28,16 @@ my $default_cwd = Codex::Hook::Event->new(
     event_arg => 'session-end',
     payload   => {},
 );
-is($default_cwd->cwd, '.', 'cwd falls back safely');
+eval { $default_cwd->cwd; };
+like($@, qr/actual absolute working directory/, 'missing cwd is rejected');
+
+for my $cwd ('relative/path', "/tmp/example\0suffix") {
+    my $invalid = Codex::Hook::Event->new(
+        event_arg => 'session-end', payload => { cwd => $cwd },
+    );
+    eval { $invalid->cwd; };
+    like($@, qr/actual absolute working directory/, 'unsafe cwd is rejected');
+}
 
 my $strict_error = eval {
     Codex::Hook::Event->new(
@@ -38,7 +47,7 @@ my $strict_error = eval {
     );
     '';
 };
-like($@, qr/typo/, 'strict constructor rejects unknown attributes');
+like($@, qr/only event_arg and payload/, 'strict constructor rejects unknown attributes');
 
 my $event_error = eval {
     Codex::Hook::Event->new(
@@ -47,6 +56,6 @@ my $event_error = eval {
     );
     '';
 };
-like($@, qr/unsupported hook event/, 'unsupported lifecycle event is rejected');
+like($@, qr/supported hook event/, 'unsupported lifecycle event is rejected');
 
 done_testing;

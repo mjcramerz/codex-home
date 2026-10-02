@@ -1,0 +1,22 @@
+[apps]
+
+[apps.example]
+approvals_reviewer = "user"
+default_tools_approval_mode = "auto"
+default_tools_enabled = false
+destructive_enabled = false
+enabled = false
+omit_tools_from = ["code_mode"]
+open_world_enabled = false
+
+[apps.example.links]
+
+[apps.example.links.example]
+approvals_reviewer = "user"
+default_tools_approval_mode = "auto"
+
+[apps.example.tools]
+
+[apps.example.tools.example]
+approval_mode = "auto"
+enabled = false

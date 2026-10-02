@@ -74,5 +74,5 @@ interface:
 
 - `$CODEX_HOME/docs/workflows/kubernetes.md`
 - `$CODEX_HOME/docs/infra/kubernetes.md`
-- `$CODEX_HOME/templates/infra/kubernetes-app-skeleton/`
+- `/data/codex/usr/examples/templates/infra/kubernetes-app-skeleton/`
 - `$CODEX_HOME/snippets/kubernetes/deployment.yaml`

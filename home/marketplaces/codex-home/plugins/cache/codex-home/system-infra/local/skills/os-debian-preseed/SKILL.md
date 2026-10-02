@@ -68,5 +68,5 @@ interface:
 - `$CODEX_HOME/docs/virtualization/debian-preseed.md`
 - `$CODEX_HOME/docs/workflows/gitlab-runner.md`
 - `$CODEX_HOME/docs/desktop/wayland.md`
-- `$CODEX_HOME/templates/virtualization/debian-preseed/`
+- `/data/codex/usr/examples/templates/virtualization/debian-preseed/`
 - `$CODEX_HOME/snippets/virtualization/preseed_boot_params.txt`

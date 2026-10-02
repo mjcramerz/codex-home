@@ -68,7 +68,7 @@ interface:
 ## References
 
 - `$CODEX_HOME/docs/web/vue.md`
-- `$CODEX_HOME/templates/web/vue-app/`
+- `/data/codex/usr/examples/templates/web/vue-app/`
 - `references/implementation-playbook.md`
 - `references/composition-reactivity-patterns.md`
 - `references/quality-gates.md`

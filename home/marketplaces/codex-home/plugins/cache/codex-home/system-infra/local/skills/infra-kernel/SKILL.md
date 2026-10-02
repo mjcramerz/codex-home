@@ -72,5 +72,5 @@ interface:
 - `$CODEX_HOME/index/domains/system/kernel.md`
 - `$CODEX_HOME/docs/system/kernel.md`
 - `$CODEX_HOME/docs/workflows/kernel-build.md`
-- `$CODEX_HOME/templates/system/kernel-build-skeleton/`
+- `/data/codex/usr/examples/templates/system/kernel-build-skeleton/`
 - `$CODEX_HOME/snippets/system/kernel-config.fragment`
