@@ -2,219 +2,219 @@
   "source": "codex-rs/config/src/config_requirements.rs",
   "fields": {
     "allowed_login_methods": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allowed_chatgpt_workspaces": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "cli_auth_credentials_store": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "chatgpt_base_url": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "sqlite_home": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "log_dir": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "model_catalog_json": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "model_provider": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "model_providers": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "check_for_update_on_startup": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allow_login_shell": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "feedback": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allowed_approval_policies": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allowed_approvals_reviewers": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allowed_sandbox_modes": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allowed_permission_profiles": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "default_permissions": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "remote_sandbox_config": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allowed_web_search_modes": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allow_managed_hooks_only": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allow_browser_and_computer_use": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allow_appshots": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "allow_remote_control": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "computer_use": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "browser_use": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "in_app_browser": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "windows": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "features": {
-      "status": "active",
+      "status": "inherit_native_default",
       "file": "etc/requirements.toml",
-      "reason": "Administrator-owned constraint."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "hooks": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "mcp_servers": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "plugins": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "marketplaces": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "apps": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "rules": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "enforce_residency": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "experimental_network": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "application": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "permissions": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "auto_review": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "models": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "additional_developer_instructions": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "guardian_policy_config": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     },
     "guardian_extra_policy": {
       "status": "inherit_native_default",
       "file": null,
-      "reason": "Administrator constraint is intentionally absent until its application, identity, provider or deployment is provisioned."
+      "reason": "Unconstrained administrator policy; omit rather than prohibit values."
     }
   }
 }

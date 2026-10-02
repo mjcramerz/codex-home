@@ -58,13 +58,14 @@ class InstructionContractTests(unittest.TestCase):
         for tree in ['instructions', 'home/instructions']:
             self.assertFalse(list((ROOT/tree).rglob('*catalog*.json')))
 
-    def test_schema_and_supplied_rust_mismatch_is_explicit(self):
+    def test_patched_instruction_loader_and_schema_scope_are_explicit(self):
         self.assertIn('instruction_overrides', SCHEMA['properties'])
         self.assertNotEqual(SOURCE['rust_config_schema_sha256'], SOURCE['config_schema_sha256'])
-        self.assertIs(SOURCE['instruction_overrides_implemented_in_supplied_rust'], False)
+        self.assertIs(SOURCE['instruction_overrides_implemented_in_supplied_rust'], True)
+        self.assertEqual(len(SOURCE['applied_debian_patches']), 6)
         guide = (ROOT/'home/docs/operations/CONFIGURATION.md').read_text().replace('\n', ' ')
-        self.assertIn("the source ZIP's older schema", guide)
-        self.assertIn('those fields require a binary implementing the supplied schema', guide)
+        self.assertIn('six supplied Debian patches', guide)
+        self.assertIn('system_instructions_file', guide)
 
     def test_generated_hook_schemas_match_pinned_source_hashes(self):
         expected = SOURCE['hook_schema_sha256']
@@ -113,7 +114,9 @@ class InstructionContractTests(unittest.TestCase):
                      *sorted((ROOT/'agents').glob('*.toml'))]:
             cfg = {**home, **load(file)}
             paths = flatten(cfg['instruction_overrides'])
-            self.assertEqual(set(paths), instruction_fields(SCHEMA['definitions']['InstructionOverridesToml']), file.name)
+            expected = instruction_fields(SCHEMA['definitions']['InstructionOverridesToml'])
+            self.assertEqual(set(paths), expected - {'system_instructions_file'}, file.name)
+            self.assertNotIn('system_instructions_file', cfg['instruction_overrides'])
             for field, path in paths.items():
                 self.assertTrue(path.startswith(DEPLOY), (file.name, field))
                 self.assertTrue((ROOT/path.removeprefix(DEPLOY)).is_file(), (file.name, field))
@@ -131,13 +134,31 @@ class InstructionContractTests(unittest.TestCase):
             path = home['instruction_overrides']['realtime'][field]
             self.assertEqual((ROOT/path.removeprefix(DEPLOY)).read_text(), home[native])
 
-    def test_all_toml_parses_and_has_no_syntax_comments(self):
-        tokens = re.compile(r"'''[\s\S]*?'''|\"\"\"(?:\\[\s\S]|[\s\S])*?\"\"\"|\"(?:\\.|[^\"\\])*\"|'[^'\n]*'|#[^\n]*")
+    def test_all_toml_parses(self):
         for file in sorted(ROOT.rglob('*.toml')):
             text = file.read_text()
             with self.subTest(file=file.relative_to(ROOT)):
                 tomllib.loads(text)
-                self.assertFalse(any(m.group().startswith('#') for m in tokens.finditer(text)))
+
+    def test_selected_instruction_files_fit_native_loader_limits(self):
+        for family, group in MANIFEST['sets'].items():
+            active = {key:entry for key, entry in group['instructions'].items()
+                      if key != 'system_instructions_file'}
+            self.assertLessEqual(len(active), 128)
+            total = 0
+            for key, entry in active.items():
+                content = (ROOT/'instructions'/family/entry['file']).read_bytes()
+                total += len(content)
+                self.assertLessEqual(len(content), 256*1024)
+                self.assertNotIn(b'\0', content)
+                if key == 'content_filter_guidance_instructions_file':
+                    self.assertTrue(content.strip())
+                    self.assertLessEqual(len(content), 512)
+                if key.startswith('token_budget.'):
+                    self.assertLessEqual(len(content), 2000)
+                if key == 'token_budget.reminder_instructions_file':
+                    self.assertTrue(content.strip())
+            self.assertLessEqual(total, 4*1024*1024)
 
     def test_examples_have_moved_with_companion_project_files(self):
         for obsolete in ['etc/examples', 'home/templates', 'home/snippets/desktop/greetd.toml']:

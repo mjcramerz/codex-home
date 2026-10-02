@@ -14,6 +14,28 @@ SOURCE = Path(__file__).resolve().parents[1]/'home/.hooks'
 
 
 class HookTests(unittest.TestCase):
+    def test_configuration_edit_requires_real_filename_evidence(self):
+        for tool_input in [{'path': '/repo/.codex/config.toml'},
+                           {'file_path': '/repo/home/unleash.config.toml'},
+                           '*** Begin Patch\n*** Update File: /repo/hooks.json\n@@\n-secret\n+private\n*** End Patch']:
+            with self.subTest(tool_input=type(tool_input).__name__):
+                output = self.call('PostToolUse', tool_name='apply_patch', tool_input=tool_input)
+                context = output['hookSpecificOutput']['additionalContext']
+                self.assertIn('configuration changed', context)
+                self.assertNotIn('secret', context)
+                self.assertIn('Configuration edits were observed', self.call('Stop')['systemMessage'])
+                self.call('SessionEnd')
+        self.assertFalse(self.runner.configuration_edit({'tool_name':'apply_patch',
+                         'tool_input':{'path':'/repo/main.py','body':'config.toml'}}))
+        self.assertFalse(self.runner.configuration_edit({'tool_name':'exec_command',
+                         'tool_input':{'cmd':'cat config.toml'}}))
+
+    def test_failed_configuration_edit_does_not_claim_a_change(self):
+        output = self.call('PostToolUse', tool_name='apply_patch',
+                          tool_input={'path':'/repo/config.toml'}, tool_response={'isError':True})
+        self.assertNotIn('configuration changed', str(output))
+        self.assertNotIn('Configuration edits were observed', str(self.call('Stop')))
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)

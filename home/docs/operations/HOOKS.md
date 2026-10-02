@@ -1,6 +1,6 @@
 # Maintain repository-aware lifecycle hooks
 
-Use this guide when you change hook registration, repository-context discovery, event output or compatibility adapters. Keep the context engine in `$CODEX_HOME/.hooks/runner.py` and its active registration in `$CODEX_HOME/hooks.json`.
+Use this guide when you change hook registration, repository-context discovery, event output or compatibility adapters. The attached `hooks.zip` generated schemas are pinned byte-for-byte in both schema locations. Keep the context engine in `$CODEX_HOME/.hooks/runner.py` and its active registration in `$CODEX_HOME/hooks.json`.
 
 ## Follow the single dispatch path
 
@@ -50,3 +50,5 @@ Store only the latest SHA-256 digest per fixed context channel and fixed boolean
 ## Validate only the changed boundary
 
 Run `python3 -m unittest discover -s tests` and `prove home/.hooks/t` from the source checkout. Disposable fixtures exercise all twelve event contracts, malformed input, deadlines, static discovery, non-replay, compaction/interruption, completion reminders, private state, unsafe filesystem objects and retained Perl dispatch. Never execute a repository Makefile as a hook discovery check. Report fixtures separately from execution in the installed Codex client.
+
+Configuration-edit observations use bounded file paths and explicit apply_patch headers. Successful edits to Codex TOML, hook registration or MCP catalogs emit a merge/transport validation reminder and retain one completion flag. Failed tools never claim a configuration change. This hook reads no changed-file bodies and performs no lifecycle commands. The opt-in `unleash` profile disables hooks.

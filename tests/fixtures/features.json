@@ -12,8 +12,8 @@
     "stage": "Stable"
   },
   "api_key_model_discovery": {
-    "default": false,
-    "stage": "UnderDevelopment"
+    "default": true,
+    "stage": "Stable"
   },
   "apply_patch_freeform": {
     "default": false,
@@ -50,6 +50,10 @@
   "bedrock_setup_wizard": {
     "default": false,
     "stage": "UnderDevelopment"
+  },
+  "browser_annotation_api": {
+    "default": true,
+    "stage": "Stable"
   },
   "browser_use": {
     "default": true,
@@ -235,6 +239,10 @@
     "default": false,
     "stage": "Removed"
   },
+  "guardianv2_decisions_comparison": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
   "hooks": {
     "default": true,
     "stage": "Stable"
@@ -268,6 +276,10 @@
     "stage": "Stable"
   },
   "in_app_updates": {
+    "default": true,
+    "stage": "Stable"
+  },
+  "in_app_voice": {
     "default": true,
     "stage": "Stable"
   },
@@ -315,6 +327,10 @@
     "default": true,
     "stage": "Stable"
   },
+  "model_catalog_in_context": {
+    "default": false,
+    "stage": "UnderDevelopment"
+  },
   "multi_agent": {
     "default": true,
     "stage": "Stable"
@@ -326,6 +342,10 @@
   "multi_agent_v2": {
     "default": false,
     "stage": "Stable"
+  },
+  "multi_agent_v2_dynamic_tools": {
+    "default": false,
+    "stage": "UnderDevelopment"
   },
   "network_proxy": {
     "default": false,
@@ -368,8 +388,8 @@
     "stage": "UnderDevelopment"
   },
   "prevent_idle_sleep": {
-    "stage": "Experimental",
-    "default": false
+    "default": false,
+    "stage": "Experimental"
   },
   "psp": {
     "default": false,
@@ -444,8 +464,8 @@
     "stage": "Removed"
   },
   "secret_auth_storage": {
-    "stage": "Stable",
-    "default": false
+    "default": false,
+    "stage": "Stable"
   },
   "send_async_message": {
     "default": false,

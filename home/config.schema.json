@@ -750,6 +750,9 @@
                 }
               ]
             },
+            "artifact": {
+              "type": "boolean"
+            },
             "auth_elicitation": {
               "type": "boolean"
             },
@@ -757,6 +760,9 @@
               "type": "boolean"
             },
             "bedrock_setup_wizard": {
+              "type": "boolean"
+            },
+            "browser_annotation_api": {
               "type": "boolean"
             },
             "browser_use": {
@@ -909,6 +915,9 @@
             "guardianv2": {
               "$ref": "#/definitions/FeatureToml_for_GuardianV2ConfigToml"
             },
+            "guardianv2_decisions_comparison": {
+              "type": "boolean"
+            },
             "hooks": {
               "type": "boolean"
             },
@@ -937,6 +946,9 @@
               "type": "boolean"
             },
             "in_app_updates": {
+              "type": "boolean"
+            },
+            "in_app_voice": {
               "type": "boolean"
             },
             "instant_interrupt": {
@@ -975,6 +987,9 @@
             "mentions_v2": {
               "type": "boolean"
             },
+            "model_catalog_in_context": {
+              "type": "boolean"
+            },
             "multi_agent": {
               "type": "boolean"
             },
@@ -983,6 +998,9 @@
             },
             "multi_agent_v2": {
               "$ref": "#/definitions/FeatureToml_for_MultiAgentV2ConfigToml"
+            },
+            "multi_agent_v2_dynamic_tools": {
+              "type": "boolean"
             },
             "network_proxy": {
               "$ref": "#/definitions/FeatureToml_for_NetworkProxyConfigToml"
@@ -7173,6 +7191,9 @@
             }
           ]
         },
+        "artifact": {
+          "type": "boolean"
+        },
         "auth_elicitation": {
           "type": "boolean"
         },
@@ -7180,6 +7201,9 @@
           "type": "boolean"
         },
         "bedrock_setup_wizard": {
+          "type": "boolean"
+        },
+        "browser_annotation_api": {
           "type": "boolean"
         },
         "browser_use": {
@@ -7332,6 +7356,9 @@
         "guardianv2": {
           "$ref": "#/definitions/FeatureToml_for_GuardianV2ConfigToml"
         },
+        "guardianv2_decisions_comparison": {
+          "type": "boolean"
+        },
         "hooks": {
           "type": "boolean"
         },
@@ -7360,6 +7387,9 @@
           "type": "boolean"
         },
         "in_app_updates": {
+          "type": "boolean"
+        },
+        "in_app_voice": {
           "type": "boolean"
         },
         "instant_interrupt": {
@@ -7398,6 +7428,9 @@
         "mentions_v2": {
           "type": "boolean"
         },
+        "model_catalog_in_context": {
+          "type": "boolean"
+        },
         "multi_agent": {
           "type": "boolean"
         },
@@ -7406,6 +7439,9 @@
         },
         "multi_agent_v2": {
           "$ref": "#/definitions/FeatureToml_for_MultiAgentV2ConfigToml"
+        },
+        "multi_agent_v2_dynamic_tools": {
+          "type": "boolean"
         },
         "network_proxy": {
           "$ref": "#/definitions/FeatureToml_for_NetworkProxyConfigToml"

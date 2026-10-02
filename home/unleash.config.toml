@@ -1,0 +1,143 @@
+# Explicitly insecure Codex policy: codex --profile unleash.
+# Host permissions, the managed wrapper and remote-service auth still apply.
+# Switching to legacy empty filters removes the inherited filter table.
+model_provider = "openai-custom"
+default_permissions = ":danger-full-access"
+approval_policy = "never"
+approvals_reviewer = "user"
+allow_login_shell = true
+allow_symlinked_codex_home = true
+web_search = "live"
+
+[features]
+guardian_approval = false
+hooks = false
+exec_permission_approvals = false
+write_stdin_approval = false
+request_permissions_tool = false
+
+[features.network_proxy]
+enabled = false
+
+[features.guardianv2]
+enabled = false
+
+[shell_environment_policy]
+inherit = "all"
+ignore_default_excludes = true
+exclude = []
+include_only = []
+experimental_use_profile = true
+
+[apps]
+
+[apps._default]
+enabled = true
+approvals_reviewer = "user"
+default_tools_approval_mode = "approve"
+destructive_enabled = true
+open_world_enabled = true
+
+[browser_use]
+allow_history_access = true
+
+[browser_use.default_origin_policy]
+access = "allow"
+downloads = "allow"
+uploads = "allow"
+full_cdp_access = "allow"
+
+[computer_use]
+default_app_access = "allow"
+
+[notice]
+hide_full_access_warning = true
+
+[mcp_servers]
+
+[mcp_servers.filesystem]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.git]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.fetch]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.memory]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.sequential_thinking]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.time]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.markdown]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.context7]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.playwright]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.chrome-devtools]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.postgres]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.sqlite]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.semgrep]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.openaiDeveloperDocs]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.linear]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.figma]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.render]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.vercel]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.microsoft-learn]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.jina-ai]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.atlassian]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.stripe]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.cloudflare-api]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.cloudflare-docs]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.cloudflare-bindings]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.cloudflare-builds]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.cloudflare-observability]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.huggingface]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.node_repl]
+default_tools_approval_mode = "approve"

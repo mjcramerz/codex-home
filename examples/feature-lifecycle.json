@@ -7,10 +7,6 @@
     "default": false,
     "stage": "Removed"
   },
-  "artifact": {
-    "default": false,
-    "stage": "UnderDevelopment"
-  },
   "bedrock_setup_wizard": {
     "default": false,
     "stage": "UnderDevelopment"

@@ -1,5 +1,6 @@
 default_permissions = "full"
 approval_policy = "on-request"
+model_provider = "openai-custom"
 
 [features]
 network_proxy = false

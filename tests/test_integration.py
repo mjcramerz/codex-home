@@ -25,6 +25,12 @@ def load(path):
 def merge(base, overlay, path=()):
     """Mirror the relevant ordinary/structured-feature source merge rules."""
     result = copy.deepcopy(base)
+    if path == ('shell_environment_policy',):
+        if 'filters' in overlay:
+            result.pop('exclude', None)
+            result.pop('include_only', None)
+        elif 'exclude' in overlay or 'include_only' in overlay:
+            result.pop('filters', None)
     for key, value in overlay.items():
         current = result.get(key)
         structured = path == ('features',) and key in {'code_mode', 'multi_agent_v2', 'network_proxy', 'sleep_tool'}
@@ -50,6 +56,8 @@ class IntegrationTests(unittest.TestCase):
         for path in paths:
             with self.subTest(path=path.relative_to(ROOT)):
                 validator.validate(SCHEMA, tomllib.loads(path.read_text()))
+                self.assertNotRegex(path.read_text(), r'(?m)^#\s+(?:BEGIN|END)\b')
+                self.assertNotIn('CONFIG-REFERENCE', path.read_text())
 
     def test_every_root_setting_has_an_active_or_explicit_optional_route(self):
         expected = contract.field_paths(SCHEMA)
@@ -84,7 +92,7 @@ class IntegrationTests(unittest.TestCase):
         source = json.loads((ROOT/'tests/fixtures/source.json').read_text())
         self.assertEqual(len(registry), source['canonical_feature_count'])
         inactive = json.loads((ROOT/'examples/feature-lifecycle.json').read_text())
-        active = load('etc/config.toml')['features']
+        active = load('home/config.toml')['features']
         for key, entry in registry.items():
             with self.subTest(key=key):
                 if key in active:
@@ -92,7 +100,8 @@ class IntegrationTests(unittest.TestCase):
                 else:
                     self.assertIn(key, inactive)
                     self.assertEqual(inactive[key], entry)
-                    if entry['stage'] not in {'Deprecated', 'Removed'}:
+                    if (key in SCHEMA['properties']['features']['properties'] and
+                            entry['stage'] not in {'Deprecated', 'Removed'}):
                         self.assertIs(entry['default'], False)
         for path in [ROOT/'etc/config.toml', ROOT/'home/config.toml',
                      *(ROOT/'home').glob('*.config.toml'), *(ROOT/'agents').glob('*.toml')]:
@@ -111,7 +120,8 @@ class IntegrationTests(unittest.TestCase):
                 validator.validate(SCHEMA, effective)
                 self.assertNotIn('sandbox_mode', effective)
                 self.assertNotIn('sandbox_workspace_write', effective)
-                self.assertIn(effective['default_permissions'], effective['permissions'])
+                self.assertTrue(effective['default_permissions'].startswith(':') or
+                                effective['default_permissions'] in effective['permissions'])
                 self.assertNotIn('model_context_window', effective)
                 self.assertNotIn('model_auto_compact_token_limit', effective)
                 self.assertEqual(effective['model_catalog_json'],
@@ -138,7 +148,7 @@ class IntegrationTests(unittest.TestCase):
                     relative = name.removeprefix('/data/codex/usr/')
                     self.assertNotEqual(relative, name)
                     self.assertTrue((ROOT/relative).is_file(), name)
-        roles = load('etc/config.toml')['agents']
+        roles = load('home/config.toml')['agents']
         for role in roles.values():
             if isinstance(role, dict) and 'config_file' in role:
                 self.assertTrue((ROOT/role['config_file'].removeprefix('/data/codex/usr/')).is_file())
@@ -165,7 +175,7 @@ class IntegrationTests(unittest.TestCase):
         self.assertFalse(full['features']['network_proxy']['enabled'])
 
     def test_workspace_does_not_grant_runtime_or_credentials_writes(self):
-        fs = load('etc/config.toml')['permissions']['workspace']['filesystem']
+        fs = load('home/config.toml')['permissions']['workspace']['filesystem']
         self.assertEqual(fs[':project_roots'], {'.': 'write'})
         self.assertNotIn(':root', fs)
         self.assertNotIn('/data/codex/usr/home', fs)
@@ -179,7 +189,7 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(fs['/data/codex/usr/home/skills'], 'read')
         self.assertEqual(fs['/data/codex/usr/home/plugins'], 'read')
 
-    def test_requirements_have_their_own_source_contract(self):
+    def test_system_permissions_and_requirements_have_separate_contracts(self):
         requirements = load('etc/requirements.toml')
         fields = json.loads((ROOT/'tests/fixtures/requirements-fields.json').read_text())
         self.assertFalse(set(requirements) - set(fields))
@@ -188,29 +198,26 @@ class IntegrationTests(unittest.TestCase):
         for field in fields:
             expected = 'active' if field in requirements else 'inherit_native_default'
             self.assertEqual(coverage[field]['status'], expected, field)
-        mappings = {'allowed_login_methods': 'ForcedLoginMethod',
-                    'allowed_approval_policies': 'AskForApproval',
-                    'allowed_approvals_reviewers': 'ApprovalsReviewer'}
-        for key, definition in mappings.items():
-            for value in requirements[key]:
-                validator.validate(SCHEMA, value, SCHEMA['definitions'][definition])
-        self.assertNotIn('never', requirements['allowed_approval_policies'])
-        self.assertNotIn('on-failure', requirements['allowed_approval_policies'])
-        base = load('etc/config.toml')
-        self.assertIn(base['approval_policy'], requirements['allowed_approval_policies'])
-        self.assertIn(base['approvals_reviewer'], requirements['allowed_approvals_reviewers'])
-        self.assertIn(base['forced_login_method'], requirements['allowed_login_methods'])
-        for feature, required in requirements['features'].items():
-            self.assertIsInstance(required, bool)
-            self.assertIs(base['features'][feature], required)
-        self.assertFalse(requirements['allow_managed_hooks_only'])
-        self.assertFalse(requirements['allow_remote_control'])
-        self.assertFalse(requirements['feedback']['enabled'])
+        self.assertEqual(requirements, {})
+        home = load('home/config.toml')
+        system = load('etc/config.toml')
+        self.assertEqual(set(system), {'default_permissions', 'permissions'})
+        self.assertEqual(system['default_permissions'], home['default_permissions'])
+        expected_home_permissions = copy.deepcopy(system['permissions'])
+        for profile in expected_home_permissions.values():
+            profile['network'] = {key: value for key, value in profile['network'].items()
+                                  if not isinstance(value, dict)}
+        self.assertEqual(home['permissions'], expected_home_permissions)
+        expected_effective = copy.deepcopy(home)
+        expected_effective['permissions'] = system['permissions']
+        self.assertEqual(merge(system, home), expected_effective)
 
     def test_optional_mcp_allowlist_matches_exact_ids_commands_and_arguments(self):
         policy = load('examples/requirements/mcp-only.toml')['mcp_servers']
-        servers = load('etc/config.toml')['mcp_servers']
-        self.assertEqual(set(policy), set(servers))
+        servers = load('home/config.toml')['mcp_servers']
+        local_ids = {key for key, server in servers.items()
+                     if server.get('command') == '/usr/local/bin/codex-mcp'}
+        self.assertEqual(set(policy), local_ids)
         for key, requirement in policy.items():
             identity = requirement['identity']['command']
             self.assertEqual(identity['executable'], servers[key]['command'])
@@ -241,13 +248,67 @@ class IntegrationTests(unittest.TestCase):
         user = load('home/config.toml')
         self.assertFalse(user['mcp_servers']['node_repl']['enabled'])
         self.assertNotIn('cua_repl', user['mcp_servers'])
-        self.assertFalse(load('etc/config.toml')['mcp_servers']['postgres']['enabled'])
+        self.assertFalse(user['mcp_servers']['postgres']['enabled'])
+
+    def test_unleash_removes_inherited_policy_gates(self):
+        base = merge(load('etc/config.toml'), load('home/config.toml'))
+        effective = merge(base, load('home/unleash.config.toml'))
+        validator.validate(SCHEMA, effective)
+        self.assertEqual(effective['default_permissions'], ':danger-full-access')
+        self.assertEqual(effective['approval_policy'], 'never')
+        self.assertTrue(effective['allow_login_shell'])
+        env = effective['shell_environment_policy']
+        self.assertNotIn('filters', env)
+        self.assertEqual(env['inherit'], 'all')
+        self.assertTrue(env['ignore_default_excludes'])
+        self.assertEqual(env['exclude'], [])
+        self.assertEqual(env['include_only'], [])
+        self.assertFalse(effective['features']['hooks'])
+        self.assertFalse(effective['features']['network_proxy']['enabled'])
+        for server in effective['mcp_servers'].values():
+            self.assertEqual(server['default_tools_approval_mode'], 'approve')
+        self.assertEqual(effective['apps']['_default']['default_tools_approval_mode'], 'approve')
+        self.assertTrue(all(v == 'allow' for v in effective['browser_use']['default_origin_policy'].values()))
+        self.assertEqual(effective['computer_use']['default_app_access'], 'allow')
+        for path in (ROOT/'agents').glob('*.toml'):
+            child = merge(effective, tomllib.loads(path.read_text()))
+            with self.subTest(role=path.name):
+                validator.validate(SCHEMA, child)
+                self.assertEqual(child['default_permissions'], ':danger-full-access')
+                self.assertEqual(child['approval_policy'], 'never')
+                for gate in ['hooks', 'guardian_approval', 'exec_permission_approvals',
+                             'write_stdin_approval', 'request_permissions_tool']:
+                    self.assertFalse(child['features'][gate])
+
+    def test_custom_provider_preserves_openai_chatgpt_routing(self):
+        home = load('home/config.toml')
+        self.assertEqual(home['model_provider'], 'openai-custom')
+        provider = home['model_providers'][home['model_provider']]
+        self.assertEqual(provider['name'], 'OpenAI')
+        self.assertEqual(provider['base_url'], 'https://chatgpt.com/backend-api/codex')
+        self.assertTrue(provider['requires_openai_auth'])
+        self.assertTrue(provider['supports_websockets'])
+        self.assertEqual(provider['wire_api'], 'responses')
+        self.assertFalse({'auth', 'aws', 'env_key', 'experimental_bearer_token',
+                          'gateway_oauth'} & provider.keys())
+        for path in [*(ROOT/'home').glob('*.config.toml'), *(ROOT/'agents').glob('*.toml')]:
+            self.assertEqual(tomllib.loads(path.read_text())['model_provider'], 'openai-custom')
+
+    def test_environment_exclusions_use_native_wildcard_syntax(self):
+        import fnmatch
+        filters = load('home/config.toml')['shell_environment_policy']['filters']
+        for name in ['OPENAI_API_KEY', 'GITHUB_TOKEN', 'AWS_SESSION_TOKEN',
+                     'DATABASE_PASSWORD', 'LD_PRELOAD', 'BASH_ENV', 'PERL5OPT']:
+            self.assertTrue(any(action == 'exclude' and fnmatch.fnmatchcase(name.lower(), pattern.lower())
+                                for pattern, action in filters.items()), name)
 
     def test_schema_rejects_actual_config_failures(self):
         for value in [
             {'approval_policy': 'untrusted'},
             {'allow_symlinked_codex_home': 'false'},
             {'features': {'code_mode': {'default_exec_yield_time_ms': -1}}},
+            {'features': {'artifact': {'enabled': False}}},
+            {'features': {'model_catalog_in_context': 'false'}},
             {'features': {'guardianv2': {'review_threshold': 2}}},
             {'features': {'tool_registry': {'turn_metadata_includes_tool_info': 'true'}}},
             {'skills': {'max_context_tokens': 0}},

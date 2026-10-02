@@ -1,4 +1,5 @@
 default_permissions = "workspace-online"
+model_provider = "openai-custom"
 
 [features]
 

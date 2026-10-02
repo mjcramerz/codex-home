@@ -449,6 +449,29 @@ def tool_status(payload: dict) -> bool | None:
     return None
 
 
+def configuration_edit(payload: dict) -> bool:
+    """Identify configuration filenames in bounded edit inputs, never bodies."""
+    if tool_kind(payload) != "edit":
+        return False
+    data = payload.get("tool_input")
+    if isinstance(data, dict):
+        candidates = [data.get(key) for key in ("path", "file_path", "filename", "patch", "input")]
+    else:
+        candidates = [data]
+    for text in candidates:
+        if not isinstance(text, str) or len(text) > MAX_INPUT:
+            continue
+        # Parse only the path arguments or explicit apply_patch file headers.
+        paths = re.findall(r"^\*\*\* (?:Add|Update|Delete) File: ([^\r\n]+)$", text, re.M)
+        if not paths and "\n" not in text and len(text) <= 4096:
+            paths = [text]
+        for path in paths:
+            name = Path(path).name
+            if name in {"config.toml", "requirements.toml", "hooks.json", "servers.json"} or name.endswith(".config.toml"):
+                return True
+    return False
+
+
 def is_check(payload: dict) -> bool:
     """Recognize simple validation commands, without executing repository code."""
     if tool_kind(payload) != "shell":
@@ -538,7 +561,7 @@ class SessionState:
                       re.fullmatch(r"[0-9a-f]{64}", v)} if isinstance(latest, dict) else {}
             flags = state.get("flags", {})
             flags = {k:True for k,v in flags.items() if k in
-                     {"edited", "check-seen", "check-failed", "tool-failed"} and v is True} if isinstance(flags, dict) else {}
+                     {"edited", "config-edited", "check-seen", "check-failed", "tool-failed"} and v is True} if isinstance(flags, dict) else {}
             updated = {"latest": dict(list(latest.items())[-32:]), "flags": flags}
             result = operation(updated)
             encoded = json.dumps(updated, separators=(",", ":")).encode()
@@ -644,6 +667,8 @@ def handle(event: str, payload: dict, deadline: float) -> dict:
             reminders = []
             if flags.get("edited"):
                 reminders.append("Edits were observed. Report the relevant checks and any untested boundary; successful tool status alone does not prove correctness.")
+            if flags.get("config-edited"):
+                reminders.append("Configuration edits were observed. Validate the effective selected profile and the actual client contract; parsing a file does not establish hook trust, MCP health or daemon readiness.")
             if flags.get("check-failed"):
                 reminders.append("A validation command reported failure earlier. Identify whether that failure was resolved or remains.")
             elif flags.get("tool-failed"):
@@ -657,11 +682,15 @@ def handle(event: str, payload: dict, deadline: float) -> dict:
             status = tool_status(payload)
             failed = status is False
             check = is_check(payload)
+            config_changed = configuration_edit(payload) and status is not False
             state.record(edited=tool_kind(payload) == "edit" and status is not False,
+                         config_edited=config_changed,
                          check_seen=check, check_failed=check and failed, tool_failed=failed)
             if tool_kind(payload) == "edit" or failed:
                 state.refresh()
             text = "The preceding tool reported failure. Inspect the bounded error and actual side effects before retrying; do not describe the operation or its validation as successful." if failed else ""
+            if config_changed:
+                text = "Codex configuration changed. Check the effective system/user/profile merge, provider authentication exclusivity and supported instruction aliases. For hooks or MCP changes, validate the event/transport contract and target lifecycle without creating synthetic PID or trust state."
             return context_output(event, text) if state.first("tool-failure", text) else {}
         if event == "PreToolUse":
             # Repository scanning belongs at session/prompt/subagent boundaries.

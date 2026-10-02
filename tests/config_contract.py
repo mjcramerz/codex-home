@@ -2,6 +2,7 @@
 from pathlib import Path
 import importlib.util
 import json
+import tomllib
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = json.loads((ROOT/'home/config.schema.json').read_text())
 _sp = importlib.util.spec_from_file_location('validator', ROOT/'home/.hooks/schema_check.py')

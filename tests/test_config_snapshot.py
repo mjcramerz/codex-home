@@ -49,13 +49,23 @@ class ConfigCompatibilityTests(unittest.TestCase):
                 self.assertNotIn('hide_world_writable_warning', config.get('notice', {}))
 
     def test_registration_opt_in_is_disabled_without_changing_login_storage(self):
-        config = __import__('tomllib').loads((ROOT/'etc/config.toml').read_text())
+        config = __import__('tomllib').loads((ROOT/'home/config.toml').read_text())
         self.assertIs(config['features']['use_agent_identity'], False)
         self.assertEqual(config['forced_login_method'], 'chatgpt')
         self.assertEqual(config['cli_auth_credentials_store'], 'file')
 
     def test_new_structures_are_supported_and_privacy_bounded(self):
-        config = tomllib.loads((ROOT/'etc/config.toml').read_text())
+        config = tomllib.loads((ROOT/'home/config.toml').read_text())
+        registry = __import__('json').loads((ROOT/'tests/fixtures/features.json').read_text())
+        for key in ('model_catalog_in_context', 'multi_agent_v2_dynamic_tools',
+                    'browser_annotation_api', 'in_app_voice',
+                    'guardianv2_decisions_comparison', 'artifact'):
+            with self.subTest(feature=key):
+                self.assertIs(config['features'][key], registry[key]['default'])
+                self.assertEqual(SCHEMA['properties']['features']['properties'][key], {'type': 'boolean'})
+                self.assertEqual(SCHEMA['definitions']['ConfigProfile']['properties']['features']['properties'][key], {'type': 'boolean'})
+        self.assertNotIn('thread_context', config['features']['guardianv2'])
+        self.assertNotIn('guardianv2.thread_context', config['features'])
         self.assertFalse(config['features']['guardianv2']['enabled'])
         self.assertFalse(config['features']['guardianv2']['persist_scores'])
         self.assertEqual(config['features']['code_mode']['default_exec_yield_time_ms'], 1000)

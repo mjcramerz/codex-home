@@ -5,6 +5,7 @@ model_reasoning_summary = "detailed"
 model_verbosity = "high"
 tool_output_token_limit = 12000
 experimental_compact_prompt_file = "/data/codex/usr/instructions/profiles/default/compact/prompt.md"
+model_provider = "openai-custom"
 
 [instruction_overrides]
 compact_instructions_file = "/data/codex/usr/instructions/profiles/default/compact/prompt.md"
@@ -12,7 +13,6 @@ content_filter_guidance_instructions_file = "/data/codex/usr/instructions/profil
 developer_instructions_file = "/data/codex/usr/instructions/profiles/default/developer.md"
 operator_instructions_file = "/data/codex/usr/instructions/profiles/default/operator.md"
 persistent_instructions_file = "/data/codex/usr/instructions/profiles/default/persistent.md"
-system_instructions_file = "/data/codex/usr/instructions/profiles/default/system.md"
 
 [instruction_overrides.agents]
 create_channel_tool_instructions_file = "/data/codex/usr/instructions/profiles/default/agents/create_channel_tool.md"

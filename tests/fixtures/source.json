@@ -1,19 +1,19 @@
 {
-  "config_schema_sha256": "f3445d463e2b9a89c6bcf2e91571e362d29511317e8d446d12e2767ae0805ce6",
-  "feature_registry_sha256": "574e8ee73d91152594105841061f8648d3c5fdcefb3497830f045c9b6b58ae07",
-  "requirements_source_sha256": "7263d270276fa7098d3a51b7e7e0c65406b7b14e0266ac3594ff79c6ab433745",
-  "schema_source": "attached config.schema.json",
-  "requirements_source": "codex.(1).zip:codex.bak/codex-rs/config/src/config_requirements.rs",
+  "config_schema_sha256": "583d53b4db97d88de596032e006d74d20b1a2e6146352c850826479854e3ff27",
+  "feature_registry_sha256": "1b6ad2351279c8d37ba30a26a1baf1f4da8a5884fa30b3da521497452a1fd31a",
+  "requirements_source_sha256": "f948a8ac4d780e84a44abc267164d6e36cc8e2c9aff3e4c63e0942ba00f2dde4",
+  "schema_source": "attached config.schema.json plus six boolean flags verified in codex.zip:codex/codex-rs/features/src/lib.rs",
+  "requirements_source": "codex.zip:codex/codex-rs/config/src/config_requirements.rs",
   "target_platform": "linux",
-  "canonical_feature_count": 156,
+  "canonical_feature_count": 161,
   "config_root_setting_count": 102,
   "models_catalog_sha256": "fd219bd9f061278275f528939f82f54d2eb97df4b25c23b022adbe48813d920b",
-  "models_catalog_source": "codex.(1).zip:codex.bak/codex-rs/models-manager/models.json",
-  "rust_config_schema_sha256": "1e43047e8c89501f85b51f960ecae4fda1df612b086c308ca002e9a9c3aa849a",
-  "instruction_overrides_implemented_in_supplied_rust": false,
+  "models_catalog_source": "codex.zip:codex/codex-rs/models-manager/models.json",
+  "rust_config_schema_sha256": "b891935a3387ca4b435d2cab951521b92faccb8319496217ae44a8442278de5a",
+  "instruction_overrides_implemented_in_supplied_rust": true,
   "instruction_overrides_file_count": 85,
   "instruction_set_count": 9,
-  "hook_schema_source": "codex.(1).zip:codex.bak/codex-rs/hooks/schema/generated/",
+  "hook_schema_source": "hooks.zip:generated/",
   "hook_schema_sha256": {
     "interrupt.command.input.schema.json": "be37402db3524543efe1e4058e6b9a3a53f7dd8f7791a9b75bb2accf7842196e",
     "interrupt.command.output.schema.json": "d9a3fe9ed8ffd9e920d8bf1e49d2c1af49cf63b0c3cf526e568511dc998f824a",
@@ -38,5 +38,23 @@
     "subagent-stop.command.output.schema.json": "8ba2cd7899ae4544193764e67e988235edebe984abe5788634d123bbf13e3e3a",
     "user-prompt-submit.command.input.schema.json": "e6b923bc519896197c44c4fc267a9d115cef24ac418dde9c27db699f4e3b65fd",
     "user-prompt-submit.command.output.schema.json": "5e290303db710f3ccc12f4a2744e8586e7749b3ca2b6bf9f57781ed75bf17b2b"
+  },
+  "rust_source_archive": "codex.zip",
+  "applied_debian_patches": [
+    "0001-config-add-typed-per-session-instruction-overrides-a.patch",
+    "0002-core-wire-bounded-executor-loaded-steering-overrides.patch",
+    "0003-memory-preserve-migration-history-and-harden-owned-m.patch",
+    "0004-goals-select-steering-templates-without-changing-run.patch",
+    "0005-tui-restore-bounded-prompt-picker-without-submitting.patch",
+    "0006-build-rebase-remaining-compiler-and-Bazel-compatibil.patch"
+  ],
+  "attached_config_schema_sha256": "f3445d463e2b9a89c6bcf2e91571e362d29511317e8d446d12e2767ae0805ce6",
+  "feature_schema_extensions": {
+    "model_catalog_in_context": false,
+    "multi_agent_v2_dynamic_tools": false,
+    "browser_annotation_api": true,
+    "in_app_voice": true,
+    "guardianv2_decisions_comparison": false,
+    "artifact": false
   }
 }

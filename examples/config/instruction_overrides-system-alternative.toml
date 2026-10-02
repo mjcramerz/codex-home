@@ -1,0 +1,2 @@
+[instruction_overrides]
+system_instructions_file = "/data/codex/usr/instructions/default/system.md"

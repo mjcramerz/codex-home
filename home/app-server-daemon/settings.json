@@ -1,0 +1,9 @@
+{
+  "remoteControlEnabled": false,
+  "featureOverrides": {},
+  "shutdownGraceSeconds": 25,
+  "updater": {
+    "autoUpdateEnabled": false,
+    "updateIntervalMinutes": 60
+  }
+}

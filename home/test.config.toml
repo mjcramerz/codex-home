@@ -4,6 +4,7 @@ model_reasoning_effort = "high"
 model_reasoning_summary = "concise"
 model_verbosity = "medium"
 experimental_compact_prompt_file = "/data/codex/usr/instructions/profiles/test/compact/prompt.md"
+model_provider = "openai-custom"
 
 [instruction_overrides]
 compact_instructions_file = "/data/codex/usr/instructions/profiles/test/compact/prompt.md"
@@ -11,7 +12,6 @@ content_filter_guidance_instructions_file = "/data/codex/usr/instructions/profil
 developer_instructions_file = "/data/codex/usr/instructions/profiles/test/developer.md"
 operator_instructions_file = "/data/codex/usr/instructions/profiles/test/operator.md"
 persistent_instructions_file = "/data/codex/usr/instructions/profiles/test/persistent.md"
-system_instructions_file = "/data/codex/usr/instructions/profiles/test/system.md"
 
 [instruction_overrides.agents]
 create_channel_tool_instructions_file = "/data/codex/usr/instructions/profiles/test/agents/create_channel_tool.md"

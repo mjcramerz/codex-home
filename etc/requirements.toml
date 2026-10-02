@@ -1,16 +1,2 @@
-allowed_login_methods = ["chatgpt"]
-model_provider = "openai"
-allowed_approval_policies = ["on-request", { granular = { sandbox_approval = true, rules = true, skill_approval = true, mcp_elicitations = true, request_permissions = true } }]
-allowed_approvals_reviewers = ["user"]
-allow_managed_hooks_only = false
-allow_browser_and_computer_use = true
-allow_remote_control = false
-allow_appshots = false
-
-[features]
-use_agent_identity = false
-chronicle = false
-external_agent_memory_import = false
-
-[feedback]
-enabled = false
+# No administrator constraints. Omitted requirement fields allow any value.
+# Do not use empty allowed_* lists: those prohibit all values.

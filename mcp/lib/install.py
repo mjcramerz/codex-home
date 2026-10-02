@@ -126,14 +126,14 @@ def validate_codex_mcp_registrations(settings: dict, source: str) -> None:
 
 
 def validate_codex_mcp_config(path: Path, uid: int, gid: int | None = None) -> None:
-    """Check a standalone/system layer that supplies every broker registration."""
+    """Check a standalone layer that supplies every broker registration."""
     validate_codex_mcp_registrations(read_codex_config(path, uid, gid), str(path))
 
 
 def validate_codex_mcp_configs(layers: list[tuple[Path, int, int | None]]) -> None:
     """Check effective system/user registrations in Codex's low-to-high order.
 
-    Defaults belong to the system layer; a user can disable a server or tune its
+    Defaults belong to the user layer; a user can disable a server or tune its
     timeouts. Recursive table merging follows the ordinary Codex TOML merge.
     Trusted project/session overrides are still a client-time policy boundary.
     """

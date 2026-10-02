@@ -50,7 +50,7 @@ sudo make restart
 
 ## Upgrade and rollback
 
-Close clients; preserve source/config backups and persistent state. The target contract is the latest source snapshot supplied with this revision, whose configuration schema is pinned byte-for-byte in `home/config.schema.json`. No release number is inferred from its development manifest. There is no schema-refresh script in this checkout. A future binary update requires its actual schema, feature registry, requirements loader, model metadata and hook event schemas, followed by configuration and lifecycle validation.
+Close clients; preserve source/config backups and persistent state. The target contract uses the supplied configuration snapshot plus six Rust-verified Boolean feature properties, pinned in `home/config.schema.json`. No release number is inferred from the source's development manifest. There is no schema-refresh script in this checkout. A future binary update requires its actual schema, feature registry, requirements loader, model metadata and hook event schemas, followed by configuration and lifecycle validation.
 
 For an MCP code or image change, review `.env`, run tests, then `sudo make deploy DESKTOP_USER=YOUR_DESKTOP_USER`. Installs are serialized and stop the target. Protected previous releases remain under `/usr/local/libexec/codex-mcp/releases/`. Matching image build inputs allow the installer to retain the old immutable image ID, but deploy still executes a build. The resulting ID and dependency evidence live under `/etc/codex/mcp/`.
 
@@ -81,7 +81,7 @@ Restore rejects traversal, links, special files, unexpected paths and archives a
 
 ACL snapshots are under `/etc/codex/mcp/acl-backups/`. Review and restore the applicable snapshots using `setfacl --restore=FILE` only after stopping clients and comparing any intentional ACL changes since installation. A stale ACL backup can undo later legitimate access changes. New Workspace files did not exist in the snapshot; review their inherited ACLs separately. Revoke the dedicated SSH authorization and delete its desktop private/public key only after confirming no consumer still uses it. Remove retained secrets and state under a separate explicit retention/destruction decision; never run a blanket Podman prune.
 
-Client startup/tool deadlines are explicit in `etc/config.toml` (120/180 seconds). Broker startup is 90 seconds in `.env`, with a 15-second client connection budget. When changing timing, use `make config ENV_FILE=/path/to/reviewed.env`, review its generated snippets and merge by server ID into the system layer or a deliberate user override. Never append duplicate TOML tables. There is no root mirror generator. An alternate `ENV_FILE` does not rewrite installed clients; broker lifetime/startup/idle controls remain separate from client deadlines.
+Client startup/tool deadlines are explicit in `home/config.toml` (120/180 seconds). Broker startup is 90 seconds in `.env`, with a 15-second client connection budget. When changing timing, use `make config ENV_FILE=/path/to/reviewed.env`, review its generated snippets and merge by server ID into the user configuration or a deliberate profile override. Never append duplicate TOML tables. There is no root mirror generator. An alternate `ENV_FILE` does not rewrite installed clients; broker lifetime/startup/idle controls remain separate from client deadlines.
 
 ## Backup publication and import limits
 

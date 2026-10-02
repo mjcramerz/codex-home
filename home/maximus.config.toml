@@ -1,6 +1,6 @@
 model = "gpt-6.1-sol"
 review_model = "gpt-6-sol"
-model_provider = "openai"
+model_provider = "openai-custom"
 model_instructions_file = "/data/codex/usr/instructions/default/models/base.md"
 service_tier = "default"
 model_auto_compact_token_limit_scope = "total"
@@ -20,7 +20,6 @@ content_filter_guidance_instructions_file = "/data/codex/usr/instructions/defaul
 developer_instructions_file = "/data/codex/usr/instructions/default/developer.md"
 operator_instructions_file = "/data/codex/usr/instructions/default/operator.md"
 persistent_instructions_file = "/data/codex/usr/instructions/default/persistent.md"
-system_instructions_file = "/data/codex/usr/instructions/default/system.md"
 
 [instruction_overrides.agents]
 create_channel_tool_instructions_file = "/data/codex/usr/instructions/default/agents/create_channel_tool.md"

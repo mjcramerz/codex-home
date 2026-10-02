@@ -27,8 +27,11 @@ class HardeningTests(Base):
     def test_codex_keymaps_keep_navigation_and_chatgpt_login(self):
         system = tomllib.loads((SOURCE_ROOT.parent/'etc/config.toml').read_text())
         user = tomllib.loads((SOURCE_ROOT.parent/'home/config.toml').read_text())
-        self.assertEqual(system['model_provider'], 'openai')
-        self.assertEqual(system['forced_login_method'], 'chatgpt')
+        self.assertEqual(set(system), {'default_permissions', 'permissions'})
+        self.assertEqual(system['default_permissions'], user['default_permissions'])
+        self.assertEqual(set(system['permissions']), set(user['permissions']))
+        self.assertEqual(user['model_provider'], 'openai-custom')
+        self.assertEqual(user['forced_login_method'], 'chatgpt')
         for settings in (user,):
             keys = settings['tui']['keymap']
             self.assertEqual(keys['composer']['submit'], 'enter')
@@ -46,7 +49,7 @@ class HardeningTests(Base):
         install.validate_codex_mcp_configs(layers)
 
     def test_codex_config_rejects_missing_client_and_symlink(self):
-        source = SOURCE_ROOT.parent/'etc/config.toml'
+        source = SOURCE_ROOT.parent/'home/config.toml'
         path = self.root/'config.toml'
         text = source.read_text()
         path.write_text(text.replace('args = ["connect", "filesystem"]',
@@ -59,7 +62,7 @@ class HardeningTests(Base):
             install.validate_codex_mcp_config(path, os.getuid())
 
     def test_user_can_disable_but_cannot_replace_broker_transport(self):
-        base = (SOURCE_ROOT.parent/'etc/config.toml', os.getuid(), None)
+        base = (SOURCE_ROOT.parent/'home/config.toml', os.getuid(), None)
         path = self.root/'config.toml'
         path.write_text('[mcp_servers.filesystem]\nenabled = false\n')
         install.validate_codex_mcp_configs([base, (path, os.getuid(), None)])
